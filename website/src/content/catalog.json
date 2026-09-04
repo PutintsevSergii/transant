@@ -1,0 +1,1262 @@
+{
+  "name": "TransANT UNO wagon range",
+  "source": "prep/source-material/prototypes/transant-product-website-prototype.html",
+  "categories": [
+    {
+      "id": "intermodal",
+      "source_id": "intermodal",
+      "name": "Intermodal",
+      "tag": "Container transport",
+      "description": "Lightweight intermodal wagons for 20/30/40ft ISO containers and swap bodies, built around a low tare weight and flexible loading configurations.",
+      "products": [
+        "sgns"
+      ]
+    },
+    {
+      "id": "flat",
+      "source_id": "flat",
+      "name": "Flat",
+      "tag": "Steel, timber, oversized",
+      "description": "Versatile flat wagons with foldable side walls, swivel stanchions and robust wooden floors for steel, construction materials and long, bulky or project cargo.",
+      "products": [
+        "rens",
+        "relns",
+        "rns"
+      ]
+    },
+    {
+      "id": "timber",
+      "source_id": "timber",
+      "name": "Timber",
+      "tag": "Roundwood & sawn timber",
+      "description": "High-capacity timber wagons engineered for 3, 4 and 5 m logs, with optimized stanchions that retain roundwood securely without additional tying.",
+      "products": [
+        "rnoos",
+        "snps"
+      ]
+    },
+    {
+      "id": "open-box",
+      "source_id": "multi",
+      "name": "Multi / Open box",
+      "tag": "Scrap & bulk cargo",
+      "description": "High-wall open-box wagons from 33 to 56 ft, with an exceptional payload-to-tare ratio and full-length side doors for fast, flexible loading of scrap and bulk.",
+      "products": [
+        "eamnos",
+        "eanos-40",
+        "eanos-56"
+      ]
+    },
+    {
+      "id": "tank",
+      "source_id": "tank",
+      "name": "Tank",
+      "tag": "Liquid bulk",
+      "description": "High-capacity tank wagons for chemical, petrochemical and petroleum products, engineered to RID, TSI, GCU, EN and UIC requirements.",
+      "products": [
+        "zacns"
+      ]
+    }
+  ],
+  "products": {
+    "sgns": {
+      "code": "Sgns(s)",
+      "name": "UNO INTERMODAL 60ft",
+      "eyebrow": "Intermodal wagon",
+      "tagline": "Flexible intermodal transport with optimized payload capacity.",
+      "intro": [
+        "The UNO INTERMODAL 60ft is a versatile intermodal freight wagon designed for the efficient transportation of 20', 30' and 40' ISO containers.",
+        "Its optimized lightweight design combines low tare weight with high payload capacity, enabling efficient use of wagon capacity and helping operators optimize transport costs. The wagon supports multiple loading configurations and provides the flexibility required for different intermodal transport needs."
+      ],
+      "commodities": [
+        "Maritime containers",
+        "Swap bodies",
+        "Intermodal freight units",
+        "Consumer goods",
+        "Industrial and retail products"
+      ],
+      "benefits": [
+        "Low tare weight and high payload capacity",
+        "Multiple loading configurations",
+        "28 foldable container pins",
+        "Efficient fleet and capacity utilization",
+        "Suitable for European rail operations",
+        "DAC-ready design"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Sgns(s)"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "14.200 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with classic brake"
+        ],
+        [
+          "Length over buffers",
+          "19.830 mm"
+        ],
+        [
+          "Wagon tare",
+          "19.3 t"
+        ],
+        [
+          "Loading length",
+          "18.500 mm"
+        ],
+        [
+          "Loading width",
+          "2.380 mm"
+        ],
+        [
+          "Floor height above rail",
+          "1.155 mm"
+        ],
+        [
+          "Special features",
+          "28 foldable container pins"
+        ],
+        [
+          "Vehicle gauge",
+          "G1"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Min curve radius",
+          "R 75"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "special": [
+        "Classic brake for SS-brake regime",
+        "28 container pins for multiple configurations",
+        "DAC ready"
+      ],
+      "id": "sgns",
+      "source_id": "sgns",
+      "slug": "uno-intermodal-60ft-sgns",
+      "category": "intermodal",
+      "category_name": "Intermodal",
+      "image": "products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png"
+    },
+    "rens": {
+      "code": "Rens",
+      "name": "UNO FLAT 60ft",
+      "eyebrow": "Flat wagon",
+      "tagline": "One wagon. Multiple cargo solutions.",
+      "intro": [
+        "The UNO FLAT 60ft Rens is a versatile flat wagon designed for the efficient transportation of steel products, timber, construction materials and general cargo. Its optimized lightweight design combines high payload capacity with excellent load flexibility.",
+        "The wagon features a spacious 60ft loading platform with foldable side walls and swivel stanchions, enabling secure and efficient transport of a wide range of long, bulky and oversized loads."
+      ],
+      "commodities": [
+        "Steel coils and sheets",
+        "Steel sections and pipes",
+        "Timber and construction materials",
+        "Long and bulky cargo",
+        "Project cargo",
+        "General industrial goods"
+      ],
+      "benefits": [
+        "High payload capacity with optimized tare weight",
+        "60ft loading platform for efficient cargo utilization",
+        "Flexible loading configurations",
+        "Foldable side walls and swivel stanchions",
+        "Suitable for long, bulky and diverse cargo",
+        "Robust design for demanding industrial applications"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Rens"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "14.360 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with compact brake"
+        ],
+        [
+          "Length over buffers",
+          "19.900 mm"
+        ],
+        [
+          "Wagon tare",
+          "22.5 t"
+        ],
+        [
+          "Loading length",
+          "18.500 mm"
+        ],
+        [
+          "Loading width",
+          "2.646 mm"
+        ],
+        [
+          "Floor height above rail",
+          "1.240 mm"
+        ],
+        [
+          "Stanchions",
+          "16 swivel stanchions"
+        ],
+        [
+          "Side walls",
+          "18 side walls"
+        ],
+        [
+          "Type of floor",
+          "70 mm spruce wood"
+        ],
+        [
+          "Vehicle gauge",
+          "G1"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Min curve radius",
+          "R 75"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "41.5"
+        ],
+        [
+          "B",
+          "49.5"
+        ],
+        [
+          "C",
+          "59.5"
+        ],
+        [
+          "D",
+          "67.5"
+        ]
+      ],
+      "special": [
+        "18 foldable side walls",
+        "70 mm wooden floor",
+        "DAC ready"
+      ],
+      "id": "rens",
+      "source_id": "rens",
+      "slug": "uno-flat-60ft-rens",
+      "category": "flat",
+      "category_name": "Flat",
+      "image": "products/flat/uno-flat-60ft-rens/wagon-render.png"
+    },
+    "relns": {
+      "code": "Relns",
+      "name": "UNO FLAT 60ft",
+      "eyebrow": "Flat wagon",
+      "tagline": "More capacity. Greater flexibility. Efficient freight transport.",
+      "intro": [
+        "The UNO FLAT 60ft Relns is a high-capacity flat wagon designed for the efficient transportation of general and industrial cargo. Its lightweight construction and spacious loading area combine high payload capacity with excellent operational flexibility.",
+        "Equipped with foldable side walls and a robust wooden floor, the wagon provides flexible cargo handling and reliable support for a wide range of freight."
+      ],
+      "commodities": [
+        "Steel products",
+        "Construction materials",
+        "Machinery and equipment",
+        "Industrial goods",
+        "General cargo"
+      ],
+      "benefits": [
+        "Low tare weight and high payload capacity",
+        "Large loading area for efficient cargo utilization",
+        "Foldable side walls for flexible loading",
+        "Durable wooden floor",
+        "Flexible cargo securing options",
+        "Designed for diverse freight applications"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Relns"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "14.360 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with compact brake"
+        ],
+        [
+          "Length over buffers",
+          "19.900 mm"
+        ],
+        [
+          "Wagon tare",
+          "22.0 t"
+        ],
+        [
+          "Loading length",
+          "18.526 mm"
+        ],
+        [
+          "Loading width",
+          "2.646 mm"
+        ],
+        [
+          "Floor height above rail",
+          "1.240 mm"
+        ],
+        [
+          "Side walls",
+          "18 side walls"
+        ],
+        [
+          "Floor lashing",
+          "14"
+        ],
+        [
+          "Type of floor",
+          "70 mm spruce wood"
+        ],
+        [
+          "Vehicle gauge",
+          "G1"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Min curve radius",
+          "R 75"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "42"
+        ],
+        [
+          "B",
+          "50"
+        ],
+        [
+          "C",
+          "60"
+        ],
+        [
+          "D",
+          "68"
+        ]
+      ],
+      "special": [
+        "18 foldable side walls",
+        "70 mm wooden floor",
+        "DAC ready"
+      ],
+      "id": "relns",
+      "source_id": "relns",
+      "slug": "uno-flat-60ft-relns",
+      "category": "flat",
+      "category_name": "Flat",
+      "image": "products/flat/uno-flat-60ft-relns/wagon-render.png"
+    },
+    "rns": {
+      "code": "Rns",
+      "name": "UNO FLAT 60ft",
+      "eyebrow": "Flat wagon",
+      "tagline": "Heavy-duty capacity. Flexible loading. Reliable transport.",
+      "intro": [
+        "The UNO FLAT 60ft Rns is a specialized flat wagon designed for the safe and efficient transportation of long, heavy and oversized cargo. Its optimized lightweight construction combines high payload capacity with excellent load flexibility.",
+        "Equipped with foldable bolsters and stanchions, the wagon can be adapted to different cargo dimensions and loading requirements — supporting steel products, pipes, construction elements and long industrial components."
+      ],
+      "commodities": [
+        "Steel profiles",
+        "Pipes and tubes",
+        "Construction elements",
+        "Long and oversized industrial components",
+        "Heavy industrial cargo"
+      ],
+      "benefits": [
+        "Low tare weight and high payload capacity",
+        "Foldable bolsters and stanchions for flexible loading",
+        "Adaptable to different cargo dimensions",
+        "Reliable cargo securing",
+        "High operational versatility",
+        "Efficient solution for long, heavy and oversized cargo"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Rns"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "14.360 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with compact brake"
+        ],
+        [
+          "Length over buffers",
+          "19.900 mm"
+        ],
+        [
+          "Wagon tare",
+          "21.0 t"
+        ],
+        [
+          "Loading length",
+          "18.526 mm"
+        ],
+        [
+          "Loading width",
+          "2.646 mm"
+        ],
+        [
+          "Floor height above rail",
+          "1.240 mm"
+        ],
+        [
+          "Stanchions",
+          "16 swivel stanchions"
+        ],
+        [
+          "Bolsters",
+          "16 bolsters"
+        ],
+        [
+          "Floor lashing",
+          "18"
+        ],
+        [
+          "Type of floor",
+          "70 mm spruce wood"
+        ],
+        [
+          "Vehicle gauge",
+          "G1"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "43"
+        ],
+        [
+          "B",
+          "51"
+        ],
+        [
+          "C",
+          "61"
+        ],
+        [
+          "D",
+          "69"
+        ]
+      ],
+      "special": [
+        "16 foldable bolsters",
+        "70 mm wooden floor",
+        "DAC ready"
+      ],
+      "id": "rns",
+      "source_id": "rns",
+      "slug": "uno-flat-60ft-rns",
+      "category": "flat",
+      "category_name": "Flat",
+      "image": "products/flat/uno-flat-60ft-rns/wagon-render.png"
+    },
+    "rnoos": {
+      "code": "Rnoos",
+      "name": "UNO TIMBER 60ft",
+      "eyebrow": "Timber wagon",
+      "tagline": "High-capacity timber wagon for efficient and secure transport of roundwood and sawn timber.",
+      "intro": [
+        "The UNO TIMBER 60ft Rnoos is designed to maximize efficiency throughout the timber logistics chain. Its lightweight construction combines high payload capacity with optimized loading performance.",
+        "The wagon features a robust, optimized stanchion arrangement that ensures reliable cargo retention without additional securing of roundwood. Designed to accommodate 3, 4 and 5 m timber lengths, it provides flexibility for different loading requirements."
+      ],
+      "commodities": [
+        "Roundwood logs",
+        "Sawn timber",
+        "Wood products",
+        "Forestry materials"
+      ],
+      "benefits": [
+        "High payload with low tare weight",
+        "Optimized for 3, 4 and 5 m timber lengths",
+        "Secure roundwood retention without additional tying",
+        "Robust stanchion arrangement",
+        "Efficient and flexible loading",
+        "High transport productivity"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Rnoos"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "14.360 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with compact brake"
+        ],
+        [
+          "Length over buffers",
+          "19.900 mm"
+        ],
+        [
+          "Wagon tare",
+          "21.6 t"
+        ],
+        [
+          "Loading length",
+          "18.500 mm"
+        ],
+        [
+          "Loading width",
+          "2.646 mm"
+        ],
+        [
+          "Floor height above rail",
+          "1.240 mm"
+        ],
+        [
+          "Stanchion pairs",
+          "10"
+        ],
+        [
+          "Deflectors",
+          "7"
+        ],
+        [
+          "Side lashing",
+          "18"
+        ],
+        [
+          "Vehicle gauge",
+          "G2"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Min curve radius",
+          "R 75"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "42.2"
+        ],
+        [
+          "B",
+          "50.4"
+        ],
+        [
+          "C",
+          "60.4"
+        ],
+        [
+          "D",
+          "68.4"
+        ]
+      ],
+      "special": [
+        "Transport of 3, 4 and 5 m round timber",
+        "10 stanchion pairs",
+        "7 deflectors",
+        "G2 profile",
+        "DAC ready"
+      ],
+      "id": "rnoos",
+      "source_id": "rnoos",
+      "slug": "uno-timber-60ft-rnoos",
+      "category": "timber",
+      "category_name": "Timber",
+      "image": "products/timber/uno-timber-60ft-rnoos/wagon-render.png"
+    },
+    "snps": {
+      "code": "Snps",
+      "name": "UNO TIMBER 60ft",
+      "eyebrow": "Timber wagon",
+      "tagline": "Maximum payload. Optimized timber logistics.",
+      "intro": [
+        "The UNO TIMBER 60ft Snps is engineered to maximize payload efficiency in demanding forestry operations. Its exceptionally low tare weight and high payload capacity enable operators to transport more timber per train.",
+        "Designed specifically for roundwood and sawn timber, the wagon combines optimized loading geometry with a robust stanchion system and integrated cargo-securing equipment."
+      ],
+      "commodities": [
+        "Roundwood",
+        "Sawn timber",
+        "Wood products",
+        "Forestry cargo"
+      ],
+      "benefits": [
+        "Exceptional payload efficiency",
+        "Very low tare weight",
+        "Optimized loading geometry",
+        "Secure and reliable cargo retention",
+        "More timber transported per train",
+        "Reduced cost per tonne transported"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Snps"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "14.360 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with compact brake"
+        ],
+        [
+          "Length over buffers",
+          "19.900 mm"
+        ],
+        [
+          "Wagon tare",
+          "20.5 t"
+        ],
+        [
+          "Loading length",
+          "18.500 mm"
+        ],
+        [
+          "Loading width",
+          "2.529 mm"
+        ],
+        [
+          "Floor height above rail",
+          "1.170 mm"
+        ],
+        [
+          "Stanchion pairs",
+          "10"
+        ],
+        [
+          "Deflectors",
+          "7"
+        ],
+        [
+          "Side lashing winches",
+          "7"
+        ],
+        [
+          "Vehicle gauge",
+          "G2"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "43.5"
+        ],
+        [
+          "B",
+          "51.5"
+        ],
+        [
+          "C",
+          "61.5"
+        ],
+        [
+          "D",
+          "69.5"
+        ]
+      ],
+      "special": [
+        "Transport of 3, 4 and 5 m round timber",
+        "10 stanchion pairs",
+        "7 deflectors",
+        "G2 profile",
+        "DAC ready"
+      ],
+      "id": "snps",
+      "source_id": "snps",
+      "slug": "uno-timber-60ft-snps",
+      "category": "timber",
+      "category_name": "Timber",
+      "image": "products/timber/uno-timber-60ft-snps/wagon-render.png"
+    },
+    "eamnos": {
+      "code": "Eamnos",
+      "name": "UNO MULTIBox 33ft",
+      "eyebrow": "Open box / high wall wagon",
+      "tagline": "Compact design. Maximum payload. Built for demanding bulk cargo.",
+      "intro": [
+        "The UNO MULTI 33ft Eamnos is a high-performance open-top wagon engineered for the efficient transport of scrap metal, recyclables and other high-density industrial cargo. Its compact design combines a low tare weight with exceptional payload capacity.",
+        "Built for intensive industrial use, the wagon features a high-strength, wear-resistant steel body. The open-top configuration and convenient side doors support fast, flexible loading and unloading."
+      ],
+      "commodities": [
+        "Scrap metal",
+        "Ferrous and non-ferrous recyclables",
+        "Steel industry raw materials",
+        "Bulk industrial products",
+        "Construction materials",
+        "High-density cargo"
+      ],
+      "benefits": [
+        "Exceptional payload-to-tare ratio",
+        "Low tare weight of just 20 t",
+        "Payload capacity of up to 70 t",
+        "High-strength, wear-resistant steel construction",
+        "Fast and flexible loading and unloading",
+        "Optimized for heavy-duty industrial operations"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Eamnos"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "6.500 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with compact brake"
+        ],
+        [
+          "Length over buffers",
+          "11.500 mm"
+        ],
+        [
+          "Wagon tare",
+          "20.0 t"
+        ],
+        [
+          "Loading length",
+          "10.240 mm"
+        ],
+        [
+          "Loading width",
+          "2.707 mm"
+        ],
+        [
+          "Loading area",
+          "27.7 m²"
+        ],
+        [
+          "Loading volume",
+          "60.9 m³"
+        ],
+        [
+          "Floor height above rail",
+          "1.170 mm"
+        ],
+        [
+          "Door opening (W×H)",
+          "850 × 1780 mm"
+        ],
+        [
+          "Vehicle gauge",
+          "G1"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "44"
+        ],
+        [
+          "B",
+          "52"
+        ],
+        [
+          "C",
+          "62"
+        ],
+        [
+          "D",
+          "70"
+        ]
+      ],
+      "special": [
+        "High-strength wear-resistant body",
+        "Low tare, payload up to 70 t",
+        "DAC ready"
+      ],
+      "id": "eamnos",
+      "source_id": "ealmnos",
+      "slug": "uno-multibox-33ft-eamnos",
+      "category": "open-box",
+      "category_name": "Multi / Open box",
+      "image": "products/open-box/uno-multibox-33ft-eamnos/wagon-render.png"
+    },
+    "eanos-40": {
+      "code": "Eanos",
+      "name": "UNO MULTI 40ft",
+      "eyebrow": "Open box / high wall wagon",
+      "tagline": "One wagon. Multiple cargo solutions.",
+      "intro": [
+        "The UNO MULTI 40ft Eanos is a versatile open-top wagon engineered for the efficient transport of bulk, heavy and high-density commodities. With a loading volume of up to 73 m³, it combines generous capacity with an optimized tare weight.",
+        "Its full-length side doors provide easy access along the entire wagon, supporting fast and flexible loading and unloading while adapting to different handling requirements."
+      ],
+      "commodities": [
+        "Scrap metal",
+        "Aggregates",
+        "Minerals",
+        "Construction materials",
+        "Bulk industrial products"
+      ],
+      "benefits": [
+        "High payload capacity",
+        "Loading volume of up to 73 m³",
+        "Optimized payload-to-tare ratio",
+        "Full-length side-door accessibility",
+        "Robust and durable steel construction",
+        "Fast and flexible loading and unloading"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Eanos"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "8.068 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with compact brake"
+        ],
+        [
+          "Length over buffers",
+          "13.608 mm"
+        ],
+        [
+          "Wagon tare",
+          "21.0 t"
+        ],
+        [
+          "Loading length",
+          "12.336 mm"
+        ],
+        [
+          "Loading width",
+          "2.711 mm"
+        ],
+        [
+          "Loading area",
+          "33.2 m²"
+        ],
+        [
+          "Loading volume",
+          "73.0 m³"
+        ],
+        [
+          "Floor height above rail",
+          "1.168 mm"
+        ],
+        [
+          "Door opening (W×H)",
+          "850 × 1780 mm"
+        ],
+        [
+          "Vehicle gauge",
+          "G1"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "43"
+        ],
+        [
+          "B",
+          "51"
+        ],
+        [
+          "C",
+          "61"
+        ],
+        [
+          "D",
+          "69"
+        ]
+      ],
+      "special": [
+        "Robust open-box structure",
+        "8 mm floor / 6 mm wall thickness",
+        "Two full-size doors",
+        "DAC ready"
+      ],
+      "id": "eanos-40",
+      "source_id": "eanos40",
+      "slug": "uno-multi-40ft-eanos",
+      "category": "open-box",
+      "category_name": "Multi / Open box",
+      "image": "products/open-box/uno-multi-40ft-eanos/wagon-render.png"
+    },
+    "eanos-56": {
+      "code": "Eanos",
+      "name": "UNO MULTI 56ft",
+      "eyebrow": "Open box / high wall wagon",
+      "tagline": "More volume. More cargo. More efficiency.",
+      "intro": [
+        "The UNO MULTI 56ft Eanos is a high-capacity open-top wagon engineered for the efficient transport of bulk, heavy and high-density commodities. With a loading volume of up to 100 m³, it enables operators to move larger quantities per train.",
+        "Its optimized lightweight construction provides an excellent payload-to-tare ratio, while the robust steel body is built to withstand demanding industrial conditions. Full-length side doors provide convenient access along the wagon."
+      ],
+      "commodities": [
+        "Scrap metal",
+        "Aggregates",
+        "Minerals",
+        "Construction materials",
+        "Bulk industrial products"
+      ],
+      "benefits": [
+        "High payload capacity",
+        "Loading volume of up to 100 m³",
+        "Optimized payload-to-tare ratio",
+        "Full-length side-door accessibility",
+        "Robust, durable steel construction",
+        "More cargo moved per train"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Eanos"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "12.462 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with compact brake"
+        ],
+        [
+          "Length over buffers",
+          "18.002 mm"
+        ],
+        [
+          "Wagon tare",
+          "23.3 t"
+        ],
+        [
+          "Loading length",
+          "16.726 mm"
+        ],
+        [
+          "Loading width",
+          "2.715 mm"
+        ],
+        [
+          "Loading area",
+          "45.4 m²"
+        ],
+        [
+          "Loading volume",
+          "100.0 m³"
+        ],
+        [
+          "Floor height above rail",
+          "1.168 mm"
+        ],
+        [
+          "Door opening (W×H)",
+          "850 × 1780 mm"
+        ],
+        [
+          "Vehicle gauge",
+          "G1"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "40.7"
+        ],
+        [
+          "B",
+          "48.7"
+        ],
+        [
+          "C",
+          "58.7"
+        ],
+        [
+          "D",
+          "66.7"
+        ]
+      ],
+      "special": [
+        "6 mm floor / 4 mm side wall",
+        "100 m³ loading capacity",
+        "Two full-size doors",
+        "DAC ready"
+      ],
+      "id": "eanos-56",
+      "source_id": "eanos56",
+      "slug": "uno-multi-56ft-eanos",
+      "category": "open-box",
+      "category_name": "Multi / Open box",
+      "image": "products/open-box/uno-multi-56ft-eanos/wagon-render.png"
+    },
+    "zacns": {
+      "code": "Zacns",
+      "name": "UNO TANK 88m³",
+      "eyebrow": "Tank wagon",
+      "tagline": "High-capacity tank wagon for efficient and reliable liquid bulk transport.",
+      "intro": [
+        "The UNO TANK 88 m³ Zacns is engineered for the safe and efficient transportation of liquid chemical, petrochemical and petroleum products across European rail networks. With an 88 m³ tank capacity and optimized lightweight design, it combines high carrying capacity with excellent transport efficiency.",
+        "The wagon features an L4BH tank code and is engineered in accordance with applicable RID, TSI, GCU, EN and UIC requirements."
+      ],
+      "commodities": [
+        "Diesel fuel",
+        "Gasoline",
+        "Ethanol",
+        "Methanol",
+        "Aromatic hydrocarbons",
+        "Petrochemical products"
+      ],
+      "benefits": [
+        "88 m³ tank capacity",
+        "Optimized low tare weight",
+        "High payload and transport efficiency",
+        "L4BH tank code",
+        "Suitable for a broad range of liquid products",
+        "Compliant with RID, TSI, GCU, EN and UIC"
+      ],
+      "specs": [
+        [
+          "Wagon type",
+          "Zacns"
+        ],
+        [
+          "Number of axles",
+          "4"
+        ],
+        [
+          "Distance between bogie pivots",
+          "9.960 mm"
+        ],
+        [
+          "Bogie type",
+          "Y25 with classic brake"
+        ],
+        [
+          "Length over buffers",
+          "15.000 mm"
+        ],
+        [
+          "Wagon tare",
+          "21.0 t"
+        ],
+        [
+          "Tank capacity",
+          "88.0 m³"
+        ],
+        [
+          "Tank diameter",
+          "3000 mm"
+        ],
+        [
+          "Tank code",
+          "L4BH"
+        ],
+        [
+          "Vehicle gauge",
+          "G1"
+        ],
+        [
+          "Max wheelset load",
+          "22.5 t"
+        ],
+        [
+          "Min curve radius",
+          "R 75"
+        ],
+        [
+          "Max running speed",
+          "120 km/h"
+        ]
+      ],
+      "loadlimit": [
+        [
+          "A",
+          "43"
+        ],
+        [
+          "B",
+          "51"
+        ],
+        [
+          "C",
+          "61"
+        ],
+        [
+          "D",
+          "69"
+        ]
+      ],
+      "goods": [
+        [
+          "Diesel",
+          "1202"
+        ],
+        [
+          "Gasoline",
+          "1203"
+        ],
+        [
+          "Benzene",
+          "1114"
+        ],
+        [
+          "Toluene",
+          "1294"
+        ],
+        [
+          "Alkylate gasoline blendstock",
+          "1203"
+        ],
+        [
+          "Isobutane-based alkylate",
+          "1268"
+        ],
+        [
+          "Naphtha-range alkylate",
+          "1268"
+        ],
+        [
+          "Methyl-tert-butylether",
+          "2398"
+        ],
+        [
+          "Ethanol",
+          "1170"
+        ],
+        [
+          "Methanol",
+          "1230"
+        ],
+        [
+          "Xylene",
+          "1307"
+        ]
+      ],
+      "special": [
+        "Compliant with tank code L4BH",
+        "Meets RID, TSI, GCU, EN, UIC",
+        "DAC ready"
+      ],
+      "id": "zacns",
+      "source_id": "zacns",
+      "slug": "uno-tank-88m3-zacns",
+      "category": "tank",
+      "category_name": "Tank",
+      "image": "products/tank/uno-tank-88m3-zacns/wagon-render.png"
+    }
+  }
+}

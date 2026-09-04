@@ -1,0 +1,26 @@
+.DS_Store
+
+# Dependencies and build output
+node_modules/
+website/node_modules/
+website/dist/
+website/.astro/
+website/playwright-report/
+website/test-results/
+website/coverage/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Agent runtime output
+agent/logs/
+agent/results/
+
+# Large preparation-only sources; preserve locally, do not ship or commit by default
+prep/source-material/
+prep/design/stitch-generations/
+prep/design/stitch-inputs/
+prep/archive/

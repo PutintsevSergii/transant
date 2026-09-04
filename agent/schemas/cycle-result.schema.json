@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TransANT worker cycle result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "outcome",
+    "work_package",
+    "package_status",
+    "summary",
+    "tests",
+    "state_synchronized",
+    "next_action",
+    "needs_user"
+  ],
+  "properties": {
+    "outcome": {
+      "type": "string",
+      "enum": ["verified", "implemented", "blocked", "failed"]
+    },
+    "work_package": {
+      "type": "string",
+      "pattern": "^(F|C|H|P|E|A|I)-[0-9]{3}$"
+    },
+    "package_status": {
+      "type": "string",
+      "enum": ["IN_PROGRESS", "IMPLEMENTED", "VERIFIED", "BLOCKED"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["command", "result"],
+        "properties": {
+          "command": { "type": "string", "minLength": 1 },
+          "result": {
+            "type": "string",
+            "enum": ["PASS", "FAIL", "NOT_RUN", "BLOCKED"]
+          },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "state_synchronized": { "type": "boolean" },
+    "next_action": { "type": "string", "minLength": 1 },
+    "needs_user": { "type": "boolean" }
+  }
+}

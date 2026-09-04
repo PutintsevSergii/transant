@@ -1,0 +1,28 @@
+:root {
+  --color-brand-red: #dc1c3b;
+  --color-brand-red-dark: #b3162f;
+  --color-brand-blue: #2b538b;
+  --color-brand-blue-dark: #1c3c68;
+  --color-brand-gradient-mid: #93335f;
+
+  --color-ink: #0d1417;
+  --color-ink-secondary: #333e44;
+  --color-text-muted: #6a757b;
+  --color-text-faint: #9aa4a9;
+
+  --color-divider: #e7eaec;
+  --color-divider-subtle: #f0f2f3;
+  --color-paper: #ffffff;
+  --color-paper-warm: #fbfbfa;
+  --color-steel: #eaf1f8;
+  --color-steel-dark: #d6e4f0;
+  --color-technical: #1c6f9c;
+  --color-technical-dark: #155578;
+
+  --gradient-brand: linear-gradient(
+    118deg,
+    var(--color-brand-red) 0%,
+    var(--color-brand-gradient-mid) 44%,
+    var(--color-brand-blue) 100%
+  );
+}

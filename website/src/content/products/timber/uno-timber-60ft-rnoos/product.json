@@ -1,0 +1,121 @@
+{
+  "code": "Rnoos",
+  "name": "UNO TIMBER 60ft",
+  "eyebrow": "Timber wagon",
+  "tagline": "High-capacity timber wagon for efficient and secure transport of roundwood and sawn timber.",
+  "intro": [
+    "The UNO TIMBER 60ft Rnoos is designed to maximize efficiency throughout the timber logistics chain. Its lightweight construction combines high payload capacity with optimized loading performance.",
+    "The wagon features a robust, optimized stanchion arrangement that ensures reliable cargo retention without additional securing of roundwood. Designed to accommodate 3, 4 and 5 m timber lengths, it provides flexibility for different loading requirements."
+  ],
+  "commodities": [
+    "Roundwood logs",
+    "Sawn timber",
+    "Wood products",
+    "Forestry materials"
+  ],
+  "benefits": [
+    "High payload with low tare weight",
+    "Optimized for 3, 4 and 5 m timber lengths",
+    "Secure roundwood retention without additional tying",
+    "Robust stanchion arrangement",
+    "Efficient and flexible loading",
+    "High transport productivity"
+  ],
+  "specs": [
+    [
+      "Wagon type",
+      "Rnoos"
+    ],
+    [
+      "Number of axles",
+      "4"
+    ],
+    [
+      "Distance between bogie pivots",
+      "14.360 mm"
+    ],
+    [
+      "Bogie type",
+      "Y25 with compact brake"
+    ],
+    [
+      "Length over buffers",
+      "19.900 mm"
+    ],
+    [
+      "Wagon tare",
+      "21.6 t"
+    ],
+    [
+      "Loading length",
+      "18.500 mm"
+    ],
+    [
+      "Loading width",
+      "2.646 mm"
+    ],
+    [
+      "Floor height above rail",
+      "1.240 mm"
+    ],
+    [
+      "Stanchion pairs",
+      "10"
+    ],
+    [
+      "Deflectors",
+      "7"
+    ],
+    [
+      "Side lashing",
+      "18"
+    ],
+    [
+      "Vehicle gauge",
+      "G2"
+    ],
+    [
+      "Max wheelset load",
+      "22.5 t"
+    ],
+    [
+      "Min curve radius",
+      "R 75"
+    ],
+    [
+      "Max running speed",
+      "120 km/h"
+    ]
+  ],
+  "loadlimit": [
+    [
+      "A",
+      "42.2"
+    ],
+    [
+      "B",
+      "50.4"
+    ],
+    [
+      "C",
+      "60.4"
+    ],
+    [
+      "D",
+      "68.4"
+    ]
+  ],
+  "special": [
+    "Transport of 3, 4 and 5 m round timber",
+    "10 stanchion pairs",
+    "7 deflectors",
+    "G2 profile",
+    "DAC ready"
+  ],
+  "id": "rnoos",
+  "source_id": "rnoos",
+  "slug": "uno-timber-60ft-rnoos",
+  "category": "timber",
+  "category_name": "Timber",
+  "image": "products/timber/uno-timber-60ft-rnoos/wagon-render.png"
+}

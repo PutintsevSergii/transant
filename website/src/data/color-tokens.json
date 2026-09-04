@@ -1,0 +1,32 @@
+{
+  "source": "prep/source-material/prototypes/transant-product-website-prototype.html",
+  "brand": {
+    "red": "#DC1C3B",
+    "redDark": "#B3162F",
+    "blue": "#2B538B",
+    "blueDark": "#1C3C68",
+    "gradientMid": "#93335F"
+  },
+  "neutral": {
+    "ink": "#0D1417",
+    "inkSecondary": "#333E44",
+    "textMuted": "#6A757B",
+    "textFaint": "#9AA4A9",
+    "divider": "#E7EAEC",
+    "dividerSubtle": "#F0F2F3",
+    "paper": "#FFFFFF",
+    "paperWarm": "#FBFBFA"
+  },
+  "technical": {
+    "steel": "#EAF1F8",
+    "steelDark": "#D6E4F0",
+    "teal": "#1C6F9C",
+    "tealDark": "#155578"
+  },
+  "gradient": "linear-gradient(118deg, #DC1C3B 0%, #93335F 44%, #2B538B 100%)",
+  "observedCatalogApproximation": {
+    "printRed": "#EF0029",
+    "charcoal": "#0D181C",
+    "cyan": "#0178AC"
+  }
+}
