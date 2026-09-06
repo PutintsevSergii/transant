@@ -46,7 +46,11 @@ test("@component Contact and legal routes keep their source and delivery boundar
   await expect(page.getByText(/Commercial Court of Linz/)).toBeVisible();
 
   await page.goto("/fixtures/legal/privacy/");
-  await expect(page.getByText(/hosted on Vercel/)).toBeVisible();
+  await expect(
+    page.getByText(/external hosting and technical service providers/),
+  ).toBeVisible();
+  await expect(page.getByText(/applicable data-protection law/)).toBeVisible();
+  await expect(page.getByText(/Vercel/i)).toHaveCount(0);
   await expect(page.getByText(/does not use Google Analytics/)).toBeVisible();
 
   await page.goto("/fixtures/system-404/");

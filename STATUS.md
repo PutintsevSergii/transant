@@ -8,12 +8,22 @@ This file is the compact operational handoff. It must describe the current truth
 - Lifecycle: RUNNING
 - Release: R1 — multilingual static corporate and wagon-catalogue website
 - Active work package: NONE
-- Active objective: None. The user-directed F-003 mail-client handoff is complete; I-006 remains the external release gate.
+- Active objective: None. Awaiting the remaining owner, legal, hosting, domain, hosted-verification, field/CDN, and representative-device inputs for I-006.
 - Last completed work package: F-003
 - Next eligible work package: I-006
-- Last change-log entry: 2026-09-07 — F-003 — mail-client handoff
+- Last change-log entry: 2026-09-07 — I-006 — provider-neutral hosting privacy copy
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
+
+## Completed correction — I-006 provider-neutral hosting privacy copy
+
+- User-visible objective: remove the named hosting provider from the public “Website hosting and technical operation” privacy section and describe technical-data processing and legal safeguards in general, host-independent terms.
+- Contract: preserve the section title, factual description of connection/log data, applicable data-protection-law and transfer-safeguard boundaries, all published locales, page structure, contact/legal facts, and the current no-tracking statement; do not promise an unknown provider, jurisdiction, retention period, certification, or legal outcome.
+- Implementation: the public Privacy page now refers only to external hosting and technical service providers, necessary connection/log data, applicable data-protection law, appropriate provider arrangements, and required safeguards for processing outside the EEA. The provider-neutral wording is aligned across EN/DE/UK/PL/CS and contains no Vercel reference.
+- Files: legal page view model; German and UK/PL/CS translation maps; content-brand audit; focused legal-page and brand browser assertions; 12 affected Privacy visual references; I-006 tracker row; `STATUS.md`; and `CHANGELOG.md`.
+- Baseline: state/input validators PASS. The initial Node 22.13 `pnpm quality` static stages PASS formatting, ESLint, Astro diagnostics, 85 unit tests, both builds, and 3 foundation tests. Its browser phase reproduces the recorded unrelated component-lab routing, case-sensitive EvidenceList, and WagonSwitchyard/reference failures and was stopped at 271 passed, 14 failed, 5 interrupted, 1 skipped, and 1,101 not run; the aggregate is not claimed green.
+- Validation: targeted formatting and ESLint PASS; Astro diagnostics report 0 errors, warnings, or hints; all 85 unit tests PASS; the production build PASSes with 125 pages; and the hardened content/brand audit PASSes for 125 documents. Generated EN/DE/UK/PL/CS Privacy output contains localized provider-neutral wording and no Vercel reference. Fresh legal/content browser evidence PASSes 42/42; refreshed and clean-rerun Privacy visual comparisons PASS 12/12 across 320/390/768/1024/1440/844×390. The 320 and 1440 Privacy references were inspected directly. The final broad `pnpm quality` again PASSes every static stage and reproduces only the recorded unrelated component-lab locale-routing and case-sensitive EvidenceList failures; it was stopped at 129 passed, 9 failed, 4 interrupted, and 1,250 not run, so that aggregate is not claimed green.
+- Boundary: wording is deliberately general and does not identify an unknown provider, processing location, retention period, certification, or guarantee legal compliance. Owner/legal approval and verification against the eventual hosting configuration remain external I-006 release inputs; no deployment or external system changed.
 
 ## Completed correction — F-003 mail-client handoff
 

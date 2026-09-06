@@ -258,8 +258,10 @@ export async function auditContentAndBrand({
   assertion(
     privacy.includes("TransAnt GmbH, voestalpine-Straße 3") &&
       privacy.includes("does not use Google Analytics") &&
-      privacy.includes("hosted on Vercel"),
-    "Privacy must retain the official controller, actual host, and analytics-disabled scope.",
+      privacy.includes("external hosting and technical service providers") &&
+      privacy.includes("applicable data-protection law") &&
+      !privacy.includes("Vercel"),
+    "Privacy must retain the official controller, provider-neutral hosting boundary, applicable-law safeguards, and analytics-disabled scope.",
   );
   try {
     await access(

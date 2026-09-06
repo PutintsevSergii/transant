@@ -725,10 +725,10 @@ const rows: readonly TranslationRow[] = [
     "Zpracování je založeno na čl. 6 odst. 1 písm. b GDPR, pokud je nezbytné pro smluvní nebo předsmluvní kroky, a na čl. 6 odst. 1 písm. f GDPR, pokud podporuje náš oprávněný zájem odpovídat na obchodní poptávky a spravovat je.",
   ],
   [
-    "This website is hosted on Vercel. When the site is requested, technical connection data such as the IP address and request information may be processed as necessary to deliver, secure and operate the website.",
-    "Цей вебсайт розміщено на Vercel. Під час звернення до сайту можуть оброблятися технічні дані з’єднання, зокрема IP-адреса та відомості про запит, якщо це необхідно для надання, захисту й роботи вебсайту.",
-    "Ta witryna jest hostowana w Vercel. Podczas żądania strony mogą być przetwarzane techniczne dane połączenia, takie jak adres IP i informacje o żądaniu, w zakresie niezbędnym do udostępniania, zabezpieczenia i działania witryny.",
-    "Tento web je hostován na platformě Vercel. Při požadavku na web mohou být v nezbytném rozsahu zpracovávány technické údaje o připojení, například IP adresa a informace o požadavku, aby bylo možné web poskytovat, zabezpečit a provozovat.",
+    "We use external hosting and technical service providers to make this website available. When you access the website, technical connection and log data, such as an IP address, time of access, requested resource and browser information, may be processed where necessary to deliver, secure and reliably operate the website.",
+    "Для забезпечення доступності цього вебсайту ми користуємося послугами зовнішніх провайдерів хостингу та технічних послуг. Під час відвідування вебсайту можуть оброблятися технічні дані з’єднання й журналів, зокрема IP-адреса, час доступу, запитаний ресурс та інформація про браузер, якщо це необхідно для надання, захисту й надійної роботи вебсайту.",
+    "W celu udostępniania tej witryny korzystamy z zewnętrznych dostawców usług hostingowych i technicznych. Podczas korzystania z witryny mogą być przetwarzane techniczne dane połączenia i dzienników, takie jak adres IP, czas dostępu, żądany zasób i informacje o przeglądarce, jeżeli jest to konieczne do udostępniania, zabezpieczenia i niezawodnego działania witryny.",
+    "Pro zajištění dostupnosti tohoto webu využíváme externí poskytovatele hostingu a technických služeb. Při návštěvě webu mohou být zpracovávány technické údaje o připojení a protokolech, například IP adresa, čas přístupu, požadovaný zdroj a informace o prohlížeči, pokud je to nezbytné pro poskytování, zabezpečení a spolehlivý provoz webu.",
   ],
   [
     "This version of the website does not use Google Analytics, marketing trackers or social-media plugins and does not intentionally set non-essential cookies.",
@@ -797,10 +797,10 @@ const rows: readonly TranslationRow[] = [
     "Požadovaná stránka TransANT není dostupná. Vraťte se na domovskou stránku nebo projděte katalog vozů.",
   ],
   [
-    "Service providers acting for us are required to handle personal data in accordance with applicable data-protection obligations. Where data is transferred outside the European Economic Area, a legally recognised transfer mechanism and appropriate safeguards must apply.",
-    "Постачальники послуг, які діють від нашого імені, зобов’язані обробляти персональні дані відповідно до застосовних вимог захисту даних. У разі передавання даних за межі Європейської економічної зони мають застосовуватися юридично визнаний механізм передавання та належні гарантії.",
-    "Usługodawcy działający w naszym imieniu są zobowiązani przetwarzać dane osobowe zgodnie z obowiązującymi wymogami ochrony danych. W przypadku przekazywania danych poza Europejski Obszar Gospodarczy musi mieć zastosowanie prawnie uznany mechanizm transferu i odpowiednie zabezpieczenia.",
-    "Poskytovatelé služeb jednající naším jménem musí s osobními údaji nakládat v souladu s příslušnými povinnostmi ochrany údajů. Při předávání údajů mimo Evropský hospodářský prostor musí být použit právně uznávaný mechanismus předávání a odpovídající záruky.",
+    "Personal data connected with website operation is processed in accordance with applicable data-protection law. Service providers are engaged under appropriate data-protection arrangements. Where processing involves a transfer outside the European Economic Area, the applicable legal requirements and transfer safeguards must be observed.",
+    "Персональні дані, пов’язані з роботою вебсайту, обробляються відповідно до застосовного законодавства про захист даних. Постачальники послуг залучаються на підставі належних домовленостей щодо захисту даних. Якщо обробка передбачає передачу за межі Європейської економічної зони, мають дотримуватися застосовні правові вимоги та гарантії передачі.",
+    "Dane osobowe związane z działaniem witryny są przetwarzane zgodnie z mającymi zastosowanie przepisami o ochronie danych. Dostawcy usług są angażowani na podstawie odpowiednich uzgodnień dotyczących ochrony danych. Jeżeli przetwarzanie obejmuje przekazanie danych poza Europejski Obszar Gospodarczy, muszą być przestrzegane odpowiednie wymogi prawne i zabezpieczenia transferu.",
+    "Osobní údaje související s provozem webu jsou zpracovávány v souladu s použitelnými právními předpisy o ochraně osobních údajů. Poskytovatelé služeb jsou zapojováni na základě odpovídajících ujednání o ochraně osobních údajů. Pokud zpracování zahrnuje předání mimo Evropský hospodářský prostor, musí být dodrženy použitelné právní požadavky a záruky předání.",
   ],
   [
     "If the services used by the website change, this privacy information will be updated before additional tracking or consent-dependent technology is enabled.",

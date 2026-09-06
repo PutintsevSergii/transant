@@ -47,6 +47,10 @@ test("@content I-005 keeps the contact form and source-faithful privacy boundary
   await expect(
     page.getByText(/TransAnt GmbH, voestalpine-Straße 3/),
   ).toBeVisible();
+  await expect(
+    page.getByText(/external hosting and technical service providers/),
+  ).toBeVisible();
+  await expect(page.getByText(/Vercel/i)).toHaveCount(0);
   await expect(page.getByText(/does not use Google Analytics/)).toBeVisible();
   await expectNoPageOverflow(page);
 });

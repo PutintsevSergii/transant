@@ -86,7 +86,7 @@ export const contactPageViewModel: ContactPageViewModel = {
 // https://www.transant.com/en/About-us/DataProtection
 // The German Impressum controls where its old English rendering conflicts with
 // the source company form. Service-specific text is limited to what this build
-// actually deploys: Vercel hosting, contact handling, and no analytics.
+// actually does: general website operation, contact handling, and no analytics.
 const legalPageViewModels = {
   privacy: {
     layout: createSiteLayout(
@@ -129,8 +129,8 @@ const legalPageViewModels = {
         {
           title: "Website hosting and technical operation",
           paragraphs: [
-            "This website is hosted on Vercel. When the site is requested, technical connection data such as the IP address and request information may be processed as necessary to deliver, secure and operate the website.",
-            "Service providers acting for us are required to handle personal data in accordance with applicable data-protection obligations. Where data is transferred outside the European Economic Area, a legally recognised transfer mechanism and appropriate safeguards must apply.",
+            "We use external hosting and technical service providers to make this website available. When you access the website, technical connection and log data, such as an IP address, time of access, requested resource and browser information, may be processed where necessary to deliver, secure and reliably operate the website.",
+            "Personal data connected with website operation is processed in accordance with applicable data-protection law. Service providers are engaged under appropriate data-protection arrangements. Where processing involves a transfer outside the European Economic Area, the applicable legal requirements and transfer safeguards must be observed.",
           ],
         },
         {
