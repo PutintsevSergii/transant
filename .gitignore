@@ -12,6 +12,10 @@ website/output/
 website/dist-component-lab/
 website/.playwright-cli/
 
+# Local print source masters exceed the Git hosting single-file limit.
+/Catalog for print.ai
+/Catalog for print.pdf
+
 # Local configuration and secrets
 .env
 .env.*
