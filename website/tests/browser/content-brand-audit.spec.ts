@@ -37,8 +37,11 @@ test("@content I-005 keeps the contact form and source-faithful privacy boundary
   await page.goto("/fixtures/contact/");
   await expect(page.locator("form")).toHaveAttribute(
     "action",
-    "/contact/submit",
+    "mailto:office@transant.com",
   );
+  await expect(
+    page.getByRole("button", { name: "Continue in email" }),
+  ).toBeVisible();
 
   await page.goto("/fixtures/legal/privacy/");
   await expect(

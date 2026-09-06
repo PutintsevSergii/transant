@@ -7,9 +7,10 @@ import {
 } from "./support/page-contract";
 
 const browserBaseUrl =
-  process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:4322";
+  process.env.PLAYWRIGHT_BASE_URL ??
+  `http://127.0.0.1:${process.env.PLAYWRIGHT_PORT ?? "4322"}`;
 
-test("@component ContactForm renders native caller-owned POST forms with visible labels, context, and privacy data", async ({
+test("@component ContactForm renders a caller-owned mail-client handoff with visible labels, context, and privacy data", async ({
   page,
 }) => {
   const errors = collectBrowserErrors(page);
@@ -19,10 +20,13 @@ test("@component ContactForm renders native caller-owned POST forms with visible
   const contextual = forms.first();
   await expect(forms).toHaveCount(2);
   await expect(contextual).toHaveAttribute("data-enhanced", "true");
-  await expect(contextual.locator("form")).toHaveAttribute("method", "post");
+  await expect(contextual.locator("form")).toHaveAttribute("method", "get");
   await expect(contextual.locator("form")).toHaveAttribute(
     "action",
-    "/fixtures/contact-form/submit",
+    "mailto:enquiries@example.com",
+  );
+  await expect(contextual.locator('input[name="subject"]')).toHaveValue(
+    "Fixture freight wagon enquiry",
   );
   await expect(
     contextual.getByText("Product context", { exact: true }),
@@ -57,14 +61,16 @@ test("@component ContactForm renders native caller-owned POST forms with visible
   await expect(
     contextual.getByRole("link", { name: "Privacy notice" }),
   ).toHaveAttribute("href", "/privacy/");
-  await expect(contextual.locator('input[name="website"]')).toHaveAttribute(
-    "tabindex",
-    "-1",
-  );
+  await expect(contextual.locator('[name="website"]')).toHaveCount(0);
+  await expect(
+    contextual.getByText(
+      /opens your email application with the inquiry prepared/i,
+    ),
+  ).toBeVisible();
   expect(errors).toEqual([]);
 });
 
-test("@keyboard ContactForm preserves the native no-JavaScript submit path", async ({
+test("@keyboard ContactForm preserves a native mailto fallback without JavaScript", async ({
   browser,
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
@@ -73,104 +79,71 @@ test("@keyboard ContactForm preserves the native no-JavaScript submit path", asy
 
   const form = page.locator("[data-contact-form]").first();
   await expect(form).not.toHaveAttribute("data-enhanced", "true");
-  await expect(form.locator("form")).toHaveAttribute("method", "post");
+  await expect(form.locator("form")).toHaveAttribute("method", "get");
+  await expect(form.locator("form")).toHaveAttribute(
+    "action",
+    "mailto:enquiries@example.com",
+  );
   await form.getByLabel("Name").fill("Alex Morgan");
   await form.getByLabel("Business email").fill("alex@example.com");
   await form
     .locator('textarea[name="message"]')
-    .fill("A native POST remains available.");
+    .fill("Open this in the visitor's mail application.");
   await form.getByLabel(/I agree/).check();
-  await form.getByRole("button", { name: "Send inquiry" }).focus();
+  await form.getByRole("button", { name: "Continue in email" }).focus();
   await expect(
-    form.getByRole("button", { name: "Send inquiry" }),
+    form.getByRole("button", { name: "Continue in email" }),
   ).toBeFocused();
   await context.close();
 });
 
-test("@component ContactForm scopes pending, error, retry, success, and honeypot states to its own root", async ({
+test("@component ContactForm prepares encoded values, preserves input, and scopes state to its own root", async ({
   page,
 }) => {
-  let mode: "pending" | "error" | "success" = "pending";
-  let releasePending: (() => void) | undefined;
-  await page.route("**/fixtures/contact-form/submit", async (route) => {
-    if (mode === "pending") {
-      await new Promise<void>((resolve) => {
-        releasePending = resolve;
-      });
-    }
-    if (mode === "error") {
-      await route.fulfill({
-        status: 422,
-        contentType: "application/json",
-        body: JSON.stringify({
-          status: "error",
-          message: "Please review the highlighted field.",
-          fieldErrors: { email: "Use a business email address." },
-        }),
-      });
-      return;
-    }
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({
-        status: "success",
-        message: "Thank you. We will reply soon.",
-      }),
-    });
-  });
   await page.goto("/fixtures/contact-form/");
+  await page.evaluate(() => {
+    for (const root of document.querySelectorAll<HTMLElement>(
+      "[data-contact-form]",
+    )) {
+      const anchor = root.querySelector<HTMLAnchorElement>(
+        "[data-contact-form-mailto]",
+      );
+      anchor?.addEventListener("click", (event) => {
+        event.preventDefault();
+        root.dataset.capturedMailto = anchor.href;
+      });
+    }
+  });
 
   const first = page.locator("[data-contact-form]").first();
   const second = page.locator("[data-contact-form]").nth(1);
   await first.getByLabel("Name").fill("Alex Morgan");
-  await first.getByLabel("Business email").fill("alex@invalid.example");
+  await first.getByLabel("Business email").fill("alex@example.com");
+  await first.getByLabel("Company").fill("Rail & Cargo GmbH");
   await first
     .locator('textarea[name="message"]')
-    .fill("Please send a response.");
+    .fill("Timber route Linz–Berlin\nPlease reply by email.");
   await first.getByLabel(/I agree/).check();
-  await first.getByRole("button", { name: "Send inquiry" }).click();
+  await first.getByRole("button", { name: "Continue in email" }).click();
 
-  await expect(first).toHaveAttribute("aria-busy", "true");
-  await expect(first.getByLabel("Name")).toBeDisabled();
-  await expect(
-    first.getByRole("button", { name: "Send inquiry" }),
-  ).toBeDisabled();
-  mode = "error";
-  releasePending?.();
-
-  await expect(first).toHaveAttribute("data-contact-form-state", "error");
-  await expect(first.getByText("Use a business email address.")).toBeVisible();
-  await expect(first.getByLabel("Business email")).toHaveAttribute(
-    "aria-invalid",
-    "true",
+  await expect(first).toHaveAttribute("data-contact-form-state", "prepared");
+  await expect(first.locator("[data-contact-form-status]")).toHaveText(
+    "Your email application should open with the inquiry prepared. Review it and send it from there.",
   );
-  await expect(first.getByLabel("Business email")).toBeFocused();
+  await expect(first.locator("[data-contact-form-status]")).toBeFocused();
   await expect(first.getByLabel("Name")).toHaveValue("Alex Morgan");
   await expect(second).toHaveAttribute("data-contact-form-state", "idle");
 
-  mode = "success";
-  await first.getByRole("button", { name: "Send inquiry" }).click();
-  await expect(first).toHaveAttribute("data-contact-form-state", "success");
-  await expect(first.locator("[data-contact-form-status]")).toHaveText(
-    "Thank you. We will reply soon.",
+  const captured = await first.getAttribute("data-captured-mailto");
+  expect(captured).not.toBeNull();
+  const prepared = new URL(captured!);
+  expect(prepared.protocol).toBe("mailto:");
+  expect(prepared.pathname).toBe("enquiries@example.com");
+  expect(prepared.searchParams.get("subject")).toBe(
+    "Fixture freight wagon enquiry",
   );
-  await expect(first.getByLabel("Name")).toHaveValue("");
-
-  await second.getByLabel("Name").fill("Spam fixture");
-  await second.getByLabel("Business email").fill("spam@example.com");
-  await second
-    .locator('textarea[name="message"]')
-    .fill("This route should not be requested.");
-  await second.getByLabel(/I agree/).check();
-  await second.locator('input[name="website"]').fill("bot.example");
-  await second.getByRole("button", { name: "Send general inquiry" }).click();
-  await expect(second).toHaveAttribute(
-    "data-contact-form-spam-received",
-    "true",
-  );
-  await expect(second.locator("[data-contact-form-status]")).toContainText(
-    "Thank you. Your inquiry has been received.",
+  expect(prepared.searchParams.get("body")).toBe(
+    "Name: Alex Morgan\r\nBusiness email: alex@example.com\r\nCompany: Rail & Cargo GmbH\r\nProduct context: Intermodal & container requirement / 80 ft\r\n\r\nInquiry:\r\nTimber route Linz–Berlin\nPlease reply by email.",
   );
 });
 
@@ -182,7 +155,7 @@ test("@responsive ContactForm keeps compact field order and usable controls with
   const name = form.getByLabel("Name");
   const email = form.getByLabel("Business email");
   const message = form.locator('textarea[name="message"]');
-  const submit = form.getByRole("button", { name: "Send inquiry" });
+  const submit = form.getByRole("button", { name: "Continue in email" });
   const viewportWidth = page.viewportSize()?.width ?? 0;
   const [nameBox, emailBox, messageBox, submitBox] = await Promise.all([
     name.boundingBox(),

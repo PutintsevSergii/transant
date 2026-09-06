@@ -68,7 +68,7 @@ The release shall include five wagon categories and ten separately indexable pro
 | Browser testing       | Playwright                                                                                                 |
 | Unit and data testing | Vitest                                                                                                     |
 | Hosting               | Vercel static hosting on a plan approved for commercial use                                                |
-| Server-side boundary  | One narrow same-site server endpoint for contact-form delivery                                             |
+| Contact boundary      | Static mail-client handoff with no server endpoint, provider credential, lead store, or delivery claim     |
 
 Experimental framework features shall not be required for the first release. The public site shall not require a continuously running application server, database, or general-purpose CMS.
 
@@ -144,14 +144,13 @@ Tables shall remain readable on small screens without truncating values or relyi
 
 The contact form shall:
 
-- use semantic labels, clear required-field indicators, and accessible inline errors;
-- validate input in both the browser and the server-side endpoint;
-- provide pending, success, recoverable-error, and unavailable states;
-- deliver submissions to an approved email or CRM destination;
-- protect the endpoint with rate limiting and an approved anti-abuse mechanism;
-- keep provider credentials and other secrets outside the browser bundle;
-- avoid persistent lead storage unless the client explicitly approves the need, retention period, and access policy;
-- link to the applicable privacy information before submission.
+- use semantic labels, clear required-field indicators, and native browser validation;
+- transfer the current validated values into a URL-encoded email addressed to the approved public mailbox;
+- explain before and after the handoff that the visitor must review and send the prepared message in their chosen mail application;
+- preserve entered values because the website cannot observe whether the mail client opened or the message was sent;
+- provide a native `mailto:` fallback when JavaScript is unavailable, while documenting that exact field serialization depends on the browser and installed mail handler;
+- contain no form-provider credentials, server request, automatic receipt claim, or persistent lead storage; any later storage requires explicit approval of its need, retention period, and access policy;
+- link to the applicable privacy information before the mail-client handoff.
 
 ## 8. Brand and visual implementation
 
@@ -240,7 +239,7 @@ Production performance shall be measured on representative pages, including the 
 - Use HTTPS in production.
 - Set appropriate security headers, including a reviewed Content Security Policy where connected services permit it.
 - Sanitize or safely render all externally supplied content.
-- Validate and constrain all server-side inputs and outbound form-provider payloads.
+- Validate and constrain all server-side inputs and outbound provider payloads if an approved delivery endpoint is introduced later.
 - Store secrets only in the hosting platform's protected environment configuration.
 - Do not commit credentials, personal data, production submissions, or private certificates.
 - Add analytics, embedded media, CAPTCHA, or marketing scripts only after their privacy and consent requirements are defined.
@@ -254,7 +253,7 @@ Production performance shall be measured on representative pages, including the 
 - Every change proposed for production shall produce a preview deployment.
 - Production deployment shall publish static output to Vercel on a plan that permits commercial company websites.
 - Static assets shall remain portable to another CDN host.
-- Only form delivery or a separately approved feature may depend on the Vercel runtime.
+- The release-one contact handoff must remain host-independent; only a separately approved later feature may depend on the Vercel runtime.
 - Deployment configuration shall separate preview and production secrets and destinations.
 - The project shall define cache behavior for versioned assets, HTML, downloads, and form responses.
 - Launch documentation shall include domain/DNS ownership, deployment access, form destination, rollback procedure, and content handover.
@@ -268,8 +267,8 @@ The production release shall not proceed until all applicable checks pass:
 3. All ten product pages are generated from schema-validated data.
 4. English routes are complete; any enabled German routes contain approved translations.
 5. Navigation, the direct catalogue, tables, downloads, and forms work at representative mobile and desktop widths.
-6. Form submissions reach the approved destination and expose success and failure states without leaking secrets.
-7. Keyboard navigation, visible focus, contrast, reduced motion, alternative text, headings, and form errors pass review.
+6. The contact form prepares the exact approved recipient, subject, and current field values without claiming website delivery or leaking data to a server.
+7. Keyboard navigation, visible focus, contrast, reduced motion, alternative text, headings, native form errors, and prepared-message status pass review.
 8. Performance budgets and Core Web Vitals targets are tested on representative pages.
 9. Every public claim, certificate, project, and download has an approved source.
 10. The build contains no competitor design or implementation and does not transform or animate the TransANT logo.
@@ -308,7 +307,7 @@ Public product pages should remain statically generated even if application feat
 - Confirm the canonical RGB, CMYK, and spot colors for the brand.
 - Supply every approved logo asset and its placement/clear-space rules.
 - Confirm the launch languages and provide approved translations.
-- Confirm the contact-form recipient and delivery provider.
+- Confirm the public contact-form recipient and the mail-client handoff wording.
 - Approve the technical datasheets, downloads, claims, certificates, and case studies.
 - Confirm analytics, privacy, consent, retention, and legal-page requirements.
 - Confirm the production domain, Vercel project owner, commercial-use plan, and deployment access.

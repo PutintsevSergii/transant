@@ -1,4 +1,4 @@
-/** Fixed contact-data names keep the server boundary explicit and portable. */
+/** Fixed contact-data names keep the prepared message explicit and portable. */
 export type ContactFormFieldName =
   "name" | "email" | "company" | "message" | "consent";
 
@@ -36,13 +36,15 @@ export interface ContactFormPrivacyNotice {
 export interface ContactFormContext {
   /** Visible source of the explicit product or family context. */
   readonly label: string;
-  /** Caller-owned context value submitted in the native form POST. */
+  /** Caller-owned context value included in the prepared email. */
   readonly value: string;
 }
 
 export interface ContactFormProps {
-  /** A safe same-site POST endpoint; delivery implementation remains external. */
-  readonly endpoint: string;
+  /** Verified public mailbox opened in the visitor's chosen mail application. */
+  readonly recipient: string;
+  /** Caller-owned subject for the prepared email. */
+  readonly subject: string;
   /** Caller-owned field labels, guidance, and company requirement. */
   readonly fields: ContactFormFields;
   /** Caller-owned legal destination and its visible label. */
@@ -50,8 +52,9 @@ export interface ContactFormProps {
   /** Visible native submit-control label. */
   readonly submitLabel: string;
   readonly labels?: {
-    readonly spamField: string;
     readonly privacyPrefix: string;
+    readonly mailClientHint: string;
+    readonly mailClientOpened: string;
   };
   /** Optional explicit product or wagon-family context. */
   readonly context?: ContactFormContext;

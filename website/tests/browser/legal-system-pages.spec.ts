@@ -7,7 +7,8 @@ import {
 } from "./support/page-contract";
 
 const browserBaseUrl =
-  process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:4322";
+  process.env.PLAYWRIGHT_BASE_URL ??
+  `http://127.0.0.1:${process.env.PLAYWRIGHT_PORT ?? "4322"}`;
 
 test("@component Contact and legal routes keep their source and delivery boundaries visible", async ({
   page,
@@ -30,8 +31,11 @@ test("@component Contact and legal routes keep their source and delivery boundar
   await expect(page.locator("[data-contact-form]")).toHaveCount(1);
   await expect(page.locator("form")).toHaveAttribute(
     "action",
-    "/contact/submit",
+    "mailto:office@transant.com",
   );
+  await expect(
+    page.getByText(/opens your email application with the enquiry prepared/i),
+  ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Privacy information" }),
   ).toHaveAttribute("href", "/privacy/");

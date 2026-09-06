@@ -6,18 +6,34 @@ import type { ContactFormProps } from "./ContactForm.types";
 const props = Astro.props as ContactFormProps;
 validateContactFormProps(props);
 const labels = props.labels ?? {
-  spamField: "Website",
   privacyPrefix: "Your details are handled according to our",
+  mailClientHint:
+    "This opens your email application with the inquiry prepared. Review and send it from there.",
+  mailClientOpened:
+    "Your email application should open with the inquiry prepared. Review it and send it from there.",
 };
 ---
 
-<section class="contact-form" data-contact-form>
+<section
+  class="contact-form"
+  data-contact-form
+  data-contact-form-recipient={props.recipient}
+  data-contact-form-subject={props.subject}
+  data-contact-form-opened-message={labels.mailClientOpened}
+>
   <form
     class="contact-form__form"
-    action={props.endpoint}
-    method="post"
+    action={`mailto:${props.recipient}`}
+    method="get"
+    enctype="text/plain"
     data-contact-form-form
+    data-contact-form-name-label={props.fields.name.label}
+    data-contact-form-email-label={props.fields.email.label}
+    data-contact-form-company-label={props.fields.company.label}
+    data-contact-form-message-label={props.fields.message.label}
+    data-contact-form-context-label={props.context?.label}
   >
+    <input name="subject" type="hidden" value={props.subject} />
     {
       props.context !== undefined && (
         <p class="contact-form__context" data-contact-form-context>
@@ -36,14 +52,10 @@ const labels = props.labels ?? {
           type="text"
           autocomplete="name"
           required={props.fields.name.required ?? true}
+          maxlength="120"
           placeholder={props.fields.name.placeholder}
         />
         {props.fields.name.help && <small>{props.fields.name.help}</small>}
-        <small
-          class="contact-form__error"
-          data-contact-form-error="name"
-          role="alert"
-          hidden></small>
       </label>
 
       <label class="contact-form__field">
@@ -54,14 +66,10 @@ const labels = props.labels ?? {
           inputmode="email"
           autocomplete="email"
           required={props.fields.email.required ?? true}
+          maxlength="254"
           placeholder={props.fields.email.placeholder}
         />
         {props.fields.email.help && <small>{props.fields.email.help}</small>}
-        <small
-          class="contact-form__error"
-          data-contact-form-error="email"
-          role="alert"
-          hidden></small>
       </label>
 
       <label class="contact-form__field">
@@ -71,6 +79,7 @@ const labels = props.labels ?? {
           type="text"
           autocomplete="organization"
           required={props.fields.company.required ?? false}
+          maxlength="160"
           placeholder={props.fields.company.placeholder}
         />
         {
@@ -78,11 +87,6 @@ const labels = props.labels ?? {
             <small>{props.fields.company.help}</small>
           )
         }
-        <small
-          class="contact-form__error"
-          data-contact-form-error="company"
-          role="alert"
-          hidden></small>
       </label>
 
       <label class="contact-form__field contact-form__field--message">
@@ -91,17 +95,13 @@ const labels = props.labels ?? {
           name="message"
           rows="6"
           required={props.fields.message.required ?? true}
+          maxlength="2000"
           placeholder={props.fields.message.placeholder}></textarea>
         {
           props.fields.message.help && (
             <small>{props.fields.message.help}</small>
           )
         }
-        <small
-          class="contact-form__error"
-          data-contact-form-error="message"
-          role="alert"
-          hidden></small>
       </label>
     </div>
 
@@ -109,23 +109,11 @@ const labels = props.labels ?? {
       <input name="consent" type="checkbox" value="yes" required />
       <span>{props.fields.consent.label} <em aria-hidden="true">*</em></span>
     </label>
-    <small
-      class="contact-form__error"
-      data-contact-form-error="consent"
-      role="alert"
-      hidden></small>
-
-    <div class="contact-form__spam" aria-hidden="true" data-contact-form-spam>
-      <label
-        >{labels.spamField}
-        <input name="website" tabindex="-1" autocomplete="off" /></label
-      >
-    </div>
-
     <p class="contact-form__privacy">
-      {labels.privacyPrefix}
+      {labels.privacyPrefix}{" "}
       <a href={props.privacyNotice.href}>{props.privacyNotice.label}</a>.
     </p>
+    <p class="contact-form__mail-client-hint">{labels.mailClientHint}</p>
     <div class="contact-form__submit">
       <Action
         kind="button"
@@ -145,6 +133,7 @@ const labels = props.labels ?? {
       hidden
     >
     </p>
+    <a href={`mailto:${props.recipient}`} data-contact-form-mailto hidden></a>
   </form>
 </section>
 
@@ -238,8 +227,8 @@ const labels = props.labels ?? {
 
   .contact-form__field small,
   .contact-form__privacy,
+  .contact-form__mail-client-hint,
   .contact-form__status,
-  .contact-form__error,
   .contact-form__context strong {
     margin: 0;
     line-height: var(--line-height-body);
@@ -247,7 +236,8 @@ const labels = props.labels ?? {
   }
 
   .contact-form__field small,
-  .contact-form__privacy {
+  .contact-form__privacy,
+  .contact-form__mail-client-hint {
     color: var(--color-ink-secondary);
   }
 
@@ -270,31 +260,9 @@ const labels = props.labels ?? {
     text-transform: uppercase;
   }
 
-  .contact-form__error,
-  .contact-form__status[data-state="error"] {
-    color: var(--color-brand-red-dark);
-    font-weight: 700;
-  }
-
-  .contact-form__status[data-state="success"] {
+  .contact-form__status[data-state="prepared"] {
     color: var(--color-brand-blue-dark);
     font-weight: 700;
-  }
-
-  .contact-form__status[data-state="pending"] {
-    color: var(--color-ink-secondary);
-  }
-
-  .contact-form__spam {
-    position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-  }
-
-  .contact-form[aria-busy="true"] {
-    cursor: progress;
   }
 
   @container (min-width: 40rem) {

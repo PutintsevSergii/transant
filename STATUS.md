@@ -4,16 +4,25 @@ This file is the compact operational handoff. It must describe the current truth
 
 ## Control
 
-- Last updated: 2026-09-06
+- Last updated: 2026-09-07
 - Lifecycle: RUNNING
 - Release: R1 — multilingual static corporate and wagon-catalogue website
 - Active work package: NONE
-- Active objective: None — the catalogue-source, retired-steel-copy, intermodal-wording, and Sustainability removal correction is complete.
-- Last completed work package: I-005
-- Next eligible work package: I-006 — hosted release verification and remaining external inputs.
-- Last change-log entry: 2026-09-06 — I-006 — local duplicate-server regression correction
+- Active objective: None. The user-directed F-003 mail-client handoff is complete; I-006 remains the external release gate.
+- Last completed work package: F-003
+- Next eligible work package: I-006
+- Last change-log entry: 2026-09-07 — F-003 — mail-client handoff
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
+
+## Completed correction — F-003 mail-client handoff
+
+- User-visible objective: retain the existing contact fields and transfer their current values into a pre-addressed email when the visitor chooses to continue in their mail application. The visitor remains responsible for selecting a mail client and sending the message.
+- Contract: use the caller-owned verified public contact email as the recipient; URL-encode caller-owned labels and submitted values into a `mailto:` URI only after native validation; never claim that the website sent or received an inquiry; preserve product/family context, compact layout, focus, privacy notice, and input values.
+- Implementation: `ContactForm` now validates its existing fields, builds a URL-encoded `mailto:` for `office@transant.com`, opens the visitor's configured mail application, keeps the form values intact, and reports only that the message was prepared. EN/DE/UK/PL/CS buttons, subjects, hints, and privacy copy describe the same boundary; the no-JavaScript form retains a native `mailto:` fallback. The Astro CSP explicitly permits `mailto:` form actions.
+- Baseline: state/input validators PASS. Node 22.13 `pnpm quality` passes formatting, ESLint, Astro diagnostics, 84 unit tests, both builds, and three foundation tests. Its browser phase reproduces the existing component-lab locale-routing failures and was stopped after 72 passed, 4 failed, 5 interrupted, and 1,311 not run; the aggregate is not claimed green.
+- Validation: formatting, ESLint, Astro diagnostics (0 errors/warnings/hints), 85 unit tests, 125-page production build, route integration (`routes=124 products=10 internal-references=4239`), content/brand audit, release-output simulation, and deployment-readiness PASS. Fresh focused browser/component/no-JavaScript/responsive/keyboard/axe evidence PASSes 106 with 2 expected skips; affected component/contact/privacy visual comparisons PASS 18 and integration visual comparisons PASS 12 across 320/390/768/1024/1440/844×390. Contact output was inspected at 320 and 1440 px. The final broad `pnpm quality` static stages PASS, while its known component-lab/production-locale and unrelated EvidenceList/WagonSwitchyard browser mismatches recur; it was stopped at 287 passed, 17 failed, 5 interrupted, 1 skipped, and 1,082 not run, so that aggregate is not claimed green.
+- Boundary: no provider, API key, hosting function, database, automatic delivery, deployment, or external system was added. A visitor needs a configured mail handler and must review and send the prepared email.
 
 ## Completed local correction — I-006 duplicate-server regression
 
@@ -397,12 +406,12 @@ This file is the compact operational handoff. It must describe the current truth
 - Validation: Node 22.13 format check, Astro typecheck, production build (26 routes), component-lab build (60 routes), unit (73), foundation (3), content/brand audit, visual update (430 passed, 2 skipped), and full browser suite (1,292 passed, 16 skipped) PASS. Focused editorial regression passed 54/54. Final `git diff --check` and state/input gates are required before handoff.
 - Continuation: I-006 remains implemented and externally blocked; no deployment or external mutation was performed.
 
-## I-006 external evidence gate (unchanged)
+## I-006 external evidence gate
 
 - User-visible outcome: the implemented static Vercel release remains locally reviewable while production publication waits for explicit external authorization and configuration.
 - Current state: `IMPLEMENTED`, not `VERIFIED`; H-004's user-directed selector revision is complete and does not change the I-006 external boundary.
-- Required external inputs: a Vercel plan that permits commercial use or written authorization, project/domain access, approved form-recipient/provider/rate-limit/anti-abuse/retention behavior, and owner/legal approval of the adapted English pages.
-- In scope once inputs exist: deploy the reviewed static output, run documented hosted header/redirect/sitemap/route smoke checks, verify the configured form boundary, and record exact evidence.
+- Required external inputs: a Vercel plan that permits commercial use or written authorization, project/domain access, owner/legal approval of the adapted pages, approved documents/certificates, and hosted/real-device/field evidence. A form provider, server recipient, rate limit, anti-abuse service, and server retention contract are no longer required for the chosen mail-client handoff.
+- In scope once inputs exist: deploy the reviewed static output, run documented hosted header/redirect/sitemap/route smoke checks, verify the `mailto:` handoff on representative devices with configured mail applications, and record exact evidence.
 - Out of scope without new authorization: purchasing a plan, creating or mutating Vercel/domain resources, enabling analytics, inventing legal approval, or starting another package.
 - Next action: obtain the required external inputs, then execute the documented Vercel handoff and hosted verification before promoting I-006 to `VERIFIED`.
 
@@ -442,7 +451,7 @@ This file is the compact operational handoff. It must describe the current truth
 
 - Static-first Astro 7, strict TypeScript, native CSS, Astro content collections, and Zod.
 - Vitest for pure logic; isolated Astro component lab plus Playwright for rendered components and journeys.
-- Portable static output configured for Vercel; a narrow server-side endpoint boundary only for approved form delivery.
+- Portable static output configured for Vercel; the contact form uses a static `mailto:` handoff and has no server-side delivery endpoint.
 - Component dependency direction: pages -> sections -> primitives -> pure types/utilities.
 - One semantic mobile-first component tree; component-owned layout changes use container queries, while shell-level changes use page media queries.
 - Content and deployment adapters depend on stable application/domain contracts, not the reverse.
@@ -645,7 +654,7 @@ This file is the compact operational handoff. It must describe the current truth
 
 - Astro 7.2.2 is intentionally pinned with `unifont@0.7.4`; the newer transitive dependency requires Node 22.19+, while the approved local runtime is Node 22.13.0.
 - Canonical brand colour values and logo usage rules still require client confirmation.
-- Contact-form recipient/provider, production domain/Vercel ownership, a Vercel plan permitting commercial use, owner/legal approval of the adapted legal text, downloads, certificates, and final claims remain production-lock inputs. Analytics is disabled, so no analytics consent layer is required for this build.
+- Production domain/Vercel ownership, a Vercel plan permitting commercial use, owner/legal approval of the adapted legal text, downloads, certificates, final claims, and representative-device review of the `mailto:` handoff remain production-lock inputs. Analytics is disabled, so no analytics consent layer is required for this build.
 - German remains gated until approved translations exist.
 - The first requested three-cycle run stopped before C-005 because Bash strict mode expanded an empty `git_args` array as an unset variable. The runner now composes the Codex argument list before invocation. A second pre-worker invocation exposed an installed-CLI conflict between `--approve-for-me` and explicit `--sandbox`; automatic approval now supplies the documented workspace-write sandbox itself. A third invocation reached the worker API but the result schema omitted a declared required key; it now requires a string `note` for each test record. Rerun the bounded three-cycle harness.
 - The 2026-09-04 H-009 harness retry reached the worker, passed both state/input gates, and passed formatting, lint, Astro diagnostics, unit tests, and both builds. Its mandatory browser phase then failed before test execution because the nested workspace-write sandbox denied `astro preview --host 127.0.0.1 --port 4322` with `listen EPERM`. The outer authorized process does not grant the nested Codex worker a localhost-listener capability. No H-009 implementation, tracker, or state change occurred.
@@ -658,8 +667,8 @@ Run Prettier on the ContactForm/Homepage proof repairs. PayloadValueSection's si
 
 ## Exact next action
 
-Obtain a commercial-use Vercel plan or written authorization, project/domain access, the approved form-delivery contract, and owner/legal approval of the adapted English pages. Then deploy, run the documented hosted smoke checks, and record the evidence before marking I-006 `VERIFIED`.
+Obtain a commercial-use Vercel plan or written authorization, project/domain access, and owner/legal approval of the adapted pages. Then deploy, run the documented hosted smoke checks, verify the mail-client handoff on representative devices, and record the evidence before marking I-006 `VERIFIED`.
 
 ## Continuation rule
 
-H-004's user-directed revision is verified and synchronized. I-006 remains implemented with external evidence pending. Do not begin any package beyond I-006 without explicit authorization.
+F-003's user-directed mail-client handoff is verified and synchronized. I-006 remains implemented with external evidence pending. Do not begin any package beyond I-006 without explicit authorization.

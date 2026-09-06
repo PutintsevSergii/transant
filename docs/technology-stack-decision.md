@@ -2,12 +2,13 @@
 
 - Status: Accepted with external production-plan gate
 - Date: 2026-09-03
+- Last amended: 2026-09-07 — static mail-client handoff selected for contact enquiries
 - Decision owner: Project team
 - Review trigger: before scaffolding the production application
 
 ## Decision summary
 
-Build the TransANT website as a statically generated Astro application and deploy its static assets to Vercel. Use a narrowly scoped server-side endpoint only for the contact form and other genuinely server-side operations.
+Build the TransANT website as a statically generated Astro application and deploy its static assets to Vercel. Keep the first release fully static: the contact form prepares a `mailto:` URI for the visitor's configured mail application and does not use a website-owned delivery endpoint.
 
 Use native semantic HTML, TypeScript, and a custom CSS design system as the default UI layer. Use CSS animations and the Web Animations API for simple motion, and GSAP for complex scroll choreography, SVG animation, sequencing, and state transitions. Lit is optional for isolated reusable Web Components but is not part of the critical rendering, routing, or content architecture.
 
@@ -24,14 +25,14 @@ Astro 7.x, pinned to an exact stable patch
 ├── Vitest for data and component logic
 └── Vercel static hosting
     ├── CDN-hosted static HTML, CSS, JS, fonts, and images
-    └── one narrow server-side endpoint boundary for form delivery
+    └── no required server-side runtime in release one
 ```
 
 ## Why this is the best fit
 
 ### Operating cost
 
-Astro prerenders pages to static HTML by default. Static files can be served from Vercel's CDN without a continuously running application server. The existing free Hobby account can be used for technical previews, but Vercel explicitly restricts Hobby to personal, non-commercial use. Because this is a company website, production requires a Vercel plan that permits commercial use or written authorization from Vercel. Domain registration, transactional email or another form-delivery provider, and any future CMS remain separate costs.
+Astro prerenders pages to static HTML by default. Static files can be served from Vercel's CDN without a continuously running application server. The existing free Hobby account can be used for technical previews, but Vercel explicitly restricts Hobby to personal, non-commercial use. Because this is a company website, production requires a Vercel plan that permits commercial use or written authorization from Vercel. Domain registration, any future automatic form-delivery provider, and any future CMS remain separate costs; the selected first-release mail-client handoff adds no form-provider cost.
 
 Sources: [Astro on Vercel](https://vercel.com/docs/frameworks/frontend/astro), [Vercel Hobby terms](https://vercel.com/docs/plans/hobby), [Vercel plans](https://vercel.com/docs/plans).
 
@@ -176,7 +177,7 @@ Reasons:
 - no permanent server process;
 - Git-based deployments and preview deployments;
 - custom domains and global CDN delivery;
-- a small serverless boundary can be added when the form provider and delivery contract are approved;
+- a small serverless boundary can be added later only if automatic form delivery is separately approved;
 - the site remains portable because the production output is standard static files and does not require a Vercel runtime today.
 
 Do not use Vercel Hobby for this production site: Vercel explicitly limits Hobby to personal, non-commercial use. Vercel Pro or another commercial-use Vercel agreement is required unless Vercel gives written authorization. Netlify, object storage with a CDN, or any conventional static host remain migration options because the core site has no Vercel runtime dependency.
@@ -185,18 +186,17 @@ Sources: [Astro on Vercel](https://vercel.com/docs/frameworks/frontend/astro), [
 
 ## Contact form boundary
 
-The only initial server-side feature should be form delivery:
+Release one uses a static mail-client handoff:
 
 ```text
 browser form
-  -> approved same-site server endpoint
-  -> schema validation
-  -> rate limit / anti-abuse control
-  -> approved email or CRM provider
-  -> success or recoverable error response
+  -> native client-side validation
+  -> URL-encoded mailto recipient, subject, and body
+  -> visitor's configured mail application
+  -> visitor reviews and sends
 ```
 
-Do not add a database unless the client explicitly requires lead storage. Do not place mail-provider credentials in client JavaScript. Publish the privacy text only after the actual providers and retention policy are known.
+The website does not send, receive, store, or confirm delivery of the enquiry. It must preserve entered values and say only that an email was prepared. A configured mail handler is a visitor-side dependency, and the visible email address remains a direct fallback. Do not add a database, provider credential, endpoint, rate limit, anti-abuse service, or server-retention claim unless automatic delivery is separately requested and its privacy contract is approved.
 
 ## Image pipeline and current constraint
 
@@ -249,11 +249,11 @@ Sources: [Astro installation requirements](https://docs.astro.build/en/install-a
 Before the design sprint proceeds, the foundation must prove:
 
 - static generation of every product route from validated content;
-- correct EN/DE URL generation and alternate-language metadata;
+- correct approved-locale URL generation and alternate-language metadata;
 - responsive image generation from one large source asset;
 - one decorative-motion proof with a working reduced-motion alternative, using CSS or the Web Animations API unless GSAP is explicitly justified;
 - direct server-rendered catalogue links whose essential content remains readable without JavaScript;
 - successful deployment to a preview URL without a persistent server;
-- a functioning form endpoint with secrets kept outside the browser bundle;
+- a functioning `mailto:` handoff that transfers validated field values without secrets, storage, or an automatic-delivery claim;
 - no use of the competitor prototype's design or implementation;
 - no transformation or animation of the supplied TransANT logo.

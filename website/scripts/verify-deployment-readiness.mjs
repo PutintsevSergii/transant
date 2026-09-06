@@ -85,7 +85,7 @@ export async function verifyDeploymentReadiness({
   assertion(
     markup.includes('http-equiv="content-security-policy"') &&
       markup.includes("default-src 'self'") &&
-      markup.includes("form-action 'self'") &&
+      markup.includes("form-action 'self' mailto:") &&
       !markup.includes("unsafe-inline"),
     "Astro must emit a hash-based self-only CSP without unsafe-inline.",
   );
@@ -97,8 +97,9 @@ export async function verifyDeploymentReadiness({
     "Release output must not require remote script, image, or stylesheet sources.",
   );
   assertion(
-    /<form\b[^>]+\baction="\/contact\/submit"/iu.test(markup),
-    "Release output must retain the explicit same-site contact delivery boundary.",
+    /<form\b[^>]+\baction="mailto:office@transant\.com"/iu.test(markup) &&
+      !markup.includes("/contact/submit"),
+    "Release output must retain the explicit mail-client handoff without a delivery endpoint.",
   );
   assertion(
     !markup.includes("google-analytics.com") &&
@@ -113,7 +114,7 @@ export async function verifyDeploymentReadiness({
     headers: "vercel-headers-and-astro-csp-ready",
     robots: "preview-noindex-until-public-site-url",
     releaseOutput: "preview-safe-production-url-from-vercel",
-    formDelivery: "blocked-until-provider-configuration",
+    formDelivery: "mail-client-handoff-no-automatic-delivery",
     analytics: "disabled",
   };
 }

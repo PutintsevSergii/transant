@@ -5,7 +5,7 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
 
 <ComponentLabLayout
   title="ContactForm fixture | TransANT component lab"
-  description="Native contact-form submission with caller-owned fields, privacy notice, optional context, and scoped progressive enhancement."
+  description="Mail-client handoff with caller-owned fields, privacy notice, optional context, and scoped progressive enhancement."
 >
   <main class="contact-form-fixture" data-fixture="contact-form">
     <section
@@ -13,7 +13,8 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
       aria-label="Contextual inquiry form"
     >
       <ContactForm
-        endpoint="/fixtures/contact-form/submit"
+        recipient="enquiries@example.com"
+        subject="Fixture freight wagon enquiry"
         fields={{
           name: {
             label: "Name",
@@ -40,7 +41,7 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
           },
         }}
         privacyNotice={{ label: "Privacy notice", href: "/privacy/" }}
-        submitLabel="Send inquiry"
+        submitLabel="Continue in email"
         context={{
           label: "Product context",
           value: "Intermodal & container requirement / 80 ft",
@@ -53,7 +54,8 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
       aria-label="General inquiry form"
     >
       <ContactForm
-        endpoint="/fixtures/contact-form/submit"
+        recipient="enquiries@example.com"
+        subject="Fixture general enquiry"
         fields={{
           name: { label: "Name" },
           email: { label: "Business email" },
@@ -65,7 +67,7 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
           },
         }}
         privacyNotice={{ label: "Privacy notice", href: "/privacy/" }}
-        submitLabel="Send general inquiry"
+        submitLabel="Continue with general email"
       />
     </section>
   </main>

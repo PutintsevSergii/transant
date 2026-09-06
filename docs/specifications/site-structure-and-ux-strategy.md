@@ -695,15 +695,14 @@ Useful optional or conditional fields:
 
 Use a single page with progressive disclosure rather than a long multi-step form. Show a human-readable response expectation only after TransANT confirms an achievable service level.
 
-### 19.3 Confirmation
+### 19.3 Mail-client handoff
 
-The success state should:
+The prepared-email state should:
 
-- confirm receipt without promising acceptance or delivery;
-- summarize the submitted product/task reference;
-- provide a reference identifier if the backend supports it;
-- offer relevant product or download links;
-- avoid immediately resetting the form before the visitor can verify submission.
+- state that the visitor's mail application should open with the enquiry prepared;
+- tell the visitor to review and send the message from that application;
+- never imply that the website has sent, received, accepted, or stored the enquiry;
+- retain the entered values so the visitor can verify or retry the handoff.
 
 ## 20. Visual direction
 
@@ -893,7 +892,7 @@ P0 shall not be delayed by decorative 3D, an elaborate intro, or a CMS migration
 | Sustainability | What is reduced, where, and under what assumptions          | View evidence or relevant wagon   | Calculation boundary and dated evidence |
 | Company        | Who TransANT is and what it controls                        | Contact company                   | Legal identity, partners, capability    |
 | Downloads      | Find authoritative documents quickly                        | Download                          | Version, language, date, applicability  |
-| Contact        | Start a useful conversation with low friction               | Submit enquiry                    | Privacy, destination, clear status      |
+| Contact        | Start a useful conversation with low friction               | Continue in email                 | Privacy, recipient, clear handoff       |
 
 ## 28. Validation before design lock
 

@@ -13,8 +13,8 @@ const isSafeInternalRoute = (href: string): boolean =>
   !/[\s#]/.test(href) &&
   href !== "/";
 
-const isSafePostEndpoint = (href: string): boolean =>
-  isSafeInternalRoute(href) && !/[?#]/.test(href);
+const isSafeRecipient = (recipient: string): boolean =>
+  /^[^\s@/?#]+@[^\s@/?#]+\.[^\s@/?#]+$/u.test(recipient);
 
 const validateTextField = (
   field: ContactFormTextField,
@@ -56,11 +56,17 @@ const validateContext = (context: ContactFormContext | undefined): void => {
   }
 };
 
-/** Fails before render if a component would create an unsafe or unusable POST. */
+/** Fails before render if a component would create an unsafe mail-client handoff. */
 export const validateContactFormProps = (props: ContactFormProps): void => {
-  if (!isSafePostEndpoint(props.endpoint)) {
+  if (!isSafeRecipient(props.recipient)) {
     throw new Error(
-      "ContactForm endpoints must be safe same-site routes; provider delivery stays outside the component.",
+      "ContactForm recipients must be non-empty email addresses without URL control characters.",
+    );
+  }
+
+  if (!isNonEmpty(props.subject) || /[\r\n]/u.test(props.subject)) {
+    throw new Error(
+      "ContactForm subjects must be non-empty single-line caller-owned text.",
     );
   }
 
@@ -86,4 +92,12 @@ export const validateContactFormProps = (props: ContactFormProps): void => {
   }
   validatePrivacyNotice(props.privacyNotice);
   validateContext(props.context);
+  if (
+    props.labels !== undefined &&
+    (!isNonEmpty(props.labels.privacyPrefix) ||
+      !isNonEmpty(props.labels.mailClientHint) ||
+      !isNonEmpty(props.labels.mailClientOpened))
+  ) {
+    throw new Error("ContactForm mail-client labels must be non-empty.");
+  }
 };

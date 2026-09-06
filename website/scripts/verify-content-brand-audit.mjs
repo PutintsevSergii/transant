@@ -250,8 +250,10 @@ export async function auditContentAndBrand({
     "utf8",
   );
   assertion(
-    /<form\b[^>]+\baction="\/contact\/submit"/iu.test(contact),
-    "Contact must retain the explicit same-site delivery boundary.",
+    /<form\b[^>]+\baction="mailto:office@transant\.com"/iu.test(contact) &&
+      contact.includes("Continue in email") &&
+      !contact.includes("/contact/submit"),
+    "Contact must retain the explicit mail-client handoff without a delivery endpoint.",
   );
   assertion(
     privacy.includes("TransAnt GmbH, voestalpine-Straße 3") &&
@@ -265,7 +267,7 @@ export async function auditContentAndBrand({
       constants.R_OK,
     );
     throw new Error(
-      "Contact delivery must not be represented as a static route.",
+      "The retired contact delivery endpoint must not be represented as a static route.",
     );
   } catch (error) {
     if (error instanceof Error && error.message.includes("must not"))
@@ -277,7 +279,7 @@ export async function auditContentAndBrand({
     products: products.length,
     logoDigest,
     logoReferences: count(allOutput, "/brand/transant-logo.png"),
-    contactDelivery: "blocked-until-provider-configuration",
+    contactDelivery: "mail-client-handoff-no-automatic-delivery",
   };
 }
 

@@ -29,6 +29,8 @@ export interface NotFoundPageViewModel {
   ];
 }
 
+const contactEmail = "office@transant.com";
+
 export const contactPageViewModel: ContactPageViewModel = {
   layout: createSiteLayout(
     "Contact TransANT",
@@ -44,7 +46,8 @@ export const contactPageViewModel: ContactPageViewModel = {
     theme: "light",
   },
   form: {
-    endpoint: "/contact/submit",
+    recipient: contactEmail,
+    subject: "Freight wagon enquiry from the TransANT website",
     fields: {
       name: { label: "Name", placeholder: "Your name" },
       email: {
@@ -63,15 +66,18 @@ export const contactPageViewModel: ContactPageViewModel = {
       },
     },
     privacyNotice: { label: "Privacy information", href: "/privacy/" },
-    submitLabel: "Send enquiry",
+    submitLabel: "Continue in email",
     labels: {
-      spamField: "Website",
       privacyPrefix: "Your details are handled according to our",
+      mailClientHint:
+        "This opens your email application with the enquiry prepared. Review and send it from there.",
+      mailClientOpened:
+        "Your email application should open with the enquiry prepared. Review it and send it from there.",
     },
   },
   addressLines: ["TransAnt GmbH", "voestalpine-Straße 3", "4020 Linz, Austria"],
   phone: "+43 664 88324966",
-  email: "office@transant.com",
+  email: contactEmail,
 };
 
 // Source authority for the legal copy below:
@@ -116,7 +122,7 @@ const legalPageViewModels = {
         {
           title: "Contacting us",
           paragraphs: [
-            "When you contact us by email, telephone or, once delivery is enabled, the website form, we process the information you provide, such as your name, business contact details, company, enquiry and related project information, so that we can respond and, where applicable, take steps before entering into a contract.",
+            "When you contact us by email or telephone, we process the information you provide, such as your name, business contact details, company, enquiry and related project information, so that we can respond and, where applicable, take steps before entering into a contract. The website contact form only prepares this information in your chosen email application; the website does not send or store the enquiry.",
             "The processing is based on Article 6(1)(b) GDPR where it is necessary for contractual or pre-contractual steps and Article 6(1)(f) GDPR where it supports our legitimate interest in answering and managing business enquiries.",
           ],
         },

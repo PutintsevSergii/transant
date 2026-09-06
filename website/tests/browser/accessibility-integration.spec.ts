@@ -78,7 +78,7 @@ test("@keyboard I-003 compact navigation traps focus only while open and restore
   await expect(main).toHaveJSProperty("inert", false);
 });
 
-test("@keyboard I-003 keeps the technical table and contact error recovery reachable", async ({
+test("@keyboard I-003 keeps the technical table and prepared-email status reachable", async ({
   page,
 }) => {
   await page.goto("/fixtures/products/flat/uno-flat-60ft-rens/");
@@ -89,18 +89,10 @@ test("@keyboard I-003 keeps the technical table and contact error recovery reach
   await expect(tableScroller).toHaveAttribute("aria-label", /Scrollable table/);
   await expect(tableScroller.locator("table caption")).not.toBeEmpty();
 
-  await page.route("**/contact/submit", async (route) => {
-    await route.fulfill({
-      status: 422,
-      contentType: "application/json",
-      body: JSON.stringify({
-        status: "error",
-        message: "Please review the highlighted field.",
-        fieldErrors: { email: "Use a business email address." },
-      }),
-    });
-  });
   await page.goto("/fixtures/contact/");
+  await page.locator("[data-contact-form-mailto]").evaluate((anchor) => {
+    anchor.addEventListener("click", (event) => event.preventDefault());
+  });
   const form = page.locator("[data-contact-form]");
   await form.getByLabel("Name").fill("Alex Morgan");
   await form.getByLabel("Business email").fill("alex@example.com");
@@ -108,16 +100,18 @@ test("@keyboard I-003 keeps the technical table and contact error recovery reach
     .locator('textarea[name="message"]')
     .fill("Please send a source-bound response.");
   await form.getByLabel(/I have read/).check();
-  await form.getByRole("button", { name: "Send enquiry" }).click();
+  await form.getByRole("button", { name: "Continue in email" }).click();
 
-  const email = form.getByLabel("Business email");
-  await expect(email).toHaveAttribute("aria-invalid", "true");
-  await expect(email).toBeFocused();
   await expect(form.locator("[data-contact-form-status]")).toHaveAttribute(
     "role",
     "status",
   );
   await expect(form.locator("[data-contact-form-status]")).toBeVisible();
+  await expect(form.locator("[data-contact-form-status]")).toBeFocused();
+  await expect(form).toHaveAttribute("data-contact-form-state", "prepared");
+  await expect(form.getByLabel("Business email")).toHaveValue(
+    "alex@example.com",
+  );
 });
 
 test("@a11y I-003 reduced motion preserves the homepage's static content and containment", async ({

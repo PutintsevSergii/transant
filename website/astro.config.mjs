@@ -18,7 +18,7 @@ export default defineConfig({
         "base-uri 'self'",
         "object-src 'none'",
         "frame-ancestors 'none'",
-        "form-action 'self'",
+        "form-action 'self' mailto:",
         "img-src 'self'",
         "font-src 'self'",
         "connect-src 'self'",

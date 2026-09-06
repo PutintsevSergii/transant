@@ -328,7 +328,7 @@ Focused visual and interaction review shall cover at minimum:
 | One additional product per data-shape variant | missing/optional values and long units                                                     | stable shared template                          |
 | Technology or Company                         | mobile story order and media crop                                                          | alternating V7-style editorial composition      |
 | Quality                                       | evidence labels and certificate links                                                      | balanced multi-column evidence layout           |
-| Contact                                       | keyboard types, errors, virtual-keyboard resilience, success/failure                       | form measure and supporting content             |
+| Contact                                       | keyboard types, native errors, virtual-keyboard resilience, prepared-email status          | form measure and supporting content             |
 | Privacy/Imprint                               | reflow, headings, long links                                                               | readable line length                            |
 | 404                                           | recovery paths                                                                             | composition and brand consistency               |
 

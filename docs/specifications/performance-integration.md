@@ -1,6 +1,6 @@
 # I-004 performance integration contract
 
-I-004 establishes repeatable lab evidence for the fully assembled static site. It does not claim field Core Web Vitals, real-device performance, production-CDN behaviour, or form-provider performance.
+I-004 establishes repeatable lab evidence for the fully assembled static site. It does not claim field Core Web Vitals, real-device performance, production-CDN behaviour, installed mail-handler behavior, or successful email transmission.
 
 ## Scope and route set
 

@@ -2,9 +2,9 @@
 
 ## Scope and evidence boundary
 
-I-006 prepares the static TransANT site for Vercel and records the remaining release gates. It does not create or mutate a Vercel project, deploy a preview, change DNS, purchase a plan, configure form delivery, enable analytics, or provide legal, field-performance, real-device, or production-host evidence.
+I-006 prepares the static TransANT site for Vercel and records the remaining release gates. It does not create or mutate a Vercel project, deploy a preview, change DNS, purchase a plan, enable analytics, or provide legal, field-performance, real-device, mail-handler, or production-host evidence.
 
-The release artifact is static Astro output. Vercel can deploy static Astro without an adapter. A future same-site contact endpoint remains a separate approved server boundary; no delivery implementation or credential is present in this package.
+The release artifact is static Astro output. Vercel can deploy static Astro without an adapter. The release-one contact form prepares a `mailto:` URI entirely in the visitor's browser and does not require a server endpoint, delivery provider, credential, or hosting-specific adapter.
 
 ## Local contract
 
@@ -17,15 +17,15 @@ pnpm test:unit -- deployment-readiness
 pnpm exec playwright test tests/browser/deployment-readiness.spec.ts
 ```
 
-`check:deployment-readiness` reads only repository source and completed `dist/`. It verifies `vercel.json`, Astro's hash-based content security policy, preview crawler policy, local resource boundary, release route count, same-site form boundary, and analytics absence. It does not contact Vercel or a form provider.
+`check:deployment-readiness` reads only repository source and completed `dist/`. It verifies `vercel.json`, Astro's hash-based content security policy, preview crawler policy, local resource boundary, release route count, the explicit mail-client handoff, and analytics absence. It does not contact Vercel or an email provider.
 
-The focused browser smoke test runs the component-lab homepage and contact journeys at all configured review widths. It confirms shell containment, compact-safe layout, the native form boundary, and analytics absence. This is local preview evidence, not hosted-preview or real-device evidence.
+The focused browser smoke test runs the component-lab homepage and contact journeys at all configured review widths. It confirms shell containment, compact-safe layout, the native `mailto:` boundary, and analytics absence. This is local preview evidence, not hosted-preview, installed-mail-handler, successful-transmission, or real-device evidence.
 
 ## Vercel configuration and static policy
 
 `website/vercel.json` declares the Astro framework, frozen install, build plus release finalizer, `dist` output, canonical trailing slashes, general security headers, and immutable caching for hashed `/_astro/` assets and the byte-identical brand asset.
 
-Astro's `security.csp` configuration emits a hash-based CSP into every generated HTML document. It keeps scripts and styles explicit without an `unsafe-inline` allowance, restricts form submission to the same origin, blocks framing and plugin content, and keeps images, fonts, and connections on the same origin.
+Astro's `security.csp` configuration emits a hash-based CSP into every generated HTML document. It keeps scripts and styles explicit without an `unsafe-inline` allowance, permits form actions only to the same origin or the `mailto:` scheme, blocks framing and plugin content, and keeps images, fonts, and connections on the same origin.
 
 `public/robots.txt` disallows indexing by default. An ordinary local or preview build therefore cannot advertise a fabricated public sitemap.
 
@@ -58,16 +58,16 @@ The Imprint and Privacy pages use the company's official German Impressum and pr
 
 The new build does not include Google Analytics, marketing trackers, old social plugins, or non-essential cookies, so obsolete service-specific wording from the current website is not copied. The translated and adapted English text is an editorial implementation, not legal advice; the company owner or counsel must approve it before production.
 
-## Form and analytics boundary
+## Mail-client and analytics boundary
 
-`/contact/submit` is intentionally absent from static output. Vercel hosting alone does not deliver email. Do not enable the visible form for production until the recipient, delivery provider, protected credentials, anti-abuse/rate-limit policy, server-side validation, success/failure behavior, processor disclosure, and retention period are confirmed. No provider or secret is inferred from the public company website.
+The contact form uses the already published `office@transant.com` recipient and prepares an encoded subject and body in the visitor's chosen email application. The website sends no request, stores no lead, uses no provider credential, and cannot detect whether a mail handler opened or the visitor sent the message. Both the visible explanation and announced status therefore instruct the visitor to review and send the prepared email without claiming delivery. The native no-JavaScript fallback opens the recipient and subject, while exact field serialization remains browser/mail-handler controlled.
 
 Analytics is disabled. The release artifact contains no Google Analytics, tag manager, marketing tracker, or consent-dependent cookie. A consent banner is therefore unnecessary for the current build. If analytics or another non-essential service is later proposed, approve its purpose and consent behavior, update the Privacy page and CSP, and repeat performance and deployment review before enabling it.
 
 ## Preview smoke, promotion, and rollback
 
-For each candidate preview, run `pnpm quality` and the local I-006 checks, then inspect the hosted preview at 320 and 1440 CSS pixels: homepage navigation, catalogue/product tables, contact form failure path, legal pages, 404 recovery, response headers, redirects, and crawler files.
+For each candidate preview, run `pnpm quality` and the local I-006 checks, then inspect the hosted preview at 320 and 1440 CSS pixels: homepage navigation, catalogue/product tables, contact mail-client explanation and prepared-message path, legal pages, 404 recovery, response headers, redirects, and crawler files.
 
-Promote only after the commercial-use plan, Vercel project/domain ownership, hosted checks, approved form delivery, owner/legal copy approval, external documents, and any claimed field/CDN or real-device evidence are recorded.
+Promote only after the commercial-use plan, Vercel project/domain ownership, hosted checks, approved mail-client wording and recipient, owner/legal copy approval, external documents, and any claimed field/CDN or real-device evidence are recorded.
 
-Rollback with Vercel's deployment rollback to the last verified production deployment. Record that deployment before promotion and smoke its homepage, catalogue, contact, legal, and 404 routes. If form delivery is enabled later, roll back the matching endpoint revision and verify that submissions cannot reach an unapproved destination. Do not roll back by deleting the production project or DNS record.
+Rollback with Vercel's deployment rollback to the last verified production deployment. Record that deployment before promotion and smoke its homepage, catalogue, contact, legal, and 404 routes. If automatic form delivery is introduced later, treat its endpoint/provider/recipient/privacy contract as a separately approved change and roll back the matching revision when necessary. Do not roll back by deleting the production project or DNS record.

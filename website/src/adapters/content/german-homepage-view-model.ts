@@ -223,6 +223,35 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "Bis zu 100 vermiedene Zugfahrten pro Jahr",
   "Explore the project": "Projekt entdecken",
   "Contact TransANT": "TransANT kontaktieren",
+  Contact: "Kontakt",
+  "Let’s discuss your transport requirements":
+    "Lassen Sie uns über Ihre Transportanforderungen sprechen",
+  "Tell us about the freight wagon solution you need. We look forward to discussing it with you.":
+    "Beschreiben Sie die benötigte Güterwagenlösung. Wir freuen uns darauf, sie mit Ihnen zu besprechen.",
+  Name: "Name",
+  "Your name": "Ihr Name",
+  "Business email": "Geschäftliche E-Mail-Adresse",
+  "Use an address where TransANT can respond to this enquiry.":
+    "Geben Sie eine Adresse an, unter der TransANT auf diese Anfrage antworten kann.",
+  "Your organisation": "Ihr Unternehmen",
+  "Transport requirement": "Transportanforderung",
+  "Include the cargo, route, operating constraints, and relevant wagon context.":
+    "Nennen Sie Ladung, Strecke, betriebliche Rahmenbedingungen und den relevanten Wagenkontext.",
+  "Tell us what you are planning.": "Beschreiben Sie Ihr Vorhaben.",
+  "I have read the privacy information.":
+    "Ich habe die Datenschutzhinweise gelesen.",
+  "Privacy information": "Datenschutzhinweise",
+  "Your details are handled according to our":
+    "Ihre Angaben werden gemäß unseren",
+  "Freight wagon enquiry from the TransANT website":
+    "Güterwagenanfrage über die TransANT-Website",
+  "Continue in email": "In E-Mail fortfahren",
+  "This opens your email application with the enquiry prepared. Review and send it from there.":
+    "Dadurch wird Ihre E-Mail-Anwendung mit der vorbereiteten Anfrage geöffnet. Prüfen und senden Sie sie dort.",
+  "Your email application should open with the enquiry prepared. Review it and send it from there.":
+    "Ihre E-Mail-Anwendung sollte sich mit der vorbereiteten Anfrage öffnen. Prüfen und senden Sie sie dort.",
+  "When you contact us by email or telephone, we process the information you provide, such as your name, business contact details, company, enquiry and related project information, so that we can respond and, where applicable, take steps before entering into a contract. The website contact form only prepares this information in your chosen email application; the website does not send or store the enquiry.":
+    "Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir die von Ihnen bereitgestellten Angaben, etwa Name, geschäftliche Kontaktdaten, Unternehmen, Anfrage und zugehörige Projektinformationen, damit wir antworten und gegebenenfalls vorvertragliche Maßnahmen ergreifen können. Das Kontaktformular der Website bereitet diese Angaben lediglich in Ihrer gewählten E-Mail-Anwendung vor; die Website sendet oder speichert die Anfrage nicht.",
   "Technology platform": "Technologieplattform",
   "Freight wagon technology": "Güterwagentechnologie",
   "How TransANT combines a standardised lightweight platform, interchangeable cargo-specific superstructures, and configuration-led engineering.":

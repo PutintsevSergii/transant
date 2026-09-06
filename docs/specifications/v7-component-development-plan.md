@@ -540,17 +540,17 @@ Tests: action and supporting links, context URL encoding, no context, narrow lay
 
 ### F-003 — `ContactForm`
 
-Interface: `endpoint`, `fields`, `privacyNotice`, `submitLabel`, `context?`.
+Interface: `recipient`, `subject`, `fields`, `privacyNotice`, `submitLabel`, `context?`.
 
 Plan:
 
 - provide name, business email, company, message, consent, and explicit product/family context;
-- support native validation and a server-validated no-JavaScript POST path;
-- progressively enhance pending, success, field-error, server-error, and retry states;
-- keep provider credentials and delivery logic outside the component;
+- support native validation and a no-JavaScript `mailto:` fallback;
+- progressively enhance a URL-encoded prepared-email body, explicit mail-client handoff status, and input preservation;
+- make clear that the website neither sends nor confirms delivery of the enquiry;
 - make additional project fields optional unless approved by the client.
 
-Tests: labels/autocomplete, required and invalid states, keyboard submission, no-JS submission, pending lock, success focus/message, server error/retry, preserved input, spam-field behaviour, privacy link, and absence of secrets in the client bundle.
+Tests: labels/autocomplete, required and invalid states, keyboard submission, no-JS mailto fallback, exact encoded subject/body, prepared-status focus, preserved input, optional company/context, privacy link, and absence of secrets or network delivery in the client bundle.
 
 ## 14. Stage 6 — page assembly from verified components
 
@@ -736,7 +736,7 @@ F-002 + primitives
 | 6   | I-001 through I-005: link, responsive, accessibility, performance, content, and brand QA       |
 | 7   | I-006 preview deployment, form integration, client review fixes, final regression, and handoff |
 
-This is an aggressive schedule. Component portability and tests are not optional schedule buffers. If content approval or form-provider access is blocked, record the blocker and finish all source-derived work without inventing production evidence.
+This is an aggressive schedule. Component portability and tests are not optional schedule buffers. If content approval or an approved external dependency is blocked, record the blocker and finish all source-derived work without inventing production evidence.
 
 ## 21. Final release gate
 

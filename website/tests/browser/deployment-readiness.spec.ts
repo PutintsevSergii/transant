@@ -16,8 +16,9 @@ test("@release I-006 preview smoke retains compact and desktop-ready public jour
   await page.goto("/fixtures/contact/");
   await expect(page.locator("form")).toHaveAttribute(
     "action",
-    "/contact/submit",
+    "mailto:office@transant.com",
   );
+  await expect(page.locator("form")).toHaveAttribute("method", "get");
   await expect(page.locator("script[src*='googletagmanager']")).toHaveCount(0);
   await expect(page.locator("script[src*='google-analytics']")).toHaveCount(0);
 });
