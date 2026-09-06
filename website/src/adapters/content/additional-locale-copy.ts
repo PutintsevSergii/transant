@@ -13,6 +13,36 @@ type TranslationRow = readonly [
 // rewritten: only visitor-facing prose and interface language belongs here.
 const rows: readonly TranslationRow[] = [
   [
+    "InnoTrans 2026 // International trade fair",
+    "InnoTrans 2026 // Міжнародна виставка транспортних технологій",
+    "InnoTrans 2026 // Międzynarodowe targi techniki transportowej",
+    "InnoTrans 2026 // Mezinárodní veletrh dopravní techniky",
+  ],
+  [
+    "Meet TransANT in Berlin",
+    "Зустріньтеся з TransANT у Берліні",
+    "Spotkaj się z TransANT w Berlinie",
+    "Setkejte se s TransANT v Berlíně",
+  ],
+  [
+    "Visit TransANT at InnoTrans 2026 and discover how modular freight-wagon platforms and cargo-specific superstructures support individual transport tasks.",
+    "Відвідайте TransANT на InnoTrans 2026 і дізнайтеся, як модульні платформи вантажних вагонів та надбудови для конкретних вантажів допомагають вирішувати індивідуальні транспортні завдання.",
+    "Odwiedź TransANT na targach InnoTrans 2026 i zobacz, jak modułowe platformy wagonów towarowych oraz zabudowy dostosowane do ładunku wspierają indywidualne zadania transportowe.",
+    "Navštivte TransANT na veletrhu InnoTrans 2026 a zjistěte, jak modulární platformy nákladních vozů a nástavby určené pro konkrétní náklad podporují individuální přepravní úkoly.",
+  ],
+  [
+    "22–25 September 2026",
+    "22–25 вересня 2026 року",
+    "22–25 września 2026 r.",
+    "22.–25. září 2026",
+  ],
+  [
+    "Visit us at InnoTrans",
+    "Відвідайте нас на InnoTrans",
+    "Odwiedź nas na InnoTrans",
+    "Navštivte nás na InnoTrans",
+  ],
+  [
     "Freight wagons for individual transport tasks",
     "Вантажні вагони для індивідуальних транспортних завдань",
     "Wagony towarowe do indywidualnych zadań transportowych",

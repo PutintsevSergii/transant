@@ -1,0 +1,37 @@
+---
+import InnoTransEvent from "../../../src/components/home/InnoTransEvent/InnoTransEvent.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="InnoTransEvent fixture | TransANT component lab"
+  description="Temporary trade-fair announcement with one official external action."
+>
+  <main data-fixture="innotrans-event">
+    <InnoTransEvent
+      id="fixture-innotrans-2026"
+      eyebrow="InnoTrans 2026 // International trade fair"
+      title="Meet TransANT in Berlin"
+      summary="Visit TransANT at InnoTrans 2026 and discover how modular freight-wagon platforms and cargo-specific superstructures support individual transport tasks."
+      date="22–25 September 2026"
+      startDate="2026-09-22"
+      location="Berlin · Messe Berlin"
+      action={{
+        kind: "link",
+        label: "Visit us at InnoTrans",
+        href: "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
+        variant: "primary",
+        external: true,
+        externalLabel: " (opens in new tab)",
+      }}
+      diagram={{
+        routeLabel: "Linz // Berlin",
+        highlightLabel: "TRANSANT · INNOTRANS 2026",
+        origin: "Linz",
+        destination: "Berlin",
+        eventLabel: "InnoTrans 2026",
+        companyLabel: "TransANT GmbH",
+      }}
+    />
+  </main>
+</ComponentLabLayout>

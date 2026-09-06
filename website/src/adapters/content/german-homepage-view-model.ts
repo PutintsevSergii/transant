@@ -3,6 +3,14 @@ import { homepageViewModel } from "./homepage-view-model";
 import { createSiteLayout, localizedPath } from "./site-shell-view-model";
 
 export const germanCopy: Readonly<Record<string, string>> = {
+  "InnoTrans 2026 // International trade fair":
+    "InnoTrans 2026 // Internationale Fachmesse",
+  "Meet TransANT in Berlin": "Treffen Sie TransANT in Berlin",
+  "Visit TransANT at InnoTrans 2026 and discover how modular freight-wagon platforms and cargo-specific superstructures support individual transport tasks.":
+    "Besuchen Sie TransANT auf der InnoTrans 2026 und entdecken Sie, wie modulare Güterwagenplattformen und ladungsspezifische Aufbauten individuelle Transportaufgaben unterstützen.",
+  "22–25 September 2026": "22.–25. September 2026",
+  "Visit us at InnoTrans": "Besuchen Sie uns auf der InnoTrans",
+  " (opens in new tab)": " (wird in einem neuen Tab geöffnet)",
   "Freight wagons for individual transport tasks":
     "Güterwagen für individuelle Transportaufgaben",
   "TransANT develops freight and tank wagons from a modular platform and cargo-specific superstructures.":

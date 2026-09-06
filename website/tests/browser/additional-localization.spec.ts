@@ -10,6 +10,8 @@ const locales = [
     technology: "Проєктування починається з експлуатаційних вимог",
     transportRequirements: "Транспортні вимоги",
     supportingNavigation: "Пов’язані способи зв’язку",
+    eventHeading: "Зустріньтеся з TransANT у Берліні",
+    eventAction: "Відвідайте нас на InnoTrans",
   },
   {
     code: "pl",
@@ -18,6 +20,8 @@ const locales = [
     technology: "Projektowanie zaczyna się od wymagań eksploatacyjnych",
     transportRequirements: "Wymagania transportowe",
     supportingNavigation: "Powiązane opcje kontaktu",
+    eventHeading: "Spotkaj się z TransANT w Berlinie",
+    eventAction: "Odwiedź nas na InnoTrans",
   },
   {
     code: "cs",
@@ -26,6 +30,8 @@ const locales = [
     technology: "Konstrukce začíná provozními požadavky",
     transportRequirements: "Přepravní požadavky",
     supportingNavigation: "Související možnosti kontaktu",
+    eventHeading: "Setkejte se s TransANT v Berlíně",
+    eventAction: "Navštivte nás na InnoTrans",
   },
 ] as const;
 
@@ -41,6 +47,14 @@ for (const locale of locales) {
     await expect(page.locator("main")).toContainText(
       locale.transportRequirements,
     );
+    const event = page.locator("[data-innotrans-event]");
+    await expect(event.getByRole("heading", { level: 2 })).toHaveText(
+      locale.eventHeading,
+    );
+    await expect(event.getByRole("link")).toHaveAccessibleName(
+      new RegExp(locale.eventAction, "u"),
+    );
+    await expect(event.locator("a")).toHaveCount(1);
     await expect(
       page.getByRole("navigation", { name: locale.supportingNavigation }),
     ).toHaveCount(1);

@@ -6,6 +6,7 @@ import tankWagon from "../../assets/images/products/tank/uno-tank-88m3-zacns/wag
 import timberWagon from "../../assets/images/products/timber/uno-timber-60ft-snps/wagon-render.png";
 import type { ContactCTAProps } from "../../components/home/ContactCTA/ContactCTA.types";
 import type { HomeHeroProps } from "../../components/home/HomeHero/HomeHero.types";
+import type { InnoTransEventProps } from "../../components/home/InnoTransEvent/InnoTransEvent.types";
 import type { PageMetaProps } from "../../components/editorial/PageMeta/PageMeta.types";
 import type { ModularPlatformSectionProps } from "../../components/home/ModularPlatformSection/ModularPlatformSection.types";
 import type { PayloadValueSectionProps } from "../../components/home/PayloadValueSection/PayloadValueSection.types";
@@ -23,6 +24,7 @@ export interface HomepageViewModel {
   readonly layout: BaseLayoutProps;
   readonly pageMeta: PageMetaProps;
   readonly hero: HomeHeroProps;
+  readonly innoTransEvent: InnoTransEventProps;
   readonly payload: PayloadValueSectionProps;
   readonly switchyard: WagonSwitchyardProps;
   readonly platform: ModularPlatformSectionProps;
@@ -119,6 +121,32 @@ export const homepageViewModel = {
       alt: "Freight train travelling through a green landscape",
       sizes: "(min-width: 56rem) 52vw, 100vw",
       fit: "cover",
+    },
+  },
+  innoTransEvent: {
+    id: "innotrans-2026",
+    eyebrow: "InnoTrans 2026 // International trade fair",
+    title: "Meet TransANT in Berlin",
+    summary:
+      "Visit TransANT at InnoTrans 2026 and discover how modular freight-wagon platforms and cargo-specific superstructures support individual transport tasks.",
+    date: "22–25 September 2026",
+    startDate: "2026-09-22",
+    location: "Berlin · Messe Berlin",
+    action: {
+      kind: "link",
+      label: "Visit us at InnoTrans",
+      href: "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
+      variant: "primary",
+      external: true,
+      externalLabel: " (opens in new tab)",
+    },
+    diagram: {
+      routeLabel: "Linz // Berlin",
+      highlightLabel: "TRANSANT · INNOTRANS 2026",
+      origin: "Linz",
+      destination: "Berlin",
+      eventLabel: "InnoTrans 2026",
+      companyLabel: "TransANT GmbH",
     },
   },
   payload: {

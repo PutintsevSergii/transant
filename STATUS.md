@@ -8,12 +8,20 @@ This file is the compact operational handoff. It must describe the current truth
 - Lifecycle: RUNNING
 - Release: R1 — multilingual static corporate and wagon-catalogue website
 - Active work package: NONE
-- Active objective: The CSP-safe deployed homepage layout correction is implemented; hosted verification and the remaining external release inputs remain under I-006.
-- Last completed work package: I-006
-- Next eligible work package: I-006 — obtain hosted verification after redeployment, then retain the external deployment, owner/legal, provider, field, CDN, and real-device release evidence.
-- Last change-log entry: 2026-09-06 — I-006 — deployed homepage CSP layout correction
+- Active objective: No implementation package is active; the InnoTrans diagram-label refinement is verified.
+- Last completed work package: A-002
+- Next eligible work package: I-006 — hosted verification and remaining external release inputs.
+- Last change-log entry: 2026-09-06 — A-002 — InnoTrans diagram-label refinement
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
+
+## Completed enhancement — A-002 localized InnoTrans 2026 homepage announcement
+
+- User-visible outcome: EN, DE, UA, PL, and CZ homepages now place a V9 Stitch-inspired InnoTrans 2026 announcement directly below the hero, with localized editorial copy, the confirmed 22–25 September 2026 Berlin date/location, and one external action to the official TransANT exhibitor profile. The diagram highlight reads `TRANSANT · INNOTRANS 2026` instead of the former standard-gauge detail.
+- Contract: the independent server-rendered `InnoTransEvent` owns the dark technical-rail composition and decorative Linz-to-Berlin schematic. The meeting action is omitted; no hall, stand, launch, certification, partnership, or live-route claim was introduced. The invitation and official action remain complete without JavaScript.
+- Files: typed component, README, isolated component-lab fixture, focused browser suite and six visual references; homepage view model and EN/DE/UA/PL/CZ translations; English, German, additional-locale, and lab homepage compositions; homepage/localization assertions and six homepage visual references; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Validation: Node 22.13 focused formatting and ESLint pass; Astro diagnostics report 0 errors, warnings, or hints; production build passes with 130 routes. Route integration and content/brand audit pass (`routes=129 products=10 internal-references=4622`; immutable logo digest retained). Fresh isolated component/homepage/no-JavaScript/keyboard/responsive/axe/visual evidence passes 60/60 across 320/390/768/1024/1440/844×390. Fresh production localization evidence passes 60/60 across the same profiles. The forced-refresh visual references pass 60/60, and standalone 320 and 1440 references were inspected directly. Generated EN/DE/UA/PL/CZ homepages each contain the universal company/event label and none contains a former localized gauge string.
+- Baseline boundary: the label-refinement pre-edit `pnpm quality` static stages passed, while its broad browser phase reproduced recorded stale/reused-server localization and unrelated visual-reference failures and was stopped after 270 passed, 26 failed, 4 interrupted, 1 skipped, and 1,109 not run; it is not claimed as green.
 
 ## Completed correction — I-006 deployed homepage CSP layout
 

@@ -33,6 +33,17 @@ test("@locale German homepage keeps switchyard copy in German", async ({
   await expect(page.locator("[data-wagon-switchyard]")).not.toContainText(
     "Matching wagon families to cargo and loading needs.",
   );
+  const event = page.locator("[data-innotrans-event]");
+  await expect(event.getByRole("heading", { level: 2 })).toHaveText(
+    "Treffen Sie TransANT in Berlin",
+  );
+  await expect(
+    event.getByRole("link", { name: /Besuchen Sie uns auf der InnoTrans/u }),
+  ).toHaveAttribute(
+    "href",
+    "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
+  );
+  await expect(event.locator("a")).toHaveCount(1);
 });
 
 test("@locale locale selector expands and switches back on the same route", async ({

@@ -61,6 +61,7 @@ test("@component Homepage composes one shell and every homepage section in sourc
     );
   expect(sectionOrder).toEqual([
     "data-home-hero",
+    "data-innotrans-event",
     "data-payload-value-section",
     "data-wagon-switchyard",
     "data-modular-platform-section",
@@ -68,6 +69,17 @@ test("@component Homepage composes one shell and every homepage section in sourc
     "data-contact-cta",
   ]);
   await expect(page.locator("[data-home-hero]")).toHaveCount(1);
+  const innoTransEvent = page.locator("[data-innotrans-event]");
+  await expect(innoTransEvent).toHaveCount(1);
+  await expect(innoTransEvent.getByRole("heading", { level: 2 })).toHaveText(
+    "Meet TransANT in Berlin",
+  );
+  await expect(innoTransEvent.locator("a")).toHaveCount(1);
+  await expect(innoTransEvent.locator("a")).toHaveAttribute(
+    "href",
+    "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
+  );
+  await expect(innoTransEvent).not.toContainText("Arrange a meeting");
   await expect(page.locator("[data-payload-value-section]")).toHaveCount(1);
   await expect(
     page.locator("[data-payload-value-section]").getByRole("heading", {
@@ -157,6 +169,7 @@ test("@responsive Homepage preserves the intentional compact sequence without ov
   const pageMeta = page.locator("[data-page-meta]");
   const heroContent = hero.locator(".home-hero__content");
   const payload = page.locator("[data-payload-value-section]");
+  const innoTransEvent = page.locator("[data-innotrans-event]");
   const payloadProposition = payload.locator(
     ".payload-value-section__proposition",
   );
@@ -167,6 +180,7 @@ test("@responsive Homepage preserves the intentional compact sequence without ov
     heroBox,
     heroContentBox,
     payloadBox,
+    innoTransEventBox,
     payloadPropositionBox,
     switchyardBox,
   ] = await Promise.all([
@@ -174,6 +188,7 @@ test("@responsive Homepage preserves the intentional compact sequence without ov
     hero.boundingBox(),
     heroContent.boundingBox(),
     payload.boundingBox(),
+    innoTransEvent.boundingBox(),
     payloadProposition.boundingBox(),
     switchyard.boundingBox(),
   ]);
@@ -188,7 +203,8 @@ test("@responsive Homepage preserves the intentional compact sequence without ov
   expect(
     Math.abs((heroContentBox?.x ?? 0) - (payloadPropositionBox?.x ?? 0)),
   ).toBeLessThanOrEqual(1);
-  expect(payloadBox?.y).toBeGreaterThan(heroBox?.y ?? 0);
+  expect(innoTransEventBox?.y).toBeGreaterThan(heroBox?.y ?? 0);
+  expect(payloadBox?.y).toBeGreaterThan(innoTransEventBox?.y ?? 0);
   expect(switchyardBox?.y).toBeGreaterThan(payloadBox?.y ?? 0);
   if (viewportWidth < 896) {
     await expect(

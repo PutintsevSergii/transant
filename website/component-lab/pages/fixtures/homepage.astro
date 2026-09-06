@@ -3,6 +3,7 @@ import { homepageViewModel } from "../../../src/adapters/content/homepage-view-m
 import ContactCTA from "../../../src/components/home/ContactCTA/ContactCTA.astro";
 import PageMeta from "../../../src/components/editorial/PageMeta/PageMeta.astro";
 import HomeHero from "../../../src/components/home/HomeHero/HomeHero.astro";
+import InnoTransEvent from "../../../src/components/home/InnoTransEvent/InnoTransEvent.astro";
 import ModularPlatformSection from "../../../src/components/home/ModularPlatformSection/ModularPlatformSection.astro";
 import PayloadValueSection from "../../../src/components/home/PayloadValueSection/PayloadValueSection.astro";
 import QualityImpactSection from "../../../src/components/home/QualityImpactSection/QualityImpactSection.astro";
@@ -13,6 +14,7 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
 const {
   contactCta,
   hero,
+  innoTransEvent,
   layout,
   pageMeta,
   payload,
@@ -25,6 +27,7 @@ const {
 <BaseLayout {...layout}>
   <PageMeta {...pageMeta} />
   <HomeHero {...hero} />
+  <InnoTransEvent {...innoTransEvent} />
   <PayloadValueSection {...payload}>
     <RailwayOrbital
       slot="visual"

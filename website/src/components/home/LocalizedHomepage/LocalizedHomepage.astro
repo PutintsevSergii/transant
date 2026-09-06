@@ -5,6 +5,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageMeta from "../../editorial/PageMeta/PageMeta.astro";
 import ContactCTA from "../ContactCTA/ContactCTA.astro";
 import HomeHero from "../HomeHero/HomeHero.astro";
+import InnoTransEvent from "../InnoTransEvent/InnoTransEvent.astro";
 import ModularPlatformSection from "../ModularPlatformSection/ModularPlatformSection.astro";
 import PayloadValueSection from "../PayloadValueSection/PayloadValueSection.astro";
 import QualityImpactSection from "../QualityImpactSection/QualityImpactSection.astro";
@@ -19,6 +20,7 @@ const { locale } = Astro.props;
 const {
   contactCta,
   hero,
+  innoTransEvent,
   layout,
   pageMeta,
   payload,
@@ -31,6 +33,7 @@ const {
 <BaseLayout {...layout}>
   <PageMeta {...pageMeta} />
   <HomeHero {...hero} />
+  <InnoTransEvent {...innoTransEvent} />
   <PayloadValueSection {...payload}>
     <RailwayOrbital
       slot="visual"

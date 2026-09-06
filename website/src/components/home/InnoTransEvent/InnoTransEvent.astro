@@ -1,0 +1,397 @@
+---
+import Action from "../../core/Action/Action.astro";
+import type { InnoTransEventProps } from "./InnoTransEvent.types";
+
+const {
+  id,
+  eyebrow,
+  title,
+  summary,
+  date,
+  startDate,
+  location,
+  action,
+  diagram,
+} = Astro.props as InnoTransEventProps;
+---
+
+<section
+  id={id}
+  class="innotrans-event"
+  data-innotrans-event
+  aria-labelledby={`${id}-title`}
+>
+  <svg
+    class="innotrans-event__background"
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 1440 440"
+    preserveAspectRatio="none"
+  >
+    <path d="M-80 400 580 80 1520 400"></path>
+    <path class="innotrans-event__background-dash" d="M20 400 580 80 1380 400"
+    ></path>
+    <path d="M0 220h1440"></path>
+  </svg>
+
+  <div class="innotrans-event__frame page-frame">
+    <div class="innotrans-event__content">
+      <p class="innotrans-event__eyebrow">
+        <span aria-hidden="true"></span>
+        {eyebrow}
+      </p>
+      <h2 id={`${id}-title`} class="innotrans-event__title">{title}</h2>
+      <p class="innotrans-event__summary">{summary}</p>
+
+      <div class="innotrans-event__details">
+        <span class="innotrans-event__calendar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path
+              d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"
+            ></path>
+          </svg>
+        </span>
+        <span class="innotrans-event__date-place">
+          <time datetime={startDate}>{date}</time>
+          <span>{location}</span>
+        </span>
+      </div>
+
+      <div class="innotrans-event__action">
+        <Action {...action} />
+      </div>
+    </div>
+
+    <div class="innotrans-event__diagram" aria-hidden="true">
+      <div class="innotrans-event__diagram-header">
+        <span>[{diagram.routeLabel}]</span>
+        <strong>{diagram.highlightLabel}</strong>
+      </div>
+
+      <svg viewBox="0 0 420 230" focusable="false">
+        <g class="innotrans-event__grid">
+          <path d="M18 42h384M18 116h384M18 190h384"></path>
+        </g>
+        <g class="innotrans-event__routes">
+          <path class="innotrans-event__route-primary" d="M34 170h124l95-96h132"
+          ></path>
+          <path
+            class="innotrans-event__route-secondary"
+            d="M34 170h190l76-42h85"></path>
+          <path class="innotrans-event__route-dashed" d="M34 170h351"></path>
+          <path
+            d="M66 161v18M98 161v18M130 161v18M162 161v18M282 65v18M316 65v18M350 65v18"
+          ></path>
+        </g>
+        <g class="innotrans-event__origin-node">
+          <circle cx="34" cy="170" r="6"></circle>
+          <text x="34" y="208">{diagram.origin}</text>
+        </g>
+        <g class="innotrans-event__junction-node">
+          <circle cx="158" cy="170" r="7"></circle>
+          <circle cx="158" cy="170" r="2"></circle>
+        </g>
+        <g class="innotrans-event__destination-node">
+          <circle cx="354" cy="74" r="12"></circle>
+          <circle cx="354" cy="74" r="6"></circle>
+          <circle cx="354" cy="74" r="2"></circle>
+          <text x="354" y="49">{diagram.destination}</text>
+        </g>
+      </svg>
+
+      <div class="innotrans-event__diagram-footer">
+        <span>{diagram.eventLabel}</span>
+        <strong>{diagram.companyLabel}</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .innotrans-event {
+    position: relative;
+    container-type: inline-size;
+    overflow: clip;
+    border-block-end: var(--border-thin) solid var(--color-railway-border);
+    color: var(--color-paper);
+    background: var(--color-footer-navy);
+  }
+
+  .innotrans-event__background {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    fill: none;
+    stroke: rgb(111 152 181 / 16%);
+    stroke-width: 1;
+    pointer-events: none;
+  }
+
+  .innotrans-event__background-dash {
+    stroke-dasharray: 7 9;
+  }
+
+  .innotrans-event__frame {
+    position: relative;
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+    padding-block: clamp(var(--space-7), 7vw, 5.5rem);
+  }
+
+  .innotrans-event__content {
+    display: grid;
+    min-inline-size: 0;
+    justify-items: start;
+    gap: var(--space-4);
+  }
+
+  .innotrans-event__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0;
+    color: var(--color-railway-pale);
+    font-family: var(--font-mono);
+    font-size: clamp(0.72rem, 1.7cqi, 0.85rem);
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .innotrans-event__eyebrow > span {
+    flex: 0 0 auto;
+    inline-size: 0.55rem;
+    block-size: 0.55rem;
+    border-radius: 50%;
+    background: var(--color-brand-red);
+  }
+
+  .innotrans-event__title {
+    max-inline-size: 16ch;
+    margin: 0;
+    color: var(--color-paper);
+    font-size: clamp(2rem, 6cqi, 4rem);
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .innotrans-event__summary {
+    max-inline-size: 62ch;
+    margin: 0;
+    color: #d7e5ee;
+    font-size: clamp(1rem, 2.1cqi, 1.15rem);
+    line-height: var(--line-height-body);
+  }
+
+  .innotrans-event__details {
+    display: inline-flex;
+    max-inline-size: 100%;
+    align-items: center;
+    gap: var(--space-3);
+    margin-block-start: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border: var(--border-thin) solid var(--color-railway-border);
+    border-radius: var(--radius-medium);
+    background: var(--color-railway-navy);
+  }
+
+  .innotrans-event__calendar {
+    display: grid;
+    flex: 0 0 auto;
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    place-items: center;
+    border: var(--border-thin) solid rgb(220 28 59 / 55%);
+    border-radius: var(--radius-small);
+    color: var(--color-brand-red);
+    background: var(--color-railway-blue);
+  }
+
+  .innotrans-event__calendar svg {
+    inline-size: 1.25rem;
+    fill: none;
+    stroke: currentcolor;
+    stroke-linecap: square;
+    stroke-width: 1.7;
+  }
+
+  .innotrans-event__date-place {
+    display: grid;
+    min-inline-size: 0;
+    gap: var(--space-1);
+    font-family: var(--font-mono);
+  }
+
+  .innotrans-event__date-place time {
+    color: var(--color-paper);
+    font-size: clamp(0.86rem, 2cqi, 1rem);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .innotrans-event__date-place > span {
+    color: var(--color-railway-pale);
+    font-size: 0.75rem;
+    letter-spacing: 0.09em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .innotrans-event__action {
+    inline-size: 100%;
+    margin-block-start: var(--space-3);
+  }
+
+  .innotrans-event__action :global(.action) {
+    inline-size: 100%;
+    min-block-size: 3.25rem;
+    text-transform: uppercase;
+  }
+
+  .innotrans-event__diagram {
+    min-inline-size: 0;
+    padding: clamp(var(--space-4), 4cqi, var(--space-6));
+    border: var(--border-thin) solid var(--color-railway-border);
+    border-radius: 0.75rem;
+    background: rgb(16 46 73 / 82%);
+    box-shadow: 0 1rem 2rem rgb(0 0 0 / 12%);
+  }
+
+  .innotrans-event__diagram-header,
+  .innotrans-event__diagram-footer {
+    display: flex;
+    min-inline-size: 0;
+    justify-content: space-between;
+    gap: var(--space-3);
+    color: var(--color-railway-pale);
+    font-family: var(--font-mono);
+    font-size: clamp(0.62rem, 1.5cqi, 0.74rem);
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .innotrans-event__diagram-header {
+    padding-block-end: var(--space-3);
+    border-block-end: var(--border-thin) solid var(--color-railway-border);
+  }
+
+  .innotrans-event__diagram-header strong {
+    flex: 0 0 auto;
+    color: var(--color-brand-red);
+  }
+
+  .innotrans-event__diagram > svg {
+    display: block;
+    inline-size: 100%;
+    max-block-size: 15rem;
+  }
+
+  .innotrans-event__grid {
+    fill: none;
+    stroke: var(--color-railway-blue);
+    stroke-dasharray: 4 5;
+    stroke-width: 1;
+  }
+
+  .innotrans-event__routes {
+    fill: none;
+    stroke: var(--color-railway-pale);
+    stroke-width: 1.5;
+  }
+
+  .innotrans-event__route-primary {
+    stroke: var(--color-railway-border);
+    stroke-width: 3;
+  }
+
+  .innotrans-event__route-secondary {
+    stroke: var(--color-brand-blue);
+    stroke-width: 2;
+  }
+
+  .innotrans-event__route-dashed {
+    stroke: var(--color-railway-muted);
+    stroke-dasharray: 5 6;
+  }
+
+  .innotrans-event__origin-node circle,
+  .innotrans-event__junction-node circle:first-child {
+    fill: var(--color-railway-navy);
+    stroke: var(--color-railway-muted);
+    stroke-width: 2;
+  }
+
+  .innotrans-event__junction-node circle:last-child {
+    fill: var(--color-railway-pale);
+  }
+
+  .innotrans-event__destination-node circle:first-child {
+    fill: rgb(220 28 59 / 16%);
+  }
+
+  .innotrans-event__destination-node circle:nth-child(2) {
+    fill: var(--color-railway-navy);
+    stroke: var(--color-brand-red);
+    stroke-width: 3;
+  }
+
+  .innotrans-event__destination-node circle:nth-child(3) {
+    fill: var(--color-brand-red);
+  }
+
+  .innotrans-event__origin-node text,
+  .innotrans-event__destination-node text {
+    fill: var(--color-railway-pale);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-anchor: middle;
+    text-transform: uppercase;
+  }
+
+  .innotrans-event__destination-node text {
+    fill: var(--color-paper);
+  }
+
+  .innotrans-event__diagram-footer {
+    align-items: end;
+    padding-block-start: var(--space-3);
+    border-block-start: var(--border-thin) solid var(--color-railway-border);
+  }
+
+  .innotrans-event__diagram-footer strong {
+    flex: 0 0 auto;
+    color: #d7e5ee;
+  }
+
+  @container (min-width: 38rem) {
+    .innotrans-event__action {
+      inline-size: auto;
+    }
+
+    .innotrans-event__action :global(.action) {
+      inline-size: auto;
+    }
+  }
+
+  @container (min-width: 60rem) {
+    .innotrans-event__frame {
+      grid-template-columns: minmax(0, 7fr) minmax(22rem, 5fr);
+      gap: clamp(var(--space-7), 5vw, 5rem);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .innotrans-event,
+    .innotrans-event__details,
+    .innotrans-event__diagram {
+      border-color: CanvasText;
+    }
+  }
+</style>
