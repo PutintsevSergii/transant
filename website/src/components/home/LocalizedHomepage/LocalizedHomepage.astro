@@ -1,0 +1,46 @@
+---
+import { localizedHomepageViewModel } from "../../../adapters/content/localized-homepage-view-model";
+import type { SiteLocale } from "../../../adapters/content/site-shell-view-model";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageMeta from "../../editorial/PageMeta/PageMeta.astro";
+import ContactCTA from "../ContactCTA/ContactCTA.astro";
+import HomeHero from "../HomeHero/HomeHero.astro";
+import ModularPlatformSection from "../ModularPlatformSection/ModularPlatformSection.astro";
+import PayloadValueSection from "../PayloadValueSection/PayloadValueSection.astro";
+import QualityImpactSection from "../QualityImpactSection/QualityImpactSection.astro";
+import RailwayOrbital from "../RailwayOrbital/RailwayOrbital.astro";
+import WagonSwitchyard from "../WagonSwitchyard/WagonSwitchyard.astro";
+
+interface Props {
+  readonly locale: Exclude<SiteLocale, "en">;
+}
+
+const { locale } = Astro.props;
+const {
+  contactCta,
+  hero,
+  layout,
+  pageMeta,
+  payload,
+  platform,
+  qualityImpact,
+  switchyard,
+} = localizedHomepageViewModel(locale);
+---
+
+<BaseLayout {...layout}>
+  <PageMeta {...pageMeta} />
+  <HomeHero {...hero} />
+  <PayloadValueSection {...payload}>
+    <RailwayOrbital
+      slot="visual"
+      motion="auto"
+      density="standard"
+      accent="blue"
+    />
+  </PayloadValueSection>
+  <WagonSwitchyard {...switchyard} />
+  <ModularPlatformSection {...platform} />
+  <QualityImpactSection {...qualityImpact} />
+  <ContactCTA {...contactCta} />
+</BaseLayout>

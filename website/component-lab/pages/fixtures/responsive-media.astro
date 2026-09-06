@@ -1,0 +1,150 @@
+---
+import ResponsiveMedia from "../../../src/components/core/ResponsiveMedia/ResponsiveMedia.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+import freightTrain from "../../../src/assets/images/editorial/freight-train-in-operation.jpg";
+import wagonBogie from "../../../src/assets/images/editorial/intermodal-wagon-bogie-closeup.jpg";
+import wagonFleet from "../../../src/assets/images/editorial/transant-wagon-fleet.png";
+---
+
+<ComponentLabLayout
+  title="ResponsiveMedia fixture | TransANT component lab"
+  description="Local responsive image and caption primitive variants."
+>
+  <main class="responsive-media-fixture" data-fixture="responsive-media">
+    <header class="responsive-media-fixture__intro page-frame">
+      <a href="/">Component lab</a>
+      <p class="responsive-media-fixture__eyebrow">C-004 primitive</p>
+      <h1>Local media that reserves its place before it arrives.</h1>
+      <p>
+        The local asset pipeline emits responsive modern formats and fallback
+        imagery while the semantic figure remains meaningful without scripts.
+      </p>
+    </header>
+
+    <section
+      class="responsive-media-fixture__panel page-frame"
+      aria-labelledby="priority-media-title"
+    >
+      <div>
+        <p class="responsive-media-fixture__eyebrow">
+          Priority editorial image
+        </p>
+        <h2 id="priority-media-title">Cover fit with caption fallback</h2>
+      </div>
+      <ResponsiveMedia
+        image={freightTrain}
+        alt="Freight train travelling through a green landscape"
+        sizes="(min-width: 64rem) 56rem, 100vw"
+        priority
+        fit="cover"
+        aspectRatio="16 / 9"
+        caption="Operational photography remains local and receives responsive derivatives."
+      />
+    </section>
+
+    <section
+      class="responsive-media-fixture__panel responsive-media-fixture__panel--steel page-frame"
+      aria-labelledby="decorative-media-title"
+    >
+      <div>
+        <p class="responsive-media-fixture__eyebrow">
+          Decorative technical detail
+        </p>
+        <h2 id="decorative-media-title">
+          Contain fit with an explicit empty alternative
+        </h2>
+      </div>
+      <ResponsiveMedia
+        image={wagonBogie}
+        decorative
+        sizes="(min-width: 48rem) 42rem, 100vw"
+        loading="lazy"
+        fit="contain"
+        aspectRatio="4 / 3"
+      />
+    </section>
+
+    <section
+      class="responsive-media-fixture__panel responsive-media-fixture__panel--dark page-frame"
+      aria-labelledby="caption-slot-media-title"
+    >
+      <div>
+        <p class="responsive-media-fixture__eyebrow">Named caption slot</p>
+        <h2 id="caption-slot-media-title">
+          A reusable figure without case-study coupling
+        </h2>
+      </div>
+      <ResponsiveMedia
+        image={wagonFleet}
+        alt="Multiple freight wagons on railway tracks"
+        sizes="(min-width: 64rem) 56rem, 100vw"
+        loading="lazy"
+        fit="contain"
+      >
+        <span slot="caption">
+          The caller may supply <strong>structured caption content</strong> when a
+          plain text fallback is insufficient.
+        </span>
+      </ResponsiveMedia>
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .responsive-media-fixture {
+    overflow: clip;
+    background: var(--color-paper-warm);
+  }
+
+  .responsive-media-fixture__intro,
+  .responsive-media-fixture__panel {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+
+  .responsive-media-fixture__intro > a {
+    justify-self: start;
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .responsive-media-fixture__intro > p {
+    max-inline-size: var(--reading-max);
+    color: var(--color-ink-secondary);
+  }
+
+  .responsive-media-fixture__eyebrow {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .responsive-media-fixture__panel h2 {
+    margin: 0;
+  }
+
+  .responsive-media-fixture__panel--steel {
+    background: var(--color-steel);
+  }
+
+  .responsive-media-fixture__panel--dark {
+    color: var(--color-paper);
+    background: var(--color-footer-navy);
+  }
+
+  .responsive-media-fixture__panel--dark .responsive-media-fixture__eyebrow {
+    color: var(--color-railway-pale);
+  }
+
+  .responsive-media-fixture__panel--dark :global(.responsive-media__caption) {
+    color: var(--color-railway-pale);
+  }
+</style>

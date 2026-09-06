@@ -1,0 +1,84 @@
+---
+import ContactForm from "../../../src/components/form/ContactForm/ContactForm.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="ContactForm fixture | TransANT component lab"
+  description="Native contact-form submission with caller-owned fields, privacy notice, optional context, and scoped progressive enhancement."
+>
+  <main class="contact-form-fixture" data-fixture="contact-form">
+    <section
+      class="contact-form-fixture__variant"
+      aria-label="Contextual inquiry form"
+    >
+      <ContactForm
+        endpoint="/fixtures/contact-form/submit"
+        fields={{
+          name: {
+            label: "Name",
+            help: "Please use the name we should use in our reply.",
+            placeholder: "Alex Morgan",
+          },
+          email: {
+            label: "Business email",
+            help: "We use this only to respond to this inquiry.",
+            placeholder: "alex@example.com",
+          },
+          company: {
+            label: "Company",
+            placeholder: "Example Rail Logistics",
+          },
+          message: {
+            label: "Inquiry",
+            help: "Describe the transport requirement or project context.",
+            placeholder: "Tell us what you are planning.",
+          },
+          consent: {
+            label:
+              "I agree that TransANT may process these details to respond.",
+          },
+        }}
+        privacyNotice={{ label: "Privacy notice", href: "/privacy/" }}
+        submitLabel="Send inquiry"
+        context={{
+          label: "Product context",
+          value: "Intermodal & container requirement / 80 ft",
+        }}
+      />
+    </section>
+
+    <section
+      class="contact-form-fixture__variant"
+      aria-label="General inquiry form"
+    >
+      <ContactForm
+        endpoint="/fixtures/contact-form/submit"
+        fields={{
+          name: { label: "Name" },
+          email: { label: "Business email" },
+          company: { label: "Company" },
+          message: { label: "Inquiry" },
+          consent: {
+            label:
+              "I agree that TransANT may process these details to respond.",
+          },
+        }}
+        privacyNotice={{ label: "Privacy notice", href: "/privacy/" }}
+        submitLabel="Send general inquiry"
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .contact-form-fixture {
+    display: grid;
+    gap: var(--space-8);
+    padding-block: var(--space-7);
+  }
+
+  .contact-form-fixture__variant {
+    min-inline-size: 0;
+  }
+</style>

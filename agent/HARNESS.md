@@ -6,7 +6,7 @@ The harness enables an OpenAI coding model, defaulting to `gpt-5.6-terra`, to im
 
 Success means every cycle:
 
-- starts from verified persistent state;
+- starts only after the agent has run and passed both `agent/scripts/validate-state.sh` and `agent/scripts/validate-inputs.sh`;
 - selects one eligible package;
 - leaves a small, clean, reviewable change;
 - proves the applicable definition of done;
@@ -128,7 +128,7 @@ State updates are part of the change, not a final courtesy. Use this order:
 5. Rewrite `STATUS.md` to the new current snapshot.
 6. Append one complete `CHANGELOG.md` handoff entry.
 7. Set `Last change-log entry` in `STATUS.md` to that exact heading.
-8. Run `agent/scripts/validate-state.sh`.
+8. Run `agent/scripts/validate-state.sh` and `agent/scripts/validate-inputs.sh`. Both must pass before a successful handoff.
 
 If the session is interrupted, steps 2, 5, and 6 are still required before stopping when tool access remains available.
 
@@ -170,8 +170,10 @@ Do not run an evaluator for trivial documentation corrections or already determi
 - dry preflight: set `HARNESS_DRY_RUN=1` to validate configuration without invoking a model;
 - sandbox: `workspace-write`;
 - approvals: automatic review, not bypass;
+- worker retry: when a required local component-lab listener alone fails with `listen EPERM`, the worker requests scoped escalation for that exact validation command; it never uses a dangerous sandbox bypass;
 - no recursive self-invocation and no unbounded `while true`;
-- stops on non-zero model exit, state-validation failure, `BLOCKED`, `PAUSED`, `COMPLETE`, or cycle limit;
+- runs both state and input validation before invoking a model and after every model cycle;
+- stops on non-zero model exit, state- or input-validation failure, `BLOCKED`, `PAUSED`, `COMPLETE`, or cycle limit;
 - works before Git initialization with `--skip-git-repo-check`, while surfacing the reduced rollback guarantee in `STATUS.md`.
 
 For unattended execution, use an externally isolated machine/container, configure a hard wall-clock and cost limit outside this script, and review the allowed network and secret surface. This repository script does not grant broader permissions.

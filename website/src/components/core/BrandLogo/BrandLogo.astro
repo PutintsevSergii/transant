@@ -1,0 +1,67 @@
+---
+import type { BrandLogoProps } from "./BrandLogo.types";
+
+const {
+  src,
+  alt,
+  href,
+  width,
+  height,
+  tone,
+  priority = false,
+} = Astro.props as BrandLogoProps;
+const rootClass = `brand-logo brand-logo--${tone}`;
+---
+
+{
+  href ? (
+    <a class={rootClass} href={href} data-brand-logo="linked">
+      <img
+        class="brand-logo__image"
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
+        decoding="async"
+      />
+    </a>
+  ) : (
+    <span class={rootClass} data-brand-logo="unlinked">
+      <img
+        class="brand-logo__image"
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
+        decoding="async"
+      />
+    </span>
+  )
+}
+
+<style>
+  .brand-logo {
+    display: inline-block;
+    max-inline-size: 100%;
+  }
+
+  .brand-logo--dark {
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-paper);
+  }
+
+  .brand-logo__image {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+
+  .brand-logo:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+</style>

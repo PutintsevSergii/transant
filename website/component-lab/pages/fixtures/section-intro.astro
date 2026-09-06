@@ -1,0 +1,116 @@
+---
+import SectionIntro from "../../../src/components/core/SectionIntro/SectionIntro.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="SectionIntro fixture | TransANT component lab"
+  description="Semantic heading and editorial-introduction SectionIntro variants."
+>
+  <main class="section-intro-fixture" data-fixture="section-intro">
+    <header class="section-intro-fixture__masthead page-frame">
+      <a href="/">Component lab</a>
+      <p>C-003 primitive: caller-owned document outline and section surface.</p>
+    </header>
+
+    <section
+      class="section-intro-fixture__panel section-intro-fixture__panel--light page-frame"
+      aria-label="Light left-aligned heading examples"
+    >
+      <SectionIntro
+        eyebrow="Section foundation"
+        title="A heading lockup that belongs to every page, not one page."
+        description="The caller chooses the semantic rank and surrounding layout; this primitive preserves a calm, readable editorial introduction."
+        headingLevel={1}
+        align="left"
+        theme="light"
+        measure="standard"
+      />
+      <SectionIntro
+        title="Optional copy may be intentionally absent"
+        headingLevel={2}
+        align="left"
+        theme="light"
+        measure="narrow"
+      />
+      <SectionIntro
+        eyebrow="Engineering context"
+        title="Use an H3 where the embedding section already names its topic"
+        description="A component cannot infer heading rank from visual prominence, so the caller makes that document-structure choice explicit."
+        headingLevel={3}
+        align="left"
+        theme="light"
+        measure="wide"
+      />
+    </section>
+
+    <section
+      class="section-intro-fixture__panel section-intro-fixture__panel--dark page-frame"
+      aria-label="Dark centered heading examples"
+    >
+      <SectionIntro
+        eyebrow="Shared presentation"
+        title="Centered without changing the reading order"
+        description="The dark theme changes only the foreground colors. The surrounding section owns this blue ground and its spacing."
+        headingLevel={4}
+        align="center"
+        theme="dark"
+        measure="standard"
+      />
+      <SectionIntro
+        title="Every valid heading level remains available"
+        description="This smaller-rank example keeps the same text rhythm for deep product-detail or legal document structures."
+        headingLevel={5}
+        align="center"
+        theme="dark"
+        measure="narrow"
+      />
+      <SectionIntro
+        eyebrow="Long-copy fixture"
+        title="A deliberately extended heading demonstrates natural wrapping at the narrowest supported viewport without clipping the start or end of the editorial message"
+        description="The supporting copy is deliberately longer than a typical release-one introduction. It verifies that a 30 percent content expansion remains readable, remains inside the selected measure, and never depends on a fixed-height visual slot or hidden overflow to preserve a desktop composition."
+        headingLevel={6}
+        align="center"
+        theme="dark"
+        measure="wide"
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .section-intro-fixture {
+    overflow: clip;
+    background: var(--color-paper-warm);
+  }
+
+  .section-intro-fixture__masthead,
+  .section-intro-fixture__panel {
+    display: grid;
+    gap: var(--space-7);
+    padding-block: var(--space-7);
+  }
+
+  .section-intro-fixture__masthead > a {
+    justify-self: start;
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .section-intro-fixture__masthead > p {
+    max-inline-size: var(--reading-max);
+    margin: 0;
+    color: var(--color-ink-secondary);
+  }
+
+  .section-intro-fixture__panel--light {
+    background: var(--color-paper);
+  }
+
+  .section-intro-fixture__panel--dark {
+    background: var(--color-footer-navy);
+  }
+</style>

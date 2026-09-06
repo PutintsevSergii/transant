@@ -1,0 +1,109 @@
+---
+import flatWagon from "../../../src/assets/images/products/flat/uno-flat-60ft-rens/wagon-render.png";
+import intermodalWagon from "../../../src/assets/images/products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png";
+import openBoxWagon from "../../../src/assets/images/products/open-box/uno-multi-40ft-eanos/wagon-render.png";
+import tankWagon from "../../../src/assets/images/products/tank/uno-tank-88m3-zacns/wagon-render.png";
+import timberWagon from "../../../src/assets/images/products/timber/uno-timber-60ft-snps/wagon-render.png";
+import WagonSwitchyard from "../../../src/components/home/WagonSwitchyard/WagonSwitchyard.astro";
+import type { WagonSwitchyardProps } from "../../../src/components/home/WagonSwitchyard/WagonSwitchyard.types";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const families = [
+  {
+    id: "intermodal",
+    sequence: "01",
+    familyName: "Intermodal",
+    modelCode: "Sgns(s)",
+    headline: "Containers & swap bodies",
+    summary:
+      "Lightweight intermodal wagons for 20/30/40ft ISO containers and swap bodies, built around a low tare weight and flexible loading configurations.",
+    image: intermodalWagon,
+    href: "/wagons/intermodal/",
+    linkLabel: "Explore Intermodal",
+    technicalLabel: "20/30/40ft ISO containers and swap bodies",
+  },
+  {
+    id: "flat",
+    sequence: "02",
+    familyName: "Flat",
+    modelCode: "Rens",
+    headline: "Steel & long cargo",
+    summary:
+      "Versatile flat wagons with foldable side walls, swivel stanchions and robust wooden floors for steel, construction materials and long, bulky or project cargo.",
+    image: flatWagon,
+    href: "/wagons/flat/",
+    linkLabel: "Explore Flat",
+    technicalLabel: "Foldable side walls and swivel stanchions",
+  },
+  {
+    id: "timber",
+    sequence: "03",
+    familyName: "Timber",
+    modelCode: "Snps",
+    headline: "Roundwood & timber",
+    summary:
+      "High-capacity timber wagons engineered for 3, 4 and 5 m logs, with optimized stanchions that retain roundwood securely without additional tying.",
+    image: timberWagon,
+    href: "/wagons/timber/",
+    linkLabel: "Explore Timber",
+    technicalLabel: "3, 4 and 5 m logs",
+  },
+  {
+    id: "open-box",
+    sequence: "04",
+    familyName: "Multi / Open box",
+    modelCode: "Eanos",
+    headline: "Scrap & bulk materials",
+    summary:
+      "High-wall open-box wagons from 33 to 56 ft, with an exceptional payload-to-tare ratio and full-length side doors for fast, flexible loading of scrap and bulk.",
+    image: openBoxWagon,
+    href: "/wagons/open-box/",
+    linkLabel: "Explore Multi / Open box",
+  },
+  {
+    id: "tank",
+    sequence: "05",
+    familyName: "Tank",
+    modelCode: "Zacns",
+    headline: "Liquid chemicals & fuels",
+    summary:
+      "High-capacity tank wagons for chemical, petrochemical and petroleum products, engineered to RID, TSI, GCU, EN and UIC requirements.",
+    image: tankWagon,
+    href: "/wagons/tank/",
+    linkLabel: "Explore Tank",
+    technicalLabel: "Chemical, petrochemical and petroleum products",
+  },
+] as const satisfies WagonSwitchyardProps["families"];
+---
+
+<ComponentLabLayout
+  title="WagonSwitchyard fixture | TransANT component lab"
+  description="Server-rendered family browse control with a progressive tab enhancement."
+>
+  <main data-fixture="wagon-switchyard">
+    <WagonSwitchyard
+      id="wagon-switchyard-primary"
+      eyebrow="Wagon families"
+      heading="Five families. Engineered around the load."
+      summary="From containers and steel to timber, bulk materials and liquids, each TransANT wagon family is developed around a specific transport task."
+      families={families}
+    />
+    <section
+      class="wagon-switchyard-fixture__second"
+      aria-label="Second instance"
+    >
+      <WagonSwitchyard
+        id="wagon-switchyard-secondary"
+        heading="Independent selector instance"
+        summary="A second source-owned instance for isolation testing."
+        families={families}
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .wagon-switchyard-fixture__second {
+    margin-block-start: var(--space-8);
+  }
+</style>

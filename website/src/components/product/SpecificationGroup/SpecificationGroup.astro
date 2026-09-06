@@ -1,0 +1,130 @@
+---
+import { validateSpecificationGroupProps } from "./specification-group-contract";
+import type { SpecificationGroupProps } from "./SpecificationGroup.types";
+
+const props = Astro.props as SpecificationGroupProps;
+validateSpecificationGroupProps(props);
+
+const Heading = `h${props.headingLevel}` as "h2" | "h3";
+---
+
+<section class="specification-group" data-specification-group>
+  <div class="specification-group__frame page-frame">
+    <div class="specification-group__heading">
+      <Heading>{props.title}</Heading>
+    </div>
+
+    <dl class="specification-group__list" data-specification-group-list>
+      {
+        props.rows.map((row) => (
+          <div class="specification-group__row" data-specification-row>
+            <dt>{row.label}</dt>
+            <dd>
+              <span data-specification-value>{row.value}</span>
+              {row.unit !== undefined && (
+                <span class="specification-group__unit" data-specification-unit>
+                  {row.unit}
+                </span>
+              )}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .specification-group {
+    container-type: inline-size;
+    overflow: clip;
+    background: var(--color-paper);
+  }
+
+  .specification-group__frame,
+  .specification-group__heading,
+  .specification-group__list,
+  .specification-group__row,
+  .specification-group__row dd {
+    min-inline-size: 0;
+  }
+
+  .specification-group__frame {
+    display: grid;
+    gap: clamp(var(--space-5), 6vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .specification-group__heading {
+    display: grid;
+    gap: var(--space-3);
+    max-inline-size: 52rem;
+  }
+
+  .specification-group__heading h2,
+  .specification-group__heading h3,
+  .specification-group__row dt,
+  .specification-group__row dd {
+    margin: 0;
+  }
+
+  .specification-group__heading h2,
+  .specification-group__heading h3 {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 6cqi, 3.5rem);
+    line-height: var(--line-height-tight);
+    overflow-wrap: anywhere;
+  }
+
+  .specification-group__row dt {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .specification-group__list {
+    display: grid;
+    margin: 0;
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+
+  .specification-group__row {
+    display: grid;
+    gap: var(--space-2);
+    align-items: baseline;
+    padding-block: var(--space-4);
+    border-block-end: var(--border-thin) solid var(--color-divider);
+  }
+
+  .specification-group__row dt {
+    overflow-wrap: anywhere;
+  }
+
+  .specification-group__row dd {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35em;
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 3.4cqi, 1.2rem);
+    font-variant-numeric: tabular-nums;
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .specification-group__unit {
+    color: var(--color-ink-secondary);
+  }
+
+  @container (min-width: 46rem) {
+    .specification-group__row {
+      grid-template-columns: minmax(12rem, 0.8fr) minmax(0, 1.2fr);
+      gap: var(--space-5);
+    }
+  }
+</style>

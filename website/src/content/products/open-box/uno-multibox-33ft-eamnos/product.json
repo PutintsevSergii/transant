@@ -33,55 +33,63 @@
       "4"
     ],
     [
-      "Distance between bogie pivots",
-      "6.500 mm"
+      "Distance between bogie pivots (mm)",
+      "6.500"
     ],
     [
       "Bogie type",
       "Y25 with compact brake"
     ],
     [
-      "Length over buffers",
-      "11.500 mm"
+      "Length over buffers (mm)",
+      "11.500"
     ],
     [
-      "Wagon tare",
-      "20.0 t"
+      "Wagon tare (t)",
+      "20,0"
     ],
     [
-      "Loading length",
-      "10.240 mm"
+      "Loading length (mm)",
+      "10.240"
     ],
     [
-      "Loading width",
-      "2.707 mm"
+      "Loading width (mm)",
+      "2.707"
     ],
     [
-      "Loading area",
-      "27.7 m²"
+      "Loading area (m²)",
+      "27,7"
     ],
     [
-      "Loading volume",
-      "60.9 m³"
+      "Loading volume (m³)",
+      "60,9"
     ],
     [
-      "Floor height above rail",
-      "1.170 mm"
+      "Floor height above top of rail (mm)",
+      "1.170"
     ],
     [
-      "Door opening (W×H)",
-      "850 × 1780 mm"
+      "Door opening W x H (mm x mm)",
+      "850 x 1780"
     ],
     [
       "Vehicle gauge",
       "G1"
     ],
     [
-      "Max wheelset load",
-      "22.5 t"
+      "Maximum wheelset load (t)",
+      "22,5"
     ],
     [
-      "Max running speed",
+      "Minimal curve radius (m)",
+      "R 75"
+    ],
+    [
+      "Permitted maximum speed brake-related",
+      "100 km/h"
+    ],
+    [
+      "Maximum permitted running speed",
       "120 km/h"
     ]
   ],
@@ -113,5 +121,9 @@
   "slug": "uno-multibox-33ft-eamnos",
   "category": "open-box",
   "category_name": "Multi / Open box",
-  "image": "products/open-box/uno-multibox-33ft-eamnos/wagon-render.png"
+  "image": "products/open-box/uno-multibox-33ft-eamnos/wagon-render.png",
+  "technical_source": {
+    "reference": "Catalog for print.pdf, PDF page 17 (printed page 15); checked against Catalog for print.ai",
+    "checkedAt": "2026-09-05"
+  }
 }

@@ -1,0 +1,82 @@
+---
+import SiteFooter from "../../../src/components/shell/SiteFooter/SiteFooter.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const groups = [
+  {
+    heading: "Wagons",
+    links: [
+      { label: "All wagon families", href: "/wagons/" },
+      { label: "Intermodal wagons", href: "/wagons/intermodal/" },
+      { label: "Special freight wagons", href: "/wagons/special-freight/" },
+    ],
+  },
+  {
+    heading: "Expertise",
+    links: [
+      { label: "Technology", href: "/technology/" },
+      { label: "Projects and references", href: "/projects/" },
+      { label: "Quality and sustainability", href: "/quality/" },
+    ],
+  },
+] as const;
+
+const contact = {
+  verification: "verified",
+  companyName: "Component-lab verified contact (test data)",
+  addressLines: ["42 Fixture Lane", "Example Test District"] as const,
+  phone: "+1 (202) 555-0148",
+  email: "footer-contact@example.test",
+} as const;
+---
+
+<ComponentLabLayout
+  title="SiteFooter fixture | TransANT component lab"
+  description="Server-rendered dark footer shell with explicit test data."
+>
+  <main class="site-footer-fixture page-frame">
+    <p class="site-footer-fixture__eyebrow">C-007 shell component</p>
+    <h1>A documented close remains useful without JavaScript.</h1>
+    <p>
+      This fixture supplies clearly non-production test data to prove the footer
+      contract. Release routes must pass only approved company and contact
+      records through their content boundary.
+    </p>
+  </main>
+  <SiteFooter
+    groups={groups}
+    contact={contact}
+    legalLinks={[
+      {
+        label: "Privacy policy with an intentionally long legal link label",
+        href: "/privacy/",
+      },
+      { label: "Imprint", href: "/imprint/" },
+    ]}
+    copyright="© Component-lab test data. No production contact details."
+  />
+</ComponentLabLayout>
+
+<style>
+  .site-footer-fixture {
+    display: grid;
+    min-block-size: 38vh;
+    align-content: center;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+
+  .site-footer-fixture__eyebrow {
+    color: var(--color-brand-red);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .site-footer-fixture > p:not(.site-footer-fixture__eyebrow) {
+    max-inline-size: var(--reading-max);
+    color: var(--color-ink-secondary);
+  }
+</style>

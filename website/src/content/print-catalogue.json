@@ -1,0 +1,2110 @@
+{
+  "sgns": {
+    "pdfPage": 5,
+    "printedPage": "03",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Sgns(s)"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "14.200"
+          ],
+          [
+            "Bogie type",
+            "Y25 with classic brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "19.830"
+          ],
+          [
+            "Wagon tare (t)",
+            "19,3"
+          ],
+          [
+            "Loading length (mm)",
+            "18.500"
+          ],
+          [
+            "Loading width (mm)",
+            "2.380"
+          ],
+          [
+            "Floor height above basis (mm)",
+            "1.155"
+          ],
+          [
+            "Special features",
+            "28 foldable container pins"
+          ],
+          [
+            "Vehicle gauge",
+            "G1"
+          ],
+          [
+            "Max wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Min curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted max speed brake-related",
+            "120 km/h"
+          ],
+          [
+            "Max permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Loading limits",
+        "headers": [
+          "Regime",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "S"
+            },
+            {
+              "text": "44.7"
+            },
+            {
+              "text": "52.7"
+            },
+            {
+              "text": "62.7"
+            },
+            {
+              "text": "70.7"
+            }
+          ],
+          [
+            {
+              "text": "SS"
+            },
+            {
+              "text": "44.7"
+            },
+            {
+              "text": "52.7"
+            },
+            {
+              "text": "60.7",
+              "colSpan": 2
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": [
+          "The SS value 60.7 spans route classes C and D in the catalogue."
+        ]
+      }
+    ],
+    "features": [
+      "Classic brake for SS-bake regime",
+      "28 container pins for multiple configurations",
+      "DAC ready"
+    ],
+    "notes": [
+      "The specification table lists length over buffers as 19.830 mm; the drawing labels 19740. Confirm the required configuration with TransANT."
+    ],
+    "drawings": [
+      {
+        "title": "Side elevation",
+        "asset": "sgns-1.webp",
+        "width": 2480,
+        "height": 541,
+        "crop": [
+          0.08,
+          0.125,
+          0.755,
+          0.23
+        ]
+      },
+      {
+        "title": "End elevation",
+        "asset": "sgns-2.webp",
+        "width": 624,
+        "height": 685,
+        "crop": [
+          0.755,
+          0.077,
+          0.925,
+          0.21
+        ]
+      },
+      {
+        "title": "Loading scheme",
+        "asset": "sgns-3.webp",
+        "width": 1341,
+        "height": 2174,
+        "crop": [
+          0.525,
+          0.315,
+          0.89,
+          0.737
+        ]
+      }
+    ]
+  },
+  "rens": {
+    "pdfPage": 7,
+    "printedPage": "05",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Rens"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "14.360"
+          ],
+          [
+            "Bogie type",
+            "Y25 with compact brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "19.900"
+          ],
+          [
+            "Wagon tare (t)",
+            "22,5"
+          ],
+          [
+            "Loading length (mm)",
+            "18.500"
+          ],
+          [
+            "Loading width (mm)",
+            "2.646"
+          ],
+          [
+            "Floor height above top of rail (mm)",
+            "1.240"
+          ],
+          [
+            "Height of foldable end and side wall (mm)",
+            "520"
+          ]
+        ]
+      },
+      {
+        "title": "Equipment and operation",
+        "rows": [
+          [
+            "Stanchions",
+            "16 swivel stanchions"
+          ],
+          [
+            "Side walls",
+            "18 side walls"
+          ],
+          [
+            "Floor lashing",
+            "14"
+          ],
+          [
+            "Type of floor",
+            "70 mm spruce wood"
+          ],
+          [
+            "Vehicle gauge",
+            "G1"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted maximum speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Maximum permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "41,5"
+            },
+            {
+              "text": "49,5"
+            },
+            {
+              "text": "59,5"
+            },
+            {
+              "text": "67,5"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      },
+      {
+        "title": "Table for concentrated payloads",
+        "headers": [
+          "Section",
+          "Length",
+          "Distributed over the loading length",
+          "Distributed on two points"
+        ],
+        "rows": [
+          [
+            {
+              "text": "a-a"
+            },
+            {
+              "text": "2 m"
+            },
+            {
+              "text": "32"
+            },
+            {
+              "text": "33"
+            }
+          ],
+          [
+            {
+              "text": "b-b"
+            },
+            {
+              "text": "5 m"
+            },
+            {
+              "text": "39"
+            },
+            {
+              "text": "44"
+            }
+          ],
+          [
+            {
+              "text": "c-c"
+            },
+            {
+              "text": "9 m"
+            },
+            {
+              "text": "42"
+            },
+            {
+              "text": "52"
+            }
+          ],
+          [
+            {
+              "text": "d-d"
+            },
+            {
+              "text": "15 m"
+            },
+            {
+              "text": "52"
+            },
+            {
+              "text": "67"
+            }
+          ],
+          [
+            {
+              "text": "e-e"
+            },
+            {
+              "text": "18 m"
+            },
+            {
+              "text": "67"
+            },
+            {
+              "text": "28"
+            }
+          ]
+        ],
+        "kind": "payload",
+        "notes": []
+      }
+    ],
+    "features": [
+      "18 foldable side walls",
+      "70mm wooden floor",
+      "DAC ready"
+    ],
+    "notes": [],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "rens-1.webp",
+        "width": 2517,
+        "height": 1211,
+        "crop": [
+          0.08,
+          0.09,
+          0.765,
+          0.325
+        ]
+      },
+      {
+        "title": "End elevation and section",
+        "asset": "rens-2.webp",
+        "width": 551,
+        "height": 1433,
+        "crop": [
+          0.775,
+          0.047,
+          0.925,
+          0.325
+        ]
+      }
+    ]
+  },
+  "relns": {
+    "pdfPage": 9,
+    "printedPage": "07",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Relns"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "14.360"
+          ],
+          [
+            "Bogie type",
+            "Y25 with compact brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "19.900"
+          ],
+          [
+            "Wagon tare (t)",
+            "22,0"
+          ],
+          [
+            "Loading length (mm)",
+            "18.526"
+          ],
+          [
+            "Loading width (mm)",
+            "2.646"
+          ],
+          [
+            "Floor height above top of rail (mm)",
+            "1.240"
+          ]
+        ]
+      },
+      {
+        "title": "Equipment and operation",
+        "rows": [
+          [
+            "Height of foldable end and side wall (mm)",
+            "520"
+          ],
+          [
+            "Side walls",
+            "18 side walls"
+          ],
+          [
+            "Floor lashing",
+            "14"
+          ],
+          [
+            "Type of floor",
+            "70 mm spruce wood"
+          ],
+          [
+            "Vehicle gauge",
+            "G1"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted maximum speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Maximum permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "42"
+            },
+            {
+              "text": "50"
+            },
+            {
+              "text": "60"
+            },
+            {
+              "text": "68"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      },
+      {
+        "title": "Table for concentrated payloads",
+        "headers": [
+          "Section",
+          "Length",
+          "Distributed over the loading length",
+          "Distributed on two points"
+        ],
+        "rows": [
+          [
+            {
+              "text": "a-a"
+            },
+            {
+              "text": "2 m"
+            },
+            {
+              "text": "32"
+            },
+            {
+              "text": "33"
+            }
+          ],
+          [
+            {
+              "text": "b-b"
+            },
+            {
+              "text": "5 m"
+            },
+            {
+              "text": "39"
+            },
+            {
+              "text": "44"
+            }
+          ],
+          [
+            {
+              "text": "c-c"
+            },
+            {
+              "text": "9 m"
+            },
+            {
+              "text": "42"
+            },
+            {
+              "text": "52"
+            }
+          ],
+          [
+            {
+              "text": "d-d"
+            },
+            {
+              "text": "15 m"
+            },
+            {
+              "text": "52"
+            },
+            {
+              "text": "68"
+            }
+          ],
+          [
+            {
+              "text": "e-e"
+            },
+            {
+              "text": "18 m"
+            },
+            {
+              "text": "68"
+            },
+            {
+              "text": "28"
+            }
+          ]
+        ],
+        "kind": "payload",
+        "notes": []
+      }
+    ],
+    "features": [
+      "18 foldable side walls",
+      "70mm wooden floor",
+      "DAC ready"
+    ],
+    "notes": [
+      "The catalogue artwork uses a letterform in the wagon-type row that can resemble “Reins”; the overview and wagon designation identify the model as Relns."
+    ],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "relns-1.webp",
+        "width": 2553,
+        "height": 1149,
+        "crop": [
+          0.08,
+          0.097,
+          0.775,
+          0.32
+        ]
+      },
+      {
+        "title": "End elevation",
+        "asset": "relns-2.webp",
+        "width": 548,
+        "height": 722,
+        "crop": [
+          0.778,
+          0.047,
+          0.927,
+          0.187
+        ]
+      }
+    ]
+  },
+  "rns": {
+    "pdfPage": 11,
+    "printedPage": "09",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Rns"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "14.360"
+          ],
+          [
+            "Bogie type",
+            "Y25 with compact brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "19.900"
+          ],
+          [
+            "Wagon tare (t)",
+            "21,0"
+          ],
+          [
+            "Loading length (mm)",
+            "18.526"
+          ],
+          [
+            "Loading width (mm)",
+            "2.646"
+          ],
+          [
+            "Floor height above top of rail (mm)",
+            "1.240"
+          ],
+          [
+            "Height of foldable end and side wall (mm)",
+            "520"
+          ]
+        ]
+      },
+      {
+        "title": "Equipment and operation",
+        "rows": [
+          [
+            "Stanchions",
+            "16 swivel stanchions"
+          ],
+          [
+            "Bolsters",
+            "16 bolsters"
+          ],
+          [
+            "Floor lashing",
+            "18"
+          ],
+          [
+            "Type of floor",
+            "70 mm spruce wood"
+          ],
+          [
+            "Vehicle gauge",
+            "G1"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted maximum speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Maximum permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "43"
+            },
+            {
+              "text": "51"
+            },
+            {
+              "text": "61"
+            },
+            {
+              "text": "69"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      },
+      {
+        "title": "Table for concentrated payloads",
+        "headers": [
+          "Section",
+          "Length",
+          "Distributed over the loading length",
+          "Distributed on two points"
+        ],
+        "rows": [
+          [
+            {
+              "text": "a-a"
+            },
+            {
+              "text": "2 m"
+            },
+            {
+              "text": "32"
+            },
+            {
+              "text": "33"
+            }
+          ],
+          [
+            {
+              "text": "b-b"
+            },
+            {
+              "text": "5 m"
+            },
+            {
+              "text": "39"
+            },
+            {
+              "text": "44"
+            }
+          ],
+          [
+            {
+              "text": "c-c"
+            },
+            {
+              "text": "9 m"
+            },
+            {
+              "text": "42"
+            },
+            {
+              "text": "52"
+            }
+          ],
+          [
+            {
+              "text": "d-d"
+            },
+            {
+              "text": "15 m"
+            },
+            {
+              "text": "52"
+            },
+            {
+              "text": "69"
+            }
+          ],
+          [
+            {
+              "text": "e-e"
+            },
+            {
+              "text": "18 m"
+            },
+            {
+              "text": "69"
+            },
+            {
+              "text": "28"
+            }
+          ]
+        ],
+        "kind": "payload",
+        "notes": []
+      }
+    ],
+    "features": [
+      "16 foldable bolsters",
+      "70mm wooden floor",
+      "DAC ready"
+    ],
+    "notes": [],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "rns-1.webp",
+        "width": 2410,
+        "height": 1185,
+        "crop": [
+          0.11,
+          0.095,
+          0.766,
+          0.325
+        ]
+      },
+      {
+        "title": "End elevation and section",
+        "asset": "rns-2.webp",
+        "width": 536,
+        "height": 1427,
+        "crop": [
+          0.774,
+          0.049,
+          0.92,
+          0.326
+        ]
+      }
+    ]
+  },
+  "rnoos": {
+    "pdfPage": 13,
+    "printedPage": "11",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Rnoos"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "14.360"
+          ],
+          [
+            "Bogie type",
+            "Y25 with compact brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "19.900"
+          ],
+          [
+            "Wagon tare (t)",
+            "21,6"
+          ],
+          [
+            "Loading length (mm)",
+            "18.50"
+          ],
+          [
+            "Loading width (mm)",
+            "2.646"
+          ],
+          [
+            "Floor height above top of rail (mm)",
+            "1.240"
+          ]
+        ]
+      },
+      {
+        "title": "Equipment and operation",
+        "rows": [
+          [
+            "Height of foldable end and side wall (mm)",
+            "520"
+          ],
+          [
+            "Stanchion pairs",
+            "10"
+          ],
+          [
+            "Deflectors",
+            "7"
+          ],
+          [
+            "Side lashing",
+            "18"
+          ],
+          [
+            "Vehicle gauge",
+            "G2"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted maximum speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Maximum permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "42,2"
+            },
+            {
+              "text": "50,4"
+            },
+            {
+              "text": "60,4"
+            },
+            {
+              "text": "68,4"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      }
+    ],
+    "features": [
+      "Transport of 3, 4 and 5m long round timber wood",
+      "10 stanchion pairs",
+      "7 deflectors",
+      "G2 profile",
+      "DAC ready"
+    ],
+    "notes": [
+      "The catalogue prints loading length as 18.50 mm. This value is reproduced as printed and requires confirmation."
+    ],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "rnoos-1.webp",
+        "width": 2003,
+        "height": 1139,
+        "crop": [
+          0.155,
+          0.086,
+          0.7,
+          0.307
+        ]
+      },
+      {
+        "title": "End elevations",
+        "asset": "rnoos-2.webp",
+        "width": 507,
+        "height": 1159,
+        "crop": [
+          0.712,
+          0.082,
+          0.85,
+          0.307
+        ]
+      },
+      {
+        "title": "Loading scheme",
+        "asset": "rnoos-3.webp",
+        "width": 1517,
+        "height": 520,
+        "crop": [
+          0.292,
+          0.335,
+          0.705,
+          0.436
+        ]
+      }
+    ]
+  },
+  "snps": {
+    "pdfPage": 15,
+    "printedPage": "13",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Snps"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "14.360"
+          ],
+          [
+            "Bogie type",
+            "Y25 with compact brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "19.900"
+          ],
+          [
+            "Wagon tare (t)",
+            "20,50"
+          ],
+          [
+            "Loading length (mm)",
+            "18.500"
+          ],
+          [
+            "Loading width (mm)",
+            "2.529"
+          ],
+          [
+            "Floor height above top of rail (mm)",
+            "1.170"
+          ]
+        ]
+      },
+      {
+        "title": "Equipment and operation",
+        "rows": [
+          [
+            "Stanchion pairs",
+            "10"
+          ],
+          [
+            "Deflectors",
+            "7"
+          ],
+          [
+            "Side lashing winches",
+            "7"
+          ],
+          [
+            "Vehicle gauge",
+            "G2"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted maximum speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Maximum permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "43,5"
+            },
+            {
+              "text": "51,5"
+            },
+            {
+              "text": "61,5"
+            },
+            {
+              "text": "69,5"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      }
+    ],
+    "features": [
+      "Transport of 3, 4 and 5m long round timber wood",
+      "10 stanchion pairs",
+      "7 deflectors",
+      "G2 profile",
+      "DAC ready"
+    ],
+    "notes": [],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "snps-1.webp",
+        "width": 2014,
+        "height": 1175,
+        "crop": [
+          0.162,
+          0.09,
+          0.71,
+          0.318
+        ]
+      },
+      {
+        "title": "End elevation",
+        "asset": "snps-2.webp",
+        "width": 390,
+        "height": 675,
+        "crop": [
+          0.729,
+          0.077,
+          0.835,
+          0.208
+        ]
+      },
+      {
+        "title": "Loading scheme",
+        "asset": "snps-3.webp",
+        "width": 1606,
+        "height": 525,
+        "crop": [
+          0.278,
+          0.335,
+          0.715,
+          0.437
+        ]
+      }
+    ]
+  },
+  "eamnos": {
+    "pdfPage": 17,
+    "printedPage": "15",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Eamnos"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "6.500"
+          ],
+          [
+            "Bogie type",
+            "Y25 with compact brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "11.500"
+          ],
+          [
+            "Wagon tare (t)",
+            "20,0"
+          ],
+          [
+            "Loading length (mm)",
+            "10.240"
+          ],
+          [
+            "Loading width (mm)",
+            "2.707"
+          ],
+          [
+            "Loading area (m²)",
+            "27,7"
+          ]
+        ]
+      },
+      {
+        "title": "Equipment and operation",
+        "rows": [
+          [
+            "Loading volume (m³)",
+            "60,9"
+          ],
+          [
+            "Floor height above top of rail (mm)",
+            "1.170"
+          ],
+          [
+            "Door opening W x H (mm x mm)",
+            "850 x 1780"
+          ],
+          [
+            "Vehicle gauge",
+            "G1"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted maximum speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Maximum permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "44"
+            },
+            {
+              "text": "52"
+            },
+            {
+              "text": "62"
+            },
+            {
+              "text": "70"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      },
+      {
+        "title": "Table for concentrated payloads",
+        "headers": [
+          "Section",
+          "Length",
+          "Distributed over the loading length",
+          "Distributed on two points"
+        ],
+        "rows": [
+          [
+            {
+              "text": "a-a"
+            },
+            {
+              "text": "3 m"
+            },
+            {
+              "text": "23"
+            },
+            {
+              "text": "26"
+            }
+          ],
+          [
+            {
+              "text": "b-b"
+            },
+            {
+              "text": "5 m"
+            },
+            {
+              "text": "27"
+            },
+            {
+              "text": "30"
+            }
+          ],
+          [
+            {
+              "text": "c-c"
+            },
+            {
+              "text": "6,5 m"
+            },
+            {
+              "text": "39"
+            },
+            {
+              "text": "70"
+            }
+          ],
+          [
+            {
+              "text": "d-d"
+            },
+            {
+              "text": "10 m"
+            },
+            {
+              "text": "70"
+            },
+            {
+              "text": ""
+            }
+          ]
+        ],
+        "kind": "payload",
+        "notes": [
+          "Blank cells are blank in the catalogue; no value has been inferred."
+        ]
+      }
+    ],
+    "features": [],
+    "notes": [
+      "The catalogue’s special-feature panel repeats timber-wagon equipment and a G2 profile, while this wagon’s specification table lists G1. These conflicting feature claims require confirmation.",
+      "The table lists bogie-pivot distance as 6.500 mm and loading length as 10.240 mm; the drawing labels 6480 and 10200 respectively."
+    ],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "eamnos-1.webp",
+        "width": 2242,
+        "height": 1453,
+        "crop": [
+          0.1,
+          0.09,
+          0.71,
+          0.372
+        ]
+      },
+      {
+        "title": "End elevation",
+        "asset": "eamnos-2.webp",
+        "width": 805,
+        "height": 804,
+        "crop": [
+          0.684,
+          0.066,
+          0.903,
+          0.222
+        ]
+      }
+    ]
+  },
+  "eanos-40": {
+    "pdfPage": 19,
+    "printedPage": "17",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Eanos"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "8.068"
+          ],
+          [
+            "Bogie type",
+            "Y25 with compact brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "13.608"
+          ],
+          [
+            "Wagon tare (t)",
+            "21,0"
+          ],
+          [
+            "Loading length (mm)",
+            "12.336"
+          ],
+          [
+            "Loading width (mm)",
+            "2.711"
+          ],
+          [
+            "Loading area (m²)",
+            "33,2"
+          ]
+        ]
+      },
+      {
+        "title": "Equipment and operation",
+        "rows": [
+          [
+            "Loading volume (m³)",
+            "73,0"
+          ],
+          [
+            "Floor height above top of rail (mm)",
+            "1.168"
+          ],
+          [
+            "Door opening W x H (mm x mm)",
+            "850 x 1780"
+          ],
+          [
+            "Vehicle gauge",
+            "G1"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted maximum speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Maximum permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "43"
+            },
+            {
+              "text": "51"
+            },
+            {
+              "text": "61"
+            },
+            {
+              "text": "69"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      },
+      {
+        "title": "Table for concentrated payloads",
+        "headers": [
+          "Section",
+          "Length",
+          "Distributed over the loading length",
+          "Distributed on two points"
+        ],
+        "rows": [
+          [
+            {
+              "text": "a-a"
+            },
+            {
+              "text": "2 m"
+            },
+            {
+              "text": "23"
+            },
+            {
+              "text": "26"
+            }
+          ],
+          [
+            {
+              "text": "b-b"
+            },
+            {
+              "text": "5 m"
+            },
+            {
+              "text": "27"
+            },
+            {
+              "text": "30"
+            }
+          ],
+          [
+            {
+              "text": "c-c"
+            },
+            {
+              "text": "8 m"
+            },
+            {
+              "text": "39"
+            },
+            {
+              "text": "69"
+            }
+          ]
+        ],
+        "kind": "payload",
+        "notes": []
+      }
+    ],
+    "features": [
+      "Robust design and structure of open box",
+      "8mm floor thickness",
+      "6mm wall thickness",
+      "Two full size doors for easy cleaning",
+      "DAC ready"
+    ],
+    "notes": [],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "eanos-40-1.webp",
+        "width": 2260,
+        "height": 1479,
+        "crop": [
+          0.098,
+          0.095,
+          0.713,
+          0.382
+        ]
+      },
+      {
+        "title": "End elevation",
+        "asset": "eanos-40-2.webp",
+        "width": 720,
+        "height": 815,
+        "crop": [
+          0.727,
+          0.06,
+          0.923,
+          0.218
+        ]
+      }
+    ]
+  },
+  "eanos-56": {
+    "pdfPage": 21,
+    "printedPage": "19",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Eanos"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "12.462"
+          ],
+          [
+            "Bogie type",
+            "Y25 with compact brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "18.002"
+          ],
+          [
+            "Wagon tare (t)",
+            "23,30"
+          ],
+          [
+            "Loading length (mm)",
+            "16.726"
+          ],
+          [
+            "Loading width (mm)",
+            "2.715"
+          ],
+          [
+            "Loading area (m²)",
+            "45,4"
+          ]
+        ]
+      },
+      {
+        "title": "Equipment and operation",
+        "rows": [
+          [
+            "Loading volume (m³)",
+            "100,0"
+          ],
+          [
+            "Floor height above top of rail (mm)",
+            "1.168"
+          ],
+          [
+            "Door opening W x H (mm x mm)",
+            "850 x 1780"
+          ],
+          [
+            "Vehicle gauge",
+            "G1"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted maximum speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Maximum permitted running speed",
+            "120 km/h"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "40,7"
+            },
+            {
+              "text": "48,7"
+            },
+            {
+              "text": "58,7"
+            },
+            {
+              "text": "66,7"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      },
+      {
+        "title": "Table for concentrated payloads",
+        "headers": [
+          "Section",
+          "Length",
+          "Distributed over the loading length",
+          "Distributed on two points"
+        ],
+        "rows": [
+          [
+            {
+              "text": "a-a"
+            },
+            {
+              "text": "3 m"
+            },
+            {
+              "text": "23"
+            },
+            {
+              "text": "26"
+            }
+          ],
+          [
+            {
+              "text": "b-b"
+            },
+            {
+              "text": "5 m"
+            },
+            {
+              "text": "27"
+            },
+            {
+              "text": "30"
+            }
+          ],
+          [
+            {
+              "text": "c-c"
+            },
+            {
+              "text": "12 m"
+            },
+            {
+              "text": "39"
+            },
+            {
+              "text": "66"
+            }
+          ],
+          [
+            {
+              "text": "b-b"
+            },
+            {
+              "text": "16 m"
+            },
+            {
+              "text": "66"
+            },
+            {
+              "text": ""
+            }
+          ]
+        ],
+        "kind": "payload",
+        "notes": [
+          "Blank cells are blank in the catalogue; no value has been inferred."
+        ]
+      }
+    ],
+    "features": [
+      "6mm floor plate thickness",
+      "6mm front/rear wall thickness",
+      "4mm side wall thickness",
+      "100m3 loading capacity",
+      "Two full size doors for easy cleaning",
+      "DAC ready"
+    ],
+    "notes": [
+      "The concentrated-payload table repeats section b-b for the 16 m row and leaves its two-point value blank."
+    ],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "eanos-56-1.webp",
+        "width": 2333,
+        "height": 1252,
+        "crop": [
+          0.1,
+          0.097,
+          0.735,
+          0.34
+        ]
+      },
+      {
+        "title": "End elevation",
+        "asset": "eanos-56-2.webp",
+        "width": 525,
+        "height": 737,
+        "crop": [
+          0.782,
+          0.064,
+          0.925,
+          0.207
+        ]
+      }
+    ]
+  },
+  "zacns": {
+    "pdfPage": 23,
+    "printedPage": "21",
+    "groups": [
+      {
+        "title": "Technical specifications",
+        "rows": [
+          [
+            "Wagon type",
+            "Zacns"
+          ],
+          [
+            "Number of axles",
+            "4"
+          ],
+          [
+            "Distance between bogie pivots (mm)",
+            "9.960"
+          ],
+          [
+            "Bogie type",
+            "Y25 with classic brake"
+          ],
+          [
+            "Length over buffers (mm)",
+            "15.000"
+          ],
+          [
+            "Wagon tare (t)",
+            "21,00"
+          ],
+          [
+            "Vehicle gauge",
+            "G1"
+          ],
+          [
+            "Maximum wheelset load (t)",
+            "22,5"
+          ],
+          [
+            "Minimal curve radius (m)",
+            "R 75"
+          ],
+          [
+            "Permitted max speed brake-related",
+            "100 km/h"
+          ],
+          [
+            "Max permitted running speed",
+            "120 km/h"
+          ],
+          [
+            "Tank capacity (m³)",
+            "88,0"
+          ],
+          [
+            "Tank diameter (mm)",
+            "3000"
+          ],
+          [
+            "Tank code",
+            "L4BH"
+          ]
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "title": "Load limit per line class",
+        "headers": [
+          "Route class",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "rows": [
+          [
+            {
+              "text": "Load limit (S)"
+            },
+            {
+              "text": "43"
+            },
+            {
+              "text": "51"
+            },
+            {
+              "text": "61"
+            },
+            {
+              "text": "69"
+            }
+          ]
+        ],
+        "kind": "load",
+        "notes": []
+      },
+      {
+        "title": "List of transport goods",
+        "headers": [
+          "Description",
+          "UN-Nr."
+        ],
+        "rows": [
+          [
+            {
+              "text": "Diesel"
+            },
+            {
+              "text": "1202"
+            }
+          ],
+          [
+            {
+              "text": "Gasoline"
+            },
+            {
+              "text": "1203"
+            }
+          ],
+          [
+            {
+              "text": "Benzen"
+            },
+            {
+              "text": "1114"
+            }
+          ],
+          [
+            {
+              "text": "Toluen"
+            },
+            {
+              "text": "1294"
+            }
+          ],
+          [
+            {
+              "text": "Alkylate gasoline blendstock"
+            },
+            {
+              "text": "1203"
+            }
+          ],
+          [
+            {
+              "text": "Isobutane-based alkylate"
+            },
+            {
+              "text": "1268"
+            }
+          ],
+          [
+            {
+              "text": "Naphtha-range alkylate"
+            },
+            {
+              "text": "1268"
+            }
+          ],
+          [
+            {
+              "text": "Methyl-tert-butylether"
+            },
+            {
+              "text": "2398"
+            }
+          ],
+          [
+            {
+              "text": "Ethanol"
+            },
+            {
+              "text": "1170"
+            }
+          ],
+          [
+            {
+              "text": "Methanol"
+            },
+            {
+              "text": "1230"
+            }
+          ],
+          [
+            {
+              "text": "Toluene"
+            },
+            {
+              "text": "1294"
+            }
+          ],
+          [
+            {
+              "text": "Xylene"
+            },
+            {
+              "text": "1307"
+            }
+          ]
+        ],
+        "kind": "goods",
+        "notes": [
+          "Names and UN numbers are reproduced from the product catalogue."
+        ]
+      }
+    ],
+    "features": [
+      "Compliant with the tank code L4BH",
+      "Meets the requirements of RID, TSI, GCU, EN, UIC standards",
+      "DAC ready"
+    ],
+    "notes": [],
+    "drawings": [
+      {
+        "title": "Side elevation and plan",
+        "asset": "zacns-1.webp",
+        "width": 2388,
+        "height": 1521,
+        "crop": [
+          0.077,
+          0.094,
+          0.727,
+          0.389
+        ]
+      },
+      {
+        "title": "End elevation",
+        "asset": "zacns-2.webp",
+        "width": 632,
+        "height": 752,
+        "crop": [
+          0.752,
+          0.09,
+          0.924,
+          0.236
+        ]
+      }
+    ]
+  }
+}

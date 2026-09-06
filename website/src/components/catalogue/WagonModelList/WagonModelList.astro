@@ -1,0 +1,256 @@
+---
+import Action from "../../core/Action/Action.astro";
+import ResponsiveMedia from "../../core/ResponsiveMedia/ResponsiveMedia.astro";
+import { validateWagonModelListProps } from "./wagon-model-list-contract";
+import type { WagonModelListProps } from "./WagonModelList.types";
+
+const props = Astro.props as WagonModelListProps;
+validateWagonModelListProps(props);
+---
+
+<section
+  class="wagon-model-list"
+  data-wagon-model-list
+  data-wagon-family-id={props.family.id}
+>
+  <div class="wagon-model-list__frame page-frame">
+    <ul class="wagon-model-list__items" data-wagon-model-list-items>
+      {
+        props.models.map((model) => (
+          <li class="wagon-model-list__item" data-wagon-model-list-item>
+            <article class="wagon-model-list__model" data-model-id={model.id}>
+              <div class="wagon-model-list__copy" data-wagon-model-list-copy>
+                <p class="wagon-model-list__code" data-wagon-model-code>
+                  {model.code}
+                </p>
+                <h2 class="wagon-model-list__title">{model.title}</h2>
+                <p class="wagon-model-list__summary">{model.summary}</p>
+                <div class="wagon-model-list__details" data-wagon-model-details>
+                  <p class="wagon-model-list__details-label">
+                    {model.detailLabel}
+                  </p>
+                  <ul>
+                    {model.details.slice(0, 3).map((detail) => (
+                      <li>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div class="wagon-model-list__media" data-wagon-model-list-media>
+                {model.media ? (
+                  <ResponsiveMedia {...model.media} />
+                ) : (
+                  <div
+                    class="wagon-model-list__media-fallback"
+                    data-wagon-model-media-fallback
+                    role="note"
+                  >
+                    {model.mediaFallback?.label}
+                  </div>
+                )}
+              </div>
+              <footer class="wagon-model-list__footer">
+                <Action
+                  kind="link"
+                  variant="text"
+                  size="regular"
+                  icon="arrow-right"
+                  href={model.href}
+                  label={model.linkLabel}
+                />
+              </footer>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .wagon-model-list {
+    container-type: inline-size;
+    overflow: clip;
+    background: var(--color-paper);
+  }
+
+  .wagon-model-list__frame,
+  .wagon-model-list__items,
+  .wagon-model-list__item,
+  .wagon-model-list__model,
+  .wagon-model-list__copy,
+  .wagon-model-list__media,
+  .wagon-model-list__footer {
+    min-inline-size: 0;
+  }
+
+  .wagon-model-list__frame {
+    display: grid;
+    padding-block: clamp(var(--space-6), 6vw, var(--space-8));
+  }
+
+  .wagon-model-list__code,
+  .wagon-model-list__title,
+  .wagon-model-list__summary,
+  .wagon-model-list__details-label,
+  .wagon-model-list__details ul {
+    margin: 0;
+  }
+
+  .wagon-model-list__code {
+    color: var(--color-brand-red);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .wagon-model-list__title {
+    max-inline-size: none;
+    color: var(--color-ink-primary);
+    font-family: var(--font-family-display);
+    font-size: clamp(1.35rem, 2.6cqi, 1.8rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: var(--line-height-tight);
+    text-wrap: initial;
+  }
+
+  .wagon-model-list__summary {
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+  }
+
+  .wagon-model-list__details {
+    display: grid;
+    gap: var(--space-2);
+    padding-block-start: var(--space-3);
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+
+  .wagon-model-list__details-label {
+    color: var(--color-ink-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .wagon-model-list__details ul {
+    display: grid;
+    gap: var(--space-1);
+    padding-inline-start: 1.1rem;
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+  }
+
+  .wagon-model-list__items {
+    display: grid;
+    gap: var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .wagon-model-list__model {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    gap: var(--space-5);
+    align-content: start;
+    min-block-size: 100%;
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .wagon-model-list__copy {
+    display: grid;
+    grid-template-rows: auto minmax(2.8rem, auto) minmax(4.4rem, auto) minmax(
+        7.5rem,
+        auto
+      );
+    gap: var(--space-3);
+    align-content: start;
+  }
+
+  .wagon-model-list__title,
+  .wagon-model-list__summary,
+  .wagon-model-list__details {
+    min-block-size: 0;
+  }
+
+  .wagon-model-list__media {
+    display: grid;
+    align-items: center;
+    block-size: 9rem;
+    min-block-size: 9rem;
+    padding-block: var(--space-1);
+  }
+
+  .wagon-model-list__media :global(.responsive-media) {
+    inline-size: 100%;
+    block-size: 100%;
+    align-items: center;
+    aspect-ratio: auto;
+  }
+
+  .wagon-model-list__media :global(.responsive-media picture) {
+    display: grid;
+    block-size: 100%;
+    place-items: center;
+  }
+
+  .wagon-model-list__media :global(.responsive-media img) {
+    max-block-size: 100%;
+  }
+
+  .wagon-model-list__media-fallback {
+    display: grid;
+    block-size: 100%;
+    min-block-size: 0;
+    align-items: center;
+    padding: var(--space-4);
+    border: var(--border-thin) dashed var(--color-divider);
+    background: var(--color-surface-subtle);
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+  }
+
+  .wagon-model-list__footer {
+    display: grid;
+    gap: var(--space-4);
+    align-content: start;
+    padding-block-start: var(--space-4);
+    border-block-start: var(--border-thin) solid var(--color-divider);
+    align-content: end;
+  }
+
+  @container (min-width: 56rem) {
+    .wagon-model-list__items {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+
+    .wagon-model-list__copy {
+      grid-template-rows: auto 4.5rem 7rem 8rem;
+    }
+
+    .wagon-model-list__model {
+      padding: var(--space-5);
+    }
+
+    .wagon-model-list__media {
+      block-size: 8rem;
+      min-block-size: 8rem;
+    }
+
+    .wagon-model-list__media :global(.responsive-media img) {
+      max-block-size: 7rem;
+    }
+  }
+</style>

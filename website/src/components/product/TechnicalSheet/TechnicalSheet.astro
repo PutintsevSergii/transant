@@ -1,0 +1,466 @@
+---
+import { Image } from "astro:assets";
+import type { TechnicalSheetProps } from "./TechnicalSheet.types";
+import { validateTechnicalSheet } from "./technical-sheet-contract";
+
+const props = Astro.props as TechnicalSheetProps;
+validateTechnicalSheet(props);
+const labels = props.labels ?? {
+  eyebrow: "Wagon in detail",
+  title: "Drawings & technical data",
+  viewFullSize: "View full size",
+  openDrawing: "Open drawing",
+  withCatalogueDimensions: "with catalogue dimensions",
+  scrollHint: "Scroll the table horizontally to see all columns.",
+  scrollableTable: "Scrollable table",
+  notSpecified: "Not specified in catalogue",
+  specialFeatures: "Special features",
+  catalogueNotes: "Catalogue notes",
+};
+---
+
+<section class="technical-sheet" id="technical-details" data-technical-sheet>
+  <div class="page-frame technical-sheet__frame">
+    <header class="technical-sheet__heading">
+      <div>
+        <p class="technical-sheet__eyebrow">{labels.eyebrow}</p>
+        <h2>{labels.title}</h2>
+      </div>
+      <p class="technical-sheet__source">{props.sourceLabel}</p>
+    </header>
+
+    <div class="technical-sheet__drawings" data-technical-drawings>
+      {
+        props.drawings.map((drawing, index) => (
+          <figure
+            class:list={[
+              "technical-sheet__drawing",
+              {
+                "technical-sheet__drawing--wide":
+                  index === 0 || drawing.title === "Loading scheme",
+              },
+            ]}
+          >
+            <figcaption>
+              <span>{drawing.title}</span>
+              <a
+                href={drawing.image.src}
+                aria-label={`${labels.openDrawing}: ${props.productName} — ${drawing.title.toLowerCase()}`}
+                data-drawing-link
+              >
+                {labels.viewFullSize} <span aria-hidden="true">↗</span>
+              </a>
+            </figcaption>
+            <a
+              class="technical-sheet__image-link"
+              href={drawing.image.src}
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <Image
+                src={drawing.image}
+                alt={`${props.productName}: ${drawing.title.toLowerCase()} — ${labels.withCatalogueDimensions}`}
+                widths={[640, 1280, drawing.image.width].filter(
+                  (value, index, values) =>
+                    value <= drawing.image.width &&
+                    values.indexOf(value) === index,
+                )}
+                sizes={
+                  index === 0
+                    ? "(min-width: 64rem) 65vw, 100vw"
+                    : "(min-width: 64rem) 30vw, 100vw"
+                }
+                format="webp"
+                quality={95}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </figure>
+        ))
+      }
+    </div>
+
+    <div class="technical-sheet__data">
+      <div class="technical-sheet__specifications">
+        {
+          props.groups.map((group) => (
+            <section class="technical-sheet__group" data-specification-group>
+              <h3>{group.title}</h3>
+              <dl>
+                {group.rows.map((row) => (
+                  <div data-specification-row>
+                    <dt>{row.label}</dt>
+                    <dd data-specification-value>{row.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          ))
+        }
+      </div>
+      <div class="technical-sheet__tables">
+        {
+          props.tables.map((table) => (
+            <div
+              class="technical-sheet__table-block"
+              data-technical-table={table.kind}
+              data-load-limit-table={table.kind === "load" ? "" : undefined}
+            >
+              <p
+                class="technical-sheet__scroll-hint"
+                data-load-limit-scroll-hint={
+                  table.kind === "load" ? "" : undefined
+                }
+              >
+                {labels.scrollHint}
+              </p>
+              <div
+                class="technical-sheet__scroll"
+                tabindex="0"
+                role="region"
+                aria-label={`${labels.scrollableTable}: ${props.productName} — ${table.title}`}
+                data-load-limit-scroll={table.kind === "load" ? "" : undefined}
+              >
+                <table>
+                  <caption>{table.title}</caption>
+                  <thead>
+                    <tr>
+                      {table.headers.map((header) => (
+                        <th scope="col">{header}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {table.rows.map((row) => (
+                      <tr>
+                        {row.map((cell, index) =>
+                          index === 0 ? (
+                            <th scope="row" colspan={cell.colSpan}>
+                              {cell.text}
+                            </th>
+                          ) : (
+                            <td colspan={cell.colSpan}>
+                              {cell.text === "" ? (
+                                <span class="visually-hidden">
+                                  {labels.notSpecified}
+                                </span>
+                              ) : (
+                                cell.text
+                              )}
+                            </td>
+                          ),
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {table.notes.map((note) => (
+                <p class="technical-sheet__note">{note}</p>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      props.features.length > 0 && (
+        <section class="technical-sheet__features">
+          <h3>{labels.specialFeatures}</h3>
+          <ul>
+            {props.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      props.notes.length > 0 && (
+        <aside
+          class="technical-sheet__notes"
+          aria-label={labels.catalogueNotes}
+        >
+          <h3>{labels.catalogueNotes}</h3>
+          {props.notes.map((note) => (
+            <p>{note}</p>
+          ))}
+        </aside>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .technical-sheet {
+    container-type: inline-size;
+    background: var(--color-surface-subtle);
+    border-block: 1px solid var(--color-divider);
+  }
+  .technical-sheet__frame {
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+    display: grid;
+    gap: 2.5rem;
+  }
+  .technical-sheet__frame * {
+    min-inline-size: 0;
+  }
+  .technical-sheet__heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1.5rem;
+  }
+  .technical-sheet__eyebrow {
+    color: var(--color-brand-red-dark);
+    font: 700 0.75rem var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 0.75rem;
+  }
+  h2,
+  h3 {
+    margin: 0;
+    color: var(--color-brand-blue-dark);
+  }
+  h2 {
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 4.4cqi, 3.75rem);
+    line-height: 1.05;
+    max-inline-size: 14em;
+  }
+  h3 {
+    font-family: var(--font-family-display);
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+  .technical-sheet__source {
+    margin: 0;
+    color: var(--color-ink-secondary);
+    font-size: 0.875rem;
+  }
+  .technical-sheet__drawings {
+    display: grid;
+    gap: 1rem;
+  }
+  .technical-sheet__drawing {
+    margin: 0;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid var(--color-divider);
+    display: flex;
+    flex-direction: column;
+  }
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    color: var(--color-brand-blue-dark);
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-block-end: 1px solid var(--color-divider);
+    padding-block-end: 0.5rem;
+    margin-block-end: 1rem;
+  }
+  figcaption a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    color: var(--color-brand-blue-dark);
+    text-underline-offset: 0.25em;
+  }
+  .technical-sheet__image-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+  .technical-sheet__drawing img {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    object-fit: contain;
+    max-block-size: 32rem;
+  }
+  .technical-sheet__data,
+  .technical-sheet__specifications,
+  .technical-sheet__tables {
+    display: grid;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .technical-sheet__group {
+    background: var(--color-paper);
+    border: 1px solid var(--color-divider);
+  }
+  .technical-sheet__group h3 {
+    padding: 1.15rem;
+    border-block-start: 3px solid var(--color-brand-blue);
+    border-block-end: 1px solid var(--color-divider);
+  }
+  dl,
+  dd {
+    margin: 0;
+  }
+  dl > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.8rem 1.15rem;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+  dl > div:nth-child(odd) {
+    background: var(--color-surface-subtle);
+  }
+  dt {
+    color: var(--color-ink-secondary);
+  }
+  dd {
+    font-family: var(--font-mono);
+    color: var(--color-brand-blue-dark);
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+  .technical-sheet__scroll {
+    max-inline-size: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--color-divider);
+    background: var(--color-paper);
+  }
+  table {
+    width: 100%;
+    min-width: 28rem;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+  }
+  caption {
+    text-align: left;
+    padding: 1rem 1.15rem;
+    font: 700 1.35rem var(--font-family-display);
+    color: var(--color-brand-blue-dark);
+    border-block-start: 3px solid var(--color-brand-blue);
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 0.8rem 1.15rem;
+    border-block-start: 1px solid var(--color-divider);
+  }
+  thead {
+    background: var(--color-brand-blue-dark);
+    color: #fff;
+  }
+  thead th {
+    font-weight: 500;
+  }
+  tbody th {
+    font-weight: 500;
+    color: var(--color-ink-secondary);
+  }
+  tbody td {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-brand-blue-dark);
+  }
+  tbody tr:nth-child(odd) {
+    background: var(--color-surface-subtle);
+  }
+  .technical-sheet__scroll-hint,
+  .technical-sheet__note {
+    font-size: 0.8125rem;
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+    margin: 0.75rem 0;
+  }
+  .technical-sheet__features {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .technical-sheet__features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .technical-sheet__features li {
+    background: var(--color-brand-blue-dark);
+    color: #fff;
+    border-block-start: 3px solid var(--color-brand-red);
+    padding: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+  .technical-sheet__notes {
+    padding: 1.25rem;
+    border-inline-start: 3px solid var(--color-brand-blue);
+    background: var(--color-paper);
+  }
+  .technical-sheet__notes h3 {
+    font-size: 1.1rem;
+  }
+  .technical-sheet__notes p {
+    font-size: 0.875rem;
+    color: var(--color-ink-secondary);
+    line-height: 1.6;
+    margin: 0.75rem 0 0;
+  }
+  @container (min-width: 42rem) {
+    .technical-sheet__specifications {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .technical-sheet__features ul {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .technical-sheet__tables {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .technical-sheet__tables > :only-child {
+      grid-column: 1 / -1;
+    }
+  }
+  @container (min-width: 58rem) {
+    .technical-sheet__drawings {
+      grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
+    }
+    .technical-sheet__drawing--wide:not(:first-child) {
+      grid-column: 1 / -1;
+    }
+    .technical-sheet__scroll-hint {
+      display: none;
+    }
+  }
+  @media print {
+    .technical-sheet__scroll {
+      overflow: visible;
+    }
+    table {
+      min-width: 0;
+      font-size: 9pt;
+    }
+    .technical-sheet__drawings,
+    .technical-sheet__specifications,
+    .technical-sheet__tables {
+      display: block;
+    }
+    .technical-sheet__drawing,
+    .technical-sheet__group,
+    .technical-sheet__table-block {
+      break-inside: avoid;
+      margin-block-end: 1rem;
+    }
+    figcaption a,
+    .technical-sheet__scroll-hint {
+      display: none;
+    }
+  }
+</style>

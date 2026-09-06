@@ -1,0 +1,407 @@
+---
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="Railway globe exploration | TransANT component lab"
+  description="A dependency-free visual exploration for a dotted globe and abstract railway paths."
+>
+  <main class="railway-globe-exploration">
+    <header class="railway-globe-exploration__intro page-frame">
+      <a href="/">Component lab</a>
+      <p>Visual exploration</p>
+      <h1>A dotted world, held by railway paths.</h1>
+      <span>
+        This is a deliberately separate, plain-JavaScript prototype. It is not
+        yet the production RailwayOrbital component.
+      </span>
+    </header>
+
+    <section
+      class="railway-globe-exploration__stage page-frame"
+      aria-label="Decorative dotted globe with abstract railway paths"
+    >
+      <figure class="railway-globe" data-railway-globe data-motion="auto">
+        <svg viewBox="0 0 720 580" aria-hidden="true" focusable="false">
+          <defs>
+            <clipPath id="globe-clip"
+              ><circle cx="360" cy="290" r="60"></circle></clipPath
+            >
+            <radialGradient id="globe-shade" cx="32%" cy="26%" r="74%">
+              <stop offset="0" stop-color="var(--color-paper)"></stop>
+              <stop offset="1" stop-color="var(--color-paper-warm)"></stop>
+            </radialGradient>
+            <pattern
+              id="land-dots"
+              width="9"
+              height="9"
+              patternUnits="userSpaceOnUse"
+            >
+              <circle cx="2.25" cy="2.25" r="0.85" fill="currentColor"></circle>
+            </pattern>
+            <mask id="globe-clearance" maskUnits="userSpaceOnUse">
+              <rect width="720" height="580" fill="white"></rect>
+              <circle cx="360" cy="290" r="76" fill="black"></circle>
+            </mask>
+          </defs>
+
+          <g
+            class="railway-globe__tracks"
+            fill="none"
+            mask="url(#globe-clearance)"
+          >
+            <g transform="rotate(-24 360 290)">
+              <ellipse
+                class="railway-globe__track-bed"
+                cx="360"
+                cy="290"
+                rx="244"
+                ry="88"></ellipse>
+              <ellipse
+                class="railway-globe__track-ties"
+                cx="360"
+                cy="290"
+                rx="244"
+                ry="88"></ellipse>
+              <ellipse
+                class="railway-globe__track-rail"
+                cx="360"
+                cy="290"
+                rx="251"
+                ry="95"></ellipse>
+              <ellipse
+                class="railway-globe__track-rail"
+                cx="360"
+                cy="290"
+                rx="237"
+                ry="81"></ellipse>
+            </g>
+            <g transform="rotate(27 360 290)">
+              <ellipse
+                class="railway-globe__track-bed"
+                cx="360"
+                cy="290"
+                rx="230"
+                ry="96"></ellipse>
+              <ellipse
+                class="railway-globe__track-ties"
+                cx="360"
+                cy="290"
+                rx="230"
+                ry="96"></ellipse>
+              <ellipse
+                class="railway-globe__track-rail"
+                cx="360"
+                cy="290"
+                rx="237"
+                ry="103"></ellipse>
+              <ellipse
+                class="railway-globe__track-rail"
+                cx="360"
+                cy="290"
+                rx="223"
+                ry="89"></ellipse>
+            </g>
+            <g transform="rotate(43 360 290)">
+              <ellipse
+                class="railway-globe__track-bed"
+                cx="360"
+                cy="290"
+                rx="108"
+                ry="238"></ellipse>
+              <ellipse
+                class="railway-globe__track-ties"
+                cx="360"
+                cy="290"
+                rx="108"
+                ry="238"></ellipse>
+              <ellipse
+                class="railway-globe__track-rail"
+                cx="360"
+                cy="290"
+                rx="115"
+                ry="245"></ellipse>
+              <ellipse
+                class="railway-globe__track-rail"
+                cx="360"
+                cy="290"
+                rx="101"
+                ry="231"></ellipse>
+            </g>
+          </g>
+
+          <g class="railway-globe__sphere">
+            <circle class="railway-globe__ocean" cx="360" cy="290" r="60"
+            ></circle>
+            <g class="railway-globe__land" clip-path="url(#globe-clip)">
+              <g transform="translate(216 174) scale(0.4)">
+                <path
+                  d="M240 194c14-19 42-34 65-28 12 3 14 14 29 17 17 4 28 20 20 35-7 14-25 14-29 30-4 17-20 24-35 18-13-5-18-22-32-24-17-2-29-16-18-48z"
+                ></path>
+                <path
+                  d="M289 278c19-8 42 2 44 21 2 13-9 26 0 40 12 18 4 43-13 58-16 14-36-4-34-23 1-14-13-25-15-40-3-22 2-45 18-56z"
+                ></path>
+                <path
+                  d="M365 174c19-13 49-7 57 14 7 17-4 31 10 43 13 11 9 33-8 41-17 9-25 19-23 38 3 27-12 65-38 75-21 8-40-12-33-33 5-14 16-26 9-41-10-22-11-49 4-66 14-15 7-35 22-51z"
+                ></path>
+                <path
+                  d="M427 190c28-16 69-2 81 25 8 19-8 31-23 41-14 10-12 29-29 38-22 11-47-8-41-31 5-17-7-25-4-42 2-15 5-24 16-31z"
+                ></path>
+              </g>
+            </g>
+            <circle class="railway-globe__rim" cx="360" cy="290" r="60"
+            ></circle>
+          </g>
+
+          <g mask="url(#globe-clearance)">
+            <g
+              class="railway-globe__route-dot"
+              data-orbit-dot
+              data-angle="15"
+              data-speed="0.017"
+              data-radius-x="244"
+              data-radius-y="88"
+              data-tilt="-24"
+              transform="translate(597 321)"
+            >
+              <circle r="9"></circle><circle
+                class="railway-globe__route-core"
+                r="3"></circle>
+            </g>
+            <g
+              class="railway-globe__route-dot railway-globe__route-dot--red"
+              data-orbit-dot
+              data-angle="160"
+              data-speed="-0.013"
+              data-radius-x="230"
+              data-radius-y="96"
+              data-tilt="27"
+              transform="translate(150 325)"
+            >
+              <circle r="8"></circle><circle
+                class="railway-globe__route-core"
+                r="2.5"></circle>
+            </g>
+            <g
+              class="railway-globe__route-dot"
+              data-orbit-dot
+              data-angle="290"
+              data-speed="0.011"
+              data-radius-x="108"
+              data-radius-y="238"
+              data-tilt="43"
+              transform="translate(455 147)"
+            >
+              <circle r="7"></circle><circle
+                class="railway-globe__route-core"
+                r="2"></circle>
+            </g>
+          </g>
+        </svg>
+      </figure>
+    </section>
+
+    <aside class="railway-globe-exploration__notes page-frame">
+      <h2>Prototype contract</h2>
+      <p>
+        The artwork exists as static SVG without JavaScript. Native JavaScript
+        only animates the three route dots while the stage is visible and the
+        visitor has not requested reduced motion.
+      </p>
+      <a href="/fixtures/railway-orbital/">Compare with the current orbital</a>
+    </aside>
+  </main>
+</ComponentLabLayout>
+
+<script>
+  const centreX = 360;
+  const centreY = 290;
+
+  function initializeRailwayGlobe(root: HTMLElement): void {
+    const dots = [...root.querySelectorAll<SVGGElement>("[data-orbit-dot]")];
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let isVisible = false;
+    let animationFrame: number | undefined;
+    let startedAt = 0;
+
+    function render(elapsed: number): void {
+      for (const dot of dots) {
+        const angle =
+          Number(dot.dataset.angle) + elapsed * Number(dot.dataset.speed);
+        const radians = (angle * Math.PI) / 180;
+        const xOnRing = Number(dot.dataset.radiusX) * Math.cos(radians);
+        const yOnRing = Number(dot.dataset.radiusY) * Math.sin(radians);
+        const tilt = (Number(dot.dataset.tilt) * Math.PI) / 180;
+        const x = centreX + xOnRing * Math.cos(tilt) - yOnRing * Math.sin(tilt);
+        const y = centreY + xOnRing * Math.sin(tilt) + yOnRing * Math.cos(tilt);
+        dot.setAttribute("transform", `translate(${x} ${y})`);
+      }
+    }
+
+    function animate(timestamp: number): void {
+      if (!startedAt) startedAt = timestamp;
+      render(timestamp - startedAt);
+      animationFrame = window.requestAnimationFrame(animate);
+    }
+
+    function syncMotion() {
+      const active =
+        isVisible &&
+        !reducedMotion.matches &&
+        document.visibilityState === "visible";
+      root.toggleAttribute("data-motion-active", active);
+      if (animationFrame !== undefined) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+      startedAt = 0;
+      if (active) animationFrame = window.requestAnimationFrame(animate);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        isVisible = entry.isIntersecting;
+        syncMotion();
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(root);
+    reducedMotion.addEventListener("change", syncMotion);
+    document.addEventListener("visibilitychange", syncMotion);
+  }
+
+  for (const root of document.querySelectorAll<HTMLElement>(
+    "[data-railway-globe]",
+  )) {
+    initializeRailwayGlobe(root);
+  }
+</script>
+
+<style>
+  .railway-globe-exploration {
+    overflow: clip;
+    background: var(--color-paper);
+  }
+  .railway-globe-exploration__intro,
+  .railway-globe-exploration__stage,
+  .railway-globe-exploration__notes {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+  .railway-globe-exploration__intro > a,
+  .railway-globe-exploration__notes > a {
+    justify-self: start;
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+  .railway-globe-exploration__intro > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .railway-globe-exploration__intro > h1,
+  .railway-globe-exploration__intro > span,
+  .railway-globe-exploration__notes > p {
+    max-inline-size: var(--reading-max);
+    margin: 0;
+    text-align: center;
+  }
+  .railway-globe-exploration__intro > span,
+  .railway-globe-exploration__notes > p {
+    color: var(--color-ink-secondary);
+    line-height: var(--line-height-body);
+  }
+  .railway-globe-exploration__notes {
+    border-block-start: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper-warm);
+  }
+  .railway-globe-exploration__notes > h2 {
+    margin: 0;
+    color: var(--color-brand-blue-dark);
+  }
+  .railway-globe {
+    inline-size: min(100%, 48rem);
+    margin: 0;
+  }
+  .railway-globe svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    overflow: visible;
+  }
+  .railway-globe__tracks {
+    opacity: 0.72;
+  }
+  .railway-globe__track-bed {
+    stroke: var(--color-paper);
+    stroke-width: 12;
+  }
+  .railway-globe__track-ties {
+    stroke: color-mix(
+      in srgb,
+      var(--color-railway-blue) 25%,
+      var(--color-paper)
+    );
+    stroke-dasharray: 1.5 9;
+    stroke-linecap: butt;
+    stroke-width: 4.5;
+  }
+  .railway-globe__track-rail {
+    stroke: var(--color-railway-blue);
+    stroke-width: 1.25;
+  }
+  .railway-globe__ocean {
+    fill: url(#globe-shade);
+  }
+  .railway-globe__land {
+    fill: url(#land-dots);
+    color: var(--color-railway-blue);
+    transform-box: view-box;
+    transform-origin: 50% 50%;
+  }
+  .railway-globe__rim {
+    fill: none;
+    stroke: var(--color-railway-blue);
+    stroke-width: 2;
+  }
+  .railway-globe__route-dot {
+    fill: var(--color-paper);
+    stroke: var(--color-railway-blue);
+    stroke-width: 2;
+    color: var(--color-railway-blue);
+  }
+  .railway-globe__route-dot--red {
+    stroke: var(--color-brand-red-dark);
+    color: var(--color-brand-red-dark);
+  }
+  .railway-globe__route-core {
+    fill: currentcolor;
+    stroke: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-motion-active] .railway-globe__land {
+      animation: railway-globe-land-turn 36s linear infinite;
+    }
+  }
+  @container (max-width: 30rem) {
+    .railway-globe-exploration__stage {
+      padding-inline: var(--space-2);
+    }
+  }
+  @keyframes railway-globe-land-turn {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+</style>

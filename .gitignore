@@ -8,6 +8,9 @@ website/.astro/
 website/playwright-report/
 website/test-results/
 website/coverage/
+website/output/
+website/dist-component-lab/
+website/.playwright-cli/
 
 # Local configuration and secrets
 .env

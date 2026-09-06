@@ -1,0 +1,104 @@
+---
+import freightTrain from "../../../src/assets/images/editorial/freight-train-in-operation.jpg";
+import HomeHero from "../../../src/components/home/HomeHero/HomeHero.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="HomeHero fixture | TransANT component lab"
+  description="Static, source-ordered editorial hero variants."
+>
+  <main data-fixture="home-hero">
+    <HomeHero
+      eyebrow="Rail freight engineering"
+      title={[
+        { text: "Wagons built for " },
+        { text: "more useful", emphasis: true },
+        { text: " payload." },
+      ]}
+      summary="A deliberately long fixture summary proves that the proposition, primary route, and static local railway image remain legible without overlap at every reviewed width."
+      primaryAction={{
+        kind: "link",
+        label: "Explore wagon families",
+        href: "/fixtures/home-hero/#families",
+        variant: "primary",
+        icon: "arrow-right",
+      }}
+      secondaryLink={{
+        kind: "link",
+        label: "Talk to an expert",
+        href: "/fixtures/home-hero/#contact",
+        variant: "text",
+        icon: "arrow-right",
+      }}
+      media={{
+        image: freightTrain,
+        alt: "Freight train travelling through a green landscape",
+        sizes: "(min-width: 56rem) 52vw, 100vw",
+        fit: "cover",
+        caption: "Local operational railway photography.",
+      }}
+    />
+
+    <section
+      class="home-hero-fixture__alternate page-frame"
+      aria-labelledby="alternate-title"
+    >
+      <p>Optional-action variant</p>
+      <HomeHero
+        eyebrow="Compact contract fixture"
+        title={[
+          { text: "One " },
+          { text: "emphasised", emphasis: true },
+          { text: " route." },
+        ]}
+        summary="This second, intentionally compact fixture has no secondary link and gives browser checks a stable single-emphasis contract."
+        primaryAction={{
+          kind: "link",
+          label: "View route",
+          href: "/fixtures/home-hero/#route",
+          variant: "secondary",
+        }}
+        media={{
+          image: freightTrain,
+          alt: "Freight train travelling through a green landscape",
+          sizes: "(min-width: 56rem) 52vw, 100vw",
+          fit: "cover",
+        }}
+      />
+      <h2 id="alternate-title">Optional secondary action is absent</h2>
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .home-hero-fixture__alternate {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+  }
+
+  .home-hero-fixture__alternate > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .home-hero-fixture__alternate :global(.home-hero) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .home-hero-fixture__alternate :global(.home-hero__grid) {
+    padding-inline: var(--space-5);
+  }
+
+  .home-hero-fixture__alternate h2 {
+    margin: 0;
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import ContactCTA from "../../../src/components/home/ContactCTA/ContactCTA.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="ContactCTA fixture | TransANT component lab"
+  description="Static caller-owned inquiry conclusions with optional encoded context."
+>
+  <main data-fixture="contact-cta">
+    <ContactCTA
+      title="Discuss a transport requirement with the right context"
+      summary="This fixture demonstrates a caller-owned inquiry route and related contact options. It establishes no production recipient, response-time, or delivery claim."
+      action={{
+        href: "/contact/?source=component-lab",
+        label: "Contact TransANT",
+      }}
+      supportingLinks={[
+        { href: "/wagons/", label: "Browse wagon families" },
+        {
+          href: "https://example.test/contact-note",
+          label: "Open fixture contact note",
+          external: true,
+        },
+      ]}
+      context="Intermodal & container requirement / 80 ft"
+    />
+
+    <section class="contact-cta-fixture__variants page-frame">
+      <p>Primary action without context or supporting links</p>
+      <ContactCTA
+        title="A direct inquiry route can remain intentionally simple"
+        summary="The absence of optional contact context and related links leaves one ordinary native action."
+        action={{ href: "/contact/", label: "Start an inquiry" }}
+      />
+
+      <p>Long caller-owned content and compact supporting rows</p>
+      <ContactCTA
+        title="A long conclusion proves that readable wrapping takes precedence over a forced visual line break"
+        summary="This deliberately expanded fixture copy demonstrates that the component’s centred reading measure, main action, supporting touch rows, and optional contextual detail grow naturally without a clipped label or horizontal page overflow."
+        action={{
+          href: "/contact/?channel=fixture",
+          label: "Discuss the detailed requirement",
+        }}
+        supportingLinks={[
+          {
+            href: "/company/",
+            label: "Read the fixture company and contact background",
+          },
+          {
+            href: "/technology/",
+            label: "Review the fixture technology context before inquiry",
+          },
+        ]}
+        context="A deliberately long caller-owned product and family context that must remain visible, readable, and URL-safe at the narrowest layout state"
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .contact-cta-fixture__variants {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-8);
+  }
+
+  .contact-cta-fixture__variants > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .contact-cta-fixture__variants :global(.contact-cta) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+</style>

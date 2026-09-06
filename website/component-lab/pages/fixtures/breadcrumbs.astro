@@ -1,0 +1,88 @@
+---
+import Breadcrumbs from "../../../src/components/catalogue/Breadcrumbs/Breadcrumbs.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="Breadcrumbs fixture | TransANT component lab"
+  description="Static caller-owned current-location paths and canonical structured data."
+>
+  <main class="breadcrumbs-fixture" data-fixture="breadcrumbs">
+    <section>
+      <p class="page-frame">Standard catalogue path</p>
+      <Breadcrumbs
+        baseUrl="https://component.transant.test"
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Wagons", href: "/wagons/" },
+          {
+            label: "Intermodal wagons",
+            href: "/wagons/intermodal/",
+          },
+        ]}
+      />
+    </section>
+
+    <section>
+      <p class="page-frame">Single current location</p>
+      <Breadcrumbs
+        baseUrl="https://component.transant.test"
+        items={[{ label: "Home", href: "/" }]}
+      />
+    </section>
+
+    <section>
+      <p class="page-frame">
+        Deep path with compact visible intermediate labels
+      </p>
+      <Breadcrumbs
+        baseUrl="https://component.transant.test"
+        label="Current product location"
+        items={[
+          { label: "Home", href: "/" },
+          {
+            label: "Wagons and freight transport equipment",
+            compactLabel: "Wagons",
+            href: "/wagons/",
+          },
+          {
+            label: "Intermodal wagons for container transport",
+            compactLabel: "Intermodal",
+            href: "/wagons/intermodal/",
+          },
+          {
+            label: "Sgmmns 40 ft container wagon with long fixture identity",
+            compactLabel: "Sgmmns 40 ft",
+            href: "/wagons/intermodal/sgmmns-40/",
+          },
+        ]}
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .breadcrumbs-fixture {
+    display: grid;
+    gap: var(--space-7);
+    padding-block: var(--space-8);
+  }
+
+  .breadcrumbs-fixture section {
+    display: grid;
+    gap: var(--space-3);
+    min-inline-size: 0;
+    padding-block-end: var(--space-5);
+    border-block-end: var(--border-thin) solid var(--color-divider);
+  }
+
+  .breadcrumbs-fixture p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>

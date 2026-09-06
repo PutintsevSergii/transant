@@ -1,0 +1,398 @@
+---
+import catalogueWagonIcon from "../../../assets/images/home/railway-orbital/catalogue-wagon-icon.png";
+import type { RailwayOrbitalProps } from "./RailwayOrbital.types";
+
+const {
+  label,
+  motion = "auto",
+  density = "standard",
+  accent = "blue",
+} = Astro.props as RailwayOrbitalProps;
+const instanceId = crypto.randomUUID();
+const labelId = label ? `railway-orbital-label-${instanceId}` : undefined;
+const globeClipId = `railway-orbital-globe-clip-${instanceId}`;
+const globeShadeId = `railway-orbital-globe-shade-${instanceId}`;
+const landDotsId = `railway-orbital-land-dots-${instanceId}`;
+const globeClearanceId = `railway-orbital-globe-clearance-${instanceId}`;
+
+const orbitalWagons = [
+  {
+    className: "railway-orbital__train railway-orbital__train--orbit-a",
+    angle: 20,
+    transform: "translate(582 224) rotate(291)",
+    speed: -0.017,
+    radiusX: 244,
+    radiusY: 88,
+    tilt: -24,
+  },
+  {
+    className: "railway-orbital__train railway-orbital__train--orbit-c",
+    angle: 295,
+    transform: "translate(540 163) rotate(269)",
+    speed: -0.011,
+    radiusX: 108,
+    radiusY: 238,
+    tilt: 43,
+  },
+  {
+    className: "railway-orbital__train railway-orbital__train--orbit-e",
+    angle: 120,
+    transform: "translate(220 312) rotate(-139)",
+    speed: 0.01,
+    radiusX: 230,
+    radiusY: 96,
+    tilt: 27,
+  },
+] as const;
+
+const orbitMarkers = [
+  {
+    orbit: "a",
+    angle: 190,
+    speed: 0.013,
+    radiusX: 244,
+    radiusY: 88,
+    tilt: -24,
+    transform: "translate(134 374)",
+    glow: 15,
+    dot: 8,
+  },
+  {
+    orbit: "c",
+    angle: 80,
+    speed: 0.014,
+    radiusX: 108,
+    radiusY: 238,
+    tilt: 43,
+    transform: "translate(214 474)",
+    glow: 12,
+    dot: 6.5,
+  },
+  {
+    orbit: "e",
+    angle: 305,
+    speed: -0.01,
+    radiusX: 230,
+    radiusY: 96,
+    tilt: 27,
+    transform: "translate(513 280)",
+    glow: 12,
+    dot: 6.5,
+  },
+] as const;
+---
+
+<figure
+  class="railway-orbital"
+  data-railway-orbital
+  data-motion={motion}
+  data-density={density}
+  data-accent={accent}
+  aria-hidden={label ? undefined : "true"}
+>
+  <svg
+    class="railway-orbital__svg"
+    viewBox="0 0 720 580"
+    role={label ? "img" : undefined}
+    aria-hidden={label ? undefined : "true"}
+    aria-labelledby={labelId}
+    focusable="false"
+  >
+    {label && <title id={labelId}>{label}</title>}
+    <defs>
+      <clipPath id={globeClipId}
+        ><circle cx="360" cy="290" r="60"></circle></clipPath
+      >
+      <radialGradient id={globeShadeId} cx="32%" cy="26%" r="74%">
+        <stop offset="0" stop-color="var(--color-paper)"></stop>
+        <stop offset="1" stop-color="var(--color-paper-warm)"></stop>
+      </radialGradient>
+      <pattern
+        id={landDotsId}
+        width="9"
+        height="9"
+        patternUnits="userSpaceOnUse"
+      >
+        <circle cx="2.25" cy="2.25" r="0.85" fill="currentColor"></circle>
+      </pattern>
+      <mask id={globeClearanceId} maskUnits="userSpaceOnUse">
+        <rect width="720" height="580" fill="white"></rect>
+        <circle cx="360" cy="290" r="76" fill="black"></circle>
+      </mask>
+    </defs>
+
+    <g class="railway-orbital__construction" fill="none" aria-hidden="true">
+      <circle cx="360" cy="290" r="86"></circle>
+      <circle cx="360" cy="290" r="154"></circle>
+      <path d="M82 290h556M360 54v472"></path>
+      <path d="M250 180h220v220H250z"></path>
+    </g>
+
+    <g
+      class="railway-orbital__tracks"
+      fill="none"
+      mask={`url(#${globeClearanceId})`}
+    >
+      <g transform="rotate(-24 360 290)">
+        <ellipse
+          class="railway-orbital__track-bed"
+          cx="360"
+          cy="290"
+          rx="244"
+          ry="88"></ellipse>
+        <ellipse
+          class="railway-orbital__track-ties"
+          cx="360"
+          cy="290"
+          rx="244"
+          ry="88"></ellipse>
+        <ellipse
+          class="railway-orbital__rail"
+          cx="360"
+          cy="290"
+          rx="251"
+          ry="95"></ellipse>
+        <ellipse
+          class="railway-orbital__rail"
+          cx="360"
+          cy="290"
+          rx="237"
+          ry="81"></ellipse>
+      </g>
+      <g transform="rotate(27 360 290)">
+        <ellipse
+          class="railway-orbital__track-bed"
+          cx="360"
+          cy="290"
+          rx="230"
+          ry="96"></ellipse>
+        <ellipse
+          class="railway-orbital__track-ties"
+          cx="360"
+          cy="290"
+          rx="230"
+          ry="96"></ellipse>
+        <ellipse
+          class="railway-orbital__rail"
+          cx="360"
+          cy="290"
+          rx="237"
+          ry="103"></ellipse>
+        <ellipse
+          class="railway-orbital__rail"
+          cx="360"
+          cy="290"
+          rx="223"
+          ry="89"></ellipse>
+      </g>
+      <g transform="rotate(43 360 290)">
+        <ellipse
+          class="railway-orbital__track-bed"
+          cx="360"
+          cy="290"
+          rx="108"
+          ry="238"></ellipse>
+        <ellipse
+          class="railway-orbital__track-ties"
+          cx="360"
+          cy="290"
+          rx="108"
+          ry="238"></ellipse>
+        <ellipse
+          class="railway-orbital__rail"
+          cx="360"
+          cy="290"
+          rx="115"
+          ry="245"></ellipse>
+        <ellipse
+          class="railway-orbital__rail"
+          cx="360"
+          cy="290"
+          rx="101"
+          ry="231"></ellipse>
+      </g>
+    </g>
+
+    <g class="railway-orbital__sphere">
+      <circle
+        class="railway-orbital__ocean"
+        cx="360"
+        cy="290"
+        r="60"
+        fill={`url(#${globeShadeId})`}></circle>
+      <g
+        class="railway-orbital__land"
+        clip-path={`url(#${globeClipId})`}
+        fill={`url(#${landDotsId})`}
+      >
+        <g transform="translate(216 174) scale(0.4)">
+          <path
+            d="M240 194c14-19 42-34 65-28 12 3 14 14 29 17 17 4 28 20 20 35-7 14-25 14-29 30-4 17-20 24-35 18-13-5-18-22-32-24-17-2-29-16-18-48z"
+          ></path>
+          <path
+            d="M289 278c19-8 42 2 44 21 2 13-9 26 0 40 12 18 4 43-13 58-16 14-36-4-34-23 1-14-13-25-15-40-3-22 2-45 18-56z"
+          ></path>
+          <path
+            d="M365 174c19-13 49-7 57 14 7 17-4 31 10 43 13 11 9 33-8 41-17 9-25 19-23 38 3 27-12 65-38 75-21 8-40-12-33-33 5-14 16-26 9-41-10-22-11-49 4-66 14-15 7-35 22-51z"
+          ></path>
+          <path
+            d="M427 190c28-16 69-2 81 25 8 19-8 31-23 41-14 10-12 29-29 38-22 11-47-8-41-31 5-17-7-25-4-42 2-15 5-24 16-31z"
+          ></path>
+        </g>
+      </g>
+      <circle class="railway-orbital__rim" cx="360" cy="290" r="60"></circle>
+    </g>
+
+    <g mask={`url(#${globeClearanceId})`} aria-hidden="true">
+      {
+        orbitalWagons.map((wagon) => (
+          <g class={wagon.className}>
+            <g
+              class="railway-orbital__train-car"
+              data-orbit-vehicle
+              data-angle={wagon.angle}
+              data-speed={wagon.speed}
+              data-radius-x={wagon.radiusX}
+              data-radius-y={wagon.radiusY}
+              data-tilt={wagon.tilt}
+              transform={wagon.transform}
+            >
+              <image
+                class="railway-orbital__catalog-wagon"
+                data-catalog-wagon="page-3-header-icon"
+                href={catalogueWagonIcon.src}
+                x="-22"
+                y="-13"
+                width="44"
+                height="26"
+                preserveAspectRatio="xMidYMid meet"
+              />
+            </g>
+          </g>
+        ))
+      }
+      {
+        orbitMarkers.map((marker) => (
+          <g
+            class={`railway-orbital__marker railway-orbital__marker--orbit-${marker.orbit} railway-orbital__marker--beacon railway-orbital__marker--red`}
+            data-orbit-vehicle
+            data-angle={marker.angle}
+            data-speed={marker.speed}
+            data-radius-x={marker.radiusX}
+            data-radius-y={marker.radiusY}
+            data-tilt={marker.tilt}
+            transform={marker.transform}
+          >
+            <circle
+              class="railway-orbital__marker-beacon-glow"
+              r={marker.glow}
+            />
+            <circle class="railway-orbital__marker-beacon-dot" r={marker.dot} />
+          </g>
+        ))
+      }
+    </g>
+  </svg>
+  {label && <figcaption>{label}</figcaption>}
+</figure>
+
+<script>
+  import { initializeRailwayOrbitals } from "./railway-orbital-controller";
+
+  initializeRailwayOrbitals();
+</script>
+
+<style>
+  .railway-orbital {
+    container-type: inline-size;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-3);
+    inline-size: min(100%, 48rem);
+    max-inline-size: 100%;
+    margin: 0;
+    overflow: clip;
+  }
+
+  .railway-orbital__svg {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    block-size: auto;
+    color: var(--color-railway-blue);
+  }
+  figcaption {
+    max-inline-size: 65ch;
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+    text-align: center;
+  }
+  .railway-orbital__tracks {
+    opacity: 0.72;
+  }
+  .railway-orbital__construction {
+    opacity: 0.38;
+    stroke: color-mix(in srgb, var(--color-ink-secondary) 28%, transparent);
+    stroke-dasharray: 3 9;
+    stroke-width: 1;
+  }
+  .railway-orbital__track-bed {
+    stroke: var(--color-paper);
+    stroke-width: 12;
+  }
+  .railway-orbital__track-ties {
+    stroke: color-mix(in srgb, currentcolor 25%, var(--color-paper));
+    stroke-dasharray: 1.5 9;
+    stroke-linecap: butt;
+    stroke-width: 4.5;
+  }
+  .railway-orbital__rail {
+    stroke: currentcolor;
+    stroke-width: 1.25;
+  }
+  .railway-orbital__land {
+    color: currentcolor;
+    transform-box: view-box;
+    transform-origin: 50% 50%;
+  }
+  .railway-orbital__rim {
+    fill: none;
+    stroke: currentcolor;
+    stroke-width: 2;
+  }
+  .railway-orbital__marker--red {
+    color: var(--color-brand-red-dark);
+  }
+  .railway-orbital__catalog-wagon {
+    pointer-events: none;
+  }
+  .railway-orbital__marker-beacon-glow {
+    fill: color-mix(in srgb, var(--color-brand-red-dark) 24%, transparent);
+  }
+  .railway-orbital__marker-beacon-dot {
+    fill: var(--color-brand-red-dark);
+    stroke: var(--color-paper);
+    stroke-width: 1;
+  }
+  [data-accent="red"] .railway-orbital__svg {
+    color: var(--color-brand-red-dark);
+  }
+  [data-density="sparse"] .railway-orbital__train--orbit-c,
+  [data-density="sparse"] .railway-orbital__marker--orbit-c,
+  [data-density="sparse"] .railway-orbital__train--orbit-e,
+  [data-density="sparse"] .railway-orbital__marker--orbit-e {
+    display: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-motion="auto"][data-motion-active="true"] .railway-orbital__land {
+      animation: railway-orbital-land-turn 36s linear infinite;
+    }
+  }
+
+  @keyframes railway-orbital-land-turn {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+</style>

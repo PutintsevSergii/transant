@@ -1,0 +1,112 @@
+---
+import type {
+  SectionIntroHeadingLevel,
+  SectionIntroProps,
+} from "./SectionIntro.types";
+
+const { eyebrow, title, description, headingLevel, align, theme, measure } =
+  Astro.props as SectionIntroProps;
+const HeadingTag = `h${headingLevel}` as `h${SectionIntroHeadingLevel}`;
+const rootClass = `section-intro section-intro--${align} section-intro--${theme} section-intro--${measure}`;
+---
+
+<div
+  class={rootClass}
+  data-section-intro
+  data-section-intro-align={align}
+  data-section-intro-theme={theme}
+  data-section-intro-measure={measure}
+>
+  {
+    eyebrow && (
+      <p class="section-intro__eyebrow" data-section-intro-eyebrow>
+        {eyebrow}
+      </p>
+    )
+  }
+  <HeadingTag class="section-intro__title">{title}</HeadingTag>
+  {
+    description && (
+      <p class="section-intro__description" data-section-intro-description>
+        {description}
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .section-intro {
+    display: grid;
+    gap: var(--space-3);
+    max-inline-size: min(100%, var(--section-intro-measure));
+  }
+
+  .section-intro--narrow {
+    --section-intro-measure: 32rem;
+  }
+
+  .section-intro--standard {
+    --section-intro-measure: 46rem;
+  }
+
+  .section-intro--wide {
+    --section-intro-measure: 64rem;
+  }
+
+  .section-intro--left {
+    justify-items: start;
+    text-align: start;
+  }
+
+  .section-intro--center {
+    justify-items: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .section-intro--light {
+    color: var(--color-ink);
+  }
+
+  .section-intro--dark {
+    color: var(--color-paper);
+  }
+
+  .section-intro__eyebrow,
+  .section-intro__title,
+  .section-intro__description {
+    margin: 0;
+  }
+
+  .section-intro__eyebrow {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .section-intro--dark .section-intro__eyebrow {
+    color: var(--color-railway-pale);
+  }
+
+  .section-intro__title {
+    max-inline-size: 100%;
+    font-size: var(--font-size-heading-2);
+    line-height: var(--line-height-heading);
+    overflow-wrap: anywhere;
+  }
+
+  .section-intro__description {
+    max-inline-size: min(100%, var(--reading-max));
+    color: var(--color-ink-secondary);
+    font-size: clamp(1rem, 0.98rem + 0.25vw, 1.125rem);
+    overflow-wrap: anywhere;
+  }
+
+  .section-intro--dark .section-intro__description {
+    color: var(--color-railway-pale);
+  }
+</style>

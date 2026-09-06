@@ -1,0 +1,17 @@
+@layer base {
+  @font-face {
+    font-family: "TransANT Sans";
+    src: local("Arial"), local("Helvetica Neue");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 100 900;
+  }
+
+  @font-face {
+    font-family: "TransANT Mono";
+    src: local("Menlo"), local("Consolas");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400 700;
+  }
+}

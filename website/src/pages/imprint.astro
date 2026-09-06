@@ -1,0 +1,13 @@
+---
+import LegalDocument from "../components/legal/LegalDocument/LegalDocument.astro";
+import PageHero from "../components/editorial/PageHero/PageHero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { legalPageViewModel } from "../adapters/content/legal-page-view-model";
+
+const { document, hero, layout } = legalPageViewModel("imprint");
+---
+
+<BaseLayout {...layout}>
+  <PageHero {...hero} />
+  <LegalDocument {...document} />
+</BaseLayout>

@@ -1,0 +1,748 @@
+---
+import Action from "../../core/Action/Action.astro";
+import ResponsiveMedia from "../../core/ResponsiveMedia/ResponsiveMedia.astro";
+import { validateWagonSwitchyardProps } from "./wagon-switchyard-contract";
+import type { WagonSwitchyardProps } from "./WagonSwitchyard.types";
+
+const props = Astro.props as WagonSwitchyardProps;
+validateWagonSwitchyardProps(props);
+
+const {
+  eyebrow,
+  families,
+  heading,
+  id,
+  selectionAriaLabel = "Wagon families",
+  selectionLabel = "Choose by transport task",
+  summary,
+  supportingCopy = [
+    "Matching wagon families to cargo and loading needs.",
+    "Compare configurations on each family page.",
+  ],
+} = props;
+const defaultFamily = families[0];
+if (!defaultFamily) {
+  throw new Error("WagonSwitchyard requires a default wagon family.");
+}
+const familyTotal = String(families.length).padStart(2, "0");
+---
+
+<section
+  class="wagon-switchyard"
+  data-wagon-switchyard
+  data-active-family={defaultFamily.id}
+  aria-labelledby={`${id}-title`}
+>
+  <div class="wagon-switchyard__frame page-frame">
+    <header class="wagon-switchyard__intro">
+      {eyebrow && <p class="wagon-switchyard__eyebrow">{eyebrow}</p>}
+      <h2 id={`${id}-title`}>{heading}</h2>
+      {summary && <p class="wagon-switchyard__intro-summary">{summary}</p>}
+    </header>
+
+    <div class="wagon-switchyard__rail-heading">
+      <p>{selectionLabel}</p>
+    </div>
+
+    <ol
+      class="wagon-switchyard__rail"
+      data-wagon-switchyard-rail
+      data-wagon-switchyard-rail-label={selectionAriaLabel}
+    >
+      {
+        families.map((family, index) => (
+          <li>
+            <a
+              id={`${id}-tab-${family.id}`}
+              class:list={{
+                "wagon-switchyard__tab": true,
+                "is-selected": index === 0,
+              }}
+              href={family.href}
+              data-wagon-switchyard-tab
+              data-wagon-family-id={family.id}
+              data-wagon-family-sequence={family.sequence}
+              aria-current={index === 0 ? "true" : undefined}
+            >
+              <span class="wagon-switchyard__sequence">{family.sequence}</span>
+              <span class="wagon-switchyard__stop" aria-hidden="true" />
+              <span class="wagon-switchyard__family-name">
+                {family.familyName}
+              </span>
+              <span class="wagon-switchyard__family-fit">
+                {family.headline}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="wagon-switchyard__results" data-wagon-switchyard-results>
+      {
+        families.map((family, index) => (
+          <article
+            id={`${id}-panel-${family.id}`}
+            class:list={{
+              "wagon-switchyard__panel": true,
+              "is-selected": index === 0,
+            }}
+            data-wagon-switchyard-panel
+            data-wagon-family-id={family.id}
+            hidden={index !== 0}
+          >
+            <div class="wagon-switchyard__identity">
+              <p class="wagon-switchyard__route-meta">
+                <span>
+                  {family.sequence} / {familyTotal}
+                </span>
+                <span>
+                  {family.familyName} · {family.modelCode}
+                </span>
+              </p>
+              <h3>{family.familyName}</h3>
+              <p class="wagon-switchyard__cargo-fit">{family.headline}</p>
+            </div>
+
+            <div class="wagon-switchyard__stage" data-wagon-switchyard-stage>
+              <ResponsiveMedia
+                image={family.image}
+                alt={`${family.familyName} wagon render`}
+                sizes="(min-width: 64rem) 62vw, 100vw"
+                fit="contain"
+                aspectRatio="16 / 8"
+              />
+              <span class="wagon-switchyard__track" aria-hidden="true" />
+            </div>
+
+            <div class="wagon-switchyard__detail">
+              <p class="wagon-switchyard__summary">{family.summary}</p>
+              <Action
+                kind="link"
+                variant="primary"
+                size="regular"
+                icon="arrow-right"
+                href={family.href}
+                label={family.linkLabel}
+              />
+              {family.technicalLabel && (
+                <p class="wagon-switchyard__technical-label">
+                  {family.technicalLabel}
+                </p>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <footer class="wagon-switchyard__system-meta">
+      <p>{supportingCopy[0]}</p>
+      <p>{supportingCopy[1]}</p>
+    </footer>
+  </div>
+</section>
+
+<script>
+  import { initializeWagonSwitchyards } from "./wagon-switchyard-controller";
+
+  initializeWagonSwitchyards();
+</script>
+
+<style>
+  .wagon-switchyard {
+    position: relative;
+    container-type: inline-size;
+    overflow: clip;
+    color: var(--color-paper);
+    background:
+      linear-gradient(180deg, transparent 56%, rgb(17 57 86 / 52%) 100%),
+      var(--color-railway-navy);
+    isolation: isolate;
+  }
+
+  .wagon-switchyard::before {
+    position: absolute;
+    z-index: -1;
+    inset: 50% -12% -18%;
+    background:
+      linear-gradient(90deg, transparent 49.9%, rgb(53 103 137 / 28%) 50%),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 11.8%,
+        rgb(53 103 137 / 22%) 11.9% 12%
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0 5.9rem,
+        rgb(53 103 137 / 20%) 6rem
+      );
+    clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+    content: "";
+    opacity: 0.75;
+    pointer-events: none;
+  }
+
+  .wagon-switchyard__frame {
+    display: grid;
+    gap: clamp(var(--space-6), 5vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 8vw, 8rem);
+  }
+
+  .wagon-switchyard__intro,
+  .wagon-switchyard__rail,
+  .wagon-switchyard__results,
+  .wagon-switchyard__panel,
+  .wagon-switchyard__identity,
+  .wagon-switchyard__stage,
+  .wagon-switchyard__detail {
+    min-inline-size: 0;
+  }
+
+  .wagon-switchyard__intro {
+    display: grid;
+    gap: var(--space-4);
+    max-inline-size: 57rem;
+  }
+
+  .wagon-switchyard__eyebrow,
+  .wagon-switchyard__intro-summary,
+  .wagon-switchyard__rail-heading p,
+  .wagon-switchyard__route-meta,
+  .wagon-switchyard__cargo-fit,
+  .wagon-switchyard__summary,
+  .wagon-switchyard__technical-label,
+  .wagon-switchyard__system-meta p {
+    margin: 0;
+  }
+
+  .wagon-switchyard__eyebrow,
+  .wagon-switchyard__rail-heading,
+  .wagon-switchyard__route-meta,
+  .wagon-switchyard__sequence,
+  .wagon-switchyard__technical-label,
+  .wagon-switchyard__system-meta {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .wagon-switchyard__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-railway-pale);
+  }
+
+  .wagon-switchyard__eyebrow::before {
+    inline-size: 0.625rem;
+    block-size: 0.625rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--color-brand-red);
+    content: "";
+  }
+
+  .wagon-switchyard__intro h2,
+  .wagon-switchyard__identity h3 {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .wagon-switchyard__intro h2 {
+    max-inline-size: 16ch;
+    font-size: clamp(2.25rem, 2rem + 2.8cqi, 4.5rem);
+    line-height: 0.98;
+  }
+
+  .wagon-switchyard__intro-summary {
+    max-inline-size: 62ch;
+    color: var(--color-railway-pale);
+    font-size: clamp(1rem, 0.96rem + 0.4cqi, 1.25rem);
+    line-height: var(--line-height-body);
+  }
+
+  .wagon-switchyard__rail-heading {
+    display: grid;
+    gap: var(--space-2);
+    color: var(--color-railway-pale);
+    line-height: 1.45;
+  }
+
+  .wagon-switchyard__rail-heading p:first-child::before {
+    display: inline-block;
+    inline-size: 1.25rem;
+    margin-inline-end: var(--space-3);
+    border-block-start: 2px solid var(--color-brand-red);
+    content: "";
+    vertical-align: middle;
+  }
+
+  .wagon-switchyard__rail {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-3);
+    border: var(--border-thin) solid var(--color-railway-border);
+    border-radius: var(--radius-medium);
+    background: rgb(22 59 90 / 72%);
+    list-style: none;
+  }
+
+  .wagon-switchyard__rail > li {
+    min-inline-size: 0;
+  }
+
+  .wagon-switchyard__tab {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.5rem 0.75rem minmax(0, 1fr);
+    grid-template-areas:
+      "sequence stop name"
+      ". . fit";
+    gap: var(--space-1) var(--space-3);
+    min-block-size: 4.5rem;
+    align-content: center;
+    padding: var(--space-3);
+    border: var(--border-thin) solid transparent;
+    border-radius: var(--radius-small);
+    color: var(--color-railway-pale);
+    text-decoration: none;
+    transition:
+      color var(--motion-fast) var(--ease-standard),
+      border-color var(--motion-fast) var(--ease-standard),
+      background-color var(--motion-fast) var(--ease-standard);
+  }
+
+  .wagon-switchyard__tab:hover,
+  .wagon-switchyard__tab.is-selected {
+    color: var(--color-paper);
+    border-color: var(--color-brand-red);
+    background: rgb(255 255 255 / 7%);
+  }
+
+  .wagon-switchyard__tab:focus-visible {
+    z-index: 1;
+    outline-color: var(--color-paper);
+  }
+
+  .wagon-switchyard__sequence {
+    grid-area: sequence;
+    color: var(--color-railway-muted);
+  }
+
+  .wagon-switchyard__tab.is-selected .wagon-switchyard__sequence {
+    color: var(--color-brand-red);
+  }
+
+  .wagon-switchyard__stop {
+    grid-area: stop;
+    inline-size: 0.625rem;
+    block-size: 0.625rem;
+    align-self: center;
+    border-radius: 50%;
+    background: var(--color-railway-border);
+  }
+
+  .wagon-switchyard__tab.is-selected .wagon-switchyard__stop {
+    background: var(--color-brand-red);
+    box-shadow: 0 0 0 0.35rem rgb(220 28 59 / 22%);
+    animation: wagon-switchyard-radar 2.8s ease-out infinite;
+  }
+
+  .wagon-switchyard__family-name {
+    grid-area: name;
+    min-inline-size: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .wagon-switchyard__family-fit {
+    grid-area: fit;
+    min-inline-size: 0;
+    color: var(--color-railway-muted);
+    font-size: var(--font-size-small);
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .wagon-switchyard__results {
+    min-block-size: 0;
+  }
+
+  .wagon-switchyard__panel {
+    display: grid;
+    gap: 0;
+    overflow: clip;
+    border: var(--border-thin) solid var(--color-railway-border);
+    border-radius: clamp(var(--radius-medium), 1.2vw, 1.25rem);
+    background:
+      linear-gradient(120deg, rgb(255 255 255 / 5%), transparent 54%),
+      rgb(22 59 90 / 64%);
+  }
+
+  .wagon-switchyard__panel[hidden] {
+    display: none;
+  }
+
+  .wagon-switchyard__identity,
+  .wagon-switchyard__detail {
+    display: grid;
+    gap: var(--space-3);
+    padding: clamp(var(--space-4), 5cqi, var(--space-6));
+  }
+
+  .wagon-switchyard__route-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    padding-block-end: var(--space-3);
+    border-block-end: var(--border-thin) solid var(--color-railway-border);
+    color: var(--color-railway-pale);
+    line-height: 1.45;
+  }
+
+  .wagon-switchyard__route-meta span:first-child {
+    color: var(--color-brand-red);
+  }
+
+  .wagon-switchyard__identity h3 {
+    font-size: clamp(2rem, 1.55rem + 2.4cqi, 3.25rem);
+    line-height: var(--line-height-heading);
+  }
+
+  .wagon-switchyard__cargo-fit {
+    color: var(--color-railway-pale);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .wagon-switchyard__stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: clip;
+    padding: clamp(var(--space-3), 3cqi, var(--space-6));
+    border-block: var(--border-thin) solid var(--color-railway-border);
+    background:
+      linear-gradient(rgb(53 103 137 / 18%) 1px, transparent 1px) 0 0 / 100%
+        4rem,
+      linear-gradient(90deg, rgb(255 255 255 / 4%), transparent 68%);
+  }
+
+  .wagon-switchyard__stage :global(.responsive-media) {
+    z-index: 1;
+    inline-size: min(100%, 64rem);
+  }
+
+  .wagon-switchyard__stage :global(img) {
+    object-position: center;
+    filter: drop-shadow(0 1.25rem 1.5rem rgb(4 19 31 / 38%));
+  }
+
+  .wagon-switchyard__track {
+    position: absolute;
+    inset-inline: 8%;
+    inset-block-end: 12%;
+    block-size: 0.5rem;
+    border-block: 2px solid var(--color-railway-border);
+    background: repeating-linear-gradient(
+      90deg,
+      var(--color-railway-muted) 0 0.25rem,
+      transparent 0.25rem 3.75rem
+    );
+    opacity: 0.72;
+  }
+
+  .wagon-switchyard__detail {
+    align-content: start;
+  }
+
+  .wagon-switchyard__summary {
+    max-inline-size: 38ch;
+    color: var(--color-railway-pale);
+    font-size: clamp(1rem, 0.98rem + 0.2cqi, 1.125rem);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .wagon-switchyard__detail :global(.action) {
+    justify-self: start;
+    margin-block-start: var(--space-2);
+    border-radius: var(--radius-small);
+    text-transform: uppercase;
+  }
+
+  .wagon-switchyard__technical-label {
+    color: var(--color-railway-muted);
+    line-height: 1.45;
+  }
+
+  .wagon-switchyard__system-meta {
+    display: grid;
+    gap: var(--space-3);
+    padding-block-start: var(--space-4);
+    border-block-start: var(--border-thin) solid var(--color-railway-border);
+    color: var(--color-railway-muted);
+    line-height: 1.45;
+  }
+
+  @keyframes wagon-switchyard-radar {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0.25rem rgb(220 28 59 / 24%);
+    }
+
+    50% {
+      box-shadow: 0 0 0 0.75rem rgb(220 28 59 / 0%);
+    }
+  }
+
+  @container (min-width: 52rem) {
+    .wagon-switchyard__rail-heading {
+      align-items: center;
+    }
+
+    .wagon-switchyard__rail {
+      --rail-gap: var(--space-3);
+
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--rail-gap);
+      padding: var(--space-3);
+    }
+
+    .wagon-switchyard__tab {
+      --rail-axis: 1.375rem;
+
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "sequence"
+        "name"
+        "fit";
+      min-block-size: 8rem;
+      align-content: start;
+      gap: var(--space-1);
+      border-radius: 0;
+      padding-block-start: calc(var(--rail-axis) + 0.75rem);
+    }
+
+    .wagon-switchyard__tab::before {
+      position: absolute;
+      inset-block-start: calc(var(--rail-axis) - 1px);
+      inset-inline-start: calc(
+        0rem - var(--rail-gap) - var(--space-3) - 0.3125rem
+      );
+      inset-inline-end: calc(var(--space-3) + 0.3125rem);
+      block-size: 2px;
+      background: var(--color-railway-border);
+      content: "";
+      z-index: 0;
+      transition: background-color var(--motion-slow) var(--ease-standard);
+    }
+
+    .wagon-switchyard__tab.is-selected::after {
+      position: absolute;
+      inset-block-start: calc(var(--rail-axis) - 1px);
+      inset-inline-start: 100%;
+      inline-size: var(--rail-gap);
+      block-size: 2px;
+      background-color: var(--color-brand-red);
+      content: "";
+      z-index: 1;
+    }
+
+    .wagon-switchyard__rail
+      > li:last-child
+      .wagon-switchyard__tab.is-selected::after {
+      inset-inline: auto 100%;
+    }
+
+    .wagon-switchyard__rail > li:first-child .wagon-switchyard__tab::before {
+      inset-inline-start: calc(100% - var(--space-3) - 0.3125rem);
+      inset-inline-end: calc(var(--rail-gap) / -2);
+    }
+
+    .wagon-switchyard__rail > li:last-child .wagon-switchyard__tab::before {
+      inset-inline-end: calc(var(--space-3) + 0.3125rem);
+    }
+
+    .wagon-switchyard__sequence,
+    .wagon-switchyard__stop,
+    .wagon-switchyard__family-name,
+    .wagon-switchyard__family-fit {
+      position: relative;
+      z-index: 2;
+    }
+
+    .wagon-switchyard__stop {
+      position: absolute;
+      inset-block-start: var(--rail-axis);
+      inset-inline-end: var(--space-3);
+      transform: translateY(-50%);
+    }
+
+    .wagon-switchyard__system-meta {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+  }
+
+  @container (min-width: 64rem) {
+    .wagon-switchyard__frame {
+      min-block-size: 100svh;
+      align-content: center;
+      gap: clamp(0.75rem, 1.4svh, 1.25rem);
+      padding-block: clamp(1.25rem, 2.4svh, 3rem);
+    }
+
+    .wagon-switchyard__intro {
+      gap: clamp(var(--space-2), 1.3svh, var(--space-4));
+    }
+
+    .wagon-switchyard__intro h2 {
+      max-inline-size: 26ch;
+      font-size: clamp(2.5rem, 5.2svh, 4rem);
+    }
+
+    .wagon-switchyard__intro {
+      grid-row: 1;
+    }
+
+    .wagon-switchyard__results {
+      grid-row: 2;
+    }
+
+    .wagon-switchyard__rail-heading {
+      grid-row: 3;
+    }
+
+    .wagon-switchyard__rail {
+      grid-row: 4;
+    }
+
+    .wagon-switchyard__system-meta {
+      grid-row: 5;
+    }
+
+    .wagon-switchyard__panel {
+      grid-template-columns: minmax(0, 2.05fr) minmax(19rem, 0.95fr);
+      grid-template-rows: auto 1fr;
+      min-block-size: 0;
+      block-size: clamp(23rem, 44svh, 30rem);
+    }
+
+    .wagon-switchyard__identity {
+      grid-column: 2;
+      grid-row: 1;
+      align-content: end;
+      gap: var(--space-2);
+      padding: clamp(var(--space-4), 2svh, var(--space-5));
+      border-inline-start: var(--border-thin) solid var(--color-railway-border);
+    }
+
+    .wagon-switchyard__identity h3 {
+      font-size: clamp(2rem, 4svh, 2.75rem);
+    }
+
+    .wagon-switchyard__stage {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      min-block-size: 100%;
+      border-block: 0;
+    }
+
+    .wagon-switchyard__stage :global(.responsive-media) {
+      inline-size: min(88%, 68rem);
+    }
+
+    .wagon-switchyard__detail {
+      grid-column: 2;
+      grid-row: 2;
+      align-content: start;
+      gap: var(--space-2);
+      padding: 0 clamp(var(--space-4), 2svh, var(--space-5))
+        clamp(var(--space-4), 2svh, var(--space-5));
+      border-inline-start: var(--border-thin) solid var(--color-railway-border);
+    }
+
+    .wagon-switchyard__detail :global(.action) {
+      margin-block-start: auto;
+    }
+
+    .wagon-switchyard__tab {
+      min-block-size: clamp(4.75rem, 10svh, 7rem);
+      padding-block-end: clamp(var(--space-2), 1.2svh, var(--space-3));
+    }
+
+    .wagon-switchyard__technical-label {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wagon-switchyard__tab {
+      transition: none !important;
+    }
+
+    .wagon-switchyard__stop {
+      animation: none !important;
+    }
+  }
+
+  @media (min-width: 64rem) and (max-height: 50rem) {
+    .wagon-switchyard__frame {
+      gap: var(--space-2);
+      padding-block: var(--space-4);
+    }
+
+    .wagon-switchyard__intro {
+      gap: var(--space-2);
+    }
+
+    .wagon-switchyard__intro h2 {
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .wagon-switchyard__intro-summary {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .wagon-switchyard__rail {
+      padding: var(--space-2);
+    }
+
+    .wagon-switchyard__tab {
+      min-block-size: 4.5rem;
+      padding-block-end: var(--space-2);
+    }
+
+    .wagon-switchyard__system-meta {
+      display: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .wagon-switchyard__panel,
+    .wagon-switchyard__rail,
+    .wagon-switchyard__tab {
+      border-color: ButtonText;
+    }
+
+    .wagon-switchyard__tab {
+      color: ButtonText;
+      background: ButtonFace;
+    }
+
+    .wagon-switchyard__tab.is-selected {
+      border-color: Highlight;
+      color: Highlight;
+    }
+  }
+</style>

@@ -33,48 +33,52 @@
       "4"
     ],
     [
-      "Distance between bogie pivots",
-      "9.960 mm"
+      "Distance between bogie pivots (mm)",
+      "9.960"
     ],
     [
       "Bogie type",
       "Y25 with classic brake"
     ],
     [
-      "Length over buffers",
-      "15.000 mm"
+      "Length over buffers (mm)",
+      "15.000"
     ],
     [
-      "Wagon tare",
-      "21.0 t"
-    ],
-    [
-      "Tank capacity",
-      "88.0 m³"
-    ],
-    [
-      "Tank diameter",
-      "3000 mm"
-    ],
-    [
-      "Tank code",
-      "L4BH"
+      "Wagon tare (t)",
+      "21,00"
     ],
     [
       "Vehicle gauge",
       "G1"
     ],
     [
-      "Max wheelset load",
-      "22.5 t"
+      "Maximum wheelset load (t)",
+      "22,5"
     ],
     [
-      "Min curve radius",
+      "Minimal curve radius (m)",
       "R 75"
     ],
     [
-      "Max running speed",
+      "Permitted max speed brake-related",
+      "100 km/h"
+    ],
+    [
+      "Max permitted running speed",
       "120 km/h"
+    ],
+    [
+      "Tank capacity (m³)",
+      "88,0"
+    ],
+    [
+      "Tank diameter (mm)",
+      "3000"
+    ],
+    [
+      "Tank code",
+      "L4BH"
     ]
   ],
   "loadlimit": [
@@ -142,8 +146,8 @@
     ]
   ],
   "special": [
-    "Compliant with tank code L4BH",
-    "Meets RID, TSI, GCU, EN, UIC",
+    "Compliant with the tank code L4BH",
+    "Meets the requirements of RID, TSI, GCU, EN, UIC standards",
     "DAC ready"
   ],
   "id": "zacns",
@@ -151,5 +155,9 @@
   "slug": "uno-tank-88m3-zacns",
   "category": "tank",
   "category_name": "Tank",
-  "image": "products/tank/uno-tank-88m3-zacns/wagon-render.png"
+  "image": "products/tank/uno-tank-88m3-zacns/wagon-render.png",
+  "technical_source": {
+    "reference": "Catalog for print.pdf, PDF page 23 (printed page 21); checked against Catalog for print.ai",
+    "checkedAt": "2026-09-05"
+  }
 }

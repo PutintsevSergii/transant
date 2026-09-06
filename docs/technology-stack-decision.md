@@ -1,13 +1,13 @@
 # ADR-001: Technology stack for the TransANT website
 
-- Status: Proposed
+- Status: Accepted with external production-plan gate
 - Date: 2026-09-03
 - Decision owner: Project team
 - Review trigger: before scaffolding the production application
 
 ## Decision summary
 
-Build the TransANT website as a statically generated Astro application, deploy its static assets to Cloudflare Pages, and use a narrowly scoped Cloudflare Pages Function or Worker only for the contact form and other genuinely server-side operations.
+Build the TransANT website as a statically generated Astro application and deploy its static assets to Vercel. Use a narrowly scoped server-side endpoint only for the contact form and other genuinely server-side operations.
 
 Use native semantic HTML, TypeScript, and a custom CSS design system as the default UI layer. Use CSS animations and the Web Animations API for simple motion, and GSAP for complex scroll choreography, SVG animation, sequencing, and state transitions. Lit is optional for isolated reusable Web Components but is not part of the critical rendering, routing, or content architecture.
 
@@ -22,20 +22,18 @@ Astro 7.x, pinned to an exact stable patch
 ├── Optional direct Lit custom elements for reusable widgets
 ├── Playwright for browser journeys
 ├── Vitest for data and component logic
-└── Cloudflare Pages
+└── Vercel static hosting
     ├── CDN-hosted static HTML, CSS, JS, fonts, and images
-    └── one narrow Worker/Function boundary for form delivery
+    └── one narrow server-side endpoint boundary for form delivery
 ```
 
 ## Why this is the best fit
 
 ### Operating cost
 
-Astro prerenders pages to static HTML by default. Static files can be served from a CDN without a continuously running application server. Cloudflare states that static-asset requests are free and unlimited. Its Free plan currently allows 500 Pages builds per month, 20,000 files per site, and files up to 25 MiB. Pages Functions share the Workers allowance; the Workers Free plan currently includes 100,000 requests per day.
+Astro prerenders pages to static HTML by default. Static files can be served from Vercel's CDN without a continuously running application server. The existing free Hobby account can be used for technical previews, but Vercel explicitly restricts Hobby to personal, non-commercial use. Because this is a company website, production requires a Vercel plan that permits commercial use or written authorization from Vercel. Domain registration, transactional email or another form-delivery provider, and any future CMS remain separate costs.
 
-This means the initial corporate site can normally operate without a monthly server charge. The first paid step, if serverless traffic or organizational requirements exceed the free allowance, starts with the Workers paid plan at a stated minimum of USD 5 per month. Domain registration, transactional email, and any future CMS remain separate costs.
-
-Sources: [Cloudflare Pages limits](https://developers.cloudflare.com/pages/platform/limits/), [Cloudflare Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/), [Cloudflare Workers limits](https://developers.cloudflare.com/workers/platform/limits/).
+Sources: [Astro on Vercel](https://vercel.com/docs/frameworks/frontend/astro), [Vercel Hobby terms](https://vercel.com/docs/plans/hobby), [Vercel plans](https://vercel.com/docs/plans).
 
 ### Development speed
 
@@ -67,13 +65,13 @@ Sources: [Astro on-demand rendering](https://docs.astro.build/en/guides/on-deman
 
 Scores use a five-point scale and are specific to this content-heavy, visually ambitious, multilingual corporate catalogue with a one-week delivery target.
 
-| Option | Hosting cost | Delivery speed | SEO and i18n | Visual freedom | Extension path | Result |
-| --- | ---: | ---: | ---: | ---: | ---: | --- |
-| Astro static-first | 5 | 5 | 5 | 5 | 5 | Selected |
-| SvelteKit + adapter-static | 5 | 4 | 4 | 5 | 5 | Strong fallback for a more application-like UI |
-| Nuxt 4 prerendering | 5 | 4 | 4 | 5 | 5 | Strong Vue-based alternative, more runtime surface than needed |
-| Next.js static export | 5 | 4 | 3 | 5 | 5 | Stable ecosystem, but static mode drops useful framework features |
-| Lit + Vite only | 5 | 3 | 2 | 5 | 4 | Excellent components, incomplete site architecture |
+| Option                     | Hosting cost | Delivery speed | SEO and i18n | Visual freedom | Extension path | Result                                                            |
+| -------------------------- | -----------: | -------------: | -----------: | -------------: | -------------: | ----------------------------------------------------------------- |
+| Astro static-first         |            5 |              5 |            5 |              5 |              5 | Selected                                                          |
+| SvelteKit + adapter-static |            5 |              4 |            4 |              5 |              5 | Strong fallback for a more application-like UI                    |
+| Nuxt 4 prerendering        |            5 |              4 |            4 |              5 |              5 | Strong Vue-based alternative, more runtime surface than needed    |
+| Next.js static export      |            5 |              4 |            3 |              5 |              5 | Stable ecosystem, but static mode drops useful framework features |
+| Lit + Vite only            |            5 |              3 |            2 |              5 |              4 | Excellent components, incomplete site architecture                |
 
 ### Why not Next.js static export
 
@@ -151,14 +149,14 @@ This avoids a framework-looking result and does not restrict art direction. A sm
 
 Use the least complex capable tool:
 
-| Need | Tool |
-| --- | --- |
-| Hover, focus, disclosure, simple reveal | CSS transitions/animations |
-| Programmatic element animation | Web Animations API |
-| Coordinated timelines and scroll storytelling | GSAP + ScrollTrigger |
-| Layout-to-layout transitions | GSAP Flip or browser View Transitions |
-| SVG line/path sequences | GSAP where CSS is insufficient |
-| Product 3D or engineering visualization | Lazy-loaded Three.js module only if approved |
+| Need                                          | Tool                                         |
+| --------------------------------------------- | -------------------------------------------- |
+| Hover, focus, disclosure, simple reveal       | CSS transitions/animations                   |
+| Programmatic element animation                | Web Animations API                           |
+| Coordinated timelines and scroll storytelling | GSAP + ScrollTrigger                         |
+| Layout-to-layout transitions                  | GSAP Flip or browser View Transitions        |
+| SVG line/path sequences                       | GSAP where CSS is insufficient               |
+| Product 3D or engineering visualization       | Lazy-loaded Three.js module only if approved |
 
 Mandatory safeguards:
 
@@ -171,20 +169,19 @@ Mandatory safeguards:
 
 ## Hosting decision
 
-Use Cloudflare Pages for the first release.
+Use Vercel static hosting for the first release, subject to a production plan that permits commercial use.
 
 Reasons:
 
-- static requests do not consume Worker request quota;
 - no permanent server process;
 - Git-based deployments and preview deployments;
 - custom domains and global CDN delivery;
-- a small serverless boundary is available when the form needs it;
-- the site remains portable because the production output is standard static files.
+- a small serverless boundary can be added when the form provider and delivery contract are approved;
+- the site remains portable because the production output is standard static files and does not require a Vercel runtime today.
 
-Do not use Vercel Hobby for production: Vercel explicitly limits Hobby to personal, non-commercial use. Vercel Pro remains a technically valid paid fallback. Netlify, object storage with a CDN, or any conventional static host remain migration options because the core site has no Cloudflare runtime dependency.
+Do not use Vercel Hobby for this production site: Vercel explicitly limits Hobby to personal, non-commercial use. Vercel Pro or another commercial-use Vercel agreement is required unless Vercel gives written authorization. Netlify, object storage with a CDN, or any conventional static host remain migration options because the core site has no Vercel runtime dependency.
 
-Sources: [Vercel Hobby terms](https://vercel.com/docs/plans/hobby), [Vercel plans](https://vercel.com/docs/plans), [Cloudflare Pages limits](https://developers.cloudflare.com/pages/platform/limits/).
+Sources: [Astro on Vercel](https://vercel.com/docs/frameworks/frontend/astro), [Vercel Hobby terms](https://vercel.com/docs/plans/hobby), [Vercel plans](https://vercel.com/docs/plans).
 
 ## Contact form boundary
 
@@ -192,7 +189,7 @@ The only initial server-side feature should be form delivery:
 
 ```text
 browser form
-  -> Cloudflare Pages Function / Worker
+  -> approved same-site server endpoint
   -> schema validation
   -> rate limit / anti-abuse control
   -> approved email or CRM provider
@@ -203,7 +200,7 @@ Do not add a database unless the client explicitly requires lead storage. Do not
 
 ## Image pipeline and current constraint
 
-The current web-facing image directory is approximately 211 MiB. The largest source image is approximately 98 MiB, above Cloudflare Pages' 25 MiB per-file limit and far above an acceptable web payload.
+The current web-facing image directory is approximately 211 MiB. The largest source image is approximately 98 MiB, far above the project's 25 MiB static-file ceiling and an acceptable web payload.
 
 Keep original client images as masters outside the deployment output. Import selected masters from `src/assets/` so Astro can generate responsive widths and modern formats at build time. Use `<Picture />` or `<Image />`, explicit dimensions, lazy loading below the fold, and quality settings based on visual inspection. Astro recommends storing local images in `src/` when processing is required; files under `public/` are copied unchanged.
 

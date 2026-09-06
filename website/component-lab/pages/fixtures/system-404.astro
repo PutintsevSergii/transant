@@ -1,0 +1,95 @@
+---
+import Action from "../../../src/components/core/Action/Action.astro";
+import BaseLayout from "../../../src/layouts/BaseLayout.astro";
+import { notFoundPageViewModel } from "../../../src/adapters/content/legal-page-view-model";
+
+const { description, layout, recoveryLinks, title } = notFoundPageViewModel;
+---
+
+<BaseLayout {...layout}>
+  <section class="not-found" data-not-found-page>
+    <div class="not-found__frame page-frame">
+      <p class="not-found__eyebrow">404</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <nav aria-label="Recovery routes" class="not-found__actions">
+        {
+          recoveryLinks.map((link, index) => (
+            <Action
+              kind="link"
+              href={link.href}
+              label={link.label}
+              variant={index === 0 ? "primary" : "secondary"}
+              size="regular"
+              icon="arrow-right"
+            />
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-block-size: min(42rem, 70vh);
+    place-items: center;
+    background: var(--color-brand-blue-dark);
+  }
+
+  .not-found__frame {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-5);
+    padding-block: clamp(var(--space-8), 12vw, 10rem);
+  }
+
+  .not-found__eyebrow,
+  .not-found h1,
+  .not-found p {
+    max-inline-size: 46rem;
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .not-found__eyebrow {
+    color: var(--color-brand-red);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .not-found h1 {
+    color: var(--color-paper);
+    line-height: var(--line-height-heading);
+  }
+
+  .not-found p {
+    color: var(--color-paper);
+    font-size: 1.25rem;
+    line-height: var(--line-height-body);
+  }
+
+  .not-found__actions {
+    display: grid;
+    inline-size: 100%;
+    gap: var(--space-3);
+  }
+
+  .not-found__actions :global(.action) {
+    inline-size: 100%;
+  }
+
+  @media (min-width: 34rem) {
+    .not-found__actions {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .not-found__actions :global(.action) {
+      inline-size: auto;
+    }
+  }
+</style>

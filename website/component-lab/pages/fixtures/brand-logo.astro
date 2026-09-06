@@ -1,0 +1,107 @@
+---
+import BrandLogo from "../../../src/components/core/BrandLogo/BrandLogo.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const logo = {
+  src: "/brand/transant-logo.png",
+  alt: "TransANT",
+  width: 520,
+  height: 114,
+} as const;
+---
+
+<ComponentLabLayout
+  title="BrandLogo fixture | TransANT component lab"
+  description="Linked and unlinked immutable TransANT logo states."
+>
+  <main class="brand-logo-fixture" data-fixture="brand-logo">
+    <header class="brand-logo-fixture__intro page-frame">
+      <a href="/">Component lab</a>
+      <p class="brand-logo-fixture__eyebrow">C-001 primitive</p>
+      <h1>One approved mark. Two container contexts.</h1>
+      <p>
+        Both examples use the same immutable bitmap. The dark setting adds only
+        paper whitespace around it so the original asset remains legible.
+      </p>
+    </header>
+
+    <section
+      class="brand-logo-fixture__panel brand-logo-fixture__panel--light page-frame"
+      aria-labelledby="linked-logo-title"
+    >
+      <div>
+        <p class="brand-logo-fixture__eyebrow">Light surface / linked</p>
+        <h2 id="linked-logo-title">Primary navigation treatment</h2>
+      </div>
+      <BrandLogo {...logo} href="/" tone="light" priority />
+    </section>
+
+    <section
+      class="brand-logo-fixture__panel brand-logo-fixture__panel--dark page-frame"
+      aria-labelledby="unlinked-logo-title"
+    >
+      <div>
+        <p class="brand-logo-fixture__eyebrow">Dark surface / unlinked</p>
+        <h2 id="unlinked-logo-title">Footer identity treatment</h2>
+      </div>
+      <BrandLogo {...logo} tone="dark" />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .brand-logo-fixture {
+    overflow: clip;
+    background: var(--color-paper-warm);
+  }
+
+  .brand-logo-fixture__intro,
+  .brand-logo-fixture__panel {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+
+  .brand-logo-fixture__intro > a {
+    justify-self: start;
+    min-block-size: 2.75rem;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .brand-logo-fixture__intro > p {
+    max-inline-size: var(--reading-max);
+    color: var(--color-ink-secondary);
+  }
+
+  .brand-logo-fixture__eyebrow {
+    color: var(--color-brand-red);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .brand-logo-fixture__panel {
+    min-block-size: 17rem;
+    align-content: space-between;
+  }
+
+  .brand-logo-fixture__panel h2 {
+    margin: 0;
+  }
+
+  .brand-logo-fixture__panel--light {
+    background: var(--color-paper);
+  }
+
+  .brand-logo-fixture__panel--dark {
+    color: var(--color-paper);
+    background: var(--color-footer-navy);
+  }
+
+  .brand-logo-fixture__panel--dark .brand-logo-fixture__eyebrow {
+    color: var(--color-railway-pale);
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import CollaborationProcess from "../../../src/components/home/CollaborationProcess/CollaborationProcess.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="CollaborationProcess fixture | TransANT component lab"
+  description="Static caller-composed engagement sequences with an optional inquiry route."
+>
+  <main data-fixture="collaboration-process">
+    <CollaborationProcess
+      intro={{
+        eyebrow: "Collaboration process",
+        title: "From transport task to a commissioned fleet",
+        description:
+          "This source-owned fixture demonstrates a readable engagement sequence without making a production capacity, lead-time, or delivery claim.",
+        headingLevel: 2,
+        align: "left",
+        theme: "light",
+        measure: "wide",
+      }}
+      steps={[
+        {
+          number: "01",
+          title: "Understand the task",
+          description:
+            "The fixture begins with a caller-owned transport context and an explicit first process marker.",
+        },
+        {
+          number: "02",
+          title: "Engineer and homologate",
+          description:
+            "A second explanation stays readable when narrow containers turn the wide rail into a vertical sequence.",
+        },
+        {
+          number: "03",
+          title: "Manage production",
+          description:
+            "This illustrative stage names a process boundary without promising current availability or a delivery date.",
+        },
+        {
+          number: "04",
+          title: "Deliver and support",
+          description:
+            "The final standard stage remains ordinary source text and never becomes a live service-status statement.",
+        },
+      ]}
+      contactLink={{
+        href: "/fixtures/collaboration-process/#fixture-contact",
+        label: "Discuss the fixture process",
+      }}
+    />
+
+    <section class="collaboration-process-fixture__expanded page-frame">
+      <p>Expanded six-step composition without an inquiry route</p>
+      <CollaborationProcess
+        intro={{
+          title: "An expanded process preserves the same semantic rail",
+          description:
+            "The deliberately long fixture introduction and stage descriptions verify natural wrapping and a complete ordered relationship at every reviewed width.",
+          headingLevel: 3,
+          align: "left",
+          theme: "light",
+          measure: "standard",
+        }}
+        steps={[
+          {
+            number: "A",
+            title: "Frame",
+            description:
+              "An extended first stage grows vertically instead of forcing the following marker to overlap its caller-owned explanation.",
+          },
+          {
+            number: "B",
+            title: "Assess",
+            description:
+              "A second clear activity keeps the expanded sequence explicit.",
+          },
+          {
+            number: "C",
+            title: "Coordinate",
+            description:
+              "The third stage remains a semantic list item in every composition.",
+          },
+          {
+            number: "D",
+            title: "Validate",
+            description: "A fourth stage tests the standard wide-row boundary.",
+          },
+          {
+            number: "E",
+            title: "Prepare",
+            description:
+              "A fifth stage wraps into a second row without introducing paging or a carousel.",
+          },
+          {
+            number: "F",
+            title: "Review",
+            description:
+              "The final expanded stage completes the caller-owned fixture sequence.",
+          },
+        ]}
+      />
+    </section>
+    <p id="fixture-contact" class="visually-hidden">Fixture contact context.</p>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .collaboration-process-fixture__expanded {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+  }
+
+  .collaboration-process-fixture__expanded > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .collaboration-process-fixture__expanded :global(.collaboration-process) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .collaboration-process-fixture__expanded
+    :global(.collaboration-process__frame) {
+    padding-inline: var(--space-5);
+  }
+</style>

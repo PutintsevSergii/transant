@@ -2,15 +2,16 @@
 
 ## Document control
 
-| Field | Value |
-| --- | --- |
-| Status | Draft for project approval |
-| Version | 0.1 |
-| Date | 2026-09-03 |
-| Target release | Production website within seven calendar days |
-| Architecture decision | [ADR-001](../technology-stack-decision.md) |
-| Product data model | [Website content model](../website-content-model.md) |
-| Brand constraints | [Visual style guide](../visual-style-guide.md) |
+| Field                 | Value                                                                                 |
+| --------------------- | ------------------------------------------------------------------------------------- |
+| Status                | Draft for project approval                                                            |
+| Version               | 0.1                                                                                   |
+| Date                  | 2026-09-03                                                                            |
+| Target release        | Production website within seven calendar days                                         |
+| Architecture decision | [ADR-001](../technology-stack-decision.md)                                            |
+| Product data model    | [Website content model](../website-content-model.md)                                  |
+| Brand constraints     | [Visual style guide](../visual-style-guide.md)                                        |
+| Mobile contract       | [Mobile and responsive design requirements](mobile-responsive-design-requirements.md) |
 
 ## 1. Purpose
 
@@ -53,22 +54,22 @@ The release shall include five wagon categories and ten separately indexable pro
 
 ## 4. Production technology baseline
 
-| Area | Requirement |
-| --- | --- |
-| Runtime | Node.js 22 LTS, minimum 22.12.0; repository `.nvmrc` shall select the approved version |
-| Package manager | pnpm 10 with a committed lockfile |
-| Site framework | Astro 7.x pinned to an exact reviewed patch version |
-| Language | TypeScript with strict mode enabled |
-| Content | Astro Content Collections with Zod validation |
-| Rendering | Static generation by default |
-| Styling | Native CSS with custom properties, cascade layers, Grid, Subgrid, and container queries |
-| Basic motion | CSS transitions/animations and the Web Animations API |
-| Advanced motion | GSAP and ScrollTrigger, imported only on routes that need them |
-| Optional components | Lit custom elements only for isolated reusable widgets; Lit shall not own routing or critical page content |
-| Browser testing | Playwright |
-| Unit and data testing | Vitest |
-| Hosting | Cloudflare Pages |
-| Server-side boundary | One narrow Cloudflare Pages Function or Worker for contact-form delivery |
+| Area                  | Requirement                                                                                                |
+| --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Runtime               | Node.js 22 LTS, minimum 22.12.0; repository `.nvmrc` shall select the approved version                     |
+| Package manager       | pnpm 10 with a committed lockfile                                                                          |
+| Site framework        | Astro 7.x pinned to an exact reviewed patch version                                                        |
+| Language              | TypeScript with strict mode enabled                                                                        |
+| Content               | Astro Content Collections with Zod validation                                                              |
+| Rendering             | Static generation by default                                                                               |
+| Styling               | Native CSS with custom properties, cascade layers, Grid, Subgrid, and container queries                    |
+| Basic motion          | CSS transitions/animations and the Web Animations API                                                      |
+| Advanced motion       | GSAP and ScrollTrigger, imported only on routes that need them                                             |
+| Optional components   | Lit custom elements only for isolated reusable widgets; Lit shall not own routing or critical page content |
+| Browser testing       | Playwright                                                                                                 |
+| Unit and data testing | Vitest                                                                                                     |
+| Hosting               | Vercel static hosting on a plan approved for commercial use                                                |
+| Server-side boundary  | One narrow same-site server endpoint for contact-form delivery                                             |
 
 Experimental framework features shall not be required for the first release. The public site shall not require a continuously running application server, database, or general-purpose CMS.
 
@@ -103,7 +104,7 @@ Architecture rules:
 - Interactive islands shall have server-rendered or static HTML fallbacks for meaningful content.
 - A future server-rendered route shall document why static delivery is insufficient.
 - Framework-independent domain data shall remain separate from page components.
-- Cloudflare-specific code shall be isolated to deployment configuration and server-side endpoints.
+- Vercel-specific code shall be isolated to deployment configuration and server-side endpoints.
 
 ## 6. Content and product data
 
@@ -180,9 +181,12 @@ The implementation may use advanced scroll choreography, SVG animation, canvas, 
 
 ## 10. Responsive behavior and browser support
 
+- [`mobile-responsive-design-requirements.md`](mobile-responsive-design-requirements.md) is the binding implementation and evidence contract for compact, tablet, and desktop composition.
 - Pages shall work from 320 CSS pixels wide through large desktop layouts without unintended horizontal page scrolling.
 - Layout decisions shall be content-driven and use container queries where reusable modules require local responsiveness.
 - Input controls shall remain usable with touch, mouse, keyboard, and zoomed text.
+- Mobile layouts shall preserve one semantic component tree and deliberate source order; separate mobile pages or duplicated mobile content are prohibited.
+- Every layout-bearing component shall be implemented and verified in a compact fixture before it can reach `VERIFIED`; final integration testing does not replace component-level mobile evidence.
 - The release shall support the latest two stable major versions of Chrome, Edge, Firefox, and Safari available at acceptance time, plus the current Firefox ESR.
 - A usable non-animated fallback shall exist where browser-native View Transitions or newer visual APIs are unavailable.
 
@@ -249,9 +253,9 @@ Production performance shall be measured on representative pages, including the 
 - The repository shall contain reproducible install, development, test, build, and preview commands.
 - The committed lockfile and recorded Node version shall reproduce the approved build.
 - Every change proposed for production shall produce a preview deployment.
-- Production deployment shall publish static output to Cloudflare Pages.
+- Production deployment shall publish static output to Vercel on a plan that permits commercial company websites.
 - Static assets shall remain portable to another CDN host.
-- Only form delivery or a separately approved feature may depend on the Cloudflare runtime.
+- Only form delivery or a separately approved feature may depend on the Vercel runtime.
 - Deployment configuration shall separate preview and production secrets and destinations.
 - The project shall define cache behavior for versioned assets, HTML, downloads, and form responses.
 - Launch documentation shall include domain/DNS ownership, deployment access, form destination, rollback procedure, and content handover.
@@ -308,5 +312,5 @@ Public product pages should remain statically generated even if application feat
 - Confirm the contact-form recipient and delivery provider.
 - Approve the technical datasheets, downloads, claims, certificates, and case studies.
 - Confirm analytics, privacy, consent, retention, and legal-page requirements.
-- Confirm the production domain, Cloudflare account owner, and deployment access.
+- Confirm the production domain, Vercel project owner, commercial-use plan, and deployment access.
 - Assign the client-side owner responsible for final content approval.

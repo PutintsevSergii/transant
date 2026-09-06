@@ -1,0 +1,72 @@
+---
+import DownloadList from "../../../src/components/product/DownloadList/DownloadList.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const source = {
+  reference: "component-lab fixture file endpoints",
+};
+
+const approvedDownload = {
+  href: "/fixtures/download-list/fixture-document.txt",
+  fileType: "TXT",
+  fileSize: "32 B",
+  language: "English",
+  revisionDate: "2026-09-04",
+  publicationStatus: "approved" as const,
+  source,
+};
+---
+
+<ComponentLabLayout
+  title="DownloadList fixture | TransANT component lab"
+  description="Source-attributed real fixture file routes with complete and optional document metadata."
+>
+  <main data-fixture="download-list">
+    <DownloadList
+      title="Available source files"
+      headingLevel={2}
+      source={{ reference: "Component-lab download fixture register" }}
+      downloads={[
+        { ...approvedDownload, title: "Component-lab source document" },
+        {
+          ...approvedDownload,
+          title: "Component-lab source record",
+          href: "/fixtures/download-list/fixture-record.txt",
+          fileSize: "37 B",
+        },
+        {
+          ...approvedDownload,
+          title: "Unverified file must remain absent",
+          publicationStatus: "unverified",
+        },
+      ]}
+    />
+
+    <DownloadList
+      title="Single source file"
+      headingLevel={2}
+      downloads={[
+        {
+          title: "File with optional metadata omitted",
+          href: "/fixtures/download-list/fixture-document.txt",
+          fileType: "TXT",
+          language: "English",
+          publicationStatus: "approved",
+          source,
+        },
+      ]}
+    />
+
+    <DownloadList
+      title="Withheld source files"
+      headingLevel={2}
+      downloads={[
+        {
+          ...approvedDownload,
+          title: "Draft document must not render",
+          publicationStatus: "draft",
+        },
+      ]}
+    />
+  </main>
+</ComponentLabLayout>

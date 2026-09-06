@@ -5,7 +5,8 @@ set -euo pipefail
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 PROMPT_FILE="$PROJECT_ROOT/agent/prompts/evaluator.md"
 SCHEMA_FILE="$PROJECT_ROOT/agent/schemas/evaluation-result.schema.json"
-VALIDATOR="$PROJECT_ROOT/agent/scripts/validate-state.sh"
+STATE_VALIDATOR="$PROJECT_ROOT/agent/scripts/validate-state.sh"
+INPUT_VALIDATOR="$PROJECT_ROOT/agent/scripts/validate-inputs.sh"
 LOG_DIR="$PROJECT_ROOT/agent/logs"
 RESULT_DIR="$PROJECT_ROOT/agent/results"
 
@@ -35,7 +36,8 @@ if ! git -C "$PROJECT_ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1; the
   git_args+=(--skip-git-repo-check)
 fi
 
-"$VALIDATOR"
+"$STATE_VALIDATOR"
+"$INPUT_VALIDATOR"
 
 if [[ "$HARNESS_DRY_RUN" == "1" ]]; then
   echo "evaluator-dry-run: preflight passed model=$HARNESS_MODEL package=$HARNESS_PACKAGE"
@@ -57,7 +59,6 @@ set +e
   echo "Candidate package: $HARNESS_PACKAGE"
 } | codex exec \
   --approve-for-me \
-  --sandbox workspace-write \
   --cd "$PROJECT_ROOT" \
   --model "$HARNESS_MODEL" \
   --output-schema "$SCHEMA_FILE" \
@@ -98,5 +99,6 @@ if [[ "$changelog_prefix_before" != "$changelog_prefix_after" ]]; then
   exit 1
 fi
 
-"$VALIDATOR"
+"$STATE_VALIDATOR"
+"$INPUT_VALIDATOR"
 echo "evaluator-stop: package=$HARNESS_PACKAGE result=$result_file"

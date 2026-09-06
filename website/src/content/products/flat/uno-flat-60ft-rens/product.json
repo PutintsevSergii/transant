@@ -33,32 +33,36 @@
       "4"
     ],
     [
-      "Distance between bogie pivots",
-      "14.360 mm"
+      "Distance between bogie pivots (mm)",
+      "14.360"
     ],
     [
       "Bogie type",
       "Y25 with compact brake"
     ],
     [
-      "Length over buffers",
-      "19.900 mm"
+      "Length over buffers (mm)",
+      "19.900"
     ],
     [
-      "Wagon tare",
-      "22.5 t"
+      "Wagon tare (t)",
+      "22,5"
     ],
     [
-      "Loading length",
-      "18.500 mm"
+      "Loading length (mm)",
+      "18.500"
     ],
     [
-      "Loading width",
-      "2.646 mm"
+      "Loading width (mm)",
+      "2.646"
     ],
     [
-      "Floor height above rail",
-      "1.240 mm"
+      "Floor height above top of rail (mm)",
+      "1.240"
+    ],
+    [
+      "Height of foldable end and side wall (mm)",
+      "520"
     ],
     [
       "Stanchions",
@@ -69,6 +73,10 @@
       "18 side walls"
     ],
     [
+      "Floor lashing",
+      "14"
+    ],
+    [
       "Type of floor",
       "70 mm spruce wood"
     ],
@@ -77,39 +85,43 @@
       "G1"
     ],
     [
-      "Max wheelset load",
-      "22.5 t"
+      "Maximum wheelset load (t)",
+      "22,5"
     ],
     [
-      "Min curve radius",
+      "Minimal curve radius (m)",
       "R 75"
     ],
     [
-      "Max running speed",
+      "Permitted maximum speed brake-related",
+      "100 km/h"
+    ],
+    [
+      "Maximum permitted running speed",
       "120 km/h"
     ]
   ],
   "loadlimit": [
     [
       "A",
-      "41.5"
+      "41,5"
     ],
     [
       "B",
-      "49.5"
+      "49,5"
     ],
     [
       "C",
-      "59.5"
+      "59,5"
     ],
     [
       "D",
-      "67.5"
+      "67,5"
     ]
   ],
   "special": [
     "18 foldable side walls",
-    "70 mm wooden floor",
+    "70mm wooden floor",
     "DAC ready"
   ],
   "id": "rens",
@@ -117,5 +129,9 @@
   "slug": "uno-flat-60ft-rens",
   "category": "flat",
   "category_name": "Flat",
-  "image": "products/flat/uno-flat-60ft-rens/wagon-render.png"
+  "image": "products/flat/uno-flat-60ft-rens/wagon-render.png",
+  "technical_source": {
+    "reference": "Catalog for print.pdf, PDF page 7 (printed page 05); checked against Catalog for print.ai",
+    "checkedAt": "2026-09-05"
+  }
 }

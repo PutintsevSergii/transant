@@ -1,0 +1,165 @@
+---
+import Action from "../../../src/components/core/Action/Action.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="Action fixture | TransANT component lab"
+  description="Native link and button Action primitive variants."
+>
+  <main class="action-fixture" data-fixture="action">
+    <header class="action-fixture__intro page-frame">
+      <a href="/">Component lab</a>
+      <p class="action-fixture__eyebrow">C-002 primitive</p>
+      <h1>One action language. Native semantics.</h1>
+      <p>
+        Every treatment starts with a real destination or a real button. Red
+        carries primary intent; outline, text, and inverse variants extend the
+        same accessible contract.
+      </p>
+    </header>
+
+    <section
+      class="action-fixture__surface page-frame"
+      aria-labelledby="link-actions"
+    >
+      <div class="action-fixture__heading">
+        <p class="action-fixture__eyebrow">Links</p>
+        <h2 id="link-actions">Navigation and external destinations</h2>
+      </div>
+      <div class="action-fixture__grid">
+        <Action
+          kind="link"
+          label="Explore wagon families"
+          href="#primary-link-activated"
+          variant="primary"
+          icon="arrow-right"
+        />
+        <Action
+          kind="link"
+          label="Read engineering approach"
+          href="#secondary-link-activated"
+          variant="secondary"
+          size="compact"
+        />
+        <Action
+          kind="link"
+          label="View approved certificates"
+          href="https://example.com/certificates"
+          variant="text"
+          external
+        />
+        <Action
+          kind="link"
+          label="Unavailable download"
+          href="/downloads/unavailable.pdf"
+          variant="secondary"
+          icon="download"
+          disabled
+        />
+      </div>
+    </section>
+
+    <section
+      class="action-fixture__surface action-fixture__surface--dark page-frame"
+      aria-labelledby="button-actions"
+    >
+      <div class="action-fixture__heading">
+        <p class="action-fixture__eyebrow">Buttons</p>
+        <h2 id="button-actions">Contextual native controls</h2>
+      </div>
+      <div class="action-fixture__grid">
+        <form action="#button-submitted">
+          <Action
+            kind="button"
+            label="Submit enquiry context"
+            variant="inverse"
+            icon="arrow-right"
+            type="submit"
+          />
+        </form>
+        <Action
+          kind="button"
+          label="Unavailable action"
+          variant="inverse"
+          disabled
+        />
+        <Action
+          kind="button"
+          label="Long action labels wrap safely at compact widths without losing their touch target"
+          variant="inverse"
+          size="compact"
+        />
+      </div>
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .action-fixture {
+    container-type: inline-size;
+    overflow: clip;
+    background: var(--color-paper-warm);
+  }
+
+  .action-fixture__intro,
+  .action-fixture__surface {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+
+  .action-fixture__intro > a {
+    justify-self: start;
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .action-fixture__intro > p {
+    max-inline-size: var(--reading-max);
+    color: var(--color-ink-secondary);
+  }
+
+  .action-fixture__eyebrow {
+    margin: 0;
+    color: var(--color-brand-red);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .action-fixture__heading h2 {
+    margin: 0;
+  }
+
+  .action-fixture__grid {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+  }
+
+  .action-fixture__surface--dark {
+    color: var(--color-paper);
+    background: var(--color-footer-navy);
+  }
+
+  .action-fixture__surface--dark .action-fixture__eyebrow {
+    color: var(--color-railway-pale);
+  }
+
+  form {
+    margin: 0;
+  }
+
+  @container (min-width: 38rem) {
+    .action-fixture__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+  }
+</style>

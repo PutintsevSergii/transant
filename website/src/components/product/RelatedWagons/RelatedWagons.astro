@@ -1,0 +1,170 @@
+---
+import Action from "../../core/Action/Action.astro";
+import ResponsiveMedia from "../../core/ResponsiveMedia/ResponsiveMedia.astro";
+import {
+  approvedRelatedWagonEntries,
+  validateRelatedWagonsProps,
+} from "./related-wagons-contract";
+import type { RelatedWagonsProps } from "./RelatedWagons.types";
+
+const props = Astro.props as RelatedWagonsProps;
+validateRelatedWagonsProps(props);
+
+const related = approvedRelatedWagonEntries(props.related);
+const Heading = `h${props.headingLevel}` as "h2" | "h3";
+---
+
+<section class="related-wagons" data-related-wagons>
+  <div class="related-wagons__frame page-frame">
+    <Heading>{props.title}</Heading>
+    {
+      related.length > 0 ? (
+        <ul class="related-wagons__list" data-related-wagons-list>
+          {related.map((wagon) => (
+            <li class="related-wagons__item" data-related-wagons-item>
+              <article data-related-wagon-id={wagon.id}>
+                {wagon.media !== undefined && (
+                  <div class="related-wagons__media" data-related-wagons-media>
+                    <ResponsiveMedia {...wagon.media} />
+                  </div>
+                )}
+                <div class="related-wagons__content">
+                  <p class="related-wagons__identity">
+                    {wagon.familyName} · {wagon.code}
+                  </p>
+                  <h3>{wagon.title}</h3>
+                  <p class="related-wagons__summary">{wagon.summary}</p>
+                </div>
+                <footer class="related-wagons__footer">
+                  <Action
+                    kind="link"
+                    variant="text"
+                    size="regular"
+                    icon="arrow-right"
+                    href={wagon.href}
+                    label={wagon.linkLabel}
+                  />
+                </footer>
+              </article>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="related-wagons__empty" data-related-wagons-empty>
+          Explore the wagon catalogue for more models.
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .related-wagons {
+    container-type: inline-size;
+    overflow: clip;
+    background: var(--color-paper);
+  }
+
+  .related-wagons__frame,
+  .related-wagons__list,
+  .related-wagons__item,
+  .related-wagons__item article,
+  .related-wagons__media,
+  .related-wagons__content,
+  .related-wagons__footer {
+    min-inline-size: 0;
+  }
+
+  .related-wagons__frame {
+    display: grid;
+    gap: clamp(var(--space-5), 6vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .related-wagons__frame > h2,
+  .related-wagons__frame > h3,
+  .related-wagons__item h3 {
+    margin: 0;
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-family-display);
+    line-height: var(--line-height-tight);
+    overflow-wrap: anywhere;
+  }
+
+  .related-wagons__frame > h2,
+  .related-wagons__frame > h3 {
+    max-inline-size: 52rem;
+    font-size: clamp(2rem, 6cqi, 3.5rem);
+  }
+
+  .related-wagons__list {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .related-wagons__item article {
+    display: grid;
+    align-content: start;
+    gap: var(--space-5);
+    min-block-size: 100%;
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--color-divider);
+    background: var(--color-surface-subtle);
+  }
+
+  .related-wagons__media :global(.responsive-media) {
+    min-block-size: 0;
+  }
+
+  .related-wagons__content,
+  .related-wagons__footer {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .related-wagons__identity,
+  .related-wagons__summary,
+  .related-wagons__empty {
+    margin: 0;
+  }
+
+  .related-wagons__identity {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .related-wagons__item h3 {
+    font-size: clamp(1.35rem, 4cqi, 2rem);
+  }
+
+  .related-wagons__summary,
+  .related-wagons__empty {
+    color: var(--color-ink-secondary);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .related-wagons__footer :global(.action) {
+    justify-self: start;
+  }
+
+  .related-wagons__empty {
+    max-inline-size: 46rem;
+    padding: var(--space-5);
+    border-inline-start: 0.25rem solid var(--color-brand-red-dark);
+  }
+
+  @container (min-width: 54rem) {
+    .related-wagons__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

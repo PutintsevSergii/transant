@@ -1,0 +1,92 @@
+.contact-page {
+  background: var(--color-paper-warm);
+}
+.contact-page__frame {
+  display: grid;
+  gap: clamp(var(--space-7), 9vw, var(--space-10));
+  align-items: start;
+  padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+}
+.contact-page__details {
+  display: grid;
+  gap: var(--space-4);
+  color: var(--color-brand-blue-dark);
+}
+.contact-page__eyebrow,
+.contact-page__details h2,
+.contact-page__details address,
+.contact-page__details a {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.contact-page__eyebrow,
+.not-found__eyebrow {
+  color: var(--color-brand-red-dark);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.contact-page__details h2 {
+  font-size: var(--font-size-heading-2);
+  line-height: var(--line-height-heading);
+}
+.contact-page__details address {
+  display: grid;
+  gap: var(--space-1);
+  color: var(--color-ink-secondary);
+  font-style: normal;
+  line-height: var(--line-height-body);
+}
+.contact-page__details a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+.not-found {
+  display: grid;
+  min-block-size: min(42rem, 70vh);
+  place-items: center;
+  background: var(--color-brand-blue-dark);
+}
+.not-found__frame {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+  padding-block: clamp(var(--space-8), 12vw, 10rem);
+}
+.not-found__frame h1,
+.not-found__frame > p {
+  max-inline-size: 46rem;
+  margin: 0;
+  color: var(--color-paper);
+  overflow-wrap: anywhere;
+}
+.not-found__frame > p:not(.not-found__eyebrow) {
+  font-size: 1.25rem;
+  line-height: var(--line-height-body);
+}
+.not-found__actions {
+  display: grid;
+  inline-size: 100%;
+  gap: var(--space-3);
+}
+.not-found__actions .action {
+  inline-size: 100%;
+}
+@media (min-width: 34rem) {
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .not-found__actions .action {
+    inline-size: auto;
+  }
+}
+@media (min-width: 62rem) {
+  .contact-page__frame {
+    grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
+  }
+}

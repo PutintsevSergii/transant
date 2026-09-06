@@ -32,32 +32,32 @@
       "4"
     ],
     [
-      "Distance between bogie pivots",
-      "14.200 mm"
+      "Distance between bogie pivots (mm)",
+      "14.200"
     ],
     [
       "Bogie type",
       "Y25 with classic brake"
     ],
     [
-      "Length over buffers",
-      "19.830 mm"
+      "Length over buffers (mm)",
+      "19.830"
     ],
     [
-      "Wagon tare",
-      "19.3 t"
+      "Wagon tare (t)",
+      "19,3"
     ],
     [
-      "Loading length",
-      "18.500 mm"
+      "Loading length (mm)",
+      "18.500"
     ],
     [
-      "Loading width",
-      "2.380 mm"
+      "Loading width (mm)",
+      "2.380"
     ],
     [
-      "Floor height above rail",
-      "1.155 mm"
+      "Floor height above basis (mm)",
+      "1.155"
     ],
     [
       "Special features",
@@ -68,20 +68,24 @@
       "G1"
     ],
     [
-      "Max wheelset load",
-      "22.5 t"
+      "Max wheelset load (t)",
+      "22,5"
     ],
     [
-      "Min curve radius",
+      "Min curve radius (m)",
       "R 75"
     ],
     [
-      "Max running speed",
+      "Permitted max speed brake-related",
+      "120 km/h"
+    ],
+    [
+      "Max permitted running speed",
       "120 km/h"
     ]
   ],
   "special": [
-    "Classic brake for SS-brake regime",
+    "Classic brake for SS-bake regime",
     "28 container pins for multiple configurations",
     "DAC ready"
   ],
@@ -90,5 +94,27 @@
   "slug": "uno-intermodal-60ft-sgns",
   "category": "intermodal",
   "category_name": "Intermodal",
-  "image": "products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png"
+  "image": "products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png",
+  "loadlimit": [
+    [
+      "A",
+      "44.7"
+    ],
+    [
+      "B",
+      "52.7"
+    ],
+    [
+      "C",
+      "62.7"
+    ],
+    [
+      "D",
+      "70.7"
+    ]
+  ],
+  "technical_source": {
+    "reference": "Catalog for print.pdf, PDF page 5 (printed page 03); checked against Catalog for print.ai",
+    "checkedAt": "2026-09-05"
+  }
 }

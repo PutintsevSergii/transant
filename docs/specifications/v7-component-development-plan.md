@@ -2,17 +2,18 @@
 
 ## Document control
 
-| Field | Value |
-| --- | --- |
-| Status | Ready for implementation |
-| Version | 1.0 |
-| Date | 2026-09-04 |
-| Intended implementer | GPT-5.6 Terra or an equivalent coding agent |
-| Delivery target | Production-ready first release within seven working days |
-| Visual baseline | `prep/design/stitch-generations/v7/stitch_transant_b2b_website_redesign (6)/screen.png` |
-| Architecture decision | [`../technology-stack-decision.md`](../technology-stack-decision.md) |
-| Product requirements | [`technical-requirements.md`](technical-requirements.md) |
-| Implementation tracker | [`component-implementation-status.md`](component-implementation-status.md) |
+| Field                  | Value                                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------- |
+| Status                 | Ready for implementation                                                                |
+| Version                | 1.0                                                                                     |
+| Date                   | 2026-09-04                                                                              |
+| Intended implementer   | GPT-5.6 Terra or an equivalent coding agent                                             |
+| Delivery target        | Production-ready first release within seven working days                                |
+| Visual baseline        | `prep/design/stitch-generations/v7/stitch_transant_b2b_website_redesign (6)/screen.png` |
+| Architecture decision  | [`../technology-stack-decision.md`](../technology-stack-decision.md)                    |
+| Product requirements   | [`technical-requirements.md`](technical-requirements.md)                                |
+| Mobile requirements    | [`mobile-responsive-design-requirements.md`](mobile-responsive-design-requirements.md)  |
+| Implementation tracker | [`component-implementation-status.md`](component-implementation-status.md)              |
 
 ## 1. Objective
 
@@ -37,11 +38,12 @@ Production page assembly starts only after the required components have reached 
 When sources disagree, use this order:
 
 1. This plan and its implementation tracker.
-2. The current technical requirements and technology ADR.
-3. Approved product content in `website/src/content/` and verified client-supplied media.
-4. V7 `screen.png` for composition, hierarchy, spacing, and visual character.
-5. V7 `code.html` and `DESIGN.md` only as references for identifying regions and approximate design values.
-6. Older Stitch generations only as rejected-history context.
+2. The mobile and responsive design requirements.
+3. The current technical requirements and technology ADR.
+4. Approved product content in `website/src/content/` and verified client-supplied media.
+5. V7 `screen.png` for composition, hierarchy, spacing, and visual character.
+6. V7 `code.html` and `DESIGN.md` only as references for identifying regions and approximate design values.
+7. Older Stitch generations only as rejected-history context.
 
 V7 is a design reference, not production source code. Do not copy its Tailwind CDN setup, inline JavaScript, remote Google image URLs, placeholder destinations, or unverified marketing claims.
 
@@ -64,24 +66,24 @@ The competitor prototype may be used for client-provided text, wagon tables, and
 
 V7 has a clear editorial sequence: promise, engineering rationale, product families, platform explanation, proof, process, assurance, and contact. The page should keep that rhythm. It should not be converted into a dashboard, card wall, search interface, or product configurator.
 
-| V7 region | Production component | Responsibility |
-| --- | --- | --- |
-| Fixed white top navigation | `SiteHeader` | Primary navigation, locale link, contact action, responsive menu |
-| Logo in header/footer | `BrandLogo` | Byte-safe rendering of the immutable brand asset |
-| Red and text links | `Action` | Consistent accessible link/button variants |
-| Hero with left copy and right rail image | `HomeHero` | Main value proposition and primary conversion action |
-| Abstract railway orbit | `RailwayOrbital` | Decorative engineering motion, isolated from content |
-| “Engineered for more useful payload” | `PayloadValueSection` | Engineering proposition and three supporting principles |
-| Dark-blue five-family selector | `WagonSwitchyard` | Browse five family summaries and follow direct catalogue links |
-| “Modular Platform Equation” | `ModularPlatformSection` | Explain the four platform stages |
-| Four-step horizontal process | `RailSequence` | Reusable ordered process primitive |
-| Erzberg case study | `OperationalCaseStudy` | Evidence-led project story with approved image and facts |
-| “From transport task…” process | `CollaborationProcess` | Explain the client engagement sequence |
-| Compliance and impact columns | `QualityImpactSection` | Present approved certifications, quality, and sustainability evidence |
-| Centred final inquiry area | `ContactCTA` | Route users to the contact flow with context |
-| Dark-blue closing navigation | `SiteFooter` | Secondary navigation, company contact, legal links |
-| Repeated eyebrow/title/intro pattern | `SectionIntro` | Shared semantic section heading primitive |
-| Repeated responsive pictures | `ResponsiveMedia` | Local responsive image and caption contract |
+| V7 region                                | Production component     | Responsibility                                                        |
+| ---------------------------------------- | ------------------------ | --------------------------------------------------------------------- |
+| Fixed white top navigation               | `SiteHeader`             | Primary navigation, locale link, contact action, responsive menu      |
+| Logo in header/footer                    | `BrandLogo`              | Byte-safe rendering of the immutable brand asset                      |
+| Red and text links                       | `Action`                 | Consistent accessible link/button variants                            |
+| Hero with left copy and right rail image | `HomeHero`               | Main value proposition and primary conversion action                  |
+| Abstract railway orbit                   | `RailwayOrbital`         | Decorative engineering motion, isolated from content                  |
+| “Engineered for more useful payload”     | `PayloadValueSection`    | Engineering proposition and three supporting principles               |
+| Dark-blue five-family selector           | `WagonSwitchyard`        | Browse five family summaries and follow direct catalogue links        |
+| “Modular Platform Equation”              | `ModularPlatformSection` | Explain the four platform stages                                      |
+| Four-step horizontal process             | `RailSequence`           | Reusable ordered process primitive                                    |
+| Erzberg case study                       | `OperationalCaseStudy`   | Evidence-led project story with approved image and facts              |
+| “From transport task…” process           | `CollaborationProcess`   | Explain the client engagement sequence                                |
+| Compliance and impact columns            | `QualityImpactSection`   | Present approved certifications, quality, and sustainability evidence |
+| Centred final inquiry area               | `ContactCTA`             | Route users to the contact flow with context                          |
+| Dark-blue closing navigation             | `SiteFooter`             | Secondary navigation, company contact, legal links                    |
+| Repeated eyebrow/title/intro pattern     | `SectionIntro`           | Shared semantic section heading primitive                             |
+| Repeated responsive pictures             | `ResponsiveMedia`        | Local responsive image and caption contract                           |
 
 The homepage therefore uses 16 reusable components: five primitives, two shell components, and nine homepage-specific sections. The full site adds catalogue, product-detail, editorial, evidence, download, and form components in later stages.
 
@@ -174,17 +176,17 @@ Rendered-browser tests live in `tests/components/<ComponentName>.spec.ts`. Keepi
 
 The initial token layer shall reconcile `website/src/styles/tokens.css` and `website/src/data/color-tokens.json` with the V7 palette:
 
-| Role | Initial value | Use |
-| --- | --- | --- |
-| Brand red | `#DC1C3B` | Primary action, controlled emphasis, switchyard indicator |
-| Brand blue | `#2B538B` | Links and existing brand-compatible blue accents |
-| Technical blue | `#1C6F9C` | Diagrams and technical secondary accents |
-| Railway navy | `#102E49` | Wagon Switchyard primary background |
-| Railway blue | `#163B5A` | Active surfaces and layered dark-blue panels |
-| Railway border | `#356789` | Dark-section separators and control borders |
-| Railway muted | `#6F98B5` | Secondary technical labels on navy |
-| Railway pale | `#B8D0E0` | Supporting copy on navy |
-| Footer navy | `#0B2235` | Footer background |
+| Role           | Initial value | Use                                                       |
+| -------------- | ------------- | --------------------------------------------------------- |
+| Brand red      | `#DC1C3B`     | Primary action, controlled emphasis, switchyard indicator |
+| Brand blue     | `#2B538B`     | Links and existing brand-compatible blue accents          |
+| Technical blue | `#1C6F9C`     | Diagrams and technical secondary accents                  |
+| Railway navy   | `#102E49`     | Wagon Switchyard primary background                       |
+| Railway blue   | `#163B5A`     | Active surfaces and layered dark-blue panels              |
+| Railway border | `#356789`     | Dark-section separators and control borders               |
+| Railway muted  | `#6F98B5`     | Secondary technical labels on navy                        |
+| Railway pale   | `#B8D0E0`     | Supporting copy on navy                                   |
+| Footer navy    | `#0B2235`     | Footer background                                         |
 
 Also define tokens for typography, spacing, content widths, grid gutters, radii, borders, focus rings, motion duration/easing, and z-index roles. Components consume semantic tokens; they do not duplicate raw values except for documented asset-specific SVG colours.
 
@@ -209,6 +211,8 @@ A component reaches `VERIFIED` only when every applicable item is true.
 - No accidental horizontal overflow or clipped focus indicator.
 - Long English content and a 30% copy-expansion fixture remain usable.
 - Container behaviour works outside the homepage’s exact column width.
+- Compact composition, source order, touch behavior, permitted overflow, and image crop follow [`mobile-responsive-design-requirements.md`](mobile-responsive-design-requirements.md).
+- The 320 and 390 px states are designed and reviewed during the component package; they are not deferred until page integration.
 
 ### Accessibility
 
@@ -253,6 +257,7 @@ Deliverables:
 - exact stable Astro 7 patch, Node 22, pnpm 10, strict TypeScript, formatting, linting, and build scripts;
 - production `astro.config.mjs` and a separate `astro.component-lab.config.mjs` with an isolated input and output directory;
 - Vitest, Playwright, and axe integration;
+- Playwright projects for the canonical 320, 390, 768, 1024, and 1440 px widths, plus reusable page-overflow and phone-landscape checks;
 - base token, reset, type, global, and reduced-motion style sheets;
 - local font loading with system fallbacks;
 - CI-ready commands for typecheck, unit, component, accessibility, visual, build, and aggregate quality checks.
@@ -261,6 +266,7 @@ Required tests:
 
 - production build excludes component-lab routes and fixtures;
 - component-lab build renders its index and one smoke fixture;
+- the smoke fixture renders without page-level overflow at 320 and 390 px and preserves its intended wide state at 1440 px;
 - no built page depends on Google image/font hosts;
 - browser console contains no uncaught error on the smoke fixture.
 
@@ -384,8 +390,8 @@ Interface: `label?`, `motion` (`auto`, `off`), `density`, `accent`.
 
 Plan:
 
-- build a self-contained server-rendered SVG inspired by rail arcs, sleepers, switch points, axles, and route markers;
-- avoid globe, crypto-network, dashboard, fake map, or fake live-data metaphors;
+- build a self-contained server-rendered SVG: a small fine-dotted Earth held by three paired railway loops with sleepers and route markers;
+- preserve a clear paper gap between the Earth and every rail or marker; do not introduce crypto-network, dashboard, fake-map, or fake-live-data semantics;
 - keep it decorative by default; a supplied label changes it to an accessible figure;
 - use restrained CSS transform/offset-path motion only after the static state is approved;
 - pause continuous work when offscreen and disable it for reduced motion.
@@ -505,29 +511,29 @@ Tests: action and supporting links, context URL encoding, no context, narrow lay
 
 ### Catalogue components
 
-| ID | Component | Implementation and required tests |
-| --- | --- | --- |
-| P-001 | `Breadcrumbs` | Ordered navigation with current item; test single/deep paths, structured data, long labels, and no false link on current page. |
+| ID    | Component          | Implementation and required tests                                                                                                                 |
+| ----- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P-001 | `Breadcrumbs`      | Ordered navigation with current item; test single/deep paths, structured data, long labels, and no false link on current page.                    |
 | P-002 | `WagonFamilyIndex` | Five editorial family rows with direct links; test all families, source order, local images, mobile alternation, and no search/filter dependency. |
-| P-003 | `WagonModelList` | Models within one family using semantic list/article markup; test one/many models, model codes, image fallback, and direct links. |
+| P-003 | `WagonModelList`   | Models within one family using semantic list/article markup; test one/many models, model codes, image fallback, and direct links.                 |
 
 ### Product-detail components
 
-| ID | Component | Implementation and required tests |
-| --- | --- | --- |
-| P-004 | `ProductHero` | Family, model, benefit, wagon render, and inquiry action; test title hierarchy, transparent-image bounds, mobile stacking, and context link. |
-| P-005 | `CargoFit` | Approved cargo/use-case content; test absent/short/long lists and prohibit inferred compatibility. |
-| P-006 | `SpecificationGroup` | Ordered label/value/unit rows; test missing units, long values, copy expansion, and preserved source order. |
-| P-007 | `LoadLimitTable` | Accessible caption, headers, scopes, notes, and horizontal narrow-screen strategy; test keyboard scroll, all current tables, header associations, print, and no normalized values. |
-| P-008 | `DownloadList` | Real files with type/size/language; test missing file failure, download metadata, language labels, and absence of placeholder entries. |
-| P-009 | `RelatedWagons` | Explicit related-product records; test zero/many relations, no self-reference, valid destinations, and responsive list. |
+| ID    | Component            | Implementation and required tests                                                                                                                                                  |
+| ----- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P-004 | `ProductHero`        | Family, model, benefit, wagon render, and inquiry action; test title hierarchy, transparent-image bounds, mobile stacking, and context link.                                       |
+| P-005 | `CargoFit`           | Approved cargo/use-case content; test absent/short/long lists and prohibit inferred compatibility.                                                                                 |
+| P-006 | `SpecificationGroup` | Ordered label/value/unit rows; test missing units, long values, copy expansion, and preserved source order.                                                                        |
+| P-007 | `LoadLimitTable`     | Accessible caption, headers, scopes, notes, and horizontal narrow-screen strategy; test keyboard scroll, all current tables, header associations, print, and no normalized values. |
+| P-008 | `DownloadList`       | Real files with type/size/language; test missing file failure, download metadata, language labels, and absence of placeholder entries.                                             |
+| P-009 | `RelatedWagons`      | Explicit related-product records; test zero/many relations, no self-reference, valid destinations, and responsive list.                                                            |
 
 ### Editorial and evidence components
 
-| ID | Component | Implementation and required tests |
-| --- | --- | --- |
-| E-001 | `PageHero` | Generic company/technology/sustainability page introduction; test image/no-image, theme, breadcrumbs slot, and heading hierarchy. |
-| E-002 | `MediaStory` | Reversible text/media editorial block; test both orientations, caption, mobile source order, and image absence. |
+| ID    | Component      | Implementation and required tests                                                                                                      |
+| ----- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| E-001 | `PageHero`     | Generic company/technology/sustainability page introduction; test image/no-image, theme, breadcrumbs slot, and heading hierarchy.      |
+| E-002 | `MediaStory`   | Reversible text/media editorial block; test both orientations, caption, mobile source order, and image absence.                        |
 | E-003 | `EvidenceList` | Policies, certifications, documents, and factual references; test evidence types, external/download semantics, dates, and empty state. |
 
 ### Form component
@@ -599,14 +605,14 @@ Build Contact, Privacy, Imprint, and 404 pages. The contact page uses `ContactFo
 
 ## 15. Stage 7 — integration and release work packages
 
-| ID | Work package | Completion evidence |
-| --- | --- | --- |
-| I-001 | Route and link integration | Automated crawl has no internal 404, empty `href`, unreachable product, or orphaned page. |
-| I-002 | Responsive and visual integration | Representative 320/390/768/1024/1440 page screenshots reviewed; no overflow; V7 hierarchy retained. |
-| I-003 | Accessibility integration | Automated axe coverage plus manual keyboard, zoom, focus, landmarks, tables, and reduced-motion review. |
-| I-004 | Performance integration | Optimized local assets, route budgets, no unnecessary hydration, stable layout, and Lighthouse evidence on representative pages. |
-| I-005 | Content and brand audit | All claims sourced/approved, all ten product records checked, logo digest unchanged, legal/contact placeholders blocked. |
-| I-006 | Deployment readiness | Cloudflare preview, form environment contract, headers, redirects, sitemap, robots, analytics consent decision, rollback notes. |
+| ID    | Work package                      | Completion evidence                                                                                                              |
+| ----- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| I-001 | Route and link integration        | Automated crawl has no internal 404, empty `href`, unreachable product, or orphaned page.                                        |
+| I-002 | Responsive and visual integration | Representative 320/390/768/1024/1440 page screenshots reviewed; no overflow; V7 hierarchy retained.                              |
+| I-003 | Accessibility integration         | Automated axe coverage plus manual keyboard, zoom, focus, landmarks, tables, and reduced-motion review.                          |
+| I-004 | Performance integration           | Optimized local assets, route budgets, no unnecessary hydration, stable layout, and Lighthouse evidence on representative pages. |
+| I-005 | Content and brand audit           | All claims sourced/approved, all ten product records checked, logo digest unchanged, legal/contact placeholders blocked.         |
+| I-006 | Deployment readiness              | Vercel preview, form environment contract, headers, redirects, sitemap, robots, analytics consent decision, rollback notes.      |
 
 ## 16. Testing architecture
 
@@ -614,16 +620,16 @@ Do not base the test suite on Astro’s Container API because it is experimental
 
 Use a separate component-lab Astro build and test the rendered output in a real browser with Playwright. Use Vitest only for pure TypeScript functions, view-model adapters, validation, and isolated controller state that does not require browser rendering.
 
-| Layer | Tool | Purpose |
-| --- | --- | --- |
-| Static correctness | Astro check + TypeScript | Props, content schemas, imports, strict types |
-| Pure logic | Vitest | Adapters, validators, formatting, selection reducer |
-| Isolated rendering | Component lab + Playwright | Semantics, styles, keyboard, progressive enhancement |
-| Accessibility | axe with Playwright + manual checklist | Automated rules plus focus, zoom, motion, table review |
-| Visual identity | Playwright screenshots | Focused stable states, themes, responsive breakpoints |
-| Page journeys | Playwright | Navigation, catalogue/product routes, inquiry, no-JS paths |
-| Content integrity | Build-time tests | Products, claims, sources, local assets, downloads, links |
-| Performance | Build inspection + Lighthouse | Script/image budgets and representative route metrics |
+| Layer              | Tool                                   | Purpose                                                    |
+| ------------------ | -------------------------------------- | ---------------------------------------------------------- |
+| Static correctness | Astro check + TypeScript               | Props, content schemas, imports, strict types              |
+| Pure logic         | Vitest                                 | Adapters, validators, formatting, selection reducer        |
+| Isolated rendering | Component lab + Playwright             | Semantics, styles, keyboard, progressive enhancement       |
+| Accessibility      | axe with Playwright + manual checklist | Automated rules plus focus, zoom, motion, table review     |
+| Visual identity    | Playwright screenshots                 | Focused stable states, themes, responsive breakpoints      |
+| Page journeys      | Playwright                             | Navigation, catalogue/product routes, inquiry, no-JS paths |
+| Content integrity  | Build-time tests                       | Products, claims, sources, local assets, downloads, links  |
+| Performance        | Build inspection + Lighthouse          | Script/image budgets and representative route metrics      |
 
 References: [Astro testing guide](https://docs.astro.build/en/guides/testing/), [Astro Container API status](https://docs.astro.build/en/reference/container-reference/), [Playwright documentation](https://playwright.dev/docs/intro), [axe Playwright integration](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/playwright).
 
@@ -651,6 +657,8 @@ Every component README shall contain these headings:
 
 Use `None` explicitly rather than omitting inapplicable sections. This makes component contracts comparable and prevents hidden dependencies.
 
+For heading 10, record semantic source order, compact/wide-mobile/tablet/desktop composition, container thresholds, minimum width, touch behavior, deliberate overflow, responsive media, and exact fixture routes as required by the mobile specification.
+
 ## 18. Terra execution protocol
 
 Terra shall implement exactly one numbered work package per task/turn unless the user explicitly requests a larger batch. Root `AGENTS.md`, `STATUS.md`, and `CHANGELOG.md` define the durable harness and take precedence for operational state.
@@ -658,7 +666,7 @@ Terra shall implement exactly one numbered work package per task/turn unless the
 For every package:
 
 1. Read root `STATUS.md`, the latest 120 lines of `CHANGELOG.md`, this plan, and the selected tracker row.
-2. Run `agent/scripts/validate-state.sh`, then select the active package or the recorded next eligible package whose prerequisites are `VERIFIED`.
+2. Run `agent/scripts/validate-state.sh` and `agent/scripts/validate-inputs.sh`, then select the active package or the recorded next eligible package whose prerequisites are `VERIFIED`.
 3. Inspect existing files and preserve unrelated user work.
 4. Write or update the public interface before visual implementation.
 5. Create the isolated component-lab fixture.
@@ -668,7 +676,7 @@ For every package:
 9. Write the component README from the required template.
 10. Run focused tests, shared typecheck, and component-lab build.
 11. Update only that tracker row with honest status and evidence; synchronize `STATUS.md` and append the complete handoff to `CHANGELOG.md`.
-12. Run the state validator and stop. Do not begin the next package automatically.
+12. Run both validators and stop. Do not begin the next package automatically.
 
 Recommended task prompt:
 
@@ -718,15 +726,15 @@ F-002 + primitives
 
 ## 20. Seven-day delivery sequence
 
-| Day | Target |
-| --- | --- |
-| 1 | F-001, F-002, tokens, and C-001 through C-005 |
-| 2 | C-006, C-007, H-001, H-002, H-003, and H-004 |
-| 3 | H-005 through H-009, A-001, and A-002 homepage assembly |
-| 4 | P-001 through P-009, A-003, and A-004 catalogue/product routes |
-| 5 | E-001 through E-003, F-003, A-005, and A-006 |
-| 6 | I-001 through I-005: link, responsive, accessibility, performance, content, and brand QA |
-| 7 | I-006 preview deployment, form integration, client review fixes, final regression, and handoff |
+| Day | Target                                                                                         |
+| --- | ---------------------------------------------------------------------------------------------- |
+| 1   | F-001, F-002, tokens, and C-001 through C-005                                                  |
+| 2   | C-006, C-007, H-001, H-002, H-003, and H-004                                                   |
+| 3   | H-005 through H-009, A-001, and A-002 homepage assembly                                        |
+| 4   | P-001 through P-009, A-003, and A-004 catalogue/product routes                                 |
+| 5   | E-001 through E-003, F-003, A-005, and A-006                                                   |
+| 6   | I-001 through I-005: link, responsive, accessibility, performance, content, and brand QA       |
+| 7   | I-006 preview deployment, form integration, client review fixes, final regression, and handoff |
 
 This is an aggressive schedule. Component portability and tests are not optional schedule buffers. If content approval or form-provider access is blocked, record the blocker and finish all source-derived work without inventing production evidence.
 
@@ -741,4 +749,4 @@ The release is complete only when:
 - the immutable logo matches its recorded digest;
 - core navigation, content, tables, downloads, and contact submission have working no-JavaScript paths;
 - responsive, accessibility, performance, content, and brand evidence is recorded;
-- Cloudflare preview and production configuration are documented with a rollback procedure.
+- Vercel preview and production configuration are documented with a rollback procedure and a commercial-use plan gate.

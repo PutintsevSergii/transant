@@ -1,0 +1,80 @@
+---
+import { validateLegalDocumentProps } from "./legal-document-contract";
+import type { LegalDocumentProps } from "./LegalDocument.types";
+
+const props = Astro.props as LegalDocumentProps;
+validateLegalDocumentProps(props);
+---
+
+<section class="legal-document" data-legal-document>
+  <div class="legal-document__frame page-frame">
+    <article class="legal-document__article">
+      {
+        props.introduction !== undefined && (
+          <p class="legal-document__introduction">{props.introduction}</p>
+        )
+      }
+      {
+        props.sections.map((section) => (
+          <section class="legal-document__section" data-legal-document-section>
+            <h2>{section.title}</h2>
+            {section.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </section>
+        ))
+      }
+    </article>
+  </div>
+</section>
+
+<style>
+  .legal-document {
+    background: var(--color-paper-warm);
+  }
+
+  .legal-document__frame {
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .legal-document__article,
+  .legal-document__section {
+    display: grid;
+    min-inline-size: 0;
+    gap: var(--space-4);
+  }
+
+  .legal-document__article {
+    max-inline-size: 46rem;
+    gap: var(--space-7);
+  }
+
+  .legal-document__section {
+    gap: var(--space-3);
+  }
+
+  .legal-document__introduction,
+  .legal-document p,
+  .legal-document h2 {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .legal-document__introduction {
+    color: var(--color-brand-blue-dark);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+  }
+
+  .legal-document p {
+    color: var(--color-ink-secondary);
+    line-height: var(--line-height-body);
+  }
+
+  .legal-document h2 {
+    color: var(--color-brand-blue-dark);
+    font-size: var(--font-size-heading-2);
+    line-height: var(--line-height-heading);
+  }
+</style>

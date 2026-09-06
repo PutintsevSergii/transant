@@ -1,0 +1,75 @@
+---
+import freightTrain from "../../../src/assets/images/editorial/freight-train-in-operation.jpg";
+import wagonFleet from "../../../src/assets/images/editorial/transant-wagon-fleet.png";
+import MediaStory from "../../../src/components/editorial/MediaStory/MediaStory.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="MediaStory fixture | TransANT component lab"
+  description="Static reversible editorial text/media blocks with deliberate source order, captions, and text-only output."
+>
+  <main data-fixture="media-story">
+    <MediaStory
+      eyebrow="Technology"
+      title="Engineering narratives can begin with the editorial proposition."
+      description="A deliberately long fixture summary keeps the text/media relationship readable without making a production claim or relying on page, route, or collection state."
+      headingLevel={2}
+      theme="light"
+      mediaPosition="after"
+      action={{ href: "/technology/", label: "Explore technology" }}
+      media={{
+        image: freightTrain,
+        alt: "Freight train travelling through a wooded mountain landscape",
+        sizes: "(min-width: 58rem) 50vw, 100vw",
+        fit: "cover",
+        aspectRatio: "16 / 10",
+        caption:
+          "Local fixture photography is retained only as a component-lab example.",
+      }}
+    />
+
+    <MediaStory
+      eyebrow="Company"
+      title="Media can lead when it carries the needed narrative context."
+      description="The dark composition keeps its meaningful local image first in server HTML, and desktop layout never reverses the compact reading order."
+      headingLevel={2}
+      theme="dark"
+      mediaPosition="before"
+      media={{
+        image: wagonFleet,
+        alt: "TransANT wagons assembled in a railway fleet",
+        sizes: "(min-width: 58rem) 50vw, 100vw",
+        fit: "cover",
+        aspectRatio: "16 / 10",
+      }}
+    />
+
+    <section
+      class="media-story-fixture__text-only page-frame"
+      aria-label="Text-only MediaStory variant"
+    >
+      <MediaStory
+        eyebrow="Sustainability"
+        title="A text-only story leaves no empty media stage."
+        description="This deliberate no-image fixture still provides a caller-selected heading and readable editorial measure."
+        headingLevel={3}
+        theme="light"
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .media-story-fixture__text-only {
+    padding-block: var(--space-8);
+  }
+
+  .media-story-fixture__text-only :global(.media-story) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .media-story-fixture__text-only :global(.media-story__frame) {
+    padding-inline: var(--space-5);
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import { homepageViewModel } from "../../../src/adapters/content/homepage-view-model";
+import ContactCTA from "../../../src/components/home/ContactCTA/ContactCTA.astro";
+import PageMeta from "../../../src/components/editorial/PageMeta/PageMeta.astro";
+import HomeHero from "../../../src/components/home/HomeHero/HomeHero.astro";
+import ModularPlatformSection from "../../../src/components/home/ModularPlatformSection/ModularPlatformSection.astro";
+import PayloadValueSection from "../../../src/components/home/PayloadValueSection/PayloadValueSection.astro";
+import QualityImpactSection from "../../../src/components/home/QualityImpactSection/QualityImpactSection.astro";
+import RailwayOrbital from "../../../src/components/home/RailwayOrbital/RailwayOrbital.astro";
+import WagonSwitchyard from "../../../src/components/home/WagonSwitchyard/WagonSwitchyard.astro";
+import BaseLayout from "../../../src/layouts/BaseLayout.astro";
+
+const {
+  contactCta,
+  hero,
+  layout,
+  pageMeta,
+  payload,
+  platform,
+  qualityImpact,
+  switchyard,
+} = homepageViewModel;
+---
+
+<BaseLayout {...layout}>
+  <PageMeta {...pageMeta} />
+  <HomeHero {...hero} />
+  <PayloadValueSection {...payload}>
+    <RailwayOrbital
+      slot="visual"
+      motion="auto"
+      density="standard"
+      accent="blue"
+    />
+  </PayloadValueSection>
+  <WagonSwitchyard {...switchyard} />
+  <ModularPlatformSection {...platform} />
+  <QualityImpactSection {...qualityImpact} />
+  <ContactCTA {...contactCta} />
+</BaseLayout>

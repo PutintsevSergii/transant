@@ -1,0 +1,199 @@
+---
+import QualityImpactSection from "../../../src/components/home/QualityImpactSection/QualityImpactSection.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="QualityImpactSection fixture | TransANT component lab"
+  description="Static caller-owned quality and impact topics with source-attributed evidence."
+>
+  <main data-fixture="quality-impact-section">
+    <QualityImpactSection
+      intro={{
+        eyebrow: "Quality and impact",
+        title: "Evidence belongs with every quality and impact statement",
+        description:
+          "This source-owned fixture demonstrates category-aware evidence presentation. It makes no production certification, policy, capability, target, or sustainability claim.",
+        headingLevel: 2,
+        align: "left",
+        theme: "light",
+        measure: "standard",
+      }}
+      topics={[
+        {
+          statementType: "certification",
+          title: "Certification record boundary",
+          summary:
+            "The fixture keeps the identifier, issuer, scope, and its source distinct so a document record is not inflated into a general performance claim.",
+          publicationStatus: "approved",
+          source: { reference: "Fixture certificate register" },
+          certificate: {
+            identifier: "FIX-9001-2026",
+            issuer: "Fixture assessment body",
+            scope:
+              "Illustrative component-lab scope only; not a production certificate or approval.",
+            source: { reference: "Fixture certificate register" },
+          },
+          evidenceLinks: [
+            {
+              label: "Read fixture certificate record",
+              href: "/fixtures/quality-impact-section/fixture-certificate.pdf",
+              type: "file",
+              source: { reference: "Fixture certificate register" },
+            },
+          ],
+        },
+        {
+          statementType: "policy",
+          title: "Policy publication boundary",
+          summary:
+            "A deliberately long source-owned explanation proves that an evidence link and its attribution remain readable beneath the topic instead of compressing into an inline metadata row on compact screens.",
+          publicationStatus: "approved",
+          source: { reference: "Fixture policy register" },
+          evidenceLinks: [
+            {
+              label: "Open fixture policy register",
+              href: "https://evidence.example.test/fixture-policy",
+              type: "external",
+              source: { reference: "Fixture policy register" },
+            },
+          ],
+        },
+      ]}
+    />
+
+    <section class="quality-impact-section-fixture__variants page-frame">
+      <p>One approved topic from two caller-owned inputs</p>
+      <QualityImpactSection
+        intro={{
+          title: "A single approved topic remains naturally single-column",
+          headingLevel: 3,
+          align: "left",
+          theme: "light",
+          measure: "wide",
+        }}
+        topics={[
+          {
+            statementType: "capability",
+            title: "Approved fixture capability",
+            summary:
+              "This is only a component-lab rendering example with caller-owned provenance.",
+            publicationStatus: "approved",
+            source: { reference: "Fixture capability source" },
+            evidenceLinks: [
+              {
+                label: "Read fixture capability note",
+                href: "/fixtures/quality-impact-section/capability-note.pdf",
+                type: "file",
+                source: { reference: "Fixture capability source" },
+              },
+            ],
+          },
+          {
+            statementType: "marketing-statement",
+            title: "Unverified fixture statement",
+            summary:
+              "This source input intentionally remains absent from rendered output.",
+            publicationStatus: "unverified",
+            source: { reference: "Fixture draft source" },
+            evidenceLinks: [
+              {
+                label: "Open unverified fixture note",
+                href: "https://evidence.example.test/unverified",
+                type: "external",
+                source: { reference: "Fixture draft source" },
+              },
+            ],
+          },
+        ]}
+      />
+
+      <p>Three approved topic composition</p>
+      <QualityImpactSection
+        intro={{
+          title: "Three categories preserve their visible distinctions",
+          headingLevel: 3,
+          align: "left",
+          theme: "light",
+          measure: "wide",
+        }}
+        topics={[
+          {
+            statementType: "policy",
+            title: "Policy category",
+            summary: "A caller-owned policy topic stays visibly classified.",
+            publicationStatus: "approved",
+            source: { reference: "Fixture policy source" },
+            evidenceLinks: [
+              {
+                label: "Open policy evidence",
+                href: "https://evidence.example.test/policy",
+                type: "external",
+                source: { reference: "Fixture policy source" },
+              },
+            ],
+          },
+          {
+            statementType: "capability",
+            title: "Capability category",
+            summary:
+              "A capability remains different from a target or certification.",
+            publicationStatus: "approved",
+            source: { reference: "Fixture capability source" },
+            evidenceLinks: [
+              {
+                label: "Read capability evidence",
+                href: "/fixtures/quality-impact-section/capability.pdf",
+                type: "file",
+                source: { reference: "Fixture capability source" },
+              },
+            ],
+          },
+          {
+            statementType: "target",
+            title: "Target category",
+            summary:
+              "A target is visibly a target rather than a completed result.",
+            publicationStatus: "approved",
+            source: { reference: "Fixture target source" },
+            evidenceLinks: [
+              {
+                label: "Open target evidence",
+                href: "https://evidence.example.test/target",
+                type: "external",
+                source: { reference: "Fixture target source" },
+              },
+            ],
+          },
+        ]}
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .quality-impact-section-fixture__variants {
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-8);
+  }
+
+  .quality-impact-section-fixture__variants > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .quality-impact-section-fixture__variants :global(.quality-impact-section) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .quality-impact-section-fixture__variants
+    :global(.quality-impact-section__frame) {
+    padding-inline: var(--space-5);
+  }
+</style>

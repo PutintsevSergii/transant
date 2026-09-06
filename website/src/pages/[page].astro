@@ -1,0 +1,45 @@
+---
+import {
+  editorialPageSlugs,
+  editorialPageViewModel,
+} from "../adapters/content/editorial-page-view-model";
+import EvidenceList from "../components/editorial/EvidenceList/EvidenceList.astro";
+import MediaStory from "../components/editorial/MediaStory/MediaStory.astro";
+import PageHero from "../components/editorial/PageHero/PageHero.astro";
+import PageMeta from "../components/editorial/PageMeta/PageMeta.astro";
+import ContactCTA from "../components/home/ContactCTA/ContactCTA.astro";
+import OperationalCaseStudy from "../components/home/OperationalCaseStudy/OperationalCaseStudy.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TechnologyPage from "../layouts/TechnologyPage.astro";
+
+export function getStaticPaths() {
+  return editorialPageSlugs.map((page) => ({ params: { page } }));
+}
+
+const page = Astro.params.page;
+if (!page) {
+  throw new Error("Editorial routes require a page parameter.");
+}
+
+const { caseStudy, contactCta, evidence, hero, layout, pageMeta, stories } =
+  editorialPageViewModel(page);
+---
+
+<BaseLayout {...layout}>
+  {
+    page === "technology" ? (
+      <TechnologyPage hero={hero} stories={stories} contactCta={contactCta} />
+    ) : (
+      <>
+        {pageMeta !== undefined && <PageMeta {...pageMeta} />}
+        <PageHero {...hero} />
+        {stories.map((story) => (
+          <MediaStory {...story} />
+        ))}
+        {caseStudy !== undefined && <OperationalCaseStudy {...caseStudy} />}
+        {evidence !== undefined && <EvidenceList {...evidence} />}
+        <ContactCTA {...contactCta} />
+      </>
+    )
+  }
+</BaseLayout>

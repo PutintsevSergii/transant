@@ -1,0 +1,130 @@
+---
+import intermodalBogie from "../../../src/assets/images/editorial/intermodal-wagon-bogie-closeup.jpg";
+import PayloadValueSection from "../../../src/components/home/PayloadValueSection/PayloadValueSection.astro";
+import RailwayOrbital from "../../../src/components/home/RailwayOrbital/RailwayOrbital.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="PayloadValueSection fixture | TransANT component lab"
+  description="Caller-composed engineering proposition, visual slot, and semantic principles."
+>
+  <main data-fixture="payload-value-section">
+    <PayloadValueSection
+      intro={{
+        eyebrow: "Engineering value",
+        title: "Engineered for more useful payload",
+        description:
+          "A source-owned fixture introduction keeps the section heading in the embedding document outline.",
+        headingLevel: 2,
+        align: "left",
+        theme: "light",
+        measure: "standard",
+      }}
+      body="This deliberately extended fixture body verifies that practical editorial copy stays before the railway-inspired visual stage and the three supporting principles at every reviewed width. It makes no production performance claim."
+      sourceLink={{
+        href: "/fixtures/payload-value-section/#source",
+        label: "Read the engineering source note",
+      }}
+      principles={[
+        {
+          title: "Purposeful mass",
+          description:
+            "A long principle description wraps in its bordered row without compressing the visual stage or inventing a technical metric.",
+        },
+        {
+          title: "Operational clarity",
+          description:
+            "The physical composition prioritises legible structures and caller-owned evidence over decorative dashboard metaphors.",
+        },
+        {
+          title: "Serviceable systems",
+          description:
+            "Independent components expose durable interfaces so pages can assemble approved detail without section coupling.",
+        },
+      ]}
+    >
+      <RailwayOrbital
+        slot="visual"
+        label="Abstract railway arcs and route markers"
+      />
+    </PayloadValueSection>
+
+    <section
+      class="payload-fixture__alternate page-frame"
+      aria-labelledby="alternate-title"
+    >
+      <p>Alternate visual and four-principle variant</p>
+      <PayloadValueSection
+        intro={{
+          title: "A visual slot can hold local editorial media",
+          headingLevel: 3,
+          align: "left",
+          theme: "light",
+          measure: "wide",
+        }}
+        body="The second component omits the optional source link and accepts a plain local image in its named visual slot."
+        principles={[
+          {
+            title: "First principle",
+            description: "A concise supporting point.",
+          },
+          {
+            title: "Second principle",
+            description: "A concise supporting point.",
+          },
+          {
+            title: "Third principle",
+            description: "A concise supporting point.",
+          },
+          {
+            title: "Fourth principle",
+            description: "A concise supporting point.",
+          },
+        ]}
+      >
+        <img
+          slot="visual"
+          src={intermodalBogie.src}
+          width={intermodalBogie.width}
+          height={intermodalBogie.height}
+          alt="Close view of an intermodal wagon bogie"
+          loading="lazy"
+        />
+      </PayloadValueSection>
+      <h2 id="alternate-title">Optional source link is absent</h2>
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .payload-fixture__alternate {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+  }
+
+  .payload-fixture__alternate > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .payload-fixture__alternate :global(.payload-value-section) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .payload-fixture__alternate :global(.payload-value-section__frame) {
+    padding-inline: var(--space-5);
+  }
+
+  .payload-fixture__alternate h2 {
+    margin: 0;
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+  }
+</style>

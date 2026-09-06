@@ -1,28 +1,70 @@
-:root {
-  --color-brand-red: #dc1c3b;
-  --color-brand-red-dark: #b3162f;
-  --color-brand-blue: #2b538b;
-  --color-brand-blue-dark: #1c3c68;
-  --color-brand-gradient-mid: #93335f;
+@layer tokens {
+  :root {
+    color-scheme: light;
 
-  --color-ink: #0d1417;
-  --color-ink-secondary: #333e44;
-  --color-text-muted: #6a757b;
-  --color-text-faint: #9aa4a9;
+    --color-brand-red: #dc1c3b;
+    --color-brand-red-dark: #b3162f;
+    --color-brand-blue: #2b538b;
+    --color-brand-blue-dark: #1c3c68;
+    --color-brand-gradient-mid: #93335f;
 
-  --color-divider: #e7eaec;
-  --color-divider-subtle: #f0f2f3;
-  --color-paper: #ffffff;
-  --color-paper-warm: #fbfbfa;
-  --color-steel: #eaf1f8;
-  --color-steel-dark: #d6e4f0;
-  --color-technical: #1c6f9c;
-  --color-technical-dark: #155578;
+    --color-ink: #0d1417;
+    --color-ink-secondary: #333e44;
+    --color-text-muted: #6a757b;
+    --color-text-faint: #9aa4a9;
 
-  --gradient-brand: linear-gradient(
-    118deg,
-    var(--color-brand-red) 0%,
-    var(--color-brand-gradient-mid) 44%,
-    var(--color-brand-blue) 100%
-  );
+    --color-divider: #e7eaec;
+    --color-divider-subtle: #f0f2f3;
+    --color-paper: #ffffff;
+    --color-paper-warm: #fbfbfa;
+    --color-steel: #eaf1f8;
+    --color-steel-dark: #d6e4f0;
+    --color-technical: #1c6f9c;
+    --color-technical-dark: #155578;
+
+    --color-railway-navy: #102e49;
+    --color-railway-blue: #163b5a;
+    --color-railway-border: #356789;
+    --color-railway-muted: #6f98b5;
+    --color-railway-pale: #b8d0e0;
+    --color-footer-navy: #0b2235;
+
+    --gradient-brand: linear-gradient(
+      118deg,
+      var(--color-brand-red) 0%,
+      var(--color-brand-gradient-mid) 44%,
+      var(--color-brand-blue) 100%
+    );
+
+    --font-sans: "TransANT Sans", Arial, Helvetica, sans-serif;
+    --font-mono: "TransANT Mono", Menlo, Monaco, Consolas, monospace;
+    --font-size-body: 1rem;
+    --font-size-small: 0.875rem;
+    --font-size-heading-1: clamp(2.25rem, 1.4rem + 4.25vw, 5.5rem);
+    --font-size-heading-2: clamp(1.75rem, 1.35rem + 2vw, 3.5rem);
+    --line-height-body: 1.6;
+    --line-height-heading: 1.02;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: clamp(4rem, 8vw, 8rem);
+
+    --page-gutter: clamp(1rem, 4vw, 4.5rem);
+    --content-max: 90rem;
+    --reading-max: 70ch;
+    --radius-small: 0.25rem;
+    --radius-medium: 0.5rem;
+    --border-thin: 1px;
+    --focus-ring: 0 0 0 3px rgb(220 28 59 / 35%);
+    --motion-fast: 160ms;
+    --motion-standard: 280ms;
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --z-header: 20;
+    --z-overlay: 40;
+  }
 }

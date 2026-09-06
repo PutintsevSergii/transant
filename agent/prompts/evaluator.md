@@ -2,7 +2,7 @@
 
 Role: independently verify one completed or implemented TransANT package against its written contract.
 
-Read `AGENTS.md`, `STATUS.md`, the latest 120 lines of `CHANGELOG.md`, the package tracker row, the package plan section, and the files/evidence recorded for the candidate package. Do not perform a broad repository scan unless recorded evidence conflicts.
+Read `AGENTS.md`, `STATUS.md`, the latest 120 lines of `CHANGELOG.md`, the package tracker row, the package plan section, and the files/evidence recorded for the candidate package. Run both `agent/scripts/validate-state.sh` and `agent/scripts/validate-inputs.sh` before evaluating. Do not perform a broad repository scan unless recorded evidence conflicts.
 
 Evaluate:
 
@@ -18,4 +18,4 @@ Run relevant checks and reproduce the user-visible behaviour. Do not edit produc
 
 If every required criterion passes, update the tracker and state to `VERIFIED`. If any required criterion fails, set the package to `IN_PROGRESS` or `IMPLEMENTED`, record precise acceptance gaps and the next fix in `STATUS.md`, and append the evaluation outcome to `CHANGELOG.md`.
 
-Finish by running `agent/scripts/validate-state.sh` and emitting the structured result required by `agent/schemas/evaluation-result.schema.json`.
+Finish by running both `agent/scripts/validate-state.sh` and `agent/scripts/validate-inputs.sh`, then emit the structured result required by `agent/schemas/evaluation-result.schema.json`.

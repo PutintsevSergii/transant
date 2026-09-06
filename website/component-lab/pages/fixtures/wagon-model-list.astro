@@ -1,0 +1,114 @@
+---
+import WagonModelList from "../../../src/components/catalogue/WagonModelList/WagonModelList.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+import flatRensWagon from "../../../src/assets/images/products/flat/uno-flat-60ft-rens/wagon-render.png";
+import flatRelnsWagon from "../../../src/assets/images/products/flat/uno-flat-60ft-relns/wagon-render.png";
+import intermodalWagon from "../../../src/assets/images/products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png";
+---
+
+<ComponentLabLayout
+  title="WagonModelList fixture | TransANT component lab"
+  description="Explicit static family-model records with local media, one-model coverage, and a visible media fallback."
+>
+  <main data-fixture="wagon-model-list">
+    <WagonModelList
+      family={{
+        id: "intermodal",
+        source: { reference: "Fixture catalogue source" },
+      }}
+      models={[
+        {
+          id: "uno-intermodal-60ft-sgns",
+          code: "Sgns(s)",
+          title: "60 ft intermodal wagon",
+          summary:
+            "A source-owned fixture presentation of the named model, its preserved code, direct route, and local transparent wagon render.",
+          detailLabel: "Source-listed cargo",
+          details: ["Maritime containers", "Swap bodies"],
+          media: {
+            image: intermodalWagon,
+            alt: "Local transparent render of the fixture intermodal freight wagon.",
+            sizes: "(min-width: 50rem) 45vw, 100vw",
+            fit: "contain",
+            aspectRatio: "16 / 9",
+          },
+          href: "/wagons/intermodal/uno-intermodal-60ft-sgns/",
+          linkLabel: "View 60 ft intermodal wagon",
+          source: { reference: "Fixture product source" },
+        },
+      ]}
+    />
+
+    <WagonModelList
+      family={{
+        id: "flat",
+        source: { reference: "Fixture catalogue source" },
+      }}
+      models={[
+        {
+          id: "uno-flat-60ft-rens",
+          code: "Rens",
+          title: "60 ft flat wagon",
+          summary:
+            "A concise source-owned fixture summary keeps its code, local render, provenance, and direct product destination together.",
+          detailLabel: "Source-listed cargo",
+          details: [
+            "Steel coils and sheets",
+            "Timber and construction materials",
+          ],
+          media: {
+            image: flatRensWagon,
+            alt: "Local transparent render of the fixture Rens flat freight wagon.",
+            sizes: "(min-width: 50rem) 45vw, 100vw",
+            fit: "contain",
+            aspectRatio: "16 / 9",
+          },
+          href: "/wagons/flat/uno-flat-60ft-rens/",
+          linkLabel: "View 60 ft Rens flat wagon",
+          source: { reference: "Fixture product source" },
+        },
+        {
+          id: "uno-flat-60ft-relns",
+          code: "Relns",
+          title: "60 ft flat wagon with a longer fixture title",
+          summary:
+            "This deliberately expanded caller-owned fixture record checks that long English product copy grows vertically without clipping its direct action, source label, or neighbouring model card.",
+          detailLabel: "Source-listed cargo",
+          details: ["Steel products", "Construction materials"],
+          media: {
+            image: flatRelnsWagon,
+            alt: "Local transparent render of the fixture Relns flat freight wagon.",
+            sizes: "(min-width: 50rem) 45vw, 100vw",
+            fit: "contain",
+            aspectRatio: "16 / 9",
+          },
+          href: "/wagons/flat/uno-flat-60ft-relns/",
+          linkLabel: "View 60 ft Relns flat wagon",
+          source: { reference: "Fixture product source" },
+        },
+        {
+          id: "uno-flat-60ft-rns",
+          code: "Rns",
+          title: "60 ft flat wagon without a supplied render",
+          summary:
+            "The component does not invent a technical image when the caller has not supplied reviewed local media for this explicit fixture record.",
+          detailLabel: "Source-listed cargo",
+          details: ["Steel profiles", "Pipes and tubes"],
+          mediaFallback: {
+            label:
+              "No reviewed wagon render has been supplied for this fixture model.",
+          },
+          href: "/wagons/flat/uno-flat-60ft-rns/",
+          linkLabel: "View 60 ft Rns flat wagon",
+          source: { reference: "Fixture product source" },
+        },
+      ]}
+    />
+  </main>
+</ComponentLabLayout>
+
+<style>
+  main {
+    display: grid;
+  }
+</style>

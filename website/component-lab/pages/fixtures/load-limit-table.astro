@@ -1,0 +1,57 @@
+---
+import LoadLimitTable from "../../../src/components/product/LoadLimitTable/LoadLimitTable.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const source = {
+  reference: "src/content/products/flat/uno-flat-60ft-rens/product.json",
+};
+---
+
+<ComponentLabLayout
+  title="LoadLimitTable fixture | TransANT component lab"
+  description="Caller-owned relational load-limit tables with source-preserved engineering strings."
+>
+  <main data-fixture="load-limit-table">
+    <LoadLimitTable
+      title="Load limits"
+      headingLevel={2}
+      caption="Load limit by line class"
+      source={source}
+      columns={{
+        routeClass: "Route class",
+        payload: "Load limit (S)",
+        payloadUnit: "t",
+      }}
+      rows={[
+        { routeClass: "A", payload: "41.5" },
+        { routeClass: "B", payload: "49.5" },
+        { routeClass: "C", payload: "57.5" },
+        { routeClass: "D", payload: "65.0" },
+      ]}
+      notes={[
+        "Values remain source-preserved engineering strings; this fixture does not calculate, normalize, or infer a payload.",
+        "Refer to the approved product documentation for application-specific operating conditions.",
+      ]}
+    />
+
+    <LoadLimitTable
+      title="Expanded table context"
+      headingLevel={3}
+      caption="Source-defined load limit by route class under the documented operating configuration"
+      source={{
+        reference:
+          "Fixture engineering source with an intentionally expanded provenance reference for responsive evidence",
+      }}
+      columns={{
+        routeClass: "Route classification under source-defined conditions",
+        payload: "Source-preserved permissible load",
+      }}
+      rows={[
+        { routeClass: "A", payload: "40.7 source value" },
+        { routeClass: "B", payload: "48.7 source value" },
+        { routeClass: "C", payload: "56.7 source value" },
+        { routeClass: "D", payload: "64.7 source value" },
+      ]}
+    />
+  </main>
+</ComponentLabLayout>

@@ -32,32 +32,36 @@
       "4"
     ],
     [
-      "Distance between bogie pivots",
-      "14.360 mm"
+      "Distance between bogie pivots (mm)",
+      "14.360"
     ],
     [
       "Bogie type",
       "Y25 with compact brake"
     ],
     [
-      "Length over buffers",
-      "19.900 mm"
+      "Length over buffers (mm)",
+      "19.900"
     ],
     [
-      "Wagon tare",
-      "22.0 t"
+      "Wagon tare (t)",
+      "22,0"
     ],
     [
-      "Loading length",
-      "18.526 mm"
+      "Loading length (mm)",
+      "18.526"
     ],
     [
-      "Loading width",
-      "2.646 mm"
+      "Loading width (mm)",
+      "2.646"
     ],
     [
-      "Floor height above rail",
-      "1.240 mm"
+      "Floor height above top of rail (mm)",
+      "1.240"
+    ],
+    [
+      "Height of foldable end and side wall (mm)",
+      "520"
     ],
     [
       "Side walls",
@@ -76,15 +80,19 @@
       "G1"
     ],
     [
-      "Max wheelset load",
-      "22.5 t"
+      "Maximum wheelset load (t)",
+      "22,5"
     ],
     [
-      "Min curve radius",
+      "Minimal curve radius (m)",
       "R 75"
     ],
     [
-      "Max running speed",
+      "Permitted maximum speed brake-related",
+      "100 km/h"
+    ],
+    [
+      "Maximum permitted running speed",
       "120 km/h"
     ]
   ],
@@ -108,7 +116,7 @@
   ],
   "special": [
     "18 foldable side walls",
-    "70 mm wooden floor",
+    "70mm wooden floor",
     "DAC ready"
   ],
   "id": "relns",
@@ -116,5 +124,9 @@
   "slug": "uno-flat-60ft-relns",
   "category": "flat",
   "category_name": "Flat",
-  "image": "products/flat/uno-flat-60ft-relns/wagon-render.png"
+  "image": "products/flat/uno-flat-60ft-relns/wagon-render.png",
+  "technical_source": {
+    "reference": "Catalog for print.pdf, PDF page 9 (printed page 07); checked against Catalog for print.ai",
+    "checkedAt": "2026-09-05"
+  }
 }

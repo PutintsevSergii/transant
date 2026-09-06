@@ -1,0 +1,19 @@
+---
+import { catalogueIndexViewModel } from "../../../../src/adapters/content/catalogue-view-model";
+import Breadcrumbs from "../../../../src/components/catalogue/Breadcrumbs/Breadcrumbs.astro";
+import WagonFamilyIndex from "../../../../src/components/catalogue/WagonFamilyIndex/WagonFamilyIndex.astro";
+import PageHero from "../../../../src/components/editorial/PageHero/PageHero.astro";
+import PageMeta from "../../../../src/components/editorial/PageMeta/PageMeta.astro";
+import BaseLayout from "../../../../src/layouts/BaseLayout.astro";
+
+const { breadcrumbs, familyIndex, hero, layout, pageMeta } =
+  catalogueIndexViewModel;
+---
+
+<BaseLayout {...layout}>
+  <PageMeta {...pageMeta} />
+  <PageHero {...hero}>
+    <Breadcrumbs slot="breadcrumbs" {...breadcrumbs} />
+  </PageHero>
+  <WagonFamilyIndex {...familyIndex} />
+</BaseLayout>

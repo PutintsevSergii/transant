@@ -1,0 +1,251 @@
+---
+import { validateLoadLimitTableProps } from "./load-limit-table-contract";
+import type { LoadLimitTableProps } from "./LoadLimitTable.types";
+
+const props = Astro.props as LoadLimitTableProps;
+validateLoadLimitTableProps(props);
+
+const Heading = `h${props.headingLevel}` as "h2" | "h3";
+const scrollLabel = `Scrollable table: ${props.caption}`;
+---
+
+<section class="load-limit-table" data-load-limit-table>
+  <div class="load-limit-table__frame page-frame">
+    <div class="load-limit-table__heading">
+      <Heading>{props.title}</Heading>
+    </div>
+
+    <p class="load-limit-table__scroll-hint" data-load-limit-scroll-hint>
+      <span aria-hidden="true">↔</span>
+      Scroll table horizontally
+    </p>
+
+    <div
+      class="load-limit-table__scroller"
+      data-load-limit-scroll
+      role="region"
+      aria-label={scrollLabel}
+      tabindex="0"
+    >
+      <table>
+        <caption>{props.caption}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{props.columns.routeClass}</th>
+            <th scope="col">{props.columns.payload}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            props.rows.map((row) => (
+              <tr>
+                <th scope="row">{row.routeClass}</th>
+                <td data-load-limit-payload>
+                  <span>{row.payload}</span>
+                  {props.columns.payloadUnit !== undefined && (
+                    <>
+                      {" "}
+                      <span class="load-limit-table__unit">
+                        {props.columns.payloadUnit}
+                      </span>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    {
+      props.notes !== undefined && (
+        <ul class="load-limit-table__notes" aria-label="Load limit notes">
+          {props.notes.map((note) => (
+            <li data-load-limit-note>{note}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .load-limit-table {
+    container-type: inline-size;
+    background: var(--color-paper);
+  }
+
+  .load-limit-table__frame,
+  .load-limit-table__heading,
+  .load-limit-table__scroller,
+  .load-limit-table__notes {
+    min-inline-size: 0;
+  }
+
+  .load-limit-table__frame {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .load-limit-table__heading {
+    display: grid;
+    gap: var(--space-3);
+    max-inline-size: 52rem;
+  }
+
+  .load-limit-table__heading h2,
+  .load-limit-table__heading h3,
+  .load-limit-table__scroll-hint,
+  .load-limit-table__notes {
+    margin: 0;
+  }
+
+  .load-limit-table__heading h2,
+  .load-limit-table__heading h3 {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 6cqi, 3.5rem);
+    line-height: var(--line-height-tight);
+    overflow-wrap: anywhere;
+  }
+
+  .load-limit-table__scroll-hint,
+  .load-limit-table__notes {
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .load-limit-table__scroll-hint {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .load-limit-table__scroll-hint {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+    inline-size: fit-content;
+    padding: var(--space-2) var(--space-3);
+    border-inline-start: 0.25rem solid var(--color-brand-red);
+    background: var(--color-surface-muted);
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  .load-limit-table__scroll-hint span {
+    font-size: 1.1em;
+  }
+
+  .load-limit-table__scroller {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-color: var(--color-brand-blue) var(--color-surface-muted);
+    scrollbar-width: thin;
+  }
+
+  .load-limit-table__scroller:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+
+  .load-limit-table table {
+    inline-size: max(100%, 37rem);
+    border-collapse: collapse;
+    color: var(--color-brand-blue-dark);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .load-limit-table caption {
+    padding-block-end: var(--space-3);
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-family-display);
+    font-size: clamp(1.35rem, 4cqi, 1.8rem);
+    font-weight: 700;
+    line-height: var(--line-height-tight);
+    text-align: start;
+    caption-side: top;
+  }
+
+  .load-limit-table th,
+  .load-limit-table td {
+    padding: var(--space-4);
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    text-align: start;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .load-limit-table thead th {
+    border-block: var(--border-thin) solid var(--color-brand-blue-dark);
+    background: var(--color-brand-blue-dark);
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.08em;
+    line-height: var(--line-height-body);
+    text-transform: uppercase;
+  }
+
+  .load-limit-table tbody th {
+    inline-size: 44%;
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .load-limit-table td {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-mono);
+    text-align: end;
+  }
+
+  .load-limit-table td > span {
+    display: inline-block;
+  }
+
+  .load-limit-table__unit {
+    margin-inline-start: 0.35em;
+    color: var(--color-ink-secondary);
+  }
+
+  .load-limit-table__notes {
+    display: grid;
+    gap: var(--space-2);
+    padding-inline-start: 1.2em;
+  }
+
+  .load-limit-table__notes li::marker {
+    color: var(--color-brand-red-dark);
+  }
+
+  @container (min-width: 37rem) {
+    .load-limit-table__scroll-hint {
+      display: none;
+    }
+
+    .load-limit-table table {
+      inline-size: 100%;
+    }
+  }
+
+  @media print {
+    .load-limit-table__scroll-hint {
+      display: none;
+    }
+
+    .load-limit-table__scroller {
+      overflow: visible;
+    }
+
+    .load-limit-table table {
+      inline-size: 100%;
+    }
+  }
+</style>

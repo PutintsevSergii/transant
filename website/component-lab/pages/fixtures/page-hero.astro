@@ -1,0 +1,102 @@
+---
+import freightTrain from "../../../src/assets/images/editorial/freight-train-in-operation.jpg";
+import wagonFleet from "../../../src/assets/images/editorial/transant-wagon-fleet.png";
+import PageHero from "../../../src/components/editorial/PageHero/PageHero.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="PageHero fixture | TransANT component lab"
+  description="Static editorial introductions with local media, themes, source-order variants, and a generic breadcrumbs slot."
+>
+  <main data-fixture="page-hero">
+    <PageHero
+      eyebrow="Technology"
+      title="Rail technology built around useful payload."
+      description="A deliberately long local fixture summary keeps the editorial introduction readable while providing no production claim, route state, or content-collection dependency."
+      headingLevel={1}
+      theme="light"
+      mediaPosition="after"
+      action={{ href: "/technology/", label: "Explore technology" }}
+      media={{
+        image: freightTrain,
+        alt: "Freight train travelling through a wooded mountain landscape",
+        sizes: "(min-width: 62rem) 50vw, 100vw",
+        fit: "cover",
+        aspectRatio: "16 / 10",
+      }}
+    >
+      <nav slot="breadcrumbs" aria-label="Breadcrumb fixture navigation">
+        <ol class="page-hero-fixture__crumbs">
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Technology</li>
+        </ol>
+      </nav>
+    </PageHero>
+
+    <PageHero
+      eyebrow="Company"
+      title="Editorial media can lead when the narrative calls for it."
+      description="The dark composition uses meaningful local imagery first in server HTML; the desktop split never reverses this compact reading order."
+      headingLevel={2}
+      theme="dark"
+      mediaPosition="before"
+      media={{
+        image: wagonFleet,
+        alt: "TransANT wagons assembled in a railway fleet",
+        sizes: "(min-width: 62rem) 50vw, 100vw",
+        fit: "cover",
+        aspectRatio: "16 / 10",
+      }}
+    />
+
+    <section
+      class="page-hero-fixture__text-only page-frame"
+      aria-label="Text-only PageHero variant"
+    >
+      <PageHero
+        eyebrow="Sustainability"
+        title="A text-only introduction leaves no empty media stage."
+        description="This fixture verifies the deliberate no-image state and a caller-selected lower-level heading."
+        headingLevel={3}
+        theme="light"
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .page-hero-fixture__crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    list-style: none;
+  }
+
+  .page-hero-fixture__crumbs li + li::before {
+    margin-inline-end: var(--space-2);
+    color: var(--color-brand-red-dark);
+    content: "/";
+  }
+
+  .page-hero-fixture__crumbs a {
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .page-hero-fixture__text-only {
+    padding-block: var(--space-8);
+  }
+
+  .page-hero-fixture__text-only :global(.page-hero) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .page-hero-fixture__text-only :global(.page-hero__frame) {
+    padding-inline: var(--space-5);
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import SiteHeader from "../../../src/components/shell/SiteHeader/SiteHeader.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const navigation = [{ label: "Wagons", href: "#wagons" }];
+const localeOptions = [{ label: "EN", href: "/", current: true }];
+---
+
+<ComponentLabLayout
+  title="Repeated SiteHeader fixture | TransANT component lab"
+  description="Independent SiteHeader controller instances."
+>
+  <SiteHeader
+    id="site-header-first"
+    homeHref="/"
+    navigation={navigation}
+    currentPath="/"
+    localeOptions={localeOptions}
+    contactAction={{ label: "Contact", href: "#contact" }}
+    sticky={false}
+  />
+  <main class="repeated-header-fixture" data-repeated-header-main>
+    <h1>Repeated header controller fixture</h1>
+  </main>
+  <SiteHeader
+    id="site-header-second"
+    homeHref="/"
+    navigation={navigation}
+    currentPath="/"
+    localeOptions={localeOptions}
+    contactAction={{ label: "Contact", href: "#contact" }}
+    sticky={false}
+  />
+</ComponentLabLayout>
+
+<style>
+  .repeated-header-fixture {
+    min-block-size: 2rem;
+    padding: var(--space-4) var(--page-gutter);
+  }
+</style>

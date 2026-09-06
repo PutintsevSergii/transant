@@ -1,0 +1,122 @@
+---
+import ComponentLabLayout from "../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="TransANT component lab"
+  description="Isolated fixtures for TransANT website components."
+>
+  <main class="page-frame lab-index">
+    <p class="eyebrow">Component lab</p>
+    <h1>Isolated, deterministic fixtures</h1>
+    <p>
+      Fixtures use local assets and explicit data so components can be reviewed
+      without production page dependencies.
+    </p>
+    <nav aria-label="Available fixtures">
+      <a href="/fixtures/smoke/">Open foundation smoke fixture</a>
+      <a href="/fixtures/brand-logo/">Open BrandLogo fixture</a>
+      <a href="/fixtures/action/">Open Action fixture</a>
+      <a href="/fixtures/section-intro/">Open SectionIntro fixture</a>
+      <a href="/fixtures/responsive-media/">Open ResponsiveMedia fixture</a>
+      <a href="/fixtures/rail-sequence/">Open RailSequence fixture</a>
+      <a href="/fixtures/site-header/">Open SiteHeader fixture</a>
+      <a href="/fixtures/site-header-repeated/"
+        >Open repeated SiteHeader fixture</a
+      >
+      <a href="/fixtures/site-footer/">Open SiteFooter fixture</a>
+      <a href="/fixtures/home-hero/">Open HomeHero fixture</a>
+      <a href="/fixtures/railway-orbital/">Open RailwayOrbital fixture</a>
+      <a href="/experiments/railway-globe/">Explore dotted globe concept</a>
+      <a href="/fixtures/payload-value-section/"
+        >Open PayloadValueSection fixture</a
+      >
+      <a href="/fixtures/wagon-switchyard/">Open WagonSwitchyard fixture</a>
+      <a href="/fixtures/modular-platform-section/"
+        >Open ModularPlatformSection fixture</a
+      >
+      <a href="/fixtures/operational-case-study/"
+        >Open OperationalCaseStudy fixture</a
+      >
+      <a href="/fixtures/collaboration-process/"
+        >Open CollaborationProcess fixture</a
+      >
+      <a href="/fixtures/quality-impact-section/"
+        >Open QualityImpactSection fixture</a
+      >
+      <a href="/fixtures/contact-cta/">Open ContactCTA fixture</a>
+      <a href="/fixtures/breadcrumbs/">Open Breadcrumbs fixture</a>
+      <a href="/fixtures/wagon-family-index/">Open WagonFamilyIndex fixture</a>
+      <a href="/fixtures/wagon-model-list/">Open WagonModelList fixture</a>
+      <a href="/fixtures/product-hero/">Open ProductHero fixture</a>
+      <a href="/fixtures/cargo-fit/">Open CargoFit fixture</a>
+      <a href="/fixtures/specification-group/"
+        >Open SpecificationGroup fixture</a
+      >
+      <a href="/fixtures/load-limit-table/">Open LoadLimitTable fixture</a>
+      <a href="/fixtures/download-list/">Open DownloadList fixture</a>
+      <a href="/fixtures/related-wagons/">Open RelatedWagons fixture</a>
+      <a href="/fixtures/page-hero/">Open PageHero fixture</a>
+      <a href="/fixtures/page-meta/">Open PageMeta fixture</a>
+      <a href="/fixtures/media-story/">Open MediaStory fixture</a>
+      <a href="/fixtures/evidence-list/">Open EvidenceList fixture</a>
+      <a href="/fixtures/contact-form/">Open ContactForm fixture</a>
+      <a href="/fixtures/contact/">Open Contact-page assembly fixture</a>
+      <a href="/fixtures/legal/privacy/">Open Privacy-page fixture</a>
+      <a href="/fixtures/legal/imprint/">Open Imprint-page fixture</a>
+      <a href="/fixtures/system-404/">Open 404-page fixture</a>
+      <a href="/fixtures/base-layout/">Open BaseLayout fixture</a>
+      <a href="/fixtures/homepage/">Open Homepage assembly fixture</a>
+      <a href="/fixtures/catalogue/">Open catalogue assembly fixture</a>
+      <a href="/fixtures/products/intermodal/uno-intermodal-60ft-sgns/"
+        >Open product-page assembly fixture</a
+      >
+      <a href="/fixtures/editorial/technology/"
+        >Open Technology editorial-page fixture</a
+      >
+      <a href="/fixtures/editorial/projects/"
+        >Open Projects editorial-page fixture</a
+      >
+      <a href="/fixtures/editorial/company/"
+        >Open Company editorial-page fixture</a
+      >
+      <a href="/fixtures/editorial/quality/"
+        >Open Quality editorial-page fixture</a
+      >
+      <a href="/fixtures/editorial/sustainability/"
+        >Open Sustainability editorial-page fixture</a
+      >
+    </nav>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .lab-index {
+    display: grid;
+    min-block-size: 100vh;
+    align-content: center;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+
+  .eyebrow {
+    color: var(--color-brand-red);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  a {
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  nav {
+    display: grid;
+    gap: var(--space-2);
+  }
+</style>

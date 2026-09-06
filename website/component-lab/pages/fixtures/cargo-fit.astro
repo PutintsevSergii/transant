@@ -1,0 +1,97 @@
+---
+import CargoFit from "../../../src/components/product/CargoFit/CargoFit.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const source = {
+  reference:
+    "src/content/products/intermodal/uno-intermodal-60ft-sgns/product.json",
+};
+
+const approvedCargo = {
+  kind: "cargo" as const,
+  publicationStatus: "approved" as const,
+  source,
+};
+---
+
+<ComponentLabLayout
+  title="CargoFit fixture | TransANT component lab"
+  description="Source-attributed, approved cargo and use-case declarations without inferred compatibility."
+>
+  <main data-fixture="cargo-fit">
+    <CargoFit
+      intro={{
+        eyebrow: "Cargo fit",
+        title: "Approved cargo and use cases",
+        description:
+          "Every declaration remains caller-owned and source-labelled rather than inferred from a wagon family or specification.",
+        headingLevel: 2,
+        align: "left",
+        theme: "light",
+        measure: "standard",
+      }}
+      entries={[
+        { ...approvedCargo, label: "Swap bodies and containers" },
+        { ...approvedCargo, label: "Intermodal terminal handling" },
+        {
+          kind: "use-case",
+          label: "Combined rail and terminal logistics",
+          publicationStatus: "approved",
+          source,
+        },
+        {
+          ...approvedCargo,
+          label: "Unverified compatibility must remain absent",
+          publicationStatus: "unverified",
+        },
+      ]}
+    />
+
+    <CargoFit
+      intro={{
+        title: "Single declared cargo",
+        headingLevel: 2,
+        align: "left",
+        theme: "light",
+        measure: "standard",
+      }}
+      entries={[{ ...approvedCargo, label: "Container transport" }]}
+    />
+
+    <CargoFit
+      intro={{
+        title: "Absent declarations retain an honest empty state",
+        headingLevel: 2,
+        align: "left",
+        theme: "light",
+        measure: "standard",
+      }}
+    />
+
+    <CargoFit
+      intro={{
+        title: "Expanded caller-owned declarations",
+        description:
+          "A six-entry fixture proves that longer source labels and supported kinds grow naturally without a carousel or client-side filter.",
+        headingLevel: 2,
+        align: "left",
+        theme: "light",
+        measure: "wide",
+      }}
+      entries={[
+        { ...approvedCargo, label: "Steel coils and sheets" },
+        { ...approvedCargo, label: "Steel sections and pipes" },
+        { ...approvedCargo, label: "Timber and construction materials" },
+        {
+          kind: "use-case",
+          label:
+            "Long and bulky cargo with caller-approved securing requirements",
+          publicationStatus: "approved",
+          source,
+        },
+        { ...approvedCargo, label: "Project cargo" },
+        { ...approvedCargo, label: "General industrial goods" },
+      ]}
+    />
+  </main>
+</ComponentLabLayout>

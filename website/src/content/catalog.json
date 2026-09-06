@@ -93,32 +93,32 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "14.200 mm"
+          "Distance between bogie pivots (mm)",
+          "14.200"
         ],
         [
           "Bogie type",
           "Y25 with classic brake"
         ],
         [
-          "Length over buffers",
-          "19.830 mm"
+          "Length over buffers (mm)",
+          "19.830"
         ],
         [
-          "Wagon tare",
-          "19.3 t"
+          "Wagon tare (t)",
+          "19,3"
         ],
         [
-          "Loading length",
-          "18.500 mm"
+          "Loading length (mm)",
+          "18.500"
         ],
         [
-          "Loading width",
-          "2.380 mm"
+          "Loading width (mm)",
+          "2.380"
         ],
         [
-          "Floor height above rail",
-          "1.155 mm"
+          "Floor height above basis (mm)",
+          "1.155"
         ],
         [
           "Special features",
@@ -129,20 +129,24 @@
           "G1"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Max wheelset load (t)",
+          "22,5"
         ],
         [
-          "Min curve radius",
+          "Min curve radius (m)",
           "R 75"
         ],
         [
-          "Max running speed",
+          "Permitted max speed brake-related",
+          "120 km/h"
+        ],
+        [
+          "Max permitted running speed",
           "120 km/h"
         ]
       ],
       "special": [
-        "Classic brake for SS-brake regime",
+        "Classic brake for SS-bake regime",
         "28 container pins for multiple configurations",
         "DAC ready"
       ],
@@ -151,7 +155,29 @@
       "slug": "uno-intermodal-60ft-sgns",
       "category": "intermodal",
       "category_name": "Intermodal",
-      "image": "products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png"
+      "image": "products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png",
+      "loadlimit": [
+        [
+          "A",
+          "44.7"
+        ],
+        [
+          "B",
+          "52.7"
+        ],
+        [
+          "C",
+          "62.7"
+        ],
+        [
+          "D",
+          "70.7"
+        ]
+      ],
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 5 (printed page 03); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "rens": {
       "code": "Rens",
@@ -188,32 +214,36 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "14.360 mm"
+          "Distance between bogie pivots (mm)",
+          "14.360"
         ],
         [
           "Bogie type",
           "Y25 with compact brake"
         ],
         [
-          "Length over buffers",
-          "19.900 mm"
+          "Length over buffers (mm)",
+          "19.900"
         ],
         [
-          "Wagon tare",
-          "22.5 t"
+          "Wagon tare (t)",
+          "22,5"
         ],
         [
-          "Loading length",
-          "18.500 mm"
+          "Loading length (mm)",
+          "18.500"
         ],
         [
-          "Loading width",
-          "2.646 mm"
+          "Loading width (mm)",
+          "2.646"
         ],
         [
-          "Floor height above rail",
-          "1.240 mm"
+          "Floor height above top of rail (mm)",
+          "1.240"
+        ],
+        [
+          "Height of foldable end and side wall (mm)",
+          "520"
         ],
         [
           "Stanchions",
@@ -224,6 +254,10 @@
           "18 side walls"
         ],
         [
+          "Floor lashing",
+          "14"
+        ],
+        [
           "Type of floor",
           "70 mm spruce wood"
         ],
@@ -232,39 +266,43 @@
           "G1"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Min curve radius",
+          "Minimal curve radius (m)",
           "R 75"
         ],
         [
-          "Max running speed",
+          "Permitted maximum speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Maximum permitted running speed",
           "120 km/h"
         ]
       ],
       "loadlimit": [
         [
           "A",
-          "41.5"
+          "41,5"
         ],
         [
           "B",
-          "49.5"
+          "49,5"
         ],
         [
           "C",
-          "59.5"
+          "59,5"
         ],
         [
           "D",
-          "67.5"
+          "67,5"
         ]
       ],
       "special": [
         "18 foldable side walls",
-        "70 mm wooden floor",
+        "70mm wooden floor",
         "DAC ready"
       ],
       "id": "rens",
@@ -272,7 +310,11 @@
       "slug": "uno-flat-60ft-rens",
       "category": "flat",
       "category_name": "Flat",
-      "image": "products/flat/uno-flat-60ft-rens/wagon-render.png"
+      "image": "products/flat/uno-flat-60ft-rens/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 7 (printed page 05); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "relns": {
       "code": "Relns",
@@ -308,32 +350,36 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "14.360 mm"
+          "Distance between bogie pivots (mm)",
+          "14.360"
         ],
         [
           "Bogie type",
           "Y25 with compact brake"
         ],
         [
-          "Length over buffers",
-          "19.900 mm"
+          "Length over buffers (mm)",
+          "19.900"
         ],
         [
-          "Wagon tare",
-          "22.0 t"
+          "Wagon tare (t)",
+          "22,0"
         ],
         [
-          "Loading length",
-          "18.526 mm"
+          "Loading length (mm)",
+          "18.526"
         ],
         [
-          "Loading width",
-          "2.646 mm"
+          "Loading width (mm)",
+          "2.646"
         ],
         [
-          "Floor height above rail",
-          "1.240 mm"
+          "Floor height above top of rail (mm)",
+          "1.240"
+        ],
+        [
+          "Height of foldable end and side wall (mm)",
+          "520"
         ],
         [
           "Side walls",
@@ -352,15 +398,19 @@
           "G1"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Min curve radius",
+          "Minimal curve radius (m)",
           "R 75"
         ],
         [
-          "Max running speed",
+          "Permitted maximum speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Maximum permitted running speed",
           "120 km/h"
         ]
       ],
@@ -384,7 +434,7 @@
       ],
       "special": [
         "18 foldable side walls",
-        "70 mm wooden floor",
+        "70mm wooden floor",
         "DAC ready"
       ],
       "id": "relns",
@@ -392,7 +442,11 @@
       "slug": "uno-flat-60ft-relns",
       "category": "flat",
       "category_name": "Flat",
-      "image": "products/flat/uno-flat-60ft-relns/wagon-render.png"
+      "image": "products/flat/uno-flat-60ft-relns/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 9 (printed page 07); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "rns": {
       "code": "Rns",
@@ -428,32 +482,36 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "14.360 mm"
+          "Distance between bogie pivots (mm)",
+          "14.360"
         ],
         [
           "Bogie type",
           "Y25 with compact brake"
         ],
         [
-          "Length over buffers",
-          "19.900 mm"
+          "Length over buffers (mm)",
+          "19.900"
         ],
         [
-          "Wagon tare",
-          "21.0 t"
+          "Wagon tare (t)",
+          "21,0"
         ],
         [
-          "Loading length",
-          "18.526 mm"
+          "Loading length (mm)",
+          "18.526"
         ],
         [
-          "Loading width",
-          "2.646 mm"
+          "Loading width (mm)",
+          "2.646"
         ],
         [
-          "Floor height above rail",
-          "1.240 mm"
+          "Floor height above top of rail (mm)",
+          "1.240"
+        ],
+        [
+          "Height of foldable end and side wall (mm)",
+          "520"
         ],
         [
           "Stanchions",
@@ -476,11 +534,19 @@
           "G1"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Max running speed",
+          "Minimal curve radius (m)",
+          "R 75"
+        ],
+        [
+          "Permitted maximum speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Maximum permitted running speed",
           "120 km/h"
         ]
       ],
@@ -504,7 +570,7 @@
       ],
       "special": [
         "16 foldable bolsters",
-        "70 mm wooden floor",
+        "70mm wooden floor",
         "DAC ready"
       ],
       "id": "rns",
@@ -512,7 +578,11 @@
       "slug": "uno-flat-60ft-rns",
       "category": "flat",
       "category_name": "Flat",
-      "image": "products/flat/uno-flat-60ft-rns/wagon-render.png"
+      "image": "products/flat/uno-flat-60ft-rns/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 11 (printed page 09); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "rnoos": {
       "code": "Rnoos",
@@ -547,32 +617,36 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "14.360 mm"
+          "Distance between bogie pivots (mm)",
+          "14.360"
         ],
         [
           "Bogie type",
           "Y25 with compact brake"
         ],
         [
-          "Length over buffers",
-          "19.900 mm"
+          "Length over buffers (mm)",
+          "19.900"
         ],
         [
-          "Wagon tare",
-          "21.6 t"
+          "Wagon tare (t)",
+          "21,6"
         ],
         [
-          "Loading length",
-          "18.500 mm"
+          "Loading length (mm)",
+          "18.50"
         ],
         [
-          "Loading width",
-          "2.646 mm"
+          "Loading width (mm)",
+          "2.646"
         ],
         [
-          "Floor height above rail",
-          "1.240 mm"
+          "Floor height above top of rail (mm)",
+          "1.240"
+        ],
+        [
+          "Height of foldable end and side wall (mm)",
+          "520"
         ],
         [
           "Stanchion pairs",
@@ -591,38 +665,42 @@
           "G2"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Min curve radius",
+          "Minimal curve radius (m)",
           "R 75"
         ],
         [
-          "Max running speed",
+          "Permitted maximum speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Maximum permitted running speed",
           "120 km/h"
         ]
       ],
       "loadlimit": [
         [
           "A",
-          "42.2"
+          "42,2"
         ],
         [
           "B",
-          "50.4"
+          "50,4"
         ],
         [
           "C",
-          "60.4"
+          "60,4"
         ],
         [
           "D",
-          "68.4"
+          "68,4"
         ]
       ],
       "special": [
-        "Transport of 3, 4 and 5 m round timber",
+        "Transport of 3, 4 and 5m long round timber wood",
         "10 stanchion pairs",
         "7 deflectors",
         "G2 profile",
@@ -633,7 +711,11 @@
       "slug": "uno-timber-60ft-rnoos",
       "category": "timber",
       "category_name": "Timber",
-      "image": "products/timber/uno-timber-60ft-rnoos/wagon-render.png"
+      "image": "products/timber/uno-timber-60ft-rnoos/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 13 (printed page 11); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "snps": {
       "code": "Snps",
@@ -668,32 +750,32 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "14.360 mm"
+          "Distance between bogie pivots (mm)",
+          "14.360"
         ],
         [
           "Bogie type",
           "Y25 with compact brake"
         ],
         [
-          "Length over buffers",
-          "19.900 mm"
+          "Length over buffers (mm)",
+          "19.900"
         ],
         [
-          "Wagon tare",
-          "20.5 t"
+          "Wagon tare (t)",
+          "20,50"
         ],
         [
-          "Loading length",
-          "18.500 mm"
+          "Loading length (mm)",
+          "18.500"
         ],
         [
-          "Loading width",
-          "2.529 mm"
+          "Loading width (mm)",
+          "2.529"
         ],
         [
-          "Floor height above rail",
-          "1.170 mm"
+          "Floor height above top of rail (mm)",
+          "1.170"
         ],
         [
           "Stanchion pairs",
@@ -712,34 +794,42 @@
           "G2"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Max running speed",
+          "Minimal curve radius (m)",
+          "R 75"
+        ],
+        [
+          "Permitted maximum speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Maximum permitted running speed",
           "120 km/h"
         ]
       ],
       "loadlimit": [
         [
           "A",
-          "43.5"
+          "43,5"
         ],
         [
           "B",
-          "51.5"
+          "51,5"
         ],
         [
           "C",
-          "61.5"
+          "61,5"
         ],
         [
           "D",
-          "69.5"
+          "69,5"
         ]
       ],
       "special": [
-        "Transport of 3, 4 and 5 m round timber",
+        "Transport of 3, 4 and 5m long round timber wood",
         "10 stanchion pairs",
         "7 deflectors",
         "G2 profile",
@@ -750,7 +840,11 @@
       "slug": "uno-timber-60ft-snps",
       "category": "timber",
       "category_name": "Timber",
-      "image": "products/timber/uno-timber-60ft-snps/wagon-render.png"
+      "image": "products/timber/uno-timber-60ft-snps/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 15 (printed page 13); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "eamnos": {
       "code": "Eamnos",
@@ -787,55 +881,63 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "6.500 mm"
+          "Distance between bogie pivots (mm)",
+          "6.500"
         ],
         [
           "Bogie type",
           "Y25 with compact brake"
         ],
         [
-          "Length over buffers",
-          "11.500 mm"
+          "Length over buffers (mm)",
+          "11.500"
         ],
         [
-          "Wagon tare",
-          "20.0 t"
+          "Wagon tare (t)",
+          "20,0"
         ],
         [
-          "Loading length",
-          "10.240 mm"
+          "Loading length (mm)",
+          "10.240"
         ],
         [
-          "Loading width",
-          "2.707 mm"
+          "Loading width (mm)",
+          "2.707"
         ],
         [
-          "Loading area",
-          "27.7 m²"
+          "Loading area (m²)",
+          "27,7"
         ],
         [
-          "Loading volume",
-          "60.9 m³"
+          "Loading volume (m³)",
+          "60,9"
         ],
         [
-          "Floor height above rail",
-          "1.170 mm"
+          "Floor height above top of rail (mm)",
+          "1.170"
         ],
         [
-          "Door opening (W×H)",
-          "850 × 1780 mm"
+          "Door opening W x H (mm x mm)",
+          "850 x 1780"
         ],
         [
           "Vehicle gauge",
           "G1"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Max running speed",
+          "Minimal curve radius (m)",
+          "R 75"
+        ],
+        [
+          "Permitted maximum speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Maximum permitted running speed",
           "120 km/h"
         ]
       ],
@@ -867,7 +969,11 @@
       "slug": "uno-multibox-33ft-eamnos",
       "category": "open-box",
       "category_name": "Multi / Open box",
-      "image": "products/open-box/uno-multibox-33ft-eamnos/wagon-render.png"
+      "image": "products/open-box/uno-multibox-33ft-eamnos/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 17 (printed page 15); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "eanos-40": {
       "code": "Eanos",
@@ -903,55 +1009,63 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "8.068 mm"
+          "Distance between bogie pivots (mm)",
+          "8.068"
         ],
         [
           "Bogie type",
           "Y25 with compact brake"
         ],
         [
-          "Length over buffers",
-          "13.608 mm"
+          "Length over buffers (mm)",
+          "13.608"
         ],
         [
-          "Wagon tare",
-          "21.0 t"
+          "Wagon tare (t)",
+          "21,0"
         ],
         [
-          "Loading length",
-          "12.336 mm"
+          "Loading length (mm)",
+          "12.336"
         ],
         [
-          "Loading width",
-          "2.711 mm"
+          "Loading width (mm)",
+          "2.711"
         ],
         [
-          "Loading area",
-          "33.2 m²"
+          "Loading area (m²)",
+          "33,2"
         ],
         [
-          "Loading volume",
-          "73.0 m³"
+          "Loading volume (m³)",
+          "73,0"
         ],
         [
-          "Floor height above rail",
-          "1.168 mm"
+          "Floor height above top of rail (mm)",
+          "1.168"
         ],
         [
-          "Door opening (W×H)",
-          "850 × 1780 mm"
+          "Door opening W x H (mm x mm)",
+          "850 x 1780"
         ],
         [
           "Vehicle gauge",
           "G1"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Max running speed",
+          "Minimal curve radius (m)",
+          "R 75"
+        ],
+        [
+          "Permitted maximum speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Maximum permitted running speed",
           "120 km/h"
         ]
       ],
@@ -974,9 +1088,10 @@
         ]
       ],
       "special": [
-        "Robust open-box structure",
-        "8 mm floor / 6 mm wall thickness",
-        "Two full-size doors",
+        "Robust design and structure of open box",
+        "8mm floor thickness",
+        "6mm wall thickness",
+        "Two full size doors for easy cleaning",
         "DAC ready"
       ],
       "id": "eanos-40",
@@ -984,7 +1099,11 @@
       "slug": "uno-multi-40ft-eanos",
       "category": "open-box",
       "category_name": "Multi / Open box",
-      "image": "products/open-box/uno-multi-40ft-eanos/wagon-render.png"
+      "image": "products/open-box/uno-multi-40ft-eanos/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 19 (printed page 17); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "eanos-56": {
       "code": "Eanos",
@@ -1020,80 +1139,90 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "12.462 mm"
+          "Distance between bogie pivots (mm)",
+          "12.462"
         ],
         [
           "Bogie type",
           "Y25 with compact brake"
         ],
         [
-          "Length over buffers",
-          "18.002 mm"
+          "Length over buffers (mm)",
+          "18.002"
         ],
         [
-          "Wagon tare",
-          "23.3 t"
+          "Wagon tare (t)",
+          "23,30"
         ],
         [
-          "Loading length",
-          "16.726 mm"
+          "Loading length (mm)",
+          "16.726"
         ],
         [
-          "Loading width",
-          "2.715 mm"
+          "Loading width (mm)",
+          "2.715"
         ],
         [
-          "Loading area",
-          "45.4 m²"
+          "Loading area (m²)",
+          "45,4"
         ],
         [
-          "Loading volume",
-          "100.0 m³"
+          "Loading volume (m³)",
+          "100,0"
         ],
         [
-          "Floor height above rail",
-          "1.168 mm"
+          "Floor height above top of rail (mm)",
+          "1.168"
         ],
         [
-          "Door opening (W×H)",
-          "850 × 1780 mm"
+          "Door opening W x H (mm x mm)",
+          "850 x 1780"
         ],
         [
           "Vehicle gauge",
           "G1"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Max running speed",
+          "Minimal curve radius (m)",
+          "R 75"
+        ],
+        [
+          "Permitted maximum speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Maximum permitted running speed",
           "120 km/h"
         ]
       ],
       "loadlimit": [
         [
           "A",
-          "40.7"
+          "40,7"
         ],
         [
           "B",
-          "48.7"
+          "48,7"
         ],
         [
           "C",
-          "58.7"
+          "58,7"
         ],
         [
           "D",
-          "66.7"
+          "66,7"
         ]
       ],
       "special": [
-        "6 mm floor / 4 mm side wall",
-        "100 m³ loading capacity",
-        "Two full-size doors",
+        "6mm floor plate thickness",
+        "6mm front/rear wall thickness",
+        "4mm side wall thickness",
+        "100m3 loading capacity",
+        "Two full size doors for easy cleaning",
         "DAC ready"
       ],
       "id": "eanos-56",
@@ -1101,7 +1230,11 @@
       "slug": "uno-multi-56ft-eanos",
       "category": "open-box",
       "category_name": "Multi / Open box",
-      "image": "products/open-box/uno-multi-56ft-eanos/wagon-render.png"
+      "image": "products/open-box/uno-multi-56ft-eanos/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 21 (printed page 19); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     },
     "zacns": {
       "code": "Zacns",
@@ -1138,48 +1271,52 @@
           "4"
         ],
         [
-          "Distance between bogie pivots",
-          "9.960 mm"
+          "Distance between bogie pivots (mm)",
+          "9.960"
         ],
         [
           "Bogie type",
           "Y25 with classic brake"
         ],
         [
-          "Length over buffers",
-          "15.000 mm"
+          "Length over buffers (mm)",
+          "15.000"
         ],
         [
-          "Wagon tare",
-          "21.0 t"
-        ],
-        [
-          "Tank capacity",
-          "88.0 m³"
-        ],
-        [
-          "Tank diameter",
-          "3000 mm"
-        ],
-        [
-          "Tank code",
-          "L4BH"
+          "Wagon tare (t)",
+          "21,00"
         ],
         [
           "Vehicle gauge",
           "G1"
         ],
         [
-          "Max wheelset load",
-          "22.5 t"
+          "Maximum wheelset load (t)",
+          "22,5"
         ],
         [
-          "Min curve radius",
+          "Minimal curve radius (m)",
           "R 75"
         ],
         [
-          "Max running speed",
+          "Permitted max speed brake-related",
+          "100 km/h"
+        ],
+        [
+          "Max permitted running speed",
           "120 km/h"
+        ],
+        [
+          "Tank capacity (m³)",
+          "88,0"
+        ],
+        [
+          "Tank diameter (mm)",
+          "3000"
+        ],
+        [
+          "Tank code",
+          "L4BH"
         ]
       ],
       "loadlimit": [
@@ -1247,8 +1384,8 @@
         ]
       ],
       "special": [
-        "Compliant with tank code L4BH",
-        "Meets RID, TSI, GCU, EN, UIC",
+        "Compliant with the tank code L4BH",
+        "Meets the requirements of RID, TSI, GCU, EN, UIC standards",
         "DAC ready"
       ],
       "id": "zacns",
@@ -1256,7 +1393,11 @@
       "slug": "uno-tank-88m3-zacns",
       "category": "tank",
       "category_name": "Tank",
-      "image": "products/tank/uno-tank-88m3-zacns/wagon-render.png"
+      "image": "products/tank/uno-tank-88m3-zacns/wagon-render.png",
+      "technical_source": {
+        "reference": "Catalog for print.pdf, PDF page 23 (printed page 21); checked against Catalog for print.ai",
+        "checkedAt": "2026-09-05"
+      }
     }
   }
 }

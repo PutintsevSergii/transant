@@ -35,7 +35,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["command", "result"],
+        "required": ["command", "result", "note"],
         "properties": {
           "command": { "type": "string", "minLength": 1 },
           "result": {

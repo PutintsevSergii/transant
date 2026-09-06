@@ -1,0 +1,217 @@
+---
+import Action from "../../core/Action/Action.astro";
+import ResponsiveMedia from "../../core/ResponsiveMedia/ResponsiveMedia.astro";
+import {
+  approvedOperationalCaseStudyFacts,
+  validateOperationalCaseStudyProps,
+} from "./operational-case-study-contract";
+import type { OperationalCaseStudyProps } from "./OperationalCaseStudy.types";
+
+const props = Astro.props as OperationalCaseStudyProps;
+validateOperationalCaseStudyProps(props);
+
+const approvedFacts = approvedOperationalCaseStudyFacts(props.facts);
+const { download, eyebrow, href, media, summary, title } = props;
+---
+
+<section class="operational-case-study" data-operational-case-study>
+  <div class="operational-case-study__frame page-frame">
+    <header class="operational-case-study__story" data-operational-case-story>
+      <p class="operational-case-study__eyebrow">{eyebrow}</p>
+      <h2 class="operational-case-study__title">{title}</h2>
+      <p class="operational-case-study__summary">{summary}</p>
+    </header>
+    <div class="operational-case-study__media" data-operational-case-media>
+      <ResponsiveMedia {...media} />
+    </div>
+    <div class="operational-case-study__support" data-operational-case-support>
+      {
+        approvedFacts.length > 0 && (
+          <dl class="operational-case-study__facts" data-operational-case-facts>
+            {approvedFacts.map((fact) => (
+              <div class="operational-case-study__fact">
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )
+      }
+      {
+        (href || download) && (
+          <div
+            class="operational-case-study__actions"
+            data-operational-case-actions
+          >
+            {href && <Action kind="link" variant="text" {...href} />}
+            {download && (
+              <Action
+                kind="link"
+                variant="text"
+                icon="download"
+                {...download}
+              />
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .operational-case-study {
+    container-type: inline-size;
+    overflow: clip;
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .operational-case-study__frame {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: clamp(var(--space-7), 10vw, var(--space-10));
+  }
+
+  .operational-case-study__story,
+  .operational-case-study__media,
+  .operational-case-study__support,
+  .operational-case-study__facts,
+  .operational-case-study__fact {
+    min-inline-size: 0;
+  }
+
+  .operational-case-study__story,
+  .operational-case-study__support,
+  .operational-case-study__actions {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-4);
+  }
+
+  .operational-case-study__eyebrow,
+  .operational-case-study__title,
+  .operational-case-study__summary,
+  .operational-case-study__fact dt,
+  .operational-case-study__fact dd {
+    margin: 0;
+  }
+
+  .operational-case-study__eyebrow {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .operational-case-study__title {
+    max-inline-size: 18ch;
+    color: var(--color-brand-blue-dark);
+    font-size: clamp(2rem, 4.5cqi, 3.25rem);
+    letter-spacing: -0.04em;
+    line-height: var(--line-height-heading);
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .operational-case-study__summary {
+    max-inline-size: 58ch;
+    color: var(--color-ink-secondary);
+    font-size: clamp(1rem, 1.1cqi, 1.125rem);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .operational-case-study__media {
+    overflow: clip;
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .operational-case-study__media :global(.responsive-media) {
+    gap: var(--space-3);
+  }
+
+  .operational-case-study__media :global(img) {
+    object-position: center;
+  }
+
+  .operational-case-study__media :global(.responsive-media__caption) {
+    padding-inline: var(--space-4);
+    padding-block-end: var(--space-4);
+  }
+
+  .operational-case-study__support {
+    align-content: start;
+    padding-block-start: var(--space-5);
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+
+  .operational-case-study__facts {
+    display: grid;
+    inline-size: 100%;
+    margin: 0;
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+
+  .operational-case-study__fact {
+    display: grid;
+    gap: var(--space-1);
+    padding-block: var(--space-4);
+    border-block-end: var(--border-thin) solid var(--color-divider);
+  }
+
+  .operational-case-study__fact dt {
+    color: var(--color-ink-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-style: normal;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .operational-case-study__fact dd {
+    color: var(--color-brand-blue-dark);
+    font-size: var(--font-size-heading-4);
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+    overflow-wrap: anywhere;
+  }
+
+  .operational-case-study__actions :global(.action--text) {
+    justify-content: flex-start;
+  }
+
+  @container (min-width: 56rem) {
+    .operational-case-study__frame {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      column-gap: clamp(var(--space-7), 7vw, var(--space-10));
+      align-items: start;
+    }
+
+    .operational-case-study__story {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .operational-case-study__media {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      align-self: stretch;
+    }
+
+    .operational-case-study__media :global(.responsive-media),
+    .operational-case-study__media :global(picture),
+    .operational-case-study__media :global(img) {
+      block-size: 100%;
+    }
+
+    .operational-case-study__support {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+</style>

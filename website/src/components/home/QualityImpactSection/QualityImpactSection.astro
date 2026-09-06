@@ -1,0 +1,255 @@
+---
+import Action from "../../core/Action/Action.astro";
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import {
+  approvedQualityImpactTopics,
+  validateQualityImpactSectionProps,
+} from "./quality-impact-section-contract";
+import type { QualityImpactSectionProps } from "./QualityImpactSection.types";
+
+const props = Astro.props as QualityImpactSectionProps;
+validateQualityImpactSectionProps(props);
+
+const approvedTopics = approvedQualityImpactTopics(props.topics);
+const topicColumns = Math.min(approvedTopics.length, 2);
+const labels = props.labels ?? {
+  certification: "certification",
+  policy: "policy",
+  capability: "capability",
+  target: "target",
+  marketingStatement: "marketing statement",
+  certificate: "Certificate",
+  issuer: "Issuer",
+  scope: "Scope",
+  evidence: "evidence",
+  externalNewTab: " (opens in new tab)",
+};
+const statementLabel = (statementType: string): string =>
+  statementType === "marketing-statement"
+    ? labels.marketingStatement
+    : labels[
+        statementType as "certification" | "policy" | "capability" | "target"
+      ];
+---
+
+<section class="quality-impact-section" data-quality-impact-section>
+  <div class="quality-impact-section__frame page-frame">
+    <header class="quality-impact-section__heading" data-quality-impact-heading>
+      <SectionIntro {...props.intro} />
+    </header>
+    <div
+      class="quality-impact-section__topics"
+      data-quality-impact-topics
+      data-topic-count={approvedTopics.length}
+      style={`--quality-impact-columns: ${topicColumns}`}
+    >
+      {
+        approvedTopics.map((topic) => (
+          <article
+            class="quality-impact-section__topic"
+            data-quality-impact-topic
+            data-statement-type={topic.statementType}
+          >
+            <p class="quality-impact-section__type">
+              {statementLabel(topic.statementType)}
+            </p>
+            <h3 class="quality-impact-section__title">{topic.title}</h3>
+            <p class="quality-impact-section__summary">{topic.summary}</p>
+            {topic.certificate && (
+              <dl
+                class="quality-impact-section__certificate"
+                data-quality-impact-certificate
+              >
+                <div>
+                  <dt>{labels.certificate}</dt>
+                  <dd class="quality-impact-section__identifier">
+                    {topic.certificate.identifier}
+                  </dd>
+                </div>
+                <div>
+                  <dt>{labels.issuer}</dt>
+                  <dd>{topic.certificate.issuer}</dd>
+                </div>
+                <div>
+                  <dt>{labels.scope}</dt>
+                  <dd>{topic.certificate.scope}</dd>
+                </div>
+              </dl>
+            )}
+            <ul
+              class="quality-impact-section__evidence"
+              aria-label={`${topic.title}: ${labels.evidence}`}
+            >
+              {topic.evidenceLinks.map((link) => (
+                <li>
+                  <Action
+                    kind="link"
+                    variant="text"
+                    size="regular"
+                    icon={link.type === "file" ? "download" : "arrow-right"}
+                    href={link.href}
+                    label={link.label}
+                    external={link.type === "external"}
+                    externalLabel={labels.externalNewTab}
+                  />
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .quality-impact-section {
+    container-type: inline-size;
+    overflow: clip;
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper-warm);
+  }
+
+  .quality-impact-section__frame,
+  .quality-impact-section__heading,
+  .quality-impact-section__topics,
+  .quality-impact-section__topic,
+  .quality-impact-section__certificate,
+  .quality-impact-section__evidence,
+  .quality-impact-section__evidence li {
+    min-inline-size: 0;
+  }
+
+  .quality-impact-section__frame {
+    display: grid;
+    gap: clamp(var(--space-7), 7vw, var(--space-10));
+    padding-block: var(--space-8);
+  }
+
+  .quality-impact-section__topics {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .quality-impact-section__topic {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-block-start: var(--space-5);
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+
+  .quality-impact-section__type,
+  .quality-impact-section__title,
+  .quality-impact-section__summary,
+  .quality-impact-section__certificate,
+  .quality-impact-section__certificate dt,
+  .quality-impact-section__certificate dd,
+  .quality-impact-section__evidence {
+    margin: 0;
+  }
+
+  .quality-impact-section__type,
+  .quality-impact-section__certificate dt {
+    color: var(--color-ink-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .quality-impact-section__type {
+    color: var(--color-brand-red-dark);
+    font-weight: 700;
+  }
+
+  .quality-impact-section__title {
+    color: var(--color-brand-blue-dark);
+    font-size: clamp(1.625rem, 3.5cqi, 2.375rem);
+    letter-spacing: -0.035em;
+    line-height: var(--line-height-heading);
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .quality-impact-section__summary {
+    max-inline-size: 58ch;
+    color: var(--color-ink-secondary);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .quality-impact-section__certificate cite {
+    font-style: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    overflow-wrap: anywhere;
+  }
+
+  .quality-impact-section__certificate {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+    border-block: var(--border-thin) solid var(--color-divider);
+  }
+
+  .quality-impact-section__certificate > div {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .quality-impact-section__certificate dd {
+    color: var(--color-brand-blue-dark);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .quality-impact-section__identifier {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .quality-impact-section__evidence {
+    display: grid;
+    gap: var(--space-4);
+    margin-block-start: auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .quality-impact-section__evidence li {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .quality-impact-section__evidence :global(.action) {
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  @container (min-width: 56rem) {
+    .quality-impact-section__frame {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      align-items: start;
+    }
+
+    .quality-impact-section__heading {
+      position: sticky;
+      inset-block-start: calc(4.5rem + var(--space-5));
+    }
+
+    .quality-impact-section__topics {
+      grid-template-columns: repeat(
+        var(--quality-impact-columns),
+        minmax(0, 1fr)
+      );
+      align-items: stretch;
+    }
+
+    .quality-impact-section__summary {
+      min-block-size: calc(3 * 1em * var(--line-height-body));
+    }
+  }
+</style>

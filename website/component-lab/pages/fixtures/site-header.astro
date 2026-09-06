@@ -1,0 +1,88 @@
+---
+import SiteHeader from "../../../src/components/shell/SiteHeader/SiteHeader.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const navigation = [
+  { label: "Wagons", href: "#wagons" },
+  { label: "Technology", href: "/technology/" },
+  { label: "Sustainability", href: "/sustainability/" },
+  { label: "Company", href: "/company/" },
+];
+
+const localeOptions = [
+  { label: "EN", href: "/", current: true },
+  { label: "DE", href: "/de/" },
+];
+---
+
+<ComponentLabLayout
+  title="SiteHeader fixture | TransANT component lab"
+  description="Server-rendered and progressively enhanced site shell header."
+>
+  <SiteHeader
+    id="site-header-primary"
+    homeHref="/"
+    navigation={navigation}
+    currentPath="/technology/"
+    localeOptions={localeOptions}
+    contactAction={{ label: "Talk to an engineer", href: "/contact/" }}
+  />
+  <main class="site-header-fixture page-frame" data-header-fixture-main>
+    <p class="site-header-fixture__eyebrow">C-006 shell component</p>
+    <h1>Accessible navigation starts in the document.</h1>
+    <p>
+      This isolated page provides an ordinary server-rendered navigation path,
+      then enhances compact viewports with a modal-quality disclosure without
+      asking a route, content adapter, or browser global for data.
+    </p>
+    <a href="#continuation">Continue through the fixture</a>
+    <section id="continuation" aria-labelledby="continuation-title">
+      <h2 id="continuation-title">Reading order remains available</h2>
+      <p>
+        This content intentionally sits outside the header so the focused menu
+        lifecycle can prove background inertness and outside navigation close.
+      </p>
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .site-header-fixture {
+    display: grid;
+    min-block-size: 110vh;
+    align-content: start;
+    gap: var(--space-6);
+    padding-block: var(--space-8);
+  }
+
+  .site-header-fixture > p {
+    max-inline-size: var(--reading-max);
+    color: var(--color-ink-secondary);
+  }
+
+  .site-header-fixture__eyebrow {
+    color: var(--color-brand-red);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .site-header-fixture > a {
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    justify-self: start;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .site-header-fixture section {
+    display: grid;
+    gap: var(--space-4);
+    max-inline-size: var(--reading-max);
+    padding-block-start: var(--space-8);
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+</style>

@@ -1,0 +1,265 @@
+---
+import type {
+  RailSequenceColumns,
+  RailSequenceProps,
+  RailSequenceTheme,
+} from "./RailSequence.types";
+
+const { columns, items, label, theme } = Astro.props as RailSequenceProps;
+
+function isTheme(value: string): value is RailSequenceTheme {
+  return value === "light" || value === "dark";
+}
+
+function isColumns(value: number): value is RailSequenceColumns {
+  return value >= 1 && value <= 4 && Number.isInteger(value);
+}
+
+if (items.length < 2 || items.length > 6) {
+  throw new Error("RailSequence requires between two and six items.");
+}
+
+if (!isTheme(theme)) {
+  throw new Error("RailSequence requires a light or dark theme.");
+}
+
+if (!isColumns(columns)) {
+  throw new Error(
+    "RailSequence columns must be an integer between one and four.",
+  );
+}
+
+if (label !== undefined && label.trim().length === 0) {
+  throw new Error("RailSequence label must not be empty when provided.");
+}
+
+if (
+  items.some(
+    ({ description, number, title }) =>
+      description.trim().length === 0 ||
+      number.trim().length === 0 ||
+      title.trim().length === 0,
+  )
+) {
+  throw new Error(
+    "RailSequence items require non-empty number, title, and description values.",
+  );
+}
+
+const rootClass = `rail-sequence rail-sequence--${theme} rail-sequence--columns-${columns}`;
+---
+
+<div
+  class={rootClass}
+  style={`--rail-sequence-columns: ${columns}`}
+  data-rail-sequence
+  data-rail-sequence-columns={columns}
+  data-rail-sequence-theme={theme}
+>
+  {
+    label && (
+      <p class="rail-sequence__label" data-rail-sequence-label>
+        {label}
+      </p>
+    )
+  }
+  <ol class="rail-sequence__list" aria-label={label} data-rail-sequence-list>
+    {
+      items.map((item) => (
+        <li class="rail-sequence__item" data-rail-sequence-item>
+          <span class="rail-sequence__number" data-rail-sequence-number>
+            {item.number}
+          </span>
+          <div class="rail-sequence__content">
+            {item.href ? (
+              <a class="rail-sequence__title" href={item.href}>
+                {item.title}
+              </a>
+            ) : (
+              <span class="rail-sequence__title">{item.title}</span>
+            )}
+            <p class="rail-sequence__description">{item.description}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  .rail-sequence {
+    --rail-sequence-accent: var(--color-brand-blue-dark);
+    --rail-sequence-description: var(--color-ink-secondary);
+    --rail-sequence-line: var(--color-steel-dark);
+    --rail-sequence-marker-background: var(--color-paper);
+    --rail-sequence-marker-foreground: var(--color-brand-blue-dark);
+
+    container-type: inline-size;
+    color: var(--color-ink);
+  }
+
+  .rail-sequence--dark {
+    --rail-sequence-accent: var(--color-railway-pale);
+    --rail-sequence-description: var(--color-railway-pale);
+    --rail-sequence-line: var(--color-railway-border);
+    --rail-sequence-marker-background: var(--color-footer-navy);
+    --rail-sequence-marker-foreground: var(--color-paper);
+
+    color: var(--color-paper);
+  }
+
+  .rail-sequence__label,
+  .rail-sequence__description {
+    margin: 0;
+  }
+
+  .rail-sequence__label {
+    margin-block-end: var(--space-4);
+    color: var(--rail-sequence-accent);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .rail-sequence__list {
+    display: grid;
+    gap: var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rail-sequence__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+    min-inline-size: 0;
+  }
+
+  .rail-sequence__item:not(:last-child)::after {
+    position: absolute;
+    z-index: 0;
+    inset-inline-start: calc(1.25rem - (var(--border-thin) / 2));
+    inset-block-start: 2.5rem;
+    inline-size: var(--border-thin);
+    block-size: calc(100% + var(--space-5));
+    background: var(--rail-sequence-line);
+    content: "";
+  }
+
+  .rail-sequence__number {
+    z-index: 1;
+    display: grid;
+    box-sizing: border-box;
+    inline-size: 2.5rem;
+    min-block-size: 2.5rem;
+    place-items: center;
+    border: var(--border-thin) solid var(--rail-sequence-line);
+    border-radius: 50%;
+    background: var(--rail-sequence-marker-background);
+    color: var(--rail-sequence-marker-foreground);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .rail-sequence__content {
+    display: grid;
+    min-inline-size: 0;
+    gap: var(--space-2);
+    padding-block: var(--space-2);
+  }
+
+  .rail-sequence__title {
+    color: inherit;
+    font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+    font-weight: 700;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  a.rail-sequence__title {
+    color: var(--rail-sequence-accent);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+
+  a.rail-sequence__title:hover {
+    color: var(--color-brand-red-dark);
+  }
+
+  a.rail-sequence__title:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .rail-sequence__description {
+    color: var(--rail-sequence-description);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  @container (min-width: 48rem) {
+    .rail-sequence__list {
+      grid-template-columns: repeat(
+        var(--rail-sequence-columns),
+        minmax(0, 1fr)
+      );
+      column-gap: var(--space-5);
+      row-gap: var(--space-7);
+    }
+
+    .rail-sequence__item {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+
+    .rail-sequence__item:not(:last-child)::after {
+      inset-inline-start: 1.25rem;
+      inset-block-start: calc(1.25rem - (var(--border-thin) / 2));
+      inline-size: calc(100% + var(--space-5));
+      block-size: var(--border-thin);
+    }
+
+    .rail-sequence--columns-1 .rail-sequence__item::after,
+    .rail-sequence--columns-2 .rail-sequence__item:nth-child(2n)::after,
+    .rail-sequence--columns-3 .rail-sequence__item:nth-child(3n)::after,
+    .rail-sequence--columns-4 .rail-sequence__item:nth-child(4n)::after,
+    .rail-sequence__item:last-child::after {
+      display: none;
+    }
+
+    .rail-sequence__content {
+      padding-block: 0;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .rail-sequence__number {
+      border-color: ButtonText;
+      color: ButtonText;
+      background: Canvas;
+    }
+
+    .rail-sequence__item:not(:last-child)::after {
+      background: ButtonText;
+    }
+
+    a.rail-sequence__title {
+      color: LinkText;
+    }
+
+    a.rail-sequence__title:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 3px;
+      box-shadow: none;
+    }
+  }
+</style>

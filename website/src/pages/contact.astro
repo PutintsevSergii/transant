@@ -1,0 +1,93 @@
+---
+import ContactForm from "../components/form/ContactForm/ContactForm.astro";
+import PageHero from "../components/editorial/PageHero/PageHero.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { contactPageViewModel } from "../adapters/content/legal-page-view-model";
+
+const { addressLines, email, form, hero, layout, phone } = contactPageViewModel;
+---
+
+<BaseLayout {...layout}>
+  <PageHero {...hero} />
+  <section class="contact-page" data-contact-page>
+    <div class="contact-page__frame page-frame">
+      <div class="contact-page__details">
+        <p class="contact-page__eyebrow">Direct contact</p>
+        <h2>Contact details</h2>
+        <address>
+          {addressLines.map((line) => <span>{line}</span>)}
+        </address>
+        <a href={`tel:${phone.replace(/[\s().-]/gu, "")}`}>{phone}</a>
+        <a href={`mailto:${email}`}>{email}</a>
+      </div>
+      <ContactForm {...form} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    background: var(--color-paper-warm);
+  }
+
+  .contact-page__frame {
+    display: grid;
+    gap: clamp(var(--space-7), 9vw, var(--space-10));
+    align-items: start;
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .contact-page__details {
+    display: grid;
+    gap: var(--space-4);
+    color: var(--color-brand-blue-dark);
+  }
+
+  .contact-page__eyebrow,
+  .contact-page__details h2,
+  .contact-page__details address,
+  .contact-page__details a {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-page__eyebrow {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-page__details h2 {
+    font-size: var(--font-size-heading-2);
+    line-height: var(--line-height-heading);
+  }
+
+  .contact-page__details address {
+    display: grid;
+    gap: var(--space-1);
+    color: var(--color-ink-secondary);
+    font-style: normal;
+    line-height: var(--line-height-body);
+  }
+
+  .contact-page__details a {
+    color: inherit;
+    font-weight: 700;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+
+  .contact-page__details a:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  @media (min-width: 62rem) {
+    .contact-page__frame {
+      grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
+    }
+  }
+</style>

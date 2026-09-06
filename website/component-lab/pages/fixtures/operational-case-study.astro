@@ -1,0 +1,121 @@
+---
+import OperationalCaseStudy from "../../../src/components/home/OperationalCaseStudy/OperationalCaseStudy.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+import freightTrain from "../../../src/assets/images/editorial/freight-train-in-operation.jpg";
+import wagonFleet from "../../../src/assets/images/editorial/transant-wagon-fleet.png";
+---
+
+<ComponentLabLayout
+  title="OperationalCaseStudy fixture | TransANT component lab"
+  description="Static approved-fact case-study composition with local image evidence."
+>
+  <main data-fixture="operational-case-study">
+    <OperationalCaseStudy
+      eyebrow="Operational proof"
+      title="Erzberg–Linz ore transport"
+      summary="This non-production fixture demonstrates an attributed project composition without asserting a live operating status, customer quotation, unapproved document, or unsupported performance claim."
+      media={{
+        image: freightTrain,
+        alt: "Freight train in operation used for the case-study composition fixture.",
+        sizes: "(min-width: 56rem) 56vw, 100vw",
+        fit: "cover",
+        aspectRatio: "16 / 10",
+        caption:
+          "Fixture image from the local reviewed asset inventory; production publication still requires approved image rights and caption wording.",
+      }}
+      facts={[
+        {
+          label: "Route",
+          value: "Erzberg–Linz",
+          publicationStatus: "approved",
+          source: { reference: "TransANT Product Portfolio" },
+        },
+        {
+          label: "Result boundary",
+          value: "Up to 100 avoided train journeys per year",
+          publicationStatus: "approved",
+          source: { reference: "TransANT Product Portfolio" },
+        },
+        {
+          label: "Current operating status",
+          value: "Unverified fixture-only value",
+          publicationStatus: "unverified",
+          source: { reference: "Pending operator confirmation" },
+        },
+      ]}
+      href={{
+        href: "/fixtures/operational-case-study/#project-context",
+        label: "Read fixture project context",
+      }}
+      download={{
+        href: "/fixtures/operational-case-study/#approved-document",
+        label: "Open fixture source record",
+      }}
+    />
+
+    <section class="operational-case-study-fixture__variant page-frame">
+      <p>Zero-fact alternate without optional routes</p>
+      <OperationalCaseStudy
+        eyebrow="Evidence boundary"
+        title="A source-owned case can omit unavailable evidence cleanly"
+        summary="The alternate variant has no approved facts or optional destinations. It verifies that the composition does not create empty evidence, action, customer, route, or document placeholders."
+        media={{
+          image: wagonFleet,
+          alt: "Local wagon-fleet artwork used for the alternate fixture.",
+          sizes: "(min-width: 56rem) 56vw, 100vw",
+          fit: "cover",
+          aspectRatio: "16 / 10",
+        }}
+        facts={[]}
+      />
+    </section>
+
+    <section class="operational-case-study-fixture__variant page-frame">
+      <p>Single approved fact</p>
+      <OperationalCaseStudy
+        eyebrow="Evidence boundary"
+        title="One approved fact remains a complete evidence list"
+        summary="A single caller-approved, source-labelled item keeps the same semantic definition-list treatment without implying missing operational data."
+        media={{
+          image: freightTrain,
+          alt: "Freight train image used for the single-fact fixture variant.",
+          sizes: "(min-width: 56rem) 56vw, 100vw",
+          fit: "cover",
+          aspectRatio: "16 / 10",
+        }}
+        facts={[
+          {
+            label: "Evidence type",
+            value: "Source-labelled fixture fact",
+            publicationStatus: "approved",
+            source: { reference: "Component-lab fixture record" },
+          },
+        ]}
+      />
+    </section>
+    <p id="project-context" class="visually-hidden">Fixture project context.</p>
+    <p id="approved-document" class="visually-hidden">Fixture source record.</p>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .operational-case-study-fixture__variant {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+  }
+
+  .operational-case-study-fixture__variant > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .operational-case-study-fixture__variant :global(.operational-case-study) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+</style>

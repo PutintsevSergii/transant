@@ -1,0 +1,67 @@
+---
+import SpecificationGroup from "../../../src/components/product/SpecificationGroup/SpecificationGroup.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const source = {
+  reference:
+    "src/content/products/intermodal/uno-intermodal-60ft-sgns/product.json",
+};
+---
+
+<ComponentLabLayout
+  title="SpecificationGroup fixture | TransANT component lab"
+  description="Caller-owned semantic technical rows with source-preserved values and optional units."
+>
+  <main data-fixture="specification-group">
+    <SpecificationGroup
+      title="Technical specifications"
+      headingLevel={2}
+      source={source}
+      rows={[
+        { label: "Wagon type", value: "Sgns(s)" },
+        { label: "Number of axles", value: "4" },
+        {
+          label: "Distance between bogie pivots",
+          value: "14.200",
+          unit: "mm",
+        },
+        { label: "Bogie type", value: "Y25 with classic brake" },
+        { label: "Length over buffers", value: "19.830", unit: "mm" },
+        { label: "Wagon tare", value: "19.3", unit: "t" },
+      ]}
+    />
+
+    <SpecificationGroup
+      title="Source-preserved compact values"
+      headingLevel={2}
+      source={source}
+      rows={[
+        { label: "Vehicle gauge", value: "G1" },
+        { label: "Max wheelset load", value: "22.5", unit: "t" },
+      ]}
+    />
+
+    <SpecificationGroup
+      title="Expanded engineering context"
+      headingLevel={3}
+      source={{
+        reference:
+          "Fixture engineering source with an intentionally expanded reference for responsive evidence",
+      }}
+      rows={[
+        {
+          label:
+            "Distance between bogie pivots under the source-defined operating configuration",
+          value:
+            "14.200 (source-preserved value; calculation and normalization remain outside this component)",
+          unit: "mm",
+        },
+        {
+          label: "Special feature description",
+          value:
+            "28 foldable container pins with caller-owned configuration details retained verbatim",
+        },
+      ]}
+    />
+  </main>
+</ComponentLabLayout>

@@ -1,0 +1,16 @@
+---
+import {
+  productPageViewModel,
+  productRouteParams,
+} from "../../../../../src/adapters/content/product-view-model";
+import ProductPage from "../../../../../src/layouts/ProductPage.astro";
+export function getStaticPaths() {
+  return productRouteParams.map((params) => ({ params }));
+}
+const { family, product } = Astro.params;
+if (!family || !product)
+  throw new Error("Product routes require family and product parameters.");
+const viewModel = productPageViewModel(family, product);
+---
+
+<ProductPage {...viewModel} />

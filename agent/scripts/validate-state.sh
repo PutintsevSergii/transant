@@ -7,6 +7,7 @@ STATUS_FILE="$PROJECT_ROOT/STATUS.md"
 CHANGELOG_FILE="$PROJECT_ROOT/CHANGELOG.md"
 TRACKER_FILE="$PROJECT_ROOT/docs/specifications/component-implementation-status.md"
 PLAN_FILE="$PROJECT_ROOT/docs/specifications/v7-component-development-plan.md"
+MOBILE_PLAN_FILE="$PROJECT_ROOT/docs/specifications/mobile-responsive-design-requirements.md"
 V7_SCREEN="$PROJECT_ROOT/prep/design/stitch-generations/v7/stitch_transant_b2b_website_redesign (6)/screen.png"
 
 errors=0
@@ -22,6 +23,7 @@ for required_file in \
   "$CHANGELOG_FILE" \
   "$TRACKER_FILE" \
   "$PLAN_FILE" \
+  "$MOBILE_PLAN_FILE" \
   "$V7_SCREEN"; do
   if [[ ! -f "$required_file" ]]; then
     fail "missing required file: ${required_file#"$PROJECT_ROOT/"}"

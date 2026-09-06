@@ -32,80 +32,90 @@
       "4"
     ],
     [
-      "Distance between bogie pivots",
-      "12.462 mm"
+      "Distance between bogie pivots (mm)",
+      "12.462"
     ],
     [
       "Bogie type",
       "Y25 with compact brake"
     ],
     [
-      "Length over buffers",
-      "18.002 mm"
+      "Length over buffers (mm)",
+      "18.002"
     ],
     [
-      "Wagon tare",
-      "23.3 t"
+      "Wagon tare (t)",
+      "23,30"
     ],
     [
-      "Loading length",
-      "16.726 mm"
+      "Loading length (mm)",
+      "16.726"
     ],
     [
-      "Loading width",
-      "2.715 mm"
+      "Loading width (mm)",
+      "2.715"
     ],
     [
-      "Loading area",
-      "45.4 m²"
+      "Loading area (m²)",
+      "45,4"
     ],
     [
-      "Loading volume",
-      "100.0 m³"
+      "Loading volume (m³)",
+      "100,0"
     ],
     [
-      "Floor height above rail",
-      "1.168 mm"
+      "Floor height above top of rail (mm)",
+      "1.168"
     ],
     [
-      "Door opening (W×H)",
-      "850 × 1780 mm"
+      "Door opening W x H (mm x mm)",
+      "850 x 1780"
     ],
     [
       "Vehicle gauge",
       "G1"
     ],
     [
-      "Max wheelset load",
-      "22.5 t"
+      "Maximum wheelset load (t)",
+      "22,5"
     ],
     [
-      "Max running speed",
+      "Minimal curve radius (m)",
+      "R 75"
+    ],
+    [
+      "Permitted maximum speed brake-related",
+      "100 km/h"
+    ],
+    [
+      "Maximum permitted running speed",
       "120 km/h"
     ]
   ],
   "loadlimit": [
     [
       "A",
-      "40.7"
+      "40,7"
     ],
     [
       "B",
-      "48.7"
+      "48,7"
     ],
     [
       "C",
-      "58.7"
+      "58,7"
     ],
     [
       "D",
-      "66.7"
+      "66,7"
     ]
   ],
   "special": [
-    "6 mm floor / 4 mm side wall",
-    "100 m³ loading capacity",
-    "Two full-size doors",
+    "6mm floor plate thickness",
+    "6mm front/rear wall thickness",
+    "4mm side wall thickness",
+    "100m3 loading capacity",
+    "Two full size doors for easy cleaning",
     "DAC ready"
   ],
   "id": "eanos-56",
@@ -113,5 +123,9 @@
   "slug": "uno-multi-56ft-eanos",
   "category": "open-box",
   "category_name": "Multi / Open box",
-  "image": "products/open-box/uno-multi-56ft-eanos/wagon-render.png"
+  "image": "products/open-box/uno-multi-56ft-eanos/wagon-render.png",
+  "technical_source": {
+    "reference": "Catalog for print.pdf, PDF page 21 (printed page 19); checked against Catalog for print.ai",
+    "checkedAt": "2026-09-05"
+  }
 }

@@ -1,0 +1,224 @@
+---
+import Action from "../../core/Action/Action.astro";
+import {
+  approvedDownloadEntries,
+  isExternalDownload,
+  validateDownloadListProps,
+} from "./download-list-contract";
+import type { DownloadListProps } from "./DownloadList.types";
+
+const props = Astro.props as DownloadListProps;
+validateDownloadListProps(props);
+
+const downloads = approvedDownloadEntries(props.downloads);
+const Heading = `h${props.headingLevel}` as "h2" | "h3";
+---
+
+<section class="download-list" data-download-list>
+  <div class="download-list__frame page-frame">
+    <div class="download-list__heading">
+      <Heading>{props.title}</Heading>
+    </div>
+
+    {
+      downloads.length > 0 ? (
+        <ul class="download-list__entries" data-download-list-entries>
+          {downloads.map((download) => (
+            <li class="download-list__entry" data-download-list-entry>
+              <article>
+                <div class="download-list__content">
+                  <h3>{download.title}</h3>
+                </div>
+
+                <dl
+                  class="download-list__metadata"
+                  aria-label={`${download.title} file details`}
+                >
+                  <div>
+                    <dt>File type</dt>
+                    <dd>{download.fileType}</dd>
+                  </div>
+                  <div>
+                    <dt>Language</dt>
+                    <dd>{download.language}</dd>
+                  </div>
+                  {download.revisionDate !== undefined && (
+                    <div>
+                      <dt>Revision</dt>
+                      <dd>{download.revisionDate}</dd>
+                    </div>
+                  )}
+                  {download.fileSize !== undefined && (
+                    <div>
+                      <dt>File size</dt>
+                      <dd>{download.fileSize}</dd>
+                    </div>
+                  )}
+                </dl>
+
+                <div class="download-list__action" data-download-action>
+                  <Action
+                    kind="link"
+                    href={download.href}
+                    label={`Download ${download.fileType}`}
+                    variant="secondary"
+                    size="regular"
+                    icon="download"
+                    external={isExternalDownload(download.href)}
+                  />
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="download-list__empty" data-download-list-empty>
+          Contact TransANT for product documents.
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .download-list {
+    container-type: inline-size;
+    overflow: clip;
+    background: var(--color-surface-subtle);
+  }
+
+  .download-list__frame,
+  .download-list__heading,
+  .download-list__entries,
+  .download-list__entry,
+  .download-list__entry article,
+  .download-list__content,
+  .download-list__metadata,
+  .download-list__metadata div,
+  .download-list__action {
+    min-inline-size: 0;
+  }
+
+  .download-list__frame {
+    display: grid;
+    gap: clamp(var(--space-5), 6vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .download-list__heading {
+    display: grid;
+    gap: var(--space-3);
+    max-inline-size: 52rem;
+  }
+
+  .download-list__heading h2,
+  .download-list__heading h3,
+  .download-list__metadata,
+  .download-list__metadata dt,
+  .download-list__metadata dd,
+  .download-list__empty {
+    margin: 0;
+  }
+
+  .download-list__heading h2,
+  .download-list__heading h3,
+  .download-list__content h3 {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-family-display);
+    line-height: var(--line-height-tight);
+    overflow-wrap: anywhere;
+  }
+
+  .download-list__heading h2,
+  .download-list__heading h3 {
+    font-size: clamp(2rem, 6cqi, 3.5rem);
+  }
+
+  .download-list__metadata,
+  .download-list__empty {
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .download-list__metadata dt {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .download-list__entries {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .download-list__entry article {
+    display: grid;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .download-list__content {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+  }
+
+  .download-list__content h3 {
+    margin: 0;
+    font-size: clamp(1.35rem, 4cqi, 2rem);
+  }
+
+  .download-list__metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .download-list__metadata div {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .download-list__metadata dd {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-mono);
+    overflow-wrap: anywhere;
+  }
+
+  .download-list__action {
+    align-self: end;
+  }
+
+  .download-list__action :global(.action) {
+    inline-size: 100%;
+  }
+
+  .download-list__empty {
+    max-inline-size: 46rem;
+    padding: var(--space-5);
+    border-inline-start: 0.25rem solid var(--color-brand-red-dark);
+  }
+
+  @container (min-width: 52rem) {
+    .download-list__entry article {
+      grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.9fr) auto;
+      align-items: end;
+    }
+
+    .download-list__action :global(.action) {
+      inline-size: auto;
+      white-space: nowrap;
+    }
+  }
+</style>

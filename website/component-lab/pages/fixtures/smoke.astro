@@ -1,0 +1,206 @@
+---
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const checks = [
+  {
+    number: "01",
+    title: "Static first",
+    description:
+      "The complete fixture is present in server-rendered HTML and remains useful without JavaScript.",
+  },
+  {
+    number: "02",
+    title: "Responsive by contract",
+    description:
+      "One semantic source order adapts from the minimum compact width to the reference desktop.",
+  },
+  {
+    number: "03",
+    title: "Local by default",
+    description:
+      "Brand assets, type choices, styles, and tests do not depend on remote runtime resources.",
+  },
+] as const;
+---
+
+<ComponentLabLayout
+  title="Foundation smoke fixture | TransANT component lab"
+  description="Responsive smoke fixture for the TransANT Astro foundation."
+>
+  <main class="smoke" data-fixture="foundation-smoke">
+    <section class="smoke__hero page-frame" aria-labelledby="smoke-title">
+      <a class="smoke__lab-link" href="/">Component lab</a>
+      <img
+        class="smoke__logo"
+        src="/brand/transant-logo.png"
+        width="520"
+        height="114"
+        alt="TransANT"
+      />
+      <p class="smoke__eyebrow">Foundation F-001</p>
+      <h1 id="smoke-title">A stable track for every component.</h1>
+      <p class="smoke__lede">
+        This fixture deliberately combines long editorial copy, a fixed approved
+        asset, focusable controls, and a layout that changes only when its own
+        container has enough room.
+      </p>
+      <a class="smoke__action" href="#foundation-checks"
+        >Review foundation checks</a
+      >
+    </section>
+
+    <section
+      class="smoke__checks page-frame"
+      id="foundation-checks"
+      aria-labelledby="checks-title"
+    >
+      <p class="smoke__eyebrow">Verification surface</p>
+      <h2 id="checks-title">Compact by default. Expansive with purpose.</h2>
+      <div class="smoke__grid">
+        {
+          checks.map((check) => (
+            <article class="smoke__card">
+              <p class="smoke__number" aria-hidden="true">
+                {check.number}
+              </p>
+              <h3>{check.title}</h3>
+              <p>{check.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .smoke {
+    overflow: clip;
+    background:
+      radial-gradient(
+        circle at 90% 8%,
+        rgb(28 111 156 / 12%),
+        transparent 24rem
+      ),
+      var(--color-paper);
+  }
+
+  .smoke__hero,
+  .smoke__checks {
+    container-type: inline-size;
+    display: grid;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+
+  .smoke__hero {
+    min-block-size: min(100vh, 54rem);
+    align-content: center;
+  }
+
+  .smoke__lab-link {
+    justify-self: start;
+    min-block-size: 2.75rem;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .smoke__logo {
+    inline-size: min(13rem, 100%);
+    block-size: auto;
+  }
+
+  .smoke__eyebrow,
+  .smoke__number {
+    color: var(--color-brand-red);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .smoke__lede {
+    color: var(--color-ink-secondary);
+    font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.25rem);
+  }
+
+  .smoke__action {
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    inline-size: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding-inline: var(--space-5);
+    border: var(--border-thin) solid var(--color-brand-red);
+    border-radius: var(--radius-small);
+    color: var(--color-paper);
+    background: var(--color-brand-red);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .smoke__action:hover {
+    border-color: var(--color-brand-red-dark);
+    background: var(--color-brand-red-dark);
+  }
+
+  .smoke__checks {
+    padding-block: var(--space-8);
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+
+  .smoke__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  .smoke__card {
+    display: grid;
+    min-inline-size: 0;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--color-divider);
+    border-radius: var(--radius-medium);
+    background: var(--color-paper-warm);
+    overflow-wrap: anywhere;
+  }
+
+  .smoke__card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .smoke__card p {
+    margin: 0;
+  }
+
+  @container (min-width: 48rem) {
+    .smoke__hero {
+      grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+      column-gap: var(--space-7);
+    }
+
+    .smoke__lab-link,
+    .smoke__logo,
+    .smoke__eyebrow,
+    .smoke__hero h1 {
+      grid-column: 1;
+    }
+
+    .smoke__lede,
+    .smoke__action {
+      grid-column: 2;
+    }
+
+    .smoke__lede {
+      align-self: end;
+    }
+
+    .smoke__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

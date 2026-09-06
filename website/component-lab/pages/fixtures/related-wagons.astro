@@ -1,0 +1,84 @@
+---
+import RelatedWagons from "../../../src/components/product/RelatedWagons/RelatedWagons.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+import flatRelnsWagon from "../../../src/assets/images/products/flat/uno-flat-60ft-relns/wagon-render.png";
+import flatRensWagon from "../../../src/assets/images/products/flat/uno-flat-60ft-rens/wagon-render.png";
+---
+
+<ComponentLabLayout
+  title="RelatedWagons fixture | TransANT component lab"
+  description="Explicit approved related-product records with direct local routes, withheld relations, local renders, and an honest empty state."
+>
+  <main data-fixture="related-wagons">
+    <RelatedWagons
+      currentProductId="uno-flat-60ft-rns"
+      title="Related wagons"
+      headingLevel={2}
+      related={[
+        {
+          id: "uno-flat-60ft-rens",
+          familyName: "Flat wagons",
+          code: "Rens",
+          title: "60 ft flat wagon",
+          summary:
+            "Fixture relationship copy is supplied by the caller with its own source reference; the component does not calculate similarity from product data.",
+          href: "/wagons/flat/uno-flat-60ft-rens/",
+          linkLabel: "View 60 ft Rens flat wagon",
+          publicationStatus: "approved",
+          source: { reference: "Fixture relationship source: flat variants" },
+          media: {
+            image: flatRensWagon,
+            alt: "Local transparent render of the fixture Rens flat freight wagon.",
+            sizes: "(min-width: 54rem) 42vw, 100vw",
+            fit: "contain",
+            aspectRatio: "16 / 9",
+          },
+        },
+        {
+          id: "uno-flat-60ft-relns",
+          familyName: "Flat wagons",
+          code: "Relns",
+          title: "60 ft flat wagon with a longer fixture title",
+          summary:
+            "This deliberately expanded explicit relation confirms that long caller-owned wording stays contained with its provenance and direct product action across compact and wide layouts.",
+          href: "/wagons/flat/uno-flat-60ft-relns/",
+          linkLabel: "View 60 ft Relns flat wagon",
+          publicationStatus: "approved",
+          source: { reference: "Fixture relationship source: flat variants" },
+          media: {
+            image: flatRelnsWagon,
+            alt: "Local transparent render of the fixture Relns flat freight wagon.",
+            sizes: "(min-width: 54rem) 42vw, 100vw",
+            fit: "contain",
+            aspectRatio: "16 / 9",
+          },
+        },
+        {
+          id: "uno-flat-60ft-rns-prototype",
+          familyName: "Flat wagons",
+          code: "Rns prototype",
+          title: "Withheld fixture relationship",
+          summary:
+            "This unverified record is valid source input but must not become a published relationship card.",
+          href: "/wagons/flat/uno-flat-60ft-rns-prototype/",
+          linkLabel: "View withheld fixture wagon",
+          publicationStatus: "unverified",
+          source: { reference: "Fixture relationship source: withheld" },
+        },
+      ]}
+    />
+
+    <RelatedWagons
+      currentProductId="uno-tank-88m3-zacns"
+      title="Related wagons"
+      headingLevel={2}
+      related={[]}
+    />
+  </main>
+</ComponentLabLayout>
+
+<style>
+  main {
+    display: grid;
+  }
+</style>

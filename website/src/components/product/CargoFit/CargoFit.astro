@@ -1,0 +1,129 @@
+---
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import {
+  approvedCargoFitEntries,
+  validateCargoFitProps,
+} from "./cargo-fit-contract";
+import type { CargoFitProps } from "./CargoFit.types";
+
+const props = Astro.props as CargoFitProps;
+validateCargoFitProps(props);
+
+const entries = approvedCargoFitEntries(props.entries);
+const labels = props.labels ?? {
+  cargo: "Cargo",
+  application: "Application",
+  empty: "Contact TransANT to discuss your cargo and loading requirements.",
+};
+---
+
+<section class="cargo-fit" data-cargo-fit>
+  <div class="cargo-fit__frame page-frame">
+    <SectionIntro {...props.intro} />
+    {
+      entries.length > 0 ? (
+        <ul class="cargo-fit__list" data-cargo-fit-list>
+          {entries.map((entry) => (
+            <li class="cargo-fit__entry" data-cargo-fit-entry={entry.kind}>
+              <p class="cargo-fit__kind">
+                {entry.kind === "use-case" ? labels.application : labels.cargo}
+              </p>
+              <p class="cargo-fit__label">{entry.label}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="cargo-fit__empty" data-cargo-fit-empty>
+          {labels.empty}
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .cargo-fit {
+    container-type: inline-size;
+    overflow: clip;
+    background: var(--color-surface-subtle);
+  }
+
+  .cargo-fit__frame,
+  .cargo-fit__list,
+  .cargo-fit__entry {
+    min-inline-size: 0;
+  }
+
+  .cargo-fit__frame {
+    display: grid;
+    gap: clamp(var(--space-5), 6vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .cargo-fit__frame :global(.section-intro) {
+    max-inline-size: 46rem;
+  }
+
+  .cargo-fit__list {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cargo-fit__entry {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    min-block-size: 100%;
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .cargo-fit__kind,
+  .cargo-fit__label,
+  .cargo-fit__empty {
+    margin: 0;
+  }
+
+  .cargo-fit__kind {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .cargo-fit__label {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-family-display);
+    font-size: clamp(1.3rem, 3.8cqi, 2rem);
+    line-height: var(--line-height-tight);
+    overflow-wrap: anywhere;
+  }
+
+  .cargo-fit__empty {
+    max-inline-size: 46rem;
+    padding: var(--space-5);
+    border-inline-start: 0.25rem solid var(--color-brand-red-dark);
+    color: var(--color-ink-secondary);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  @container (min-width: 44rem) {
+    .cargo-fit__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @container (min-width: 72rem) {
+    .cargo-fit__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

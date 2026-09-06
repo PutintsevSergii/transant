@@ -1,0 +1,100 @@
+---
+import { Picture } from "astro:assets";
+
+import {
+  assertResponsiveMediaContract,
+  DEFAULT_RESPONSIVE_MEDIA_WIDTHS,
+} from "./responsive-media-contract";
+import type { ResponsiveMediaProps } from "./ResponsiveMedia.types";
+
+const props = Astro.props as ResponsiveMediaProps;
+assertResponsiveMediaContract(props);
+
+const {
+  alt,
+  aspectRatio,
+  caption,
+  decorative = false,
+  fit,
+  image,
+  loading = "lazy",
+  priority = false,
+  sizes,
+  widths = DEFAULT_RESPONSIVE_MEDIA_WIDTHS,
+} = props;
+const hasCaption = Boolean(caption) || Astro.slots.has("caption");
+const effectiveLoading = priority ? "eager" : loading;
+const rootClass = `responsive-media responsive-media--${fit}${aspectRatio ? " responsive-media--reserved" : ""}`;
+const frameStyle = aspectRatio
+  ? `--responsive-media-aspect-ratio: ${aspectRatio};`
+  : undefined;
+---
+
+<figure
+  class={rootClass}
+  style={frameStyle}
+  data-responsive-media
+  data-responsive-media-fit={fit}
+  data-responsive-media-priority={String(priority)}
+>
+  <Picture
+    src={image}
+    alt={decorative ? "" : alt}
+    widths={[...widths]}
+    sizes={sizes}
+    formats={["avif", "webp"]}
+    loading={effectiveLoading}
+    fetchpriority={priority ? "high" : "auto"}
+    decoding="async"
+  />
+  {
+    hasCaption && (
+      <figcaption class="responsive-media__caption">
+        <slot name="caption">{caption}</slot>
+      </figcaption>
+    )
+  }
+</figure>
+
+<style>
+  .responsive-media {
+    display: grid;
+    gap: var(--space-3);
+    max-inline-size: 100%;
+    margin: 0;
+  }
+
+  .responsive-media--reserved {
+    aspect-ratio: var(--responsive-media-aspect-ratio);
+  }
+
+  .responsive-media :global(picture),
+  .responsive-media :global(img) {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+
+  .responsive-media--reserved :global(picture) {
+    min-block-size: 0;
+  }
+
+  .responsive-media--reserved :global(img) {
+    block-size: 100%;
+  }
+
+  .responsive-media--cover :global(img) {
+    object-fit: cover;
+  }
+
+  .responsive-media--contain :global(img) {
+    object-fit: contain;
+  }
+
+  .responsive-media__caption {
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+  }
+</style>

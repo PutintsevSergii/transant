@@ -1,0 +1,107 @@
+---
+import RailwayOrbital from "../../../src/components/home/RailwayOrbital/RailwayOrbital.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="RailwayOrbital fixture | TransANT component lab"
+  description="A fine-dotted globe held by three railway loops, with optional motion enhancement."
+>
+  <main class="railway-orbital-fixture" data-fixture="railway-orbital">
+    <header class="railway-orbital-fixture__intro page-frame">
+      <a href="/">Component lab</a>
+      <p>H-002 visual stage</p>
+      <h1>A fine-dotted world, held by railway paths.</h1>
+      <span>
+        Decorative output has no accessible name; an explicit supplied label
+        upgrades the next instance to an informative figure.
+      </span>
+    </header>
+
+    <section
+      class="railway-orbital-fixture__stage page-frame"
+      aria-label="Decorative railway orbital"
+    >
+      <RailwayOrbital motion="auto" density="standard" accent="blue" />
+    </section>
+
+    <section
+      class="railway-orbital-fixture__stage railway-orbital-fixture__stage--pale page-frame"
+      aria-labelledby="informative-orbital-title"
+    >
+      <h2 id="informative-orbital-title">Informative static variant</h2>
+      <RailwayOrbital
+        label="Fine-dotted globe held by three abstract railway loops and tiny trains"
+        motion="off"
+        density="dense"
+        accent="red"
+      />
+    </section>
+
+    <div class="railway-orbital-fixture__offscreen" aria-hidden="true">
+      <RailwayOrbital motion="auto" density="sparse" accent="blue" />
+    </div>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .railway-orbital-fixture {
+    overflow: clip;
+    background: var(--color-paper);
+  }
+
+  .railway-orbital-fixture__intro,
+  .railway-orbital-fixture__stage {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-5);
+    padding-block: var(--space-7);
+  }
+
+  .railway-orbital-fixture__intro > a {
+    justify-self: start;
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .railway-orbital-fixture__intro > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .railway-orbital-fixture__intro > h1,
+  .railway-orbital-fixture__intro > span {
+    max-inline-size: var(--reading-max);
+    margin: 0;
+    text-align: center;
+  }
+
+  .railway-orbital-fixture__intro > span {
+    color: var(--color-ink-secondary);
+    line-height: var(--line-height-body);
+  }
+
+  .railway-orbital-fixture__stage > h2 {
+    margin: 0;
+    color: var(--color-brand-blue-dark);
+  }
+
+  .railway-orbital-fixture__stage--pale {
+    border-block: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper-warm);
+  }
+
+  .railway-orbital-fixture__offscreen {
+    position: absolute;
+    inset-inline-start: -200vw;
+    inline-size: 20rem;
+  }
+</style>

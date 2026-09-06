@@ -1,0 +1,9 @@
+.astro/
+.playwright-cli/
+coverage/
+dist/
+dist-component-lab/
+node_modules/
+output/
+pnpm-lock.yaml
+src/content/

@@ -1,0 +1,240 @@
+---
+import BrandLogo from "../../core/BrandLogo/BrandLogo.astro";
+import {
+  assertSiteFooterProps,
+  toEmailHref,
+  toTelephoneHref,
+} from "./site-footer-contract";
+import type { SiteFooterProps } from "./SiteFooter.types";
+
+const { groups, contact, legalLinks, copyright, localeOptions, labels } =
+  assertSiteFooterProps(Astro.props as SiteFooterProps);
+const footerLabels = {
+  localeSelection: "Locale selection",
+  languages: "Languages",
+  contact: "Contact",
+  legalInformation: "Legal information",
+  ...labels,
+};
+---
+
+<footer class="site-footer" data-site-footer>
+  <div class="site-footer__frame page-frame">
+    <section
+      class="site-footer__identity"
+      aria-labelledby="site-footer-company"
+      data-footer-section="identity"
+    >
+      <BrandLogo
+        src="/brand/transant-logo.png"
+        alt="TransANT"
+        width={520}
+        height={114}
+        tone="dark"
+      />
+      <p class="site-footer__company" id="site-footer-company">
+        {contact.companyName}
+      </p>
+    </section>
+
+    {
+      groups.map((group, index) => {
+        const headingId = `site-footer-group-${index + 1}`;
+        return (
+          <nav
+            class="site-footer__group"
+            aria-labelledby={headingId}
+            data-footer-section="group"
+          >
+            <h2 id={headingId}>{group.heading}</h2>
+            <ul>
+              {group.links.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        );
+      })
+    }
+
+    {
+      localeOptions && localeOptions.length > 1 && (
+        <nav
+          class="site-footer__group site-footer__group--locales"
+          aria-label={footerLabels.localeSelection}
+          data-footer-section="locales"
+        >
+          <h2>{footerLabels.languages}</h2>
+          <ul>
+            {localeOptions.map((option) => (
+              <li>
+                <a href={option.href}>{option.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <section
+      class="site-footer__contact"
+      aria-labelledby="site-footer-contact"
+      data-footer-section="contact"
+    >
+      <h2 id="site-footer-contact">{footerLabels.contact}</h2>
+      <address>
+        <span>{contact.companyName}</span>
+        {contact.addressLines.map((line) => <span>{line}</span>)}
+      </address>
+      <a href={toTelephoneHref(contact.phone)}>{contact.phone}</a>
+      <a href={toEmailHref(contact.email)}>{contact.email}</a>
+    </section>
+
+    <section class="site-footer__legal" data-footer-section="legal">
+      <nav aria-label={footerLabels.legalInformation}>
+        <ul>
+          {
+            legalLinks.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <p>{copyright}</p>
+    </section>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    container-type: inline-size;
+    background: var(--color-footer-navy);
+    color: var(--color-paper);
+  }
+
+  .site-footer__frame {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-7) var(--space-5);
+  }
+
+  .site-footer__identity,
+  .site-footer__group,
+  .site-footer__contact,
+  .site-footer__legal {
+    min-inline-size: 0;
+  }
+
+  .site-footer :global(.brand-logo) {
+    inline-size: min(12rem, 100%);
+  }
+
+  .site-footer__company,
+  .site-footer h2 {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .site-footer__company {
+    margin-block-start: var(--space-4);
+  }
+
+  .site-footer ul {
+    display: grid;
+    gap: var(--space-1);
+    padding: 0;
+    margin: var(--space-3) 0 0;
+    list-style: none;
+  }
+
+  .site-footer a {
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-railway-pale);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer a:hover {
+    color: var(--color-paper);
+  }
+
+  .site-footer__contact {
+    display: grid;
+    justify-items: start;
+  }
+
+  .site-footer address {
+    display: grid;
+    gap: var(--space-1);
+    margin: var(--space-3) 0 0;
+    color: var(--color-railway-pale);
+    font-style: normal;
+  }
+
+  .site-footer__contact > a:first-of-type {
+    margin-block-start: var(--space-3);
+  }
+
+  .site-footer__legal {
+    display: grid;
+    gap: var(--space-3);
+    padding-block-start: var(--space-5);
+    border-block-start: var(--border-thin) solid var(--color-railway-border);
+  }
+
+  .site-footer__legal nav ul {
+    margin: 0;
+  }
+
+  .site-footer__legal p {
+    margin: 0;
+    color: var(--color-railway-pale);
+    font-size: var(--font-size-small);
+  }
+
+  @container (min-width: 42rem) {
+    .site-footer__frame {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--space-7);
+    }
+
+    .site-footer__legal {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @container (min-width: 68rem) {
+    .site-footer__frame {
+      grid-template-columns: minmax(10rem, 1.35fr) repeat(3, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    .site-footer__legal {
+      grid-column: 1 / -1;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+
+    .site-footer__legal nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-footer a {
+      transition: none;
+    }
+  }
+</style>

@@ -1,0 +1,4 @@
+# This safe preview policy is replaced only by `pnpm prepare:release-output`
+# after an approved public HTTPS origin is supplied.
+User-agent: *
+Disallow: /

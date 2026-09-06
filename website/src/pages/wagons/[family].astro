@@ -1,0 +1,33 @@
+---
+import {
+  catalogueFamilyViewModel,
+  catalogueFamilySlugs,
+} from "../../adapters/content/catalogue-view-model";
+import Breadcrumbs from "../../components/catalogue/Breadcrumbs/Breadcrumbs.astro";
+import WagonModelList from "../../components/catalogue/WagonModelList/WagonModelList.astro";
+import PageHero from "../../components/editorial/PageHero/PageHero.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return catalogueFamilySlugs.map((family) => ({
+    params: {
+      family,
+    },
+  }));
+}
+
+const family = Astro.params.family;
+if (!family) {
+  throw new Error("Catalogue family route requires a family parameter.");
+}
+
+const { breadcrumbs, hero, layout, modelList } =
+  catalogueFamilyViewModel(family);
+---
+
+<BaseLayout {...layout}>
+  <PageHero {...hero}>
+    <Breadcrumbs slot="breadcrumbs" {...breadcrumbs} />
+  </PageHero>
+  <WagonModelList {...modelList} />
+</BaseLayout>

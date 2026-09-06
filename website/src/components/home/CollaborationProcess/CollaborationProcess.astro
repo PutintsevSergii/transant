@@ -1,0 +1,92 @@
+---
+import Action from "../../core/Action/Action.astro";
+import RailSequence from "../../core/RailSequence/RailSequence.astro";
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import { validateCollaborationProcessProps } from "./collaboration-process-contract";
+import type { CollaborationProcessProps } from "./CollaborationProcess.types";
+
+const props = Astro.props as CollaborationProcessProps;
+validateCollaborationProcessProps(props);
+
+const { contactLink, intro, steps } = props;
+---
+
+<section class="collaboration-process" data-collaboration-process>
+  <div class="collaboration-process__frame page-frame">
+    <div
+      class="collaboration-process__heading"
+      data-collaboration-process-heading
+    >
+      <SectionIntro {...intro} />
+      {
+        contactLink && (
+          <Action
+            kind="link"
+            variant="text"
+            size="regular"
+            icon="arrow-right"
+            {...contactLink}
+          />
+        )
+      }
+    </div>
+    <div
+      class="collaboration-process__sequence"
+      data-collaboration-process-sequence
+    >
+      <RailSequence
+        items={steps}
+        theme="light"
+        columns={4}
+        label="Collaboration process"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .collaboration-process {
+    container-type: inline-size;
+    overflow: clip;
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .collaboration-process__frame,
+  .collaboration-process__heading,
+  .collaboration-process__sequence {
+    min-inline-size: 0;
+  }
+
+  .collaboration-process__frame {
+    display: grid;
+    gap: clamp(var(--space-7), 7vw, var(--space-10));
+    padding-block: clamp(var(--space-7), 10vw, var(--space-10));
+  }
+
+  .collaboration-process__heading {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .collaboration-process__heading :global(.action) {
+    justify-self: start;
+  }
+
+  .collaboration-process__sequence {
+    padding-block-start: var(--space-5);
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+
+  @container (min-width: 56rem) {
+    .collaboration-process__heading {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: var(--space-7);
+    }
+
+    .collaboration-process__heading :global(.action) {
+      margin-block-end: var(--space-1);
+    }
+  }
+</style>

@@ -1,0 +1,224 @@
+---
+import Action from "../../core/Action/Action.astro";
+import ResponsiveMedia from "../../core/ResponsiveMedia/ResponsiveMedia.astro";
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import {
+  productHeroInquiryHref,
+  validateProductHeroProps,
+} from "./product-hero-contract";
+import type { ProductHeroProps } from "./ProductHero.types";
+
+const props = Astro.props as ProductHeroProps;
+validateProductHeroProps(props);
+
+const inquiryHref = productHeroInquiryHref(
+  props.inquiryAction.href,
+  props.inquiryContext,
+);
+---
+
+<section class="product-hero" data-product-hero>
+  <div class="product-hero__frame page-frame">
+    <div class="product-hero__content" data-product-hero-content>
+      <div class="product-hero__identity" data-product-hero-identity>
+        <p class="product-hero__family" data-product-hero-family>
+          {props.family}
+        </p>
+        <p class="product-hero__code" data-product-hero-code>{props.code}</p>
+      </div>
+      <SectionIntro
+        title={props.title}
+        description={props.benefit}
+        headingLevel={1}
+        align="left"
+        theme="light"
+        measure="standard"
+      />
+      <Action
+        kind="link"
+        variant="primary"
+        size="regular"
+        icon="arrow-right"
+        href={inquiryHref}
+        label={props.inquiryAction.label}
+        external={props.inquiryAction.external}
+      />
+    </div>
+
+    <div class="product-hero__media" data-product-hero-media>
+      <ResponsiveMedia {...props.media} priority />
+    </div>
+
+    <dl class="product-hero__facts" data-product-hero-facts>
+      {
+        props.facts.map((fact) => (
+          <div class="product-hero__fact">
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .product-hero {
+    container-type: inline-size;
+    overflow: clip;
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .product-hero__frame,
+  .product-hero__content,
+  .product-hero__identity,
+  .product-hero__media,
+  .product-hero__facts,
+  .product-hero__fact {
+    min-inline-size: 0;
+  }
+
+  .product-hero__frame {
+    display: grid;
+    gap: clamp(var(--space-6), 8vw, var(--space-10));
+    align-items: center;
+    padding-block: clamp(var(--space-7), 10vw, var(--space-10));
+  }
+
+  .product-hero__content {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-5);
+  }
+
+  .product-hero__identity {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    align-items: baseline;
+  }
+
+  .product-hero__family,
+  .product-hero__code,
+  .product-hero__facts,
+  .product-hero__fact,
+  .product-hero__fact dt,
+  .product-hero__fact dd {
+    margin: 0;
+  }
+
+  .product-hero__family,
+  .product-hero__code {
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .product-hero__family {
+    color: var(--color-brand-red-dark);
+  }
+
+  .product-hero__code {
+    color: var(--color-ink-secondary);
+    font-family: var(--font-mono);
+    overflow-wrap: anywhere;
+  }
+
+  .product-hero__content :global(.section-intro) {
+    max-inline-size: 42rem;
+  }
+
+  .product-hero__content > :global(.action) {
+    inline-size: 100%;
+  }
+
+  .product-hero__media {
+    display: grid;
+    align-items: center;
+    min-block-size: 16rem;
+    padding: clamp(var(--space-4), 5vw, var(--space-7));
+    background:
+      linear-gradient(
+          135deg,
+          transparent 49%,
+          var(--color-divider) 49.1%,
+          transparent 49.3%
+        )
+        0 0 / 2.5rem 2.5rem,
+      var(--color-surface-subtle);
+  }
+
+  .product-hero__media :global(.responsive-media),
+  .product-hero__media :global(picture),
+  .product-hero__media :global(img) {
+    inline-size: 100%;
+  }
+
+  .product-hero__media :global(img) {
+    min-block-size: 13rem;
+    object-position: right center;
+  }
+
+  .product-hero__facts {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .product-hero__fact {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .product-hero__fact dt {
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    line-height: var(--line-height-body);
+  }
+
+  .product-hero__fact dd {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-family-display);
+    font-size: clamp(1.3rem, 3.5cqi, 2rem);
+    line-height: var(--line-height-tight);
+    overflow-wrap: anywhere;
+  }
+
+  @container (min-width: 30rem) {
+    .product-hero__content > :global(.action) {
+      inline-size: auto;
+    }
+
+    .product-hero__facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @container (min-width: 60rem) {
+    .product-hero__frame {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      column-gap: clamp(var(--space-7), 8vw, var(--space-10));
+    }
+
+    .product-hero__content {
+      align-self: center;
+    }
+
+    .product-hero__media {
+      min-block-size: 34rem;
+    }
+
+    .product-hero__media :global(img) {
+      min-block-size: 27rem;
+    }
+
+    .product-hero__facts {
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    }
+  }
+</style>

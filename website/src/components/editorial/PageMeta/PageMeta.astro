@@ -1,0 +1,55 @@
+---
+import type { PageMetaProps } from "./PageMeta.types";
+
+const { label, items } = Astro.props as PageMetaProps;
+
+if (!label.trim() || items.length === 0 || items.some((item) => !item.trim())) {
+  throw new Error("PageMeta requires a label and at least one non-blank item.");
+}
+---
+
+<div class="page-meta" aria-hidden="true" data-page-meta>
+  <div class="page-meta__frame page-frame">
+    <span class="page-meta__label" data-page-meta-label>{label}</span>
+    <span class="page-meta__sequence" data-page-meta-sequence>
+      {items.join(" / ")}
+    </span>
+  </div>
+</div>
+
+<style>
+  .page-meta {
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper-warm);
+  }
+
+  .page-meta__frame {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-5);
+    padding-block: var(--space-3);
+    color: var(--color-ink-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .page-meta__label,
+  .page-meta__sequence {
+    min-inline-size: 0;
+  }
+
+  .page-meta__label {
+    white-space: nowrap;
+  }
+
+  .page-meta__sequence {
+    overflow: hidden;
+    text-align: end;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>

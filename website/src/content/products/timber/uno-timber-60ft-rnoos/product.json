@@ -31,32 +31,36 @@
       "4"
     ],
     [
-      "Distance between bogie pivots",
-      "14.360 mm"
+      "Distance between bogie pivots (mm)",
+      "14.360"
     ],
     [
       "Bogie type",
       "Y25 with compact brake"
     ],
     [
-      "Length over buffers",
-      "19.900 mm"
+      "Length over buffers (mm)",
+      "19.900"
     ],
     [
-      "Wagon tare",
-      "21.6 t"
+      "Wagon tare (t)",
+      "21,6"
     ],
     [
-      "Loading length",
-      "18.500 mm"
+      "Loading length (mm)",
+      "18.50"
     ],
     [
-      "Loading width",
-      "2.646 mm"
+      "Loading width (mm)",
+      "2.646"
     ],
     [
-      "Floor height above rail",
-      "1.240 mm"
+      "Floor height above top of rail (mm)",
+      "1.240"
+    ],
+    [
+      "Height of foldable end and side wall (mm)",
+      "520"
     ],
     [
       "Stanchion pairs",
@@ -75,38 +79,42 @@
       "G2"
     ],
     [
-      "Max wheelset load",
-      "22.5 t"
+      "Maximum wheelset load (t)",
+      "22,5"
     ],
     [
-      "Min curve radius",
+      "Minimal curve radius (m)",
       "R 75"
     ],
     [
-      "Max running speed",
+      "Permitted maximum speed brake-related",
+      "100 km/h"
+    ],
+    [
+      "Maximum permitted running speed",
       "120 km/h"
     ]
   ],
   "loadlimit": [
     [
       "A",
-      "42.2"
+      "42,2"
     ],
     [
       "B",
-      "50.4"
+      "50,4"
     ],
     [
       "C",
-      "60.4"
+      "60,4"
     ],
     [
       "D",
-      "68.4"
+      "68,4"
     ]
   ],
   "special": [
-    "Transport of 3, 4 and 5 m round timber",
+    "Transport of 3, 4 and 5m long round timber wood",
     "10 stanchion pairs",
     "7 deflectors",
     "G2 profile",
@@ -117,5 +125,9 @@
   "slug": "uno-timber-60ft-rnoos",
   "category": "timber",
   "category_name": "Timber",
-  "image": "products/timber/uno-timber-60ft-rnoos/wagon-render.png"
+  "image": "products/timber/uno-timber-60ft-rnoos/wagon-render.png",
+  "technical_source": {
+    "reference": "Catalog for print.pdf, PDF page 13 (printed page 11); checked against Catalog for print.ai",
+    "checkedAt": "2026-09-05"
+  }
 }

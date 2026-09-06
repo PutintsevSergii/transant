@@ -1,0 +1,116 @@
+---
+import EvidenceList from "../../../src/components/editorial/EvidenceList/EvidenceList.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="EvidenceList fixture | TransANT component lab"
+  description="Static source-attributed editorial evidence records with explicit types, metadata, links, and an honest empty state."
+>
+  <main data-fixture="evidence-list">
+    <EvidenceList
+      title="Evidence remains tied to its source and scope."
+      headingLevel={2}
+      source={{ reference: "Component-lab editorial evidence fixture" }}
+      evidence={[
+        {
+          type: "policy",
+          title: "Policy statement with a defined review boundary",
+          summary:
+            "Fixture-only policy context remains visibly separate from an unsupported operational claim.",
+          publicationStatus: "approved",
+          status: "Source published",
+          date: "2026-01-15",
+          issuer: "Fixture policy owner",
+          scope: "Editorial evidence example only",
+          source: { reference: "Fixture policy reference" },
+          action: {
+            label: "Open policy reference",
+            href: "https://example.com/policies/fixture",
+            type: "external",
+          },
+        },
+        {
+          type: "certification",
+          title: "Certificate record with source-owned issuer and scope",
+          publicationStatus: "approved",
+          status: "Source record",
+          date: "2025-11-30",
+          issuer: "Fixture issuing body",
+          scope: "Named scope supplied for component evidence",
+          source: { reference: "Fixture certificate reference" },
+          action: {
+            label: "Download certificate record",
+            href: "/fixtures/download-list/fixture-document.txt",
+            type: "download",
+          },
+        },
+        {
+          type: "document",
+          title: "Document evidence retains its selected date",
+          summary:
+            "A concise factual context verifies wrapping without creating a production document or availability claim.",
+          publicationStatus: "approved",
+          status: "Source approved",
+          date: "2026-02-03",
+          source: { reference: "Fixture document reference" },
+          action: {
+            label: "Download evidence document",
+            href: "/fixtures/download-list/fixture-record.txt",
+            type: "download",
+          },
+        },
+        {
+          type: "factual-reference",
+          title: "Factual reference can remain a route-free record",
+          summary:
+            "The component preserves a source-attributed reference when no approved destination has been supplied.",
+          publicationStatus: "approved",
+          status: "Source reviewed",
+          date: "2026-02-17",
+          source: { reference: "Fixture factual reference" },
+        },
+        {
+          type: "factual-reference",
+          title: "Unverified fixture reference remains unpublished",
+          publicationStatus: "unverified",
+          status: "Unverified source",
+          source: { reference: "Withheld fixture reference" },
+        },
+      ]}
+    />
+
+    <section
+      class="evidence-list-fixture__empty page-frame"
+      aria-label="Empty EvidenceList variant"
+    >
+      <EvidenceList
+        title="Evidence can remain intentionally unpublished."
+        headingLevel={3}
+        evidence={[
+          {
+            type: "factual-reference",
+            title: "Draft record",
+            publicationStatus: "draft",
+            status: "Draft source",
+            source: { reference: "Draft fixture reference" },
+          },
+        ]}
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .evidence-list-fixture__empty {
+    padding-block: var(--space-8);
+  }
+
+  .evidence-list-fixture__empty :global(.evidence-list) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .evidence-list-fixture__empty :global(.evidence-list__frame) {
+    padding-inline: var(--space-5);
+  }
+</style>

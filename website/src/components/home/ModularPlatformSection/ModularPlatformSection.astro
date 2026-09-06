@@ -1,0 +1,248 @@
+---
+import Action from "../../core/Action/Action.astro";
+import RailSequence from "../../core/RailSequence/RailSequence.astro";
+import type { RailSequenceColumns } from "../../core/RailSequence/RailSequence.types";
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import { validateModularPlatformSectionProps } from "./modular-platform-section-contract";
+import type { ModularPlatformSectionProps } from "./ModularPlatformSection.types";
+
+const props = Astro.props as ModularPlatformSectionProps;
+validateModularPlatformSectionProps(props);
+
+const { intro, stages, technicalLink, sequenceLabel } = props;
+const columns = Math.min(stages.length, 4) as RailSequenceColumns;
+---
+
+<section class="modular-platform-section" data-modular-platform-section>
+  <div class="modular-platform-section__frame page-frame">
+    <div
+      class="modular-platform-section__heading"
+      data-modular-platform-heading
+    >
+      <SectionIntro {...intro} />
+      {
+        technicalLink && (
+          <Action
+            kind="link"
+            variant="text"
+            size="regular"
+            icon="arrow-right"
+            {...technicalLink}
+          />
+        )
+      }
+    </div>
+    <div
+      class="modular-platform-section__sequence"
+      data-modular-platform-sequence
+    >
+      <RailSequence
+        items={stages}
+        theme="light"
+        columns={columns}
+        label={sequenceLabel ?? "Modular platform stages"}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .modular-platform-section {
+    container-type: inline-size;
+    overflow: clip;
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-steel);
+  }
+
+  .modular-platform-section__frame,
+  .modular-platform-section__heading,
+  .modular-platform-section__sequence {
+    min-inline-size: 0;
+  }
+
+  .modular-platform-section__frame {
+    display: grid;
+    gap: clamp(var(--space-7), 6vw, var(--space-9));
+    padding-block: clamp(
+      calc(var(--space-8) + var(--space-3)),
+      11vw,
+      calc(var(--space-8) + var(--space-6))
+    );
+  }
+
+  .modular-platform-section__heading {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .modular-platform-section__heading :global(.action) {
+    justify-self: start;
+  }
+
+  .modular-platform-section__sequence {
+    padding-block-start: var(--space-5);
+    border-block-start: var(--border-thin) solid var(--color-steel-dark);
+  }
+
+  @container (min-width: 48rem) {
+    .modular-platform-section__heading {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: var(--space-7);
+    }
+
+    .modular-platform-section__heading :global(.action) {
+      margin-block-end: var(--space-1);
+    }
+
+    .modular-platform-section__sequence {
+      padding-block-start: var(--space-7);
+      border-block-start: 0;
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__label) {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__list) {
+      position: relative;
+      column-gap: clamp(var(--space-6), 5vw, var(--space-9));
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__list::before) {
+      position: absolute;
+      z-index: 0;
+      inset-block-start: 1.15rem;
+      inset-inline: 0.4rem;
+      block-size: 2px;
+      background: var(--color-railway-muted);
+      content: "";
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__item) {
+      z-index: 1;
+      gap: var(--space-4);
+      grid-template-rows: 4rem minmax(0, 1fr);
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__item::after) {
+      display: none;
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__number) {
+      position: relative;
+      display: block;
+      inline-size: auto;
+      min-block-size: 0;
+      padding-block-start: var(--space-5);
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--color-brand-blue-dark);
+      font-size: clamp(1rem, 0.95rem + 0.35vw, 1.3rem);
+      letter-spacing: 0.02em;
+      text-align: start;
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__item::before) {
+      position: absolute;
+      z-index: 1;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inline-size: 0.8rem;
+      block-size: 0.8rem;
+      border-radius: 50%;
+      background: var(--color-railway-blue);
+      content: "";
+    }
+
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:nth-child(2) .rail-sequence__number::before),
+    .modular-platform-section__sequence
+      :global(
+        .rail-sequence__item:nth-child(3) .rail-sequence__number::before
+      ) {
+      content: "+ ";
+    }
+
+    .modular-platform-section__sequence
+      :global(
+        .rail-sequence__item:nth-child(4) .rail-sequence__number::before
+      ) {
+      content: "= ";
+    }
+
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:nth-child(2) .rail-sequence__number::before),
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:nth-child(3) .rail-sequence__number::before),
+    .modular-platform-section__sequence
+      :global(
+        .rail-sequence__item:nth-child(4) .rail-sequence__number::before
+      ) {
+      margin-inline-end: 0.2em;
+    }
+
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:first-child .rail-sequence__number),
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:last-child .rail-sequence__number) {
+      color: var(--color-brand-red-dark);
+    }
+
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:first-child::before),
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:last-child::before) {
+      background: var(--color-brand-red-dark);
+    }
+
+    @media (hover: hover) {
+      .modular-platform-section__sequence
+        :global(.rail-sequence__item:hover::before),
+      .modular-platform-section__sequence
+        :global(.rail-sequence__item:has(a:focus-visible)::before) {
+        background: var(--color-brand-red-dark);
+        box-shadow: 0 0 0 0.35rem rgb(220 28 59 / 22%);
+        animation: modular-platform-dot-radar 2.8s ease-out infinite;
+      }
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__title) {
+      font-size: clamp(1.35rem, 1.1rem + 0.7vw, 2rem);
+      font-weight: 700;
+      line-height: 1.08;
+    }
+
+    .modular-platform-section__sequence :global(.rail-sequence__description) {
+      max-inline-size: 30ch;
+      font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    }
+  }
+
+  @keyframes modular-platform-dot-radar {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0.25rem rgb(220 28 59 / 24%);
+    }
+
+    50% {
+      box-shadow: 0 0 0 0.75rem rgb(220 28 59 / 0%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:hover::before),
+    .modular-platform-section__sequence
+      :global(.rail-sequence__item:has(a:focus-visible)::before) {
+      animation: none;
+    }
+  }
+</style>

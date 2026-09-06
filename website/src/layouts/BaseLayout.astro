@@ -1,0 +1,72 @@
+---
+import SiteFooter from "../components/shell/SiteFooter/SiteFooter.astro";
+import SiteHeader from "../components/shell/SiteHeader/SiteHeader.astro";
+import "../styles/global.css";
+import { assertBaseLayoutProps } from "./base-layout-contract";
+import type { BaseLayoutProps } from "./BaseLayout.types";
+
+const {
+  language,
+  title,
+  description,
+  canonicalUrl,
+  skipLinkLabel = "Skip to content",
+  header,
+  footer,
+  faviconHref,
+} = assertBaseLayoutProps(Astro.props as BaseLayoutProps);
+const documentTitle = `${title} | TransANT`;
+---
+
+<!doctype html>
+<html lang={language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href={faviconHref} type="image/png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TransANT" />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={documentTitle} />
+    <meta name="twitter:description" content={description} />
+    <title>{documentTitle}</title>
+  </head>
+  <body>
+    <a class="base-layout__skip-link" href="#main-content">{skipLinkLabel}</a>
+    <SiteHeader {...header} />
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    <SiteFooter {...footer} />
+  </body>
+</html>
+
+<style>
+  .base-layout__skip-link {
+    position: fixed;
+    z-index: calc(var(--z-header) + 1);
+    inset-block-start: var(--space-2);
+    inset-inline-start: var(--space-2);
+    min-block-size: 2.75rem;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-small);
+    color: var(--color-paper);
+    background: var(--color-brand-blue-dark);
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(calc(-100% - var(--space-3)));
+  }
+
+  .base-layout__skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  main:focus {
+    outline: none;
+  }
+</style>

@@ -1,0 +1,228 @@
+---
+import type { ActionProps } from "./Action.types";
+
+const props = Astro.props as ActionProps;
+const size = props.size ?? "regular";
+const disabled = props.disabled ?? false;
+const external = props.kind === "link" && props.external === true;
+const rootClass = `action action--${props.variant} action--${size}`;
+---
+
+{
+  props.kind === "link" ? (
+    disabled ? (
+      <span class={rootClass} aria-disabled="true" data-action="disabled-link">
+        <span class="action__label">{props.label}</span>
+        {props.icon === "arrow-right" && (
+          <svg class="action__icon" aria-hidden="true" viewBox="0 0 16 16">
+            <path d="M2 8h11M9 3l5 5-5 5" />
+          </svg>
+        )}
+        {props.icon === "download" && (
+          <svg class="action__icon" aria-hidden="true" viewBox="0 0 16 16">
+            <path d="M8 2v8m0 0 3-3m-3 3-3-3M3 13h10" />
+          </svg>
+        )}
+      </span>
+    ) : (
+      <a
+        class={rootClass}
+        href={props.href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        data-action={external ? "external-link" : "link"}
+      >
+        <span class="action__label">{props.label}</span>
+        {props.icon === "arrow-right" && (
+          <svg class="action__icon" aria-hidden="true" viewBox="0 0 16 16">
+            <path d="M2 8h11M9 3l5 5-5 5" />
+          </svg>
+        )}
+        {props.icon === "download" && (
+          <svg class="action__icon" aria-hidden="true" viewBox="0 0 16 16">
+            <path d="M8 2v8m0 0 3-3m-3 3-3-3M3 13h10" />
+          </svg>
+        )}
+        {external && (
+          <>
+            <svg class="action__icon" aria-hidden="true" viewBox="0 0 16 16">
+              <path d="M6 3h7v7M13 3 7 9M13 10v3H3V3h3" />
+            </svg>
+            <span class="visually-hidden">
+              {props.externalLabel ?? " (opens in new tab)"}
+            </span>
+          </>
+        )}
+      </a>
+    )
+  ) : (
+    <button
+      class={rootClass}
+      type={props.type ?? "button"}
+      disabled={disabled}
+      data-action="button"
+    >
+      <span class="action__label">{props.label}</span>
+      {props.icon === "arrow-right" && (
+        <svg class="action__icon" aria-hidden="true" viewBox="0 0 16 16">
+          <path d="M2 8h11M9 3l5 5-5 5" />
+        </svg>
+      )}
+      {props.icon === "download" && (
+        <svg class="action__icon" aria-hidden="true" viewBox="0 0 16 16">
+          <path d="M8 2v8m0 0 3-3m-3 3-3-3M3 13h10" />
+        </svg>
+      )}
+    </button>
+  )
+}
+
+<style>
+  .action {
+    display: inline-flex;
+    box-sizing: border-box;
+    min-block-size: 2.75rem;
+    max-inline-size: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding-inline: var(--space-5);
+    border: var(--border-thin) solid transparent;
+    border-radius: var(--radius-small);
+    color: var(--action-foreground);
+    font: inherit;
+    font-size: max(1rem, var(--font-size-body));
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+    transition:
+      background-color var(--motion-fast) var(--ease-standard),
+      border-color var(--motion-fast) var(--ease-standard),
+      color var(--motion-fast) var(--ease-standard),
+      transform var(--motion-fast) var(--ease-standard);
+  }
+
+  .action--regular {
+    min-inline-size: 10rem;
+  }
+
+  .action--compact {
+    padding-inline: var(--space-4);
+  }
+
+  .action--primary {
+    --action-foreground: var(--color-paper);
+
+    background: var(--color-brand-red-dark);
+  }
+
+  .action--secondary {
+    --action-foreground: var(--color-brand-blue-dark);
+
+    border-color: currentcolor;
+    background: var(--color-paper);
+  }
+
+  .action--text {
+    --action-foreground: var(--color-brand-blue-dark);
+
+    justify-content: flex-start;
+    min-inline-size: auto;
+    padding-inline: 0;
+    border-color: transparent;
+    background: transparent;
+    text-decoration-line: underline;
+  }
+
+  .action--inverse {
+    --action-foreground: var(--color-paper);
+
+    border-color: currentcolor;
+    background: transparent;
+  }
+
+  .action__label {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .action__icon {
+    flex: 0 0 auto;
+    inline-size: 1rem;
+    block-size: 1rem;
+    fill: none;
+    stroke: currentcolor;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    stroke-width: 1.5;
+  }
+
+  .action:hover:not(:disabled):not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  .action--primary:hover:not(:disabled):not([aria-disabled="true"]) {
+    background: var(--color-brand-red);
+  }
+
+  .action--secondary:hover:not(:disabled):not([aria-disabled="true"]),
+  .action--text:hover:not(:disabled):not([aria-disabled="true"]) {
+    --action-foreground: var(--color-brand-red-dark);
+  }
+
+  .action--secondary:hover:not(:disabled):not([aria-disabled="true"]) {
+    background: var(--color-paper-warm);
+  }
+
+  .action--inverse:hover:not(:disabled):not([aria-disabled="true"]) {
+    --action-foreground: var(--color-footer-navy);
+
+    background: var(--color-paper);
+  }
+
+  .action:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .action:disabled,
+  .action[aria-disabled="true"] {
+    --action-foreground: var(--color-text-muted);
+
+    cursor: not-allowed;
+    border-color: var(--color-divider);
+    background: var(--color-divider-subtle);
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  @media (forced-colors: active) {
+    .action {
+      border-color: ButtonText;
+      color: ButtonText;
+      background: ButtonFace;
+    }
+
+    .action:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 3px;
+      box-shadow: none;
+    }
+
+    .action:disabled,
+    .action[aria-disabled="true"] {
+      color: GrayText;
+      border-color: GrayText;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .action {
+      transition: none;
+    }
+  }
+</style>

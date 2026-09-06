@@ -1,0 +1,193 @@
+---
+import Action from "../../core/Action/Action.astro";
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import { validatePayloadValueSectionProps } from "./payload-value-section-contract";
+import type { PayloadValueSectionProps } from "./PayloadValueSection.types";
+
+const props = Astro.props as PayloadValueSectionProps;
+validatePayloadValueSectionProps(props);
+
+if (!Astro.slots.has("visual")) {
+  throw new Error(
+    "PayloadValueSection requires content in its named visual slot.",
+  );
+}
+
+const { intro, body, principles, sourceLink } = props;
+---
+
+<section class="payload-value-section" data-payload-value-section>
+  <div class="payload-value-section__frame page-frame">
+    <div class="payload-value-section__upper">
+      <div class="payload-value-section__proposition">
+        <SectionIntro {...intro} />
+        <p class="payload-value-section__body">{body}</p>
+        {
+          sourceLink && (
+            <Action
+              kind="link"
+              label={sourceLink.label}
+              href={sourceLink.href}
+              variant="text"
+              icon="arrow-right"
+            />
+          )
+        }
+      </div>
+      <div class="payload-value-section__visual" data-payload-value-visual>
+        <slot name="visual" />
+      </div>
+    </div>
+    <ol class="payload-value-section__principles" data-payload-value-principles>
+      {
+        principles.map((principle, index) => (
+          <li class="payload-value-section__principle">
+            <span class="payload-value-section__number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3>{principle.title}</h3>
+              <p>{principle.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .payload-value-section {
+    container-type: inline-size;
+    overflow: clip;
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .payload-value-section__frame {
+    display: grid;
+    gap: clamp(var(--space-7), 8vw, var(--space-10));
+    padding-block: clamp(var(--space-7), 10vw, var(--space-10));
+  }
+
+  .payload-value-section__upper,
+  .payload-value-section__proposition,
+  .payload-value-section__visual,
+  .payload-value-section__principles,
+  .payload-value-section__principle {
+    min-inline-size: 0;
+  }
+
+  .payload-value-section__upper,
+  .payload-value-section__proposition {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .payload-value-section__body,
+  .payload-value-section__principle h3,
+  .payload-value-section__principle p {
+    margin: 0;
+  }
+
+  .payload-value-section__body {
+    max-inline-size: 59ch;
+    color: var(--color-ink-secondary);
+    font-size: clamp(1rem, 0.98rem + 0.25vw, 1.125rem);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .payload-value-section__visual {
+    display: grid;
+    place-items: center;
+    max-inline-size: 100%;
+    overflow: clip;
+  }
+
+  .payload-value-section__visual :global(img),
+  .payload-value-section__visual :global(svg),
+  .payload-value-section__visual :global(picture),
+  .payload-value-section__visual :global(figure) {
+    max-inline-size: 100%;
+  }
+
+  .payload-value-section__principles {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .payload-value-section__principle {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+    padding-block: var(--space-5);
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+
+  .payload-value-section__principle:last-child {
+    border-block-end: var(--border-thin) solid var(--color-divider);
+  }
+
+  .payload-value-section__number {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+  }
+
+  .payload-value-section__principle > div {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .payload-value-section__principle h3 {
+    color: var(--color-brand-blue-dark);
+    font-size: var(--font-size-heading-4);
+    line-height: var(--line-height-heading);
+    overflow-wrap: anywhere;
+  }
+
+  .payload-value-section__principle p {
+    color: var(--color-ink-secondary);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  @container (min-width: 56rem) {
+    .payload-value-section__upper {
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: clamp(var(--space-7), 8vw, var(--space-10));
+      align-items: center;
+    }
+
+    .payload-value-section__visual {
+      justify-self: stretch;
+    }
+
+    .payload-value-section__principles {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .payload-value-section__principle {
+      min-block-size: 100%;
+      padding-block: var(--space-5);
+      border-block-end: var(--border-thin) solid var(--color-divider);
+    }
+  }
+
+  @container (min-width: 72rem) {
+    .payload-value-section__principles:has(
+      .payload-value-section__principle:nth-child(4)
+    ) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

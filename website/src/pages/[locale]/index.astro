@@ -1,0 +1,15 @@
+---
+import type { SiteLocale } from "../../adapters/content/site-shell-view-model";
+import LocalizedHomepage from "../../components/home/LocalizedHomepage/LocalizedHomepage.astro";
+
+type AdditionalLocale = Extract<SiteLocale, "uk" | "pl" | "cs">;
+
+export function getStaticPaths() {
+  const additionalLocales = ["uk", "pl", "cs"] as const;
+  return additionalLocales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as AdditionalLocale;
+---
+
+<LocalizedHomepage locale={locale} />

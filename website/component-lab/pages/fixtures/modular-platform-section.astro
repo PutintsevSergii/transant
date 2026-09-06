@@ -1,0 +1,117 @@
+---
+import ModularPlatformSection from "../../../src/components/home/ModularPlatformSection/ModularPlatformSection.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="ModularPlatformSection fixture | TransANT component lab"
+  description="Static caller-composed platform stages with an optional technical route."
+>
+  <main data-fixture="modular-platform-section">
+    <ModularPlatformSection
+      intro={{
+        eyebrow: "Modular platform equation",
+        title: "A platform made for clear engineering decisions",
+        description:
+          "This source-owned fixture introduces an ordered platform explanation without making a production technical, performance, or delivery claim.",
+        headingLevel: 2,
+        align: "left",
+        theme: "light",
+        measure: "wide",
+      }}
+      stages={[
+        {
+          number: "01",
+          title: "Platform",
+          description:
+            "A shared starting point gives the four-stage relationship a readable first marker at every viewport.",
+        },
+        {
+          number: "02",
+          title: "Structure",
+          description:
+            "The fixture keeps stage explanations caller-owned and lets extended English copy wrap instead of clipping.",
+        },
+        {
+          number: "03",
+          title: "Validation",
+          description:
+            "Explicit labels preserve the relationship when the compact rail becomes a vertical sequence.",
+        },
+        {
+          number: "04",
+          title: "Delivery",
+          description:
+            "The final stage is a plain semantic list item, not a live delivery, service, or availability claim.",
+        },
+      ]}
+      technicalLink={{
+        href: "/fixtures/modular-platform-section/#technical-note",
+        label: "Read the fixture technical note",
+      }}
+    />
+
+    <section class="modular-platform-fixture__alternate page-frame">
+      <p>Alternate three-stage composition without a technical route</p>
+      <ModularPlatformSection
+        intro={{
+          title: "An alternate sequence retains the same semantic rail",
+          description:
+            "This deliberately extended alternate introduction verifies wrapping, dark-text contrast, and the intentional absence of the optional technical action.",
+          headingLevel: 3,
+          align: "left",
+          theme: "light",
+          measure: "standard",
+        }}
+        stages={[
+          {
+            number: "A",
+            title: "Define",
+            description:
+              "A long alternate description expands vertically to demonstrate that a compact rail never overlaps the next numbered marker or clips caller-owned copy.",
+          },
+          {
+            number: "B",
+            title: "Coordinate",
+            description:
+              "A second concise stage confirms non-numeric explicit labels.",
+          },
+          {
+            number: "C",
+            title: "Review",
+            description:
+              "A final stage keeps the alternate-count composition complete.",
+          },
+        ]}
+      />
+    </section>
+    <p id="technical-note" class="visually-hidden">Fixture technical note.</p>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .modular-platform-fixture__alternate {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+  }
+
+  .modular-platform-fixture__alternate > p {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .modular-platform-fixture__alternate :global(.modular-platform-section) {
+    border: var(--border-thin) solid var(--color-divider);
+  }
+
+  .modular-platform-fixture__alternate
+    :global(.modular-platform-section__frame) {
+    padding-inline: var(--space-5);
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+import {
+  legalPageSlugs,
+  legalPageViewModel,
+} from "../../../../src/adapters/content/legal-page-view-model";
+import LegalDocument from "../../../../src/components/legal/LegalDocument/LegalDocument.astro";
+import PageHero from "../../../../src/components/editorial/PageHero/PageHero.astro";
+import BaseLayout from "../../../../src/layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return legalPageSlugs.map((page) => ({ params: { page } }));
+}
+
+const page = Astro.params.page;
+if (!page) {
+  throw new Error("Legal fixtures require a page parameter.");
+}
+
+const { document, hero, layout } = legalPageViewModel(page);
+---
+
+<BaseLayout {...layout}>
+  <PageHero {...hero} />
+  <LegalDocument {...document} />
+</BaseLayout>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../../src/layouts/BaseLayout.astro";
+import type { BaseLayoutProps } from "../../../src/layouts/BaseLayout.types";
+
+const props = {
+  language: "en",
+  title: "Base layout fixture",
+  description: "Deterministic document-shell fixture for TransANT BaseLayout.",
+  canonicalUrl: "https://component.transant.test/fixtures/base-layout/",
+  header: {
+    id: "base-layout-header",
+    homeHref: "/",
+    navigation: [
+      { label: "Wagons", href: "/wagons/" },
+      { label: "Technology", href: "/technology/" },
+      { label: "Company", href: "/company/" },
+    ],
+    currentPath: "/technology/",
+    localeOptions: [{ label: "EN", href: "/", current: true }],
+    contactAction: { label: "Talk to an engineer", href: "/contact/" },
+  },
+  footer: {
+    groups: [
+      {
+        heading: "Wagons",
+        links: [{ label: "Open wagons", href: "/wagons/" }],
+      },
+      {
+        heading: "Expertise",
+        links: [{ label: "Technology", href: "/technology/" }],
+      },
+    ],
+    contact: {
+      verification: "verified",
+      companyName: "TransANT demo fixture",
+      addressLines: ["Fixture street 1", "10000 Example city"],
+      phone: "+1 (202) 555-0148",
+      email: "base-layout@example.test",
+    },
+    legalLinks: [{ label: "Privacy policy", href: "/privacy/" }],
+    copyright: "© 2026 TransANT demo fixture.",
+  },
+} satisfies BaseLayoutProps;
+---
+
+<BaseLayout {...props}>
+  <section
+    class="base-layout-fixture page-frame"
+    aria-labelledby="fixture-title"
+  >
+    <p>Page-shell fixture</p>
+    <h1 id="fixture-title">A stable document boundary.</h1>
+    <p>
+      The route content is caller-owned. It appears between the reusable shell
+      landmarks without changing their semantic or responsive contracts.
+    </p>
+    <a href="#fixture-detail">Continue to the fixture detail</a>
+  </section>
+  <section
+    class="base-layout-fixture base-layout-fixture--detail page-frame"
+    id="fixture-detail"
+    aria-labelledby="fixture-detail-title"
+  >
+    <h2 id="fixture-detail-title">Focused main content</h2>
+    <p>
+      This second destination makes skip-link and internal focus placement
+      reviewable without introducing page-assembly markup.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .base-layout-fixture {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-7);
+  }
+
+  .base-layout-fixture > * {
+    max-inline-size: 70ch;
+    margin: 0;
+  }
+
+  .base-layout-fixture > p:first-child {
+    color: var(--color-brand-red);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .base-layout-fixture > a {
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .base-layout-fixture--detail {
+    border-block-start: var(--border-thin) solid var(--color-divider);
+  }
+</style>

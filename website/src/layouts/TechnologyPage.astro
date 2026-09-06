@@ -1,0 +1,414 @@
+---
+import MediaStory from "../components/editorial/MediaStory/MediaStory.astro";
+import type { MediaStoryProps } from "../components/editorial/MediaStory/MediaStory.types";
+import PageHero from "../components/editorial/PageHero/PageHero.astro";
+import type { PageHeroProps } from "../components/editorial/PageHero/PageHero.types";
+import PageMeta from "../components/editorial/PageMeta/PageMeta.astro";
+import ContactCTA from "../components/home/ContactCTA/ContactCTA.astro";
+import type { ContactCTAProps } from "../components/home/ContactCTA/ContactCTA.types";
+
+interface Props {
+  readonly hero: PageHeroProps;
+  readonly stories: readonly MediaStoryProps[];
+  readonly contactCta: ContactCTAProps;
+}
+
+const { hero, stories, contactCta } = Astro.props as Props;
+const [platformStory, ...chapters] = stories;
+
+if (!platformStory?.media || chapters.length !== 4) {
+  throw new Error(
+    "TechnologyPage requires one illustrated platform story and four engineering chapters.",
+  );
+}
+
+const chapterLabel = (story: MediaStoryProps): string =>
+  story.eyebrow ?? story.title;
+const metaLabel = hero.eyebrow ?? hero.title;
+---
+
+<div class="technology-page" data-technology-page>
+  <PageMeta label={metaLabel} items={stories.map(chapterLabel)} />
+
+  <PageHero {...hero} />
+
+  <div class="technology-page__feature" data-technology-feature>
+    <MediaStory {...platformStory} />
+    <nav
+      class="technology-page__index page-frame"
+      aria-labelledby="technology-chapter-index"
+      data-technology-index
+    >
+      <p id="technology-chapter-index">{platformStory.eyebrow}</p>
+      <ol>
+        {
+          chapters.map((story, index) => (
+            <li>
+              <a href={`#technology-chapter-${index + 1}`}>
+                <span aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                {chapterLabel(story)}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+  </div>
+
+  <section
+    class="technology-page__narrative"
+    aria-labelledby="technology-narrative-title"
+    data-technology-narrative
+  >
+    <div class="technology-page__narrative-heading page-frame">
+      <p id="technology-narrative-title">{hero.eyebrow}</p>
+      <span aria-hidden="true">
+        {String(chapters.length).padStart(2, "0")}
+      </span>
+    </div>
+    <div class="technology-page__chapters">
+      {
+        chapters.map((story, index) => (
+          <div
+            class:list={[
+              "technology-page__chapter",
+              { "technology-page__chapter--with-media": story.media },
+            ]}
+            id={`technology-chapter-${index + 1}`}
+            data-technology-chapter={String(index + 1)}
+          >
+            <MediaStory {...story} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <ContactCTA {...contactCta} />
+</div>
+
+<style>
+  .technology-page {
+    overflow: clip;
+    background: var(--color-paper-warm);
+  }
+
+  .technology-page :global(.page-hero) {
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background:
+      linear-gradient(90deg, rgb(28 111 156 / 5%) 1px, transparent 1px) 0 0 /
+        3rem 3rem,
+      linear-gradient(rgb(28 111 156 / 5%) 1px, transparent 1px) 0 0 / 3rem 3rem,
+      var(--color-paper-warm);
+  }
+
+  .technology-page :global(.page-hero__frame) {
+    gap: clamp(var(--space-6), 5vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 6vw, 6rem);
+  }
+
+  .technology-page :global(.page-hero__content .section-intro__title) {
+    max-inline-size: 17ch;
+    font-size: clamp(2.5rem, 5.2vw, 5rem);
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+  }
+
+  .technology-page :global(.page-hero__content .section-intro__description) {
+    max-inline-size: 38rem;
+  }
+
+  .technology-page :global(.page-hero__media) {
+    padding: var(--space-2);
+    border-color: color-mix(
+      in srgb,
+      var(--color-technical) 32%,
+      var(--color-divider)
+    );
+    background: var(--color-steel);
+  }
+
+  .technology-page :global(.page-hero__media img) {
+    filter: saturate(0.72) contrast(1.05);
+    transition: filter var(--motion-standard) var(--ease-standard);
+  }
+
+  .technology-page :global(.page-hero__media:hover img) {
+    filter: saturate(1) contrast(1);
+  }
+
+  .technology-page__feature {
+    position: relative;
+    padding-block-end: clamp(var(--space-6), 4vw, var(--space-8));
+    background:
+      radial-gradient(
+          circle at center,
+          rgb(111 152 181 / 18%) 1px,
+          transparent 1px
+        )
+        0 0 / 1.5rem 1.5rem,
+      var(--color-footer-navy);
+  }
+
+  .technology-page__feature :global(.media-story) {
+    background: transparent;
+  }
+
+  .technology-page__feature :global(.media-story__frame) {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(var(--space-6), 5vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 6vw, 6rem) var(--space-6);
+  }
+
+  .technology-page__feature :global(.media-story__content) {
+    order: -1;
+    inline-size: min(100%, 64rem);
+  }
+
+  .technology-page__feature :global(.section-intro__title) {
+    max-inline-size: 21ch;
+    letter-spacing: -0.025em;
+  }
+
+  .technology-page__feature :global(.section-intro__description) {
+    max-inline-size: 62rem;
+  }
+
+  .technology-page__feature :global(.media-story__media) {
+    padding: clamp(var(--space-4), 3vw, var(--space-7));
+    border-color: rgb(184 208 224 / 30%);
+    background:
+      linear-gradient(90deg, rgb(28 111 156 / 8%) 1px, transparent 1px) 0 0 /
+        2rem 2rem,
+      linear-gradient(rgb(28 111 156 / 8%) 1px, transparent 1px) 0 0 / 2rem 2rem,
+      #f6f8f9;
+  }
+
+  .technology-page__feature :global(.responsive-media) {
+    aspect-ratio: 16 / 10;
+  }
+
+  .technology-page__feature :global(.media-story__media img) {
+    min-block-size: 0;
+    object-position: center;
+  }
+
+  .technology-page__index {
+    border-block: var(--border-thin) solid rgb(184 208 224 / 25%);
+  }
+
+  .technology-page__index > p,
+  .technology-page__index ol {
+    margin: 0;
+  }
+
+  .technology-page__index > p {
+    padding-block: var(--space-4);
+    color: var(--color-railway-muted);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .technology-page__index ol {
+    display: grid;
+    padding: 0;
+    border-block-start: var(--border-thin) solid rgb(184 208 224 / 25%);
+    list-style: none;
+  }
+
+  .technology-page__index li {
+    min-inline-size: 0;
+    border-block-end: var(--border-thin) solid rgb(184 208 224 / 18%);
+  }
+
+  .technology-page__index li:last-child {
+    border-block-end: 0;
+  }
+
+  .technology-page__index a {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: var(--space-3);
+    min-block-size: 3.5rem;
+    align-items: center;
+    color: var(--color-railway-pale);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+  }
+
+  .technology-page__index a span {
+    color: var(--color-brand-red);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+  }
+
+  .technology-page__index a:hover {
+    color: var(--color-paper);
+  }
+
+  .technology-page__index a:focus-visible {
+    border-radius: var(--radius-small);
+    outline: 0;
+    box-shadow: var(--focus-ring);
+  }
+
+  .technology-page__narrative {
+    background: #f3faff;
+  }
+
+  .technology-page__narrative-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding-block: var(--space-5);
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    color: var(--color-ink-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .technology-page__narrative-heading p {
+    margin: 0;
+  }
+
+  .technology-page__narrative-heading span {
+    color: var(--color-brand-red-dark);
+  }
+
+  .technology-page__chapters {
+    counter-reset: technology-chapter;
+  }
+
+  .technology-page__chapter {
+    counter-increment: technology-chapter;
+    scroll-margin-block-start: 6rem;
+    border-block-end: var(--border-thin) solid var(--color-divider);
+  }
+
+  .technology-page__chapter :global(.media-story) {
+    background: transparent;
+  }
+
+  .technology-page__chapter :global(.media-story__frame) {
+    gap: clamp(var(--space-6), 5vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 6vw, 5.5rem);
+  }
+
+  .technology-page__chapter :global(.media-story__content) {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: var(--space-5);
+    max-inline-size: none;
+  }
+
+  .technology-page__chapter :global(.media-story__content)::before {
+    content: "0" counter(technology-chapter);
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .technology-page__chapter :global(.media-story__content > *) {
+    grid-column: 2;
+  }
+
+  .technology-page__chapter :global(.section-intro) {
+    gap: var(--space-4);
+    max-inline-size: 58rem;
+  }
+
+  .technology-page__chapter :global(.section-intro__eyebrow) {
+    color: var(--color-ink-secondary);
+    font-size: 0.6875rem;
+  }
+
+  .technology-page__chapter :global(.section-intro__title) {
+    max-inline-size: 25ch;
+    font-size: clamp(1.8rem, 3.2vw, 3rem);
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+  }
+
+  .technology-page__chapter :global(.section-intro__description) {
+    max-inline-size: 54rem;
+  }
+
+  .technology-page__chapter :global(.media-story__media) {
+    padding: clamp(var(--space-3), 2vw, var(--space-5));
+    border-color: color-mix(
+      in srgb,
+      var(--color-technical) 24%,
+      var(--color-divider)
+    );
+    background: var(--color-paper);
+  }
+
+  .technology-page__chapter :global(.responsive-media) {
+    aspect-ratio: 16 / 9;
+  }
+
+  .technology-page__chapter :global(.media-story__media img) {
+    min-block-size: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .technology-page__index ol {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .technology-page__index li {
+      border-inline-end: var(--border-thin) solid rgb(184 208 224 / 18%);
+      border-block-end: 0;
+    }
+
+    .technology-page__index li:last-child {
+      border-inline-end: 0;
+    }
+
+    .technology-page__index a {
+      grid-template-columns: 1fr;
+      align-content: start;
+      padding: var(--space-4);
+    }
+  }
+
+  @media (min-width: 58rem) {
+    .technology-page :global(.page-hero__frame) {
+      grid-template-columns: minmax(0, 7fr) minmax(20rem, 5fr);
+    }
+
+    .technology-page__feature :global(.responsive-media) {
+      aspect-ratio: 16 / 7;
+    }
+
+    .technology-page__chapter:not(.technology-page__chapter--with-media)
+      :global(.media-story__frame) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .technology-page__chapter--with-media :global(.media-story__frame) {
+      grid-template-columns: minmax(0, 5fr) minmax(22rem, 6fr);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .technology-page :global(.page-hero__media img) {
+      transition: none;
+    }
+  }
+</style>

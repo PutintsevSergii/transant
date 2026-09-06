@@ -1,0 +1,14 @@
+---
+import TechnicalSheet from "../../../src/components/product/TechnicalSheet/TechnicalSheet.astro";
+import { technicalSheetFor } from "../../../src/adapters/content/print-catalogue";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="Technical sheet | TransANT component lab"
+  description="Source-preserved print catalogue drawings, specifications, loading tables and features."
+>
+  <TechnicalSheet
+    {...technicalSheetFor("sgns", "UNO INTERMODAL 60ft Sgns(s)")}
+  />
+</ComponentLabLayout>

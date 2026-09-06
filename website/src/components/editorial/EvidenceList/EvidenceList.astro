@@ -1,0 +1,305 @@
+---
+import Action from "../../core/Action/Action.astro";
+import {
+  approvedEvidenceListItems,
+  isExternalEvidenceAction,
+  validateEvidenceListProps,
+} from "./evidence-list-contract";
+import type { EvidenceListProps } from "./EvidenceList.types";
+
+const props = Astro.props as EvidenceListProps;
+validateEvidenceListProps(props);
+
+const evidence = approvedEvidenceListItems(props.evidence);
+const variant = props.variant ?? "standard";
+const spacing = props.spacing ?? "standard";
+const Heading = `h${props.headingLevel}` as "h2" | "h3";
+const labels = props.labels ?? {
+  policy: "Policy",
+  certification: "Certification",
+  document: "Document",
+  factualReference: "Factual reference",
+  status: "Status",
+  date: "Date",
+  issuer: "Issuer",
+  scope: "Scope",
+  evidenceDetails: "evidence details",
+  empty: "Contact TransANT for further information and documents.",
+  externalNewTab: " (opens in new tab)",
+};
+const formatType = (type: string): string => {
+  if (type === "factual-reference") return labels.factualReference;
+  if (type === "certification") return labels.certification;
+  if (type === "document") return labels.document;
+  return labels.policy;
+};
+---
+
+<section
+  class="evidence-list"
+  data-evidence-list
+  data-evidence-list-variant={variant}
+  data-evidence-list-spacing={spacing}
+>
+  <div class="evidence-list__frame page-frame">
+    <header class="evidence-list__heading">
+      <Heading>{props.title}</Heading>
+    </header>
+
+    {
+      evidence.length > 0 ? (
+        <ul class="evidence-list__entries" data-evidence-list-entries>
+          {evidence.map((item) => (
+            <li class="evidence-list__entry" data-evidence-list-entry>
+              <article>
+                <div class="evidence-list__content">
+                  <p class="evidence-list__type">{formatType(item.type)}</p>
+                  <h3>{item.title}</h3>
+                  {item.summary !== undefined && (
+                    <p class="evidence-list__summary">{item.summary}</p>
+                  )}
+                </div>
+
+                {(item.status || item.date || item.issuer || item.scope) && (
+                  <dl
+                    class="evidence-list__metadata"
+                    aria-label={`${item.title}: ${labels.evidenceDetails}`}
+                  >
+                    {item.status !== undefined && (
+                      <div>
+                        <dt>{labels.status}</dt>
+                        <dd>{item.status}</dd>
+                      </div>
+                    )}
+                    {item.date !== undefined && (
+                      <div>
+                        <dt>{labels.date}</dt>
+                        <dd>{item.date}</dd>
+                      </div>
+                    )}
+                    {item.issuer !== undefined && (
+                      <div>
+                        <dt>{labels.issuer}</dt>
+                        <dd>{item.issuer}</dd>
+                      </div>
+                    )}
+                    {item.scope !== undefined && (
+                      <div>
+                        <dt>{labels.scope}</dt>
+                        <dd>{item.scope}</dd>
+                      </div>
+                    )}
+                  </dl>
+                )}
+
+                {item.action && (
+                  <div class="evidence-list__action" data-evidence-list-action>
+                    <Action
+                      kind="link"
+                      href={item.action.href}
+                      label={item.action.label}
+                      variant="secondary"
+                      size="regular"
+                      icon={
+                        item.action.type === "download"
+                          ? "download"
+                          : "arrow-right"
+                      }
+                      external={isExternalEvidenceAction(item.action)}
+                      externalLabel={labels.externalNewTab}
+                    />
+                  </div>
+                )}
+              </article>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="evidence-list__empty" data-evidence-list-empty>
+          {labels.empty}
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .evidence-list {
+    container-type: inline-size;
+    overflow: clip;
+    background: var(--color-paper-warm);
+  }
+
+  .evidence-list__frame,
+  .evidence-list__heading,
+  .evidence-list__entries,
+  .evidence-list__entry,
+  .evidence-list__entry article,
+  .evidence-list__content,
+  .evidence-list__metadata,
+  .evidence-list__metadata div,
+  .evidence-list__action {
+    min-inline-size: 0;
+  }
+
+  .evidence-list__frame {
+    display: grid;
+    gap: clamp(var(--space-5), 6vw, var(--space-8));
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .evidence-list[data-evidence-list-variant="section-label"]
+    .evidence-list__frame {
+    gap: var(--space-3);
+    padding-block: var(--space-5);
+  }
+
+  .evidence-list[data-evidence-list-spacing="compact"] .evidence-list__frame {
+    gap: var(--space-5);
+    padding-block-end: 0;
+  }
+
+  .evidence-list__heading,
+  .evidence-list__content,
+  .evidence-list__metadata {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .evidence-list__heading {
+    max-inline-size: 52rem;
+  }
+
+  .evidence-list__heading h2,
+  .evidence-list__heading h3,
+  .evidence-list__content h3,
+  .evidence-list__type,
+  .evidence-list__summary,
+  .evidence-list__metadata,
+  .evidence-list__metadata dt,
+  .evidence-list__metadata dd,
+  .evidence-list__empty {
+    margin: 0;
+  }
+
+  .evidence-list__heading h2,
+  .evidence-list__heading h3,
+  .evidence-list__content h3 {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-family-display);
+    line-height: var(--line-height-tight);
+    overflow-wrap: anywhere;
+  }
+
+  .evidence-list__heading h2,
+  .evidence-list__heading h3 {
+    font-size: clamp(2rem, 6cqi, 3.5rem);
+  }
+
+  .evidence-list[data-evidence-list-variant="section-label"]
+    .evidence-list__heading
+    :is(h2, h3) {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @container (max-width: 24rem) {
+    .evidence-list[data-evidence-list-variant="section-label"]
+      .evidence-list__heading
+      :is(h2, h3) {
+      font-size: 0.625rem;
+      letter-spacing: 0.075em;
+    }
+  }
+
+  .evidence-list__summary,
+  .evidence-list__metadata,
+  .evidence-list__empty {
+    color: var(--color-ink-secondary);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .evidence-list__type,
+  .evidence-list__metadata dt {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .evidence-list__entries {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .evidence-list__entry article {
+    display: grid;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    border: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .evidence-list__content h3 {
+    font-size: clamp(1.35rem, 4cqi, 2rem);
+  }
+
+  .evidence-list__metadata {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .evidence-list__metadata div {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .evidence-list__metadata dd {
+    color: var(--color-brand-blue-dark);
+    font-family: var(--font-mono);
+    overflow-wrap: anywhere;
+  }
+
+  .evidence-list__action {
+    align-self: end;
+  }
+
+  .evidence-list__action :global(.action) {
+    inline-size: 100%;
+  }
+
+  .evidence-list__empty {
+    max-inline-size: 46rem;
+    padding: var(--space-5);
+    border-inline-start: 0.25rem solid var(--color-brand-red-dark);
+  }
+
+  @container (min-width: 56rem) {
+    .evidence-list__entry article {
+      grid-template-columns: minmax(0, 1.25fr) minmax(15rem, 0.9fr) auto;
+      align-items: end;
+    }
+
+    .evidence-list__entry article:not(:has(.evidence-list__metadata)) {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .evidence-list__action :global(.action) {
+      inline-size: auto;
+      white-space: nowrap;
+    }
+  }
+</style>

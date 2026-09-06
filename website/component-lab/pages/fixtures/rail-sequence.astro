@@ -1,0 +1,185 @@
+---
+import RailSequence from "../../../src/components/core/RailSequence/RailSequence.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+
+const platformStages = [
+  {
+    number: "01",
+    title: "Platform",
+    description:
+      "A common interface establishes the operating task before configuration details begin.",
+    href: "#platform-stage",
+  },
+  {
+    number: "02",
+    title: "Structure",
+    description:
+      "Modular engineering adapts the vehicle structure to the planned payload and operating environment.",
+  },
+  {
+    number: "03",
+    title: "Validation",
+    description:
+      "Technical checks make the proposed configuration understandable before delivery planning proceeds.",
+  },
+  {
+    number: "04",
+    title: "Delivery support",
+    description:
+      "Production handover keeps the agreed scope traceable through the next operational decision.",
+    href: "#delivery-support-stage",
+  },
+] as const;
+
+const compactStages = [
+  {
+    number: "A",
+    title: "Define",
+    description:
+      "A concise two-stage sequence remains a semantic ordered list.",
+  },
+  {
+    number: "B",
+    title: "Deliver",
+    description:
+      "Its compact composition retains the visible relationship without a fixed height.",
+    href: "#compact-delivery-stage",
+  },
+] as const;
+
+const extendedStages = [
+  {
+    number: "01",
+    title: "Task definition",
+    description:
+      "The deliberately extended description verifies that a stage may grow naturally at narrow widths without colliding with the following marker or truncating the operational context supplied by the caller.",
+  },
+  {
+    number: "02",
+    title: "Engineering review",
+    description:
+      "Interface, payload, and environment assumptions are made explicit before production planning.",
+  },
+  {
+    number: "03",
+    title: "Prototype validation",
+    description:
+      "Validation evidence keeps design decisions understandable to the next stage.",
+  },
+  {
+    number: "04",
+    title: "Production planning",
+    description:
+      "Manufacturing sequencing translates the approved specification into a controlled plan.",
+  },
+  {
+    number: "05",
+    title: "Delivery coordination",
+    description:
+      "Delivery preparation carries the agreed vehicle scope into the operating environment.",
+  },
+  {
+    number: "06",
+    title: "Operational support",
+    description:
+      "The sequence ends with a route to the relevant service conversation.",
+    href: "#operational-support-stage",
+  },
+] as const;
+---
+
+<ComponentLabLayout
+  title="RailSequence fixture | TransANT component lab"
+  description="Ordered rail-sequence component variants for responsive review."
+>
+  <main class="rail-sequence-fixture" data-fixture="rail-sequence">
+    <header class="rail-sequence-fixture__masthead page-frame">
+      <a href="/">Component lab</a>
+      <p>
+        C-005 primitive: caller-owned stage data, document context, and surface.
+      </p>
+    </header>
+
+    <section
+      class="rail-sequence-fixture__panel rail-sequence-fixture__panel--light page-frame"
+      aria-labelledby="four-stage-heading"
+    >
+      <h1 id="four-stage-heading">Four-stage light sequence</h1>
+      <RailSequence
+        items={platformStages}
+        theme="light"
+        columns={4}
+        label="Modular platform equation"
+      />
+    </section>
+
+    <section
+      class="rail-sequence-fixture__panel rail-sequence-fixture__panel--dark page-frame"
+      aria-labelledby="two-stage-heading"
+    >
+      <h2 id="two-stage-heading">Two-stage dark sequence</h2>
+      <RailSequence items={compactStages} theme="dark" columns={2} />
+    </section>
+
+    <section
+      class="rail-sequence-fixture__panel rail-sequence-fixture__panel--steel page-frame"
+      aria-labelledby="six-stage-heading"
+    >
+      <h2 id="six-stage-heading">Six-stage expanded sequence</h2>
+      <RailSequence
+        items={extendedStages}
+        theme="light"
+        columns={3}
+        label="Extended production sequence"
+      />
+    </section>
+  </main>
+</ComponentLabLayout>
+
+<style>
+  .rail-sequence-fixture {
+    overflow: clip;
+    background: var(--color-paper-warm);
+  }
+
+  .rail-sequence-fixture__masthead,
+  .rail-sequence-fixture__panel {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-7);
+  }
+
+  .rail-sequence-fixture__masthead > a {
+    justify-self: start;
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .rail-sequence-fixture__masthead > p {
+    max-inline-size: var(--reading-max);
+    margin: 0;
+    color: var(--color-ink-secondary);
+  }
+
+  .rail-sequence-fixture__panel > h1,
+  .rail-sequence-fixture__panel > h2 {
+    max-inline-size: var(--reading-max);
+    margin: 0;
+  }
+
+  .rail-sequence-fixture__panel--light {
+    background: var(--color-paper);
+  }
+
+  .rail-sequence-fixture__panel--dark {
+    background: var(--color-footer-navy);
+    color: var(--color-paper);
+  }
+
+  .rail-sequence-fixture__panel--steel {
+    background: var(--color-steel);
+  }
+</style>

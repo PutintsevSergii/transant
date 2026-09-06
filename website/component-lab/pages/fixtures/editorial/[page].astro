@@ -1,0 +1,45 @@
+---
+import {
+  editorialPageSlugs,
+  editorialPageViewModel,
+} from "../../../../src/adapters/content/editorial-page-view-model";
+import EvidenceList from "../../../../src/components/editorial/EvidenceList/EvidenceList.astro";
+import MediaStory from "../../../../src/components/editorial/MediaStory/MediaStory.astro";
+import PageHero from "../../../../src/components/editorial/PageHero/PageHero.astro";
+import PageMeta from "../../../../src/components/editorial/PageMeta/PageMeta.astro";
+import ContactCTA from "../../../../src/components/home/ContactCTA/ContactCTA.astro";
+import OperationalCaseStudy from "../../../../src/components/home/OperationalCaseStudy/OperationalCaseStudy.astro";
+import BaseLayout from "../../../../src/layouts/BaseLayout.astro";
+import TechnologyPage from "../../../../src/layouts/TechnologyPage.astro";
+
+export function getStaticPaths() {
+  return editorialPageSlugs.map((page) => ({ params: { page } }));
+}
+
+const page = Astro.params.page;
+if (!page) {
+  throw new Error("Editorial fixtures require a page parameter.");
+}
+
+const { caseStudy, contactCta, evidence, hero, layout, pageMeta, stories } =
+  editorialPageViewModel(page);
+---
+
+<BaseLayout {...layout}>
+  {
+    page === "technology" ? (
+      <TechnologyPage hero={hero} stories={stories} contactCta={contactCta} />
+    ) : (
+      <>
+        {pageMeta !== undefined && <PageMeta {...pageMeta} />}
+        <PageHero {...hero} />
+        {stories.map((story) => (
+          <MediaStory {...story} />
+        ))}
+        {caseStudy !== undefined && <OperationalCaseStudy {...caseStudy} />}
+        {evidence !== undefined && <EvidenceList {...evidence} />}
+        <ContactCTA {...contactCta} />
+      </>
+    )
+  }
+</BaseLayout>

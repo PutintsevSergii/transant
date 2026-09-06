@@ -1,0 +1,22 @@
+---
+import PageMeta from "../../../src/components/editorial/PageMeta/PageMeta.astro";
+import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
+---
+
+<ComponentLabLayout
+  title="PageMeta fixture | TransANT component lab"
+  description="Static page descriptor strips with compact overflow containment."
+>
+  <main data-fixture="page-meta">
+    <PageMeta
+      label="Freight wagon engineering"
+      items={[
+        "Engineering value",
+        "Wagon families",
+        "Modular platform",
+        "Quality and certification",
+        "Transport requirements",
+      ]}
+    />
+  </main>
+</ComponentLabLayout>

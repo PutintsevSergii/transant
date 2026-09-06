@@ -1,0 +1,40 @@
+@layer reset, tokens, base, motion, utilities;
+
+@import "./tokens.css";
+@import "./fonts.css";
+@import "./reset.css";
+@import "./type.css";
+@import "./motion.css";
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-brand-red);
+    outline-offset: 3px;
+    box-shadow: var(--focus-ring);
+  }
+
+  ::selection {
+    color: var(--color-paper);
+    background: var(--color-brand-red);
+  }
+}
+
+@layer utilities {
+  .page-frame {
+    inline-size: min(100%, var(--content-max));
+    margin-inline: auto;
+    padding-inline: max(var(--page-gutter), env(safe-area-inset-left));
+  }
+
+  .visually-hidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

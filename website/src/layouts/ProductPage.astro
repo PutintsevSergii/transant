@@ -1,0 +1,51 @@
+---
+import type { ProductPageViewModel } from "../adapters/content/product-view-model";
+import Breadcrumbs from "../components/catalogue/Breadcrumbs/Breadcrumbs.astro";
+import ContactCTA from "../components/home/ContactCTA/ContactCTA.astro";
+import CargoFit from "../components/product/CargoFit/CargoFit.astro";
+import ProductHero from "../components/product/ProductHero/ProductHero.astro";
+import TechnicalSheet from "../components/product/TechnicalSheet/TechnicalSheet.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+const {
+  layout,
+  breadcrumbs,
+  hero,
+  cargoFit,
+  technicalSheet,
+  contactCta,
+  sectionNavigationLabel,
+  technicalDataLabel,
+} = Astro.props as ProductPageViewModel;
+---
+
+<BaseLayout {...layout}>
+  <Breadcrumbs {...breadcrumbs} />
+  <ProductHero {...hero} />
+  <nav class="product-sections page-frame" aria-label={sectionNavigationLabel}>
+    <a href="#technical-details"
+      >{technicalDataLabel} <span aria-hidden="true">↓</span></a
+    >
+  </nav>
+  <CargoFit {...cargoFit} />
+  <TechnicalSheet {...technicalSheet} />
+  <ContactCTA {...contactCta} />
+</BaseLayout>
+<style>
+  .product-sections {
+    display: flex;
+    padding-block: 1rem;
+    border-block-end: 1px solid var(--color-divider);
+  }
+  .product-sections a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-block-size: 44px;
+    color: var(--color-brand-blue-dark);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-underline-offset: 0.3em;
+  }
+</style>

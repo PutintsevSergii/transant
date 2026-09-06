@@ -1,0 +1,171 @@
+---
+import Action from "../../core/Action/Action.astro";
+import ResponsiveMedia from "../../core/ResponsiveMedia/ResponsiveMedia.astro";
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import { validatePageHeroProps } from "./page-hero-contract";
+import type { PageHeroProps } from "./PageHero.types";
+
+const props = Astro.props as PageHeroProps;
+validatePageHeroProps(props);
+
+const mediaPosition = props.mediaPosition ?? "after";
+const hasBreadcrumbs = Astro.slots.has("breadcrumbs");
+const rootClass = `page-hero page-hero--${props.theme}${props.media ? " page-hero--with-media" : " page-hero--without-media"}`;
+const actionVariant = props.theme === "dark" ? "inverse" : "primary";
+---
+
+<section
+  class={rootClass}
+  data-page-hero
+  data-page-hero-theme={props.theme}
+  data-page-hero-media-position={mediaPosition}
+>
+  {
+    hasBreadcrumbs && (
+      <div class="page-hero__breadcrumbs" data-page-hero-breadcrumbs>
+        <slot name="breadcrumbs" />
+      </div>
+    )
+  }
+  <div class="page-hero__frame page-frame" data-page-hero-frame>
+    {
+      props.media && mediaPosition === "before" && (
+        <div class="page-hero__media" data-page-hero-media>
+          <ResponsiveMedia {...props.media} priority />
+        </div>
+      )
+    }
+    <div class="page-hero__content" data-page-hero-content>
+      <SectionIntro
+        eyebrow={props.eyebrow}
+        title={props.title}
+        description={props.description}
+        headingLevel={props.headingLevel}
+        align="left"
+        theme={props.theme}
+        measure="wide"
+      />
+      {
+        props.action && (
+          <Action
+            kind="link"
+            variant={actionVariant}
+            size="regular"
+            icon="arrow-right"
+            href={props.action.href}
+            label={props.action.label}
+            external={props.action.external}
+          />
+        )
+      }
+    </div>
+    {
+      props.media && mediaPosition === "after" && (
+        <div class="page-hero__media" data-page-hero-media>
+          <ResponsiveMedia {...props.media} priority />
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    container-type: inline-size;
+    overflow: clip;
+  }
+
+  .page-hero--light {
+    background: var(--color-paper);
+  }
+
+  .page-hero--dark {
+    background: var(--color-brand-blue-dark);
+  }
+
+  .page-hero__breadcrumbs {
+    padding-block: var(--space-3);
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .page-hero__breadcrumbs > :global(:not([data-breadcrumbs])) {
+    inline-size: min(100%, var(--content-max));
+    margin-inline: auto;
+    padding-inline: max(var(--page-gutter), env(safe-area-inset-left));
+  }
+
+  .page-hero__frame,
+  .page-hero__content,
+  .page-hero__media {
+    min-inline-size: 0;
+  }
+
+  .page-hero__frame {
+    display: grid;
+    gap: clamp(var(--space-6), 7vw, var(--space-8));
+    align-items: center;
+    padding-block: clamp(var(--space-7), 7vw, var(--space-8));
+  }
+
+  .page-hero__content {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-5);
+  }
+
+  .page-hero__content :global(.section-intro) {
+    max-inline-size: 48rem;
+  }
+
+  .page-hero__content > :global(.action) {
+    inline-size: 100%;
+  }
+
+  .page-hero--without-media .page-hero__frame {
+    padding-block: clamp(var(--space-5), 3vw, var(--space-7));
+  }
+
+  .page-hero__media {
+    overflow: hidden;
+    border: var(--border-thin) solid
+      color-mix(in srgb, var(--color-divider) 75%, transparent);
+    background: var(--color-surface-subtle);
+  }
+
+  .page-hero--dark .page-hero__media {
+    border-color: color-mix(in srgb, var(--color-paper) 36%, transparent);
+    background: var(--color-footer-navy);
+  }
+
+  .page-hero__media :global(.responsive-media),
+  .page-hero__media :global(picture),
+  .page-hero__media :global(img) {
+    inline-size: 100%;
+  }
+
+  .page-hero__media :global(img) {
+    min-block-size: clamp(15rem, 60cqi, 30rem);
+    object-position: center;
+  }
+
+  @container (min-width: 30rem) {
+    .page-hero__content > :global(.action) {
+      inline-size: auto;
+    }
+  }
+
+  @container (min-width: 62rem) {
+    .page-hero--with-media .page-hero__frame {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .page-hero--without-media .page-hero__content {
+      max-inline-size: 48rem;
+    }
+
+    .page-hero__media :global(img) {
+      min-block-size: 32rem;
+    }
+  }
+</style>

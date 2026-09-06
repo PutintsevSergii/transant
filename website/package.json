@@ -1,0 +1,66 @@
+{
+  "name": "@transant/website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=22.12.0 <23",
+    "pnpm": ">=10 <11"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ],
+    "overrides": {
+      "unifont": "0.7.4"
+    }
+  },
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "dev:lab": "ASTRO_TELEMETRY_DISABLED=1 astro dev --config astro.component-lab.config.mjs",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "build:lab": "ASTRO_TELEMETRY_DISABLED=1 astro build --config astro.component-lab.config.mjs",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "preview:lab": "ASTRO_TELEMETRY_DISABLED=1 astro preview --config astro.component-lab.config.mjs",
+    "typecheck": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint": "eslint .",
+    "test:unit": "vitest run --config vitest.config.ts",
+    "test:foundation": "ASTRO_TELEMETRY_DISABLED=1 astro build && ASTRO_TELEMETRY_DISABLED=1 astro build --config astro.component-lab.config.mjs && vitest run --config vitest.foundation.config.ts",
+    "test:component": "playwright test --grep @component",
+    "test:responsive": "playwright test --grep @responsive",
+    "test:a11y": "playwright test --grep @a11y",
+    "test:visual": "playwright test --grep @visual",
+    "test:visual:update": "playwright test --grep @visual --update-snapshots",
+    "test:browser": "playwright test",
+    "check:route-integration": "node ./scripts/verify-route-integration.mjs",
+    "check:performance-integration": "node ./scripts/verify-performance-integration.mjs",
+    "check:content-brand-audit": "node ./scripts/verify-content-brand-audit.mjs",
+    "check:deployment-readiness": "node ./scripts/verify-deployment-readiness.mjs",
+    "prepare:release-output": "node ./scripts/prepare-release-output.mjs",
+    "quality": "prettier --check . && eslint . && ASTRO_TELEMETRY_DISABLED=1 astro check && vitest run --config vitest.config.ts && ASTRO_TELEMETRY_DISABLED=1 astro build && ASTRO_TELEMETRY_DISABLED=1 astro build --config astro.component-lab.config.mjs && vitest run --config vitest.foundation.config.ts && playwright test"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@eslint/js": "9.39.5",
+    "@playwright/test": "1.62.1",
+    "@types/node": "22.20.1",
+    "@typescript-eslint/parser": "8.69.0",
+    "@vitest/coverage-v8": "5.0.0",
+    "astro": "7.2.2",
+    "eslint": "9.39.5",
+    "eslint-plugin-astro": "1.5.0",
+    "lighthouse": "12.8.2",
+    "globals": "17.12.0",
+    "lighthouse": "12.8.2",
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "0.14.1",
+    "sharp": "^0.35.4",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.69.0",
+    "vitest": "5.0.0"
+  }
+}

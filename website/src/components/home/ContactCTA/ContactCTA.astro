@@ -1,0 +1,180 @@
+---
+import Action from "../../core/Action/Action.astro";
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import {
+  contactCTAActionHref,
+  validateContactCTAProps,
+} from "./contact-cta-contract";
+import type { ContactCTAProps } from "./ContactCTA.types";
+
+const props = Astro.props as ContactCTAProps;
+validateContactCTAProps(props);
+
+const primaryHref = contactCTAActionHref(props.action.href, props.context);
+const supportingLinks = props.supportingLinks ?? [];
+const labels = {
+  context: "Inquiry context",
+  supportingNavigation: "Related contact options",
+  ...props.labels,
+};
+---
+
+<section class="contact-cta" data-contact-cta>
+  <div class="contact-cta__frame page-frame">
+    <div class="contact-cta__copy" data-contact-cta-copy>
+      <SectionIntro
+        title={props.title}
+        description={props.summary}
+        headingLevel={2}
+        align="center"
+        theme="light"
+        measure="standard"
+      />
+      {
+        props.context && (
+          <p class="contact-cta__context" data-contact-cta-context>
+            <span>{labels.context}</span>
+            {props.context}
+          </p>
+        )
+      }
+    </div>
+    <Action
+      kind="link"
+      variant="primary"
+      size="regular"
+      icon="arrow-right"
+      href={primaryHref}
+      label={props.action.label}
+      external={props.action.external}
+    />
+    {
+      supportingLinks.length > 0 && (
+        <nav
+          class="contact-cta__supporting"
+          aria-label={labels.supportingNavigation}
+        >
+          <ul>
+            {supportingLinks.map((link) => (
+              <li>
+                <Action
+                  kind="link"
+                  variant="secondary"
+                  size="regular"
+                  icon="arrow-right"
+                  href={link.href}
+                  label={link.label}
+                  external={link.external}
+                />
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .contact-cta {
+    container-type: inline-size;
+    overflow: clip;
+    border-block-end: var(--border-thin) solid var(--color-divider);
+    background: var(--color-steel);
+  }
+
+  .contact-cta__frame,
+  .contact-cta__copy,
+  .contact-cta__supporting,
+  .contact-cta__supporting ul,
+  .contact-cta__supporting li {
+    min-inline-size: 0;
+  }
+
+  .contact-cta__frame {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-6);
+    padding-block: clamp(var(--space-7), 6vw, var(--space-8));
+    text-align: center;
+  }
+
+  .contact-cta__copy {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-4);
+  }
+
+  .contact-cta__context {
+    display: grid;
+    gap: var(--space-1);
+    max-inline-size: min(100%, 56rem);
+    margin: 0;
+    color: var(--color-ink-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .contact-cta__context span {
+    color: var(--color-brand-red-dark);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-cta > .contact-cta__frame > :global(.action) {
+    inline-size: min(100%, 22rem);
+  }
+
+  .contact-cta__supporting {
+    inline-size: min(100%, 42rem);
+  }
+
+  .contact-cta__supporting ul {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .contact-cta__supporting li {
+    display: grid;
+  }
+
+  .contact-cta__supporting li:only-child {
+    grid-column: 1 / -1;
+    inline-size: min(100%, 22rem);
+    justify-self: center;
+  }
+
+  .contact-cta__supporting :global(.action) {
+    inline-size: 100%;
+    justify-content: center;
+  }
+
+  .contact-cta__supporting :global(.action--secondary) {
+    --action-foreground: var(--color-brand-red-dark);
+
+    border-color: var(--color-brand-red-dark);
+    background: transparent;
+  }
+
+  .contact-cta__supporting
+    :global(
+      .action--secondary:hover:not(:disabled):not([aria-disabled="true"])
+    ) {
+    --action-foreground: var(--color-brand-red);
+
+    background: transparent;
+  }
+
+  @container (min-width: 42rem) {
+    .contact-cta__supporting ul {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-content: center;
+    }
+  }
+</style>

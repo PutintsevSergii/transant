@@ -1,0 +1,327 @@
+---
+import Action from "../../core/Action/Action.astro";
+import { validateContactFormProps } from "./contact-form-contract";
+import type { ContactFormProps } from "./ContactForm.types";
+
+const props = Astro.props as ContactFormProps;
+validateContactFormProps(props);
+const labels = props.labels ?? {
+  spamField: "Website",
+  privacyPrefix: "Your details are handled according to our",
+};
+---
+
+<section class="contact-form" data-contact-form>
+  <form
+    class="contact-form__form"
+    action={props.endpoint}
+    method="post"
+    data-contact-form-form
+  >
+    {
+      props.context !== undefined && (
+        <p class="contact-form__context" data-contact-form-context>
+          <span>{props.context.label}</span>
+          <strong>{props.context.value}</strong>
+          <input name="context" type="hidden" value={props.context.value} />
+        </p>
+      )
+    }
+
+    <div class="contact-form__fields">
+      <label class="contact-form__field">
+        <span>{props.fields.name.label} <em aria-hidden="true">*</em></span>
+        <input
+          name="name"
+          type="text"
+          autocomplete="name"
+          required={props.fields.name.required ?? true}
+          placeholder={props.fields.name.placeholder}
+        />
+        {props.fields.name.help && <small>{props.fields.name.help}</small>}
+        <small
+          class="contact-form__error"
+          data-contact-form-error="name"
+          role="alert"
+          hidden></small>
+      </label>
+
+      <label class="contact-form__field">
+        <span>{props.fields.email.label} <em aria-hidden="true">*</em></span>
+        <input
+          name="email"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          required={props.fields.email.required ?? true}
+          placeholder={props.fields.email.placeholder}
+        />
+        {props.fields.email.help && <small>{props.fields.email.help}</small>}
+        <small
+          class="contact-form__error"
+          data-contact-form-error="email"
+          role="alert"
+          hidden></small>
+      </label>
+
+      <label class="contact-form__field">
+        <span>{props.fields.company.label}</span>
+        <input
+          name="company"
+          type="text"
+          autocomplete="organization"
+          required={props.fields.company.required ?? false}
+          placeholder={props.fields.company.placeholder}
+        />
+        {
+          props.fields.company.help && (
+            <small>{props.fields.company.help}</small>
+          )
+        }
+        <small
+          class="contact-form__error"
+          data-contact-form-error="company"
+          role="alert"
+          hidden></small>
+      </label>
+
+      <label class="contact-form__field contact-form__field--message">
+        <span>{props.fields.message.label} <em aria-hidden="true">*</em></span>
+        <textarea
+          name="message"
+          rows="6"
+          required={props.fields.message.required ?? true}
+          placeholder={props.fields.message.placeholder}></textarea>
+        {
+          props.fields.message.help && (
+            <small>{props.fields.message.help}</small>
+          )
+        }
+        <small
+          class="contact-form__error"
+          data-contact-form-error="message"
+          role="alert"
+          hidden></small>
+      </label>
+    </div>
+
+    <label class="contact-form__consent">
+      <input name="consent" type="checkbox" value="yes" required />
+      <span>{props.fields.consent.label} <em aria-hidden="true">*</em></span>
+    </label>
+    <small
+      class="contact-form__error"
+      data-contact-form-error="consent"
+      role="alert"
+      hidden></small>
+
+    <div class="contact-form__spam" aria-hidden="true" data-contact-form-spam>
+      <label
+        >{labels.spamField}
+        <input name="website" tabindex="-1" autocomplete="off" /></label
+      >
+    </div>
+
+    <p class="contact-form__privacy">
+      {labels.privacyPrefix}
+      <a href={props.privacyNotice.href}>{props.privacyNotice.label}</a>.
+    </p>
+    <div class="contact-form__submit">
+      <Action
+        kind="button"
+        type="submit"
+        label={props.submitLabel}
+        variant="primary"
+        size="regular"
+        icon="arrow-right"
+      />
+    </div>
+    <p
+      class="contact-form__status"
+      role="status"
+      aria-live="polite"
+      tabindex="-1"
+      data-contact-form-status
+      hidden
+    >
+    </p>
+  </form>
+</section>
+
+<script>
+  import { initializeContactForms } from "./contact-form-controller";
+
+  initializeContactForms();
+</script>
+
+<style>
+  .contact-form {
+    container-type: inline-size;
+    color: var(--color-brand-blue-dark);
+  }
+
+  .contact-form__form,
+  .contact-form__fields,
+  .contact-form__field,
+  .contact-form__consent,
+  .contact-form__context,
+  .contact-form__submit {
+    display: grid;
+    gap: var(--space-3);
+    min-inline-size: 0;
+  }
+
+  .contact-form__form {
+    max-inline-size: 48rem;
+    padding: clamp(var(--space-5), 6cqi, var(--space-7));
+    border: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper);
+  }
+
+  .contact-form__fields {
+    align-items: start;
+    gap: var(--space-5);
+  }
+
+  .contact-form__field > span,
+  .contact-form__consent > span,
+  .contact-form__context span {
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  em {
+    color: var(--color-brand-red-dark);
+    font-style: normal;
+  }
+
+  input:not([type="checkbox"]),
+  textarea {
+    box-sizing: border-box;
+    inline-size: 100%;
+    min-block-size: 2.75rem;
+    padding: var(--space-3);
+    border: var(--border-thin) solid var(--color-brand-blue-dark);
+    border-radius: var(--radius-small);
+    color: var(--color-brand-blue-dark);
+    background: var(--color-paper);
+    font: inherit;
+    line-height: var(--line-height-body);
+  }
+
+  textarea {
+    min-block-size: 10rem;
+    resize: vertical;
+  }
+
+  input[type="checkbox"] {
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    margin: 0.15rem 0 0;
+    accent-color: var(--color-brand-red-dark);
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  a:focus-visible,
+  .contact-form__status:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  input[aria-invalid="true"],
+  textarea[aria-invalid="true"] {
+    border-color: var(--color-brand-red-dark);
+  }
+
+  .contact-form__field small,
+  .contact-form__privacy,
+  .contact-form__status,
+  .contact-form__error,
+  .contact-form__context strong {
+    margin: 0;
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .contact-form__field small,
+  .contact-form__privacy {
+    color: var(--color-ink-secondary);
+  }
+
+  .contact-form__consent {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .contact-form__context {
+    padding: var(--space-4);
+    border-inline-start: 0.25rem solid var(--color-brand-red-dark);
+    background: var(--color-paper-warm);
+  }
+
+  .contact-form__context span {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-form__error,
+  .contact-form__status[data-state="error"] {
+    color: var(--color-brand-red-dark);
+    font-weight: 700;
+  }
+
+  .contact-form__status[data-state="success"] {
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+  }
+
+  .contact-form__status[data-state="pending"] {
+    color: var(--color-ink-secondary);
+  }
+
+  .contact-form__spam {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .contact-form[aria-busy="true"] {
+    cursor: progress;
+  }
+
+  @container (min-width: 40rem) {
+    .contact-form__fields {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-form__field--message {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (forced-colors: active) {
+    input:not([type="checkbox"]),
+    textarea {
+      border-color: ButtonText;
+      color: ButtonText;
+      background: Field;
+    }
+
+    input:focus-visible,
+    textarea:focus-visible,
+    a:focus-visible,
+    .contact-form__status:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 3px;
+      box-shadow: none;
+    }
+  }
+</style>

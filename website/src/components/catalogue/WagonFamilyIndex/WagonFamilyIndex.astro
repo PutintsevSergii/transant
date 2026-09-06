@@ -1,0 +1,267 @@
+---
+import Action from "../../core/Action/Action.astro";
+import ResponsiveMedia from "../../core/ResponsiveMedia/ResponsiveMedia.astro";
+import SectionIntro from "../../core/SectionIntro/SectionIntro.astro";
+import { validateWagonFamilyIndexProps } from "./wagon-family-index-contract";
+import type { WagonFamilyIndexProps } from "./WagonFamilyIndex.types";
+
+const props = Astro.props as WagonFamilyIndexProps;
+validateWagonFamilyIndexProps(props);
+const rootClass = `wagon-family-index${props.intro ? " wagon-family-index--with-intro" : " wagon-family-index--without-intro"}`;
+---
+
+<section class={rootClass} data-wagon-family-index>
+  <div class="wagon-family-index__frame page-frame">
+    {
+      props.intro && (
+        <header
+          class="wagon-family-index__heading"
+          data-wagon-family-index-heading
+        >
+          <SectionIntro {...props.intro} />
+        </header>
+      )
+    }
+    <ol class="wagon-family-index__list" data-wagon-family-index-list>
+      {
+        props.families.map((family) => (
+          <li class="wagon-family-index__item" data-wagon-family-index-item>
+            <article
+              class="wagon-family-index__family"
+              data-family-id={family.id}
+            >
+              <div
+                class="wagon-family-index__copy"
+                data-wagon-family-index-copy
+              >
+                <p class="wagon-family-index__sequence">{family.sequence}</p>
+                <p class="wagon-family-index__eyebrow">{family.eyebrow}</p>
+                <h3 class="wagon-family-index__title">{family.title}</h3>
+                <p class="wagon-family-index__summary">{family.summary}</p>
+              </div>
+              <div
+                class="wagon-family-index__media"
+                data-wagon-family-index-media
+              >
+                <ResponsiveMedia {...family.media} />
+              </div>
+              <footer class="wagon-family-index__footer">
+                <Action
+                  kind="link"
+                  variant="text"
+                  size="regular"
+                  icon="arrow-right"
+                  href={family.href}
+                  label={family.linkLabel}
+                />
+              </footer>
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .wagon-family-index {
+    container-type: inline-size;
+    overflow: clip;
+    background: var(--color-paper);
+  }
+
+  .wagon-family-index__frame,
+  .wagon-family-index__heading,
+  .wagon-family-index__list,
+  .wagon-family-index__item,
+  .wagon-family-index__family,
+  .wagon-family-index__copy,
+  .wagon-family-index__media,
+  .wagon-family-index__footer {
+    min-inline-size: 0;
+  }
+
+  .wagon-family-index__frame {
+    display: grid;
+    gap: clamp(var(--space-5), 4vw, var(--space-7));
+    padding-block: clamp(var(--space-6), 7vw, var(--space-8));
+  }
+
+  .wagon-family-index--without-intro .wagon-family-index__frame {
+    padding-block: clamp(var(--space-5), 3vw, var(--space-7));
+  }
+
+  .wagon-family-index__list {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    border-block: var(--border-thin) solid var(--color-divider);
+    list-style: none;
+  }
+
+  .wagon-family-index__item {
+    padding-block: clamp(var(--space-5), 4vw, var(--space-7));
+    border-block-end: var(--border-thin) solid var(--color-divider);
+  }
+
+  .wagon-family-index__item:last-child {
+    border-block-end: 0;
+  }
+
+  .wagon-family-index__family {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-areas:
+      "copy"
+      "media"
+      "footer";
+  }
+
+  .wagon-family-index__copy {
+    display: grid;
+    grid-area: copy;
+    align-content: start;
+    gap: var(--space-3);
+  }
+
+  .wagon-family-index__sequence,
+  .wagon-family-index__eyebrow,
+  .wagon-family-index__title,
+  .wagon-family-index__summary {
+    margin: 0;
+  }
+
+  .wagon-family-index__sequence,
+  .wagon-family-index__eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .wagon-family-index__sequence {
+    color: var(--color-brand-red-dark);
+    font-weight: 700;
+  }
+
+  .wagon-family-index__eyebrow {
+    color: var(--color-ink-secondary);
+  }
+
+  .wagon-family-index__title {
+    color: var(--color-brand-blue-dark);
+    font-size: clamp(2rem, 5.5cqi, 3.875rem);
+    letter-spacing: -0.045em;
+    line-height: var(--line-height-heading);
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .wagon-family-index__summary {
+    max-inline-size: 56ch;
+    color: var(--color-ink-secondary);
+    font-size: clamp(1rem, 0.98rem + 0.2vw, 1.125rem);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .wagon-family-index__media {
+    display: grid;
+    grid-area: media;
+    align-items: center;
+    min-block-size: 0;
+    padding: var(--space-4);
+    border: var(--border-thin) solid var(--color-divider);
+    background: var(--color-paper-warm);
+  }
+
+  .wagon-family-index__media :global(.responsive-media) {
+    inline-size: 100%;
+  }
+
+  .wagon-family-index__media :global(.responsive-media img) {
+    max-block-size: 12rem;
+  }
+
+  .wagon-family-index__footer {
+    display: grid;
+    grid-area: footer;
+    gap: var(--space-3);
+    align-items: start;
+  }
+
+  .wagon-family-index__footer :global(.action) {
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  @container (min-width: 56rem) {
+    .wagon-family-index__list {
+      grid-auto-rows: 1fr;
+    }
+
+    .wagon-family-index__item {
+      display: grid;
+      padding-block: 0;
+    }
+
+    .wagon-family-index__family {
+      block-size: 100%;
+      column-gap: clamp(var(--space-7), 6cqi, var(--space-9));
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      grid-template-areas:
+        "copy media"
+        "footer media";
+    }
+
+    .wagon-family-index__item:nth-child(even) .wagon-family-index__family {
+      grid-template-areas:
+        "media copy"
+        "media footer";
+    }
+
+    .wagon-family-index__media {
+      align-self: stretch;
+      min-block-size: 16rem;
+      border-block: 0;
+    }
+
+    .wagon-family-index__copy {
+      padding-block-start: clamp(var(--space-5), 3cqi, var(--space-6));
+    }
+
+    .wagon-family-index__footer {
+      padding-block-end: clamp(var(--space-5), 3cqi, var(--space-6));
+    }
+
+    .wagon-family-index__media :global(.responsive-media img) {
+      max-block-size: 15rem;
+    }
+
+    .wagon-family-index__item:nth-child(odd) .wagon-family-index__media {
+      padding-inline-start: clamp(var(--space-8), 7cqi, 5rem);
+    }
+
+    .wagon-family-index__item:nth-child(even) .wagon-family-index__media {
+      padding-inline-end: clamp(var(--space-8), 7cqi, 5rem);
+    }
+
+    .wagon-family-index__item:nth-child(odd) .wagon-family-index__copy,
+    .wagon-family-index__item:nth-child(odd) .wagon-family-index__footer {
+      padding-inline-end: clamp(var(--space-7), 5cqi, 4rem);
+    }
+
+    .wagon-family-index__item:nth-child(even) .wagon-family-index__copy,
+    .wagon-family-index__item:nth-child(even) .wagon-family-index__footer {
+      padding-inline-start: clamp(var(--space-7), 5cqi, 4rem);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .wagon-family-index__item,
+    .wagon-family-index__media {
+      border-color: CanvasText;
+    }
+  }
+</style>

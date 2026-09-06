@@ -1,0 +1,152 @@
+---
+import {
+  breadcrumbsJsonLdScript,
+  validateBreadcrumbsProps,
+} from "./breadcrumbs-contract";
+import type { BreadcrumbsProps } from "./Breadcrumbs.types";
+
+const props = Astro.props as BreadcrumbsProps;
+validateBreadcrumbsProps(props);
+
+const currentIndex = props.items.length - 1;
+const navigationLabel = props.label?.trim() || "Breadcrumb";
+const structuredData = breadcrumbsJsonLdScript(props);
+---
+
+<nav
+  class="breadcrumbs page-frame"
+  aria-label={navigationLabel}
+  data-breadcrumbs
+>
+  <ol class="breadcrumbs__list" data-breadcrumbs-list>
+    {
+      props.items.map((item, index) => {
+        const isCurrent = index === currentIndex;
+        const visualLabel = item.compactLabel ?? item.label;
+
+        return (
+          <li class="breadcrumbs__item" data-breadcrumbs-item>
+            {isCurrent ? (
+              <span
+                class="breadcrumbs__current"
+                aria-current="page"
+                data-breadcrumbs-current
+              >
+                {item.compactLabel ? (
+                  <>
+                    <span aria-hidden="true">{visualLabel}</span>
+                    <span class="visually-hidden">{item.label}</span>
+                  </>
+                ) : (
+                  item.label
+                )}
+              </span>
+            ) : (
+              <a class="breadcrumbs__link" href={item.href}>
+                {item.compactLabel ? (
+                  <>
+                    <span aria-hidden="true">{visualLabel}</span>
+                    <span class="visually-hidden">{item.label}</span>
+                  </>
+                ) : (
+                  item.label
+                )}
+              </a>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
+
+<script
+  is:inline
+  type="application/ld+json"
+  data-breadcrumbs-jsonld
+  set:html={structuredData}
+/>
+
+<style>
+  .breadcrumbs {
+    container-type: inline-size;
+    min-inline-size: 0;
+    color: var(--color-ink-secondary);
+  }
+
+  .breadcrumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-2);
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .breadcrumbs__item {
+    display: flex;
+    min-inline-size: 0;
+    align-items: center;
+    color: inherit;
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .breadcrumbs__item + .breadcrumbs__item::before {
+    display: inline-block;
+    flex: 0 0 auto;
+    inline-size: 0.6rem;
+    margin-inline-end: var(--space-2);
+    color: var(--color-steel-dark);
+    content: "/";
+    text-align: center;
+  }
+
+  .breadcrumbs__link,
+  .breadcrumbs__current {
+    display: inline-flex;
+    min-block-size: 2.75rem;
+    align-items: center;
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .breadcrumbs__link {
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+
+  .breadcrumbs__link:hover {
+    color: var(--color-brand-red-dark);
+  }
+
+  .breadcrumbs__link:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .breadcrumbs__current {
+    color: var(--color-ink);
+    font-weight: 700;
+  }
+
+  @media (forced-colors: active) {
+    .breadcrumbs__link {
+      color: LinkText;
+    }
+
+    .breadcrumbs__current {
+      color: CanvasText;
+    }
+
+    .breadcrumbs__link:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 3px;
+      box-shadow: none;
+    }
+  }
+</style>

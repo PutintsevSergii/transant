@@ -1,0 +1,325 @@
+---
+import {
+  catalogueFamilySlugs,
+  catalogueFamilyViewModel,
+  catalogueIndexViewModel,
+} from "../../adapters/content/catalogue-view-model";
+import {
+  editorialPageSlugs,
+  editorialPageViewModel,
+  type EditorialPageSlug,
+} from "../../adapters/content/editorial-page-view-model";
+import { localizeViewModel } from "../../adapters/content/localized-view-model";
+import {
+  contactPageViewModel,
+  legalPageViewModel,
+  legalPageSlugs,
+  notFoundPageViewModel,
+} from "../../adapters/content/legal-page-view-model";
+import {
+  productPageViewModel,
+  productRouteParams,
+} from "../../adapters/content/product-view-model";
+import Action from "../../components/core/Action/Action.astro";
+import Breadcrumbs from "../../components/catalogue/Breadcrumbs/Breadcrumbs.astro";
+import WagonFamilyIndex from "../../components/catalogue/WagonFamilyIndex/WagonFamilyIndex.astro";
+import WagonModelList from "../../components/catalogue/WagonModelList/WagonModelList.astro";
+import EvidenceList from "../../components/editorial/EvidenceList/EvidenceList.astro";
+import MediaStory from "../../components/editorial/MediaStory/MediaStory.astro";
+import PageHero from "../../components/editorial/PageHero/PageHero.astro";
+import PageMeta from "../../components/editorial/PageMeta/PageMeta.astro";
+import ContactForm from "../../components/form/ContactForm/ContactForm.astro";
+import ContactCTA from "../../components/home/ContactCTA/ContactCTA.astro";
+import OperationalCaseStudy from "../../components/home/OperationalCaseStudy/OperationalCaseStudy.astro";
+import LegalDocument from "../../components/legal/LegalDocument/LegalDocument.astro";
+import ProductPage from "../../layouts/ProductPage.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TechnologyPage from "../../layouts/TechnologyPage.astro";
+
+export function getStaticPaths() {
+  const germanPaths = [
+    "404",
+    "contact",
+    ...legalPageSlugs,
+    ...editorialPageSlugs,
+    "wagons",
+    ...catalogueFamilySlugs.map((family) => `wagons/${family}`),
+    ...productRouteParams.map(
+      ({ family, product }) => `wagons/${family}/${product}`,
+    ),
+  ];
+
+  return germanPaths.map((page) => ({ params: { page } }));
+}
+
+const page = Astro.params.page;
+if (!page) throw new Error("German routes require a page parameter.");
+
+const isEditorial = (editorialPageSlugs as readonly string[]).includes(page);
+const isLegal = (legalPageSlugs as readonly string[]).includes(page);
+const pageParts = page.split("/");
+const isProduct =
+  pageParts.length === 3 &&
+  pageParts[0] === "wagons" &&
+  productRouteParams.some(
+    ({ family, product }) =>
+      family === pageParts[1] && product === pageParts[2],
+  );
+const isFamily =
+  pageParts.length === 2 &&
+  pageParts[0] === "wagons" &&
+  catalogueFamilySlugs.includes(
+    pageParts[1] as (typeof catalogueFamilySlugs)[number],
+  );
+
+const contact =
+  page === "contact"
+    ? localizeViewModel(contactPageViewModel, "de")
+    : undefined;
+const legal = isLegal
+  ? localizeViewModel(legalPageViewModel(page), "de")
+  : undefined;
+const notFound =
+  page === "404" ? localizeViewModel(notFoundPageViewModel, "de") : undefined;
+const editorial = isEditorial
+  ? localizeViewModel(editorialPageViewModel(page as EditorialPageSlug), "de")
+  : undefined;
+const catalogueIndex =
+  page === "wagons"
+    ? localizeViewModel(catalogueIndexViewModel, "de")
+    : undefined;
+const catalogueFamily = isFamily
+  ? localizeViewModel(catalogueFamilyViewModel(pageParts[1]!), "de")
+  : undefined;
+const product = isProduct
+  ? localizeViewModel(productPageViewModel(pageParts[1]!, pageParts[2]!), "de")
+  : undefined;
+---
+
+{
+  contact && (
+    <BaseLayout {...contact.layout}>
+      <PageHero {...contact.hero} />
+      <section class="contact-page" data-contact-page>
+        <div class="contact-page__frame page-frame">
+          <div class="contact-page__details">
+            <p class="contact-page__eyebrow">Direkter Kontakt</p>
+            <h2>Kontaktdaten</h2>
+            <address>
+              {contact.addressLines.map((line) => (
+                <span>{line}</span>
+              ))}
+            </address>
+            <a href={`tel:${contact.phone.replace(/[\s().-]/gu, "")}`}>
+              {contact.phone}
+            </a>
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </div>
+          <ContactForm {...contact.form} />
+        </div>
+      </section>
+    </BaseLayout>
+  )
+}
+
+{
+  legal && (
+    <BaseLayout {...legal.layout}>
+      <PageHero {...legal.hero} />
+      <LegalDocument {...legal.document} />
+    </BaseLayout>
+  )
+}
+
+{
+  notFound && (
+    <BaseLayout {...notFound.layout}>
+      <section class="not-found" data-not-found-page>
+        <div class="not-found__frame page-frame">
+          <p class="not-found__eyebrow">404</p>
+          <h1>{notFound.title}</h1>
+          <p>{notFound.description}</p>
+          <nav aria-label="Wiederherstellungsseiten" class="not-found__actions">
+            {notFound.recoveryLinks.map((link, index) => (
+              <Action
+                kind="link"
+                href={link.href}
+                label={link.label}
+                variant={index === 0 ? "primary" : "secondary"}
+                size="regular"
+                icon="arrow-right"
+              />
+            ))}
+          </nav>
+        </div>
+      </section>
+    </BaseLayout>
+  )
+}
+
+{
+  editorial && (
+    <BaseLayout {...editorial.layout}>
+      {page === "technology" ? (
+        <TechnologyPage
+          hero={editorial.hero}
+          stories={editorial.stories}
+          contactCta={editorial.contactCta}
+        />
+      ) : (
+        <>
+          {editorial.pageMeta !== undefined && (
+            <PageMeta {...editorial.pageMeta} />
+          )}
+          <PageHero {...editorial.hero} />
+          {editorial.stories.map((story) => (
+            <MediaStory {...story} />
+          ))}
+          {editorial.caseStudy !== undefined && (
+            <OperationalCaseStudy {...editorial.caseStudy} />
+          )}
+          {editorial.evidence !== undefined && (
+            <EvidenceList {...editorial.evidence} />
+          )}
+          <ContactCTA {...editorial.contactCta} />
+        </>
+      )}
+    </BaseLayout>
+  )
+}
+
+{
+  catalogueIndex && (
+    <BaseLayout {...catalogueIndex.layout}>
+      <PageMeta {...catalogueIndex.pageMeta} />
+      <PageHero {...catalogueIndex.hero}>
+        <Breadcrumbs slot="breadcrumbs" {...catalogueIndex.breadcrumbs} />
+      </PageHero>
+      <WagonFamilyIndex {...catalogueIndex.familyIndex} />
+    </BaseLayout>
+  )
+}
+
+{
+  catalogueFamily && (
+    <BaseLayout {...catalogueFamily.layout}>
+      <PageHero {...catalogueFamily.hero}>
+        <Breadcrumbs slot="breadcrumbs" {...catalogueFamily.breadcrumbs} />
+      </PageHero>
+      <WagonModelList {...catalogueFamily.modelList} />
+    </BaseLayout>
+  )
+}
+
+{product && <ProductPage {...product} />}
+
+<style>
+  .contact-page {
+    background: var(--color-paper-warm);
+  }
+
+  .contact-page__frame {
+    display: grid;
+    gap: clamp(var(--space-7), 9vw, var(--space-10));
+    align-items: start;
+    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+  }
+
+  .contact-page__details {
+    display: grid;
+    gap: var(--space-4);
+    color: var(--color-brand-blue-dark);
+  }
+
+  .contact-page__eyebrow,
+  .contact-page__details h2,
+  .contact-page__details address,
+  .contact-page__details a {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-page__eyebrow,
+  .not-found__eyebrow {
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-page__details h2 {
+    font-size: var(--font-size-heading-2);
+    line-height: var(--line-height-heading);
+  }
+
+  .contact-page__details address {
+    display: grid;
+    gap: var(--space-1);
+    color: var(--color-ink-secondary);
+    font-style: normal;
+    line-height: var(--line-height-body);
+  }
+
+  .contact-page__details a {
+    color: inherit;
+    font-weight: 700;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+
+  .not-found {
+    display: grid;
+    min-block-size: min(42rem, 70vh);
+    place-items: center;
+    background: var(--color-brand-blue-dark);
+  }
+
+  .not-found__frame {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-5);
+    padding-block: clamp(var(--space-8), 12vw, 10rem);
+  }
+
+  .not-found__frame h1,
+  .not-found__frame > p {
+    max-inline-size: 46rem;
+    margin: 0;
+    color: var(--color-paper);
+    overflow-wrap: anywhere;
+  }
+
+  .not-found__frame > p:not(.not-found__eyebrow) {
+    font-size: 1.25rem;
+    line-height: var(--line-height-body);
+  }
+
+  .not-found__actions {
+    display: grid;
+    inline-size: 100%;
+    gap: var(--space-3);
+  }
+
+  .not-found__actions :global(.action) {
+    inline-size: 100%;
+  }
+
+  @media (min-width: 34rem) {
+    .not-found__actions {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .not-found__actions :global(.action) {
+      inline-size: auto;
+    }
+  }
+
+  @media (min-width: 62rem) {
+    .contact-page__frame {
+      grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
+    }
+  }
+</style>
