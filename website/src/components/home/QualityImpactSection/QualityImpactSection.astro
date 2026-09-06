@@ -41,7 +41,7 @@ const statementLabel = (statementType: string): string =>
       class="quality-impact-section__topics"
       data-quality-impact-topics
       data-topic-count={approvedTopics.length}
-      style={`--quality-impact-columns: ${topicColumns}`}
+      data-topic-columns={topicColumns}
     >
       {
         approvedTopics.map((topic) => (
@@ -240,11 +240,15 @@ const statementLabel = (statementType: string): string =>
       inset-block-start: calc(4.5rem + var(--space-5));
     }
 
+    .quality-impact-section__topics[data-topic-columns="1"] {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .quality-impact-section__topics[data-topic-columns="2"] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .quality-impact-section__topics {
-      grid-template-columns: repeat(
-        var(--quality-impact-columns),
-        minmax(0, 1fr)
-      );
       align-items: stretch;
     }
 

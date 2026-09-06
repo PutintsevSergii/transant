@@ -23,6 +23,13 @@ test("@component ModularPlatformSection composes caller-owned introductions, sta
     /alternate sequence retains the same semantic rail/i,
   );
   await expect(primary.locator("[data-rail-sequence-item]")).toHaveCount(4);
+  await expect(primary.locator("[data-rail-sequence]")).toHaveAttribute(
+    "data-rail-sequence-columns",
+    "4",
+  );
+  await expect(primary.locator("[data-rail-sequence]")).not.toHaveAttribute(
+    "style",
+  );
   await expect(alternate.locator("[data-rail-sequence-item]")).toHaveCount(3);
   await expect(primary.getByRole("list")).toHaveAttribute(
     "aria-label",

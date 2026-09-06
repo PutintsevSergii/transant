@@ -51,7 +51,6 @@ const rootClass = `rail-sequence rail-sequence--${theme} rail-sequence--columns-
 
 <div
   class={rootClass}
-  style={`--rail-sequence-columns: ${columns}`}
   data-rail-sequence
   data-rail-sequence-columns={columns}
   data-rail-sequence-theme={theme}
@@ -207,11 +206,23 @@ const rootClass = `rail-sequence rail-sequence--${theme} rail-sequence--columns-
   }
 
   @container (min-width: 48rem) {
+    .rail-sequence--columns-1 .rail-sequence__list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .rail-sequence--columns-2 .rail-sequence__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .rail-sequence--columns-3 .rail-sequence__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .rail-sequence--columns-4 .rail-sequence__list {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
     .rail-sequence__list {
-      grid-template-columns: repeat(
-        var(--rail-sequence-columns),
-        minmax(0, 1fr)
-      );
       column-gap: var(--space-5);
       row-gap: var(--space-7);
     }

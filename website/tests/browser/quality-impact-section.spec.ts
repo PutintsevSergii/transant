@@ -18,6 +18,13 @@ test("@component QualityImpactSection renders one, two, and three approved sourc
   const triple = sections.nth(2);
   await expect(sections).toHaveCount(3);
   await expect(primary.locator("[data-quality-impact-topic]")).toHaveCount(2);
+  await expect(primary.locator("[data-quality-impact-topics]")).toHaveAttribute(
+    "data-topic-columns",
+    "2",
+  );
+  await expect(
+    primary.locator("[data-quality-impact-topics]"),
+  ).not.toHaveAttribute("style");
   await expect(single.locator("[data-quality-impact-topic]")).toHaveCount(1);
   await expect(triple.locator("[data-quality-impact-topic]")).toHaveCount(3);
   await expect(

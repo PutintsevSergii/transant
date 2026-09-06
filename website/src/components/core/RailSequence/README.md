@@ -22,7 +22,7 @@ Each `RailSequenceItem` has `number`, `title`, `description`, and optional `href
 
 ## Responsive, accessibility, and motion contract
 
-The default composition is a vertical numbered rail, including at 320 and 390 px. Long descriptions expand vertically and the connector grows with the stage, so the next marker does not overlap content. At a 48-rem component container, the caller-selected one-to-four-column composition is enabled; horizontal connectors only join stages in their own row. The component has no fixed-height slots, deliberate overflow regions, client-side interactions, or motion.
+The default composition is a vertical numbered rail, including at 320 and 390 px. Long descriptions expand vertically and the connector grows with the stage, so the next marker does not overlap content. At a 48-rem component container, the caller-selected one-to-four-column composition is enabled; horizontal connectors only join stages in their own row. The column choice is emitted through a structural class and data attribute, never an inline style, so it remains compatible with the release CSP. The component has no fixed-height slots, deliberate overflow regions, client-side interactions, or motion.
 
 Light and dark themes use existing semantic tokens, include forced-colors system-colour fallbacks, and preserve a keyboard-visible focus treatment for optional links. Link titles wrap rather than force horizontal scroll. The fixture is reviewed at 320, 390, 768, 1024, and 1440 CSS-pixel widths, plus phone landscape.
 
