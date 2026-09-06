@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { translateLocalizedContent } from "../../src/adapters/content/localized-view-model";
 import {
+  createSiteLayout,
   createLocaleOptions,
   siteLocales,
 } from "../../src/adapters/content/site-shell-view-model";
@@ -84,17 +85,40 @@ describe("createLocaleOptions", () => {
   });
 
   it("uses authored freight-wagon terminology and preserves technical values", () => {
-    expect(translateLocalizedContent("Freight wagon technology", "uk")).toBe(
-      "Технології вантажних вагонів",
+    expect(
+      translateLocalizedContent("Freight wagon technical data", "uk"),
+    ).toBe("Технічні дані вантажних вагонів");
+    expect(translateLocalizedContent("Technical data", "pl")).toBe(
+      "Dane techniczne",
     );
-    expect(translateLocalizedContent("Engineering & approval", "pl")).toBe(
-      "Projektowanie i dopuszczenie",
-    );
-    expect(translateLocalizedContent("High-strength steel", "cs")).toBe(
-      "Vysokopevnostní ocel",
+    expect(translateLocalizedContent("Loading configuration", "cs")).toBe(
+      "Konfigurace nakládky",
     );
     expect(translateLocalizedContent("EN 15085-2:2020+A1:2023", "cs")).toBe(
       "EN 15085-2:2020+A1:2023",
     );
+  });
+
+  it("omits the retired Sustainability route from every localized shell", () => {
+    for (const locale of siteLocales.map(({ code }) => code)) {
+      const layout = createSiteLayout(
+        "Title",
+        "Description",
+        "/company/",
+        locale,
+      );
+      expect(layout.header.navigation).not.toContainEqual(
+        expect.objectContaining({
+          href: expect.stringContaining("sustainability"),
+        }),
+      );
+      expect(
+        layout.footer.groups.flatMap(({ links }) => links),
+      ).not.toContainEqual(
+        expect.objectContaining({
+          href: expect.stringContaining("sustainability"),
+        }),
+      );
+    }
   });
 });

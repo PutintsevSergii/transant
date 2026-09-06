@@ -19,8 +19,7 @@ import {
 
 const contentRoot = join(process.cwd(), "src", "content");
 const source = {
-  reference:
-    "prep/source-material/prototypes/transant-product-website-prototype.html",
+  reference: "Catalog for print.ai",
 };
 
 async function readJson(path: string): Promise<unknown> {
@@ -155,8 +154,7 @@ describe("F-002 production view models", () => {
       { routeClass: "D", payload: "69" },
     ]);
     expect(product.technicalSource).toEqual({
-      reference:
-        "Catalog for print.pdf, PDF page 11 (printed page 09); checked against Catalog for print.ai",
+      reference: "Catalog for print.ai, PDF page 11 (printed page 09)",
       checkedAt: "2026-09-05",
     });
     expect(viewModel.imagePath).toBe(

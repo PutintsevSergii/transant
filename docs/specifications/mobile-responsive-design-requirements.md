@@ -2,15 +2,15 @@
 
 ## Document control
 
-| Field | Value |
-| --- | --- |
-| Status | Ready for implementation |
-| Version | 1.0 |
-| Date | 2026-09-04 |
-| Applies to | All release-one components and routes |
+| Field                   | Value                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| Status                  | Ready for implementation                                                                |
+| Version                 | 1.0                                                                                     |
+| Date                    | 2026-09-04                                                                              |
+| Applies to              | All release-one components and routes                                                   |
 | Desktop visual baseline | `prep/design/stitch-generations/v7/stitch_transant_b2b_website_redesign (6)/screen.png` |
-| Component plan | [`v7-component-development-plan.md`](v7-component-development-plan.md) |
-| Technical requirements | [`technical-requirements.md`](technical-requirements.md) |
+| Component plan          | [`v7-component-development-plan.md`](v7-component-development-plan.md)                  |
+| Technical requirements  | [`technical-requirements.md`](technical-requirements.md)                                |
 
 ## 1. Outcome
 
@@ -36,13 +36,13 @@ Mobile completion means a visitor can understand the company, browse every famil
 
 ### 3.1 Layout modes
 
-| Mode | Typical available width | Intended behavior |
-| --- | ---: | --- |
-| Compact | 320–479 px | One primary column, 16 px minimum page gutter, stacked actions and data groups |
-| Wide mobile | 480–767 px | One editorial column with selective two-column facts or controls when content fits |
-| Tablet | 768–1023 px | Four- or eight-column composition; avoid prematurely reproducing dense desktop arrangements |
-| Compact desktop | 1024–1279 px | Full navigation and multi-column compositions with reduced gaps |
-| Reference desktop | 1280 px and above | Twelve-column V7 composition, capped at the documented content width |
+| Mode              | Typical available width | Intended behavior                                                                           |
+| ----------------- | ----------------------: | ------------------------------------------------------------------------------------------- |
+| Compact           |              320–479 px | One primary column, 16 px minimum page gutter, stacked actions and data groups              |
+| Wide mobile       |              480–767 px | One editorial column with selective two-column facts or controls when content fits          |
+| Tablet            |             768–1023 px | Four- or eight-column composition; avoid prematurely reproducing dense desktop arrangements |
+| Compact desktop   |            1024–1279 px | Full navigation and multi-column compositions with reduced gaps                             |
+| Reference desktop |       1280 px and above | Twelve-column V7 composition, capped at the documented content width                        |
 
 Component mode changes may occur at different widths based on their own container. Do not copy a single global breakpoint into every component.
 
@@ -296,22 +296,22 @@ Do not mark a component `VERIFIED` if its desktop snapshot passes but its compac
 
 No additional mobile-only component tree or parallel workstream is required. Mobile acceptance is embedded into the existing packages:
 
-| Packages | Required mobile responsibility |
-| --- | --- |
-| F-001 | Establish component-lab viewports, phone emulation, screenshot projects, overflow checks, and documented responsive commands |
-| F-002 | Provide long-copy, optional-content, wide-value, and widest-table fixtures from validated data |
-| C-001–C-005 | Establish logo containment, action targets, fluid headings, responsive media, and vertical process behavior |
-| C-006–C-007 | Implement and test mobile navigation, focus lifecycle, safe reading order, and compact footer |
-| H-001–H-009 | Implement the section-specific compact compositions in section 6 |
-| P-001–P-009 | Implement catalogue, product, specification, table, download, and related-product behavior in section 7 |
-| E-001–E-003 and F-003 | Implement editorial, evidence, legal-supporting, and form behavior in section 8 |
-| A-001–A-006 | Verify complete-page rhythm, source order, anchor offsets, route consistency, and removal of section-to-section assumptions |
-| I-001 | Crawl every generated route and verify navigation remains complete at compact width |
-| I-002 | Own cross-page visual review at all canonical widths plus landscape and zoom evidence |
-| I-003 | Own touch, keyboard, focus, reflow, reduced-motion, table, and form accessibility evidence |
-| I-004 | Own representative mobile Lighthouse, image selection, script budget, layout stability, and motion-cost evidence |
-| I-005 | Verify the immutable logo and that no mobile treatment drops, abbreviates, or invents approved content |
-| I-006 | Run compact and desktop preview smoke tests and record any remaining real-device limitation honestly |
+| Packages              | Required mobile responsibility                                                                                               |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| F-001                 | Establish component-lab viewports, phone emulation, screenshot projects, overflow checks, and documented responsive commands |
+| F-002                 | Provide long-copy, optional-content, wide-value, and widest-table fixtures from validated data                               |
+| C-001–C-005           | Establish logo containment, action targets, fluid headings, responsive media, and vertical process behavior                  |
+| C-006–C-007           | Implement and test mobile navigation, focus lifecycle, safe reading order, and compact footer                                |
+| H-001–H-009           | Implement the section-specific compact compositions in section 6                                                             |
+| P-001–P-009           | Implement catalogue, product, specification, table, download, and related-product behavior in section 7                      |
+| E-001–E-003 and F-003 | Implement editorial, evidence, legal-supporting, and form behavior in section 8                                              |
+| A-001–A-006           | Verify complete-page rhythm, source order, anchor offsets, route consistency, and removal of section-to-section assumptions  |
+| I-001                 | Crawl every generated route and verify navigation remains complete at compact width                                          |
+| I-002                 | Own cross-page visual review at all canonical widths plus landscape and zoom evidence                                        |
+| I-003                 | Own touch, keyboard, focus, reflow, reduced-motion, table, and form accessibility evidence                                   |
+| I-004                 | Own representative mobile Lighthouse, image selection, script budget, layout stability, and motion-cost evidence             |
+| I-005                 | Verify the immutable logo and that no mobile treatment drops, abbreviates, or invents approved content                       |
+| I-006                 | Run compact and desktop preview smoke tests and record any remaining real-device limitation honestly                         |
 
 ## 13. Page-level acceptance matrix
 
@@ -319,18 +319,18 @@ Automated route checks run against every generated page at 320 px and assert no 
 
 Focused visual and interaction review shall cover at minimum:
 
-| Representative route | Compact checks | Wider checks |
-| --- | --- | --- |
-| Homepage | menu, hero order, orbital containment, five-family selector, vertical sequences, final CTA | V7 composition and section rhythm at 1024/1440 |
-| Catalogue | all family/model links, uniform row order, readable actions | editorial family sequence and image scale |
-| One route per wagon family | category narrative and model list | multi-column model composition where supported |
-| Product with widest load table | hero, facts, specification groups, keyboard table scroll, downloads | table relationships, content width, image scale |
-| One additional product per data-shape variant | missing/optional values and long units | stable shared template |
-| Technology or Company | mobile story order and media crop | alternating V7-style editorial composition |
-| Quality/Sustainability | evidence labels, certificate links, long claims | balanced multi-column evidence layout |
-| Contact | keyboard types, errors, virtual-keyboard resilience, success/failure | form measure and supporting content |
-| Privacy/Imprint | reflow, headings, long links | readable line length |
-| 404 | recovery paths | composition and brand consistency |
+| Representative route                          | Compact checks                                                                             | Wider checks                                    |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| Homepage                                      | menu, hero order, orbital containment, five-family selector, vertical sequences, final CTA | V7 composition and section rhythm at 1024/1440  |
+| Catalogue                                     | all family/model links, uniform row order, readable actions                                | editorial family sequence and image scale       |
+| One route per wagon family                    | category narrative and model list                                                          | multi-column model composition where supported  |
+| Product with widest load table                | hero, facts, specification groups, keyboard table scroll, downloads                        | table relationships, content width, image scale |
+| One additional product per data-shape variant | missing/optional values and long units                                                     | stable shared template                          |
+| Technology or Company                         | mobile story order and media crop                                                          | alternating V7-style editorial composition      |
+| Quality                                       | evidence labels and certificate links                                                      | balanced multi-column evidence layout           |
+| Contact                                       | keyboard types, errors, virtual-keyboard resilience, success/failure                       | form measure and supporting content             |
+| Privacy/Imprint                               | reflow, headings, long links                                                               | readable line length                            |
+| 404                                           | recovery paths                                                                             | composition and brand consistency               |
 
 All ten product routes still receive schema, link, asset, accessibility smoke, and 320 px overflow checks even when only representative data shapes receive full visual baselines.
 

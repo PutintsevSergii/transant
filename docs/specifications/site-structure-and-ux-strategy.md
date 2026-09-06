@@ -1,18 +1,20 @@
 # TransANT website structure, UX, and marketing strategy
 
+> Superseded content boundary (6 September 2026): `Catalog for print.ai` is the approved source for public wagon copy. High-strength/alform/greentec messaging below is historical research context, not publishable copy. Sustainability is retired as a page and navigation destination; Quality remains the public evidence route.
+
 ## Document control
 
-| Field | Value |
-| --- | --- |
-| Status | Proposed experience blueprint |
-| Version | 0.1 |
-| Date | 2026-09-03 |
-| Purpose | Define the optimal information architecture, page hierarchy, UX behavior, conversion model, and visual direction for the new TransANT website |
-| Technical baseline | [Technical requirements](technical-requirements.md) |
-| Technology decision | [ADR-001](../technology-stack-decision.md) |
-| Research basis | [Public company research](../public-company-research.md) |
-| Content basis | [Website content model](../website-content-model.md) |
-| Brand basis | [Visual style guide](../visual-style-guide.md) |
+| Field               | Value                                                                                                                                         |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Status              | Proposed experience blueprint                                                                                                                 |
+| Version             | 0.1                                                                                                                                           |
+| Date                | 2026-09-03                                                                                                                                    |
+| Purpose             | Define the optimal information architecture, page hierarchy, UX behavior, conversion model, and visual direction for the new TransANT website |
+| Technical baseline  | [Technical requirements](technical-requirements.md)                                                                                           |
+| Technology decision | [ADR-001](../technology-stack-decision.md)                                                                                                    |
+| Research basis      | [Public company research](../public-company-research.md)                                                                                      |
+| Content basis       | [Website content model](../website-content-model.md)                                                                                          |
+| Brand basis         | [Visual style guide](../visual-style-guide.md)                                                                                                |
 
 ## 1. Executive recommendation
 
@@ -115,15 +117,15 @@ Avoid:
 
 ## 4. Priority audiences and their jobs
 
-| Audience | Primary job on the site | Information required before contact | Best entry path |
-| --- | --- | --- | --- |
-| Industrial shipper | Find a wagon suited to a commodity and terminal process | Cargo fit, payload, volume, loading method, operational example | Wagon families -> category -> product |
-| Wagon owner or lessor | Evaluate adaptability and lifecycle value | Platform standardization, changeable bodies, maintenance, homologation, residual flexibility | Technology -> products -> enquiry |
-| Railway operator | Validate operational compatibility | Gauge, axle load, speed, bogie, curve radius, line-class load table, approvals | Family or model link -> specifications -> datasheet |
-| Procurement team | Compare credible alternatives | Traceable claims, configuration, supply model, certificates, contact ownership | Wagon catalogue -> quality -> enquiry |
-| ESG or finance stakeholder | Verify environmental and investment claims | Calculation boundary, material option, certificates, case evidence | Sustainability -> evidence -> product |
-| Engineering partner | Understand technical depth and collaboration model | Simulation, design, homologation, production responsibilities | Technology -> process -> contact |
-| Candidate or media visitor | Understand the company and find authoritative facts | History, partners, management, location, approved media | Company -> resources/contact |
+| Audience                   | Primary job on the site                                 | Information required before contact                                                          | Best entry path                                     |
+| -------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Industrial shipper         | Find a wagon suited to a commodity and terminal process | Cargo fit, payload, volume, loading method, operational example                              | Wagon families -> category -> product               |
+| Wagon owner or lessor      | Evaluate adaptability and lifecycle value               | Platform standardization, changeable bodies, maintenance, homologation, residual flexibility | Technology -> products -> enquiry                   |
+| Railway operator           | Validate operational compatibility                      | Gauge, axle load, speed, bogie, curve radius, line-class load table, approvals               | Family or model link -> specifications -> datasheet |
+| Procurement team           | Compare credible alternatives                           | Traceable claims, configuration, supply model, certificates, contact ownership               | Wagon catalogue -> quality -> enquiry               |
+| ESG or finance stakeholder | Verify environmental and investment claims              | Calculation boundary, material option, certificates, case evidence                           | Sustainability -> evidence -> product               |
+| Engineering partner        | Understand technical depth and collaboration model      | Simulation, design, homologation, production responsibilities                                | Technology -> process -> contact                    |
+| Candidate or media visitor | Understand the company and find authoritative facts     | History, partners, management, location, approved media                                      | Company -> resources/contact                        |
 
 The primary audience is a professional buyer or technical decision-maker, not a casual consumer. Fast access to detail is a feature, but detail must be layered so that a first-time visitor is not confronted with an unstructured specification dump.
 
@@ -195,16 +197,15 @@ Home /
 │   └── Liquid bulk
 │
 ├── Technology /technology
-│   ├── Lightweight engineering
-│   ├── Platform and superstructure
-│   ├── High-strength steel
-│   ├── Simulation and topology optimization
-│   └── Homologation and automation readiness
+│   ├── Wagon range
+│   ├── Loading configurations
+│   ├── Technical specifications
+│   ├── Load limits
+│   └── Model-specific features
 │
 ├── Proof
 │   ├── Projects /projects
-│   ├── Quality and certificates /quality
-│   └── Sustainability /sustainability
+│   └── Quality and certificates /quality
 │
 ├── Company /company
 │
@@ -280,11 +281,11 @@ Include one small product render or engineering line drawing, not a carousel. Th
 
 Organize the footer into four useful groups:
 
-| Products | Expertise | Company | Practical |
-| --- | --- | --- | --- |
-| All wagons | Solutions | About TransANT | Contact |
-| Five families | Technology | Projects | Downloads |
-| Find by cargo | Sustainability | Quality | Imprint and privacy |
+| Products      | Expertise      | Company        | Practical           |
+| ------------- | -------------- | -------------- | ------------------- |
+| All wagons    | Solutions      | About TransANT | Contact             |
+| Five families | Technology     | Projects       | Downloads           |
+| Find by cargo | Sustainability | Quality        | Imprint and privacy |
 
 Add the legal company name, address, approved phone/email, language switcher, and LinkedIn link. Do not repeat a large marketing block in the footer.
 
@@ -345,12 +346,12 @@ Avoid three generic icon cards. Use an explanatory diagram that moves from platf
 
 Show only approved, bounded metrics. Initial candidates:
 
-| Metric | Display condition |
-| --- | --- |
-| Up to 20% lighter underframe | Attribute to the documented comparison basis |
-| Up to 4 t additional payload per wagon | Preserve “up to” and link to its model/case context |
-| 33–70 ft platform architecture | Confirm that the full range remains commercially current |
-| Up to 100 train journeys avoided annually | Show only inside the Erzberg–Linz case study |
+| Metric                                    | Display condition                                        |
+| ----------------------------------------- | -------------------------------------------------------- |
+| Up to 20% lighter underframe              | Attribute to the documented comparison basis             |
+| Up to 4 t additional payload per wagon    | Preserve “up to” and link to its model/case context      |
+| 33–70 ft platform architecture            | Confirm that the full range remains commercially current |
+| Up to 100 train journeys avoided annually | Show only inside the Erzberg–Linz case study             |
 
 Every metric card shall include a visible `See basis` link. Do not place an unqualified number in a decorative counter.
 
@@ -622,24 +623,9 @@ Current public candidates include ISO 9001:2015 for development, homologation, a
 
 Add a concise quality process explaining requirements control, engineering review, supplier quality, production oversight, acceptance, and handover only after the actual responsibility boundary is confirmed.
 
-## 16. Sustainability page
+## 16. Sustainability page (retired)
 
-Use an evidence ladder rather than a moral or generic “green” narrative:
-
-1. **Operational:** lower tare can increase useful payload and reduce journeys for a fixed transport volume.
-2. **Lifecycle:** an adaptable platform/body concept can respond to changing logistics requirements.
-3. **Material:** greentec steel can reduce manufacturing-stage CO2 for approved configurations.
-4. **Governance:** certificates, assessments, and calculation methodology.
-
-Every environmental metric shall state:
-
-- compared objects;
-- model/configuration;
-- lifecycle boundary;
-- data owner and date;
-- whether the figure is measured, calculated, or attributed.
-
-The 2024 EcoVadis result is historical unless a current scorecard and badge rights are supplied. It should not appear as an evergreen current claim.
+Sustainability is not a public route or navigation destination. Do not publish the earlier environmental, greentec, or EcoVadis narrative. Quality and certificate evidence remains on `/quality`; wagon information comes from the supplied catalogue.
 
 ## 17. Company page
 
@@ -796,33 +782,33 @@ Every effect requires a reduced-motion equivalent. Mobile motion should be short
 
 Build these reusable experience components:
 
-| Component | Purpose |
-| --- | --- |
-| Global header | Fast navigation, locale, persistent enquiry action |
-| Wagon Switchyard | Present five families through one focused V7 signature interaction and direct links |
-| Wagon family index | Explain each category, cargo fit, and its model links in a direct editorial sequence |
-| Wagon model list | Support consistent scanning within one family |
-| Metric with basis | Display a number with condition and evidence link |
-| Engineering explainer | Connect platform, body, and operational outcome |
-| Specification group | Present dense technical information accessibly |
-| Load-limit table | Preserve route-class relationships on all screens |
-| Evidence card | Present case, certificate, or attributed claim consistently |
-| Certificate card | Show scope, validity, and source PDF |
-| Process timeline | Explain collaboration and reduce procurement uncertainty |
-| Contextual CTA | Preserve product/cargo context into the form |
-| Download row | Show language, format, size, date, and revision |
-| Approval-aware content block | Hide or mark content that is not approved for publication |
+| Component                    | Purpose                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------ |
+| Global header                | Fast navigation, locale, persistent enquiry action                                   |
+| Wagon Switchyard             | Present five families through one focused V7 signature interaction and direct links  |
+| Wagon family index           | Explain each category, cargo fit, and its model links in a direct editorial sequence |
+| Wagon model list             | Support consistent scanning within one family                                        |
+| Metric with basis            | Display a number with condition and evidence link                                    |
+| Engineering explainer        | Connect platform, body, and operational outcome                                      |
+| Specification group          | Present dense technical information accessibly                                       |
+| Load-limit table             | Preserve route-class relationships on all screens                                    |
+| Evidence card                | Present case, certificate, or attributed claim consistently                          |
+| Certificate card             | Show scope, validity, and source PDF                                                 |
+| Process timeline             | Explain collaboration and reduce procurement uncertainty                             |
+| Contextual CTA               | Preserve product/cargo context into the form                                         |
+| Download row                 | Show language, format, size, date, and revision                                      |
+| Approval-aware content block | Hide or mark content that is not approved for publication                            |
 
 ## 23. Claim and evidence design
 
 Use four internal evidence levels:
 
-| Level | Meaning | Public treatment |
-| --- | --- | --- |
-| E1 | Current certificate, official technical sheet, or approved company record | May be stated directly with source |
-| E2 | Documented operating case with defined context | State with case conditions and date |
-| E3 | Attributed partner or company claim | Preserve attribution and qualifiers |
-| E4 | Unconfirmed, outdated, or internally supplied without approval | Do not publish |
+| Level | Meaning                                                                   | Public treatment                    |
+| ----- | ------------------------------------------------------------------------- | ----------------------------------- |
+| E1    | Current certificate, official technical sheet, or approved company record | May be stated directly with source  |
+| E2    | Documented operating case with defined context                            | State with case conditions and date |
+| E3    | Attributed partner or company claim                                       | Preserve attribution and qualifiers |
+| E4    | Unconfirmed, outdated, or internally supplied without approval            | Do not publish                      |
 
 The CMS/data model should retain evidence level, source URL/file, checked date, owner, and publication status. Visual `See basis` links should be available for important metrics without making every sentence look academic.
 
@@ -894,20 +880,20 @@ P0 shall not be delayed by decorative 3D, an elaborate intro, or a CMS migration
 
 ## 27. Page-level success criteria
 
-| Page | Visitor should understand | Primary action | Required proof |
-| --- | --- | --- | --- |
-| Home | What TransANT does, why it is different, and where to start | Explore wagons or discuss task | Bounded metrics, case, certificates |
-| Wagons | Which family or model may fit | Open product or describe task | Comparable product facts |
-| Category | Why this family fits the cargo/operation | Select model | Category-specific features |
-| Product | Fit, configuration, performance, and compatibility | Discuss wagon or download sheet | Full specs, load table, approval status |
-| Solutions | How a transport task maps to equipment | Explore relevant models | Decision guidance and case |
-| Technology | How lightweight/modular benefits are created | Discuss engineering need | Diagrams, materials, process |
-| Projects | Evidence of real progress or operation | Read case or discuss similar task | Status, context, bounded result |
-| Quality | Whether supplier capability is credible | Download certificate or enquire | Scope, issuer, validity |
-| Sustainability | What is reduced, where, and under what assumptions | View evidence or relevant wagon | Calculation boundary and dated evidence |
-| Company | Who TransANT is and what it controls | Contact company | Legal identity, partners, capability |
-| Downloads | Find authoritative documents quickly | Download | Version, language, date, applicability |
-| Contact | Start a useful conversation with low friction | Submit enquiry | Privacy, destination, clear status |
+| Page           | Visitor should understand                                   | Primary action                    | Required proof                          |
+| -------------- | ----------------------------------------------------------- | --------------------------------- | --------------------------------------- |
+| Home           | What TransANT does, why it is different, and where to start | Explore wagons or discuss task    | Bounded metrics, case, certificates     |
+| Wagons         | Which family or model may fit                               | Open product or describe task     | Comparable product facts                |
+| Category       | Why this family fits the cargo/operation                    | Select model                      | Category-specific features              |
+| Product        | Fit, configuration, performance, and compatibility          | Discuss wagon or download sheet   | Full specs, load table, approval status |
+| Solutions      | How a transport task maps to equipment                      | Explore relevant models           | Decision guidance and case              |
+| Technology     | How lightweight/modular benefits are created                | Discuss engineering need          | Diagrams, materials, process            |
+| Projects       | Evidence of real progress or operation                      | Read case or discuss similar task | Status, context, bounded result         |
+| Quality        | Whether supplier capability is credible                     | Download certificate or enquire   | Scope, issuer, validity                 |
+| Sustainability | What is reduced, where, and under what assumptions          | View evidence or relevant wagon   | Calculation boundary and dated evidence |
+| Company        | Who TransANT is and what it controls                        | Contact company                   | Legal identity, partners, capability    |
+| Downloads      | Find authoritative documents quickly                        | Download                          | Version, language, date, applicability  |
+| Contact        | Start a useful conversation with low friction               | Submit enquiry                    | Privacy, destination, clear status      |
 
 ## 28. Validation before design lock
 

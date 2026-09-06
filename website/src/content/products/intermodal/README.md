@@ -1,6 +1,6 @@
 # Intermodal wagons
 
-Lightweight intermodal wagons for 20/30/40ft ISO containers and swap bodies, built around a low tare weight and flexible loading configurations.
+Intermodal wagons for flexible transport of 20/30/40ft ISO containers and swap bodies, with multiple loading configurations.
 
 Commercial use: Container transport.
 

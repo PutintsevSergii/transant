@@ -5,7 +5,7 @@
   "tagline": "Compact design. Maximum payload. Built for demanding bulk cargo.",
   "intro": [
     "The UNO MULTI 33ft Eamnos is a high-performance open-top wagon engineered for the efficient transport of scrap metal, recyclables and other high-density industrial cargo. Its compact design combines a low tare weight with exceptional payload capacity.",
-    "Built for intensive industrial use, the wagon features a high-strength, wear-resistant steel body. The open-top configuration and convenient side doors support fast, flexible loading and unloading."
+    "Built for intensive industrial use, the wagon has a robust body for demanding loading conditions and heavy-duty operation. The open-top configuration and convenient side doors support fast, flexible loading and unloading."
   ],
   "commodities": [
     "Scrap metal",
@@ -19,7 +19,7 @@
     "Exceptional payload-to-tare ratio",
     "Low tare weight of just 20 t",
     "Payload capacity of up to 70 t",
-    "High-strength, wear-resistant steel construction",
+    "Robust construction for demanding loading conditions",
     "Fast and flexible loading and unloading",
     "Optimized for heavy-duty industrial operations"
   ],
@@ -112,7 +112,7 @@
     ]
   ],
   "special": [
-    "High-strength wear-resistant body",
+    "Body for demanding bulk-cargo operation",
     "Low tare, payload up to 70 t",
     "DAC ready"
   ],
@@ -123,7 +123,7 @@
   "category_name": "Multi / Open box",
   "image": "products/open-box/uno-multibox-33ft-eamnos/wagon-render.png",
   "technical_source": {
-    "reference": "Catalog for print.pdf, PDF page 17 (printed page 15); checked against Catalog for print.ai",
+    "reference": "Catalog for print.ai, PDF page 17 (printed page 15)",
     "checkedAt": "2026-09-05"
   }
 }

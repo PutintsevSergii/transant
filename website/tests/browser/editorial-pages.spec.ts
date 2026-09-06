@@ -10,7 +10,7 @@ import {
 const pages = [
   {
     slug: "technology",
-    title: "Engineering begins with the operating requirement",
+    title: "Start with the wagon model and its technical data",
   },
   {
     slug: "projects",
@@ -18,15 +18,11 @@ const pages = [
   },
   {
     slug: "company",
-    title: "Engineering freight wagons for the European standard-gauge market",
+    title: "TransANT freight and tank wagon product information",
   },
   {
     slug: "quality",
     title: "Quality standards and certificates",
-  },
-  {
-    slug: "sustainability",
-    title: "Greentec steel for lighter freight wagons",
   },
 ] as const;
 
@@ -67,7 +63,7 @@ test("@component Editorial pages compose only source-bound page sections", async
   await expect(page.locator("[data-media-story]")).toHaveCount(5);
   await expect(
     page.getByRole("heading", {
-      name: "Confirm equipment and DAC readiness for the selected wagon",
+      name: "Check gauge, speed, curve radius, and equipment",
     }),
   ).toBeVisible();
   await expect(
@@ -138,7 +134,7 @@ test("@component Editorial pages compose only source-bound page sections", async
     "TransAnt GmbH",
   );
   await expect(companyMeta.locator("[data-page-meta-sequence]")).toHaveText(
-    "Freight wagon engineering / Homologation and distribution / Engineering and production partners / Linz, Austria",
+    "Five wagon families / Ten catalogue models / Model-specific technical data / Linz, Austria",
   );
   await expect(companyMeta).toHaveAttribute("aria-hidden", "true");
   const companyEvidence = page.locator("[data-evidence-list]");
@@ -168,138 +164,8 @@ test("@component Editorial pages compose only source-bound page sections", async
   await expect(
     page.getByRole("link", { name: "Open ISO 9001 certificate" }),
   ).toHaveAttribute("href", /^https:\/\//);
-
-  await page.goto("/fixtures/editorial/sustainability/");
-  const sustainabilityPageMeta = page.locator("[data-page-meta]");
-  await expect(sustainabilityPageMeta).toHaveCount(1);
-  await expect(sustainabilityPageMeta).toHaveAttribute("aria-hidden", "true");
-  await expect(
-    sustainabilityPageMeta.locator("[data-page-meta-label]"),
-  ).toHaveText("Sustainable freight wagons");
-  await expect(
-    sustainabilityPageMeta.locator("[data-page-meta-sequence]"),
-  ).toHaveText(
-    "greentec steel / Manufacturing-stage CO₂ / Lightweight intermodal payload / Recyclable-material prototype / EcoVadis April 2024",
-  );
-  const [sustainabilityPageMetaBox, sustainabilityHeroBox] = await Promise.all([
-    sustainabilityPageMeta.boundingBox(),
-    page.locator("[data-page-hero]").boundingBox(),
-  ]);
-  expect(sustainabilityPageMetaBox).not.toBeNull();
-  expect(sustainabilityHeroBox).not.toBeNull();
-  expect(
-    (sustainabilityPageMetaBox?.y ?? 0) +
-      (sustainabilityPageMetaBox?.height ?? 0),
-  ).toBeLessThanOrEqual(sustainabilityHeroBox?.y ?? 0);
-  await expect(
-    page.locator(
-      "[data-site-header] nav[aria-label='Primary navigation'] a[href='/sustainability/']",
-    ),
-  ).toHaveAttribute("aria-current", "page");
-  await expect(page.locator("[data-media-story]")).toHaveCount(2);
-  const combinedSustainabilityStory = page.locator("[data-media-story]").last();
-  await expect(combinedSustainabilityStory).toContainText(
-    "Manufacturing, payload, and circular materials",
-  );
-  await expect(combinedSustainabilityStory).toContainText(
-    "The resulting lightweight-wagon prototype uses greentec steel for both the structure and platform.",
-  );
-  await expect(
-    combinedSustainabilityStory.locator("[data-media-story-media]"),
-  ).toHaveCount(0);
-  await expect(combinedSustainabilityStory).toHaveAttribute(
-    "data-media-story-spacing",
-    "generous-top",
-  );
-  await expect(combinedSustainabilityStory).toHaveAttribute(
-    "data-media-story-heading-size",
-    "compact",
-  );
-  const [combinedStoryBox, combinedStoryContentBox] = await Promise.all([
-    combinedSustainabilityStory.boundingBox(),
-    combinedSustainabilityStory
-      .locator("[data-media-story-content]")
-      .boundingBox(),
-  ]);
-  expect(
-    (combinedStoryContentBox?.y ?? 0) - (combinedStoryBox?.y ?? 0),
-  ).toBeGreaterThanOrEqual(32);
-  expect(
-    (combinedStoryContentBox?.y ?? 0) - (combinedStoryBox?.y ?? 0),
-  ).toBeLessThanOrEqual(80);
-  if ((page.viewportSize()?.width ?? 0) >= 1024) {
-    const titleFontSize = await combinedSustainabilityStory
-      .locator(".section-intro__title")
-      .evaluate((element) =>
-        Number.parseFloat(getComputedStyle(element).fontSize),
-      );
-    expect(titleFontSize).toBeLessThanOrEqual(40);
-  }
-  const darkSustainabilityStory = page.locator(
-    "[data-media-story][data-media-story-theme='dark']",
-  );
-  const viewportWidth = page.viewportSize()?.width ?? 0;
-  if (viewportWidth >= 1024) {
-    const [storyMediaBox, storyContentBox] = await Promise.all([
-      darkSustainabilityStory.locator("[data-media-story-media]").boundingBox(),
-      darkSustainabilityStory
-        .locator("[data-media-story-content]")
-        .boundingBox(),
-    ]);
-    expect(
-      (storyContentBox?.x ?? 0) -
-        ((storyMediaBox?.x ?? 0) + (storyMediaBox?.width ?? 0)),
-    ).toBeGreaterThanOrEqual(32);
-  }
-  await expect(page.locator("[data-evidence-list-entry]")).toHaveCount(3);
-  const sustainabilityEvidence = page.locator("[data-evidence-list]");
-  await expect(sustainabilityEvidence).toHaveAttribute(
-    "data-evidence-list-variant",
-    "section-label",
-  );
-  await expect(
-    sustainabilityEvidence.getByRole("heading", { level: 2 }),
-  ).toHaveCSS("color", "rgb(179, 22, 47)");
-  await expect(
-    sustainabilityEvidence.getByRole("heading", { level: 2 }),
-  ).toHaveCSS("text-transform", "uppercase");
-  await expect(
-    sustainabilityEvidence.getByRole("heading", { level: 2 }),
-  ).toHaveCSS("white-space", "nowrap");
-  const evidenceLabelLineCount = await sustainabilityEvidence
-    .getByRole("heading", { level: 2 })
-    .evaluate((element) => {
-      const range = document.createRange();
-      range.selectNodeContents(element);
-      return range.getClientRects().length;
-    });
-  expect(evidenceLabelLineCount).toBe(1);
-  const [evidenceSectionBox, evidenceHeadingBox, evidenceRowsBox] =
-    await Promise.all([
-      sustainabilityEvidence.boundingBox(),
-      sustainabilityEvidence.locator(".evidence-list__heading").boundingBox(),
-      sustainabilityEvidence
-        .locator("[data-evidence-list-entries]")
-        .boundingBox(),
-    ]);
-  expect(
-    (evidenceHeadingBox?.y ?? 0) - (evidenceSectionBox?.y ?? 0),
-  ).toBeGreaterThanOrEqual(24);
-  expect(
-    (evidenceRowsBox?.y ?? 0) -
-      ((evidenceHeadingBox?.y ?? 0) + (evidenceHeadingBox?.height ?? 0)),
-  ).toBeLessThanOrEqual(12);
-  await expect(
-    page.getByRole("heading", {
-      name: "3 tonnes of manufacturing-stage CO₂ saved",
-    }),
-  ).toBeVisible();
-  await expect(page.locator("main")).toContainText(
-    "20% lighter underframe and 4 tonnes higher payload",
-  );
-  await expect(page.locator("main")).toContainText(
-    "Historical result; current rating not claimed",
-  );
+  await expect(page.locator("a[href*='/sustainability/']")).toHaveCount(0);
+  await expect(page.locator("main")).not.toContainText(/greentec|alform/iu);
 });
 
 test("@keyboard Editorial pages retain direct contact navigation without JavaScript", async ({
@@ -322,14 +188,6 @@ test("@keyboard Editorial pages retain direct contact navigation without JavaScr
   await expect(contact).toHaveAttribute("href", "/contact/");
   expect((await contact.boundingBox())?.height).toBeGreaterThanOrEqual(44);
 
-  await page.goto(`${browserBaseUrl}/fixtures/editorial/sustainability/`);
-  await expect(page.locator("[data-page-meta]")).toHaveAttribute(
-    "aria-hidden",
-    "true",
-  );
-  await expect(page.locator("[data-page-meta-sequence]")).toHaveText(
-    "greentec steel / Manufacturing-stage CO₂ / Lightweight intermodal payload / Recyclable-material prototype / EcoVadis April 2024",
-  );
   await context.close();
 });
 
@@ -348,13 +206,6 @@ test("@responsive Editorial pages preserve source order and page containment", a
 
   expect(firstStoryBox?.y).toBeGreaterThan(heroBox?.y ?? 0);
   expect(contactBox?.y).toBeGreaterThan(firstStoryBox?.y ?? 0);
-  await expectNoPageOverflow(page);
-
-  await page.goto("/fixtures/editorial/sustainability/");
-  await expect(page.locator("[data-page-meta-sequence]")).toHaveCSS(
-    "white-space",
-    "nowrap",
-  );
   await expectNoPageOverflow(page);
 });
 

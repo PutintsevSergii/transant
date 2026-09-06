@@ -39,14 +39,13 @@ export const homepageViewModel = {
     language: "en",
     title: "Freight wagons for individual transport tasks",
     description:
-      "TransANT develops freight and tank wagons from a modular platform and cargo-specific superstructures.",
+      "The TransANT product catalogue presents intermodal, flat, timber, open-box, and tank wagons for defined transport tasks.",
     canonicalUrl: "https://www.transant.com/en/",
     header: {
       homeHref: "/",
       navigation: [
         { label: "Wagons", href: "/wagons/" },
         { label: "Technology", href: "/technology/" },
-        { label: "Sustainability", href: "/sustainability/" },
         { label: "Company", href: "/company/" },
       ],
       currentPath: "/",
@@ -71,7 +70,7 @@ export const homepageViewModel = {
           links: [
             { label: "Technology", href: "/technology/" },
             { label: "Projects", href: "/projects/" },
-            { label: "Quality and sustainability", href: "/sustainability/" },
+            { label: "Quality and certificates", href: "/quality/" },
             { label: "Company", href: "/company/" },
           ],
         },
@@ -95,7 +94,7 @@ export const homepageViewModel = {
     items: [
       "Engineering value",
       "Wagon families",
-      "Modular platform",
+      "Model specifications",
       "Quality and certification",
       "Transport requirements",
     ],
@@ -108,7 +107,7 @@ export const homepageViewModel = {
       { text: " payload." },
     ],
     summary:
-      "TransANT develops freight and tank wagons by combining a standardised lightweight platform with cargo-specific superstructures.",
+      "Explore ten intermodal, flat, timber, open-box, and tank wagon configurations from the TransANT product catalogue.",
     primaryAction: {
       kind: "link",
       label: "Explore wagon families",
@@ -128,7 +127,7 @@ export const homepageViewModel = {
     eyebrow: "InnoTrans 2026 // International trade fair",
     title: "Meet TransANT in Berlin",
     summary:
-      "Visit TransANT at InnoTrans 2026 and discover how modular freight-wagon platforms and cargo-specific superstructures support individual transport tasks.",
+      "Visit TransANT at InnoTrans 2026 and discuss the catalogue wagon range, loading configurations, and technical data for your transport task.",
     date: "22–25 September 2026",
     startDate: "2026-09-22",
     location: "Berlin · Messe Berlin",
@@ -151,37 +150,37 @@ export const homepageViewModel = {
   },
   payload: {
     intro: {
-      eyebrow: "Engineering value",
-      title: "A platform engineered around cargo and operation",
+      eyebrow: "Product information",
+      title: "Wagon data for a defined transport task",
       description:
-        "A standardised lightweight platform is combined with an industry- or customer-specific superstructure.",
+        "The catalogue presents ten wagon configurations across five product families.",
       headingLevel: 2,
       align: "left",
       theme: "light",
       measure: "standard",
     },
-    body: "Topology optimisation, high-strength steel, a shared platform architecture, and interchangeable superstructures support different logistics requirements.",
+    body: "Each model is described through its intended cargo, loading configuration, technical specifications, load limits, and special features.",
     sourceLink: { href: "/technology/", label: "Explore the technology" },
     principles: [
       {
-        title: "Topology optimisation",
+        title: "Cargo and applications",
         description:
-          "Material is placed where it is required to transmit load.",
+          "The catalogue lists typical commodities for each wagon model.",
       },
       {
-        title: "High-strength steel",
+        title: "Loading configuration",
         description:
-          "The platform uses high-strength, fine-grained alform steel.",
+          "Container pins, walls, stanchions, doors, and other equipment are specified by model.",
       },
       {
-        title: "Shared platform architecture",
+        title: "Technical specifications",
         description:
-          "Common platform parts support variants in different lengths and configurations.",
+          "Dimensions, tare weight, load limits, vehicle gauge, and permitted speed are listed per wagon.",
       },
       {
-        title: "Interchangeable superstructures",
+        title: "Special features",
         description:
-          "The superstructure can be selected or exchanged for the intended cargo and operation.",
+          "Available equipment and special features depend on the selected wagon model.",
       },
     ],
   },
@@ -205,7 +204,7 @@ export const homepageViewModel = {
         modelCode: "Sgns(s)",
         headline: "Containers & swap bodies",
         summary:
-          "Lightweight intermodal wagons for 20/30/40ft ISO containers and swap bodies, built around a low tare weight and flexible loading configurations.",
+          "Intermodal wagons for flexible transport of 20/30/40ft ISO containers and swap bodies, with multiple loading configurations.",
         image: intermodalWagon,
         href: "/wagons/intermodal/",
         linkLabel: "Explore Intermodal",
@@ -266,10 +265,10 @@ export const homepageViewModel = {
   },
   platform: {
     intro: {
-      eyebrow: "Modular platform",
-      title: "From platform to transport task",
+      eyebrow: "Model selection",
+      title: "From transport task to wagon specification",
       description:
-        "A standardised platform and cargo-specific superstructure are configured for the operating requirement, then engineered, approved, and coordinated into production.",
+        "Match the cargo and loading requirements with a catalogue model, then review its technical data and listed equipment.",
       headingLevel: 2,
       align: "left",
       theme: "light",
@@ -278,31 +277,30 @@ export const homepageViewModel = {
     stages: [
       {
         number: "01",
-        title: "Platform",
-        description:
-          "Select the platform length, loading gauge, and equipment for the intended operation.",
+        title: "Transport task",
+        description: "Start with the cargo and loading requirements.",
       },
       {
         number: "02",
-        title: "Superstructure",
+        title: "Wagon model",
         description:
-          "Pair the platform with an industry- or cargo-specific interchangeable body.",
+          "Select the wagon family and model for the intended transport task.",
       },
       {
         number: "03",
-        title: "Engineering & approval",
+        title: "Technical data",
         description:
-          "Complete calculation, design, documentation, and applicable homologation.",
+          "Review dimensions, tare weight, load limits, vehicle gauge, and permitted speed.",
       },
       {
         number: "04",
-        title: "Coordinated production",
+        title: "Special features",
         description:
-          "Coordinate sourcing and production through the partner network.",
+          "Confirm the equipment and special features listed for the selected wagon.",
       },
     ],
-    technicalLink: { href: "/technology/", label: "Explore the technology" },
-    sequenceLabel: "Modular platform stages",
+    technicalLink: { href: "/technology/", label: "Review technical data" },
+    sequenceLabel: "Wagon selection stages",
   },
   qualityImpact: {
     labels: {

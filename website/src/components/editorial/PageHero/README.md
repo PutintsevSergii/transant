@@ -1,6 +1,6 @@
 # `PageHero`
 
-`PageHero` is the static, caller-owned introduction for company, technology, sustainability, legal-supporting, or other editorial pages. It composes only C-003 `SectionIntro`, optional C-004 `ResponsiveMedia`, and optional C-002 `Action`.
+`PageHero` is the static, caller-owned introduction for company, technology, quality, legal-supporting, or other editorial pages. It composes only C-003 `SectionIntro`, optional C-004 `ResponsiveMedia`, and optional C-002 `Action`.
 
 ## Public API
 

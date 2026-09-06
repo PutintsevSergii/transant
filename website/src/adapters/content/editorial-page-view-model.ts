@@ -17,7 +17,6 @@ export const editorialPageSlugs = [
   "projects",
   "company",
   "quality",
-  "sustainability",
 ] as const;
 
 export type EditorialPageSlug = (typeof editorialPageSlugs)[number];
@@ -38,12 +37,6 @@ const researchSource = {
 const productPortfolioSource = {
   reference: "TransANT Product Portfolio",
 } as const;
-const sustainabilitySource = {
-  reference: "TransANT Sustainability",
-  checkedAt: "2026-09-06",
-  owner: "TransAnt GmbH",
-} as const;
-
 const evidenceLabels = {
   policy: "Policy",
   certification: "Certification",
@@ -61,15 +54,15 @@ const evidenceLabels = {
 const editorialPages = {
   technology: {
     layout: createSiteLayout(
-      "Freight wagon technology",
-      "How TransANT combines a standardised lightweight platform, interchangeable cargo-specific superstructures, and configuration-led engineering.",
+      "Freight wagon technical data",
+      "Catalogue-grounded information about wagon configurations, loading equipment, dimensions, load limits, vehicle gauge, and operating data.",
       "/technology/",
     ),
     hero: {
-      eyebrow: "Freight wagon engineering",
-      title: "Engineering begins with the operating requirement",
+      eyebrow: "Product catalogue",
+      title: "Start with the wagon model and its technical data",
       description:
-        "Cargo, route, loading method, terminal conditions, and the intended operation shape the platform, superstructure, and equipment.",
+        "Each catalogue model has its own intended cargo, loading configuration, dimensions, tare weight, load limits, vehicle gauge, and permitted speed.",
       headingLevel: 1,
       theme: "light",
       media: {
@@ -83,15 +76,15 @@ const editorialPages = {
     },
     stories: [
       {
-        eyebrow: "Platform architecture",
-        title: "One platform concept, multiple configurations",
+        eyebrow: "Wagon range",
+        title: "Ten configurations across five wagon families",
         description:
-          "The standardised lightweight platform architecture is available in different lengths and loading gauges, providing the basis for industry- or customer-specific superstructures.",
+          "The catalogue covers intermodal, flat, timber, open-box, and tank wagons. Every model entry identifies its typical commodities, key benefits, and technical specification.",
         headingLevel: 2,
         theme: "dark",
         media: {
           image: intermodalWagon,
-          alt: "TransANT intermodal platform wagon shown without a superstructure",
+          alt: "TransANT intermodal wagon shown in the product catalogue",
           sizes: "(min-width: 90rem) 80rem, 100vw",
           fit: "contain",
           aspectRatio: "16 / 7",
@@ -99,18 +92,18 @@ const editorialPages = {
         mediaPosition: "after",
       },
       {
-        eyebrow: "Interchangeable superstructures",
-        title: "Adapt the body when logistics requirements change",
+        eyebrow: "Loading configuration",
+        title: "Review loading equipment for the selected model",
         description:
-          "Common platform parts are used across variants. Industry- or customer-specific superstructures are paired with the platform for the intended cargo and can be exchanged; without a body, suitable platform wagons can be used for intermodal container transport.",
+          "The catalogue records model-specific equipment such as container pins, side walls, stanchions, doors, loading schemes, and tank fittings. Availability must be confirmed for the selected wagon.",
         headingLevel: 2,
         theme: "light",
       },
       {
-        eyebrow: "Lightweight engineering",
-        title: "Use material where the load requires it",
+        eyebrow: "Mass and load limits",
+        title: "Use the figures for the selected wagon configuration",
         description:
-          "Topology optimisation places material along the load path, while high-strength fine-grained alform steel supports a lighter platform. Tare weight and payload remain specific to each wagon configuration.",
+          "Tare weight, loading dimensions, loading volume, axle load, and load-limit values differ by model. The product pages reproduce the catalogue values without generalising them across the range.",
         headingLevel: 2,
         theme: "light",
         media: {
@@ -123,18 +116,18 @@ const editorialPages = {
         mediaPosition: "after",
       },
       {
-        eyebrow: "Configuration and readiness",
-        title: "Confirm equipment and DAC readiness for the selected wagon",
+        eyebrow: "Operation data",
+        title: "Check gauge, speed, curve radius, and equipment",
         description:
-          "Platform length, loading gauge, equipment, and readiness for digital automatic coupling depend on the model and intended operation. Applicable requirements and approvals must be confirmed for the selected configuration.",
+          "Vehicle gauge, permitted speed, minimum curve radius, brake equipment, and other operating details are listed per model and must be checked for the intended use.",
         headingLevel: 2,
         theme: "light",
       },
       {
-        eyebrow: "Engineering and delivery",
-        title: "Move from requirements to approval and production",
+        eyebrow: "Drawings and technical data",
+        title: "Read the catalogue entry as one model-specific record",
         description:
-          "Cargo, route, loading method, terminal technology, and customer requirements inform platform and body selection. Calculation, design, documentation, applicable homologation, and coordinated partner production follow.",
+          "Use the wagon render, technical drawings, specification tables, loading limits, and catalogue notes together. Any printed ambiguity remains visible and requires confirmation with TransANT.",
         headingLevel: 2,
         theme: "light",
         media: {
@@ -227,15 +220,14 @@ const editorialPages = {
   company: {
     layout: createSiteLayout(
       "About TransAnt GmbH",
-      "TransAnt GmbH is a Linz-based engineering company for European standard-gauge freight wagons.",
+      "TransANT product information and contact details for its freight and tank wagon range.",
       "/company/",
     ),
     hero: {
       eyebrow: "Company",
-      title:
-        "Engineering freight wagons for the European standard-gauge market",
+      title: "TransANT freight and tank wagon product information",
       description:
-        "TransAnt GmbH develops, homologates, and distributes freight and tank wagons; manufacturing and supply are organised through a partner network.",
+        "The supplied TransANT catalogue presents ten wagon configurations across intermodal, flat, timber, open-box, and tank families.",
       headingLevel: 1,
       theme: "light",
       media: {
@@ -250,18 +242,18 @@ const editorialPages = {
     pageMeta: {
       label: "TransAnt GmbH",
       items: [
-        "Freight wagon engineering",
-        "Homologation and distribution",
-        "Engineering and production partners",
+        "Five wagon families",
+        "Ten catalogue models",
+        "Model-specific technical data",
         "Linz, Austria",
       ],
     },
     stories: [
       {
-        eyebrow: "Partner model",
-        title: "Engineering and production partners",
+        eyebrow: "Product catalogue",
+        title: "Model-specific information for transport requirements",
         description:
-          "TransANT brings together the expertise of voestalpine Stahl GmbH, TAS Group, and ÖBB Rail Cargo Group. Manufacturing and supply are organised through a partner network.",
+          "Each catalogue entry presents typical commodities, key benefits, technical specifications, load limits, and special features for one wagon model. Contact TransANT to discuss the relevant configuration for a transport task.",
         headingLevel: 2,
         theme: "dark",
         media: {
@@ -385,127 +377,6 @@ const editorialPages = {
       summary:
         "Contact TransANT to discuss certificate scope or documentation for a particular wagon configuration.",
       action: { href: "/contact/", label: "Contact TransANT" },
-      supportingLinks: [
-        { href: "/sustainability/", label: "Explore sustainability" },
-      ],
-    },
-  },
-  sustainability: {
-    layout: createSiteLayout(
-      "Sustainable freight wagons and greentec steel",
-      "TransANT's official sustainability information on greentec steel editions, manufacturing-stage CO₂ savings, lightweight intermodal payload, and its April 2024 EcoVadis result.",
-      "/sustainability/",
-    ),
-    pageMeta: {
-      label: "Sustainable freight wagons",
-      items: [
-        "greentec steel",
-        "Manufacturing-stage CO₂",
-        "Lightweight intermodal payload",
-        "Recyclable-material prototype",
-        "EcoVadis April 2024",
-      ],
-    },
-    hero: {
-      eyebrow: "Sustainability",
-      title: "Greentec steel for lighter freight wagons",
-      description:
-        "On request, TransANT offers its lightweight wagons in a greentec steel edition, combining rail transport, lightweight engineering, and CO₂-reduced steel.",
-      headingLevel: 1,
-      theme: "light",
-      media: {
-        image: wagonFleet,
-        alt: "Several TransANT freight wagons standing in a rail yard",
-        sizes: "(min-width: 62rem) 50vw, 100vw",
-        fit: "cover",
-        aspectRatio: "16 / 10",
-      },
-      mediaPosition: "after",
-    },
-    stories: [
-      {
-        eyebrow: "Sustainable steel",
-        title: "Support a lower-carbon supply chain",
-        description:
-          "TransANT presents the greentec steel edition as a way to secure certified CO₂ reduction, strengthen ESG performance, improve access to green loans, and offer more sustainable logistics solutions. Availability depends on the requested wagon configuration.",
-        headingLevel: 2,
-        theme: "dark",
-        media: {
-          image: bogieCloseup,
-          alt: "Close view of a freight wagon bogie and underframe",
-          sizes: "(min-width: 58rem) 50vw, 100vw",
-          fit: "cover",
-          aspectRatio: "16 / 10",
-        },
-        mediaPosition: "before",
-      },
-      {
-        eyebrow: "Manufacturing, payload, and circular materials",
-        title: "State the environmental benefit with its boundary",
-        description:
-          "For the cited 60-ft lightweight intermodal carrying wagon in greentec steel, TransANT reports three tonnes of CO₂ saved in manufacturing. It also attributes a 20% lighter underframe and four tonnes of higher payload to the cited intermodal wagon, reducing the trips needed for a fixed transport volume. Separately, TransANT describes joint work spanning rail infrastructure, wagon management, digitalisation, location, concept, and equipment for recyclable materials. The resulting lightweight-wagon prototype uses greentec steel for both the structure and platform.",
-        headingLevel: 2,
-        theme: "light",
-        spacing: "generous-top",
-        headingSize: "compact",
-      },
-    ],
-    evidence: {
-      labels: evidenceLabels,
-      title: "Published sustainability figures",
-      headingLevel: 2,
-      variant: "section-label",
-      source: sustainabilitySource,
-      evidence: [
-        {
-          type: "factual-reference",
-          title: "3 tonnes of manufacturing-stage CO₂ saved",
-          summary:
-            "Reported per cited 60-ft carrying wagon manufactured in the greentec steel edition.",
-          publicationStatus: "approved",
-          status: "Published by TransANT",
-          date: "Source checked 6 September 2026",
-          issuer: "TransAnt GmbH",
-          scope:
-            "Manufacturing phase; 60-ft carrying wagon; greentec steel edition",
-          source: sustainabilitySource,
-        },
-        {
-          type: "factual-reference",
-          title: "20% lighter underframe and 4 tonnes higher payload",
-          summary:
-            "Reported for the cited TransANT lightweight intermodal wagon; the official page connects the higher payload with fewer trips.",
-          publicationStatus: "approved",
-          status: "Published by TransANT",
-          date: "Source checked 6 September 2026",
-          issuer: "TransAnt GmbH",
-          scope:
-            "Intermodal wagon comparison; the source does not name the comparison vehicle",
-          source: sustainabilitySource,
-        },
-        {
-          type: "factual-reference",
-          title: "EcoVadis silver result",
-          summary:
-            "TransANT reports that its first EcoVadis assessment received silver and placed the company in the top 15% of its industry.",
-          publicationStatus: "approved",
-          status: "Historical result; current rating not claimed",
-          date: "April 2024",
-          issuer: "EcoVadis",
-          scope: "First TransANT assessment",
-          source: sustainabilitySource,
-        },
-      ],
-    },
-    contactCta: {
-      title: "Discuss lower-carbon wagon options",
-      summary:
-        "Confirm greentec steel availability, the wagon configuration, and the evidence boundaries that matter to your transport task.",
-      action: {
-        href: "/contact/",
-        label: "Discuss sustainability requirements",
-      },
-      supportingLinks: [{ href: "/quality/", label: "View certificates" }],
     },
   },
 } satisfies Record<EditorialPageSlug, EditorialPageViewModel>;

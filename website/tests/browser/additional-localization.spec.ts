@@ -7,31 +7,37 @@ const locales = [
     code: "uk",
     label: "UA",
     heading: "Вагони для більшого корисного навантаження.",
-    technology: "Проєктування починається з експлуатаційних вимог",
+    technology: "Почніть із моделі вагона та її технічних даних",
     transportRequirements: "Транспортні вимоги",
     supportingNavigation: "Пов’язані способи зв’язку",
     eventHeading: "Зустріньтеся з TransANT у Берліні",
     eventAction: "Відвідайте нас на InnoTrans",
+    intermodalSummary: "Інтермодальні вагони для гнучкого перевезення",
+    retiredIntermodalSummary: "Полегшені інтермодальні вагони",
   },
   {
     code: "pl",
     label: "PL",
     heading: "Wagony zapewniające większą użyteczną ładowność.",
-    technology: "Projektowanie zaczyna się od wymagań eksploatacyjnych",
+    technology: "Zacznij od modelu wagonu i jego danych technicznych",
     transportRequirements: "Wymagania transportowe",
     supportingNavigation: "Powiązane opcje kontaktu",
     eventHeading: "Spotkaj się z TransANT w Berlinie",
     eventAction: "Odwiedź nas na InnoTrans",
+    intermodalSummary: "Wagony intermodalne do elastycznego transportu",
+    retiredIntermodalSummary: "Lekkie wagony intermodalne",
   },
   {
     code: "cs",
     label: "CZ",
     heading: "Vozy pro vyšší užitečné zatížení.",
-    technology: "Konstrukce začíná provozními požadavky",
+    technology: "Začněte modelem vozu a jeho technickými údaji",
     transportRequirements: "Přepravní požadavky",
     supportingNavigation: "Související možnosti kontaktu",
     eventHeading: "Setkejte se s TransANT v Berlíně",
     eventAction: "Navštivte nás na InnoTrans",
+    intermodalSummary: "Intermodální vozy pro flexibilní přepravu",
+    retiredIntermodalSummary: "Lehké intermodální vozy",
   },
 ] as const;
 
@@ -46,6 +52,12 @@ for (const locale of locales) {
     );
     await expect(page.locator("main")).toContainText(
       locale.transportRequirements,
+    );
+    await expect(page.locator("[data-wagon-switchyard]")).toContainText(
+      locale.intermodalSummary,
+    );
+    await expect(page.locator("[data-wagon-switchyard]")).not.toContainText(
+      locale.retiredIntermodalSummary,
     );
     const event = page.locator("[data-innotrans-event]");
     await expect(event.getByRole("heading", { level: 2 })).toHaveText(
@@ -72,6 +84,8 @@ for (const locale of locales) {
     await expect(
       page.locator(`[data-site-header] a[href='/${locale.code}/company/']`),
     ).toHaveCount(1);
+    await expect(page.locator("a[href*='/sustainability/']")).toHaveCount(0);
+    await expect(page.locator("main")).not.toContainText(/greentec|alform/iu);
     await expectNoPageOverflow(page);
   });
 }

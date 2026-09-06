@@ -40,8 +40,7 @@ describe("productPageViewModel", () => {
         label: "Length over buffers (mm)",
         value: "19.830",
         source: {
-          reference:
-            "Catalog for print.pdf, PDF page 5 (printed page 03); checked against Catalog for print.ai",
+          reference: "Catalog for print.ai, PDF page 5 (printed page 03)",
           checkedAt: "2026-09-05",
         },
       },
@@ -49,8 +48,7 @@ describe("productPageViewModel", () => {
         label: "Wagon tare (t)",
         value: "19,3",
         source: {
-          reference:
-            "Catalog for print.pdf, PDF page 5 (printed page 03); checked against Catalog for print.ai",
+          reference: "Catalog for print.ai, PDF page 5 (printed page 03)",
           checkedAt: "2026-09-05",
         },
       },
@@ -58,8 +56,7 @@ describe("productPageViewModel", () => {
         label: "Vehicle gauge",
         value: "G1",
         source: {
-          reference:
-            "Catalog for print.pdf, PDF page 5 (printed page 03); checked against Catalog for print.ai",
+          reference: "Catalog for print.ai, PDF page 5 (printed page 03)",
           checkedAt: "2026-09-05",
         },
       },

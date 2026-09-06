@@ -32,11 +32,10 @@ interface ShellCopy {
   readonly skipToContent: string;
   readonly wagons: string;
   readonly technology: string;
-  readonly sustainability: string;
   readonly company: string;
   readonly expertise: string;
   readonly projects: string;
-  readonly qualityAndSustainability: string;
+  readonly quality: string;
   readonly privacy: string;
   readonly imprint: string;
   readonly contactAction: string;
@@ -50,11 +49,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     skipToContent: "Skip to content",
     wagons: "Wagons",
     technology: "Technology",
-    sustainability: "Sustainability",
     company: "Company",
     expertise: "Expertise",
     projects: "Projects",
-    qualityAndSustainability: "Quality and sustainability",
+    quality: "Quality and certificates",
     privacy: "Privacy",
     imprint: "Imprint",
     contactAction: "Contact TransANT",
@@ -78,11 +76,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     skipToContent: "Zum Inhalt springen",
     wagons: "Wagen",
     technology: "Technologie",
-    sustainability: "Nachhaltigkeit",
     company: "Unternehmen",
     expertise: "Kompetenz",
     projects: "Projekte",
-    qualityAndSustainability: "Qualität und Nachhaltigkeit",
+    quality: "Qualität und Zertifikate",
     privacy: "Datenschutz",
     imprint: "Impressum",
     contactAction: "TransANT kontaktieren",
@@ -112,11 +109,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     skipToContent: "Перейти до вмісту",
     wagons: "Вагони",
     technology: "Технології",
-    sustainability: "Сталий розвиток",
     company: "Компанія",
     expertise: "Компетенції",
     projects: "Проєкти",
-    qualityAndSustainability: "Якість і сталий розвиток",
+    quality: "Якість і сертифікати",
     privacy: "Конфіденційність",
     imprint: "Вихідні дані",
     contactAction: "Зв’язатися з TransANT",
@@ -146,11 +142,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     skipToContent: "Przejdź do treści",
     wagons: "Wagony",
     technology: "Technologia",
-    sustainability: "Zrównoważony rozwój",
     company: "Firma",
     expertise: "Kompetencje",
     projects: "Projekty",
-    qualityAndSustainability: "Jakość i zrównoważony rozwój",
+    quality: "Jakość i certyfikaty",
     privacy: "Prywatność",
     imprint: "Nota prawna",
     contactAction: "Skontaktuj się z TransANT",
@@ -180,11 +175,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     skipToContent: "Přejít k obsahu",
     wagons: "Vozy",
     technology: "Technologie",
-    sustainability: "Udržitelnost",
     company: "Společnost",
     expertise: "Odbornost",
     projects: "Projekty",
-    qualityAndSustainability: "Kvalita a udržitelnost",
+    quality: "Kvalita a certifikáty",
     privacy: "Ochrana soukromí",
     imprint: "Tiráž",
     contactAction: "Kontaktovat TransANT",
@@ -269,7 +263,6 @@ export function createSiteLayout(
       navigation: [
         { label: copy.wagons, href: route("/wagons/") },
         { label: copy.technology, href: route("/technology/") },
-        { label: copy.sustainability, href: route("/sustainability/") },
         { label: copy.company, href: route("/company/") },
       ],
       currentPath: route(canonicalPath),
@@ -298,8 +291,8 @@ export function createSiteLayout(
             { label: copy.technology, href: route("/technology/") },
             { label: copy.projects, href: route("/projects/") },
             {
-              label: copy.qualityAndSustainability,
-              href: route("/sustainability/"),
+              label: copy.quality,
+              href: route("/quality/"),
             },
             { label: copy.company, href: route("/company/") },
           ],

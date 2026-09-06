@@ -126,7 +126,7 @@
   "category_name": "Flat",
   "image": "products/flat/uno-flat-60ft-relns/wagon-render.png",
   "technical_source": {
-    "reference": "Catalog for print.pdf, PDF page 9 (printed page 07); checked against Catalog for print.ai",
+    "reference": "Catalog for print.ai, PDF page 9 (printed page 07)",
     "checkedAt": "2026-09-05"
   }
 }

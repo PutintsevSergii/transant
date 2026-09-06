@@ -8,12 +8,28 @@ This file is the compact operational handoff. It must describe the current truth
 - Lifecycle: RUNNING
 - Release: R1 — multilingual static corporate and wagon-catalogue website
 - Active work package: NONE
-- Active objective: No implementation package is active; the InnoTrans diagram-label refinement is verified.
-- Last completed work package: A-002
-- Next eligible work package: I-006 — hosted verification and remaining external release inputs.
-- Last change-log entry: 2026-09-06 — A-002 — InnoTrans diagram-label refinement
+- Active objective: None — the catalogue-source, retired-steel-copy, intermodal-wording, and Sustainability removal correction is complete.
+- Last completed work package: I-005
+- Next eligible work package: I-006 — hosted release verification and remaining external inputs.
+- Last change-log entry: 2026-09-06 — I-006 — local duplicate-server regression correction
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
+
+## Completed local correction — I-006 duplicate-server regression
+
+- User-visible outcome: `http://localhost:4321/` again renders the four model-selection stages in one wide row and the two certificate topics side by side.
+- Cause: two long-running Astro development processes simultaneously owned port 4321 on different loopback addresses. The browser resolved `localhost` to the stale IPv6 process and showed the pre-fix one-column grids, while `127.0.0.1` served the current fixed source. The catalogue/text correction did not modify `RailSequence` or `QualityImpactSection`.
+- Action: stopped only the two conflicting port-4321 processes and started one fresh Node 22.13 development server from the current workspace on `127.0.0.1:4321`.
+- Validation: the pre-restart `localhost:4321` capture reproduced both supplied regressions at the matching wide viewport. The post-restart capture confirms four horizontal stages and two horizontal certificate topics. The required baseline passed formatting, ESLint, Astro diagnostics, 84 unit tests, both builds, and three foundation tests before its browser phase reproduced the already-recorded component-lab locale/EvidenceList mismatch and was stopped; that aggregate is not claimed green. No implementation source, deployment, or external system changed.
+
+## Completed correction — I-005 catalogue-source, intermodal wording, and Sustainability removal audit
+
+- User-visible outcome: Sustainability is removed as a page and navigation destination in EN/DE/UA/PL/CZ. General high-strength/alform/greentec marketing claims are gone from publishable content and replaced with neutral wagon/configuration wording. The intermodal family is no longer described as “lightweight” in any locale; it is presented through flexible container transport and multiple loading configurations.
+- Source decision: `Catalog for print.ai` is the authoritative wagon-copy source. Its Sgns(s) page does contain “optimized lightweight design” in body copy, but its headline uses flexible intermodal transport and optimized payload capacity; the customer direction supersedes that adjective, while the catalogue's low tare and payload values remain exact technical data. Historical official-site research is retained only with an explicit non-publishable warning.
+- Files: catalogue and ten product source references; intermodal copy/readmes; homepage, editorial, shell, German, Ukrainian, Polish, and Czech adapters; route inventories, audit contracts, focused tests, affected component/specification documentation, and visual references. Twelve obsolete Sustainability screenshots were removed.
+- Validation: state/input validators PASS. Node 22.13 formatting, ESLint, Astro diagnostics (0 errors/warnings/hints), 84 unit tests, 125-page production build, component-lab build, and 3 foundation tests PASS. Route integration PASSes (`routes=124 products=10 internal-references=4336`); content/brand audit PASSes for 125 documents and now rejects non-catalogue provenance, retired steel/Sustainability copy, the five retired intermodal phrases, and a generated Sustainability route. Focused unit checks PASS 17/17; fresh component/no-JavaScript/responsive/axe checks PASS 82 with 2 expected skips; fresh production localization checks PASS 54/54; affected homepage/editorial/header visual comparisons PASS 40 with 2 expected skips and reviewed 320/1440 output. The broader refreshed visual matrix PASSed 198/198, while its clean rerun PASSed 194/198 with four known full-page lazy-media image-state mismatches on unchanged product layouts; those four are not claimed as green.
+- Baseline boundary: the final `pnpm quality` static stages PASS, while its browser phase again routes production-only locale tests through the component lab and reproduces the recorded locale/EvidenceList mismatch; it was stopped and is not claimed as green. Focused fresh component and production evidence above supersedes that routing limitation for this correction.
+- Current state: `VERIFIED`; no deployment or external system changed.
 
 ## Completed enhancement — A-002 localized InnoTrans 2026 homepage announcement
 

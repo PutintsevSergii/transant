@@ -43,6 +43,21 @@ describe("I-005 content and brand audit contract", () => {
       "Catalog requires a source",
     );
     expect(() =>
+      productAuditEntries({ ...valid, source: "official website" }),
+    ).toThrow("Catalog source must be Catalog for print.ai");
+    expect(() =>
+      productAuditEntries({
+        ...valid,
+        products: {
+          ...products,
+          sgns: {
+            ...firstProduct,
+            technical_source: { reference: "official website" },
+          },
+        },
+      }),
+    ).toThrow("Product sgns must cite Catalog for print.ai");
+    expect(() =>
       productAuditEntries({
         ...valid,
         products: { ...products, sgns: { ...firstProduct, category: "tank" } },

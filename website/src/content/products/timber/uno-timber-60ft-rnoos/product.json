@@ -127,7 +127,7 @@
   "category_name": "Timber",
   "image": "products/timber/uno-timber-60ft-rnoos/wagon-render.png",
   "technical_source": {
-    "reference": "Catalog for print.pdf, PDF page 13 (printed page 11); checked against Catalog for print.ai",
+    "reference": "Catalog for print.ai, PDF page 13 (printed page 11)",
     "checkedAt": "2026-09-05"
   }
 }

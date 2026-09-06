@@ -3,6 +3,103 @@ import { homepageViewModel } from "./homepage-view-model";
 import { createSiteLayout, localizedPath } from "./site-shell-view-model";
 
 export const germanCopy: Readonly<Record<string, string>> = {
+  "The TransANT product catalogue presents intermodal, flat, timber, open-box, and tank wagons for defined transport tasks.":
+    "Der TransANT-Produktkatalog stellt Intermodal-, Flach-, Holz-, offene Kasten- und Kesselwagen für definierte Transportaufgaben vor.",
+  "Model specifications": "Modellspezifikationen",
+  "Explore ten intermodal, flat, timber, open-box, and tank wagon configurations from the TransANT product catalogue.":
+    "Entdecken Sie zehn Konfigurationen von Intermodal-, Flach-, Holz-, offenen Kasten- und Kesselwagen aus dem TransANT-Produktkatalog.",
+  "Visit TransANT at InnoTrans 2026 and discuss the catalogue wagon range, loading configurations, and technical data for your transport task.":
+    "Besuchen Sie TransANT auf der InnoTrans 2026 und besprechen Sie das Wagenprogramm, die Ladekonfigurationen und die technischen Daten für Ihre Transportaufgabe.",
+  "Product information": "Produktinformationen",
+  "Wagon data for a defined transport task":
+    "Wagendaten für eine definierte Transportaufgabe",
+  "The catalogue presents ten wagon configurations across five product families.":
+    "Der Katalog stellt zehn Wagenkonfigurationen in fünf Produktfamilien vor.",
+  "Each model is described through its intended cargo, loading configuration, technical specifications, load limits, and special features.":
+    "Jedes Modell wird über die vorgesehene Ladung, Ladekonfiguration, technischen Daten, Lastgrenzen und besonderen Merkmale beschrieben.",
+  "Cargo and applications": "Ladung und Anwendungen",
+  "The catalogue lists typical commodities for each wagon model.":
+    "Der Katalog nennt typische Güter für jedes Wagenmodell.",
+  "Loading configuration": "Ladekonfiguration",
+  "Container pins, walls, stanchions, doors, and other equipment are specified by model.":
+    "Containerzapfen, Wände, Rungen, Türen und weitere Ausrüstung sind modellspezifisch angegeben.",
+  "Technical specifications": "Technische Spezifikationen",
+  "Dimensions, tare weight, load limits, vehicle gauge, and permitted speed are listed per wagon.":
+    "Abmessungen, Eigengewicht, Lastgrenzen, Fahrzeugbegrenzungslinie und zulässige Geschwindigkeit sind je Wagen aufgeführt.",
+  "Special features": "Besondere Merkmale",
+  "Available equipment and special features depend on the selected wagon model.":
+    "Verfügbare Ausrüstung und besondere Merkmale hängen vom gewählten Wagenmodell ab.",
+  "Model selection": "Modellauswahl",
+  "From transport task to wagon specification":
+    "Von der Transportaufgabe zur Wagenspezifikation",
+  "Match the cargo and loading requirements with a catalogue model, then review its technical data and listed equipment.":
+    "Ordnen Sie Ladung und Ladeanforderungen einem Katalogmodell zu und prüfen Sie anschließend dessen technische Daten und aufgeführte Ausrüstung.",
+  "Transport task": "Transportaufgabe",
+  "Start with the cargo and loading requirements.":
+    "Beginnen Sie mit der Ladung und den Ladeanforderungen.",
+  "Wagon model": "Wagenmodell",
+  "Select the wagon family and model for the intended transport task.":
+    "Wählen Sie Wagenfamilie und Modell für die vorgesehene Transportaufgabe.",
+  "Technical data": "Technische Daten",
+  "Review dimensions, tare weight, load limits, vehicle gauge, and permitted speed.":
+    "Prüfen Sie Abmessungen, Eigengewicht, Lastgrenzen, Fahrzeugbegrenzungslinie und zulässige Geschwindigkeit.",
+  "Confirm the equipment and special features listed for the selected wagon.":
+    "Bestätigen Sie die für den gewählten Wagen aufgeführte Ausrüstung und die besonderen Merkmale.",
+  "Review technical data": "Technische Daten prüfen",
+  "Wagon selection stages": "Schritte der Wagenauswahl",
+  "Freight wagon technical data": "Technische Daten für Güterwagen",
+  "Catalogue-grounded information about wagon configurations, loading equipment, dimensions, load limits, vehicle gauge, and operating data.":
+    "Katalogbasierte Informationen zu Wagenkonfigurationen, Ladeausrüstung, Abmessungen, Lastgrenzen, Fahrzeugbegrenzungslinie und Betriebsdaten.",
+  "Product catalogue": "Produktkatalog",
+  "Start with the wagon model and its technical data":
+    "Beginnen Sie mit dem Wagenmodell und seinen technischen Daten",
+  "Each catalogue model has its own intended cargo, loading configuration, dimensions, tare weight, load limits, vehicle gauge, and permitted speed.":
+    "Jedes Katalogmodell hat eine vorgesehene Ladung, Ladekonfiguration, Abmessungen, Eigengewicht, Lastgrenzen, Fahrzeugbegrenzungslinie und zulässige Geschwindigkeit.",
+  "Wagon range": "Wagenprogramm",
+  "Ten configurations across five wagon families":
+    "Zehn Konfigurationen in fünf Wagenfamilien",
+  "The catalogue covers intermodal, flat, timber, open-box, and tank wagons. Every model entry identifies its typical commodities, key benefits, and technical specification.":
+    "Der Katalog umfasst Intermodal-, Flach-, Holz-, offene Kasten- und Kesselwagen. Jeder Modelleingang nennt typische Güter, zentrale Vorteile und technische Spezifikationen.",
+  "TransANT intermodal wagon shown in the product catalogue":
+    "Im Produktkatalog dargestellter TransANT-Intermodalwagen",
+  "Review loading equipment for the selected model":
+    "Ladeausrüstung des gewählten Modells prüfen",
+  "The catalogue records model-specific equipment such as container pins, side walls, stanchions, doors, loading schemes, and tank fittings. Availability must be confirmed for the selected wagon.":
+    "Der Katalog erfasst modellspezifische Ausrüstung wie Containerzapfen, Seitenwände, Rungen, Türen, Ladeschemata und Kesselarmaturen. Die Verfügbarkeit ist für den gewählten Wagen zu bestätigen.",
+  "Mass and load limits": "Masse und Lastgrenzen",
+  "Use the figures for the selected wagon configuration":
+    "Verwenden Sie die Werte der gewählten Wagenkonfiguration",
+  "Tare weight, loading dimensions, loading volume, axle load, and load-limit values differ by model. The product pages reproduce the catalogue values without generalising them across the range.":
+    "Eigengewicht, Laderaumabmessungen, Ladevolumen, Achslast und Lastgrenzen unterscheiden sich je Modell. Die Produktseiten geben die Katalogwerte wieder, ohne sie auf das gesamte Programm zu verallgemeinern.",
+  "Operation data": "Betriebsdaten",
+  "Check gauge, speed, curve radius, and equipment":
+    "Begrenzungslinie, Geschwindigkeit, Kurvenradius und Ausrüstung prüfen",
+  "Vehicle gauge, permitted speed, minimum curve radius, brake equipment, and other operating details are listed per model and must be checked for the intended use.":
+    "Fahrzeugbegrenzungslinie, zulässige Geschwindigkeit, Mindestbogenradius, Bremsausrüstung und weitere Betriebsdaten sind je Modell aufgeführt und für den vorgesehenen Einsatz zu prüfen.",
+  "Drawings and technical data": "Zeichnungen und technische Daten",
+  "Read the catalogue entry as one model-specific record":
+    "Den Katalogeintrag als einen modellspezifischen Datensatz lesen",
+  "Use the wagon render, technical drawings, specification tables, loading limits, and catalogue notes together. Any printed ambiguity remains visible and requires confirmation with TransANT.":
+    "Nutzen Sie Wagenabbildung, technische Zeichnungen, Spezifikationstabellen, Lastgrenzen und Kataloghinweise gemeinsam. Jede gedruckte Unklarheit bleibt sichtbar und muss mit TransANT bestätigt werden.",
+  "TransANT product information and contact details for its freight and tank wagon range.":
+    "Produktinformationen und Kontaktdaten zum TransANT-Programm an Güter- und Kesselwagen.",
+  "TransANT freight and tank wagon product information":
+    "Produktinformationen zu TransANT-Güter- und Kesselwagen",
+  "The supplied TransANT catalogue presents ten wagon configurations across intermodal, flat, timber, open-box, and tank families.":
+    "Der bereitgestellte TransANT-Katalog stellt zehn Konfigurationen aus den Familien Intermodal, Flachwagen, Holz, offener Kasten und Kesselwagen vor.",
+  "Five wagon families": "Fünf Wagenfamilien",
+  "Ten catalogue models": "Zehn Katalogmodelle",
+  "Model-specific technical data": "Modellspezifische technische Daten",
+  "Model-specific information for transport requirements":
+    "Modellspezifische Informationen für Transportanforderungen",
+  "Each catalogue entry presents typical commodities, key benefits, technical specifications, load limits, and special features for one wagon model. Contact TransANT to discuss the relevant configuration for a transport task.":
+    "Jeder Katalogeintrag stellt typische Güter, zentrale Vorteile, technische Spezifikationen, Lastgrenzen und besondere Merkmale eines Wagenmodells vor. Kontaktieren Sie TransANT, um die passende Konfiguration für eine Transportaufgabe zu besprechen.",
+  "Built for intensive industrial use, the wagon has a robust body for demanding loading conditions and heavy-duty operation. The open-top configuration and convenient side doors support fast, flexible loading and unloading.":
+    "Für den intensiven Industrieeinsatz besitzt der Wagen einen robusten Aufbau für anspruchsvolle Ladebedingungen und Schwerlastbetrieb. Die offene Bauweise und die praktischen Seitentüren unterstützen schnelles, flexibles Be- und Entladen.",
+  "Robust construction for demanding loading conditions":
+    "Robuste Konstruktion für anspruchsvolle Ladebedingungen",
+  "Body for demanding bulk-cargo operation":
+    "Aufbau für anspruchsvollen Schüttgutbetrieb",
   "InnoTrans 2026 // International trade fair":
     "InnoTrans 2026 // Internationale Fachmesse",
   "Meet TransANT in Berlin": "Treffen Sie TransANT in Berlin",
@@ -40,16 +137,9 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "Eine standardisierte Plattform wird mit einem branchen- oder kundenspezifischen Aufbau kombiniert.",
   "A standardised lightweight platform is combined with an industry- or customer-specific superstructure.":
     "Eine standardisierte Leichtbauplattform wird mit einem branchen- oder kundenspezifischen Aufbau kombiniert.",
-  "The platform combines topology optimisation, high-strength steel, and modular superstructures to suit the intended transport task.":
-    "Die Plattform verbindet Topologieoptimierung, hochfesten Stahl und modulare Aufbauten für die jeweilige Transportaufgabe.",
-  "Topology optimisation, high-strength steel, a shared platform architecture, and interchangeable superstructures support different logistics requirements.":
-    "Topologieoptimierung, hochfester Stahl, eine gemeinsame Plattformarchitektur und austauschbare Aufbauten unterstützen unterschiedliche Logistikanforderungen.",
   "Topology optimisation": "Topologieoptimierung",
   "Material is placed where it is required to transmit load.":
     "Material wird dort eingesetzt, wo es zur Lastübertragung erforderlich ist.",
-  "High-strength steel": "Hochfester Stahl",
-  "The platform uses high-strength, fine-grained alform steel.":
-    "Die Plattform nutzt hochfesten, feinkörnigen alform-Stahl.",
   "Modular superstructures": "Modulare Aufbauten",
   "The superstructure is selected for the industry and cargo.":
     "Der Aufbau wird für Branche und Ladung ausgewählt.",
@@ -73,8 +163,8 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Roundwood & timber": "Rundholz und Holz",
   "Scrap & bulk materials": "Schrott und Schüttgut",
   "Liquid chemicals & fuels": "Flüssige Chemikalien und Kraftstoffe",
-  "Lightweight intermodal wagons for 20/30/40ft ISO containers and swap bodies, built around a low tare weight and flexible loading configurations.":
-    "Leichte Intermodalwagen für 20-, 30- und 40-ft-ISO-Container sowie Wechselbehälter, ausgelegt auf ein geringes Eigengewicht und flexible Ladekonfigurationen.",
+  "Intermodal wagons for flexible transport of 20/30/40ft ISO containers and swap bodies, with multiple loading configurations.":
+    "Intermodalwagen für den flexiblen Transport von 20-, 30- und 40-ft-ISO-Containern und Wechselbehältern mit mehreren Ladekonfigurationen.",
   "Versatile flat wagons with foldable side walls, swivel stanchions and robust wooden floors for steel, construction materials and long, bulky or project cargo.":
     "Vielseitige Flachwagen mit klappbaren Seitenwänden, schwenkbaren Rungen und robusten Holzböden für Stahl, Baumaterialien sowie langes, sperriges oder projektbezogenes Ladegut.",
   "High-capacity timber wagons engineered for 3, 4 and 5 m logs, with optimized stanchions that retain roundwood securely without additional tying.":
@@ -158,8 +248,6 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "View the TransANT product portfolio": "TransANT-Produktportfolio ansehen",
   "Standardise the foundation, adapt the superstructure":
     "Die Grundlage standardisieren, den Aufbau anpassen",
-  "Topology optimisation, high-strength steel, and modular superstructures form the foundation of the TransANT platform. Each superstructure is selected for the intended cargo and operation.":
-    "Topologieoptimierung, hochfester Stahl und modulare Aufbauten bilden die Grundlage der TransANT-Plattform. Jeder Aufbau wird für die vorgesehene Ladung und den vorgesehenen Betrieb ausgewählt.",
   "Engineering sequence": "Engineering-Ablauf",
   "Adapt the body when logistics requirements change":
     "Den Aufbau an veränderte Logistikanforderungen anpassen",
@@ -172,10 +260,6 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Lightweight engineering": "Leichtbau-Engineering",
   "Use material where the load requires it":
     "Material dort einsetzen, wo die Last es erfordert",
-  "Topology optimisation places material along the load path, while high-strength fine-grained alform steel supports a lighter platform. Tare weight and payload remain specific to each wagon configuration.":
-    "Die Topologieoptimierung platziert Material entlang des Lastpfads, während hochfester feinkörniger alform-Stahl eine leichtere Plattform unterstützt. Eigengewicht und Nutzlast bleiben von der jeweiligen Wagenkonfiguration abhängig.",
-  "Read the voestalpine alform case study":
-    "voestalpine-Fallstudie zu alform lesen",
   "Configuration and readiness": "Konfiguration und Bereitschaft",
   "Confirm equipment and DAC readiness for the selected wagon":
     "Ausrüstung und DAK-Bereitschaft für den ausgewählten Wagen bestätigen",
@@ -249,59 +333,6 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "Die Dokumentation für Ihr Projekt finden",
   "Contact TransANT to discuss certificate scope or documentation for a particular wagon configuration.":
     "Kontaktieren Sie TransANT, um den Zertifikatsumfang oder die Dokumentation für eine bestimmte Wagenkonfiguration zu besprechen.",
-  "Explore sustainability": "Nachhaltigkeit entdecken",
-  Sustainability: "Nachhaltigkeit",
-  "Sustainable freight wagons": "Nachhaltige Güterwagen",
-  "Manufacturing-stage CO₂": "CO₂ in der Herstellung",
-  "Lightweight intermodal payload": "Nutzlast leichter Intermodalwagen",
-  "Recyclable-material prototype": "Prototyp für Wertstoffkreisläufe",
-  "EcoVadis April 2024": "EcoVadis April 2024",
-  "Sustainable freight wagons and greentec steel":
-    "Nachhaltige Güterwagen und greentec steel",
-  "TransANT's official sustainability information on greentec steel editions, manufacturing-stage CO₂ savings, lightweight intermodal payload, and its April 2024 EcoVadis result.":
-    "Offizielle TransANT-Informationen zu greentec steel Editionen, CO₂-Einsparungen in der Herstellung, der Nutzlast leichter Intermodalwagen und dem EcoVadis-Ergebnis vom April 2024.",
-  "Greentec steel for lighter freight wagons":
-    "greentec steel für leichtere Güterwagen",
-  "On request, TransANT offers its lightweight wagons in a greentec steel edition, combining rail transport, lightweight engineering, and CO₂-reduced steel.":
-    "Auf Wunsch bietet TransANT seine Leichtbauwagen in einer greentec steel Edition an und verbindet damit Schienengüterverkehr, Leichtbau und CO₂-reduzierten Stahl.",
-  "Sustainable steel": "Nachhaltiger Stahl",
-  "Support a lower-carbon supply chain":
-    "Eine CO₂-reduzierte Lieferkette unterstützen",
-  "TransANT presents the greentec steel edition as a way to secure certified CO₂ reduction, strengthen ESG performance, improve access to green loans, and offer more sustainable logistics solutions. Availability depends on the requested wagon configuration.":
-    "TransANT stellt die greentec steel Edition als Möglichkeit dar, zertifizierte CO₂-Reduktion zu erzielen, die ESG-Performance zu stärken, den Zugang zu Green Loans zu verbessern und nachhaltigere Logistiklösungen anzubieten. Die Verfügbarkeit hängt von der angefragten Wagenkonfiguration ab.",
-  "Manufacturing, payload, and circular materials":
-    "Herstellung, Nutzlast und Wertstoffkreisläufe",
-  "State the environmental benefit with its boundary":
-    "Umweltvorteile mit klarer Abgrenzung darstellen",
-  "For the cited 60-ft lightweight intermodal carrying wagon in greentec steel, TransANT reports three tonnes of CO₂ saved in manufacturing. It also attributes a 20% lighter underframe and four tonnes of higher payload to the cited intermodal wagon, reducing the trips needed for a fixed transport volume. Separately, TransANT describes joint work spanning rail infrastructure, wagon management, digitalisation, location, concept, and equipment for recyclable materials. The resulting lightweight-wagon prototype uses greentec steel for both the structure and platform.":
-    "Für den genannten 60-ft-Leichtbau-Intermodaltragwagen aus greentec steel berichtet TransANT von drei Tonnen eingespartem CO₂ in der Herstellung. Zudem führt TransANT bei dem genannten Intermodalwagen ein um 20 % leichteres Untergestell und vier Tonnen höhere Zuladung an, wodurch für ein festes Transportvolumen weniger Fahrten erforderlich sind. Unabhängig davon beschreibt TransANT gemeinsame Lösungen von Eisenbahninfrastruktur über Wagenmanagement und Digitalisierung bis zu Standort, Konzept und Equipment rund um Wertstoffe. Beim daraus entstandenen Leichtbauwagen-Prototyp bestehen Aufbau und Plattform aus greentec steel.",
-  "Published sustainability figures": "Veröffentlichte Nachhaltigkeitsangaben",
-  "3 tonnes of manufacturing-stage CO₂ saved":
-    "3 Tonnen eingespartes CO₂ in der Herstellung",
-  "Reported per cited 60-ft carrying wagon manufactured in the greentec steel edition.":
-    "Angegeben pro genanntem 60-ft-Tragwagen, der in der greentec steel Edition gefertigt wird.",
-  "Published by TransANT": "Von TransANT veröffentlicht",
-  "Source checked 6 September 2026": "Quelle geprüft am 6. September 2026",
-  "Manufacturing phase; 60-ft carrying wagon; greentec steel edition":
-    "Herstellungsphase; 60-ft-Tragwagen; greentec steel Edition",
-  "20% lighter underframe and 4 tonnes higher payload":
-    "20 % leichteres Untergestell und 4 Tonnen höhere Zuladung",
-  "Reported for the cited TransANT lightweight intermodal wagon; the official page connects the higher payload with fewer trips.":
-    "Angegeben für den genannten TransANT-Leichtbau-Intermodalwagen; die offizielle Seite verbindet die höhere Zuladung mit weniger erforderlichen Fahrten.",
-  "Intermodal wagon comparison; the source does not name the comparison vehicle":
-    "Vergleich eines Intermodalwagens; die Quelle nennt das Vergleichsfahrzeug nicht",
-  "EcoVadis silver result": "EcoVadis-Silberergebnis",
-  "TransANT reports that its first EcoVadis assessment received silver and placed the company in the top 15% of its industry.":
-    "TransANT berichtet, dass die erste EcoVadis-Bewertung Silber erreichte und das Unternehmen damit zu den besten 15 % seiner Branche zählte.",
-  "Historical result; current rating not claimed":
-    "Historisches Ergebnis; keine Aussage zur aktuellen Bewertung",
-  "First TransANT assessment": "Erste TransANT-Bewertung",
-  "Discuss lower-carbon wagon options":
-    "CO₂-reduzierte Wagenoptionen besprechen",
-  "Confirm greentec steel availability, the wagon configuration, and the evidence boundaries that matter to your transport task.":
-    "Klären Sie die Verfügbarkeit von greentec steel, die Wagenkonfiguration und die für Ihre Transportaufgabe relevanten Nachweisgrenzen.",
-  "Discuss sustainability requirements":
-    "Nachhaltigkeitsanforderungen besprechen",
   "View certificates": "Zertifikate ansehen",
   Home: "Startseite",
   Wagons: "Wagen",
@@ -419,7 +450,7 @@ export const germanHomepageViewModel: HomepageViewModel = {
   },
   layout: createSiteLayout(
     "Güterwagen für individuelle Transportaufgaben",
-    "TransANT entwickelt Güter- und Kesselwagen auf einer modularen Plattform mit ladungsspezifischen Aufbauten.",
+    "Der TransANT-Produktkatalog stellt Intermodal-, Flach-, Holz-, offene Kasten- und Kesselwagen für definierte Transportaufgaben vor.",
     "/",
     "de",
   ),

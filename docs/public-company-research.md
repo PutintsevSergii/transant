@@ -1,5 +1,7 @@
 # Public research on TransAnt GmbH for the new website
 
+> Historical research only. As of 6 September 2026, this document is not an approved source for public wagon or company copy. Public wagon copy must use `Catalog for print.ai`; high-strength/alform/greentec and Sustainability claims recorded below are retained only as provenance and must not be published.
+
 Research checked: 3 September 2026.
 
 Purpose: collect verifiable public information, distinguish facts from promotional claims, and turn the material into a foundation for the architecture and copy of the new website.
@@ -18,19 +20,19 @@ There is enough material to build a credible website: company history, technolog
 
 ## 2. Company fact sheet
 
-| Field | Supported information | Website status |
-| --- | --- | --- |
-| Legal name | TransAnt GmbH | Publishable |
-| Legal form | Gesellschaft mit beschränkter Haftung, an Austrian limited liability company | Publishable |
-| Registration | FN 544665 d; registered 1 December 2020 | Publishable |
-| VAT ID | ATU76434529 | Publishable in the Imprint |
-| Address | voestalpine-Straße 3, 4020 Linz, Austria | Publishable |
-| Telephone | +43 664 88324966 | Confirm with a control call before launch |
-| General email | office@transant.com | Confirm mailbox ownership before launch |
-| Primary market | European standard-gauge market | Publishable |
-| Activity | Development, homologation, and distribution of freight and tank wagons; manufacturing and supply are organized through a partner network | Publishable |
-| Team | The official Company page states 16 employees, including 7 in-house simulation and design engineers | Dynamic; confirm before launch |
-| Managing directors | A public company-register aggregator lists Florian Hofmann and Serhiy Putintsev from 11 March 2025 | Verify against a current Firmenbuchauszug and obtain approval for publication |
+| Field              | Supported information                                                                                                                    | Website status                                                                |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Legal name         | TransAnt GmbH                                                                                                                            | Publishable                                                                   |
+| Legal form         | Gesellschaft mit beschränkter Haftung, an Austrian limited liability company                                                             | Publishable                                                                   |
+| Registration       | FN 544665 d; registered 1 December 2020                                                                                                  | Publishable                                                                   |
+| VAT ID             | ATU76434529                                                                                                                              | Publishable in the Imprint                                                    |
+| Address            | voestalpine-Straße 3, 4020 Linz, Austria                                                                                                 | Publishable                                                                   |
+| Telephone          | +43 664 88324966                                                                                                                         | Confirm with a control call before launch                                     |
+| General email      | office@transant.com                                                                                                                      | Confirm mailbox ownership before launch                                       |
+| Primary market     | European standard-gauge market                                                                                                           | Publishable                                                                   |
+| Activity           | Development, homologation, and distribution of freight and tank wagons; manufacturing and supply are organized through a partner network | Publishable                                                                   |
+| Team               | The official Company page states 16 employees, including 7 in-house simulation and design engineers                                      | Dynamic; confirm before launch                                                |
+| Managing directors | A public company-register aggregator lists Florian Hofmann and Serhiy Putintsev from 11 March 2025                                       | Verify against a current Firmenbuchauszug and obtain approval for publication |
 
 Sources: [official Imprint](https://www.transant.com/Impressum), [Company page](https://www.transant.com/en/Company), [WKO Firmen A-Z](https://firmen.wko.at/transant-gmbh/ober%C3%B6sterreich/?firmaid=cff57795-7465-484f-99da-81a7f2fc9b5a), [public company-register profile](https://www.wirtschaft.at/u/544665d).
 
@@ -144,15 +146,15 @@ Sources: [Rail Cargo Group](https://www.railcargo.com/en/lp/transant-en), [voest
 
 ## 7. Supported benefits and figures
 
-| Claim | Public basis | Recommended use |
-| --- | --- | --- |
-| Up to 20% lighter than a conventional underframe | voestalpine and RCG | Use as an attributed comparison and state the comparison basis |
-| Up to 4 tonnes of additional payload per wagon | voestalpine, RCG, and TransANT | Strong KPI, but retain “up to” and identify the model/configuration |
-| Up to 100 train journeys avoided per year in the ore-fleet case | Official TransANT Product Portfolio | Use only as the result of the Erzberg–Linz case |
-| About 3 tonnes of manufacturing CO₂ saved per 60 ft wagon using greentec steel | Official Sustainability page | State that this concerns the manufacturing phase and greentec steel edition |
-| Platform lengths of 33–70 ft | Rail Cargo Group | Use as a platform-architecture range if it remains part of the current offer |
-| 16 employees and 7 in-house engineers | Official Company page | Reconfirm immediately before launch |
-| EcoVadis Silver, top 15%, April 2024 | Official Sustainability page | Periodic rating; obtain the current scorecard and logo rights |
+| Claim                                                                          | Public basis                        | Recommended use                                                              |
+| ------------------------------------------------------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------- |
+| Up to 20% lighter than a conventional underframe                               | voestalpine and RCG                 | Use as an attributed comparison and state the comparison basis               |
+| Up to 4 tonnes of additional payload per wagon                                 | voestalpine, RCG, and TransANT      | Strong KPI, but retain “up to” and identify the model/configuration          |
+| Up to 100 train journeys avoided per year in the ore-fleet case                | Official TransANT Product Portfolio | Use only as the result of the Erzberg–Linz case                              |
+| About 3 tonnes of manufacturing CO₂ saved per 60 ft wagon using greentec steel | Official Sustainability page        | State that this concerns the manufacturing phase and greentec steel edition  |
+| Platform lengths of 33–70 ft                                                   | Rail Cargo Group                    | Use as a platform-architecture range if it remains part of the current offer |
+| 16 employees and 7 in-house engineers                                          | Official Company page               | Reconfirm immediately before launch                                          |
+| EcoVadis Silver, top 15%, April 2024                                           | Official Sustainability page        | Periodic rating; obtain the current scorecard and logo rights                |
 
 Sources: [voestalpine press release](https://www.voestalpine.com/group/en/media/press-releases/2020-08-19-voestalpine-expands-its-lightweight-construction-expertise-to-railway-systems/), [Rail Cargo Group](https://www.railcargo.com/en/lp/transant-en), [Product Portfolio](https://www.transant.com/en/Product-Portfolio), [Sustainability](https://www.transant.com/en/Sustainability), [Company](https://www.transant.com/en/Company).
 

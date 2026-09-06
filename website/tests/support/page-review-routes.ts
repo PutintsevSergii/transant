@@ -41,16 +41,11 @@ export const pageReviewRoutes: readonly PageReviewRoute[] = [
       product === "uno-tank-88m3-zacns",
     technicalTable: true,
   })),
-  ...["technology", "projects", "company", "quality", "sustainability"].map(
-    (page) => ({
-      id: `editorial-${page}`,
-      fixtureRoute: `/fixtures/editorial/${page}/`,
-      visual:
-        page === "technology" ||
-        page === "quality" ||
-        page === "sustainability",
-    }),
-  ),
+  ...["technology", "projects", "company", "quality"].map((page) => ({
+    id: `editorial-${page}`,
+    fixtureRoute: `/fixtures/editorial/${page}/`,
+    visual: page === "technology" || page === "quality",
+  })),
   { id: "contact", fixtureRoute: "/fixtures/contact/", visual: true },
   { id: "privacy", fixtureRoute: "/fixtures/legal/privacy/", visual: true },
   { id: "imprint", fixtureRoute: "/fixtures/legal/imprint/", visual: true },

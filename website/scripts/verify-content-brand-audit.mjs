@@ -8,6 +8,7 @@ const websiteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const defaultDistDirectory = join(websiteRoot, "dist");
 const catalogPath = join(websiteRoot, "src", "content", "catalog.json");
 const logoPath = join(websiteRoot, "public", "brand", "transant-logo.png");
+const approvedCatalogueSource = "Catalog for print.ai";
 
 export const approvedLogoDigest =
   "fc0a30fff3e99c2a7af66ca78d04af82218a035c0926b11c2d5418d14ac0c985";
@@ -36,6 +37,10 @@ function record(value, label) {
 export function productAuditEntries(catalogValue) {
   const catalog = record(catalogValue, "catalog");
   assertion(nonEmptyString(catalog.source), "Catalog requires a source.");
+  assertion(
+    catalog.source === approvedCatalogueSource,
+    `Catalog source must be ${approvedCatalogueSource}.`,
+  );
   assertion(Array.isArray(catalog.categories), "Catalog requires categories.");
   assertion(
     catalog.products &&
@@ -70,6 +75,15 @@ export function productAuditEntries(catalogValue) {
     assertion(
       Array.isArray(product.specs) && product.specs.length > 0,
       `Product ${id} requires source specifications.`,
+    );
+    const technicalSource = record(
+      product.technical_source,
+      `Product ${id} technical source`,
+    );
+    assertion(
+      nonEmptyString(technicalSource.reference) &&
+        technicalSource.reference.startsWith(approvedCatalogueSource),
+      `Product ${id} must cite ${approvedCatalogueSource}.`,
     );
     const category = categories.get(product.category);
     assertion(
@@ -190,6 +204,28 @@ export async function auditContentAndBrand({
     !/\b(?:lorem ipsum|todo|tbd)\b/iu.test(allOutput),
     "Published output contains unfinished placeholder copy.",
   );
+  assertion(
+    !/(?:greentec|alform|high[ -]strength steel|\/sustainability\/)/iu.test(
+      allOutput,
+    ),
+    "Published output contains retired steel or sustainability messaging.",
+  );
+  assertion(
+    !/(?:lightweight intermodal|leichte intermodalwagen|полегшені інтермодальні вагони|lekkie wagony intermodalne|lehké intermodální vozy)/iu.test(
+      allOutput,
+    ),
+    "Published output describes the intermodal family as lightweight.",
+  );
+  try {
+    await access(
+      join(distDirectory, "sustainability", "index.html"),
+      constants.R_OK,
+    );
+    throw new Error("Sustainability must not be published as a route.");
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("must not"))
+      throw error;
+  }
   assertion(
     !/<(?:img|script)\b[^>]+\bsrc\s*=\s*["']https?:\/\//iu.test(allOutput),
     "Published output contains a remote image or script source.",

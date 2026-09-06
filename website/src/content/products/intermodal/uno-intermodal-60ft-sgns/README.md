@@ -4,7 +4,7 @@ Flexible intermodal transport with optimized payload capacity.
 
 The UNO INTERMODAL 60ft is a versatile intermodal freight wagon designed for the efficient transportation of 20', 30' and 40' ISO containers.
 
-Its optimized lightweight design combines low tare weight with high payload capacity, enabling efficient use of wagon capacity and helping operators optimize transport costs. The wagon supports multiple loading configurations and provides the flexibility required for different intermodal transport needs.
+Its design combines low tare weight with high payload capacity, enabling efficient use of wagon capacity and helping operators optimize transport costs. The wagon supports multiple loading configurations and provides the flexibility required for different intermodal transport needs.
 
 - Category: Intermodal
 - Source product key: `sgns`

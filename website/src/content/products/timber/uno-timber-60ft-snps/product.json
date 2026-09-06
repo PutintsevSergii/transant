@@ -123,7 +123,7 @@
   "category_name": "Timber",
   "image": "products/timber/uno-timber-60ft-snps/wagon-render.png",
   "technical_source": {
-    "reference": "Catalog for print.pdf, PDF page 15 (printed page 13); checked against Catalog for print.ai",
+    "reference": "Catalog for print.ai, PDF page 15 (printed page 13)",
     "checkedAt": "2026-09-05"
   }
 }

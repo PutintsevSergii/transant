@@ -157,7 +157,7 @@
   "category_name": "Tank",
   "image": "products/tank/uno-tank-88m3-zacns/wagon-render.png",
   "technical_source": {
-    "reference": "Catalog for print.pdf, PDF page 23 (printed page 21); checked against Catalog for print.ai",
+    "reference": "Catalog for print.ai, PDF page 23 (printed page 21)",
     "checkedAt": "2026-09-05"
   }
 }

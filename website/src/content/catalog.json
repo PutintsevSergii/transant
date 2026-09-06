@@ -1,13 +1,13 @@
 {
   "name": "TransANT UNO wagon range",
-  "source": "prep/source-material/prototypes/transant-product-website-prototype.html",
+  "source": "Catalog for print.ai",
   "categories": [
     {
       "id": "intermodal",
       "source_id": "intermodal",
       "name": "Intermodal",
       "tag": "Container transport",
-      "description": "Lightweight intermodal wagons for 20/30/40ft ISO containers and swap bodies, built around a low tare weight and flexible loading configurations.",
+      "description": "Intermodal wagons for flexible transport of 20/30/40ft ISO containers and swap bodies, with multiple loading configurations.",
       "products": [
         "sgns"
       ]
@@ -66,7 +66,7 @@
       "tagline": "Flexible intermodal transport with optimized payload capacity.",
       "intro": [
         "The UNO INTERMODAL 60ft is a versatile intermodal freight wagon designed for the efficient transportation of 20', 30' and 40' ISO containers.",
-        "Its optimized lightweight design combines low tare weight with high payload capacity, enabling efficient use of wagon capacity and helping operators optimize transport costs. The wagon supports multiple loading configurations and provides the flexibility required for different intermodal transport needs."
+        "Its design combines low tare weight with high payload capacity, enabling efficient use of wagon capacity and helping operators optimize transport costs. The wagon supports multiple loading configurations and provides the flexibility required for different intermodal transport needs."
       ],
       "commodities": [
         "Maritime containers",
@@ -175,7 +175,7 @@
         ]
       ],
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 5 (printed page 03); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 5 (printed page 03)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -312,7 +312,7 @@
       "category_name": "Flat",
       "image": "products/flat/uno-flat-60ft-rens/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 7 (printed page 05); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 7 (printed page 05)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -444,7 +444,7 @@
       "category_name": "Flat",
       "image": "products/flat/uno-flat-60ft-relns/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 9 (printed page 07); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 9 (printed page 07)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -580,7 +580,7 @@
       "category_name": "Flat",
       "image": "products/flat/uno-flat-60ft-rns/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 11 (printed page 09); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 11 (printed page 09)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -713,7 +713,7 @@
       "category_name": "Timber",
       "image": "products/timber/uno-timber-60ft-rnoos/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 13 (printed page 11); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 13 (printed page 11)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -842,7 +842,7 @@
       "category_name": "Timber",
       "image": "products/timber/uno-timber-60ft-snps/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 15 (printed page 13); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 15 (printed page 13)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -853,7 +853,7 @@
       "tagline": "Compact design. Maximum payload. Built for demanding bulk cargo.",
       "intro": [
         "The UNO MULTI 33ft Eamnos is a high-performance open-top wagon engineered for the efficient transport of scrap metal, recyclables and other high-density industrial cargo. Its compact design combines a low tare weight with exceptional payload capacity.",
-        "Built for intensive industrial use, the wagon features a high-strength, wear-resistant steel body. The open-top configuration and convenient side doors support fast, flexible loading and unloading."
+        "Built for intensive industrial use, the wagon has a robust body for demanding loading conditions and heavy-duty operation. The open-top configuration and convenient side doors support fast, flexible loading and unloading."
       ],
       "commodities": [
         "Scrap metal",
@@ -867,7 +867,7 @@
         "Exceptional payload-to-tare ratio",
         "Low tare weight of just 20 t",
         "Payload capacity of up to 70 t",
-        "High-strength, wear-resistant steel construction",
+        "Robust construction for demanding loading conditions",
         "Fast and flexible loading and unloading",
         "Optimized for heavy-duty industrial operations"
       ],
@@ -960,7 +960,7 @@
         ]
       ],
       "special": [
-        "High-strength wear-resistant body",
+        "Body for demanding bulk-cargo operation",
         "Low tare, payload up to 70 t",
         "DAC ready"
       ],
@@ -971,7 +971,7 @@
       "category_name": "Multi / Open box",
       "image": "products/open-box/uno-multibox-33ft-eamnos/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 17 (printed page 15); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 17 (printed page 15)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -1101,7 +1101,7 @@
       "category_name": "Multi / Open box",
       "image": "products/open-box/uno-multi-40ft-eanos/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 19 (printed page 17); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 19 (printed page 17)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -1232,7 +1232,7 @@
       "category_name": "Multi / Open box",
       "image": "products/open-box/uno-multi-56ft-eanos/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 21 (printed page 19); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 21 (printed page 19)",
         "checkedAt": "2026-09-05"
       }
     },
@@ -1395,7 +1395,7 @@
       "category_name": "Tank",
       "image": "products/tank/uno-tank-88m3-zacns/wagon-render.png",
       "technical_source": {
-        "reference": "Catalog for print.pdf, PDF page 23 (printed page 21); checked against Catalog for print.ai",
+        "reference": "Catalog for print.ai, PDF page 23 (printed page 21)",
         "checkedAt": "2026-09-05"
       }
     }

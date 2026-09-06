@@ -66,24 +66,24 @@ The competitor prototype may be used for client-provided text, wagon tables, and
 
 V7 has a clear editorial sequence: promise, engineering rationale, product families, platform explanation, proof, process, assurance, and contact. The page should keep that rhythm. It should not be converted into a dashboard, card wall, search interface, or product configurator.
 
-| V7 region                                | Production component     | Responsibility                                                        |
-| ---------------------------------------- | ------------------------ | --------------------------------------------------------------------- |
-| Fixed white top navigation               | `SiteHeader`             | Primary navigation, locale link, contact action, responsive menu      |
-| Logo in header/footer                    | `BrandLogo`              | Byte-safe rendering of the immutable brand asset                      |
-| Red and text links                       | `Action`                 | Consistent accessible link/button variants                            |
-| Hero with left copy and right rail image | `HomeHero`               | Main value proposition and primary conversion action                  |
-| Abstract railway orbit                   | `RailwayOrbital`         | Decorative engineering motion, isolated from content                  |
-| “Engineered for more useful payload”     | `PayloadValueSection`    | Engineering proposition and three supporting principles               |
-| Dark-blue five-family selector           | `WagonSwitchyard`        | Browse five family summaries and follow direct catalogue links        |
-| “Modular Platform Equation”              | `ModularPlatformSection` | Explain the four platform stages                                      |
-| Four-step horizontal process             | `RailSequence`           | Reusable ordered process primitive                                    |
-| Erzberg case study                       | `OperationalCaseStudy`   | Evidence-led project story with approved image and facts              |
-| “From transport task…” process           | `CollaborationProcess`   | Explain the client engagement sequence                                |
-| Compliance and impact columns            | `QualityImpactSection`   | Present approved certifications, quality, and sustainability evidence |
-| Centred final inquiry area               | `ContactCTA`             | Route users to the contact flow with context                          |
-| Dark-blue closing navigation             | `SiteFooter`             | Secondary navigation, company contact, legal links                    |
-| Repeated eyebrow/title/intro pattern     | `SectionIntro`           | Shared semantic section heading primitive                             |
-| Repeated responsive pictures             | `ResponsiveMedia`        | Local responsive image and caption contract                           |
+| V7 region                                | Production component     | Responsibility                                                   |
+| ---------------------------------------- | ------------------------ | ---------------------------------------------------------------- |
+| Fixed white top navigation               | `SiteHeader`             | Primary navigation, locale link, contact action, responsive menu |
+| Logo in header/footer                    | `BrandLogo`              | Byte-safe rendering of the immutable brand asset                 |
+| Red and text links                       | `Action`                 | Consistent accessible link/button variants                       |
+| Hero with left copy and right rail image | `HomeHero`               | Main value proposition and primary conversion action             |
+| Abstract railway orbit                   | `RailwayOrbital`         | Decorative engineering motion, isolated from content             |
+| “Engineered for more useful payload”     | `PayloadValueSection`    | Engineering proposition and three supporting principles          |
+| Dark-blue five-family selector           | `WagonSwitchyard`        | Browse five family summaries and follow direct catalogue links   |
+| “Modular Platform Equation”              | `ModularPlatformSection` | Explain the four platform stages                                 |
+| Four-step horizontal process             | `RailSequence`           | Reusable ordered process primitive                               |
+| Erzberg case study                       | `OperationalCaseStudy`   | Evidence-led project story with approved image and facts         |
+| “From transport task…” process           | `CollaborationProcess`   | Explain the client engagement sequence                           |
+| Compliance and impact columns            | `QualityImpactSection`   | Present approved certifications and quality evidence             |
+| Centred final inquiry area               | `ContactCTA`             | Route users to the contact flow with context                     |
+| Dark-blue closing navigation             | `SiteFooter`             | Secondary navigation, company contact, legal links               |
+| Repeated eyebrow/title/intro pattern     | `SectionIntro`           | Shared semantic section heading primitive                        |
+| Repeated responsive pictures             | `ResponsiveMedia`        | Local responsive image and caption contract                      |
 
 The homepage therefore uses 16 reusable components: five primitives, two shell components, and nine homepage-specific sections. The full site adds catalogue, product-detail, editorial, evidence, download, and form components in later stages.
 
@@ -532,7 +532,7 @@ Tests: action and supporting links, context URL encoding, no context, narrow lay
 
 | ID    | Component      | Implementation and required tests                                                                                                      |
 | ----- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| E-001 | `PageHero`     | Generic company/technology/sustainability page introduction; test image/no-image, theme, breadcrumbs slot, and heading hierarchy.      |
+| E-001 | `PageHero`     | Generic company/technology/quality page introduction; test image/no-image, theme, breadcrumbs slot, and heading hierarchy.             |
 | E-002 | `MediaStory`   | Reversible text/media editorial block; test both orientations, caption, mobile source order, and image absence.                        |
 | E-003 | `EvidenceList` | Policies, certifications, documents, and factual references; test evidence types, external/download semantics, dates, and empty state. |
 
@@ -597,7 +597,7 @@ Generate all product routes from one template using `ProductHero`, `CargoFit`, `
 
 ### A-005 — editorial pages
 
-Assemble Technology, Projects/References, Company, and Sustainability/Quality pages from `PageHero`, `MediaStory`, `EvidenceList`, `OperationalCaseStudy`, and `ContactCTA`. Never force a homepage component into a page when its information model does not fit.
+Assemble Technology, Projects/References, Company, and Quality pages from `PageHero`, `MediaStory`, `EvidenceList`, `OperationalCaseStudy`, and `ContactCTA`. Never force a homepage component into a page when its information model does not fit. Sustainability is not a release-one route.
 
 ### A-006 — contact, legal, and system pages
 

@@ -20,11 +20,7 @@ test("@component Homepage composes one shell and every homepage section in sourc
     "Freight wagons for individual transport tasks | TransANT",
   );
   await expect(page.locator("[data-site-header]")).toHaveCount(1);
-  await expect(
-    page.locator(
-      "[data-site-header] nav[aria-label='Primary navigation'] a[href='/sustainability/']",
-    ),
-  ).toHaveAttribute("href", "/sustainability/");
+  await expect(page.locator("a[href*='/sustainability/']")).toHaveCount(0);
   await expect(page.locator("main")).toHaveCount(1);
   const pageMeta = page.locator("[data-page-meta]");
   await expect(pageMeta).toHaveCount(1);
@@ -32,7 +28,7 @@ test("@component Homepage composes one shell and every homepage section in sourc
     "Freight wagon engineering",
   );
   await expect(pageMeta.locator("[data-page-meta-sequence]")).toHaveText(
-    "Engineering value / Wagon families / Modular platform / Quality and certification / Transport requirements",
+    "Engineering value / Wagon families / Model specifications / Quality and certification / Transport requirements",
   );
   await expect(pageMeta).toHaveAttribute("aria-hidden", "true");
   await expect(page.locator("[data-site-footer]")).toHaveCount(1);
@@ -85,9 +81,13 @@ test("@component Homepage composes one shell and every homepage section in sourc
     page.locator("[data-payload-value-section]").getByRole("heading", {
       level: 2,
     }),
-  ).toHaveText("A platform engineered around cargo and operation");
+  ).toHaveText("Wagon data for a defined transport task");
   await expect(page.locator("[data-payload-value-section] li")).toHaveCount(4);
   await expect(page.locator("[data-payload-value-section]")).toContainText(
+    "Technical specifications",
+  );
+  await expect(page.locator("main")).not.toContainText(/greentec|alform/iu);
+  await expect(page.locator("main")).not.toContainText(
     "Interchangeable superstructures",
   );
   await expect(
@@ -99,12 +99,18 @@ test("@component Homepage composes one shell and every homepage section in sourc
     "Railway routes around an Earth",
   );
   await expect(page.locator("[data-wagon-switchyard]")).toHaveCount(1);
+  await expect(page.locator("[data-wagon-switchyard]")).toContainText(
+    "Intermodal wagons for flexible transport",
+  );
+  await expect(page.locator("[data-wagon-switchyard]")).not.toContainText(
+    /lightweight intermodal/iu,
+  );
   await expect(page.locator("[data-modular-platform-section]")).toHaveCount(1);
   await expect(page.locator("[data-modular-platform-section]")).toContainText(
-    "Engineering & approval",
+    "Technical data",
   );
   await expect(page.locator("[data-modular-platform-section]")).toContainText(
-    "loading gauge",
+    "load limits",
   );
   await expect(page.locator("[data-operational-case-study]")).toHaveCount(0);
   await expect(page.locator("main")).not.toContainText(

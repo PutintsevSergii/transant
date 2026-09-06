@@ -30,10 +30,8 @@ test("@component SiteHeader renders navigation, current routes, locales, and the
     "src",
     "/brand/transant-logo.png",
   );
-  await expect(nav.locator("a")).toHaveCount(4);
-  await expect(nav.locator("a[href='/sustainability/']")).toHaveText(
-    "Sustainability",
-  );
+  await expect(nav.locator("a")).toHaveCount(3);
+  await expect(nav.locator("a[href='/sustainability/']")).toHaveCount(0);
   await expect(currentLink).toHaveAttribute("aria-current", "page");
   await expect(locale.locator("a[href='/']")).toHaveAttribute(
     "aria-current",
@@ -84,10 +82,8 @@ test("@no-js SiteHeader retains visible primary links without JavaScript", async
       .getByRole("link", { name: "Technology" }),
   ).toBeVisible();
   await expect(
-    noJavaScriptPage
-      .getByRole("navigation", { name: "Primary navigation" })
-      .getByRole("link", { name: "Sustainability" }),
-  ).toBeVisible();
+    noJavaScriptPage.locator("a[href='/sustainability/']"),
+  ).toHaveCount(0);
   await expect(
     noJavaScriptPage.getByRole("link", { name: "Talk to an engineer" }),
   ).toBeVisible();
@@ -109,9 +105,7 @@ test("@responsive SiteHeader preserves compact and wide containment", async ({
     await expect(
       header.getByRole("link", { name: "Technology" }),
     ).toBeVisible();
-    await expect(
-      header.getByRole("link", { name: "Sustainability" }),
-    ).toBeVisible();
+    await expect(header.locator("a[href='/sustainability/']")).toHaveCount(0);
   }
 
   await expectNoPageOverflow(page);

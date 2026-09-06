@@ -40,7 +40,6 @@ The first production release shall include these routes or equivalent canonical 
 /technology
 /solutions
 /projects
-/sustainability
 /quality
 /company
 /downloads
