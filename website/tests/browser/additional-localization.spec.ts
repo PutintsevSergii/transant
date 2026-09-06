@@ -8,18 +8,24 @@ const locales = [
     label: "UA",
     heading: "Вагони для більшого корисного навантаження.",
     technology: "Проєктування починається з експлуатаційних вимог",
+    transportRequirements: "Транспортні вимоги",
+    supportingNavigation: "Пов’язані способи зв’язку",
   },
   {
     code: "pl",
     label: "PL",
     heading: "Wagony zapewniające większą użyteczną ładowność.",
     technology: "Projektowanie zaczyna się od wymagań eksploatacyjnych",
+    transportRequirements: "Wymagania transportowe",
+    supportingNavigation: "Powiązane opcje kontaktu",
   },
   {
     code: "cs",
     label: "CZ",
     heading: "Vozy pro vyšší užitečné zatížení.",
     technology: "Konstrukce začíná provozními požadavky",
+    transportRequirements: "Přepravní požadavky",
+    supportingNavigation: "Související možnosti kontaktu",
   },
 ] as const;
 
@@ -32,6 +38,12 @@ for (const locale of locales) {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
       locale.heading,
     );
+    await expect(page.locator("main")).toContainText(
+      locale.transportRequirements,
+    );
+    await expect(
+      page.getByRole("navigation", { name: locale.supportingNavigation }),
+    ).toHaveCount(1);
     const selector = page.locator("[data-site-header] details");
     await expect(selector.locator("summary")).toContainText(locale.label);
     await expect(selector.locator("a")).toHaveCount(5);

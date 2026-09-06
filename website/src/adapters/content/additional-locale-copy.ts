@@ -77,6 +77,18 @@ const rows: readonly TranslationRow[] = [
     "Inženýrská hodnota",
   ],
   [
+    "Transport requirements",
+    "Транспортні вимоги",
+    "Wymagania transportowe",
+    "Přepravní požadavky",
+  ],
+  [
+    "Related contact options",
+    "Пов’язані варіанти звернення",
+    "Powiązane opcje kontaktu",
+    "Související možnosti kontaktu",
+  ],
+  [
     "A platform engineered around cargo and operation",
     "Платформа, спроєктована з урахуванням вантажу та експлуатації",
     "Platforma zaprojektowana pod kątem ładunku i eksploatacji",

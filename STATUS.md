@@ -7,22 +7,31 @@ This file is the compact operational handoff. It must describe the current truth
 - Last updated: 2026-09-06
 - Lifecycle: RUNNING
 - Release: R1 — multilingual static corporate and wagon-catalogue website
-- Active work package: I-005
-- Active objective: Add Ukrainian, Polish, and Czech local routes and proficient context-aware translations across the website.
-- Last completed work package: H-005
-- Next eligible work package: I-005 — UA/PL/CZ localization expansion (IN_PROGRESS).
-- Last change-log entry: 2026-09-06 — I-005 — UA/PL/CZ localization expansion (in progress)
+- Active work package: NONE
+- Active objective: The CSP-safe deployed homepage layout correction is implemented; hosted verification and the remaining external release inputs remain under I-006.
+- Last completed work package: I-006
+- Next eligible work package: I-006 — obtain hosted verification after redeployment, then retain the external deployment, owner/legal, provider, field, CDN, and real-device release evidence.
+- Last change-log entry: 2026-09-06 — I-006 — deployed homepage CSP layout correction
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
 
-## Active correction — I-005 UA/PL/CZ localization expansion
+## Completed correction — I-006 deployed homepage CSP layout
+
+- User-visible outcome: at wide sizes, the four modular-platform stages and the two certificate topics retain their intended columns after Vercel applies the release CSP.
+- Cause and correction: both layouts selected their grid count through inline custom-property `style` attributes. The generated CSP blocks inline styles, leaving their `repeat(var(--...))` declarations invalid and collapsing the grids. `RailSequence` now selects one-to-four columns from its existing structural class, and `QualityImpactSection` selects one or two columns from a `data-topic-columns` attribute.
+- Files: `RailSequence` and `QualityImpactSection` implementations and READMEs; focused component browser assertions; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Validation: Node 22.13 Prettier and Astro diagnostics pass (0 errors, warnings, or hints). The two focused component/browser/keyboard/responsive/axe/visual suites pass 60/60 across 320/390/768/1024/1440/844×390. The Vercel-equivalent production build passes with 130 routes. With the supplied preview origin, release output and deployment-readiness validation pass; generated homepage markup contains `data-rail-sequence-columns="4"` and `data-topic-columns="2"`, with neither layout’s former inline column style.
+- Boundary: Vercel Authentication prevents an anonymous direct recheck of the hosted preview, and no deployment was triggered. Redeploy the source change, then verify the two sections against the protected preview. The earlier full `pnpm quality` static stages pass, while its broad browser phase remains non-green only because of unrelated in-progress additional-locale route failures.
+
+## Completed implementation — I-005 UA/PL/CZ localization expansion
 
 - User-visible outcome: every existing page is available through local Ukrainian, Polish, and Czech route trees, with UA/PL/CZ in the language selector and visitor-facing copy translated for the freight-wagon engineering context.
 - Contract: use `/uk/`, `/pl/`, and `/cs/` URLs with correct `uk`, `pl`, and `cs` document language tags; preserve canonical English routes, German routes, product codes, technical values, standards, units, legal/contact facts, local assets, source order, no-JavaScript navigation, and the immutable logo.
-- Intended files: central locale/shell and translation adapters; shared localized route/homepage compositions; localized route entries; focused locale unit/browser evidence; localization documentation; formatter generated-artifact boundary; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Files: central locale/shell and authored translation adapters; shared localized route/homepage compositions; `/uk/`, `/pl/`, and `/cs/` route entries; caller-owned component labels; locale-aware wagon path contracts; focused unit/browser evidence; localization documentation; formatter generated-artifact boundary; tracker, `STATUS.md`, and `CHANGELOG.md`.
 - Baseline: the first Node 22.13 `pnpm quality` attempt stopped at Prettier because two transient `.playwright-cli` YAML captures from concurrent visual review were in scope. After excluding that generated directory, the rerun passes formatting, ESLint, Astro diagnostics (0 errors/warnings/hints), 79 unit tests, both builds (52 production / 62 lab routes), and 3 foundation tests. Its browser stage reproduces the recorded stale/reused-server German-route and unrelated visual-reference failures and was stopped after 274 passed, 16 failed, 5 interrupted, 1 skipped, and 1,059 not run; the aggregate is not claimed as a pass.
-- Implementation checkpoint: locale registry, translated shell/content adapters, shared localized homepage/page compositions, and `/uk/`, `/pl/`, `/cs/` route generation are implemented. Focused locale unit evidence passes 6/6 and Astro diagnostics report 0 errors, warnings, or hints. The first 130-route production build reaches `/uk/wagons/intermodal/` and then correctly stops because the existing `WagonModelList` path contract recognizes only unprefixed/German product routes; localized same-site wagon-path contracts are the current repair point, and the failed build is not claimed as a pass.
-- Next verification: focused locale unit tests, all-locales production build and route audit, representative language/content/same-route selector/browser containment checks at compact and wide widths, content/brand audit, and final state/input validation.
+- Implementation: the registry-driven selector now presents EN, DE, UA, PL, and CZ and preserves the current route. Every existing page has Ukrainian, Polish, and Czech static output with correct `uk`, `pl`, and `cs` document language metadata. Visitor-facing translations were authored locally for the site’s freight-wagon context without a web translation service; product codes, technical values, standards, units, registered/legal/contact facts, and source references remain source-owned.
+- Validation: Node 22.13 formatting and ESLint pass; Astro diagnostics report 0 errors, warnings, or hints; focused unit tests pass 12/12; the production build passes with 130 documents. Route integration passes (`routes=129 products=10 internal-references=4622`) and the content/brand audit passes (`documents=130 products=10 logo-references=390 contact-delivery=blocked-until-provider-configuration`). Focused production Playwright evidence passes 24/24 across 320/390/768/1024/1440/844×390, covering all three homepage/Technology locales, document languages, localized labels, same-route product switching, technical/cargo copy, and containment. Ukrainian Home at 320 px and Czech product detail at 1440 px were inspected directly.
+- Current state: `IMPLEMENTED`. Native-language editorial review and owner/legal approval of translated pages remain external I-006 publication inputs; the existing CSP/deployment boundary is unchanged. No external system was changed.
 
 ## Completed correction — H-005 Modular platform wide stage-title alignment
 
