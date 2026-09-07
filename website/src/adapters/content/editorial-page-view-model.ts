@@ -13,7 +13,7 @@ import type { BaseLayoutProps } from "../../layouts/BaseLayout.types";
 import { createSiteLayout } from "./site-shell-view-model";
 
 export const editorialPageSlugs = [
-  "technology",
+  "engineering-services",
   "projects",
   "company",
   "quality",
@@ -52,11 +52,11 @@ const evidenceLabels = {
 } as const;
 
 const editorialPages = {
-  technology: {
+  "engineering-services": {
     layout: createSiteLayout(
-      "Freight wagon technical data",
+      "Engineering & Services",
       "Catalogue-grounded information about wagon configurations, loading equipment, dimensions, load limits, vehicle gauge, and operating data.",
-      "/technology/",
+      "/engineering-services/",
     ),
     hero: {
       eyebrow: "Product catalogue",
@@ -213,21 +213,24 @@ const editorialPages = {
         "A useful enquiry starts with the cargo, route, operating constraints, and the evidence needed for the proposed configuration.",
       action: { href: "/contact/", label: "Discuss a transport task" },
       supportingLinks: [
-        { href: "/technology/", label: "Explore the technology" },
+        {
+          href: "/engineering-services/",
+          label: "Explore Engineering & Services",
+        },
       ],
     },
   },
   company: {
     layout: createSiteLayout(
       "About TransAnt GmbH",
-      "TransANT product information and contact details for its freight and tank wagon range.",
+      "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
       "/company/",
     ),
     hero: {
       eyebrow: "Company",
-      title: "TransANT freight and tank wagon product information",
+      title: "About TransAnt GmbH",
       description:
-        "The supplied TransANT catalogue presents ten wagon configurations across intermodal, flat, timber, open-box, and tank families.",
+        "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
       headingLevel: 1,
       theme: "light",
       media: {
@@ -296,7 +299,10 @@ const editorialPages = {
         "Contact TransANT with the technical and operational context that matters to the wagon decision.",
       action: { href: "/contact/", label: "Contact TransANT" },
       supportingLinks: [
-        { href: "/technology/", label: "Explore the technology" },
+        {
+          href: "/engineering-services/",
+          label: "Explore Engineering & Services",
+        },
       ],
     },
   },

@@ -95,50 +95,6 @@ const metaLabel = hero.eyebrow ?? hero.title;
     background: var(--color-paper-warm);
   }
 
-  .technology-page :global(.page-hero) {
-    border-block-end: var(--border-thin) solid var(--color-divider);
-    background:
-      linear-gradient(90deg, rgb(28 111 156 / 5%) 1px, transparent 1px) 0 0 /
-        3rem 3rem,
-      linear-gradient(rgb(28 111 156 / 5%) 1px, transparent 1px) 0 0 / 3rem 3rem,
-      var(--color-paper-warm);
-  }
-
-  .technology-page :global(.page-hero__frame) {
-    gap: clamp(var(--space-6), 5vw, var(--space-8));
-    padding-block: clamp(var(--space-7), 6vw, 6rem);
-  }
-
-  .technology-page :global(.page-hero__content .section-intro__title) {
-    max-inline-size: 17ch;
-    font-size: clamp(2.5rem, 5.2vw, 5rem);
-    letter-spacing: -0.035em;
-    line-height: 0.98;
-  }
-
-  .technology-page :global(.page-hero__content .section-intro__description) {
-    max-inline-size: 38rem;
-  }
-
-  .technology-page :global(.page-hero__media) {
-    padding: var(--space-2);
-    border-color: color-mix(
-      in srgb,
-      var(--color-technical) 32%,
-      var(--color-divider)
-    );
-    background: var(--color-steel);
-  }
-
-  .technology-page :global(.page-hero__media img) {
-    filter: saturate(0.72) contrast(1.05);
-    transition: filter var(--motion-standard) var(--ease-standard);
-  }
-
-  .technology-page :global(.page-hero__media:hover img) {
-    filter: saturate(1) contrast(1);
-  }
-
   .technology-page__feature {
     position: relative;
     padding-block-end: clamp(var(--space-6), 4vw, var(--space-8));
@@ -161,6 +117,10 @@ const metaLabel = hero.eyebrow ?? hero.title;
     flex-direction: column;
     gap: clamp(var(--space-6), 5vw, var(--space-8));
     padding-block: clamp(var(--space-7), 6vw, 6rem) var(--space-6);
+    padding-block-start: var(
+      --section-padding-block-start,
+      clamp(var(--space-7), 6vw, 6rem)
+    );
   }
 
   .technology-page__feature :global(.media-story__content) {
@@ -388,10 +348,6 @@ const metaLabel = hero.eyebrow ?? hero.title;
   }
 
   @media (min-width: 58rem) {
-    .technology-page :global(.page-hero__frame) {
-      grid-template-columns: minmax(0, 7fr) minmax(20rem, 5fr);
-    }
-
     .technology-page__feature :global(.responsive-media) {
       aspect-ratio: 16 / 7;
     }
@@ -403,12 +359,6 @@ const metaLabel = hero.eyebrow ?? hero.title;
 
     .technology-page__chapter--with-media :global(.media-story__frame) {
       grid-template-columns: minmax(0, 5fr) minmax(22rem, 6fr);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .technology-page :global(.page-hero__media img) {
-      transition: none;
     }
   }
 </style>

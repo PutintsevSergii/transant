@@ -36,6 +36,9 @@ test("@locale German homepage keeps switchyard copy in German", async ({
   await expect(page.locator("[data-wagon-switchyard]")).not.toContainText(
     "Matching wagon families to cargo and loading needs.",
   );
+  await expect(page.locator("main")).toContainText(
+    "TransAnt entwickelt, vermarktet und betreut Güterwagenlösungen und koordiniert deren industrielle Umsetzung mit qualifizierten Fertigungspartnern.",
+  );
   const event = page.locator("[data-innotrans-event]");
   await expect(event.getByRole("heading", { level: 2 })).toHaveText(
     "Treffen Sie TransANT in Berlin",
@@ -47,6 +50,11 @@ test("@locale German homepage keeps switchyard copy in German", async ({
     "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
   );
   await expect(event.locator("a")).toHaveCount(1);
+  await expect(
+    page.locator(
+      "[data-site-header] nav[aria-label='Hauptnavigation'] > ul > li > a[href='/de/']",
+    ),
+  ).toHaveCount(0);
 });
 
 test("@locale locale selector expands and switches back on the same route", async ({
@@ -55,7 +63,9 @@ test("@locale locale selector expands and switches back on the same route", asyn
   await page.goto("/de/");
   await openCompactMenu(page);
 
-  const selector = page.locator("[data-site-header] details");
+  const selector = page.locator(
+    "[data-site-header] .site-header__locale-selector",
+  );
   await expect(selector.locator("summary")).toContainText("DE");
   await selector.locator("summary").click();
   await expect(selector.locator("a")).toHaveCount(5);
@@ -78,7 +88,9 @@ test("@locale German primary navigation renders the destination page", async ({
 }) => {
   await page.goto("/de/");
   await openCompactMenu(page);
-  await page.getByRole("link", { name: "Wagen", exact: true }).click();
+  const wagonGroup = page.locator("[data-header-navigation-group]");
+  await wagonGroup.locator("summary").click();
+  await wagonGroup.getByRole("link", { name: "Alle Wagen" }).click();
 
   await expect(page).toHaveURL(/\/de\/wagons\/$/u);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
@@ -94,10 +106,10 @@ test("@locale German primary navigation renders the destination page", async ({
   await expect(page.locator("[data-home-hero]")).toHaveCount(0);
 });
 
-test("@locale German Technology route uses translated page content", async ({
+test("@locale German Engineering & Services route uses translated page content", async ({
   page,
 }) => {
-  await page.goto("/de/technology/");
+  await page.goto("/de/engineering-services/");
 
   await expect(page.locator("html")).toHaveAttribute("lang", "de");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
@@ -110,6 +122,14 @@ test("@locale German Technology route uses translated page content", async ({
     page.getByRole("link", { name: "Wagenanforderungen besprechen" }),
   ).toBeVisible();
   await expect(page.locator("main")).not.toContainText(/greentec|alform/iu);
+  await expect(
+    page.locator("[data-site-header] .site-header__primary-nav a[href='/de/']"),
+  ).toHaveAttribute("href", "/de/");
+  await expect(
+    page.locator(
+      "[data-site-header] .site-header__primary-nav a[href='/de/engineering-services/']",
+    ),
+  ).toHaveAttribute("aria-current", "page");
 });
 
 test("@locale German Company route uses the shared localized descriptor strip", async ({
@@ -126,7 +146,10 @@ test("@locale German Company route uses the shared localized descriptor strip", 
     "Fünf Wagenfamilien / Zehn Katalogmodelle / Modellspezifische technische Daten / Linz, Österreich",
   );
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Produktinformationen zu TransANT-Güter- und Kesselwagen",
+    "Über TransAnt GmbH",
+  );
+  await expect(page.locator("main")).toContainText(
+    "TransAnt entwickelt, vermarktet und betreut Güterwagenlösungen und koordiniert deren industrielle Umsetzung mit qualifizierten Fertigungspartnern.",
   );
   await expect(page.locator("a[href*='/sustainability/']")).toHaveCount(0);
 });

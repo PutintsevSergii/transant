@@ -5,15 +5,91 @@ This file is the compact operational handoff. It must describe the current truth
 ## Control
 
 - Last updated: 2026-09-07
-- Lifecycle: RUNNING
+- Lifecycle: BLOCKED
 - Release: R1 — multilingual static corporate and wagon-catalogue website
-- Active work package: NONE
-- Active objective: None. Awaiting the remaining owner, legal, hosting, domain, hosted-verification, field/CDN, and representative-device inputs for I-006.
-- Last completed work package: F-003
-- Next eligible work package: I-006
-- Last change-log entry: 2026-09-07 — I-006 — provider-neutral hosting privacy copy
+- Active work package: I-005
+- Active objective: the approved navigation and Engineering & Services route slice is implemented; remaining I-005 narratives await client source material and factual confirmation in any usable form
+- Last completed work package: P-003
+- Next eligible work package: A-002 — approved homepage Variant A follow-on
+- Last change-log entry: 2026-09-07 — I-005 — certificate stage and hosting requirements recorded
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
+
+## Active correction — I-005 client navigation and route implementation
+
+- Outcome: the immediately publishable content and structural slices are implemented. The homepage and Company page use the client-supplied English role statement in EN/DE/UA/PL/CZ; the six explicit Sgns/Eamnos/Eanos corrections are applied; unconfirmed DAC claims and the erroneous Eamnos timber-feature block are absent from public model data. Home now appears on every non-homepage route, Wagons exposes the catalogue plus five families through one accessible disclosure, and Engineering & Services is canonical in all five locales.
+- Contract: add Home to primary navigation only away from the localized homepage; convert Wagons into a server-rendered accessible dropdown containing the catalogue and all five source-owned family routes; rename the public Technology destination to Engineering & Services; make `/engineering-services/` canonical in all five locales; and preserve old `/technology/` links through explicit permanent hosting redirects plus static-build fallback redirects. Do not implement the other proposed navigation, layout, comparison, download, map, meeting, certificate-image, or media changes.
+- Plan: `docs/specifications/client-remarks-content-implementation-plan.md`.
+- Files: client plan and active page/responsive specifications; SiteHeader contract/implementation/README/controller; shell and editorial/homepage adapters; editorial route assemblers; Astro/Vercel redirect configuration and release/route/content audits; component-lab fixtures; focused unit/browser coverage and affected visual evidence; tracker; `STATUS.md`; `CHANGELOG.md`.
+- H-002 boundary: the RailwayOrbital catalogue-render revision is paused without code changes while this explicitly authorized content package is active.
+- Baseline: state/input validators PASS. The current Node 22.13 `pnpm quality` run PASSed formatting, ESLint, Astro diagnostics, 86 unit tests, both builds, and 3 foundation tests. Its browser phase reproduced the recorded component-lab locale-routing, case-sensitive EvidenceList, and visual-reference failures; it was stopped after 334 passed, 26 failed, 5 interrupted, 1 skipped, and 1,032 not run, so the aggregate is not claimed green.
+- Validation: final state/input validators PASS. Node 22.13 formatting, repository ESLint, Astro diagnostics (0 errors/warnings/hints), all 90 unit tests, the 125-canonical-page production build plus five static legacy redirect documents, the 62-page component-lab build, and 4 foundation tests PASS. Route integration PASSes (`routes=124 products=10 internal-references=4994`); content/brand audit PASSes for 125 canonical documents; deployment readiness PASSes for 130 generated documents and the five permanent Vercel mappings. Focused SiteHeader component/no-JavaScript/keyboard/responsive/axe/visual evidence PASSes 50 with 4 expected wide-only compact-menu skips; production locale evidence PASSes 54; homepage/editorial component/no-JavaScript/responsive/axe evidence PASSes 48; and the affected homepage plus Engineering & Services visuals PASS 12 across 320/390/768/1024/1440/844×390. Direct Playwright review verified the disclosure at 320/390/1024/1440, Home absent on `/` and present on the service route, and `/technology/` resolving to `/engineering-services/`. The final broad `pnpm quality` again PASSed every static stage, then reproduced the recorded component-lab locale-routing and case-sensitive EvidenceList failures; one package-local historical screenshot-key mismatch discovered there was repaired and its focused 6/6 rerun PASSes. The broad run was stopped at 90 passed, 9 failed, 5 interrupted, and 1,300 not run, so its aggregate is not claimed green. `pnpm prepare:release-output` remains `NOT_RUN` without an approved public HTTPS origin, as required by its contract. Production preview retains the previously recorded CSP inline-style console errors; this slice introduces no inline styles.
+- Remaining blocker: longer homepage, Company, Engineering and Services, PRO, InnoTrans, and ten-model narratives require client source material and factual confirmation in any usable form. The client does not need to provide English or localized copy: the implementation team prepares English and synchronizes DE, UA, PL, and CZ. This approved structural slice does not authorize those narratives or any other technical proposal until their source facts are supplied.
+- Next exact action: keep the remaining I-005 narratives blocked until client source material and factual confirmation arrive in any usable form. If the user asks to continue with the approved sequence, open the separate A-002 homepage Variant A follow-on and record its own pre-edit baseline before changing homepage implementation.
+
+## Scheduled next — A-002 homepage restructuring, Variant A
+
+- Status: `READY_TO_OPEN_AFTER_I-005`. The owner approved Variant A on 2026-09-07 as the next separate homepage follow-on; it is not merged into the active I-005 navigation-and-route package.
+- Scope: retain the current five-family switchyard, product data/routes, existing approved EN/DE/UA/PL/CZ positioning statement, local hero media, InnoTrans/quality/contact destinations, server rendering, no-JavaScript behaviour, and vertical compact family sequence. Improve only homepage composition and the visual prominence of the existing hero/logo without new company, partner, project, or performance claims.
+- Explicit exclusions: no hero-media replacement without an approved local asset; no new process/PRO/TAS narrative before client source material and factual confirmation are supplied in any usable form; no dedicated InnoTrans page, maps, exhibits, partners, meeting workflow, comparison tool, or Timber-media work. Certificate presentation is separately scheduled as E-003; product downloads and the automatic contact workflow remain deferred for R1.
+- Plan source: `docs/specifications/client-remarks-content-implementation-plan.md`, “Homepage restructuring decision — 2026-09-07”.
+- Open condition: finish and hand off the active I-005 slice, then reopen the existing homepage assembly identity `A-002` as its user-approved follow-on with a recorded baseline, exact file set, responsive/keyboard/no-JavaScript/axe checks, and visual evidence.
+
+## Deferred future — A-002 homepage expansion, Variant B
+
+- Status: `BLOCKED`. The full client-requested expansion is documented but is not authorized for implementation.
+- Unblock only with: approved local hero asset; source text and factual confirmation in any usable form; and, where relevant, approved PRO/TAS/InnoTrans facts, claims, photos/renders, logos, and captions. The implementation team prepares English and all localized versions.
+- Status transition: update the client-remarks plan to `READY_TO_OPEN` only when the complete required input bundle is received and its exact revisions are recorded. Drafts, external links, or unverified source material do not unblock it.
+
+## Scheduled following Variant A — H-004 wagon-family discovery
+
+- Status: `READY_TO_OPEN_AFTER_A-002_VARIANT_A`. The owner approved this as the next distinct stage after Variant A; its component identity is `H-004 WagonSwitchyard`.
+- Desktop: one desktop-only, five-second-per-family guided preview starts only when the component is substantially visible, runs through the remaining four families once, and stops. It pauses for hover/focus/background-tab state; interaction or an explicit pause stops it for the page visit. A visible pause/replay control preserves visitor control. No focus, scroll, automatic navigation, live-region chatter, persistent state, or telemetry is introduced.
+- Mobile: replace the verified vertical selector only when this stage opens, with a CSS scroll-snap horizontal rail that shows a partial next family card. It never auto-scrolls or auto-selects; swipe is optional and direct links/no-JavaScript/keyboard access remain available.
+- Evidence: compact touch/snap/containment, desktop autoplay lifecycle, reduced-motion/data-saving suppression, keyboard, no-JavaScript, axe, repeated-instance isolation, and visual checks at 320/390/768/1024/1440/phone-landscape.
+
+## Scheduled after H-004 — E-003 certificate presentation
+
+- Status: `READY_TO_OPEN_AFTER_H-004`. Retrieve the current certificate PDFs from their existing official links, record source URL/retrieval date/filename/SHA-256, generate first-page previews, and serve verified local PDFs.
+- Interaction: wide fine-pointer hover may flip a certification card to its preview face; both faces retain an ordinary local-PDF link. Keyboard and touch have an explicit preview toggle, reduced motion uses an immediate non-3D face change, and no-JavaScript retains metadata plus a direct local-PDF link.
+- Evidence: provenance/digest, local PDF/preview association, keyboard/touch/reduced-motion/no-JavaScript behaviour, axe, responsive containment, and refreshed Quality references.
+
+## Production hosting and indexing
+
+- Decision: production indexing is approved. Previews remain non-indexable; the production release finalizer must receive the approved public HTTPS origin and generate `robots.txt` with `Allow: /` plus the absolute `sitemap.xml` reference.
+- Technical requirements: `docs/specifications/production-hosting-technical-requirements.md`.
+
+## Completed correction — E-001 shared PageHero-to-section spacing contract
+
+- User-visible outcome: every `PageHero` has a shared 12 px top and bottom inset, and its immediately following content section begins with the same 12 px handoff. Intermodal now uses that shared handoff rather than retaining its own large top field.
+- Contract: semantic section roots have zero block margins. Sections own their intentional `padding-block`; a global custom property only replaces the first following section's top padding after `PageHero`. No route-specific margin, `!important`, or copied hero implementation was introduced. The Technology override inherits the same rhythm.
+- Files: shared reset/tokens/global handoff; `PageHero`; `WagonFamilyIndex`, `WagonModelList`, `MediaStory`, `LegalDocument`, Contact, Technology, and the matching Contact component-lab assembly; component READMEs; focused browser assertions and visual references; tracker; `STATUS.md`; `CHANGELOG.md`.
+- Baseline: Node 22.13 `pnpm quality` static stages PASSed (formatting, ESLint, Astro diagnostics, 85 unit tests, both builds, and 3 foundation tests); its broad browser stage reproduced only the previously recorded unrelated component-lab locale routing, case-sensitive EvidenceList, and WagonSwitchyard/reference failures, and was stopped at 292 passed, 15 failed, 5 interrupted, 1 skipped, and 1,079 not run. That aggregate is not claimed green.
+- Validation: focused formatting and `astro check` PASS with 0 diagnostics; production build PASSes with 125 pages. The focused PageHero/catalogue/editorial/legal-browser suite PASSes 192/192 at 320/390/768/1024/1440/844×390, including no-JavaScript, keyboard, axe, responsive CSS assertions, and refreshed visual baselines. Intermodal 320 and 1440 output was inspected directly.
+
+## Completed correction — P-003 WagonModelList frame spacing
+
+- User-visible outcome: `wagon-model-list__frame` no longer adds its former 24–32 px vertical field. Family routes keep the intentional 12 px PageHero handoff above the cards and no frame padding below them.
+- Implementation: retained `page-frame` solely for horizontal gutters, each card's internal padding, list gaps, and responsive composition. The frame's sole block property now consumes `--section-padding-block-start` and otherwise resolves to zero.
+- Validation: the clean pre-edit catalogue suite PASSed 66/66. Focused Prettier and Astro diagnostics PASS with 0 diagnostics; the 125-page production build PASSes. The refreshed and clean catalogue suite PASSes 66/66 across 320/390/768/1024/1440/844×390, asserting a 12 px top and 0 px bottom frame padding, source order, keyboard/no-JavaScript, axe, containment, and all family visuals. Flat 1440 was inspected directly.
+
+## Completed correction — E-001 shared PageHero typography
+
+- User-visible outcome: Technology now uses the identical shared PageHero `SectionIntro` font, size, tracking, line-height, and measure as Company and every other editorial PageHero.
+- Implementation: removed the Technology-only title/description CSS override. Technology retains only its caller-owned surface, media presentation, and internal layout treatment; it cannot alter shared PageHero copy typography.
+- Validation: focused Prettier and Astro diagnostics PASS with 0 diagnostics; the 125-page production build PASSes. The focused editorial suite PASSes 48/48 across 320/390/768/1024/1440/844×390, including an explicit Technology-versus-Company computed typography regression assertion, keyboard/no-JavaScript/axe coverage, and refreshed Technology visual references. Technology was inspected at 320 and 1440 px.
+
+## Completed correction — E-001 default shared PageHero background
+
+- User-visible outcome: the technical-grid hero background is now the PageHero default on every route; Technology no longer owns a copy of it. A caller can explicitly set `technicalBackground={false}` to produce a plain hero.
+- Contract: `PageHero` owns a typed, runtime-validated boolean with a default of `true`; light and dark variants preserve their respective theme surfaces. Technology retains only its page-specific border and media treatment. The component-lab fixture exercises the opt-out and browser coverage asserts both states.
+- Validation: focused Prettier, two PageHero unit tests, and Astro diagnostics PASS with 0 diagnostics; production build PASSes with 125 pages. The shared PageHero/catalogue/editorial/legal suite PASSes 192/192 at 320/390/768/1024/1440/844×390, including default/opt-out, keyboard/no-JavaScript/axe, responsive assertions, and refreshed visual references. Intermodal default-background output was inspected at 320 and 1440 px.
+
+## Completed correction — E-001 shared hero layout and media treatment
+
+- User-visible objective: PageHero content stays vertically centered with equal component-owned top/bottom padding, no page can override its layout or visual treatment, and every HomeHero, PageHero, and ProductHero image stage has the same bordered surface instead of mixed border, stripe, or borderless treatments.
+- Implementation: every page-level `page-hero` selector has been removed. PageHero alone owns its alignment, equal padding, responsive grid, and default technical background. One global data-attribute rule gives HomeHero, light PageHero, and ProductHero the same clipped subtle surface and thin divider border; dark PageHero changes only those colours for contrast. The homepage stripe and ProductHero's patterned/padded media exception are removed.
+- Validation: source audit finds no external PageHero selector. Prettier and Astro diagnostics PASS with 0 diagnostics; production build PASSes 125 pages. A new computed-style regression test proves that the light HomeHero, PageHero, and ProductHero frames are identical; focused hero tests cleanly PASS 78/78 across 320/390/768/1024/1440/844×390. The affected homepage, all product pages, and responsive integration suite PASS with refreshed visual references. Homepage 1440 and intermodal product 768 output were inspected directly.
 
 ## Completed correction — I-006 provider-neutral hosting privacy copy
 

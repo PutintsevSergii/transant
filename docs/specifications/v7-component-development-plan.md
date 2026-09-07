@@ -530,11 +530,11 @@ Tests: action and supporting links, context URL encoding, no context, narrow lay
 
 ### Editorial and evidence components
 
-| ID    | Component      | Implementation and required tests                                                                                                      |
-| ----- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| E-001 | `PageHero`     | Generic company/technology/quality page introduction; test image/no-image, theme, breadcrumbs slot, and heading hierarchy.             |
-| E-002 | `MediaStory`   | Reversible text/media editorial block; test both orientations, caption, mobile source order, and image absence.                        |
-| E-003 | `EvidenceList` | Policies, certifications, documents, and factual references; test evidence types, external/download semantics, dates, and empty state. |
+| ID    | Component      | Implementation and required tests                                                                                                        |
+| ----- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| E-001 | `PageHero`     | Generic company/engineering-and-services/quality page introduction; test image/no-image, theme, breadcrumbs slot, and heading hierarchy. |
+| E-002 | `MediaStory`   | Reversible text/media editorial block; test both orientations, caption, mobile source order, and image absence.                          |
+| E-003 | `EvidenceList` | Policies, certifications, documents, and factual references; test evidence types, external/download semantics, dates, and empty state.   |
 
 ### Form component
 
@@ -597,7 +597,7 @@ Generate all product routes from one template using `ProductHero`, `CargoFit`, `
 
 ### A-005 — editorial pages
 
-Assemble Technology, Projects/References, Company, and Quality pages from `PageHero`, `MediaStory`, `EvidenceList`, `OperationalCaseStudy`, and `ContactCTA`. Never force a homepage component into a page when its information model does not fit. Sustainability is not a release-one route.
+Assemble Engineering & Services, Projects/References, Company, and Quality pages from `PageHero`, `MediaStory`, `EvidenceList`, `OperationalCaseStudy`, and `ContactCTA`. Engineering & Services is canonical at `/engineering-services/`; `/technology/` is retained only as a permanent legacy redirect. Never force a homepage component into a page when its information model does not fit. Sustainability is not a release-one route.
 
 ### A-006 — contact, legal, and system pages
 

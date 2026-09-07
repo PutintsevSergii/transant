@@ -82,13 +82,27 @@ const rootClass = `wagon-family-index${props.intro ? " wagon-family-index--with-
   }
 
   .wagon-family-index__frame {
+    --wagon-family-index-block-inset: clamp(
+      var(--space-6),
+      7vw,
+      var(--space-8)
+    );
+
     display: grid;
     gap: clamp(var(--space-5), 4vw, var(--space-7));
-    padding-block: clamp(var(--space-6), 7vw, var(--space-8));
+    padding-block: var(--wagon-family-index-block-inset);
+    padding-block-start: var(
+      --section-padding-block-start,
+      var(--wagon-family-index-block-inset)
+    );
   }
 
   .wagon-family-index--without-intro .wagon-family-index__frame {
-    padding-block: clamp(var(--space-5), 3vw, var(--space-7));
+    --wagon-family-index-block-inset: clamp(
+      var(--space-5),
+      3vw,
+      var(--space-7)
+    );
   }
 
   .wagon-family-index__list {

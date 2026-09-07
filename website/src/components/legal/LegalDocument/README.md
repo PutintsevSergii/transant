@@ -17,6 +17,8 @@ The component uses one semantic article with H2 sections beneath the embedding
 page H1. Its reading measure stays narrow, while headings and long text wrap at
 compact widths without sticky local navigation, scripts, motion, or horizontal
 overflow. The contract rejects blank headings, paragraphs, and introductions.
+When it directly follows `PageHero`, its top padding uses the shared 12 px hero
+handoff; the document owns all remaining padding and no vertical section margin.
 
 Fixture: `/fixtures/legal/privacy/`. Deferred focused unit/browser evidence
 covers the contract, heading hierarchy, route shell, compact containment, and

@@ -86,14 +86,23 @@ const actionVariant = props.theme === "dark" ? "inverse" : "secondary";
   }
 
   .media-story__frame {
+    --media-story-block-inset: clamp(var(--space-7), 10vw, var(--space-10));
+
     display: grid;
     gap: clamp(var(--space-6), 7vw, var(--space-10));
     align-items: center;
-    padding-block: clamp(var(--space-7), 10vw, var(--space-10));
+    padding-block: var(--media-story-block-inset);
+    padding-block-start: var(
+      --section-padding-block-start,
+      var(--media-story-block-inset)
+    );
   }
 
   .media-story--spacing-generous-top .media-story__frame {
-    padding-block-start: clamp(2rem, 6vw, 5rem);
+    padding-block-start: var(
+      --section-padding-block-start,
+      clamp(2rem, 6vw, 5rem)
+    );
   }
 
   .media-story--heading-compact

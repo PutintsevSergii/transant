@@ -104,10 +104,10 @@ test("@responsive ProductHero preserves mobile reading order, transparent-render
   expect((imageBox?.x ?? 0) + (imageBox?.width ?? 0)).toBeLessThanOrEqual(
     (mediaBox?.x ?? 0) + (mediaBox?.width ?? 0),
   );
-  await expect(media).toHaveCSS("border-top-width", "0px");
-  await expect(media).toHaveCSS("border-right-width", "0px");
-  await expect(media).toHaveCSS("border-bottom-width", "0px");
-  await expect(media).toHaveCSS("border-left-width", "0px");
+  await expect(media).toHaveCSS("border-top-width", "1px");
+  await expect(media).toHaveCSS("border-right-width", "1px");
+  await expect(media).toHaveCSS("border-bottom-width", "1px");
+  await expect(media).toHaveCSS("border-left-width", "1px");
   await expect(image).toHaveCSS("object-position", "100% 50%");
   await action.focus();
   await expect(action).toBeFocused();

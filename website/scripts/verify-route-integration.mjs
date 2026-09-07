@@ -2,9 +2,11 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
+import { legacyRedirectRoutes } from "./prepare-release-output.mjs";
+
 const outputDirectory = path.resolve(process.argv[2] ?? "dist");
 const siteOrigin = "https://static.transant.invalid";
-const ignoredDocumentRoutes = new Set(["/404.html"]);
+const ignoredDocumentRoutes = new Set(["/404.html", ...legacyRedirectRoutes]);
 
 const isFile = async (filePath) => {
   try {

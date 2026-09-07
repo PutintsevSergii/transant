@@ -24,7 +24,7 @@
           ],
           [
             "Length over buffers (mm)",
-            "19.830"
+            "19.740"
           ],
           [
             "Wagon tare (t)",
@@ -121,12 +121,9 @@
     ],
     "features": [
       "Classic brake for SS-bake regime",
-      "28 container pins for multiple configurations",
-      "DAC ready"
+      "28 container pins for multiple configurations"
     ],
-    "notes": [
-      "The specification table lists length over buffers as 19.830 mm; the drawing labels 19740. Confirm the required configuration with TransANT."
-    ],
+    "notes": [],
     "drawings": [
       {
         "title": "Side elevation",
@@ -375,8 +372,7 @@
     ],
     "features": [
       "18 foldable side walls",
-      "70mm wooden floor",
-      "DAC ready"
+      "70mm wooden floor"
     ],
     "notes": [],
     "drawings": [
@@ -611,8 +607,7 @@
     ],
     "features": [
       "18 foldable side walls",
-      "70mm wooden floor",
-      "DAC ready"
+      "70mm wooden floor"
     ],
     "notes": [
       "The catalogue artwork uses a letterform in the wagon-type row that can resemble “Reins”; the overview and wagon designation identify the model as Relns."
@@ -853,8 +848,7 @@
     ],
     "features": [
       "16 foldable bolsters",
-      "70mm wooden floor",
-      "DAC ready"
+      "70mm wooden floor"
     ],
     "notes": [],
     "drawings": [
@@ -1008,8 +1002,7 @@
       "Transport of 3, 4 and 5m long round timber wood",
       "10 stanchion pairs",
       "7 deflectors",
-      "G2 profile",
-      "DAC ready"
+      "G2 profile"
     ],
     "notes": [
       "The catalogue prints loading length as 18.50 mm. This value is reproduced as printed and requires confirmation."
@@ -1173,8 +1166,7 @@
       "Transport of 3, 4 and 5m long round timber wood",
       "10 stanchion pairs",
       "7 deflectors",
-      "G2 profile",
-      "DAC ready"
+      "G2 profile"
     ],
     "notes": [],
     "drawings": [
@@ -1393,21 +1385,16 @@
               "text": "70"
             },
             {
-              "text": ""
+              "text": "–"
             }
           ]
         ],
         "kind": "payload",
-        "notes": [
-          "Blank cells are blank in the catalogue; no value has been inferred."
-        ]
+        "notes": []
       }
     ],
     "features": [],
-    "notes": [
-      "The catalogue’s special-feature panel repeats timber-wagon equipment and a G2 profile, while this wagon’s specification table lists G1. These conflicting feature claims require confirmation.",
-      "The table lists bogie-pivot distance as 6.500 mm and loading length as 10.240 mm; the drawing labels 6480 and 10200 respectively."
-    ],
+    "notes": [],
     "drawings": [
       {
         "title": "Side elevation and plan",
@@ -1610,8 +1597,7 @@
       "Robust design and structure of open box",
       "8mm floor thickness",
       "6mm wall thickness",
-      "Two full size doors for easy cleaning",
-      "DAC ready"
+      "Two full size doors for easy cleaning"
     ],
     "notes": [],
     "drawings": [
@@ -1809,7 +1795,7 @@
           ],
           [
             {
-              "text": "b-b"
+              "text": "d-d"
             },
             {
               "text": "16 m"
@@ -1818,14 +1804,12 @@
               "text": "66"
             },
             {
-              "text": ""
+              "text": "–"
             }
           ]
         ],
         "kind": "payload",
-        "notes": [
-          "Blank cells are blank in the catalogue; no value has been inferred."
-        ]
+        "notes": []
       }
     ],
     "features": [
@@ -1833,12 +1817,9 @@
       "6mm front/rear wall thickness",
       "4mm side wall thickness",
       "100m3 loading capacity",
-      "Two full size doors for easy cleaning",
-      "DAC ready"
+      "Two full size doors for easy cleaning"
     ],
-    "notes": [
-      "The concentrated-payload table repeats section b-b for the 16 m row and leaves its two-point value blank."
-    ],
+    "notes": [],
     "drawings": [
       {
         "title": "Side elevation and plan",
@@ -2076,8 +2057,7 @@
     ],
     "features": [
       "Compliant with the tank code L4BH",
-      "Meets the requirements of RID, TSI, GCU, EN, UIC standards",
-      "DAC ready"
+      "Meets the requirements of RID, TSI, GCU, EN, UIC standards"
     ],
     "notes": [],
     "drawings": [

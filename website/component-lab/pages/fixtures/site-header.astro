@@ -3,8 +3,20 @@ import SiteHeader from "../../../src/components/shell/SiteHeader/SiteHeader.astr
 import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
 
 const navigation = [
-  { label: "Wagons", href: "#wagons" },
-  { label: "Technology", href: "/technology/" },
+  { label: "Home", href: "/" },
+  {
+    label: "Wagons",
+    href: "#wagons",
+    overviewLabel: "All wagons",
+    children: [
+      { label: "Intermodal", href: "#intermodal" },
+      { label: "Flat", href: "#flat" },
+      { label: "Timber", href: "#timber" },
+      { label: "Multi / Open box", href: "#open-box" },
+      { label: "Tank", href: "#tank" },
+    ],
+  },
+  { label: "Engineering & Services", href: "/engineering-services/" },
   { label: "Company", href: "/company/" },
 ];
 
@@ -22,7 +34,7 @@ const localeOptions = [
     id="site-header-primary"
     homeHref="/"
     navigation={navigation}
-    currentPath="/technology/"
+    currentPath="/engineering-services/"
     localeOptions={localeOptions}
     contactAction={{ label: "Talk to an engineer", href: "/contact/" }}
   />

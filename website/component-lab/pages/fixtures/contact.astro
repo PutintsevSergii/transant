@@ -35,6 +35,10 @@ const { addressLines, email, form, hero, layout, phone } = contactPageViewModel;
     gap: clamp(var(--space-7), 9vw, var(--space-10));
     align-items: start;
     padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+    padding-block-start: var(
+      --section-padding-block-start,
+      clamp(var(--space-7), 9vw, var(--space-10))
+    );
   }
 
   .contact-page__details {

@@ -31,6 +31,9 @@ describe("I-005 content and brand audit contract", () => {
     expect(entries.every((entry) => entry.specificationValues.length > 0)).toBe(
       true,
     );
+    expect(
+      entries.find(({ id }) => id === "sgns")?.specificationValues,
+    ).toContain("19.740");
   });
 
   it("rejects missing provenance, broken family membership, and incomplete display rows", async () => {
@@ -72,6 +75,18 @@ describe("I-005 content and brand audit contract", () => {
         },
       }),
     ).toThrow("invalid source specification row");
+    expect(() =>
+      productAuditEntries({
+        ...valid,
+        products: {
+          ...products,
+          sgns: {
+            ...firstProduct,
+            special: ["DAC ready"],
+          },
+        },
+      }),
+    ).toThrow("unconfirmed DAC readiness");
   });
 
   it("pins the approved immutable logo digest", () => {

@@ -64,4 +64,3 @@ The wagon features a robust, optimized stanchion arrangement that ensures reliab
 - 10 stanchion pairs
 - 7 deflectors
 - G2 profile
-- DAC ready

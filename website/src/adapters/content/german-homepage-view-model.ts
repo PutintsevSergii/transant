@@ -85,6 +85,7 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "Produktinformationen und Kontaktdaten zum TransANT-Programm an Güter- und Kesselwagen.",
   "TransANT freight and tank wagon product information":
     "Produktinformationen zu TransANT-Güter- und Kesselwagen",
+  "About TransAnt GmbH": "Über TransAnt GmbH",
   "The supplied TransANT catalogue presents ten wagon configurations across intermodal, flat, timber, open-box, and tank families.":
     "Der bereitgestellte TransANT-Katalog stellt zehn Konfigurationen aus den Familien Intermodal, Flachwagen, Holz, offener Kasten und Kesselwagen vor.",
   "Five wagon families": "Fünf Wagenfamilien",
@@ -110,6 +111,8 @@ export const germanCopy: Readonly<Record<string, string>> = {
   " (opens in new tab)": " (wird in einem neuen Tab geöffnet)",
   "Freight wagons for individual transport tasks":
     "Güterwagen für individuelle Transportaufgaben",
+  "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.":
+    "TransAnt entwickelt, vermarktet und betreut Güterwagenlösungen und koordiniert deren industrielle Umsetzung mit qualifizierten Fertigungspartnern.",
   "TransANT develops freight and tank wagons from a modular platform and cargo-specific superstructures.":
     "TransANT entwickelt Güter- und Kesselwagen auf einer modularen Plattform mit ladungsspezifischen Aufbauten.",
   "Rail freight engineering": "Engineering für den Schienengüterverkehr",
@@ -121,7 +124,8 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "TransANT develops freight and tank wagons by combining a standardised lightweight platform with cargo-specific superstructures.":
     "TransANT entwickelt Güter- und Kesselwagen, indem eine standardisierte Leichtbauplattform mit ladungsspezifischen Aufbauten kombiniert wird.",
   "Explore wagon families": "Wagenfamilien entdecken",
-  "Explore the technology": "Technologie entdecken",
+  "Explore Engineering & Services": "Engineering & Services entdecken",
+  "Engineering & Services": "Engineering & Services",
   "Choose by transport task": "Nach Transportaufgabe auswählen",
   "Wagon families": "Wagenfamilien",
   "Matching wagon families to cargo and loading needs.":

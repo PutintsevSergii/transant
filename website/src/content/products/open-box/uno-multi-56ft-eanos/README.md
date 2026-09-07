@@ -63,4 +63,3 @@ Its optimized lightweight construction provides an excellent payload-to-tare rat
 - 6 mm floor / 4 mm side wall
 - 100 m³ loading capacity
 - Two full-size doors
-- DAC ready

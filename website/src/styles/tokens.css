@@ -53,6 +53,7 @@
     --space-6: 2rem;
     --space-7: 3rem;
     --space-8: clamp(4rem, 8vw, 8rem);
+    --page-hero-block-inset: var(--space-3);
 
     --page-gutter: clamp(1rem, 4vw, 4.5rem);
     --content-max: 90rem;

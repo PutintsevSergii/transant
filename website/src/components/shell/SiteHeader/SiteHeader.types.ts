@@ -3,6 +3,17 @@ export interface SiteHeaderNavigationItem {
   readonly label: string;
   /** Server-rendered internal or approved external destination. */
   readonly href: string;
+  /** Distinct label for the group overview destination when children exist. */
+  readonly overviewLabel?: string;
+  /** Optional server-rendered destinations exposed through a native disclosure. */
+  readonly children?: readonly SiteHeaderNavigationChild[];
+}
+
+export interface SiteHeaderNavigationChild {
+  /** Visible grouped-destination label. */
+  readonly label: string;
+  /** Server-rendered internal or approved external destination. */
+  readonly href: string;
 }
 
 export interface SiteHeaderLocaleOption {

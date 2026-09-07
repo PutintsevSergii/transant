@@ -55,6 +55,12 @@ const rows: readonly TranslationRow[] = [
     "TransANT vyvíjí nákladní a cisternové vozy na základě modulární platformy a nástaveb určených pro konkrétní náklad.",
   ],
   [
+    "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
+    "TransAnt розробляє, виводить на ринок і супроводжує рішення для вантажних вагонів, а також координує їх промислову реалізацію з кваліфікованими виробничими партнерами.",
+    "TransAnt opracowuje, wprowadza na rynek i wspiera rozwiązania dla wagonów towarowych oraz koordynuje ich realizację przemysłową z wykwalifikowanymi partnerami produkcyjnymi.",
+    "TransAnt vyvíjí, uvádí na trh a podporuje řešení nákladních vozů a koordinuje jejich průmyslovou realizaci s kvalifikovanými výrobními partnery.",
+  ],
+  [
     "Rail freight engineering",
     "Інжиніринг залізничних вантажних перевезень",
     "Inżynieria kolejowego transportu towarowego",
@@ -76,10 +82,16 @@ const rows: readonly TranslationRow[] = [
     "Prohlédnout řady vozů",
   ],
   [
-    "Explore the technology",
-    "Дізнатися про технологію",
-    "Poznaj technologię",
-    "Prozkoumat technologii",
+    "Explore Engineering & Services",
+    "Дізнатися про інжиніринг і послуги",
+    "Poznaj inżynierię i usługi",
+    "Prozkoumat inženýrství a služby",
+  ],
+  [
+    "Engineering & Services",
+    "Інжиніринг і послуги",
+    "Inżynieria i usługi",
+    "Inženýrství a služby",
   ],
   [
     "Choose by transport task",

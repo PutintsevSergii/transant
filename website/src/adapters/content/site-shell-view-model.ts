@@ -1,5 +1,8 @@
 import type { SiteFooterLink } from "../../components/shell/SiteFooter/SiteFooter.types";
-import type { SiteHeaderLocaleOption } from "../../components/shell/SiteHeader/SiteHeader.types";
+import type {
+  SiteHeaderLocaleOption,
+  SiteHeaderNavigationItem,
+} from "../../components/shell/SiteHeader/SiteHeader.types";
 import type { BaseLayoutProps } from "../../layouts/BaseLayout.types";
 import { catalogue } from "./catalogue-data";
 
@@ -30,8 +33,10 @@ export type SiteLocale = (typeof siteLocales)[number]["code"];
 
 interface ShellCopy {
   readonly skipToContent: string;
+  readonly home: string;
   readonly wagons: string;
-  readonly technology: string;
+  readonly allWagons: string;
+  readonly engineeringServices: string;
   readonly company: string;
   readonly expertise: string;
   readonly projects: string;
@@ -47,8 +52,10 @@ interface ShellCopy {
 const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
   en: {
     skipToContent: "Skip to content",
+    home: "Home",
     wagons: "Wagons",
-    technology: "Technology",
+    allWagons: "All wagons",
+    engineeringServices: "Engineering & Services",
     company: "Company",
     expertise: "Expertise",
     projects: "Projects",
@@ -74,8 +81,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
   },
   de: {
     skipToContent: "Zum Inhalt springen",
+    home: "Startseite",
     wagons: "Wagen",
-    technology: "Technologie",
+    allWagons: "Alle Wagen",
+    engineeringServices: "Engineering & Services",
     company: "Unternehmen",
     expertise: "Kompetenz",
     projects: "Projekte",
@@ -107,8 +116,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
   },
   uk: {
     skipToContent: "Перейти до вмісту",
+    home: "Головна",
     wagons: "Вагони",
-    technology: "Технології",
+    allWagons: "Усі вагони",
+    engineeringServices: "Інжиніринг і послуги",
     company: "Компанія",
     expertise: "Компетенції",
     projects: "Проєкти",
@@ -140,8 +151,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
   },
   pl: {
     skipToContent: "Przejdź do treści",
+    home: "Strona główna",
     wagons: "Wagony",
-    technology: "Technologia",
+    allWagons: "Wszystkie wagony",
+    engineeringServices: "Inżynieria i usługi",
     company: "Firma",
     expertise: "Kompetencje",
     projects: "Projekty",
@@ -173,8 +186,10 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
   },
   cs: {
     skipToContent: "Přejít k obsahu",
+    home: "Domů",
     wagons: "Vozy",
-    technology: "Technologie",
+    allWagons: "Všechny vozy",
+    engineeringServices: "Inženýrství a služby",
     company: "Společnost",
     expertise: "Odbornost",
     projects: "Projekty",
@@ -242,6 +257,35 @@ export function createLocaleOptions(
   }));
 }
 
+/** Builds route-aware primary navigation, including the source-owned wagon group. */
+export function createPrimaryNavigation(
+  path: string,
+  locale: SiteLocale = "en",
+): readonly SiteHeaderNavigationItem[] {
+  const englishPath = toEnglishPath(path || "/");
+  const route = (destination: string) => localizedPath(locale, destination);
+  const copy = shellCopy[locale];
+  const wagonChildren = familyFooterLinks.map((link) => ({
+    label: copy.familyNames[link.label] ?? link.label,
+    href: route(link.href),
+  }));
+
+  return [
+    ...(englishPath === "/" ? [] : [{ label: copy.home, href: route("/") }]),
+    {
+      label: copy.wagons,
+      href: route("/wagons/"),
+      overviewLabel: copy.allWagons,
+      children: wagonChildren,
+    },
+    {
+      label: copy.engineeringServices,
+      href: route("/engineering-services/"),
+    },
+    { label: copy.company, href: route("/company/") },
+  ];
+}
+
 /** Creates caller-owned document metadata and verified shell data for a route. */
 export function createSiteLayout(
   title: string,
@@ -260,11 +304,7 @@ export function createSiteLayout(
     skipLinkLabel: copy.skipToContent,
     header: {
       homeHref: route("/"),
-      navigation: [
-        { label: copy.wagons, href: route("/wagons/") },
-        { label: copy.technology, href: route("/technology/") },
-        { label: copy.company, href: route("/company/") },
-      ],
+      navigation: createPrimaryNavigation(canonicalPath, locale),
       currentPath: route(canonicalPath),
       localeOptions: createLocaleOptions(canonicalPath, locale),
       labels: copy.headerLabels,
@@ -288,7 +328,10 @@ export function createSiteLayout(
         {
           heading: copy.expertise,
           links: [
-            { label: copy.technology, href: route("/technology/") },
+            {
+              label: copy.engineeringServices,
+              href: route("/engineering-services/"),
+            },
             { label: copy.projects, href: route("/projects/") },
             {
               label: copy.quality,

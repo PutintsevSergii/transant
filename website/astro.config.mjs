@@ -2,6 +2,13 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   output: "static",
+  redirects: {
+    "/technology": "/engineering-services",
+    "/de/technology": "/de/engineering-services",
+    "/uk/technology": "/uk/engineering-services",
+    "/pl/technology": "/pl/engineering-services",
+    "/cs/technology": "/cs/engineering-services",
+  },
   srcDir: "./src",
   publicDir: "./public",
   outDir: "./dist",

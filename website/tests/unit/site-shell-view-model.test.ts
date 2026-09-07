@@ -4,6 +4,7 @@ import { translateLocalizedContent } from "../../src/adapters/content/localized-
 import {
   createSiteLayout,
   createLocaleOptions,
+  createPrimaryNavigation,
   siteLocales,
 } from "../../src/adapters/content/site-shell-view-model";
 
@@ -76,11 +77,48 @@ describe("createLocaleOptions", () => {
       { code: "pl", label: "PL" },
       { code: "cs", label: "CZ" },
     ]);
-    expect(createLocaleOptions("/uk/technology/", "uk")[4]).toEqual({
+    expect(createLocaleOptions("/uk/engineering-services/", "uk")[4]).toEqual({
       label: "CZ",
       name: "Čeština",
-      href: "/cs/technology/",
+      href: "/cs/engineering-services/",
       current: false,
+    });
+  });
+
+  it("omits Home on the homepage and exposes the full wagon group without JavaScript-only data", () => {
+    const navigation = createPrimaryNavigation("/");
+
+    expect(navigation.map(({ label }) => label)).toEqual([
+      "Wagons",
+      "Engineering & Services",
+      "Company",
+    ]);
+    expect(navigation[0]).toMatchObject({
+      href: "/wagons/",
+      overviewLabel: "All wagons",
+    });
+    expect(navigation[0]?.children).toHaveLength(5);
+    expect(navigation[0]?.children?.map(({ href }) => href)).toEqual([
+      "/wagons/intermodal/",
+      "/wagons/flat/",
+      "/wagons/timber/",
+      "/wagons/open-box/",
+      "/wagons/tank/",
+    ]);
+  });
+
+  it("shows localized Home away from the homepage and uses the new canonical service route", () => {
+    const navigation = createPrimaryNavigation("/de/company/", "de");
+
+    expect(navigation[0]).toEqual({ label: "Startseite", href: "/de/" });
+    expect(navigation[1]).toMatchObject({
+      label: "Wagen",
+      href: "/de/wagons/",
+      overviewLabel: "Alle Wagen",
+    });
+    expect(navigation[2]).toEqual({
+      label: "Engineering & Services",
+      href: "/de/engineering-services/",
     });
   });
 

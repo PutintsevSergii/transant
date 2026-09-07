@@ -33,11 +33,19 @@ function initializeHeader(root: HTMLElement): HeaderController | undefined {
     "[data-header-close]",
   );
   const title = root.querySelector<HTMLElement>("[data-header-panel-title]");
+  const navigationGroups = Array.from(
+    root.querySelectorAll<HTMLDetailsElement>("[data-header-navigation-group]"),
+  );
 
   if (!trigger || !panel || !closeButton || !title) return undefined;
 
   let isOpen = false;
   root.dataset.enhanced = "true";
+
+  const closeNavigationGroups = (returnFocusTo?: HTMLDetailsElement): void => {
+    for (const group of navigationGroups) group.open = false;
+    returnFocusTo?.querySelector<HTMLElement>("summary")?.focus();
+  };
 
   const open = (): void => {
     if (!compactQuery.matches || isOpen) return;
@@ -56,6 +64,7 @@ function initializeHeader(root: HTMLElement): HeaderController | undefined {
   const close = (returnFocus: boolean): void => {
     if (!isOpen) return;
 
+    closeNavigationGroups();
     isOpen = false;
     panel.hidden = true;
     panel.removeAttribute("role");
@@ -87,6 +96,15 @@ function initializeHeader(root: HTMLElement): HeaderController | undefined {
   const onCloseClick = (): void => close(true);
 
   const onKeyDown = (event: KeyboardEvent): void => {
+    if (event.key === "Escape") {
+      const openNavigationGroup = navigationGroups.find((group) => group.open);
+      if (openNavigationGroup) {
+        event.preventDefault();
+        closeNavigationGroups(openNavigationGroup);
+        return;
+      }
+    }
+
     if (!isOpen) return;
     if (event.key === "Escape") {
       event.preventDefault();
@@ -110,6 +128,12 @@ function initializeHeader(root: HTMLElement): HeaderController | undefined {
   };
 
   const onPointerDown = (event: PointerEvent): void => {
+    if (event.target instanceof Node) {
+      for (const group of navigationGroups) {
+        if (group.open && !group.contains(event.target)) group.open = false;
+      }
+    }
+
     if (
       isOpen &&
       event.target instanceof Node &&

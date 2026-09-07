@@ -141,9 +141,12 @@ test("@responsive Catalogue and every family route retain direct compact browsin
     (heroFrameBox?.y ?? 0) +
     (heroFrameBox?.height ?? 0) -
     ((heroContentBox?.y ?? 0) + (heroContentBox?.height ?? 0));
-  expect(topInset).toBeGreaterThanOrEqual(24);
-  expect(bottomInset).toBeGreaterThanOrEqual(24);
+  expect(topInset).toBeCloseTo(12, 1);
+  expect(bottomInset).toBeCloseTo(12, 1);
   expect(Math.abs(topInset - bottomInset)).toBeLessThanOrEqual(1);
+  await expect(
+    page.locator("[data-wagon-family-index] .wagon-family-index__frame"),
+  ).toHaveCSS("padding-top", "12px");
   await expectNoPageOverflow(page);
   await expect(page.locator("[data-page-meta-sequence]")).toHaveCSS(
     "white-space",
@@ -152,6 +155,12 @@ test("@responsive Catalogue and every family route retain direct compact browsin
 
   for (const family of families) {
     await page.goto(`/fixtures/catalogue/${family.slug}/`);
+    await expect(
+      page.locator("[data-wagon-model-list] .wagon-model-list__frame"),
+    ).toHaveCSS("padding-top", "12px");
+    await expect(
+      page.locator("[data-wagon-model-list] .wagon-model-list__frame"),
+    ).toHaveCSS("padding-bottom", "0px");
     const modelItems = page.locator("[data-wagon-model-list-item]");
     const modelList = page.locator("[data-wagon-model-list-items]");
     const columns = await modelList.evaluate(

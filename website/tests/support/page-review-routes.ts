@@ -41,10 +41,12 @@ export const pageReviewRoutes: readonly PageReviewRoute[] = [
       product === "uno-tank-88m3-zacns",
     technicalTable: true,
   })),
-  ...["technology", "projects", "company", "quality"].map((page) => ({
-    id: `editorial-${page}`,
+  ...["engineering-services", "projects", "company", "quality"].map((page) => ({
+    // Preserve the historical screenshot key while the public route uses its
+    // canonical Engineering & Services name.
+    id: `editorial-${page === "engineering-services" ? "technology" : page}`,
     fixtureRoute: `/fixtures/editorial/${page}/`,
-    visual: page === "technology" || page === "quality",
+    visual: page === "engineering-services" || page === "quality",
   })),
   { id: "contact", fixtureRoute: "/fixtures/contact/", visual: true },
   { id: "privacy", fixtureRoute: "/fixtures/legal/privacy/", visual: true },

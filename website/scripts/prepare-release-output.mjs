@@ -5,6 +5,14 @@ import { fileURLToPath } from "node:url";
 const websiteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const defaultDistDirectory = join(websiteRoot, "dist");
 
+export const legacyRedirectRoutes = [
+  "/technology/",
+  "/de/technology/",
+  "/uk/technology/",
+  "/pl/technology/",
+  "/cs/technology/",
+];
+
 function assertion(condition, message) {
   if (!condition) throw new Error(message);
 }
@@ -54,7 +62,8 @@ export function canonicalRoutes(distDirectory, files) {
     if (outputPath === "404.html") return [];
     if (outputPath === "index.html") return ["/"];
     if (!outputPath.endsWith("/index.html")) return [];
-    return [`/${outputPath.slice(0, -"index.html".length)}`];
+    const route = `/${outputPath.slice(0, -"index.html".length)}`;
+    return legacyRedirectRoutes.includes(route) ? [] : [route];
   });
 
   const uniqueRoutes = [...new Set(routes)].sort((first, second) =>
@@ -160,7 +169,7 @@ async function main() {
     return;
   }
   console.log(
-    `release-output-ready: origin=${result.siteUrl} routes=${result.routes} sitemap=sitemap.xml redirects=vercel-trailing-slash`,
+    `release-output-ready: origin=${result.siteUrl} routes=${result.routes} sitemap=sitemap.xml redirects=permanent-legacy-and-trailing-slash`,
   );
 }
 

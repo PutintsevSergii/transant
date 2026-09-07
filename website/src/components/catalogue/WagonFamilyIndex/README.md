@@ -4,6 +4,8 @@
 
 Its five source-ordered articles form a continuous editorial list: the list owns the outer rules and each non-final row owns exactly one bottom divider. Compact layouts use one uniform label/copy/media/action sequence; wide layouts alternate the two columns while retaining a deliberate text-to-media gutter. Wagon renders stay locally contained and smaller than the text field so the rows scan as choices rather than oversized feature panels. When the caller omits the optional intro because a page hero already provides the hierarchy, the index uses a compact 1.5–3 rem outer rhythm rather than creating a second large blank field.
 
+When it directly follows `PageHero`, the shared layout handoff replaces only this component's top padding with the global 12 px inset. The remaining rhythm stays local to the index; section roots use no vertical margins.
+
 ## API
 
 ```ts

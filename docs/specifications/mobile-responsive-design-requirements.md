@@ -173,6 +173,10 @@ technical supporting labels
 - On selection, update family identity, image, summary, and link atomically. Do not auto-scroll, auto-advance, or unexpectedly move focus.
 - Mobile motion is limited to a short crossfade or small rail-axis displacement. Reduced motion changes state without choreography.
 
+#### 6.3.1 Approved queued compact-carousel follow-on — 2026-09-07
+
+The current vertical rail remains the implemented and verified release behaviour until its separate H-004 follow-on opens. The owner has approved this future compact variation after A-002 Variant A: use a native horizontally scrollable five-family rail with CSS scroll snapping, a visible partial next item, named selectable cards, and direct server-rendered catalogue links. Swiping is optional; it must never auto-scroll, auto-select, move focus, or conceal ordinary no-JavaScript access. Preserve keyboard Arrow Left/Right/Home/End selection after progressive enhancement, 44 px targets, the adjacent active result, stable contained wagon stage, and 320/390 no-overflow evidence. This future rule supersedes the vertical-five-row presentation only for the implemented H-004 follow-on.
+
 ### 6.4 `ModularPlatformSection` and `RailSequence`
 
 - Convert the desktop horizontal equation into a vertical numbered rail sequence on compact screens.
@@ -326,7 +330,7 @@ Focused visual and interaction review shall cover at minimum:
 | One route per wagon family                    | category narrative and model list                                                          | multi-column model composition where supported  |
 | Product with widest load table                | hero, facts, specification groups, keyboard table scroll, downloads                        | table relationships, content width, image scale |
 | One additional product per data-shape variant | missing/optional values and long units                                                     | stable shared template                          |
-| Technology or Company                         | mobile story order and media crop                                                          | alternating V7-style editorial composition      |
+| Engineering & Services or Company             | mobile story order and media crop                                                          | alternating V7-style editorial composition      |
 | Quality                                       | evidence labels and certificate links                                                      | balanced multi-column evidence layout           |
 | Contact                                       | keyboard types, native errors, virtual-keyboard resilience, prepared-email status          | form measure and supporting content             |
 | Privacy/Imprint                               | reflow, headings, long links                                                               | readable line length                            |

@@ -28,7 +28,7 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
         {secondaryLink && <Action {...secondaryLink} />}
       </div>
     </div>
-    <div class="home-hero__media">
+    <div class="home-hero__media" data-home-hero-media>
       <ResponsiveMedia {...media} priority />
     </div>
   </div>
@@ -104,20 +104,7 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
   }
 
   .home-hero__media {
-    position: relative;
     min-inline-size: 0;
-  }
-
-  .home-hero__media::before {
-    position: absolute;
-    z-index: 1;
-    inset-block: 0;
-    inset-inline-start: 0;
-    inline-size: var(--space-4);
-    border-inline-start: var(--border-thin) solid var(--color-divider);
-    border-inline-end: var(--border-thin) solid var(--color-divider);
-    content: "";
-    pointer-events: none;
   }
 
   .home-hero__media :global(.responsive-media) {

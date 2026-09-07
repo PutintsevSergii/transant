@@ -35,6 +35,10 @@ validateLegalDocumentProps(props);
 
   .legal-document__frame {
     padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+    padding-block-start: var(
+      --section-padding-block-start,
+      clamp(var(--space-7), 9vw, var(--space-10))
+    );
   }
 
   .legal-document__article,

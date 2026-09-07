@@ -5,6 +5,33 @@
   "buildCommand": "pnpm build && pnpm prepare:release-output",
   "outputDirectory": "dist",
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/technology/",
+      "destination": "/engineering-services/",
+      "permanent": true
+    },
+    {
+      "source": "/de/technology/",
+      "destination": "/de/engineering-services/",
+      "permanent": true
+    },
+    {
+      "source": "/uk/technology/",
+      "destination": "/uk/engineering-services/",
+      "permanent": true
+    },
+    {
+      "source": "/pl/technology/",
+      "destination": "/pl/engineering-services/",
+      "permanent": true
+    },
+    {
+      "source": "/cs/technology/",
+      "destination": "/cs/engineering-services/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -20,6 +20,20 @@
 }
 
 @layer utilities {
+  [data-home-hero-media],
+  [data-page-hero-media],
+  [data-product-hero-media] {
+    overflow: hidden;
+    border: var(--border-thin) solid
+      color-mix(in srgb, var(--color-divider) 75%, transparent);
+    background: var(--color-surface-subtle);
+  }
+
+  [data-page-hero] + section,
+  [data-page-hero] + .technology-page__feature {
+    --section-padding-block-start: var(--page-hero-block-inset);
+  }
+
   .page-frame {
     inline-size: min(100%, var(--content-max));
     margin-inline: auto;

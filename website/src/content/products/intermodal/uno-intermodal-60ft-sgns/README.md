@@ -25,7 +25,6 @@ Its design combines low tare weight with high payload capacity, enabling efficie
 - 28 foldable container pins
 - Efficient fleet and capacity utilization
 - Suitable for European rail operations
-- DAC-ready design
 
 ## Technical specifications
 
@@ -35,7 +34,7 @@ Its design combines low tare weight with high payload capacity, enabling efficie
 | Number of axles | 4 |
 | Distance between bogie pivots | 14.200 mm |
 | Bogie type | Y25 with classic brake |
-| Length over buffers | 19.830 mm |
+| Length over buffers | 19.740 mm (A buffers) |
 | Wagon tare | 19.3 t |
 | Loading length | 18.500 mm |
 | Loading width | 2.380 mm |
@@ -51,4 +50,3 @@ Its design combines low tare weight with high payload capacity, enabling efficie
 
 - Classic brake for SS-brake regime
 - 28 container pins for multiple configurations
-- DAC ready

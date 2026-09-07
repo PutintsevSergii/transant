@@ -65,6 +65,9 @@ test("@component Homepage composes one shell and every homepage section in sourc
     "data-contact-cta",
   ]);
   await expect(page.locator("[data-home-hero]")).toHaveCount(1);
+  await expect(page.locator("[data-home-hero]")).toContainText(
+    "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
+  );
   const innoTransEvent = page.locator("[data-innotrans-event]");
   await expect(innoTransEvent).toHaveCount(1);
   await expect(innoTransEvent.getByRole("heading", { level: 2 })).toHaveText(
@@ -125,18 +128,18 @@ test("@component Homepage composes one shell and every homepage section in sourc
   const homepageContactActions = page.locator('main a[href="/contact/"]');
   await expect(homepageContactActions).toHaveCount(1);
   await expect(homepageContactActions).toHaveAccessibleName("Contact TransANT");
-  const technologyActions = page.locator(
-    "[data-home-hero] a[href='/technology/'], [data-payload-value-section] a[href='/technology/']",
+  const engineeringServicesActions = page.locator(
+    "[data-home-hero] a[href='/engineering-services/'], [data-payload-value-section] a[href='/engineering-services/']",
   );
-  await expect(technologyActions).toHaveCount(1);
+  await expect(engineeringServicesActions).toHaveCount(1);
   await expect(
     page.locator("[data-home-hero]").getByRole("link", {
-      name: "Explore the technology",
+      name: "Explore Engineering & Services",
     }),
   ).toHaveCount(0);
   await expect(
     page.locator("[data-payload-value-section]").getByRole("link", {
-      name: "Explore the technology",
+      name: "Explore Engineering & Services",
     }),
   ).toHaveClass(/action--text/);
   await expect(

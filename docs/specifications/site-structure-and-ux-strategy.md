@@ -120,11 +120,11 @@ Avoid:
 | Audience                   | Primary job on the site                                 | Information required before contact                                                          | Best entry path                                     |
 | -------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | Industrial shipper         | Find a wagon suited to a commodity and terminal process | Cargo fit, payload, volume, loading method, operational example                              | Wagon families -> category -> product               |
-| Wagon owner or lessor      | Evaluate adaptability and lifecycle value               | Platform standardization, changeable bodies, maintenance, homologation, residual flexibility | Technology -> products -> enquiry                   |
+| Wagon owner or lessor      | Evaluate adaptability and lifecycle value               | Platform standardization, changeable bodies, maintenance, homologation, residual flexibility | Engineering & Services -> products -> enquiry       |
 | Railway operator           | Validate operational compatibility                      | Gauge, axle load, speed, bogie, curve radius, line-class load table, approvals               | Family or model link -> specifications -> datasheet |
 | Procurement team           | Compare credible alternatives                           | Traceable claims, configuration, supply model, certificates, contact ownership               | Wagon catalogue -> quality -> enquiry               |
 | ESG or finance stakeholder | Verify environmental and investment claims              | Calculation boundary, material option, certificates, case evidence                           | Sustainability -> evidence -> product               |
-| Engineering partner        | Understand technical depth and collaboration model      | Simulation, design, homologation, production responsibilities                                | Technology -> process -> contact                    |
+| Engineering partner        | Understand technical depth and collaboration model      | Simulation, design, homologation, production responsibilities                                | Engineering & Services -> process -> contact        |
 | Candidate or media visitor | Understand the company and find authoritative facts     | History, partners, management, location, approved media                                      | Company -> resources/contact                        |
 
 The primary audience is a professional buyer or technical decision-maker, not a casual consumer. Fast access to detail is a feature, but detail must be layered so that a first-time visitor is not confronted with an unstructured specification dump.
@@ -196,7 +196,7 @@ Home /
 │   ├── Scrap and heavy bulk
 │   └── Liquid bulk
 │
-├── Technology /technology
+├── Engineering & Services /engineering-services
 │   ├── Wagon range
 │   ├── Loading configurations
 │   ├── Technical specifications
@@ -234,7 +234,7 @@ All unlabelled routes above are P0. Product comparison is P1. Insights is P2 unl
 Recommended primary navigation:
 
 ```text
-[immutable logo]  Wagons  Solutions  Technology  Proof  Company  Resources  [Talk to an engineer]
+[immutable logo]  Home (away from homepage)  Wagons ▼  Solutions  Engineering & Services  Proof  Company  Resources  [Talk to an engineer]
 ```
 
 Utility controls:
@@ -281,11 +281,11 @@ Include one small product render or engineering line drawing, not a carousel. Th
 
 Organize the footer into four useful groups:
 
-| Products      | Expertise      | Company        | Practical           |
-| ------------- | -------------- | -------------- | ------------------- |
-| All wagons    | Solutions      | About TransANT | Contact             |
-| Five families | Technology     | Projects       | Downloads           |
-| Find by cargo | Sustainability | Quality        | Imprint and privacy |
+| Products      | Expertise              | Company        | Practical           |
+| ------------- | ---------------------- | -------------- | ------------------- |
+| All wagons    | Solutions              | About TransANT | Contact             |
+| Five families | Engineering & Services | Projects       | Downloads           |
+| Find by cargo | Sustainability         | Quality        | Imprint and privacy |
 
 Add the legal company name, address, approved phone/email, language switcher, and LinkedIn link. Do not repeat a large marketing block in the footer.
 
@@ -560,9 +560,9 @@ For each cargo group, show:
 
 Do not create thin SEO pages that merely repeat category descriptions. A solution page is useful only when it adds decision guidance.
 
-## 13. Technology page
+## 13. Engineering & Services page
 
-The Technology page should explain why the benefit exists.
+The Engineering & Services page should explain why the benefit exists and how TransANT supports the customer task.
 
 Recommended narrative:
 
@@ -854,7 +854,7 @@ Do not optimize for raw time on site. A technical buyer who finds a specificatio
 - V7 Wagon Switchyard and direct wagon-family browsing;
 - wagon index, five category pages, and ten product pages;
 - reusable specification and load-table components;
-- Technology, Solutions, Projects, Quality, Sustainability, Company, Downloads, Contact, Imprint, and Privacy pages;
+- Engineering & Services, Solutions, Projects, Quality, Sustainability, Company, Downloads, Contact, Imprint, and Privacy pages;
 - one contextual enquiry flow;
 - responsive imagery, SEO, accessibility, reduced motion, and analytics-ready event hooks;
 - source and approval control for claims.
@@ -879,20 +879,20 @@ P0 shall not be delayed by decorative 3D, an elaborate intro, or a CMS migration
 
 ## 27. Page-level success criteria
 
-| Page           | Visitor should understand                                   | Primary action                    | Required proof                          |
-| -------------- | ----------------------------------------------------------- | --------------------------------- | --------------------------------------- |
-| Home           | What TransANT does, why it is different, and where to start | Explore wagons or discuss task    | Bounded metrics, case, certificates     |
-| Wagons         | Which family or model may fit                               | Open product or describe task     | Comparable product facts                |
-| Category       | Why this family fits the cargo/operation                    | Select model                      | Category-specific features              |
-| Product        | Fit, configuration, performance, and compatibility          | Discuss wagon or download sheet   | Full specs, load table, approval status |
-| Solutions      | How a transport task maps to equipment                      | Explore relevant models           | Decision guidance and case              |
-| Technology     | How lightweight/modular benefits are created                | Discuss engineering need          | Diagrams, materials, process            |
-| Projects       | Evidence of real progress or operation                      | Read case or discuss similar task | Status, context, bounded result         |
-| Quality        | Whether supplier capability is credible                     | Download certificate or enquire   | Scope, issuer, validity                 |
-| Sustainability | What is reduced, where, and under what assumptions          | View evidence or relevant wagon   | Calculation boundary and dated evidence |
-| Company        | Who TransANT is and what it controls                        | Contact company                   | Legal identity, partners, capability    |
-| Downloads      | Find authoritative documents quickly                        | Download                          | Version, language, date, applicability  |
-| Contact        | Start a useful conversation with low friction               | Continue in email                 | Privacy, recipient, clear handoff       |
+| Page                   | Visitor should understand                                   | Primary action                    | Required proof                          |
+| ---------------------- | ----------------------------------------------------------- | --------------------------------- | --------------------------------------- |
+| Home                   | What TransANT does, why it is different, and where to start | Explore wagons or discuss task    | Bounded metrics, case, certificates     |
+| Wagons                 | Which family or model may fit                               | Open product or describe task     | Comparable product facts                |
+| Category               | Why this family fits the cargo/operation                    | Select model                      | Category-specific features              |
+| Product                | Fit, configuration, performance, and compatibility          | Discuss wagon or download sheet   | Full specs, load table, approval status |
+| Solutions              | How a transport task maps to equipment                      | Explore relevant models           | Decision guidance and case              |
+| Engineering & Services | How lightweight/modular benefits are created and supported  | Discuss engineering need          | Diagrams, materials, process            |
+| Projects               | Evidence of real progress or operation                      | Read case or discuss similar task | Status, context, bounded result         |
+| Quality                | Whether supplier capability is credible                     | Download certificate or enquire   | Scope, issuer, validity                 |
+| Sustainability         | What is reduced, where, and under what assumptions          | View evidence or relevant wagon   | Calculation boundary and dated evidence |
+| Company                | Who TransANT is and what it controls                        | Contact company                   | Legal identity, partners, capability    |
+| Downloads              | Find authoritative documents quickly                        | Download                          | Version, language, date, applicability  |
+| Contact                | Start a useful conversation with low friction               | Continue in email                 | Privacy, recipient, clear handoff       |
 
 ## 28. Validation before design lock
 
@@ -904,7 +904,7 @@ Priority usability tasks:
 2. Find the most relevant options for scrap transport and compare their volume.
 3. Determine whether a timber wagon supports the required log lengths.
 4. Find the certification scope and download the certificate.
-5. Understand what “modular” means without reading the entire Technology page.
+5. Understand what “modular” means without reading the entire Engineering & Services page.
 6. Locate the basis for the “up to 4 t” benefit.
 7. Start an enquiry from a product page without re-entering the product.
 8. Complete the same tasks with keyboard navigation and on a 375 px mobile viewport.

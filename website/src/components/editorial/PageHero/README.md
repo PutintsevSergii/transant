@@ -1,10 +1,11 @@
 # `PageHero`
 
-`PageHero` is the static, caller-owned introduction for company, technology, quality, legal-supporting, or other editorial pages. It composes only C-003 `SectionIntro`, optional C-004 `ResponsiveMedia`, and optional C-002 `Action`.
+`PageHero` is the static, caller-owned introduction for company, engineering and services, quality, legal-supporting, or other editorial pages. It composes only C-003 `SectionIntro`, optional C-004 `ResponsiveMedia`, and optional C-002 `Action`.
 
 ## Public API
 
 - Required: `title`, `headingLevel`, and `theme` (`light` or `dark`).
+- Optional `technicalBackground`: defaults to `true` and renders the shared technical-grid surface. Set it to `false` only for an intentional plain hero surface; callers do not recreate the grid in page CSS.
 - Optional copy: non-blank `eyebrow` and `description`.
 - Optional `media`: meaningful local C-004 media with an explicit aspect ratio. The component sets it to eager/high priority because it is page-introduction media.
 - Optional `mediaPosition`: `before` or `after`. It controls HTML source order and therefore never changes at a responsive breakpoint.
@@ -13,7 +14,7 @@
 
 ## Behaviour and responsive composition
 
-Source order is optional breadcrumbs, then caller-selected media/content order. At 320 and 390 px, media and content are one column in that exact order. At a 62-rem component boundary, media variants become a two-column editorial composition without reordering; no-media variants retain a readable content measure and a deliberately compact 1.5–3 rem vertical rhythm. The optional action is full-width below 30 rem and intrinsic-width above it. Images reserve caller-declared space and use C-004's local responsive AVIF/WebP/fallback output.
+Source order is optional breadcrumbs, then caller-selected media/content order. Every PageHero uses the shared technical-grid background by default, with theme-aware light/dark surfaces; only the typed `technicalBackground={false}` opt-out produces a plain surface. Every PageHero also uses the same `--space-3` (12 px) top and bottom content inset, independent of media, theme, route, locale, or viewport. Its frame vertically centres content against media and owns the responsive grid and gap. The shared global hero-media rule supplies the same thin bordered, clipped surface used by `HomeHero` and `ProductHero`; the dark variant changes only its surface colours for contrast. Every caller receives the same `SectionIntro` font, font size, tracking, line-height, and reading measure; pages may not restyle PageHero copy or layout. The global PageHero handoff gives its immediate following section the same 12 px top padding through the shared section-padding token; sections retain ownership of their remaining padding and never create the transition with margins. At 320 and 390 px, media and content are one column in that exact order. At a 62-rem component boundary, media variants become a two-column editorial composition without reordering. The optional action is full-width below 30 rem and intrinsic-width above it. Images reserve caller-declared space and use C-004's local responsive AVIF/WebP/fallback output.
 
 The component has no client controller, browser/route/content-collection/environment dependency, motion, page assembly, claim inference, or global state. Missing media deliberately produces a compact text-only introduction; the slot and action are independently optional.
 

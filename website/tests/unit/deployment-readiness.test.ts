@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import {
@@ -7,6 +10,7 @@ import {
   releaseEnvironment,
   sitemapXml,
 } from "../../scripts/prepare-release-output.mjs";
+import { requiredVercelConfiguration } from "../../scripts/verify-deployment-readiness.mjs";
 
 describe("I-006 deployment readiness contract", () => {
   it("accepts only an origin-safe HTTPS public site URL", () => {
@@ -30,6 +34,30 @@ describe("I-006 deployment readiness contract", () => {
     ]);
 
     expect(routes).toEqual(["/", "/contact/", "/wagons/"]);
+  });
+
+  it("excludes legacy service redirects from canonical routes and the sitemap", () => {
+    const routes = canonicalRoutes("/release", [
+      "/release/index.html",
+      "/release/engineering-services/index.html",
+      "/release/technology/index.html",
+      "/release/de/engineering-services/index.html",
+      "/release/de/technology/index.html",
+    ]);
+
+    expect(routes).toEqual([
+      "/",
+      "/de/engineering-services/",
+      "/engineering-services/",
+    ]);
+  });
+
+  it("configures permanent hosting redirects for every legacy localized route", async () => {
+    const config = JSON.parse(
+      await readFile(join(process.cwd(), "vercel.json"), "utf8"),
+    ) as Record<string, unknown>;
+
+    expect(() => requiredVercelConfiguration(config)).not.toThrow();
   });
 
   it("makes sitemap and crawler policy agree for production", () => {

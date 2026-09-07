@@ -43,6 +43,15 @@ export const validatePageHeroProps = (props: PageHeroProps): void => {
     );
   }
 
+  if (
+    props.technicalBackground !== undefined &&
+    typeof props.technicalBackground !== "boolean"
+  ) {
+    throw new Error(
+      "PageHero technicalBackground must be a boolean when supplied.",
+    );
+  }
+
   if (props.media) {
     assertResponsiveMediaContract(props.media);
     if (

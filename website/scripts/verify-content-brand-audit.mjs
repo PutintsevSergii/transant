@@ -4,6 +4,8 @@ import { constants } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { legacyRedirectRoutes } from "./prepare-release-output.mjs";
+
 const websiteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const defaultDistDirectory = join(websiteRoot, "dist");
 const catalogPath = join(websiteRoot, "src", "content", "catalog.json");
@@ -90,6 +92,17 @@ export function productAuditEntries(catalogValue) {
       category?.products.includes(id),
       `Product ${id} must be listed by its source family.`,
     );
+    for (const field of ["benefits", "special"]) {
+      const values = product[field];
+      assertion(
+        Array.isArray(values) && values.every(nonEmptyString),
+        `Product ${id} requires valid ${field} entries.`,
+      );
+      assertion(
+        !values.some((value) => /dac[ -]?ready/iu.test(value)),
+        `Product ${id} contains unconfirmed DAC readiness.`,
+      );
+    }
 
     const specificationValues = product.specs.flatMap((row) => {
       assertion(
@@ -112,6 +125,12 @@ export function productAuditEntries(catalogValue) {
   });
 
   assertion(entries.length === 10, "Expected ten source product records.");
+  const intermodal = entries.find(({ id }) => id === "sgns");
+  assertion(
+    intermodal?.specificationValues.includes("19.740") &&
+      !intermodal.specificationValues.includes("19.830"),
+    "Sgns(s) must use the client-confirmed 19.740 mm A-buffer length.",
+  );
   return entries;
 }
 
@@ -158,12 +177,14 @@ export async function auditContentAndBrand({
     `Approved logo digest changed: ${logoDigest}.`,
   );
 
+  const legacyRedirectFiles = new Set(
+    legacyRedirectRoutes.map((route) => documentPath(distDirectory, route)),
+  );
   const documents = new Map(
     await Promise.all(
-      outputFiles.map(async (filePath) => [
-        filePath,
-        await readFile(filePath, "utf8"),
-      ]),
+      outputFiles
+        .filter((filePath) => !legacyRedirectFiles.has(filePath))
+        .map(async (filePath) => [filePath, await readFile(filePath, "utf8")]),
     ),
   );
   assertion(documents.size >= 26, "Expected the completed release-one output.");
@@ -215,6 +236,25 @@ export async function auditContentAndBrand({
       allOutput,
     ),
     "Published output describes the intermodal family as lightweight.",
+  );
+  assertion(
+    !hrefs(allOutput).some((href) =>
+      /\/(?:[a-z]{2}\/)?technology\/?$/u.test(href),
+    ),
+    "Canonical output links to the retired Technology route.",
+  );
+  for (const route of [
+    "/engineering-services/",
+    "/de/engineering-services/",
+    "/uk/engineering-services/",
+    "/pl/engineering-services/",
+    "/cs/engineering-services/",
+  ]) {
+    await access(documentPath(distDirectory, route), constants.R_OK);
+  }
+  assertion(
+    !/dac[ -]?ready/iu.test(allOutput),
+    "Published output contains unconfirmed DAC readiness.",
   );
   try {
     await access(

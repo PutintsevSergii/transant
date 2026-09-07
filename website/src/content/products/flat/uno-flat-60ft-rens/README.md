@@ -64,4 +64,3 @@ The wagon features a spacious 60ft loading platform with foldable side walls and
 
 - 18 foldable side walls
 - 70 mm wooden floor
-- DAC ready

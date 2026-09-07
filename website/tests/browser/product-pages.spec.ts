@@ -107,7 +107,7 @@ test("@component Product pages compose all ten source-defined routes from one do
     await expect(page.locator("[data-product-hero]")).toHaveCount(1);
     await expect(page.locator("[data-product-hero-media]")).toHaveCSS(
       "border-top-width",
-      "0px",
+      "1px",
     );
     await expect(page.locator("[data-product-hero-media] img")).toHaveCSS(
       "object-position",
@@ -115,6 +115,9 @@ test("@component Product pages compose all ten source-defined routes from one do
     );
     await expect(page.locator("[data-cargo-fit]")).toHaveCount(1);
     await expect(page.locator("[data-technical-sheet]")).toHaveCount(1);
+    await expect(page.locator("[data-technical-sheet]")).not.toContainText(
+      /dac[ -]?ready/iu,
+    );
     await expect(page.locator("[data-specification-group]")).toHaveCount(
       product.family === "intermodal" || product.family === "tank" ? 1 : 2,
     );
@@ -129,6 +132,39 @@ test("@component Product pages compose all ten source-defined routes from one do
     await expect(page.locator("[data-load-limit-table]")).toHaveCount(
       product.loadLimits ? 1 : 0,
     );
+    if (product.slug === "uno-intermodal-60ft-sgns") {
+      await expect(page.locator("[data-technical-sheet]")).toContainText(
+        "19.740",
+      );
+      await expect(page.locator("[data-technical-sheet]")).not.toContainText(
+        "19.830",
+      );
+    }
+    if (product.slug === "uno-multibox-33ft-eamnos") {
+      const finalPayloadRow = page
+        .locator('[data-technical-table="payload"] tbody tr')
+        .last();
+      await expect(finalPayloadRow.locator("th")).toHaveText("d-d");
+      await expect(finalPayloadRow.locator("td")).toHaveText([
+        "10 m",
+        "70",
+        "–",
+      ]);
+      await expect(page.locator("[data-technical-sheet]")).not.toContainText(
+        /10 stanchion pairs|7 deflectors|G2 profile/iu,
+      );
+    }
+    if (product.slug === "uno-multi-56ft-eanos") {
+      const finalPayloadRow = page
+        .locator('[data-technical-table="payload"] tbody tr')
+        .last();
+      await expect(finalPayloadRow.locator("th")).toHaveText("d-d");
+      await expect(finalPayloadRow.locator("td")).toHaveText([
+        "16 m",
+        "66",
+        "–",
+      ]);
+    }
     for (const image of await page.locator("main img").all()) {
       await expect(image).toHaveAttribute("src", /_astro\//);
       await expect(image).not.toHaveAttribute("src", /https?:\/\//);

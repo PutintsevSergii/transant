@@ -19,6 +19,14 @@ const normalizedCurrentPath = currentPath.replace(/\/+$/, "") || "/";
 const panelId = `${id}-panel`;
 const isCurrentPath = (href: string): boolean =>
   (href.replace(/\/+$/, "") || "/") === normalizedCurrentPath;
+const isCurrentSection = (href: string): boolean => {
+  const normalizedHref = href.replace(/\/+$/, "") || "/";
+  return (
+    normalizedHref === normalizedCurrentPath ||
+    (normalizedHref !== "/" &&
+      normalizedCurrentPath.startsWith(`${normalizedHref}/`))
+  );
+};
 const headerLabels = {
   menu: "Menu",
   closeMenu: "Close menu",
@@ -76,18 +84,69 @@ const currentLocale =
         class="site-header__primary-nav"
         aria-label={headerLabels.primaryNavigation}
       >
-        <ul>
+        <ul class="site-header__primary-list">
           {
-            navigation.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  aria-current={isCurrentPath(item.href) ? "page" : undefined}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))
+            navigation.map((item) => {
+              const hasChildren = Boolean(item.children?.length);
+              return (
+                <li class="site-header__primary-item">
+                  {hasChildren ? (
+                    <details
+                      class="site-header__navigation-group"
+                      data-header-navigation-group
+                      data-current={
+                        isCurrentSection(item.href) ? "true" : undefined
+                      }
+                    >
+                      <summary>
+                        <span>{item.label}</span>
+                        <span
+                          aria-hidden="true"
+                          class="site-header__navigation-chevron"
+                        >
+                          ↓
+                        </span>
+                      </summary>
+                      <div class="site-header__navigation-menu">
+                        <ul>
+                          <li>
+                            <a
+                              href={item.href}
+                              aria-current={
+                                isCurrentPath(item.href) ? "page" : undefined
+                              }
+                            >
+                              {item.overviewLabel ?? item.label}
+                            </a>
+                          </li>
+                          {item.children?.map((child) => (
+                            <li>
+                              <a
+                                href={child.href}
+                                aria-current={
+                                  isCurrentPath(child.href) ? "page" : undefined
+                                }
+                              >
+                                {child.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </details>
+                  ) : (
+                    <a
+                      href={item.href}
+                      aria-current={
+                        isCurrentPath(item.href) ? "page" : undefined
+                      }
+                    >
+                      {item.label}
+                    </a>
+                  )}
+                </li>
+              );
+            })
           }
         </ul>
       </nav>
@@ -259,7 +318,8 @@ const currentLocale =
     line-height: 1;
   }
 
-  .site-header__primary-nav ul,
+  .site-header__primary-list,
+  .site-header__navigation-menu ul,
   .site-header__locales {
     display: grid;
     gap: var(--space-1);
@@ -268,7 +328,9 @@ const currentLocale =
     list-style: none;
   }
 
-  .site-header__primary-nav a,
+  .site-header__primary-item > a,
+  .site-header__navigation-group summary,
+  .site-header__navigation-menu a,
   .site-header__locales a {
     display: flex;
     min-block-size: 2.75rem;
@@ -279,7 +341,48 @@ const currentLocale =
     text-decoration: none;
   }
 
-  .site-header__primary-nav a[aria-current="page"],
+  .site-header__navigation-group {
+    position: relative;
+  }
+
+  .site-header__navigation-group summary {
+    justify-content: space-between;
+    gap: var(--space-2);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .site-header__navigation-group summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .site-header__navigation-group summary:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .site-header__navigation-chevron {
+    font-size: 1rem;
+    line-height: 1;
+    transform: rotate(0deg);
+    transition: transform var(--motion-fast) var(--ease-standard);
+  }
+
+  .site-header__navigation-group[open] .site-header__navigation-chevron {
+    transform: rotate(180deg);
+  }
+
+  .site-header__navigation-menu {
+    padding-inline-start: var(--space-4);
+  }
+
+  .site-header__navigation-menu a {
+    font-weight: 600;
+  }
+
+  .site-header__primary-item > a[aria-current="page"],
+  .site-header__navigation-group[data-current="true"] > summary,
+  .site-header__navigation-menu a[aria-current="page"],
   .site-header__locales a[aria-current="true"] {
     color: var(--color-brand-red-dark);
     text-decoration: underline;
@@ -428,19 +531,44 @@ const currentLocale =
       display: none;
     }
 
-    .site-header__primary-nav ul {
+    .site-header__primary-list {
       display: flex;
       align-items: center;
       gap: clamp(var(--space-3), 1.8vw, var(--space-5));
     }
 
-    .site-header__primary-nav a,
+    .site-header__primary-item > a,
+    .site-header__navigation-group summary,
+    .site-header__navigation-menu a,
     .site-header__locales a,
     .site-header__locale-selector summary {
       min-block-size: 2.75rem;
       border: 0;
       font-size: var(--font-size-small);
       white-space: nowrap;
+    }
+
+    .site-header__navigation-menu {
+      position: absolute;
+      z-index: 1;
+      inset-block-start: calc(100% + var(--space-2));
+      inset-inline-start: 0;
+      min-inline-size: 15rem;
+      padding: var(--space-2);
+      border: var(--border-thin) solid var(--color-divider);
+      border-radius: var(--radius-small);
+      background: var(--color-paper);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .site-header__navigation-menu a {
+      padding-inline: var(--space-3);
+      border-radius: var(--radius-small);
+    }
+
+    .site-header__navigation-menu a:hover,
+    .site-header__navigation-menu a[aria-current="page"] {
+      background: var(--color-paper-warm);
     }
 
     .site-header__locale-menu {

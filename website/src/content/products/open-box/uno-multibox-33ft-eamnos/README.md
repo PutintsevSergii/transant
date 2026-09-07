@@ -63,4 +63,3 @@ Built for intensive industrial use, the wagon has a robust body for demanding lo
 
 - Body for demanding bulk-cargo operation
 - Low tare, payload up to 70 t
-- DAC ready

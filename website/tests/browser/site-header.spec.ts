@@ -18,7 +18,8 @@ test("@component SiteHeader renders navigation, current routes, locales, and the
   const header = page.locator("[data-site-header]");
   const logo = header.getByRole("link", { name: "TransANT" });
   const nav = header.locator("nav[aria-label='Primary navigation']");
-  const currentLink = nav.locator("a[href='/technology/']");
+  const currentLink = nav.locator("a[href='/engineering-services/']");
+  const wagonGroup = nav.locator("[data-header-navigation-group]");
   const locale = header.locator("nav[aria-label='Locale selection']");
 
   await expect(logo).toHaveAttribute("href", "/");
@@ -30,7 +31,15 @@ test("@component SiteHeader renders navigation, current routes, locales, and the
     "src",
     "/brand/transant-logo.png",
   );
-  await expect(nav.locator("a")).toHaveCount(3);
+  await expect(nav.locator("a")).toHaveCount(9);
+  await expect(nav.locator("a[href='/']", { hasText: /^Home$/u })).toHaveCount(
+    1,
+  );
+  await expect(wagonGroup.locator("summary")).toHaveText(/Wagons/u);
+  await expect(wagonGroup.locator("a")).toHaveCount(6);
+  await expect(wagonGroup.locator("a[href='#wagons']")).toHaveText(
+    "All wagons",
+  );
   await expect(nav.locator("a[href='/sustainability/']")).toHaveCount(0);
   await expect(currentLink).toHaveAttribute("aria-current", "page");
   await expect(locale.locator("a[href='/']")).toHaveAttribute(
@@ -79,7 +88,13 @@ test("@no-js SiteHeader retains visible primary links without JavaScript", async
   await expect(
     noJavaScriptPage
       .getByRole("navigation", { name: "Primary navigation" })
-      .getByRole("link", { name: "Technology" }),
+      .getByRole("link", { name: "Engineering & Services" }),
+  ).toBeVisible();
+  await noJavaScriptPage
+    .locator("[data-header-navigation-group] summary")
+    .click();
+  await expect(
+    noJavaScriptPage.getByRole("link", { name: "All wagons" }),
   ).toBeVisible();
   await expect(
     noJavaScriptPage.locator("a[href='/sustainability/']"),
@@ -103,7 +118,7 @@ test("@responsive SiteHeader preserves compact and wide containment", async ({
   } else {
     await expect(trigger).toBeHidden();
     await expect(
-      header.getByRole("link", { name: "Technology" }),
+      header.getByRole("link", { name: "Engineering & Services" }),
     ).toBeVisible();
     await expect(header.locator("a[href='/sustainability/']")).toHaveCount(0);
   }
@@ -141,9 +156,32 @@ test("@interaction SiteHeader manages compact menu keyboard, focus, close, and i
   await expect(trigger).toBeFocused();
 
   await trigger.click();
-  await header.getByRole("link", { name: "Wagons" }).click();
+  await header.locator("[data-header-navigation-group] summary").click();
+  await header.getByRole("link", { name: "All wagons" }).click();
   await expect(trigger).toHaveAttribute("aria-expanded", "false");
   await expect(page).toHaveURL(/#wagons$/);
+});
+
+test("@interaction SiteHeader wagon disclosure supports keyboard and Escape without closing the compact panel", async ({
+  page,
+}) => {
+  await page.goto("/fixtures/site-header/");
+  const header = page.locator("[data-site-header]");
+  const trigger = header.getByRole("button", { name: "Menu", exact: true });
+  if (await trigger.isVisible()) await trigger.click();
+
+  const group = header.locator("[data-header-navigation-group]");
+  const summary = group.locator("summary");
+  await summary.focus();
+  await page.keyboard.press("Enter");
+  await expect(group).toHaveAttribute("open", "");
+  await expect(group.getByRole("link", { name: "Intermodal" })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(group).not.toHaveAttribute("open", "");
+  await expect(summary).toBeFocused();
+  if (await trigger.isVisible()) {
+    await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  }
 });
 
 test("@a11y SiteHeader has no serious or critical axe violations", async ({

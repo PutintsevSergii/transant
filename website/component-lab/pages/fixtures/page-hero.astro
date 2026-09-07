@@ -11,13 +11,16 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
 >
   <main data-fixture="page-hero">
     <PageHero
-      eyebrow="Technology"
+      eyebrow="Engineering & Services"
       title="Rail technology built around useful payload."
       description="A deliberately long local fixture summary keeps the editorial introduction readable while providing no production claim, route state, or content-collection dependency."
       headingLevel={1}
       theme="light"
       mediaPosition="after"
-      action={{ href: "/technology/", label: "Explore technology" }}
+      action={{
+        href: "/engineering-services/",
+        label: "Explore Engineering & Services",
+      }}
       media={{
         image: freightTrain,
         alt: "Freight train travelling through a wooded mountain landscape",
@@ -29,7 +32,7 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
       <nav slot="breadcrumbs" aria-label="Breadcrumb fixture navigation">
         <ol class="page-hero-fixture__crumbs">
           <li><a href="/">Home</a></li>
-          <li aria-current="page">Technology</li>
+          <li aria-current="page">Engineering & Services</li>
         </ol>
       </nav>
     </PageHero>
@@ -60,6 +63,7 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
         description="This fixture verifies the deliberate no-image state and a caller-selected lower-level heading."
         headingLevel={3}
         theme="light"
+        technicalBackground={false}
       />
     </section>
   </main>

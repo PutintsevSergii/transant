@@ -12,7 +12,7 @@ const localImage = {
 } as ImageMetadata;
 
 const validProps = (): PageHeroProps => ({
-  eyebrow: "Technology",
+  eyebrow: "Engineering & Services",
   title: "Rail technology built around useful payload.",
   description: "Fixture-only editorial copy.",
   headingLevel: 1,
@@ -24,7 +24,10 @@ const validProps = (): PageHeroProps => ({
     fit: "cover",
     aspectRatio: "16 / 10",
   },
-  action: { href: "/technology/", label: "Explore technology" },
+  action: {
+    href: "/engineering-services/",
+    label: "Explore Engineering & Services",
+  },
 });
 
 describe("PageHero contract", () => {
@@ -36,6 +39,7 @@ describe("PageHero contract", () => {
         headingLevel: 3,
         theme: "dark",
         mediaPosition: "before",
+        technicalBackground: false,
       }),
     ).not.toThrow();
   });
@@ -66,5 +70,11 @@ describe("PageHero contract", () => {
         action: { href: "javascript:alert(1)", label: "Unsafe" },
       }),
     ).toThrow("action requires");
+    expect(() =>
+      validatePageHeroProps({
+        ...props,
+        technicalBackground: "yes" as unknown as boolean,
+      }),
+    ).toThrow("technicalBackground must be a boolean");
   });
 });

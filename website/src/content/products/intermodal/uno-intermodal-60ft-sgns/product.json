@@ -19,8 +19,7 @@
     "Multiple loading configurations",
     "28 foldable container pins",
     "Efficient fleet and capacity utilization",
-    "Suitable for European rail operations",
-    "DAC-ready design"
+    "Suitable for European rail operations"
   ],
   "specs": [
     [
@@ -41,7 +40,7 @@
     ],
     [
       "Length over buffers (mm)",
-      "19.830"
+      "19.740"
     ],
     [
       "Wagon tare (t)",
@@ -86,8 +85,7 @@
   ],
   "special": [
     "Classic brake for SS-bake regime",
-    "28 container pins for multiple configurations",
-    "DAC ready"
+    "28 container pins for multiple configurations"
   ],
   "id": "sgns",
   "source_id": "sgns",

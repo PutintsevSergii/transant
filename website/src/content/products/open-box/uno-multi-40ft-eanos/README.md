@@ -63,4 +63,3 @@ Its full-length side doors provide easy access along the entire wagon, supportin
 - Robust open-box structure
 - 8 mm floor / 6 mm wall thickness
 - Two full-size doors
-- DAC ready

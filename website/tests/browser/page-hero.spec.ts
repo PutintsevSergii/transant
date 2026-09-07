@@ -31,6 +31,18 @@ test("@component PageHero renders caller-owned image/no-image, theme, breadcrumb
   );
   await expect(light).toHaveAttribute("data-page-hero-theme", "light");
   await expect(dark).toHaveAttribute("data-page-hero-theme", "dark");
+  await expect(light).toHaveAttribute(
+    "data-page-hero-technical-background",
+    "true",
+  );
+  await expect(dark).toHaveAttribute(
+    "data-page-hero-technical-background",
+    "true",
+  );
+  await expect(textOnly).toHaveAttribute(
+    "data-page-hero-technical-background",
+    "false",
+  );
   await expect(textOnly.locator("[data-page-hero-media]")).toHaveCount(0);
 
   const images = heroes.locator("[data-page-hero-media] img");
@@ -50,7 +62,33 @@ test("@responsive PageHero preserves caller-selected compact source order and cr
   await page.goto("/fixtures/page-hero/");
   const light = page.locator("[data-page-hero]").nth(0);
   const dark = page.locator("[data-page-hero]").nth(1);
+  const textOnly = page.locator("[data-page-hero]").nth(2);
   const viewportWidth = page.viewportSize()?.width ?? 0;
+
+  await expect(light.locator("[data-page-hero-frame]")).toHaveCSS(
+    "padding-top",
+    "12px",
+  );
+  await expect(light.locator("[data-page-hero-frame]")).toHaveCSS(
+    "padding-bottom",
+    "12px",
+  );
+  await expect(light).toHaveCSS("margin-top", "0px");
+  await expect(light).toHaveCSS("margin-bottom", "0px");
+  await expect(dark.locator("[data-page-hero-frame]")).toHaveCSS(
+    "padding-top",
+    "12px",
+  );
+  await expect(textOnly.locator("[data-page-hero-frame]")).toHaveCSS(
+    "padding-bottom",
+    "12px",
+  );
+  expect(
+    await light.evaluate(
+      (element) => getComputedStyle(element).backgroundImage,
+    ),
+  ).not.toBe("none");
+  await expect(textOnly).toHaveCSS("background-image", "none");
 
   const lightOrder = await light
     .locator("[data-page-hero-content], [data-page-hero-media]")

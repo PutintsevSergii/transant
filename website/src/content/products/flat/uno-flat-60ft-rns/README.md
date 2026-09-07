@@ -63,4 +63,3 @@ Equipped with foldable bolsters and stanchions, the wagon can be adapted to diff
 
 - 16 foldable bolsters
 - 70 mm wooden floor
-- DAC ready

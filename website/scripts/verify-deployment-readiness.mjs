@@ -25,7 +25,7 @@ async function htmlFiles(directory) {
   return nested.flat();
 }
 
-function requiredVercelConfiguration(config) {
+export function requiredVercelConfiguration(config) {
   assertion(
     config.framework === "astro",
     "Vercel must detect Astro explicitly.",
@@ -39,6 +39,24 @@ function requiredVercelConfiguration(config) {
     config.buildCommand === "pnpm build && pnpm prepare:release-output",
     "Vercel must run the safe preview/production release finalizer.",
   );
+  const redirects = new Map(
+    (Array.isArray(config.redirects) ? config.redirects : []).map(
+      (redirect) => [redirect.source, redirect],
+    ),
+  );
+  for (const [source, destination] of [
+    ["/technology/", "/engineering-services/"],
+    ["/de/technology/", "/de/engineering-services/"],
+    ["/uk/technology/", "/uk/engineering-services/"],
+    ["/pl/technology/", "/pl/engineering-services/"],
+    ["/cs/technology/", "/cs/engineering-services/"],
+  ]) {
+    const redirect = redirects.get(source);
+    assertion(
+      redirect?.destination === destination && redirect.permanent === true,
+      `Missing permanent legacy route redirect: ${source} -> ${destination}.`,
+    );
+  }
   const serializedHeaders = JSON.stringify(config.headers);
   for (const directive of [
     "Cross-Origin-Opener-Policy",

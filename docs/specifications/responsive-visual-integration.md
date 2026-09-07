@@ -11,7 +11,7 @@ I-002 owns a single cross-page evidence definition. It does not change individua
 - homepage and catalogue;
 - the Flat family page;
 - four product data shapes: intermodal without load limits, Flat technical table, MULTIBox, and Tank;
-- Technology, Quality, and Sustainability editorial pages;
+- Engineering & Services, Quality, and Sustainability editorial pages;
 - Contact, Privacy, Imprint, and 404.
 
 The route-specific package tests remain the detailed proof for sections, family/product data, and components. The matrix is not a claim that unselected pages need no testing.

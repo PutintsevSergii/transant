@@ -9,7 +9,7 @@ import {
 
 const pages = [
   {
-    slug: "technology",
+    slug: "engineering-services",
     title: "Start with the wagon model and its technical data",
   },
   {
@@ -18,7 +18,7 @@ const pages = [
   },
   {
     slug: "company",
-    title: "TransANT freight and tank wagon product information",
+    title: "About TransAnt GmbH",
   },
   {
     slug: "quality",
@@ -54,7 +54,7 @@ test("@component Editorial pages compose only source-bound page sections", async
   await expect(page.locator("[data-operational-case-study]")).toHaveCount(1);
   await expect(page.locator("[data-evidence-list]")).toHaveCount(0);
 
-  await page.goto("/fixtures/editorial/technology/");
+  await page.goto("/fixtures/editorial/engineering-services/");
   await expect(page.locator("[data-page-meta]")).toHaveCount(1);
   await expect(page.locator("[data-technology-page]")).toHaveCount(1);
   await expect(page.locator("[data-technology-feature]")).toHaveCount(1);
@@ -137,6 +137,9 @@ test("@component Editorial pages compose only source-bound page sections", async
     "Five wagon families / Ten catalogue models / Model-specific technical data / Linz, Austria",
   );
   await expect(companyMeta).toHaveAttribute("aria-hidden", "true");
+  await expect(page.locator("[data-page-hero]")).toContainText(
+    "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
+  );
   const companyEvidence = page.locator("[data-evidence-list]");
   await expect(companyEvidence).toHaveAttribute(
     "data-evidence-list-spacing",
@@ -173,7 +176,7 @@ test("@keyboard Editorial pages retain direct contact navigation without JavaScr
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto(`${browserBaseUrl}/fixtures/editorial/technology/`);
+  await page.goto(`${browserBaseUrl}/fixtures/editorial/engineering-services/`);
 
   const firstChapter = page.locator("[data-technology-index] a").first();
   await firstChapter.focus();
@@ -194,9 +197,58 @@ test("@keyboard Editorial pages retain direct contact navigation without JavaScr
 test("@responsive Editorial pages preserve source order and page containment", async ({
   page,
 }) => {
-  await page.goto("/fixtures/editorial/technology/");
+  await page.goto("/fixtures/editorial/engineering-services/");
   const hero = page.locator("[data-page-hero]");
+  await expect(hero.locator("[data-page-hero-frame]")).toHaveCSS(
+    "padding-top",
+    "12px",
+  );
+  await expect(hero.locator("[data-page-hero-frame]")).toHaveCSS(
+    "padding-bottom",
+    "12px",
+  );
   const firstStory = page.locator("[data-media-story]").first();
+  await expect(firstStory.locator("[data-media-story-frame]")).toHaveCSS(
+    "padding-top",
+    "12px",
+  );
+  const pageHeroTypography = async () =>
+    page.locator("[data-page-hero] [data-section-intro]").evaluate((intro) => {
+      const title = intro.querySelector(".section-intro__title");
+      if (!(title instanceof HTMLElement)) {
+        throw new Error("Expected PageHero to contain a SectionIntro title.");
+      }
+
+      const titleStyle = getComputedStyle(title);
+      const introStyle = getComputedStyle(intro);
+      return {
+        fontFamily: titleStyle.fontFamily,
+        fontSize: titleStyle.fontSize,
+        letterSpacing: titleStyle.letterSpacing,
+        lineHeight: titleStyle.lineHeight,
+        measure: introStyle.maxInlineSize,
+      };
+    });
+  const technologyHeroTypography = await pageHeroTypography();
+  const pageHeroLayout = async () =>
+    page.locator("[data-page-hero-frame]").evaluate((frame) => {
+      const style = getComputedStyle(frame);
+      return {
+        alignItems: style.alignItems,
+        columnGap: style.columnGap,
+        gridTemplateColumns: style.gridTemplateColumns,
+        paddingBottom: style.paddingBottom,
+        paddingTop: style.paddingTop,
+        rowGap: style.rowGap,
+      };
+    });
+  const technologyHeroLayout = await pageHeroLayout();
+
+  await page.goto("/fixtures/editorial/company/");
+  expect(await pageHeroTypography()).toEqual(technologyHeroTypography);
+  expect(await pageHeroLayout()).toEqual(technologyHeroLayout);
+
+  await page.goto("/fixtures/editorial/engineering-services/");
   const contact = page.locator("[data-contact-cta]");
   const [heroBox, firstStoryBox, contactBox] = await Promise.all([
     hero.boundingBox(),
@@ -231,7 +283,7 @@ for (const editorialPage of pages) {
   }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(fixtureRoute(editorialPage));
-    if (editorialPage.slug === "technology") {
+    if (editorialPage.slug === "engineering-services") {
       await waitForPageImages(page);
       await page.evaluate(() => {
         window.scrollTo({ top: 0, behavior: "instant" });
@@ -241,7 +293,11 @@ for (const editorialPage of pages) {
       });
       await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
     }
-    await expect(page).toHaveScreenshot(`${editorialPage.slug}.png`, {
+    const snapshotName =
+      editorialPage.slug === "engineering-services"
+        ? "technology.png"
+        : `${editorialPage.slug}.png`;
+    await expect(page).toHaveScreenshot(snapshotName, {
       animations: "disabled",
       fullPage: true,
       maxDiffPixelRatio: 0.01,

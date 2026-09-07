@@ -12,7 +12,9 @@ browser locations, or global application state.
 - `homeHref` is passed to the immutable priority `BrandLogo`.
 - `id` is an optional stable instance name. Supply it when multiple headers are
   rendered in one document so their menu-control IDs remain unique.
-- `navigation` is an ordered set of visible top-level destination links.
+- `navigation` is an ordered set of visible top-level destinations. An item can
+  include `overviewLabel` and `children`; that item renders as a native
+  disclosure whose overview and grouped links all remain in server HTML.
 - `currentPath` is caller-owned route data used to add `aria-current="page"`.
 - `localeOptions` is an explicit set of local locale links; `current` marks the
   selected locale without locale detection. The production shell derives its
@@ -40,18 +42,27 @@ and outside-pointer close. A user-initiated close returns focus to the trigger.
 Each controller initializes per header root and ignores roots already
 initialized, so independent header fixtures can coexist.
 
+The production adapter omits Home only on the active localized homepage and
+prepends it everywhere else. Wagons is a native disclosure at every width. Its
+overview route and five source-owned family routes work through click, touch,
+Enter, and Space without depending on hover or JavaScript. Escape closes the
+open wagon disclosure and returns focus to its summary before a subsequent
+Escape closes the compact panel. Outside pointer input also closes the
+disclosure.
+
 All controls retain a 44 px minimum target, focus is supplied by the shared
 global focus contract, and reduced-motion users receive no component animation.
 
 ## Accessibility and limitations
 
-The component uses a semantic `<header>`, one labelled primary `<nav>`, and a
-separate labelled locale `<nav>` containing a native `<details>` disclosure.
-Navigation links always exist in server HTML;
+The component uses a semantic `<header>`, one labelled primary `<nav>`, a native
+`<details>` disclosure for grouped wagon destinations, and a separate labelled
+locale `<nav>` containing its own native `<details>` disclosure. Navigation
+links always exist in server HTML;
 there is no JavaScript-only destination. The controller uses the browser `inert`
 property for the enhanced modal surface, so older browsers retain the usable
 server-rendered fallback but do not get modal background suppression.
 
 The header accepts already-approved routes and locale options only. Route
-assembly, translated content, nested product menus, analytics, and
-contact-form delivery remain caller responsibilities.
+assembly, translated content, deeper product menus, analytics, and contact-form
+delivery remain caller responsibilities.

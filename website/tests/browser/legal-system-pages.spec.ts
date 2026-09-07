@@ -95,6 +95,18 @@ test("@responsive Contact, legal, and 404 routes remain compact and readable", a
     await page.goto(route);
     await expectNoPageOverflow(page);
   }
+
+  await page.goto("/fixtures/contact/");
+  await expect(page.locator(".contact-page__frame")).toHaveCSS(
+    "padding-top",
+    "12px",
+  );
+
+  await page.goto("/fixtures/legal/privacy/");
+  await expect(page.locator(".legal-document__frame")).toHaveCSS(
+    "padding-top",
+    "12px",
+  );
 });
 
 test("@responsive Contact keeps paired wide-field controls aligned", async ({

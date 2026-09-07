@@ -63,4 +63,3 @@ Designed specifically for roundwood and sawn timber, the wagon combines optimize
 - 10 stanchion pairs
 - 7 deflectors
 - G2 profile
-- DAC ready

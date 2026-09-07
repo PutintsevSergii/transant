@@ -13,7 +13,10 @@ import type { PayloadValueSectionProps } from "../../components/home/PayloadValu
 import type { QualityImpactSectionProps } from "../../components/home/QualityImpactSection/QualityImpactSection.types";
 import type { WagonSwitchyardProps } from "../../components/home/WagonSwitchyard/WagonSwitchyard.types";
 import type { BaseLayoutProps } from "../../layouts/BaseLayout.types";
-import { createLocaleOptions } from "./site-shell-view-model";
+import {
+  createLocaleOptions,
+  createPrimaryNavigation,
+} from "./site-shell-view-model";
 
 /**
  * Route-owned presentation data for the release-one homepage. It preserves
@@ -39,15 +42,11 @@ export const homepageViewModel = {
     language: "en",
     title: "Freight wagons for individual transport tasks",
     description:
-      "The TransANT product catalogue presents intermodal, flat, timber, open-box, and tank wagons for defined transport tasks.",
+      "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
     canonicalUrl: "https://www.transant.com/en/",
     header: {
       homeHref: "/",
-      navigation: [
-        { label: "Wagons", href: "/wagons/" },
-        { label: "Technology", href: "/technology/" },
-        { label: "Company", href: "/company/" },
-      ],
+      navigation: createPrimaryNavigation("/"),
       currentPath: "/",
       localeOptions: createLocaleOptions("/"),
       contactAction: { label: "Contact TransANT", href: "/contact/" },
@@ -68,7 +67,10 @@ export const homepageViewModel = {
         {
           heading: "Expertise",
           links: [
-            { label: "Technology", href: "/technology/" },
+            {
+              label: "Engineering & Services",
+              href: "/engineering-services/",
+            },
             { label: "Projects", href: "/projects/" },
             { label: "Quality and certificates", href: "/quality/" },
             { label: "Company", href: "/company/" },
@@ -107,7 +109,7 @@ export const homepageViewModel = {
       { text: " payload." },
     ],
     summary:
-      "Explore ten intermodal, flat, timber, open-box, and tank wagon configurations from the TransANT product catalogue.",
+      "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
     primaryAction: {
       kind: "link",
       label: "Explore wagon families",
@@ -160,7 +162,10 @@ export const homepageViewModel = {
       measure: "standard",
     },
     body: "Each model is described through its intended cargo, loading configuration, technical specifications, load limits, and special features.",
-    sourceLink: { href: "/technology/", label: "Explore the technology" },
+    sourceLink: {
+      href: "/engineering-services/",
+      label: "Explore Engineering & Services",
+    },
     principles: [
       {
         title: "Cargo and applications",
@@ -299,7 +304,10 @@ export const homepageViewModel = {
           "Confirm the equipment and special features listed for the selected wagon.",
       },
     ],
-    technicalLink: { href: "/technology/", label: "Review technical data" },
+    technicalLink: {
+      href: "/engineering-services/",
+      label: "Review technical data",
+    },
     sequenceLabel: "Wagon selection stages",
   },
   qualityImpact: {

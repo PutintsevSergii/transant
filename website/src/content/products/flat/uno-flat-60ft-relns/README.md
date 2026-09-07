@@ -63,4 +63,3 @@ Equipped with foldable side walls and a robust wooden floor, the wagon provides 
 
 - 18 foldable side walls
 - 70 mm wooden floor
-- DAC ready

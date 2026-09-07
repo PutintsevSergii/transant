@@ -5,13 +5,15 @@ import type { BaseLayoutProps } from "../../src/layouts/BaseLayout.types";
 
 const props = {
   language: "en-GB",
-  title: "Technology",
+  title: "Engineering & Services",
   description: "A page-specific TransANT technology summary.",
-  canonicalUrl: "https://www.transant.test/technology/",
+  canonicalUrl: "https://www.transant.test/engineering-services/",
   header: {
     homeHref: "/",
-    navigation: [{ label: "Technology", href: "/technology/" }],
-    currentPath: "/technology/",
+    navigation: [
+      { label: "Engineering & Services", href: "/engineering-services/" },
+    ],
+    currentPath: "/engineering-services/",
     localeOptions: [{ label: "EN", href: "/", current: true }],
     contactAction: { label: "Contact", href: "/contact/" },
   },
@@ -42,7 +44,7 @@ describe("BaseLayout contract", () => {
     [{ ...props, language: "english" }],
     [{ ...props, title: " " }],
     [{ ...props, description: " " }],
-    [{ ...props, canonicalUrl: "/technology/" }],
+    [{ ...props, canonicalUrl: "/engineering-services/" }],
     [{ ...props, faviconHref: "https://example.test/icon.png" }],
   ])("rejects incomplete or non-local document data", (invalidProps) => {
     expect(() => assertBaseLayoutProps(invalidProps)).toThrow();

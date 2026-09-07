@@ -38,7 +38,7 @@ describe("productPageViewModel", () => {
     expect(model.hero.facts).toEqual([
       {
         label: "Length over buffers (mm)",
-        value: "19.830",
+        value: "19.740",
         source: {
           reference: "Catalog for print.ai, PDF page 5 (printed page 03)",
           checkedAt: "2026-09-05",
@@ -79,6 +79,34 @@ describe("productPageViewModel", () => {
       label: "Floor height above basis (mm)",
       value: "1.155",
     });
+    expect(model.technicalSheet.features).not.toContain("DAC ready");
+  });
+
+  it("applies the client-confirmed concentrated-load corrections", () => {
+    const eamnos = productPageViewModel("open-box", "uno-multibox-33ft-eamnos");
+    const eanos56 = productPageViewModel("open-box", "uno-multi-56ft-eanos");
+
+    expect(eamnos.technicalSheet.groups.flatMap((group) => group.rows)).toEqual(
+      expect.arrayContaining([
+        { label: "Distance between bogie pivots (mm)", value: "6.500" },
+        { label: "Loading length (mm)", value: "10.240" },
+      ]),
+    );
+    expect(eamnos.technicalSheet.tables[1]?.rows[3]).toEqual([
+      { text: "d-d" },
+      { text: "10 m" },
+      { text: "70" },
+      { text: "–" },
+    ]);
+    expect(eamnos.technicalSheet.features).toEqual([]);
+
+    expect(eanos56.technicalSheet.tables[1]?.rows[3]).toEqual([
+      { text: "d-d" },
+      { text: "16 m" },
+      { text: "66" },
+      { text: "–" },
+    ]);
+    expect(eanos56.technicalSheet.features).not.toContain("DAC ready");
   });
 
   it("rejects an unrecognised or mismatched family/product route", () => {

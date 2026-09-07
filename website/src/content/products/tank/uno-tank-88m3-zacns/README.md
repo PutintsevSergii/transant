@@ -61,7 +61,6 @@ The wagon features an L4BH tank code and is engineered in accordance with applic
 
 - Compliant with tank code L4BH
 - Meets RID, TSI, GCU, EN, UIC
-- DAC ready
 
 
 ## Approved transport goods

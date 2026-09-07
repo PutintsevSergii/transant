@@ -12,7 +12,7 @@ const localImage = {
 } as ImageMetadata;
 
 const validProps = (): MediaStoryProps => ({
-  eyebrow: "Technology",
+  eyebrow: "Engineering & Services",
   title: "Engineering stories use caller-owned copy.",
   description: "Fixture-only editorial copy.",
   headingLevel: 2,
@@ -24,7 +24,10 @@ const validProps = (): MediaStoryProps => ({
     fit: "cover",
     aspectRatio: "16 / 10",
   },
-  action: { href: "/technology/", label: "Explore technology" },
+  action: {
+    href: "/engineering-services/",
+    label: "Explore Engineering & Services",
+  },
 });
 
 describe("MediaStory contract", () => {

@@ -28,6 +28,8 @@ export interface PageHeroProps {
   readonly headingLevel: SectionIntroHeadingLevel;
   /** Owns the PageHero surface and matching C-003 foreground treatment. */
   readonly theme: PageHeroTheme;
+  /** Shows the shared technical-grid surface; enabled by default. */
+  readonly technicalBackground?: boolean;
   /** Optional meaningful local editorial media. */
   readonly media?: PageHeroMedia;
   /** Server-rendered title/media source order; it never changes by viewport. */

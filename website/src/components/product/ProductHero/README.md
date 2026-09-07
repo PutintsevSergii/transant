@@ -8,7 +8,7 @@ Import `ProductHeroProps` from `ProductHero.types.ts`. The component always emit
 
 `inquiryContext` is optional. When present, `productHeroInquiryHref` trims and URL-encodes it only as the inquiry action's `context` query parameter, preserving existing query parameters and fragments. The component reads neither the current route nor global state.
 
-The primary wagon-render stage has no enclosing border. Its contained local-media sizing, right-aligned image position, reserved space, subtle surface, and internal padding remain component-owned so this visual treatment cannot alter image or card borders elsewhere.
+The primary wagon-render stage uses the same global thin bordered surface and clipping treatment as `HomeHero` and `PageHero`. Its local-media sizing, right-aligned image position, and reserved space remain component-owned; it does not introduce a product-only pattern, padding, or border exception.
 
 ## Composition and accessibility
 

@@ -14,6 +14,8 @@
 
 At 320 and 390 px, the section is one column in the exact caller-selected media/content order. At a 58-rem component boundary, media variants form a two-column editorial composition without reordering, with a deliberate responsive gutter between image and text. Text-only variants leave no empty media stage. The action is full-width below 30 rem and intrinsic above it. The component has no client controller, motion, events, source inference, page assembly, or deliberate overflow region.
 
+When a `MediaStory` immediately follows `PageHero`, the shared layout contract replaces only its top padding with the common 12 px hero handoff. Its remaining padding stays owned by the component, and no section uses vertical margins for spacing.
+
 ## Failure, accessibility, and portability
 
 The component fails before render for blank copy, invalid heading levels, ambiguous/decorative/alt-less media, missing aspect ratios, and blank or unsafe action destinations. Essential content, image captions, and native actions remain server-rendered without JavaScript. Long copy wraps, images reserve caller-declared space, and the dark surface delegates matching foreground contrast to C-003.

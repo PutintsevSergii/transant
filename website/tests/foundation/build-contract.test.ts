@@ -58,6 +58,30 @@ describe("isolated Astro build contract", () => {
     expect(smoke).toContain('data-fixture="foundation-smoke"');
   });
 
+  it("builds canonical Engineering & Services pages and static legacy redirects", async () => {
+    for (const localePrefix of ["", "de", "uk", "pl", "cs"]) {
+      const routeParts = localePrefix ? [localePrefix] : [];
+      const canonical = await readFile(
+        join(
+          productionOutput,
+          ...routeParts,
+          "engineering-services",
+          "index.html",
+        ),
+        "utf8",
+      );
+      const redirect = await readFile(
+        join(productionOutput, ...routeParts, "technology", "index.html"),
+        "utf8",
+      );
+      const destination = `${localePrefix ? `/${localePrefix}` : ""}/engineering-services`;
+
+      expect(canonical).toContain(`${destination}/`);
+      expect(redirect).toContain(destination);
+      expect(redirect).toContain('http-equiv="refresh"');
+    }
+  });
+
   it("does not emit Google-hosted images or fonts", async () => {
     const files = [
       ...(await readTextBuildFiles(productionOutput)),
