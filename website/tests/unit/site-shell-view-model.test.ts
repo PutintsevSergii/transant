@@ -91,6 +91,7 @@ describe("createLocaleOptions", () => {
     expect(navigation.map(({ label }) => label)).toEqual([
       "Wagons",
       "Engineering & Services",
+      "InnoTrans 2026",
       "Company",
     ]);
     expect(navigation[0]).toMatchObject({
@@ -119,6 +120,10 @@ describe("createLocaleOptions", () => {
     expect(navigation[2]).toEqual({
       label: "Engineering & Services",
       href: "/de/engineering-services/",
+    });
+    expect(navigation[3]).toEqual({
+      label: "InnoTrans 2026",
+      href: "/de/innotrans-2026/",
     });
   });
 

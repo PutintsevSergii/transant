@@ -1,0 +1,11 @@
+---
+import { innoTransPageViewModel } from "../adapters/content/innotrans-page-view-model";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InnoTransPage from "../layouts/InnoTransPage.astro";
+
+const { layout, ...page } = innoTransPageViewModel();
+---
+
+<BaseLayout {...layout}>
+  <InnoTransPage {...page} />
+</BaseLayout>

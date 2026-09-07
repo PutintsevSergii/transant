@@ -136,10 +136,8 @@ export const homepageViewModel = {
     action: {
       kind: "link",
       label: "Visit us at InnoTrans",
-      href: "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
+      href: "/innotrans-2026/",
       variant: "primary",
-      external: true,
-      externalLabel: " (opens in new tab)",
     },
     diagram: {
       routeLabel: "Linz // Berlin",

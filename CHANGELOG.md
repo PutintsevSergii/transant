@@ -1356,3 +1356,17 @@ Append-only handoff log. Add new entries at the end. Never rewrite or delete pri
 - Hosting: production indexing is approved. Added the technical-only production-hosting handoff: static Astro output, Node/pnpm range, build/output commands, HTTPS-origin release finalization, production robots/sitemap generation, redirects, security/cache headers, and hosted verification. Previews remain non-indexable.
 - Files: client-remarks plan, tracker, `STATUS.md`, `docs/specifications/production-hosting-technical-requirements.md`, and this log. No PDF was downloaded, no asset was generated, and no website implementation or external system changed.
 - Validation: rerun state/input validators and diff hygiene. Continuation: complete the scheduled A-002 and H-004 stages before opening E-003 certificate presentation.
+
+## 2026-09-07 — I-005 — InnoTrans 2026 page slice opened
+
+- Outcome: `IN_PROGRESS`. The owner approved `InnoTrans 2026` in primary navigation, a dedicated localized page, partner logos, and a map. Client page 8 confirms 22–25 September 2026, Messe Berlin Outdoor Display, positions T5/50, T5/55, T5/60, and O5/55, and the TAS Group plus TAS Dniprovagonmash partner identities.
+- Boundary: use local official-source partner artwork and a TransAnt-authored simplified schematic; link to the current official venue plan, directions, and exhibitor profile; reuse the existing mail-client contact route for meeting requests; omit the unconfirmed exhibit list and do not add a meeting provider or new form.
+- Baseline: state/input validators PASS. Node 22.13 `pnpm quality` PASSes formatting, ESLint, Astro diagnostics, 90 unit tests, production/lab builds, and 4 foundation tests. Its browser phase reproduces the recorded UA/PL/CZ component-lab locale failures and was stopped at 68 passed, 4 failed, 5 interrupted, and 1,327 not run; the aggregate is not claimed green.
+- Continue: recover and record official-source assets, implement the route/navigation/page contract, then run focused content, route, accessibility, responsive, and visual evidence.
+
+## 2026-09-07 — I-005 — public catalogue-note annotations removed
+
+- Outcome: `IMPLEMENTED`. Removed the four public `Catalogue notes` annotations from the Sgns load table, Relns, Rnoos, and Zacns goods table. Source-derived values, labels, merged cells, and tables are unchanged. The Rnoos `18.50` literal remains source-authored; its ambiguity is recorded only in the client-remarks implementation plan and is not presented as a public warning.
+- Files: `website/src/content/print-catalogue.json`, `website/tests/unit/product-page-view-model.test.ts`, `docs/specifications/client-remarks-content-implementation-plan.md`, tracker, `STATUS.md`, and this log.
+- Validation: targeted Prettier PASS; focused product-page view-model coverage PASS 5/5; production build PASSes with 130 pages; content/brand audit PASSes for 130 documents and ten products; generated EN/DE/UA/PL/CZ wagon documents contain no `Catalogue notes` heading or removed annotation text; `git diff --check` PASS. The required pre-edit `pnpm quality` baseline is not green solely because the concurrent uncommitted InnoTrans test fails Astro diagnostics (`logo.startsWith()` on `never` at line 52), before this correction's checks run.
+- Continuation: resolve the active InnoTrans package's typed test error, then resume its source-bounded page implementation and focused evidence.

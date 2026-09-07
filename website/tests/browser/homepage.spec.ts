@@ -76,7 +76,7 @@ test("@component Homepage composes one shell and every homepage section in sourc
   await expect(innoTransEvent.locator("a")).toHaveCount(1);
   await expect(innoTransEvent.locator("a")).toHaveAttribute(
     "href",
-    "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
+    "/innotrans-2026/",
   );
   await expect(innoTransEvent).not.toContainText("Arrange a meeting");
   await expect(page.locator("[data-payload-value-section]")).toHaveCount(1);

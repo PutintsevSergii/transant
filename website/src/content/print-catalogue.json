@@ -114,9 +114,7 @@
           ]
         ],
         "kind": "load",
-        "notes": [
-          "The SS value 60.7 spans route classes C and D in the catalogue."
-        ]
+        "notes": []
       }
     ],
     "features": [
@@ -609,9 +607,7 @@
       "18 foldable side walls",
       "70mm wooden floor"
     ],
-    "notes": [
-      "The catalogue artwork uses a letterform in the wagon-type row that can resemble “Reins”; the overview and wagon designation identify the model as Relns."
-    ],
+    "notes": [],
     "drawings": [
       {
         "title": "Side elevation and plan",
@@ -1004,9 +1000,7 @@
       "7 deflectors",
       "G2 profile"
     ],
-    "notes": [
-      "The catalogue prints loading length as 18.50 mm. This value is reproduced as printed and requires confirmation."
-    ],
+    "notes": [],
     "drawings": [
       {
         "title": "Side elevation and plan",
@@ -2050,9 +2044,7 @@
           ]
         ],
         "kind": "goods",
-        "notes": [
-          "Names and UN numbers are reproduced from the product catalogue."
-        ]
+        "notes": []
       }
     ],
     "features": [

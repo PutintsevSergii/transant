@@ -48,6 +48,11 @@ export const pageReviewRoutes: readonly PageReviewRoute[] = [
     fixtureRoute: `/fixtures/editorial/${page}/`,
     visual: page === "engineering-services" || page === "quality",
   })),
+  {
+    id: "innotrans-2026",
+    fixtureRoute: "/fixtures/innotrans-page/",
+    visual: true,
+  },
   { id: "contact", fixtureRoute: "/fixtures/contact/", visual: true },
   { id: "privacy", fixtureRoute: "/fixtures/legal/privacy/", visual: true },
   { id: "imprint", fixtureRoute: "/fixtures/legal/imprint/", visual: true },

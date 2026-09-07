@@ -29,3 +29,11 @@ The isolated shell fixture is `/fixtures/base-layout/`. Its deferred focused tes
 The layout applies the supported structural ideas from the local Stitch V8 reference: a compact technical metadata rail, a focused hero, one dark platform showcase, an internal four-chapter index, and a continuous numbered engineering narrative. It deliberately excludes V8's unsupported metrics, standards, coordinates, status labels, remote assets, outbound destinations, and custom CTA treatment. All images remain optimized local project assets and all actions remain first-party routes or same-page chapter links.
 
 At compact widths the chapter index and every story retain source order in one column. From tablet widths the index becomes a four-column rail; at wide widths illustrated chapters use a bounded text/media split. The layout adds no client controller, and its anchor navigation, content, and imagery remain usable without JavaScript. Reduced-motion mode removes the only image-color transition.
+
+# `InnoTransPage`
+
+`InnoTransPage` presents the approved InnoTrans 2026 visit information as a dedicated, server-rendered route. Its adapter owns localized copy, official profile and hall-plan destinations, four confirmed position codes, two approved partner identities, and the contact context. The layout owns only the visit facts, original orientation schematic, partner cards, and reuse of the shared `PageHero`, `Action`, `SectionIntro`, and `ContactCTA` components.
+
+The diagram is an intentionally simplified orientation aid, visibly identified as not to scale. It does not reproduce the official InnoTrans venue plan; every position links to its official interactive hall-plan page. Partner artwork is served locally and remains unmodified, with retrieval provenance and checksums recorded beside the assets. The page makes no claim about an unconfirmed final exhibit list and does not assign individual exhibits to position codes.
+
+Compact layouts preserve one-column source order and full-width actions. Partner cards become two columns from tablet widths and the visit content uses a bounded two-column split only at wide widths. All facts, partner identities, external-link notices, and contact routes remain available without JavaScript.

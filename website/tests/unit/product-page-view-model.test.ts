@@ -109,6 +109,16 @@ describe("productPageViewModel", () => {
     expect(eanos56.technicalSheet.features).not.toContain("DAC ready");
   });
 
+  it("keeps source values without publishing catalogue-note annotations", () => {
+    for (const { family, product } of productRouteParams) {
+      const model = productPageViewModel(family, product);
+      expect(model.technicalSheet.notes).toEqual([]);
+      expect(
+        model.technicalSheet.tables.flatMap((table) => table.notes),
+      ).toEqual([]);
+    }
+  });
+
   it("rejects an unrecognised or mismatched family/product route", () => {
     expect(() =>
       productPageViewModel("flat", "uno-intermodal-60ft-sgns"),

@@ -74,6 +74,10 @@ for (const locale of locales) {
       new RegExp(locale.eventAction, "u"),
     );
     await expect(event.locator("a")).toHaveCount(1);
+    await expect(event.locator("a")).toHaveAttribute(
+      "href",
+      `/${locale.code}/innotrans-2026/`,
+    );
     await expect(
       page.getByRole("navigation", { name: locale.supportingNavigation }),
     ).toHaveCount(1);
