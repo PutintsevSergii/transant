@@ -73,10 +73,22 @@ test("@component Homepage composes one shell and every homepage section in sourc
   await expect(innoTransEvent.getByRole("heading", { level: 2 })).toHaveText(
     "Meet TransANT in Berlin",
   );
-  await expect(innoTransEvent.locator("a")).toHaveCount(1);
-  await expect(innoTransEvent.locator("a")).toHaveAttribute(
+  await expect(innoTransEvent.locator("a")).toHaveCount(5);
+  await expect(
+    innoTransEvent.locator("[data-innotrans-locations]"),
+  ).toContainText("O5/55");
+  for (const code of ["T5/50", "T5/55", "T5/60"]) {
+    await expect(
+      innoTransEvent.locator("[data-innotrans-locations]"),
+    ).toContainText(code);
+  }
+  await expect(
+    innoTransEvent.locator(
+      "a[href='https://plus.innotrans.de/company/TransAnt-GmbH--1041453']",
+    ),
+  ).toHaveAttribute(
     "href",
-    "/innotrans-2026/",
+    "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
   );
   await expect(innoTransEvent).not.toContainText("Arrange a meeting");
   await expect(page.locator("[data-payload-value-section]")).toHaveCount(1);

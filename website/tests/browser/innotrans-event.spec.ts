@@ -8,6 +8,12 @@ import {
 
 const officialProfile =
   "https://plus.innotrans.de/company/TransAnt-GmbH--1041453";
+const officialPositions = [
+  "https://plus.innotrans.de/hallplan/FGSUED--FGSUED__O5_55",
+  "https://plus.innotrans.de/hallplan/FGSUED--FGSUED__T5_50",
+  "https://plus.innotrans.de/hallplan/FGSUED--FGSUED__T5_55",
+  "https://plus.innotrans.de/hallplan/FGSUED--FGSUED__T5_60",
+] as const;
 
 test("@component InnoTransEvent renders one factual invitation and official external action", async ({
   page,
@@ -22,17 +28,25 @@ test("@component InnoTransEvent renders one factual invitation and official exte
   );
   await expect(event.locator("time")).toHaveAttribute("datetime", "2026-09-22");
   await expect(event.locator("time")).toHaveText("22–25 September 2026");
-  await expect(event).toContainText("Berlin · Messe Berlin");
-  await expect(event).toContainText("TRANSANT · INNOTRANS 2026");
+  await expect(event).toContainText("Messe Berlin · Outdoor Display");
+  await expect(event).toContainText("Find TransANT at four positions");
+  await expect(event).toContainText("O5/55");
+  await expect(event).toContainText("T5/50");
+  await expect(event).toContainText("T5/55");
+  await expect(event).toContainText("T5/60");
   await expect(event).not.toContainText("1,435 mm standard gauge");
 
   const action = event.getByRole("link", { name: /Visit us at InnoTrans/u });
   await expect(action).toHaveAttribute("href", officialProfile);
   await expect(action).toHaveAttribute("target", "_blank");
   await expect(action).toHaveAttribute("rel", "noopener noreferrer");
-  await expect(event.locator("a")).toHaveCount(1);
+  for (const destination of officialPositions) {
+    await expect(event.locator(`a[href='${destination}']`)).toHaveCount(1);
+  }
+  await expect(event.locator("a")).toHaveCount(5);
   await expect(event).not.toContainText("Arrange a meeting");
-  await expect(event).not.toContainText(/\b(?:Hall|Stand|Booth)\b/u);
+  await expect(event.locator(".innotrans-event__background")).toHaveCount(0);
+  await expect(event.locator("svg[role='img']")).toHaveCount(0);
   expect(errors).toEqual([]);
 });
 
@@ -55,25 +69,27 @@ test("@responsive InnoTransEvent stacks compact content and contains its wide sp
 
   const event = page.locator("[data-innotrans-event]");
   const content = event.locator(".innotrans-event__content");
-  const diagram = event.locator(".innotrans-event__diagram");
-  const [contentBox, diagramBox] = await Promise.all([
+  const locations = event.locator(".innotrans-event__locations");
+  const [contentBox, locationsBox] = await Promise.all([
     content.boundingBox(),
-    diagram.boundingBox(),
+    locations.boundingBox(),
   ]);
   const viewportWidth = page.viewportSize()?.width ?? 0;
 
   expect(contentBox).not.toBeNull();
-  expect(diagramBox).not.toBeNull();
+  expect(locationsBox).not.toBeNull();
   if (viewportWidth < 960) {
-    expect(diagramBox?.y).toBeGreaterThan(
+    expect(locationsBox?.y).toBeGreaterThan(
       (contentBox?.y ?? 0) + (contentBox?.height ?? 0),
     );
   } else {
-    expect(diagramBox?.x).toBeGreaterThan(
+    expect(locationsBox?.x).toBeGreaterThan(
       (contentBox?.x ?? 0) + (contentBox?.width ?? 0),
     );
   }
-  await expect(event.getByRole("link")).toHaveCSS("min-height", "52px");
+  await expect(
+    event.getByRole("link", { name: /Visit us at InnoTrans/u }),
+  ).toHaveCSS("min-height", "52px");
   await expectNoPageOverflow(page);
 });
 

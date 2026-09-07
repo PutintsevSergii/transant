@@ -1370,3 +1370,25 @@ Append-only handoff log. Add new entries at the end. Never rewrite or delete pri
 - Files: `website/src/content/print-catalogue.json`, `website/tests/unit/product-page-view-model.test.ts`, `docs/specifications/client-remarks-content-implementation-plan.md`, tracker, `STATUS.md`, and this log.
 - Validation: targeted Prettier PASS; focused product-page view-model coverage PASS 5/5; production build PASSes with 130 pages; content/brand audit PASSes for 130 documents and ten products; generated EN/DE/UA/PL/CZ wagon documents contain no `Catalogue notes` heading or removed annotation text; `git diff --check` PASS. The required pre-edit `pnpm quality` baseline is not green solely because the concurrent uncommitted InnoTrans test fails Astro diagnostics (`logo.startsWith()` on `never` at line 52), before this correction's checks run.
 - Continuation: resolve the active InnoTrans package's typed test error, then resume its source-bounded page implementation and focused evidence.
+
+## 2026-09-07 — E-003 — IQNET certificate added to scheduled rework
+
+- Outcome: recorded the newly identified IQNET attestation as an additional source artifact for the approved E-003 certificate-presentation follow-on after H-004.
+- Source: `https://www.transant.com/en/content/download/66671/file/IQNET.PDF`; the one-page PDF identifies Quality Austria, TransANT GmbH, ISO 9001:2015, registration `AT-32942/0`, and validity through 2028-03-17. It states that the attestation is linked to the IQNET member's original certificate and is not standalone.
+- Files: `docs/specifications/client-remarks-content-implementation-plan.md`, `docs/specifications/component-implementation-status.md`, `STATUS.md`, and this log. No PDF was downloaded, no website implementation or external system changed.
+- Validation: `agent/scripts/validate-state.sh`, `agent/scripts/validate-inputs.sh`, and `git diff --check` PASS. Continuation: include this source in E-003 provenance/digest capture and model it alongside the underlying ISO 9001 certificate when that package opens.
+
+## 2026-09-07 — I-005 — InnoTrans page canceled; exact positions published on homepage
+
+- Outcome: `IMPLEMENTED`. The client's later decision supersedes the earlier dedicated-page approval. Removed the InnoTrans top-level navigation item, localized `/innotrans-2026/` routes, page layout/view model, partner-logo assets, component fixture, page tests, and review-route entries.
+- Homepage: retained the existing localized event announcement and official TransAnt exhibitor-profile action. It now shows 22–25 September 2026, `Messe Berlin · Outdoor Display`, O5/55 as the main display, and T5/50, T5/55, and T5/60 as additional positions. Each code is an ordinary external link to its exact official InnoTrans hall-plan entry.
+- Boundary: no map, diagram, spatial schematic, partner-logo/list presentation, exhibit-to-position assignment, directions workflow, or meeting workflow remains in this slice. The formerly proposed page is absent from canonical output; the production count returns from 130 to 125 canonical pages plus the five existing legacy redirect documents.
+- Files: homepage InnoTrans component/API/README, EN/DE/UA/PL/CZ homepage adapters, fixture, focused homepage/event tests and visual references, removed page/nav/route/assets/test files, client plan, tracker, `STATUS.md`, and this log.
+- Validation: Astro diagnostics PASS with 0 errors/warnings/hints; all 91 unit tests PASS; production build, route integration (`routes=124 products=10 internal-references=4994`), content/brand audit (`documents=125 products=10`), and deployment readiness (`documents=130 routes=124`) PASS. Focused InnoTransEvent behaviour/accessibility checks PASS 24/24. Refreshed and clean homepage/event/responsive visuals PASS 18/18 across 320/390/768/1024/1440/844×390; the text-only position card was directly inspected at compact and wide widths. Final state/input validators and diff hygiene PASS.
+- Continuation: wait for remaining client source material or explicitly open the approved A-002 homepage Variant A as its own bounded package.
+
+## 2026-09-07 — E-003 — IQNET classification corrected
+
+- Decision: the IQNET PDF is not a third certificate. The E-003 plan now associates it with the ISO 9001:2015 certificate as a supporting confirmation/evidence link and excludes a separate certificate card.
+- Files: `docs/specifications/client-remarks-content-implementation-plan.md`, `docs/specifications/component-implementation-status.md`, `STATUS.md`, and this log. No website implementation or asset changed.
+- Validation: `agent/scripts/validate-state.sh`, `agent/scripts/validate-inputs.sh`, and `git diff --check` PASS. Continuation: when E-003 opens, place the supporting link under the ISO 9001 record and preserve the source document's non-standalone wording.

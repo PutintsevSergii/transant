@@ -10,12 +10,14 @@ export interface InnoTransEventProps {
   readonly startDate: string;
   readonly location: string;
   readonly action: ActionLinkProps;
-  readonly diagram: {
-    readonly routeLabel: string;
-    readonly highlightLabel: string;
-    readonly origin: string;
-    readonly destination: string;
-    readonly eventLabel: string;
-    readonly companyLabel: string;
+  readonly standLocations: {
+    readonly eyebrow: string;
+    readonly title: string;
+    readonly navigationLabel: string;
+    readonly items: readonly {
+      readonly code: string;
+      readonly role: string;
+      readonly action: ActionLinkProps;
+    }[];
   };
 }

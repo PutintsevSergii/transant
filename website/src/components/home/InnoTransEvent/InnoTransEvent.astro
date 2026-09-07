@@ -11,8 +11,12 @@ const {
   startDate,
   location,
   action,
-  diagram,
+  standLocations,
 } = Astro.props as InnoTransEventProps;
+
+if (standLocations.items.length !== 4) {
+  throw new Error("InnoTransEvent requires exactly four confirmed positions.");
+}
 ---
 
 <section
@@ -21,19 +25,6 @@ const {
   data-innotrans-event
   aria-labelledby={`${id}-title`}
 >
-  <svg
-    class="innotrans-event__background"
-    aria-hidden="true"
-    focusable="false"
-    viewBox="0 0 1440 440"
-    preserveAspectRatio="none"
-  >
-    <path d="M-80 400 580 80 1520 400"></path>
-    <path class="innotrans-event__background-dash" d="M20 400 580 80 1380 400"
-    ></path>
-    <path d="M0 220h1440"></path>
-  </svg>
-
   <div class="innotrans-event__frame page-frame">
     <div class="innotrans-event__content">
       <p class="innotrans-event__eyebrow">
@@ -62,47 +53,26 @@ const {
       </div>
     </div>
 
-    <div class="innotrans-event__diagram" aria-hidden="true">
-      <div class="innotrans-event__diagram-header">
-        <span>[{diagram.routeLabel}]</span>
-        <strong>{diagram.highlightLabel}</strong>
-      </div>
-
-      <svg viewBox="0 0 420 230" focusable="false">
-        <g class="innotrans-event__grid">
-          <path d="M18 42h384M18 116h384M18 190h384"></path>
-        </g>
-        <g class="innotrans-event__routes">
-          <path class="innotrans-event__route-primary" d="M34 170h124l95-96h132"
-          ></path>
-          <path
-            class="innotrans-event__route-secondary"
-            d="M34 170h190l76-42h85"></path>
-          <path class="innotrans-event__route-dashed" d="M34 170h351"></path>
-          <path
-            d="M66 161v18M98 161v18M130 161v18M162 161v18M282 65v18M316 65v18M350 65v18"
-          ></path>
-        </g>
-        <g class="innotrans-event__origin-node">
-          <circle cx="34" cy="170" r="6"></circle>
-          <text x="34" y="208">{diagram.origin}</text>
-        </g>
-        <g class="innotrans-event__junction-node">
-          <circle cx="158" cy="170" r="7"></circle>
-          <circle cx="158" cy="170" r="2"></circle>
-        </g>
-        <g class="innotrans-event__destination-node">
-          <circle cx="354" cy="74" r="12"></circle>
-          <circle cx="354" cy="74" r="6"></circle>
-          <circle cx="354" cy="74" r="2"></circle>
-          <text x="354" y="49">{diagram.destination}</text>
-        </g>
-      </svg>
-
-      <div class="innotrans-event__diagram-footer">
-        <span>{diagram.eventLabel}</span>
-        <strong>{diagram.companyLabel}</strong>
-      </div>
+    <div class="innotrans-event__locations" data-innotrans-locations>
+      <header class="innotrans-event__locations-header">
+        <p>{standLocations.eyebrow}</p>
+        <h3>{standLocations.title}</h3>
+      </header>
+      <nav aria-label={standLocations.navigationLabel}>
+        <ul class="innotrans-event__locations-list">
+          {
+            standLocations.items.map((item) => (
+              <li>
+                <div class="innotrans-event__location-identity">
+                  <strong>{item.code}</strong>
+                  <span>{item.role}</span>
+                </div>
+                <Action {...item.action} />
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
     </div>
   </div>
 </section>
@@ -115,21 +85,6 @@ const {
     border-block-end: var(--border-thin) solid var(--color-railway-border);
     color: var(--color-paper);
     background: var(--color-footer-navy);
-  }
-
-  .innotrans-event__background {
-    position: absolute;
-    inset: 0;
-    inline-size: 100%;
-    block-size: 100%;
-    fill: none;
-    stroke: rgb(111 152 181 / 16%);
-    stroke-width: 1;
-    pointer-events: none;
-  }
-
-  .innotrans-event__background-dash {
-    stroke-dasharray: 7 9;
   }
 
   .innotrans-event__frame {
@@ -252,7 +207,7 @@ const {
     text-transform: uppercase;
   }
 
-  .innotrans-event__diagram {
+  .innotrans-event__locations {
     min-inline-size: 0;
     padding: clamp(var(--space-4), 4cqi, var(--space-6));
     border: var(--border-thin) solid var(--color-railway-border);
@@ -261,113 +216,74 @@ const {
     box-shadow: 0 1rem 2rem rgb(0 0 0 / 12%);
   }
 
-  .innotrans-event__diagram-header,
-  .innotrans-event__diagram-footer {
-    display: flex;
-    min-inline-size: 0;
-    justify-content: space-between;
-    gap: var(--space-3);
-    color: var(--color-railway-pale);
-    font-family: var(--font-mono);
-    font-size: clamp(0.62rem, 1.5cqi, 0.74rem);
-    letter-spacing: 0.06em;
-    line-height: 1.4;
-    text-transform: uppercase;
-  }
-
-  .innotrans-event__diagram-header {
-    padding-block-end: var(--space-3);
+  .innotrans-event__locations-header {
+    display: grid;
+    gap: var(--space-2);
+    padding-block-end: var(--space-4);
     border-block-end: var(--border-thin) solid var(--color-railway-border);
   }
 
-  .innotrans-event__diagram-header strong {
-    flex: 0 0 auto;
-    color: var(--color-brand-red);
+  .innotrans-event__locations-header p,
+  .innotrans-event__locations-header h3 {
+    margin: 0;
   }
 
-  .innotrans-event__diagram > svg {
-    display: block;
-    inline-size: 100%;
-    max-block-size: 15rem;
-  }
-
-  .innotrans-event__grid {
-    fill: none;
-    stroke: var(--color-railway-blue);
-    stroke-dasharray: 4 5;
-    stroke-width: 1;
-  }
-
-  .innotrans-event__routes {
-    fill: none;
-    stroke: var(--color-railway-pale);
-    stroke-width: 1.5;
-  }
-
-  .innotrans-event__route-primary {
-    stroke: var(--color-railway-border);
-    stroke-width: 3;
-  }
-
-  .innotrans-event__route-secondary {
-    stroke: var(--color-brand-blue);
-    stroke-width: 2;
-  }
-
-  .innotrans-event__route-dashed {
-    stroke: var(--color-railway-muted);
-    stroke-dasharray: 5 6;
-  }
-
-  .innotrans-event__origin-node circle,
-  .innotrans-event__junction-node circle:first-child {
-    fill: var(--color-railway-navy);
-    stroke: var(--color-railway-muted);
-    stroke-width: 2;
-  }
-
-  .innotrans-event__junction-node circle:last-child {
-    fill: var(--color-railway-pale);
-  }
-
-  .innotrans-event__destination-node circle:first-child {
-    fill: rgb(220 28 59 / 16%);
-  }
-
-  .innotrans-event__destination-node circle:nth-child(2) {
-    fill: var(--color-railway-navy);
-    stroke: var(--color-brand-red);
-    stroke-width: 3;
-  }
-
-  .innotrans-event__destination-node circle:nth-child(3) {
-    fill: var(--color-brand-red);
-  }
-
-  .innotrans-event__origin-node text,
-  .innotrans-event__destination-node text {
-    fill: var(--color-railway-pale);
+  .innotrans-event__locations-header p {
+    color: var(--color-railway-pale);
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-anchor: middle;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
-  .innotrans-event__destination-node text {
-    fill: var(--color-paper);
+  .innotrans-event__locations-header h3 {
+    color: var(--color-paper);
+    font-size: clamp(1.5rem, 4cqi, 2.25rem);
+    line-height: 1.08;
   }
 
-  .innotrans-event__diagram-footer {
-    align-items: end;
-    padding-block-start: var(--space-3);
-    border-block-start: var(--border-thin) solid var(--color-railway-border);
+  .innotrans-event__locations-list {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .innotrans-event__diagram-footer strong {
-    flex: 0 0 auto;
-    color: #d7e5ee;
+  .innotrans-event__locations-list li {
+    display: grid;
+    gap: var(--space-3);
+    padding-block: var(--space-3);
+    border-block-end: var(--border-thin) solid var(--color-railway-border);
+  }
+
+  .innotrans-event__locations-list li:last-child {
+    border-block-end: 0;
+    padding-block-end: 0;
+  }
+
+  .innotrans-event__location-identity {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .innotrans-event__location-identity strong {
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .innotrans-event__location-identity span {
+    color: var(--color-railway-muted);
+    font-size: var(--font-size-small);
+  }
+
+  .innotrans-event__locations-list :global(.action) {
+    justify-content: space-between;
+    color: var(--color-railway-pale);
   }
 
   @container (min-width: 38rem) {
@@ -390,7 +306,7 @@ const {
   @media (forced-colors: active) {
     .innotrans-event,
     .innotrans-event__details,
-    .innotrans-event__diagram {
+    .innotrans-event__locations {
       border-color: CanvasText;
     }
   }

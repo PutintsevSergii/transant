@@ -10,10 +10,6 @@ import {
   type EditorialPageSlug,
 } from "../../adapters/content/editorial-page-view-model";
 import {
-  innoTransPageSlug,
-  innoTransPageViewModel,
-} from "../../adapters/content/innotrans-page-view-model";
-import {
   localizeViewModel,
   translateLocalizedContent,
 } from "../../adapters/content/localized-view-model";
@@ -43,7 +39,6 @@ import LegalDocument from "../../components/legal/LegalDocument/LegalDocument.as
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProductPage from "../../layouts/ProductPage.astro";
 import TechnologyPage from "../../layouts/TechnologyPage.astro";
-import InnoTransPage from "../../layouts/InnoTransPage.astro";
 import "../../styles/localized-pages.css";
 
 type AdditionalLocale = Extract<SiteLocale, "uk" | "pl" | "cs">;
@@ -55,7 +50,6 @@ export function getStaticPaths() {
     "contact",
     ...legalPageSlugs,
     ...editorialPageSlugs,
-    innoTransPageSlug,
     "wagons",
     ...catalogueFamilySlugs.map((family) => `wagons/${family}`),
     ...productRouteParams.map(
@@ -72,7 +66,6 @@ const page = Astro.params.page;
 if (!page) throw new Error("Localized routes require a page parameter.");
 
 const isEditorial = (editorialPageSlugs as readonly string[]).includes(page);
-const isInnoTrans = page === innoTransPageSlug;
 const isLegal = (legalPageSlugs as readonly string[]).includes(page);
 const pageParts = page.split("/");
 const isProduct =
@@ -100,9 +93,6 @@ const notFound =
   page === "404" ? localizeViewModel(notFoundPageViewModel, locale) : undefined;
 const editorial = isEditorial
   ? localizeViewModel(editorialPageViewModel(page as EditorialPageSlug), locale)
-  : undefined;
-const innoTrans = isInnoTrans
-  ? innoTransPageViewModel(locale as SiteLocale)
   : undefined;
 const catalogueIndex =
   page === "wagons"
@@ -236,16 +226,3 @@ const t = (source: string) => translateLocalizedContent(source, locale);
 }
 
 {product && <ProductPage {...product} />}
-
-{
-  innoTrans && (
-    <BaseLayout {...innoTrans.layout}>
-      <InnoTransPage
-        hero={innoTrans.hero}
-        visit={innoTrans.visit}
-        partners={innoTrans.partners}
-        contactCta={innoTrans.contactCta}
-      />
-    </BaseLayout>
-  )
-}

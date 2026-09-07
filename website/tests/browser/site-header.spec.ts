@@ -8,7 +8,6 @@ import {
 
 const browserBaseUrl =
   process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:4322";
-const wideHeaderBreakpoint = 1200;
 
 test("@component SiteHeader renders navigation, current routes, locales, and the immutable logo", async ({
   page,
@@ -32,7 +31,7 @@ test("@component SiteHeader renders navigation, current routes, locales, and the
     "src",
     "/brand/transant-logo.png",
   );
-  await expect(nav.locator("a")).toHaveCount(10);
+  await expect(nav.locator("a")).toHaveCount(9);
   await expect(nav.locator("a[href='/']", { hasText: /^Home$/u })).toHaveCount(
     1,
   );
@@ -40,9 +39,6 @@ test("@component SiteHeader renders navigation, current routes, locales, and the
   await expect(wagonGroup.locator("a")).toHaveCount(6);
   await expect(wagonGroup.locator("a[href='#wagons']")).toHaveText(
     "All wagons",
-  );
-  await expect(nav.locator("a[href='/innotrans-2026/']")).toHaveText(
-    "InnoTrans 2026",
   );
   await expect(nav.locator("a[href='/sustainability/']")).toHaveCount(0);
   await expect(currentLink).toHaveAttribute("aria-current", "page");
@@ -64,7 +60,7 @@ test("@component SiteHeader initializes repeated named instances without duplica
   await expect(page.locator("#site-header-first-panel")).toHaveCount(1);
   await expect(page.locator("#site-header-second-panel")).toHaveCount(1);
 
-  if ((page.viewportSize()?.width ?? 0) < wideHeaderBreakpoint) {
+  if ((page.viewportSize()?.width ?? 0) < 1024) {
     const firstTrigger = page
       .locator("[data-site-header]")
       .first()
@@ -94,9 +90,6 @@ test("@no-js SiteHeader retains visible primary links without JavaScript", async
       .getByRole("navigation", { name: "Primary navigation" })
       .getByRole("link", { name: "Engineering & Services" }),
   ).toBeVisible();
-  await expect(
-    noJavaScriptPage.getByRole("link", { name: "InnoTrans 2026" }),
-  ).toBeVisible();
   await noJavaScriptPage
     .locator("[data-header-navigation-group] summary")
     .click();
@@ -120,7 +113,7 @@ test("@responsive SiteHeader preserves compact and wide containment", async ({
 
   const header = page.locator("[data-site-header]");
   const trigger = header.getByRole("button", { name: "Menu", exact: true });
-  if ((page.viewportSize()?.width ?? 0) < wideHeaderBreakpoint) {
+  if ((page.viewportSize()?.width ?? 0) < 1024) {
     await expect(trigger).toBeVisible();
   } else {
     await expect(trigger).toBeHidden();
@@ -137,7 +130,7 @@ test("@interaction SiteHeader manages compact menu keyboard, focus, close, and i
   page,
 }) => {
   test.skip(
-    (page.viewportSize()?.width ?? 0) >= wideHeaderBreakpoint,
+    (page.viewportSize()?.width ?? 0) >= 1024,
     "wide header has no compact disclosure",
   );
   await page.goto("/fixtures/site-header/");
@@ -218,7 +211,7 @@ test("@visual SiteHeader fixture visual baseline", async ({ page }) => {
 
 test("@visual SiteHeader compact menu open baseline", async ({ page }) => {
   test.skip(
-    (page.viewportSize()?.width ?? 0) >= wideHeaderBreakpoint,
+    (page.viewportSize()?.width ?? 0) >= 1024,
     "wide header has no compact disclosure",
   );
   await page.emulateMedia({ reducedMotion: "reduce" });

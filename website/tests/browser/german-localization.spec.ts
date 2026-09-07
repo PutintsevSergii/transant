@@ -45,8 +45,14 @@ test("@locale German homepage keeps switchyard copy in German", async ({
   );
   await expect(
     event.getByRole("link", { name: /Besuchen Sie uns auf der InnoTrans/u }),
-  ).toHaveAttribute("href", "/de/innotrans-2026/");
-  await expect(event.locator("a")).toHaveCount(1);
+  ).toHaveAttribute(
+    "href",
+    "https://plus.innotrans.de/company/TransAnt-GmbH--1041453",
+  );
+  await expect(event.locator("a")).toHaveCount(5);
+  await expect(event.locator("[data-innotrans-locations]")).toContainText(
+    "O5/55",
+  );
   await expect(
     page.locator(
       "[data-site-header] nav[aria-label='Hauptnavigation'] > ul > li > a[href='/de/']",

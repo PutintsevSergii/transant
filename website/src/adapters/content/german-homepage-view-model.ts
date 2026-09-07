@@ -107,7 +107,22 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Visit TransANT at InnoTrans 2026 and discover how modular freight-wagon platforms and cargo-specific superstructures support individual transport tasks.":
     "Besuchen Sie TransANT auf der InnoTrans 2026 und entdecken Sie, wie modulare Güterwagenplattformen und ladungsspezifische Aufbauten individuelle Transportaufgaben unterstützen.",
   "22–25 September 2026": "22.–25. September 2026",
+  "Messe Berlin · Outdoor Display": "Messe Berlin · Freigelände",
   "Visit us at InnoTrans": "Besuchen Sie uns auf der InnoTrans",
+  "Outdoor Display positions": "Positionen im Freigelände",
+  "Find TransANT at four positions": "TransANT an vier Positionen finden",
+  "Official InnoTrans hall-plan links":
+    "Links zum offiziellen InnoTrans-Hallenplan",
+  "Main display": "Hauptstand",
+  "Additional position": "Weiterer Standort",
+  "Open O5/55 in the official hall plan":
+    "O5/55 im offiziellen Hallenplan öffnen",
+  "Open T5/50 in the official hall plan":
+    "T5/50 im offiziellen Hallenplan öffnen",
+  "Open T5/55 in the official hall plan":
+    "T5/55 im offiziellen Hallenplan öffnen",
+  "Open T5/60 in the official hall plan":
+    "T5/60 im offiziellen Hallenplan öffnen",
   " (opens in new tab)": " (wird in einem neuen Tab geöffnet)",
   "Freight wagons for individual transport tasks":
     "Güterwagen für individuelle Transportaufgaben",

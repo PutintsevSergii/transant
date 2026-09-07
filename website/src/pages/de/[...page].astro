@@ -9,10 +9,6 @@ import {
   editorialPageViewModel,
   type EditorialPageSlug,
 } from "../../adapters/content/editorial-page-view-model";
-import {
-  innoTransPageSlug,
-  innoTransPageViewModel,
-} from "../../adapters/content/innotrans-page-view-model";
 import { localizeViewModel } from "../../adapters/content/localized-view-model";
 import {
   contactPageViewModel,
@@ -39,7 +35,6 @@ import LegalDocument from "../../components/legal/LegalDocument/LegalDocument.as
 import ProductPage from "../../layouts/ProductPage.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TechnologyPage from "../../layouts/TechnologyPage.astro";
-import InnoTransPage from "../../layouts/InnoTransPage.astro";
 
 export function getStaticPaths() {
   const germanPaths = [
@@ -47,7 +42,6 @@ export function getStaticPaths() {
     "contact",
     ...legalPageSlugs,
     ...editorialPageSlugs,
-    innoTransPageSlug,
     "wagons",
     ...catalogueFamilySlugs.map((family) => `wagons/${family}`),
     ...productRouteParams.map(
@@ -62,7 +56,6 @@ const page = Astro.params.page;
 if (!page) throw new Error("German routes require a page parameter.");
 
 const isEditorial = (editorialPageSlugs as readonly string[]).includes(page);
-const isInnoTrans = page === innoTransPageSlug;
 const isLegal = (legalPageSlugs as readonly string[]).includes(page);
 const pageParts = page.split("/");
 const isProduct =
@@ -91,7 +84,6 @@ const notFound =
 const editorial = isEditorial
   ? localizeViewModel(editorialPageViewModel(page as EditorialPageSlug), "de")
   : undefined;
-const innoTrans = isInnoTrans ? innoTransPageViewModel("de") : undefined;
 const catalogueIndex =
   page === "wagons"
     ? localizeViewModel(catalogueIndexViewModel, "de")
@@ -220,19 +212,6 @@ const product = isProduct
 }
 
 {product && <ProductPage {...product} />}
-
-{
-  innoTrans && (
-    <BaseLayout {...innoTrans.layout}>
-      <InnoTransPage
-        hero={innoTrans.hero}
-        visit={innoTrans.visit}
-        partners={innoTrans.partners}
-        contactCta={innoTrans.contactCta}
-      />
-    </BaseLayout>
-  )
-}
 
 <style>
   .contact-page {

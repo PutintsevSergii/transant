@@ -15,7 +15,7 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
       summary="Visit TransANT at InnoTrans 2026 and discover how modular freight-wagon platforms and cargo-specific superstructures support individual transport tasks."
       date="22–25 September 2026"
       startDate="2026-09-22"
-      location="Berlin · Messe Berlin"
+      location="Messe Berlin · Outdoor Display"
       action={{
         kind: "link",
         label: "Visit us at InnoTrans",
@@ -24,13 +24,45 @@ import ComponentLabLayout from "../../layouts/ComponentLabLayout.astro";
         external: true,
         externalLabel: " (opens in new tab)",
       }}
-      diagram={{
-        routeLabel: "Linz // Berlin",
-        highlightLabel: "TRANSANT · INNOTRANS 2026",
-        origin: "Linz",
-        destination: "Berlin",
-        eventLabel: "InnoTrans 2026",
-        companyLabel: "TransANT GmbH",
+      standLocations={{
+        eyebrow: "Outdoor Display positions",
+        title: "Find TransANT at four positions",
+        navigationLabel: "Official InnoTrans hall-plan links",
+        items: [
+          [
+            "O5/55",
+            "Main display",
+            "https://plus.innotrans.de/hallplan/FGSUED--FGSUED__O5_55",
+          ],
+          [
+            "T5/50",
+            "Additional position",
+            "https://plus.innotrans.de/hallplan/FGSUED--FGSUED__T5_50",
+          ],
+          [
+            "T5/55",
+            "Additional position",
+            "https://plus.innotrans.de/hallplan/FGSUED--FGSUED__T5_55",
+          ],
+          [
+            "T5/60",
+            "Additional position",
+            "https://plus.innotrans.de/hallplan/FGSUED--FGSUED__T5_60",
+          ],
+        ].map(([code, role, href]) => ({
+          code: code!,
+          role: role!,
+          action: {
+            kind: "link" as const,
+            label: `Open ${code} in the official hall plan`,
+            href: href!,
+            variant: "text" as const,
+            size: "compact" as const,
+            icon: "arrow-right" as const,
+            external: true,
+            externalLabel: " (opens in new tab)",
+          },
+        })),
       }}
     />
   </main>
