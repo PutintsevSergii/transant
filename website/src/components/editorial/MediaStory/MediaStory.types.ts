@@ -34,6 +34,10 @@ export interface MediaStoryProps {
   readonly title: string;
   /** Optional supporting editorial copy. */
   readonly description?: string;
+  /** Optional additional paragraphs retained in caller-owned source order. */
+  readonly paragraphs?: readonly string[];
+  /** Optional factual or explanatory list retained in caller-owned source order. */
+  readonly items?: readonly string[];
   /** Semantic rank chosen by the embedding document. */
   readonly headingLevel: SectionIntroHeadingLevel;
   /** Owns the section surface and matching C-003 foreground treatment. */

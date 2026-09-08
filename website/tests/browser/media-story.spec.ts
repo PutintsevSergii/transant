@@ -39,6 +39,18 @@ test("@component MediaStory renders caller-owned orientations, caption, local me
     (captionImage?.y ?? 0) + (captionImage?.height ?? 0),
   );
   await expect(textOnly.locator("[data-media-story-media]")).toHaveCount(0);
+  const textOnlyPadding = await textOnly
+    .locator("[data-media-story-frame]")
+    .evaluate((frame) => {
+      const style = getComputedStyle(frame);
+      return {
+        bottom: Number.parseFloat(style.paddingBottom),
+        top: Number.parseFloat(style.paddingTop),
+      };
+    });
+  expect(textOnlyPadding.top).toBeGreaterThanOrEqual(48);
+  expect(textOnlyPadding.bottom).toBeGreaterThanOrEqual(48);
+  expect(textOnlyPadding.top).toBe(textOnlyPadding.bottom);
   await expect(textFirst).toHaveAttribute("data-media-story-theme", "light");
   await expect(mediaFirst).toHaveAttribute("data-media-story-theme", "dark");
 
@@ -89,6 +101,18 @@ test("@responsive MediaStory preserves compact source order and creates a contai
   } else {
     expect(textMedia?.x).toBeGreaterThan(textContent?.x ?? 0);
     expect(mediaContent?.x).toBeGreaterThan(mediaStage?.x ?? 0);
+
+    const storyFrame = await textFirst
+      .locator("[data-media-story-frame]")
+      .boundingBox();
+    expect(storyFrame).not.toBeNull();
+    if ((textMedia?.height ?? 0) >= (textContent?.height ?? 0)) {
+      expect(textMedia?.y).toBeCloseTo(storyFrame?.y ?? 0, 0);
+      expect((textMedia?.y ?? 0) + (textMedia?.height ?? 0)).toBeCloseTo(
+        (storyFrame?.y ?? 0) + (storyFrame?.height ?? 0),
+        0,
+      );
+    }
   }
 
   const action = textFirst.getByRole("link", { name: "Explore technology" });

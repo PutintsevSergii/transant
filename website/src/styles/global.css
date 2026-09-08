@@ -29,8 +29,7 @@
     background: var(--color-surface-subtle);
   }
 
-  [data-page-hero] + section,
-  [data-page-hero] + .technology-page__feature {
+  [data-page-hero] + section {
     --section-padding-block-start: var(--page-hero-block-inset);
   }
 

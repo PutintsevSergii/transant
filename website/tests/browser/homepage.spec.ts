@@ -17,9 +17,12 @@ test("@component Homepage composes one shell and every homepage section in sourc
   await page.goto("/fixtures/homepage/");
 
   await expect(page).toHaveTitle(
-    "Freight wagons for individual transport tasks | TransANT",
+    "Engineering solutions for European rail freight | TransANT",
   );
   await expect(page.locator("[data-site-header]")).toHaveCount(1);
+  await expect(page.locator("[data-site-header]")).toHaveClass(
+    /site-header--logo-prominent/,
+  );
   await expect(page.locator("a[href*='/sustainability/']")).toHaveCount(0);
   await expect(page.locator("main")).toHaveCount(1);
   const pageMeta = page.locator("[data-page-meta]");
@@ -45,7 +48,7 @@ test("@component Homepage composes one shell and every homepage section in sourc
     "/de/",
   );
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Wagons built for more useful payload.",
+    "Engineering solutions for European rail freight.",
   );
 
   const sectionOrder = await page
@@ -58,16 +61,26 @@ test("@component Homepage composes one shell and every homepage section in sourc
   expect(sectionOrder).toEqual([
     "data-home-hero",
     "data-innotrans-event",
-    "data-payload-value-section",
     "data-wagon-switchyard",
+    "data-payload-value-section",
     "data-modular-platform-section",
     "data-quality-impact-section",
     "data-contact-cta",
   ]);
   await expect(page.locator("[data-home-hero]")).toHaveCount(1);
   await expect(page.locator("[data-home-hero]")).toContainText(
-    "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
+    "TransAnt GmbH is an Austrian TAS Group company founded in Linz in 2020.",
   );
+  await expect(
+    page.locator("[data-home-hero] a[href='/company/']"),
+  ).toHaveAccessibleName("About TransAnt");
+  await expect(page.locator("[data-home-hero] img")).toHaveAttribute(
+    "alt",
+    "The TransANT name cut into the red frame of a freight wagon",
+  );
+  await expect(
+    page.locator("[data-home-hero] [data-responsive-media]"),
+  ).toHaveAttribute("data-responsive-media-fit", "contain");
   const innoTransEvent = page.locator("[data-innotrans-event]");
   await expect(innoTransEvent).toHaveCount(1);
   await expect(innoTransEvent.getByRole("heading", { level: 2 })).toHaveText(
@@ -96,12 +109,14 @@ test("@component Homepage composes one shell and every homepage section in sourc
     page.locator("[data-payload-value-section]").getByRole("heading", {
       level: 2,
     }),
-  ).toHaveText("Wagon data for a defined transport task");
-  await expect(page.locator("[data-payload-value-section] li")).toHaveCount(4);
+  ).toHaveText("Lightweight platform for heavy transport tasks");
+  await expect(page.locator("[data-payload-value-section] li")).toHaveCount(3);
   await expect(page.locator("[data-payload-value-section]")).toContainText(
-    "Technical specifications",
+    "approximately 16 tonnes",
   );
-  await expect(page.locator("main")).not.toContainText(/greentec|alform/iu);
+  await expect(page.locator("[data-payload-value-section]")).toContainText(
+    "alform®",
+  );
   await expect(page.locator("main")).not.toContainText(
     "Interchangeable superstructures",
   );
@@ -122,11 +137,21 @@ test("@component Homepage composes one shell and every homepage section in sourc
   );
   await expect(page.locator("[data-modular-platform-section]")).toHaveCount(1);
   await expect(page.locator("[data-modular-platform-section]")).toContainText(
-    "Technical data",
+    "Work on a wagon starts not with choosing a standard model, but with understanding the real transport task.",
   );
   await expect(page.locator("[data-modular-platform-section]")).toContainText(
-    "load limits",
+    "TransAnt identifies a suitable wagon configuration or develops a solution adapted to the specific operating conditions.",
   );
+  await expect(
+    page.locator("[data-modular-platform-section]").getByRole("link", {
+      name: "View all wagons",
+    }),
+  ).toHaveAttribute("href", "/wagons/");
+  await expect(
+    page.locator("[data-modular-platform-section]").getByRole("link", {
+      name: "View all wagons",
+    }),
+  ).toHaveClass(/action--primary/);
   await expect(page.locator("[data-operational-case-study]")).toHaveCount(0);
   await expect(page.locator("main")).not.toContainText(
     "Erzberg–Linz ore transport",
@@ -146,14 +171,19 @@ test("@component Homepage composes one shell and every homepage section in sourc
   await expect(engineeringServicesActions).toHaveCount(1);
   await expect(
     page.locator("[data-home-hero]").getByRole("link", {
-      name: "Explore Engineering & Services",
+      name: "Enquire about PRO 60 ft",
     }),
   ).toHaveCount(0);
   await expect(
     page.locator("[data-payload-value-section]").getByRole("link", {
-      name: "Explore Engineering & Services",
+      name: "Enquire about PRO 60 ft",
     }),
-  ).toHaveClass(/action--text/);
+  ).toHaveAttribute("href", "/engineering-services/");
+  await expect(
+    page.locator("[data-payload-value-section]").getByRole("link", {
+      name: "Enquire about PRO 60 ft",
+    }),
+  ).toHaveClass(/action--primary/);
   await expect(
     page.locator("[data-wagon-switchyard-rail] a[href^='/wagons/']"),
   ).toHaveCount(5);
@@ -174,6 +204,12 @@ test("@keyboard Homepage remains directly navigable without JavaScript", async (
   await expect(
     page.getByRole("link", { name: "Explore Intermodal" }),
   ).toHaveAttribute("href", "/wagons/intermodal/");
+  await expect(
+    page.getByRole("link", { name: "View all wagons" }),
+  ).toHaveAttribute("href", "/wagons/");
+  await expect(
+    page.getByRole("link", { name: "Enquire about PRO 60 ft" }),
+  ).toHaveAttribute("href", "/engineering-services/");
   await page.getByRole("link", { name: "Contact TransANT" }).first().focus();
   await expect(
     page.getByRole("link", { name: "Contact TransANT" }).first(),
@@ -225,18 +261,39 @@ test("@responsive Homepage preserves the intentional compact sequence without ov
     Math.abs((heroContentBox?.x ?? 0) - (payloadPropositionBox?.x ?? 0)),
   ).toBeLessThanOrEqual(1);
   expect(innoTransEventBox?.y).toBeGreaterThan(heroBox?.y ?? 0);
-  expect(payloadBox?.y).toBeGreaterThan(innoTransEventBox?.y ?? 0);
-  expect(switchyardBox?.y).toBeGreaterThan(payloadBox?.y ?? 0);
+  expect(switchyardBox?.y).toBeGreaterThan(innoTransEventBox?.y ?? 0);
+  expect(payloadBox?.y).toBeGreaterThan(switchyardBox?.y ?? 0);
   if (viewportWidth < 896) {
     await expect(
       switchyard.locator("[data-wagon-switchyard-rail]"),
     ).toBeVisible();
   } else {
-    await expect(hero.locator(".home-hero__media img")).toHaveCSS(
-      "object-position",
-      "100% 50%",
-    );
+    const viewportHeight = page.viewportSize()?.height ?? 0;
+    expect(innoTransEventBox).not.toBeNull();
+    expect(innoTransEventBox?.y).toBeLessThan(viewportHeight - 5 * 16);
   }
+  if (viewportWidth < 480) {
+    const [primaryActionBox, secondaryActionBox] = await Promise.all([
+      hero.getByRole("link", { name: "Explore wagons" }).boundingBox(),
+      hero.getByRole("link", { name: "About TransAnt" }).boundingBox(),
+    ]);
+    expect(primaryActionBox).not.toBeNull();
+    expect(secondaryActionBox).not.toBeNull();
+    expect(
+      Math.abs(
+        (primaryActionBox?.width ?? 0) - (secondaryActionBox?.width ?? 0),
+      ),
+    ).toBeLessThanOrEqual(1);
+  }
+  const heroImage = hero.locator(".home-hero__media img");
+  await expect(heroImage).toHaveCSS("object-fit", "contain");
+  await expect(heroImage).toHaveCSS("object-position", "50% 50%");
+  const heroImageBox = await heroImage.boundingBox();
+  expect(heroImageBox).not.toBeNull();
+  expect((heroImageBox?.width ?? 0) / (heroImageBox?.height ?? 1)).toBeCloseTo(
+    3 / 2,
+    1,
+  );
   await expectNoPageOverflow(page);
 });
 

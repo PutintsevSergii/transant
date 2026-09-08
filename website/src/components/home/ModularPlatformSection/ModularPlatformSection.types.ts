@@ -1,5 +1,6 @@
 import type { RailSequenceItem } from "../../core/RailSequence/RailSequence.types";
 import type { SectionIntroProps } from "../../core/SectionIntro/SectionIntro.types";
+import type { ActionVariant } from "../../core/Action/Action.types";
 
 /** Optional native route to caller-owned approved technical material. */
 export interface ModularPlatformTechnicalLink {
@@ -7,6 +8,8 @@ export interface ModularPlatformTechnicalLink {
   readonly href: string;
   /** Concise caller-owned action label. */
   readonly label: string;
+  /** Defaults to a text action; callers may request an established action variant. */
+  readonly variant?: ActionVariant;
   /** Opens approved external material in a safely isolated new tab. */
   readonly external?: boolean;
 }

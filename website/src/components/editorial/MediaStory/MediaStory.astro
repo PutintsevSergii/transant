@@ -42,6 +42,20 @@ const actionVariant = props.theme === "dark" ? "inverse" : "secondary";
         measure="standard"
       />
       {
+        props.paragraphs?.map((paragraph) => (
+          <p class="media-story__paragraph">{paragraph}</p>
+        ))
+      }
+      {
+        props.items && (
+          <ul class="media-story__list">
+            {props.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        )
+      }
+      {
         props.action && (
           <Action
             kind="link"
@@ -98,11 +112,20 @@ const actionVariant = props.theme === "dark" ? "inverse" : "secondary";
     );
   }
 
+  .media-story--without-media .media-story__frame {
+    padding-block: clamp(var(--space-7), 10vw, var(--space-8));
+  }
+
   .media-story--spacing-generous-top .media-story__frame {
     padding-block-start: var(
       --section-padding-block-start,
       clamp(2rem, 6vw, 5rem)
     );
+  }
+
+  .media-story--without-media.media-story--spacing-generous-top
+    .media-story__frame {
+    padding-block-start: clamp(2rem, 6vw, 5rem);
   }
 
   .media-story--heading-compact
@@ -115,6 +138,26 @@ const actionVariant = props.theme === "dark" ? "inverse" : "secondary";
     display: grid;
     justify-items: start;
     gap: var(--space-5);
+  }
+
+  .media-story__paragraph,
+  .media-story__list {
+    max-inline-size: 62ch;
+    margin: 0;
+    color: var(--color-ink-secondary);
+    line-height: var(--line-height-body);
+    overflow-wrap: anywhere;
+  }
+
+  .media-story--dark .media-story__paragraph,
+  .media-story--dark .media-story__list {
+    color: var(--color-railway-pale);
+  }
+
+  .media-story__list {
+    display: grid;
+    gap: var(--space-3);
+    padding-inline-start: 1.25rem;
   }
 
   .media-story__content > :global(.action) {
@@ -162,6 +205,10 @@ const actionVariant = props.theme === "dark" ? "inverse" : "secondary";
   }
 
   @container (min-width: 58rem) {
+    .media-story--with-media.media-story--spacing-standard .media-story__frame {
+      padding-block: 0;
+    }
+
     .media-story--with-media .media-story__frame {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: clamp(var(--space-6), 7vw, var(--space-8));

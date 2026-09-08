@@ -25,6 +25,12 @@ export interface LoadLimitTableProps {
   readonly source: SourceAttribution;
   /** Source-preserved table-column labels and optional payload suffix. */
   readonly columns: LoadLimitColumnLabels;
+  /** Optional localized instruction shown when the table overflows. */
+  readonly scrollHint?: string;
+  /** Optional localized accessible name for the horizontal-scroll region. */
+  readonly scrollRegionLabel?: string;
+  /** Optional localized accessible name for the notes list. */
+  readonly notesLabel?: string;
   /** Ordered A–D route-class rows supplied by the F-002 content contract. */
   readonly rows: readonly LoadLimitRow[];
   /** Optional source-supplied table notes, rendered after the table in order. */

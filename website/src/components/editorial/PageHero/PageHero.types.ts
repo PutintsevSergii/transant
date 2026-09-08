@@ -6,7 +6,13 @@ export type PageHeroTheme = "light" | "dark";
 export type PageHeroMediaPosition = "before" | "after";
 
 /** PageHero owns priority loading; callers only describe meaningful local media. */
-export type PageHeroMedia = Omit<ResponsiveMediaProps, "loading" | "priority">;
+export interface PageHeroMedia extends Omit<
+  ResponsiveMediaProps,
+  "loading" | "priority"
+> {
+  /** Keeps an intentionally supplied image ratio instead of the shared tall hero-media minimum. */
+  readonly preserveNaturalAspectRatio?: boolean;
+}
 
 export interface PageHeroAction {
   /** A real caller-owned destination for the optional native action. */

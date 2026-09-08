@@ -9,8 +9,9 @@ import PageHero from "../../../../src/components/editorial/PageHero/PageHero.ast
 import PageMeta from "../../../../src/components/editorial/PageMeta/PageMeta.astro";
 import ContactCTA from "../../../../src/components/home/ContactCTA/ContactCTA.astro";
 import OperationalCaseStudy from "../../../../src/components/home/OperationalCaseStudy/OperationalCaseStudy.astro";
+import LoadLimitTable from "../../../../src/components/product/LoadLimitTable/LoadLimitTable.astro";
+import SpecificationGroup from "../../../../src/components/product/SpecificationGroup/SpecificationGroup.astro";
 import BaseLayout from "../../../../src/layouts/BaseLayout.astro";
-import TechnologyPage from "../../../../src/layouts/TechnologyPage.astro";
 
 export function getStaticPaths() {
   return editorialPageSlugs.map((page) => ({ params: { page } }));
@@ -21,25 +22,28 @@ if (!page) {
   throw new Error("Editorial fixtures require a page parameter.");
 }
 
-const { caseStudy, contactCta, evidence, hero, layout, pageMeta, stories } =
-  editorialPageViewModel(page);
+const {
+  caseStudy,
+  contactCta,
+  evidence,
+  hero,
+  layout,
+  loadLimits,
+  pageMeta,
+  specifications,
+  stories,
+} = editorialPageViewModel(page);
 ---
 
 <BaseLayout {...layout}>
-  {
-    page === "engineering-services" ? (
-      <TechnologyPage hero={hero} stories={stories} contactCta={contactCta} />
-    ) : (
-      <>
-        {pageMeta !== undefined && <PageMeta {...pageMeta} />}
-        <PageHero {...hero} />
-        {stories.map((story) => (
-          <MediaStory {...story} />
-        ))}
-        {caseStudy !== undefined && <OperationalCaseStudy {...caseStudy} />}
-        {evidence !== undefined && <EvidenceList {...evidence} />}
-        <ContactCTA {...contactCta} />
-      </>
-    )
-  }
+  <>
+    {pageMeta !== undefined && <PageMeta {...pageMeta} />}
+    <PageHero {...hero} />
+    {stories.map((story) => <MediaStory {...story} />)}
+    {caseStudy !== undefined && <OperationalCaseStudy {...caseStudy} />}
+    {evidence !== undefined && <EvidenceList {...evidence} />}
+    {specifications !== undefined && <SpecificationGroup {...specifications} />}
+    {loadLimits !== undefined && <LoadLimitTable {...loadLimits} />}
+    <ContactCTA {...contactCta} />
+  </>
 </BaseLayout>

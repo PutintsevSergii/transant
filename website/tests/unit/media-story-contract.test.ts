@@ -41,6 +41,16 @@ describe("MediaStory contract", () => {
         mediaPosition: "before",
       }),
     ).not.toThrow();
+    expect(() =>
+      validateMediaStoryProps({
+        title: "Structured editorial story",
+        description: "Opening paragraph.",
+        paragraphs: ["A second source-owned paragraph."],
+        items: ["First factual item", "Second factual item"],
+        headingLevel: 2,
+        theme: "light",
+      }),
+    ).not.toThrow();
   });
 
   it("rejects blank copy, invalid hierarchy, ambiguous media, and unsafe actions", () => {
@@ -69,5 +79,11 @@ describe("MediaStory contract", () => {
         action: { href: "javascript:alert(1)", label: "Unsafe" },
       }),
     ).toThrow("action requires");
+    expect(() =>
+      validateMediaStoryProps({ ...props, paragraphs: [" "] }),
+    ).toThrow("paragraphs must be non-empty");
+    expect(() => validateMediaStoryProps({ ...props, items: [""] })).toThrow(
+      "items must be non-empty",
+    );
   });
 });

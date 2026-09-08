@@ -1,4 +1,5 @@
 import type { SectionIntroProps } from "../../core/SectionIntro/SectionIntro.types";
+import type { ActionVariant } from "../../core/Action/Action.types";
 
 /** A single engineering principle shown beneath the editorial proposition. */
 export interface PayloadValuePrinciple {
@@ -8,12 +9,14 @@ export interface PayloadValuePrinciple {
   readonly description: string;
 }
 
-/** Optional source attribution rendered as an ordinary, same-context link. */
+/** Optional caller-owned route rendered as an ordinary, same-context link. */
 export interface PayloadValueSourceLink {
   /** A non-empty absolute, root-relative, fragment, or relative reference. */
   readonly href: string;
-  /** Visible attribution label. */
+  /** Visible action label. */
   readonly label: string;
+  /** Defaults to a text action; callers may request an established action variant. */
+  readonly variant?: ActionVariant;
 }
 
 export interface PayloadValueSectionProps {
@@ -34,6 +37,6 @@ export interface PayloadValueSectionProps {
         PayloadValuePrinciple,
         PayloadValuePrinciple,
       ];
-  /** Optional attribution or deeper source route; absent means no empty link. */
+  /** Optional contextual route; absent means no empty action. */
   readonly sourceLink?: PayloadValueSourceLink;
 }

@@ -53,6 +53,14 @@ export const validatePageHeroProps = (props: PageHeroProps): void => {
   }
 
   if (props.media) {
+    if (
+      props.media.preserveNaturalAspectRatio !== undefined &&
+      typeof props.media.preserveNaturalAspectRatio !== "boolean"
+    ) {
+      throw new Error(
+        "PageHero media preserveNaturalAspectRatio must be a boolean when supplied.",
+      );
+    }
     assertResponsiveMediaContract(props.media);
     if (
       props.media.decorative === true ||

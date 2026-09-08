@@ -58,6 +58,8 @@ export interface SiteHeaderProps {
   readonly labels?: SiteHeaderLabels;
   /** Compact inquiry action reused in the wide bar and compact panel. */
   readonly contactAction: SiteHeaderContactAction;
+  /** Gives the existing brand mark a larger homepage-led treatment when requested. */
+  readonly logoScale?: "default" | "prominent";
   /** Keeps the calm shell visible while a caller scrolls a complete page. */
   readonly sticky?: boolean;
 }

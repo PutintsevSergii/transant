@@ -12,7 +12,7 @@ test("@locale German homepage keeps switchyard copy in German", async ({
 
   await expect(page.locator("html")).toHaveAttribute("lang", "de");
   await expect(page).toHaveTitle(
-    "Güterwagen für individuelle Transportaufgaben | TransANT",
+    "Ingenieurlösungen für den europäischen Schienengüterverkehr | TransANT",
   );
   const pageMeta = page.locator("[data-page-meta]");
   await expect(pageMeta.locator("[data-page-meta-label]")).toHaveText(
@@ -37,7 +37,23 @@ test("@locale German homepage keeps switchyard copy in German", async ({
     "Matching wagon families to cargo and loading needs.",
   );
   await expect(page.locator("main")).toContainText(
-    "TransAnt entwickelt, vermarktet und betreut Güterwagenlösungen und koordiniert deren industrielle Umsetzung mit qualifizierten Fertigungspartnern.",
+    "Die TransAnt GmbH ist ein österreichisches Unternehmen der TAS Group und wurde 2020 in Linz gegründet.",
+  );
+  await expect(
+    page.locator("[data-home-hero] a[href='/de/company/']"),
+  ).toHaveAccessibleName("Über TransAnt");
+  await expect(
+    page.locator("[data-modular-platform-section]").getByRole("link", {
+      name: "Alle Wagen ansehen",
+    }),
+  ).toHaveAttribute("href", "/de/wagons/");
+  await expect(
+    page.locator("[data-payload-value-section]").getByRole("link", {
+      name: "Anfrage zu PRO 60 ft senden",
+    }),
+  ).toHaveAttribute("href", "/de/engineering-services/");
+  await expect(page.locator("[data-modular-platform-section]")).toContainText(
+    "Die Arbeit an einem Wagen beginnt nicht mit der Wahl eines Standardmodells, sondern mit dem Verständnis der tatsächlichen Transportaufgabe.",
   );
   const event = page.locator("[data-innotrans-event]");
   await expect(event.getByRole("heading", { level: 2 })).toHaveText(
@@ -82,7 +98,7 @@ test("@locale locale selector expands and switches back on the same route", asyn
   await expect(page).toHaveURL(/\/$/u);
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Wagons built for more useful payload.",
+    "Engineering solutions for European rail freight.",
   );
 });
 
@@ -109,22 +125,22 @@ test("@locale German primary navigation renders the destination page", async ({
   await expect(page.locator("[data-home-hero]")).toHaveCount(0);
 });
 
-test("@locale German Engineering & Services route uses translated page content", async ({
+test("@locale German PRO platform route uses translated page content", async ({
   page,
 }) => {
   await page.goto("/de/engineering-services/");
 
   await expect(page.locator("html")).toHaveAttribute("lang", "de");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Beginnen Sie mit dem Wagenmodell und seinen technischen Daten",
+    "Leichte Plattform für schwere Transportaufgaben",
   );
   await expect(page.getByRole("heading", { level: 2 }).first()).toHaveText(
-    "Zehn Konfigurationen in fünf Wagenfamilien",
+    "Etwa 16 Tonnen Eigengewicht der Basisplattform",
   );
   await expect(
-    page.getByRole("link", { name: "Wagenanforderungen besprechen" }),
+    page.getByRole("link", { name: "Anfrage zu PRO 60 ft senden" }),
   ).toBeVisible();
-  await expect(page.locator("main")).not.toContainText(/greentec|alform/iu);
+  await expect(page.locator("main")).toContainText("alform®");
   await expect(
     page.locator("[data-site-header] .site-header__primary-nav a[href='/de/']"),
   ).toHaveAttribute("href", "/de/");
@@ -135,7 +151,7 @@ test("@locale German Engineering & Services route uses translated page content",
   ).toHaveAttribute("aria-current", "page");
 });
 
-test("@locale German Company route uses the shared localized descriptor strip", async ({
+test("@locale German Company route uses the supplied localized company narrative", async ({
   page,
 }) => {
   await page.goto("/de/company/");
@@ -146,13 +162,23 @@ test("@locale German Company route uses the shared localized descriptor strip", 
     "TransAnt GmbH",
   );
   await expect(pageMeta.locator("[data-page-meta-sequence]")).toHaveText(
-    "Fünf Wagenfamilien / Zehn Katalogmodelle / Modellspezifische technische Daten / Linz, Österreich",
+    "2020 in Linz gegründet / Österreichisches Unternehmen der TAS Group / Europäisches Normalspurnetz / Ein koordiniertes Projektteam",
   );
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Über TransAnt GmbH",
+    "Ingenieurlösungen für den europäischen Schienengüterverkehr",
   );
   await expect(page.locator("main")).toContainText(
-    "TransAnt entwickelt, vermarktet und betreut Güterwagenlösungen und koordiniert deren industrielle Umsetzung mit qualifizierten Fertigungspartnern.",
+    "Die TransAnt GmbH ist ein österreichisches Unternehmen der TAS Group, das 2020 in Linz gegründet wurde.",
   );
+  await expect(page.locator("main")).toContainText(
+    "Die Transportaufgabe bestimmt die Wagenkonfiguration",
+  );
+  await expect(page.locator("[data-page-hero]")).toHaveAttribute(
+    "data-page-hero-natural-media",
+    "true",
+  );
+  await expect(
+    page.getByRole("link", { name: "Qualität und Zertifikate ansehen" }),
+  ).toHaveAttribute("href", "/de/quality/");
   await expect(page.locator("a[href*='/sustainability/']")).toHaveCount(0);
 });

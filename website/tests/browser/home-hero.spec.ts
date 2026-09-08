@@ -38,6 +38,40 @@ test("@component HomeHero preserves proposition hierarchy, priority local media,
     .locator(".home-hero__content, .home-hero__media")
     .evaluateAll((elements) => elements.map((element) => element.className));
   expect(sourceOrder).toEqual(["home-hero__content", "home-hero__media"]);
+
+  const homeTypography = await primary.evaluate((element) => {
+    const title = getComputedStyle(
+      element.querySelector<HTMLElement>(".home-hero__title")!,
+    );
+    const summary = getComputedStyle(
+      element.querySelector<HTMLElement>(".home-hero__summary")!,
+    );
+    return {
+      titleFontSize: title.fontSize,
+      titleLetterSpacing: title.letterSpacing,
+      titleLineHeight: title.lineHeight,
+      summaryFontSize: summary.fontSize,
+    };
+  });
+  await page.goto("/fixtures/page-hero/");
+  const regularHeroTypography = await page
+    .locator("[data-page-hero]")
+    .first()
+    .evaluate((element) => {
+      const title = getComputedStyle(
+        element.querySelector<HTMLElement>(".section-intro__title")!,
+      );
+      const summary = getComputedStyle(
+        element.querySelector<HTMLElement>(".section-intro__description")!,
+      );
+      return {
+        titleFontSize: title.fontSize,
+        titleLetterSpacing: title.letterSpacing,
+        titleLineHeight: title.lineHeight,
+        summaryFontSize: summary.fontSize,
+      };
+    });
+  expect(homeTypography).toEqual(regularHeroTypography);
   expect(errors).toEqual([]);
 });
 
@@ -51,6 +85,9 @@ test("@responsive HomeHero stacks media below copy, keeps actions usable, and av
   const media = hero.locator(".home-hero__media");
   const primaryAction = hero.getByRole("link", {
     name: "Explore wagon families",
+  });
+  const secondaryAction = hero.getByRole("link", {
+    name: "Talk to an expert",
   });
   const [frameBox, contentBox, mediaBox, framePadding] = await Promise.all([
     frame.boundingBox(),
@@ -76,6 +113,19 @@ test("@responsive HomeHero stacks media below copy, keeps actions usable, and av
   expect((await primaryAction.boundingBox())?.height).toBeGreaterThanOrEqual(
     44,
   );
+  if ((page.viewportSize()?.width ?? 0) < 480) {
+    const [primaryActionBox, secondaryActionBox] = await Promise.all([
+      primaryAction.boundingBox(),
+      secondaryAction.boundingBox(),
+    ]);
+    expect(primaryActionBox).not.toBeNull();
+    expect(secondaryActionBox).not.toBeNull();
+    expect(
+      Math.abs(
+        (primaryActionBox?.width ?? 0) - (secondaryActionBox?.width ?? 0),
+      ),
+    ).toBeLessThanOrEqual(1);
+  }
   await primaryAction.focus();
   await expect(primaryAction).toBeFocused();
   expect(

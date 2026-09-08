@@ -28,7 +28,7 @@ const { intro, body, principles, sourceLink } = props;
               kind="link"
               label={sourceLink.label}
               href={sourceLink.href}
-              variant="text"
+              variant={sourceLink.variant ?? "text"}
               icon="arrow-right"
             />
           )

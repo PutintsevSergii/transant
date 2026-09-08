@@ -23,4 +23,6 @@ export interface HomeHeroProps {
   readonly secondaryLink?: ActionLinkProps;
   /** Local responsive media contract; the hero always prioritises its image. */
   readonly media: HomeHeroMedia;
+  /** Optional caller-owned crop focus; the default preserves the established railway-image framing. */
+  readonly mediaFocus?: "default" | "center";
 }

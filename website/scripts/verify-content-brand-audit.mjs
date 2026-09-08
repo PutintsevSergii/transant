@@ -226,10 +226,8 @@ export async function auditContentAndBrand({
     "Published output contains unfinished placeholder copy.",
   );
   assertion(
-    !/(?:greentec|alform|high[ -]strength steel|\/sustainability\/)/iu.test(
-      allOutput,
-    ),
-    "Published output contains retired steel or sustainability messaging.",
+    !/(?:greentec|\/sustainability\/)/iu.test(allOutput),
+    "Published output contains retired greentec or sustainability messaging.",
   );
   assertion(
     !/(?:lightweight intermodal|leichte intermodalwagen|полегшені інтермодальні вагони|lekkie wagony intermodalne|lehké intermodální vozy)/iu.test(
@@ -251,6 +249,183 @@ export async function auditContentAndBrand({
     "/cs/engineering-services/",
   ]) {
     await access(documentPath(distDirectory, route), constants.R_OK);
+  }
+  for (const homepage of [
+    {
+      route: "/",
+      company:
+        "TransAnt GmbH is an Austrian TAS Group company founded in Linz in 2020.",
+      process:
+        "Work on a wagon starts not with choosing a standard model, but with understanding the real transport task.",
+      allWagons: "View all wagons",
+      proAction: "Enquire about PRO 60 ft",
+    },
+    {
+      route: "/de/",
+      company:
+        "Die TransAnt GmbH ist ein österreichisches Unternehmen der TAS Group und wurde 2020 in Linz gegründet.",
+      process:
+        "Die Arbeit an einem Wagen beginnt nicht mit der Wahl eines Standardmodells, sondern mit dem Verständnis der tatsächlichen Transportaufgabe.",
+      allWagons: "Alle Wagen ansehen",
+      proAction: "Anfrage zu PRO 60 ft senden",
+    },
+    {
+      route: "/uk/",
+      company:
+        "TransAnt GmbH — австрійська компанія у складі TAS Group, заснована в Лінці у 2020 році.",
+      process:
+        "Робота над вагоном починається не з вибору стандартної моделі, а з розуміння реального транспортного завдання.",
+      allWagons: "Переглянути всі вагони",
+      proAction: "Надіслати запит щодо PRO 60 ft",
+    },
+    {
+      route: "/pl/",
+      company:
+        "TransAnt GmbH to austriacka spółka należąca do TAS Group, założona w Linzu w 2020 roku.",
+      process:
+        "Prace nad wagonem nie zaczynają się od wyboru standardowego modelu, lecz od zrozumienia rzeczywistego zadania transportowego.",
+      allWagons: "Zobacz wszystkie wagony",
+      proAction: "Wyślij zapytanie o PRO 60 ft",
+    },
+    {
+      route: "/cs/",
+      company:
+        "TransAnt GmbH je rakouská společnost skupiny TAS Group, založená v Linci v roce 2020.",
+      process:
+        "Práce na voze nezačíná výběrem standardního modelu, ale pochopením skutečného přepravního úkolu.",
+      allWagons: "Zobrazit všechny vozy",
+      proAction: "Odeslat poptávku na PRO 60 ft",
+    },
+  ]) {
+    const markup = await readFile(
+      documentPath(distDirectory, homepage.route),
+      "utf8",
+    );
+    const localePrefix = homepage.route;
+    assertion(
+      markup.includes(homepage.company) && markup.includes(homepage.process),
+      `${homepage.route} must retain the approved company introduction and project process.`,
+    );
+    assertion(
+      markup.includes(`href="${localePrefix}company/"`) &&
+        markup.includes("transant-wagon-logo-red"),
+      `${homepage.route} must retain its localized Company action and approved local hero media.`,
+    );
+    assertion(
+      markup.includes(`href="${localePrefix}wagons/"`) &&
+        markup.includes(homepage.allWagons),
+      `${homepage.route} must retain its localized all-wagons action.`,
+    );
+    assertion(
+      markup.includes(`href="${localePrefix}engineering-services/"`) &&
+        markup.includes(homepage.proAction),
+      `${homepage.route} must retain its localized PRO-platform-projects action.`,
+    );
+  }
+  for (const company of [
+    {
+      route: "/company/",
+      title: "Engineering solutions for European rail freight",
+      role: "TransAnt GmbH is an Austrian TAS Group company founded in Linz in 2020.",
+      pro: "TransAnt’s experience includes implemented lightweight 60-foot platform-wagon projects in the PRO family, using special structural solutions and high-strength steel.",
+      uno: "The UNO range covers intermodal transport, metal, timber, bulk cargo, and liquids.",
+    },
+    {
+      route: "/de/company/",
+      title: "Ingenieurlösungen für den europäischen Schienengüterverkehr",
+      role: "Die TransAnt GmbH ist ein österreichisches Unternehmen der TAS Group, das 2020 in Linz gegründet wurde.",
+      pro: "Die Erfahrung von TransAnt umfasst realisierte Leichtbauprojekte für 60-Fuß-Plattformwagen der PRO-Familie mit besonderen Konstruktionslösungen und hochfestem Stahl.",
+      uno: "Das UNO-Programm umfasst intermodale Transporte, Metall, Holz, Schüttgüter und Flüssigkeiten.",
+    },
+    {
+      route: "/uk/company/",
+      title: "Інженерні рішення для європейських вантажних перевезень",
+      role: "TransAnt GmbH — австрійська компанія TAS Group, заснована в Лінці у 2020 році.",
+      pro: "Досвід TransAnt включає реалізовані легкі проєкти 60-футових платформних вагонів сімейства PRO зі спеціальними конструкційними рішеннями та високоміцною сталлю.",
+      uno: "Лінійка UNO охоплює інтермодальні перевезення, метал, деревину, сипкі вантажі та рідини.",
+    },
+    {
+      route: "/pl/company/",
+      title:
+        "Rozwiązania inżynieryjne dla europejskiego kolejowego transportu towarowego",
+      role: "TransAnt GmbH jest austriacką spółką TAS Group założoną w Linzu w 2020 roku.",
+      pro: "Doświadczenie TransAnt obejmuje zrealizowane lekkie projekty 60-stopowych wagonów platformowych rodziny PRO ze specjalnymi rozwiązaniami konstrukcyjnymi i stalą o wysokiej wytrzymałości.",
+      uno: "Gama UNO obejmuje transport intermodalny, metal, drewno, ładunki masowe i ciecze.",
+    },
+    {
+      route: "/cs/company/",
+      title: "Inženýrská řešení pro evropskou železniční nákladní dopravu",
+      role: "TransAnt GmbH je rakouská společnost skupiny TAS Group založená v Linci v roce 2020.",
+      pro: "Zkušenosti TransAnt zahrnují realizované lehké projekty 60stopých plošinových vozů rodiny PRO se zvláštními konstrukčními řešeními a vysokopevnostní ocelí.",
+      uno: "Řada UNO zahrnuje intermodální přepravu, kov, dřevo, sypké náklady a kapaliny.",
+    },
+  ]) {
+    const markup = await readFile(
+      documentPath(distDirectory, company.route),
+      "utf8",
+    );
+    assertion(
+      markup.includes(company.title) &&
+        markup.includes(company.role) &&
+        markup.includes(company.pro) &&
+        markup.includes(company.uno),
+      `${company.route} must retain its authored Company narrative.`,
+    );
+    for (const asset of [
+      "company-wagon-logo",
+      "company-wagon-coupling",
+      "company-engineering-team",
+      "company-pro-platform",
+      "company-uno-intermodal",
+    ]) {
+      assertion(
+        markup.includes(asset),
+        `${company.route} must retain the supplied local ${asset} media.`,
+      );
+    }
+  }
+  for (const proPage of [
+    {
+      route: "/engineering-services/",
+      title: "Lightweight platform for heavy transport tasks",
+      proof:
+        "High-strength alform® steel and a topologically optimised structure reduce the base platform’s tare to approximately 16 tonnes.",
+    },
+    {
+      route: "/de/engineering-services/",
+      title: "Leichte Plattform für schwere Transportaufgaben",
+      proof:
+        "Hochfester alform®-Stahl und eine topologisch optimierte Konstruktion reduzieren das Eigengewicht der Basisplattform auf etwa 16 Tonnen.",
+    },
+    {
+      route: "/uk/engineering-services/",
+      title: "Полегшена платформа для важких транспортних завдань",
+      proof:
+        "Високоміцна сталь alform® і топологічно оптимізована конструкція зменшують власну масу базової платформи приблизно до 16 тонн.",
+    },
+    {
+      route: "/pl/engineering-services/",
+      title: "Lekka platforma do ciężkich zadań transportowych",
+      proof:
+        "Stal alform® o wysokiej wytrzymałości i topologicznie zoptymalizowana konstrukcja zmniejszają masę własną platformy bazowej do około 16 ton.",
+    },
+    {
+      route: "/cs/engineering-services/",
+      title: "Lehká plošina pro těžké přepravní úkoly",
+      proof:
+        "Vysokopevnostní ocel alform® a topologicky optimalizovaná konstrukce snižují vlastní hmotnost základní plošiny přibližně na 16 tun.",
+    },
+  ]) {
+    const markup = await readFile(
+      documentPath(distDirectory, proPage.route),
+      "utf8",
+    );
+    assertion(
+      markup.includes(proPage.title) &&
+        markup.includes(proPage.proof) &&
+        markup.includes("company-pro-platform"),
+      `${proPage.route} must retain its localized PRO platform narrative and supplied image.`,
+    );
   }
   assertion(
     !/dac[ -]?ready/iu.test(allOutput),

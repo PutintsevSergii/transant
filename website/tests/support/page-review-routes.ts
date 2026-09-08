@@ -42,9 +42,7 @@ export const pageReviewRoutes: readonly PageReviewRoute[] = [
     technicalTable: true,
   })),
   ...["engineering-services", "projects", "company", "quality"].map((page) => ({
-    // Preserve the historical screenshot key while the public route uses its
-    // canonical Engineering & Services name.
-    id: `editorial-${page === "engineering-services" ? "technology" : page}`,
+    id: `editorial-${page === "engineering-services" ? "pro-platforms" : page}`,
     fixtureRoute: `/fixtures/editorial/${page}/`,
     visual: page === "engineering-services" || page === "quality",
   })),

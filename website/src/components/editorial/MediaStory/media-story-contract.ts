@@ -29,6 +29,14 @@ export const validateMediaStoryProps = (props: MediaStoryProps): void => {
     throw new Error("MediaStory description must be non-empty when supplied.");
   }
 
+  if (props.paragraphs?.some((paragraph) => !isNonEmpty(paragraph))) {
+    throw new Error("MediaStory paragraphs must be non-empty when supplied.");
+  }
+
+  if (props.items?.some((item) => !isNonEmpty(item))) {
+    throw new Error("MediaStory items must be non-empty when supplied.");
+  }
+
   if (
     !Number.isInteger(props.headingLevel) ||
     props.headingLevel < 1 ||

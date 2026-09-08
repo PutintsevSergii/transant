@@ -10,7 +10,7 @@ import {
 const pages = [
   {
     slug: "engineering-services",
-    title: "Start with the wagon model and its technical data",
+    title: "Lightweight platform for heavy transport tasks",
   },
   {
     slug: "projects",
@@ -18,7 +18,7 @@ const pages = [
   },
   {
     slug: "company",
-    title: "About TransAnt GmbH",
+    title: "Engineering solutions for European rail freight",
   },
   {
     slug: "quality",
@@ -55,17 +55,24 @@ test("@component Editorial pages compose only source-bound page sections", async
   await expect(page.locator("[data-evidence-list]")).toHaveCount(0);
 
   await page.goto("/fixtures/editorial/engineering-services/");
-  await expect(page.locator("[data-page-meta]")).toHaveCount(1);
-  await expect(page.locator("[data-technology-page]")).toHaveCount(1);
-  await expect(page.locator("[data-technology-feature]")).toHaveCount(1);
-  await expect(page.locator("[data-technology-narrative]")).toHaveCount(1);
-  await expect(page.locator("[data-technology-chapter]")).toHaveCount(4);
-  await expect(page.locator("[data-media-story]")).toHaveCount(5);
+  const proMeta = page.locator("[data-page-meta]");
+  await expect(proMeta).toHaveCount(1);
+  await expect(proMeta.locator("[data-page-meta-label]")).toHaveText(
+    "PRO INTERMODAL 60 ft",
+  );
+  await expect(proMeta.locator("[data-page-meta-sequence]")).toHaveText(
+    "Approx. 16 t base-platform tare / Up to 4 t additional payload potential / Up to 73.5 t payload on class D lines / 24 foldable container pins",
+  );
+  await expect(page.locator("[data-media-story]")).toHaveCount(7);
   await expect(
     page.getByRole("heading", {
-      name: "Check gauge, speed, curve radius, and equipment",
+      name: "Approximately 16 tonnes of base-platform tare",
     }),
   ).toBeVisible();
+  await expect(page.locator("[data-specification-group]")).toContainText(
+    "19,740 mm with A-buffers / 19,830 mm with L-buffers",
+  );
+  await expect(page.locator("[data-load-limit-table]")).toContainText("73.5");
   await expect(
     page.locator("[data-media-story] a[target='_blank']"),
   ).toHaveCount(0);
@@ -74,38 +81,29 @@ test("@component Editorial pages compose only source-bound page sections", async
   await expect(page.locator("main a[href*='voestalpine.com']")).toHaveCount(0);
   await expect(
     page.locator("[data-media-story][data-media-story-theme='dark']"),
-  ).toHaveCount(1);
+  ).toHaveCount(4);
   await expect(
     page.locator("[data-media-story][data-media-story-theme='light']"),
-  ).toHaveCount(4);
-  await expect(page.locator("[data-media-story-media]")).toHaveCount(3);
+  ).toHaveCount(3);
+  await expect(page.locator("[data-media-story-media]")).toHaveCount(2);
   await expect(
-    page.locator("[data-technology-feature] [data-responsive-media]"),
-  ).toHaveAttribute("data-responsive-media-fit", "contain");
-  await expect(
-    page.locator("[data-technology-index] a[href^='#technology-chapter-']"),
-  ).toHaveCount(4);
-  const chapterSurfaces = await page
-    .locator("[data-technology-chapter] [data-media-story]")
-    .evaluateAll((stories) =>
-      stories.map((story) => getComputedStyle(story).backgroundColor),
-    );
-  expect(new Set(chapterSurfaces)).toEqual(new Set(["rgba(0, 0, 0, 0)"]));
+    page.locator("[data-page-hero] img[src*='company-pro-platform']"),
+  ).toHaveCount(1);
   await expect(page.locator("[data-contact-cta]")).toHaveCSS(
     "background-color",
     "rgb(234, 241, 248)",
   );
-  const technologyPageContactActions = page.locator('main a[href="/contact/"]');
-  await expect(technologyPageContactActions).toHaveCount(1);
-  await expect(technologyPageContactActions).toHaveAccessibleName(
-    "Discuss wagon requirements",
+  const proPageContactActions = page.locator('main a[href="/contact/"]');
+  await expect(proPageContactActions).toHaveCount(1);
+  await expect(proPageContactActions).toHaveAccessibleName(
+    "Enquire about PRO 60 ft",
   );
-  const technologyContactCta = page.locator("[data-contact-cta]");
-  const primaryContactAction = technologyContactCta.getByRole("link", {
-    name: "Discuss wagon requirements",
+  const proContactCta = page.locator("[data-contact-cta]");
+  const primaryContactAction = proContactCta.getByRole("link", {
+    name: "Enquire about PRO 60 ft",
   });
-  const wagonFamiliesAction = technologyContactCta.getByRole("link", {
-    name: "Browse wagon families",
+  const wagonFamiliesAction = proContactCta.getByRole("link", {
+    name: "View wagons",
   });
   await expect(wagonFamiliesAction).toHaveCSS(
     "border-top-color",
@@ -134,11 +132,52 @@ test("@component Editorial pages compose only source-bound page sections", async
     "TransAnt GmbH",
   );
   await expect(companyMeta.locator("[data-page-meta-sequence]")).toHaveText(
-    "Five wagon families / Ten catalogue models / Model-specific technical data / Linz, Austria",
+    "Founded in Linz in 2020 / Austrian TAS Group company / European standard-gauge network / One coordinated project team",
   );
   await expect(companyMeta).toHaveAttribute("aria-hidden", "true");
   await expect(page.locator("[data-page-hero]")).toContainText(
-    "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
+    "TransAnt GmbH is an Austrian TAS Group company founded in Linz in 2020.",
+  );
+  await expect(page.locator("[data-media-story]")).toHaveCount(8);
+  await expect(
+    page.getByRole("heading", {
+      name: "The transport task defines the wagon configuration",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Quality begins before manufacturing" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "View Quality & Certificates" }),
+  ).toHaveAttribute("href", "/quality/");
+  await expect(
+    page.getByRole("link", { name: "View wagons" }).first(),
+  ).toHaveAttribute("href", "/wagons/");
+  await expect(page.locator("[data-media-story-media] img")).toHaveCount(4);
+  await expect(page.locator("img[src*='company-wagon-logo']")).toHaveCount(1);
+  await expect(page.locator("[data-page-hero]")).toHaveAttribute(
+    "data-page-hero-natural-media",
+    "true",
+  );
+  await expect(
+    page.locator("[data-page-hero] [data-responsive-media]"),
+  ).toHaveAttribute("data-responsive-media-fit", "cover");
+  const companyHeroMedia = await page
+    .locator("[data-page-hero-media]")
+    .boundingBox();
+  expect(companyHeroMedia).not.toBeNull();
+  expect(
+    (companyHeroMedia?.width ?? 0) / (companyHeroMedia?.height ?? 1),
+  ).toBeCloseTo(1.5, 1);
+  await expect(page.locator("img[src*='company-wagon-coupling']")).toHaveCount(
+    1,
+  );
+  await expect(
+    page.locator("img[src*='company-engineering-team']"),
+  ).toHaveCount(1);
+  await expect(page.locator("img[src*='company-pro-platform']")).toHaveCount(1);
+  await expect(page.locator("img[src*='company-uno-intermodal']")).toHaveCount(
+    1,
   );
   const companyEvidence = page.locator("[data-evidence-list]");
   await expect(companyEvidence).toHaveAttribute(
@@ -178,13 +217,8 @@ test("@keyboard Editorial pages retain direct contact navigation without JavaScr
   const page = await context.newPage();
   await page.goto(`${browserBaseUrl}/fixtures/editorial/engineering-services/`);
 
-  const firstChapter = page.locator("[data-technology-index] a").first();
-  await firstChapter.focus();
-  await expect(firstChapter).toBeFocused();
-  await expect(firstChapter).toHaveAttribute("href", "#technology-chapter-1");
-
   const contact = page
-    .getByRole("link", { name: "Discuss wagon requirements" })
+    .getByRole("link", { name: "Enquire about PRO 60 ft" })
     .last();
   await contact.focus();
   await expect(contact).toBeFocused();
@@ -208,10 +242,18 @@ test("@responsive Editorial pages preserve source order and page containment", a
     "12px",
   );
   const firstStory = page.locator("[data-media-story]").first();
-  await expect(firstStory.locator("[data-media-story-frame]")).toHaveCSS(
-    "padding-top",
-    "12px",
-  );
+  const imageFreeStoryPadding = await firstStory
+    .locator("[data-media-story-frame]")
+    .evaluate((frame) => {
+      const style = getComputedStyle(frame);
+      return {
+        bottom: Number.parseFloat(style.paddingBottom),
+        top: Number.parseFloat(style.paddingTop),
+      };
+    });
+  expect(imageFreeStoryPadding.top).toBeGreaterThanOrEqual(48);
+  expect(imageFreeStoryPadding.bottom).toBeGreaterThanOrEqual(48);
+  expect(imageFreeStoryPadding.top).toBe(imageFreeStoryPadding.bottom);
   const pageHeroTypography = async () =>
     page.locator("[data-page-hero] [data-section-intro]").evaluate((intro) => {
       const title = intro.querySelector(".section-intro__title");
@@ -229,7 +271,7 @@ test("@responsive Editorial pages preserve source order and page containment", a
         measure: introStyle.maxInlineSize,
       };
     });
-  const technologyHeroTypography = await pageHeroTypography();
+  const proHeroTypography = await pageHeroTypography();
   const pageHeroLayout = async () =>
     page.locator("[data-page-hero-frame]").evaluate((frame) => {
       const style = getComputedStyle(frame);
@@ -242,11 +284,11 @@ test("@responsive Editorial pages preserve source order and page containment", a
         rowGap: style.rowGap,
       };
     });
-  const technologyHeroLayout = await pageHeroLayout();
+  const proHeroLayout = await pageHeroLayout();
 
   await page.goto("/fixtures/editorial/company/");
-  expect(await pageHeroTypography()).toEqual(technologyHeroTypography);
-  expect(await pageHeroLayout()).toEqual(technologyHeroLayout);
+  expect(await pageHeroTypography()).toEqual(proHeroTypography);
+  expect(await pageHeroLayout()).toEqual(proHeroLayout);
 
   await page.goto("/fixtures/editorial/engineering-services/");
   const contact = page.locator("[data-contact-cta]");
@@ -283,21 +325,15 @@ for (const editorialPage of pages) {
   }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(fixtureRoute(editorialPage));
-    if (editorialPage.slug === "engineering-services") {
-      await waitForPageImages(page);
-      await page.evaluate(() => {
-        window.scrollTo({ top: 0, behavior: "instant" });
-        if (document.activeElement instanceof HTMLElement) {
-          document.activeElement.blur();
-        }
-      });
-      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
-    }
-    const snapshotName =
-      editorialPage.slug === "engineering-services"
-        ? "technology.png"
-        : `${editorialPage.slug}.png`;
-    await expect(page).toHaveScreenshot(snapshotName, {
+    await waitForPageImages(page);
+    await page.evaluate(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    });
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+    await expect(page).toHaveScreenshot(`${editorialPage.slug}.png`, {
       animations: "disabled",
       fullPage: true,
       maxDiffPixelRatio: 0.01,

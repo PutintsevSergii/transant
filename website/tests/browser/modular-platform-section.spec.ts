@@ -138,6 +138,18 @@ test("@responsive ModularPlatformSection preserves source order, compact rail st
     expect(
       Math.max(...titleTopEdges) - Math.min(...titleTopEdges),
     ).toBeLessThanOrEqual(1);
+    const [columnGap, firstTitleBox, secondTitleBox] = await Promise.all([
+      list.evaluate((element) => getComputedStyle(element).columnGap),
+      items.first().locator(".rail-sequence__title").boundingBox(),
+      items.nth(1).locator(".rail-sequence__title").boundingBox(),
+    ]);
+    expect(Number.parseFloat(columnGap)).toBeGreaterThanOrEqual(48);
+    expect(firstTitleBox).not.toBeNull();
+    expect(secondTitleBox).not.toBeNull();
+    expect(
+      (secondTitleBox?.x ?? 0) -
+        ((firstTitleBox?.x ?? 0) + (firstTitleBox?.width ?? 0)),
+    ).toBeGreaterThanOrEqual(48);
     await expect(
       primary.locator(".modular-platform-section__sequence"),
     ).toHaveCSS("border-top-width", "0px");

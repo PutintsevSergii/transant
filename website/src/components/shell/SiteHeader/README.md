@@ -25,6 +25,9 @@ browser locations, or global application state.
   render as a native expandable menu, so another approved locale does not
   require a new header layout.
 - `contactAction` is a required native primary `Action` link.
+- `logoScale` defaults to `default`; the homepage may request `prominent` to
+  give the existing immutable brand mark stronger opening-page hierarchy
+  without changing the asset, link, or accessible name.
 - `sticky` defaults to `true`; the component applies document scroll padding so
   the sticky bar does not obscure anchor destinations.
 

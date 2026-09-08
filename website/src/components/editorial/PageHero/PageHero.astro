@@ -10,8 +10,10 @@ validatePageHeroProps(props);
 
 const mediaPosition = props.mediaPosition ?? "after";
 const technicalBackground = props.technicalBackground ?? true;
+const preservesNaturalMediaRatio =
+  props.media?.preserveNaturalAspectRatio ?? false;
 const hasBreadcrumbs = Astro.slots.has("breadcrumbs");
-const rootClass = `page-hero page-hero--${props.theme} page-hero--technical-background-${technicalBackground ? "enabled" : "disabled"}${props.media ? " page-hero--with-media" : " page-hero--without-media"}`;
+const rootClass = `page-hero page-hero--${props.theme} page-hero--technical-background-${technicalBackground ? "enabled" : "disabled"}${props.media ? " page-hero--with-media" : " page-hero--without-media"}${preservesNaturalMediaRatio ? " page-hero--natural-media" : ""}`;
 const actionVariant = props.theme === "dark" ? "inverse" : "primary";
 ---
 
@@ -21,6 +23,7 @@ const actionVariant = props.theme === "dark" ? "inverse" : "primary";
   data-page-hero-theme={props.theme}
   data-page-hero-technical-background={technicalBackground ? "true" : "false"}
   data-page-hero-media-position={mediaPosition}
+  data-page-hero-natural-media={String(preservesNaturalMediaRatio)}
 >
   {
     hasBreadcrumbs && (
@@ -155,6 +158,10 @@ const actionVariant = props.theme === "dark" ? "inverse" : "primary";
   .page-hero__media :global(img) {
     min-block-size: clamp(15rem, 60cqi, 30rem);
     object-position: center;
+  }
+
+  .page-hero--natural-media .page-hero__media :global(img) {
+    min-block-size: 0;
   }
 
   @container (min-width: 30rem) {

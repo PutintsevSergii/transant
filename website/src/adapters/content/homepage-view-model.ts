@@ -1,4 +1,4 @@
-import freightTrain from "../../assets/images/editorial/freight-train-in-operation.jpg";
+import transantWagonLogo from "../../assets/images/editorial/transant-wagon-logo-red.jpg";
 import flatWagon from "../../assets/images/products/flat/uno-flat-60ft-rens/wagon-render.png";
 import intermodalWagon from "../../assets/images/products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png";
 import openBoxWagon from "../../assets/images/products/open-box/uno-multi-40ft-eanos/wagon-render.png";
@@ -40,7 +40,7 @@ const publicResearchSource = "docs/public-company-research.md";
 export const homepageViewModel = {
   layout: {
     language: "en",
-    title: "Freight wagons for individual transport tasks",
+    title: "Engineering solutions for European rail freight",
     description:
       "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
     canonicalUrl: "https://www.transant.com/en/",
@@ -50,6 +50,7 @@ export const homepageViewModel = {
       currentPath: "/",
       localeOptions: createLocaleOptions("/"),
       contactAction: { label: "Contact TransANT", href: "/contact/" },
+      logoScale: "prominent",
       sticky: true,
     },
     footer: {
@@ -68,7 +69,7 @@ export const homepageViewModel = {
           heading: "Expertise",
           links: [
             {
-              label: "Engineering & Services",
+              label: "PRO platform projects",
               href: "/engineering-services/",
             },
             { label: "Projects", href: "/projects/" },
@@ -102,27 +103,35 @@ export const homepageViewModel = {
     ],
   },
   hero: {
-    eyebrow: "Rail freight engineering",
+    eyebrow: "TransAnt GmbH // Linz, Austria",
     title: [
-      { text: "Wagons built for " },
-      { text: "more useful", emphasis: true },
-      { text: " payload." },
+      { text: "Engineering solutions for " },
+      { text: "European rail freight.", emphasis: true },
     ],
     summary:
-      "TransAnt develops, markets and supports freight wagon solutions and coordinates their industrial implementation with qualified manufacturing partners.",
+      "TransAnt GmbH is an Austrian TAS Group company founded in Linz in 2020. We develop, market and support freight-wagon solutions for Europe’s standard-gauge network, coordinating requirements, engineering, certification and industrial delivery.",
     primaryAction: {
       kind: "link",
-      label: "Explore wagon families",
+      label: "Explore wagons",
       href: "/wagons/",
       variant: "primary",
       icon: "arrow-right",
     },
-    media: {
-      image: freightTrain,
-      alt: "Freight train travelling through a green landscape",
-      sizes: "(min-width: 56rem) 52vw, 100vw",
-      fit: "cover",
+    secondaryLink: {
+      kind: "link",
+      label: "About TransAnt",
+      href: "/company/",
+      variant: "secondary",
+      icon: "arrow-right",
     },
+    media: {
+      image: transantWagonLogo,
+      alt: "The TransANT name cut into the red frame of a freight wagon",
+      sizes: "(min-width: 56rem) 52vw, 100vw",
+      fit: "contain",
+      aspectRatio: "3 / 2",
+    },
+    mediaFocus: "center",
   },
   innoTransEvent: {
     id: "innotrans-2026",
@@ -183,40 +192,35 @@ export const homepageViewModel = {
   },
   payload: {
     intro: {
-      eyebrow: "Product information",
-      title: "Wagon data for a defined transport task",
+      eyebrow: "PRO INTERMODAL 60 ft",
+      title: "Lightweight platform for heavy transport tasks",
       description:
-        "The catalogue presents ten wagon configurations across five product families.",
+        "A four-axle Sgns platform for 20, 30 and 40 ft ISO containers and specialised equipment, built from high-strength alform® steel with a topologically optimised frame.",
       headingLevel: 2,
       align: "left",
       theme: "light",
       measure: "standard",
     },
-    body: "Each model is described through its intended cargo, loading configuration, technical specifications, load limits, and special features.",
+    body: "With a base-platform tare of approximately 16 tonnes, PRO can provide capacity for up to four tonnes of additional cargo compared with a conventional platform of around 20 tonnes, when the route, container or superstructure, and loading scheme permit it.",
     sourceLink: {
       href: "/engineering-services/",
-      label: "Explore Engineering & Services",
+      label: "Enquire about PRO 60 ft",
+      variant: "primary",
     },
     principles: [
       {
-        title: "Cargo and applications",
-        description:
-          "The catalogue lists typical commodities for each wagon model.",
+        title: "Approx. 16 tonnes",
+        description: "Base-platform tare without removable ballast.",
       },
       {
-        title: "Loading configuration",
+        title: "Up to 4 tonnes",
         description:
-          "Container pins, walls, stanchions, doors, and other equipment are specified by model.",
+          "Potential additional payload compared with conventional platforms weighing around 20 tonnes.",
       },
       {
-        title: "Technical specifications",
+        title: "Up to 73.5 tonnes",
         description:
-          "Dimensions, tare weight, load limits, vehicle gauge, and permitted speed are listed per wagon.",
-      },
-      {
-        title: "Special features",
-        description:
-          "Available equipment and special features depend on the selected wagon model.",
+          "Maximum payload on a class D line in the corresponding configuration.",
       },
     ],
   },
@@ -301,10 +305,10 @@ export const homepageViewModel = {
   },
   platform: {
     intro: {
-      eyebrow: "Model selection",
-      title: "From transport task to wagon specification",
+      eyebrow: "How TransAnt works",
+      title: "From transport task to delivered wagon",
       description:
-        "Match the cargo and loading requirements with a catalogue model, then review its technical data and listed equipment.",
+        "Work on a wagon starts not with choosing a standard model, but with understanding the real transport task. We analyse the cargo carried, routes, permissible axle loads, gauges, loading and unloading methods, terminal infrastructure, operating intensity, and the requirements of the future owner or operator. Based on this information, TransAnt identifies a suitable wagon configuration or develops a solution adapted to the specific operating conditions.",
       headingLevel: 2,
       align: "left",
       theme: "light",
@@ -313,33 +317,35 @@ export const homepageViewModel = {
     stages: [
       {
         number: "01",
-        title: "Transport task",
-        description: "Start with the cargo and loading requirements.",
+        title: "Analyse the transport task",
+        description:
+          "We assess cargo, volumes, routes, infrastructure constraints, loading and unloading, and the customer’s operating requirements.",
       },
       {
         number: "02",
-        title: "Wagon model",
+        title: "Define the concept",
         description:
-          "Select the wagon family and model for the intended transport task.",
+          "We select the wagon type, core parameters, loading scheme, equipment and configuration for the intended use.",
       },
       {
         number: "03",
-        title: "Technical data",
+        title: "Engineer and approve",
         description:
-          "Review dimensions, tare weight, load limits, vehicle gauge, and permitted speed.",
+          "Design, calculations, modelling, load verification, technical documentation, prototype testing and conformity assessment prepare the solution for the European market.",
       },
       {
         number: "04",
-        title: "Special features",
+        title: "Coordinate delivery",
         description:
-          "Confirm the equipment and special features listed for the selected wagon.",
+          "TransAnt aligns qualified manufacturing partners, production preparation, wagon delivery and ongoing technical support.",
       },
     ],
     technicalLink: {
-      href: "/engineering-services/",
-      label: "Review technical data",
+      href: "/wagons/",
+      label: "View all wagons",
+      variant: "primary",
     },
-    sequenceLabel: "Wagon selection stages",
+    sequenceLabel: "TransAnt project stages",
   },
   qualityImpact: {
     labels: {

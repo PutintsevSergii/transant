@@ -35,6 +35,15 @@ describe("PageHero contract", () => {
     expect(() => validatePageHeroProps(validProps())).not.toThrow();
     expect(() =>
       validatePageHeroProps({
+        ...validProps(),
+        media: {
+          ...validProps().media!,
+          preserveNaturalAspectRatio: true,
+        },
+      }),
+    ).not.toThrow();
+    expect(() =>
+      validatePageHeroProps({
         title: "Text-only introduction",
         headingLevel: 3,
         theme: "dark",
@@ -76,5 +85,14 @@ describe("PageHero contract", () => {
         technicalBackground: "yes" as unknown as boolean,
       }),
     ).toThrow("technicalBackground must be a boolean");
+    expect(() =>
+      validatePageHeroProps({
+        ...props,
+        media: {
+          ...props.media!,
+          preserveNaturalAspectRatio: "yes" as unknown as boolean,
+        },
+      }),
+    ).toThrow("preserveNaturalAspectRatio must be a boolean");
   });
 });

@@ -3,11 +3,25 @@ import Action from "../../core/Action/Action.astro";
 import ResponsiveMedia from "../../core/ResponsiveMedia/ResponsiveMedia.astro";
 import type { HomeHeroProps } from "./HomeHero.types";
 
-const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
-  Astro.props as HomeHeroProps;
+const {
+  eyebrow,
+  title,
+  summary,
+  primaryAction,
+  secondaryLink,
+  media,
+  mediaFocus = "default",
+} = Astro.props as HomeHeroProps;
 ---
 
-<section class="home-hero" data-home-hero>
+<section
+  class:list={[
+    "home-hero",
+    mediaFocus === "center" && "home-hero--media-center",
+    media.fit === "contain" && "home-hero--media-contained",
+  ]}
+  data-home-hero
+>
   <div class="home-hero__grid page-frame">
     <div class="home-hero__content">
       <p class="home-hero__eyebrow">{eyebrow}</p>
@@ -46,7 +60,7 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
     display: grid;
     gap: var(--space-6);
     align-items: center;
-    padding-block: clamp(var(--space-7), 9vw, var(--space-10));
+    padding-block: clamp(var(--space-7), 9vw, var(--space-8));
   }
 
   .home-hero__content {
@@ -70,10 +84,10 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
     max-inline-size: 12ch;
     margin: 0;
     color: var(--color-brand-blue-dark);
-    font-size: clamp(2.75rem, 5.5cqi, 5.5rem);
+    font-size: var(--font-size-heading-2);
     font-weight: 700;
-    letter-spacing: -0.055em;
-    line-height: 0.94;
+    letter-spacing: -0.035em;
+    line-height: var(--line-height-heading);
     text-wrap: balance;
   }
 
@@ -89,7 +103,7 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
     max-inline-size: 55ch;
     margin: 0;
     color: var(--color-ink-secondary);
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 0.98rem + 0.25vw, 1.125rem);
     line-height: var(--line-height-body);
   }
 
@@ -99,7 +113,7 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
     gap: var(--space-3);
   }
 
-  .home-hero__actions :global(.action--primary) {
+  .home-hero__actions :global(.action) {
     inline-size: 100%;
   }
 
@@ -116,8 +130,17 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
     object-position: 60% center;
   }
 
+  .home-hero--media-center .home-hero__media :global(img) {
+    object-position: center;
+  }
+
+  .home-hero--media-contained .home-hero__media :global(img) {
+    min-block-size: 0;
+    object-position: center;
+  }
+
   @container (min-width: 30rem) {
-    .home-hero__actions :global(.action--primary) {
+    .home-hero__actions :global(.action) {
       inline-size: auto;
     }
   }
@@ -125,11 +148,18 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
   @container (min-width: 56rem) {
     .home-hero__grid {
       grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-      gap: clamp(var(--space-7), 7vw, var(--space-10));
+      gap: clamp(var(--space-7), 7vw, var(--space-8));
+      padding-block: clamp(var(--space-6), 4svh, var(--space-7));
     }
 
     .home-hero__media {
       align-self: stretch;
+    }
+
+    .home-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     .home-hero__media :global(.responsive-media),
@@ -141,6 +171,25 @@ const { eyebrow, title, summary, primaryAction, secondaryLink, media } =
     .home-hero__media :global(img) {
       min-block-size: 36rem;
       object-position: right center;
+    }
+
+    .home-hero--media-center .home-hero__media :global(img) {
+      object-position: center;
+    }
+
+    .home-hero--media-contained .home-hero__media {
+      align-self: center;
+    }
+
+    .home-hero--media-contained .home-hero__media :global(.responsive-media),
+    .home-hero--media-contained .home-hero__media :global(picture),
+    .home-hero--media-contained .home-hero__media :global(img) {
+      block-size: auto;
+    }
+
+    .home-hero--media-contained .home-hero__media :global(img) {
+      min-block-size: 0;
+      object-position: center;
     }
   }
 

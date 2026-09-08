@@ -11,10 +11,11 @@ const {
   localeOptions = [],
   labels = {},
   contactAction,
+  logoScale = "default",
   sticky = true,
 } = Astro.props as SiteHeaderProps;
 
-const headerClass = `site-header${sticky ? " site-header--sticky" : ""}`;
+const headerClass = `site-header site-header--logo-${logoScale}${sticky ? " site-header--sticky" : ""}`;
 const normalizedCurrentPath = currentPath.replace(/\/+$/, "") || "/";
 const panelId = `${id}-panel`;
 const isCurrentPath = (href: string): boolean =>
@@ -237,6 +238,10 @@ const currentLocale =
   .site-header :global(.brand-logo) {
     inline-size: min(10.25rem, 56vw);
     flex: 0 1 auto;
+  }
+
+  .site-header--logo-prominent :global(.brand-logo) {
+    inline-size: min(13rem, 62vw);
   }
 
   .site-header__panel-content {
@@ -512,6 +517,10 @@ const currentLocale =
       position: absolute;
       inset: 0;
       pointer-events: none;
+    }
+
+    .site-header--logo-prominent :global(.brand-logo) {
+      inline-size: min(15rem, 22vw);
     }
 
     .site-header__bar :global(.brand-logo) {

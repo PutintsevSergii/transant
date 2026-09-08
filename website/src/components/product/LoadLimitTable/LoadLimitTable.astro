@@ -6,7 +6,10 @@ const props = Astro.props as LoadLimitTableProps;
 validateLoadLimitTableProps(props);
 
 const Heading = `h${props.headingLevel}` as "h2" | "h3";
-const scrollLabel = `Scrollable table: ${props.caption}`;
+const scrollHint = props.scrollHint ?? "Scroll table horizontally";
+const scrollLabel =
+  props.scrollRegionLabel ?? `Scrollable table: ${props.caption}`;
+const notesLabel = props.notesLabel ?? "Load limit notes";
 ---
 
 <section class="load-limit-table" data-load-limit-table>
@@ -17,7 +20,7 @@ const scrollLabel = `Scrollable table: ${props.caption}`;
 
     <p class="load-limit-table__scroll-hint" data-load-limit-scroll-hint>
       <span aria-hidden="true">↔</span>
-      Scroll table horizontally
+      {scrollHint}
     </p>
 
     <div
@@ -60,7 +63,7 @@ const scrollLabel = `Scrollable table: ${props.caption}`;
 
     {
       props.notes !== undefined && (
-        <ul class="load-limit-table__notes" aria-label="Load limit notes">
+        <ul class="load-limit-table__notes" aria-label={notesLabel}>
           {props.notes.map((note) => (
             <li data-load-limit-note>{note}</li>
           ))}

@@ -90,7 +90,7 @@ describe("createLocaleOptions", () => {
 
     expect(navigation.map(({ label }) => label)).toEqual([
       "Wagons",
-      "Engineering & Services",
+      "PRO platform projects",
       "Company",
     ]);
     expect(navigation[0]).toMatchObject({
@@ -117,7 +117,7 @@ describe("createLocaleOptions", () => {
       overviewLabel: "Alle Wagen",
     });
     expect(navigation[2]).toEqual({
-      label: "Engineering & Services",
+      label: "PRO-Plattformprojekte",
       href: "/de/engineering-services/",
     });
   });

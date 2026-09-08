@@ -30,6 +30,7 @@ test("@component WagonSwitchyard keeps all five direct family routes in server H
   await expect(tabs.nth(0)).toHaveAttribute("href", "/wagons/intermodal/");
   await expect(tabs.nth(4)).toHaveAttribute("href", "/wagons/tank/");
   await expect(primary.locator("a[href='#']")).toHaveCount(0);
+  await expect(primary.locator("button")).toHaveCount(0);
   await expect(primary.locator("img")).toHaveCount(5);
   await expect(primary).toContainText("Choose by transport task");
   await expect(primary).toContainText(
@@ -155,6 +156,108 @@ test("@interaction WagonSwitchyard synchronizes click and complete keyboard sele
   await expect(primary).toHaveAttribute("data-active-family", "tank");
 });
 
+test("@interaction WagonSwitchyard keeps its desktop preview looping through hover, focus, and manual selection", async ({
+  page,
+}) => {
+  test.skip(
+    (page.viewportSize()?.width ?? 0) < 1024,
+    "Desktop preview is intentionally unavailable below 64rem.",
+  );
+  await page.addInitScript(() => {
+    class VisibleIntersectionObserver {
+      constructor(private readonly callback: IntersectionObserverCallback) {}
+
+      observe(target: Element) {
+        this.callback(
+          [
+            {
+              isIntersecting: true,
+              intersectionRatio: 1,
+              target,
+            } as IntersectionObserverEntry,
+          ],
+          this as unknown as IntersectionObserver,
+        );
+      }
+
+      disconnect() {}
+      unobserve() {}
+      takeRecords() {
+        return [];
+      }
+    }
+
+    Object.defineProperty(window, "IntersectionObserver", {
+      configurable: true,
+      value: VisibleIntersectionObserver,
+    });
+  });
+  await page.clock.install({ time: new Date("2026-09-08T08:00:00.000Z") });
+  await page.goto("/fixtures/wagon-switchyard/");
+
+  const primary = page.locator(primarySelector).first();
+  const initialFocus = await page.evaluate(
+    () => document.activeElement?.tagName,
+  );
+
+  await expect(primary).toHaveAttribute("data-preview-state", "active");
+  await expect(primary.locator("button")).toHaveCount(0);
+  await page.clock.fastForward(5_000);
+  await expect(primary).toHaveAttribute("data-active-family", "flat");
+  expect(await page.evaluate(() => document.activeElement?.tagName)).toBe(
+    initialFocus,
+  );
+  await primary.hover();
+  await page.clock.fastForward(5_000);
+  await expect(primary).toHaveAttribute("data-active-family", "timber");
+  await page.clock.fastForward(5_000);
+  await expect(primary).toHaveAttribute("data-active-family", "open-box");
+  await page.clock.fastForward(5_000);
+  await expect(primary).toHaveAttribute("data-active-family", "tank");
+  await page.clock.fastForward(5_000);
+  await expect(primary).toHaveAttribute("data-active-family", "intermodal");
+  await page.clock.fastForward(5_000);
+  await expect(primary).toHaveAttribute("data-active-family", "flat");
+
+  await primary.locator("[data-wagon-switchyard-tab]").nth(3).click();
+  await expect(primary).toHaveAttribute("data-active-family", "open-box");
+  await primary.locator("[data-wagon-switchyard-tab]").nth(3).focus();
+  await page.clock.fastForward(5_000);
+  await expect(primary).toHaveAttribute("data-active-family", "tank");
+  await expect(
+    primary.locator("[data-wagon-switchyard-tab]").nth(3),
+  ).toBeFocused();
+});
+
+test("@interaction WagonSwitchyard disables preview for reduced motion and data saver", async ({
+  page,
+}) => {
+  test.skip(
+    (page.viewportSize()?.width ?? 0) < 1024,
+    "Desktop preview is intentionally unavailable below 64rem.",
+  );
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/fixtures/wagon-switchyard/");
+  const primary = page.locator(primarySelector).first();
+  await expect(primary).not.toHaveAttribute("data-preview-state", /.+/);
+  await expect(primary.locator("button")).toHaveCount(0);
+
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "connection", {
+      configurable: true,
+      value: {
+        saveData: true,
+        addEventListener() {},
+        removeEventListener() {},
+      },
+    });
+  });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/fixtures/wagon-switchyard/");
+  await expect(primary).not.toHaveAttribute("data-preview-state", /.+/);
+  await expect(primary.locator("button")).toHaveCount(0);
+});
+
 test("@responsive WagonSwitchyard keeps its visible rail, contained wagon stage, and compact source order", async ({
   page,
 }) => {
@@ -212,6 +315,41 @@ test("@responsive WagonSwitchyard keeps its visible rail, contained wagon stage,
       expect(Math.abs(stopCenter - lineCenter)).toBeLessThanOrEqual(1);
       expect(sequenceBox.y).toBeGreaterThan(lineCenter);
       expect(tabGap).toBeGreaterThanOrEqual(11);
+    }
+  } else {
+    const tabs = rail.locator("[data-wagon-switchyard-tab]");
+    const [railBox, firstTabBox, secondNameBox, railMetrics, tabBoxes] =
+      await Promise.all([
+        rail.boundingBox(),
+        tabs.nth(0).boundingBox(),
+        tabs.nth(1).locator(".wagon-switchyard__family-name").boundingBox(),
+        rail.evaluate((element) => ({
+          clientWidth: element.clientWidth,
+          scrollWidth: element.scrollWidth,
+          scrollSnapType: getComputedStyle(element).scrollSnapType,
+        })),
+        tabs.evaluateAll((elements) =>
+          elements.map((element) => {
+            const box = element.getBoundingClientRect();
+            return { left: box.left, right: box.right };
+          }),
+        ),
+      ]);
+    expect(railBox).not.toBeNull();
+    expect(firstTabBox).not.toBeNull();
+    expect(secondNameBox).not.toBeNull();
+    expect(railMetrics.scrollWidth).toBeGreaterThan(railMetrics.clientWidth);
+    expect(railMetrics.scrollSnapType).toContain("mandatory");
+    if (railBox && firstTabBox && secondNameBox) {
+      expect(firstTabBox.x).toBeGreaterThanOrEqual(railBox.x);
+      expect(secondNameBox.x).toBeLessThan(railBox.x + railBox.width);
+      expect(
+        tabBoxes.some(
+          ({ left, right }) =>
+            left < railBox.x + railBox.width &&
+            right > railBox.x + railBox.width,
+        ),
+      ).toBe(true);
     }
   }
 

@@ -90,7 +90,7 @@ for (const { id, fixtureRoute } of visualPageReviewRoutes) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(fixtureRoute);
     await waitForPageImages(page);
-    if (id === "editorial-technology") {
+    if (id === "editorial-pro-platforms") {
       await page.evaluate(() => {
         window.scrollTo({ top: 0, behavior: "instant" });
         if (document.activeElement instanceof HTMLElement) {

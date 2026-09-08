@@ -13,6 +13,9 @@ const validProps = (): LoadLimitTableProps => ({
     payload: "Load limit (S)",
     payloadUnit: "t",
   },
+  scrollHint: "Scroll the table",
+  scrollRegionLabel: "Payload table",
+  notesLabel: "Payload notes",
   rows: [
     { routeClass: "A", payload: "41.5" },
     { routeClass: "B", payload: "49.5" },
@@ -65,5 +68,8 @@ describe("LoadLimitTable contract", () => {
     expect(() =>
       validateLoadLimitTableProps({ ...props, notes: [" "] }),
     ).toThrow("non-empty source-supplied notes");
+    expect(() =>
+      validateLoadLimitTableProps({ ...props, scrollHint: " " }),
+    ).toThrow("localized labels");
   });
 });

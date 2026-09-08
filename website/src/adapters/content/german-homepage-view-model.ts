@@ -3,6 +3,35 @@ import { homepageViewModel } from "./homepage-view-model";
 import { createSiteLayout, localizedPath } from "./site-shell-view-model";
 
 export const germanCopy: Readonly<Record<string, string>> = {
+  "Engineering solutions for European rail freight":
+    "Ingenieurlösungen für den europäischen Schienengüterverkehr",
+  "TransAnt GmbH // Linz, Austria": "TransAnt GmbH // Linz, Österreich",
+  "Engineering solutions for ": "Ingenieurlösungen für den ",
+  "European rail freight.": "europäischen Schienengüterverkehr.",
+  "TransAnt GmbH is an Austrian TAS Group company founded in Linz in 2020. We develop, market and support freight-wagon solutions for Europe’s standard-gauge network, coordinating requirements, engineering, certification and industrial delivery.":
+    "Die TransAnt GmbH ist ein österreichisches Unternehmen der TAS Group und wurde 2020 in Linz gegründet. Wir entwickeln, vermarkten und betreuen Güterwagenlösungen für das europäische Normalspurnetz und koordinieren Anforderungen, Engineering, Zertifizierung und industrielle Umsetzung.",
+  "Explore wagons": "Wagen entdecken",
+  "About TransAnt": "Über TransAnt",
+  "The TransANT name cut into the red frame of a freight wagon":
+    "Der in den roten Rahmen eines Güterwagens eingeschnittene TransANT-Schriftzug",
+  "How TransAnt works": "So arbeitet TransAnt",
+  "From transport task to delivered wagon":
+    "Von der Transportaufgabe zum ausgelieferten Wagen",
+  "Work on a wagon starts not with choosing a standard model, but with understanding the real transport task. We analyse the cargo carried, routes, permissible axle loads, gauges, loading and unloading methods, terminal infrastructure, operating intensity, and the requirements of the future owner or operator. Based on this information, TransAnt identifies a suitable wagon configuration or develops a solution adapted to the specific operating conditions.":
+    "Die Arbeit an einem Wagen beginnt nicht mit der Wahl eines Standardmodells, sondern mit dem Verständnis der tatsächlichen Transportaufgabe. Wir analysieren die zu befördernde Ladung, die Strecken, zulässige Achslasten, Lichtraumprofile, Be- und Entladeverfahren, Terminalinfrastruktur, die Betriebsintensität sowie die Anforderungen des künftigen Eigentümers oder Betreibers. Auf dieser Grundlage bestimmt TransAnt eine passende Wagenkonfiguration oder entwickelt eine Lösung, die an die konkreten Einsatzbedingungen angepasst ist.",
+  "Analyse the transport task": "Transportaufgabe analysieren",
+  "We assess cargo, volumes, routes, infrastructure constraints, loading and unloading, and the customer’s operating requirements.":
+    "Wir bewerten Ladung, Transportvolumen, Routen, infrastrukturelle Einschränkungen, Be- und Entladung sowie die Betriebsanforderungen des Kunden.",
+  "Define the concept": "Konzept definieren",
+  "We select the wagon type, core parameters, loading scheme, equipment and configuration for the intended use.":
+    "Wir bestimmen Wagentyp, Hauptparameter, Ladeschema, Ausrüstung und Konfiguration für den vorgesehenen Einsatz.",
+  "Engineer and approve": "Konstruieren und zulassen",
+  "Design, calculations, modelling, load verification, technical documentation, prototype testing and conformity assessment prepare the solution for the European market.":
+    "Konstruktion, Berechnungen, Modellierung, Lastnachweise, technische Dokumentation, Prototypenprüfungen und Konformitätsbewertung bereiten die Lösung für den europäischen Markt vor.",
+  "Coordinate delivery": "Umsetzung und Lieferung koordinieren",
+  "TransAnt aligns qualified manufacturing partners, production preparation, wagon delivery and ongoing technical support.":
+    "TransAnt koordiniert qualifizierte Fertigungspartner, Produktionsvorbereitung, Wagenauslieferung und die weitere technische Betreuung.",
+  "TransAnt project stages": "Projektphasen bei TransAnt",
   "The TransANT product catalogue presents intermodal, flat, timber, open-box, and tank wagons for defined transport tasks.":
     "Der TransANT-Produktkatalog stellt Intermodal-, Flach-, Holz-, offene Kasten- und Kesselwagen für definierte Transportaufgaben vor.",
   "Model specifications": "Modellspezifikationen",
@@ -390,7 +419,6 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "View certificates": "Zertifikate ansehen",
   Home: "Startseite",
   Wagons: "Wagen",
-  "Container transport": "Containertransport",
   "Steel, timber, oversized": "Stahl, Holz, übergroße Ladung",
   "Roundwood & sawn timber": "Rundholz und Schnittholz",
   "Scrap & bulk cargo": "Schrott und Schüttgut",
@@ -460,6 +488,251 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Find the right wagon family": "Die passende Wagenfamilie finden",
   "Explore models grouped by cargo and transport task.":
     "Entdecken Sie Modelle, geordnet nach Ladung und Transportaufgabe.",
+  "TransAnt GmbH is an Austrian TAS Group company founded in Linz in 2020. We develop, market, and support freight-wagon solutions for Europe's standard-gauge network.":
+    "Die TransAnt GmbH ist ein österreichisches Unternehmen der TAS Group, das 2020 in Linz gegründet wurde. Wir entwickeln, vermarkten und betreuen Güterwagenlösungen für das europäische Normalspurnetz.",
+  "TransAnt lettering on a red freight wagon":
+    "TransAnt-Schriftzug auf einem roten Güterwagen",
+  "Founded in Linz in 2020": "2020 in Linz gegründet",
+  "Austrian TAS Group company": "Österreichisches Unternehmen der TAS Group",
+  "European standard-gauge network": "Europäisches Normalspurnetz",
+  "One coordinated project team": "Ein koordiniertes Projektteam",
+  "From transport task to wagon solution":
+    "Von der Transportaufgabe zur Wagenlösung",
+  "The transport task defines the wagon configuration":
+    "Die Transportaufgabe bestimmt die Wagenkonfiguration",
+  "We begin with cargo, routes, axle loads, vehicle gauge, loading and unloading methods, terminal infrastructure, operating intensity, and the requirements of operators and wagon owners. This determines the wagon configuration.":
+    "Am Anfang stehen Ladung, Strecken, Achslasten, Fahrzeugbegrenzung, Be- und Entladeverfahren, Terminalinfrastruktur, Betriebsintensität sowie die Anforderungen von Betreibern und Wagenhaltern. Daraus ergibt sich die Wagenkonfiguration.",
+  "Freight wagon coupling and underframe":
+    "Kupplung und Untergestell eines Güterwagens",
+  "What TransAnt does": "Was TransAnt leistet",
+  "From concept to technical support":
+    "Vom Konzept bis zur technischen Betreuung",
+  "TransAnt brings together transport-task analysis, concepts and configuration, design and optimisation, testing and certification, preparation for industrial implementation, sales, and technical support.":
+    "TransAnt verbindet Transportaufgabenanalyse, Konzepte und Konfiguration, Konstruktion und Optimierung, Tests und Zertifizierung, die Vorbereitung der industriellen Umsetzung, Vertrieb und technische Betreuung.",
+  "TransAnt engineers working on wagon development":
+    "TransAnt-Ingenieure bei der Entwicklung von Güterwagen",
+  "Engineering approach": "Ingenieuransatz",
+  "Technical decisions with a practical purpose":
+    "Technische Entscheidungen mit praktischem Ziel",
+  "Each decision considers payload, tare mass, loading method, usable loading length and volume, cargo-specific adaptation, operating limits, and the economic efficiency of the transport process.":
+    "Jede Entscheidung berücksichtigt Nutzlast, Eigengewicht, Ladeverfahren, nutzbare Ladelänge und Ladevolumen, ladungsspezifische Anpassung, Betriebsgrenzen und die Wirtschaftlichkeit des Transportprozesses.",
+  "Competences in one project": "Kompetenzen in einem Projekt",
+  "A coordinated engineering and commercial team":
+    "Ein koordiniertes Ingenieur- und Vertriebsteam",
+  "Design and calculations, modelling, certification and conformity, quality, welding and technical documentation, project management, procurement and suppliers, sales, and customer support work as one coordinated team from concept to delivered wagon.":
+    "Konstruktion und Berechnung, Modellierung, Zertifizierung und Konformität, Qualität, Schweißtechnik und technische Dokumentation, Projektmanagement, Einkauf und Lieferanten, Vertrieb und Kundenbetreuung arbeiten vom Konzept bis zum gelieferten Wagen als ein koordiniertes Team.",
+  "Quality at every stage": "Qualität in jeder Phase",
+  "Quality begins before manufacturing": "Qualität beginnt vor der Fertigung",
+  "Quality work starts with requirements, calculations, and documentation. Controls cover documents, components, manufacture, testing, and non-conformities; the system is confirmed by ISO 9001, EN 15085, and IQNET.":
+    "Qualitätsarbeit beginnt mit Anforderungen, Berechnungen und Dokumentation. Die Kontrollen umfassen Dokumente, Komponenten, Fertigung, Prüfung und Abweichungen; das System ist durch ISO 9001, EN 15085 und IQNET bestätigt.",
+  "View Quality & Certificates": "Qualität und Zertifikate ansehen",
+  "Part of TAS Group": "Teil der TAS Group",
+  "European coordination with group capabilities":
+    "Europäische Koordination mit Gruppenkompetenzen",
+  "Within TAS Group—a group focused on wagon manufacturing, industrial solutions, and rail logistics—TransAnt is the European engineering and commercial coordinator linking clients, certification bodies, and industrial partners. The customer works with one contact and coordinated project management.":
+    "Innerhalb der TAS Group – einer Gruppe mit Schwerpunkt auf Wagenbau, Industrielösungen und Bahnlogistik – ist TransAnt der europäische Ingenieur- und Vertriebskoordinator, der Kunden, Zertifizierungsstellen und Industriepartner verbindet. Der Kunde arbeitet mit einem Ansprechpartner und koordiniertem Projektmanagement.",
+  "Product development": "Produktentwicklung",
+  "PRO platform projects": "PRO-Plattformprojekte",
+  "Implemented lightweight 60-foot PRO-family platform-wagon projects with special structural solutions and high-strength steel.":
+    "Realisierte Leichtbauprojekte für 60-Fuß-Plattformwagen der PRO-Familie mit besonderen Konstruktionslösungen und hochfestem Stahl.",
+  "Lightweight 60-foot PRO platform projects":
+    "Leichte 60-Fuß-Plattformwagenprojekte der PRO-Familie",
+  "TransAnt’s experience includes implemented lightweight 60-foot platform-wagon projects in the PRO family, using special structural solutions and high-strength steel.":
+    "Die Erfahrung von TransAnt umfasst realisierte Leichtbauprojekte für 60-Fuß-Plattformwagen der PRO-Familie mit besonderen Konstruktionslösungen und hochfestem Stahl.",
+  "PRO family": "PRO-Familie",
+  "Implemented projects": "Realisierte Projekte",
+  "60-foot platforms": "60-Fuß-Plattformen",
+  "Lightweight structural design": "Leichte Konstruktion",
+  "High-strength steel": "Hochfester Stahl",
+  "Implemented PRO projects": "Realisierte PRO-Projekte",
+  "Special structural solutions for lightweight platforms":
+    "Besondere Konstruktionslösungen für leichte Plattformen",
+  "The PRO family brings together lightweight 60-foot platform-wagon projects with special structural solutions and high-strength steel.":
+    "Die PRO-Familie verbindet Leichtbauprojekte für 60-Fuß-Plattformwagen mit besonderen Konstruktionslösungen und hochfestem Stahl.",
+  "Starting from the transport task": "Ausgehend von der Transportaufgabe",
+  "Configure the platform around cargo and operation":
+    "Die Plattform auf Ladung und Betrieb ausrichten",
+  "Cargo, routes, axle loads, vehicle gauge, loading and unloading methods, terminal infrastructure, operating intensity, and customer requirements define the wagon configuration.":
+    "Ladung, Strecken, Achslasten, Fahrzeugbegrenzung, Be- und Entladeverfahren, Terminalinfrastruktur, Betriebsintensität und Kundenanforderungen bestimmen die Wagenkonfiguration.",
+  "Engineering objectives": "Engineering-Ziele",
+  "Assess the factors that determine transport efficiency":
+    "Die Faktoren für die Transporteffizienz bewerten",
+  "For a project, TransAnt evaluates payload, tare mass, loading method, usable loading length and volume, cargo-specific adaptation, operating limits, transport-process efficiency, and future technical requirements.":
+    "Für ein Projekt bewertet TransAnt Nutzlast, Eigengewicht, Ladeverfahren, nutzbare Ladelänge und Ladevolumen, ladungsspezifische Anpassung, Betriebsgrenzen, die Effizienz des Transportprozesses und künftige technische Anforderungen.",
+  "From concept to implementation": "Vom Konzept zur Umsetzung",
+  "One coordinated route from concept to delivery":
+    "Ein koordinierter Weg vom Konzept bis zur Lieferung",
+  "Transport-task analysis, concept and configuration, design and optimisation, testing and certification, industrial implementation, sales, and technical support are coordinated throughout the project.":
+    "Transportaufgabenanalyse, Konzept und Konfiguration, Konstruktion und Optimierung, Tests und Zertifizierung, industrielle Umsetzung, Vertrieb und technische Betreuung werden im gesamten Projekt koordiniert.",
+  "From PRO experience to the UNO range":
+    "Von der PRO-Erfahrung zum UNO-Programm",
+  "The next development step is the UNO range: wagon solutions for intermodal transport, metal, timber, bulk cargo, and liquids. Visit the wagon range for model-specific data.":
+    "Der nächste Entwicklungsschritt ist das UNO-Programm: Wagenlösungen für intermodale Transporte, Metall, Holz, Schüttgüter und Flüssigkeiten. Besuchen Sie das Wagenprogramm für modellspezifische Daten.",
+  "Discuss a PRO platform project": "Ein PRO-Plattformprojekt besprechen",
+  "Tell us about the cargo, route, transport volumes, and loading method. The team can assess the requirements and propose an appropriate wagon configuration or development direction.":
+    "Teilen Sie uns Ladung, Strecke, Transportvolumen und Ladeverfahren mit. Das Team kann die Anforderungen bewerten und eine passende Wagenkonfiguration oder Entwicklungsrichtung vorschlagen.",
+  "Discuss a PRO project": "Ein PRO-Projekt besprechen",
+  "Explore PRO platform projects": "PRO-Plattformprojekte entdecken",
+  "View all wagons": "Alle Wagen ansehen",
+  "Implemented PRO projects for 60-foot platforms":
+    "Realisierte PRO-Projekte für 60-Fuß-Plattformen",
+  "TransAnt PRO 60-foot platform wagon on track":
+    "TransAnt PRO 60-Fuß-Plattformwagen auf dem Gleis",
+  "UNO range": "UNO-Programm",
+  "Wagons for current transport tasks": "Wagen für aktuelle Transportaufgaben",
+  "The UNO range covers intermodal transport, metal, timber, bulk cargo, and liquids. Visit the wagon range for model-specific data.":
+    "Das UNO-Programm umfasst intermodale Transporte, Metall, Holz, Schüttgüter und Flüssigkeiten. Besuchen Sie das Wagenprogramm für modellspezifische Daten.",
+  "TransAnt UNO intermodal wagon being transported by road":
+    "TransAnt UNO Intermodalwagen beim Straßentransport",
+  "View wagons": "Wagen ansehen",
+  "Discuss your transport task": "Ihre Transportaufgabe besprechen",
+  "The right solution begins with the cargo, route, operating process, and technical requirements.":
+    "Die passende Lösung beginnt mit der Ladung, der Strecke, dem Betriebsprozess und den technischen Anforderungen.",
+  "Contact TransAnt": "TransAnt kontaktieren",
+  "PRO INTERMODAL 60 ft": "PRO INTERMODAL 60 ft",
+  "A lightweight four-axle Sgns platform for 20, 30 and 40 ft ISO containers and specialised equipment.":
+    "Eine leichte vierachsige Sgns-Plattform für 20-, 30- und 40-Fuß-ISO-Container sowie Spezialausrüstung.",
+  "PRO INTERMODAL 60 ft // Sgns": "PRO INTERMODAL 60 ft // Sgns",
+  "Lightweight platform for heavy transport tasks":
+    "Leichte Plattform für schwere Transportaufgaben",
+  "PRO INTERMODAL 60 ft is a four-axle Sgns railway platform for 20, 30 and 40 ft ISO containers and for mounting specialised equipment.":
+    "PRO INTERMODAL 60 ft ist eine vierachsige Eisenbahnplattform der Gattung Sgns für 20-, 30- und 40-Fuß-ISO-Container sowie zur Aufnahme von Spezialausrüstung.",
+  "A four-axle Sgns platform for 20, 30 and 40 ft ISO containers and specialised equipment, built from high-strength alform® steel with a topologically optimised frame.":
+    "Eine vierachsige Sgns-Plattform für 20-, 30- und 40-Fuß-ISO-Container und Spezialausrüstung, gefertigt aus hochfestem alform®-Stahl mit topologisch optimiertem Rahmen.",
+  "With a base-platform tare of approximately 16 tonnes, PRO can provide capacity for up to four tonnes of additional cargo compared with a conventional platform of around 20 tonnes, when the route, container or superstructure, and loading scheme permit it.":
+    "Mit einem Eigengewicht der Basisplattform von etwa 16 Tonnen kann PRO gegenüber einer konventionellen Plattform von rund 20 Tonnen Kapazität für bis zu vier Tonnen zusätzliche Ladung schaffen, sofern Strecke, Container oder Aufbau und Ladeschema dies zulassen.",
+  "Enquire about PRO 60 ft": "Anfrage zu PRO 60 ft senden",
+  "Approx. 16 tonnes": "Ca. 16 Tonnen",
+  "Base-platform tare without removable ballast.":
+    "Eigengewicht der Basisplattform ohne herausnehmbaren Ballast.",
+  "Up to 4 tonnes": "Bis zu 4 Tonnen",
+  "Potential additional payload compared with conventional platforms weighing around 20 tonnes.":
+    "Mögliche zusätzliche Nutzlast gegenüber konventionellen Plattformen mit rund 20 Tonnen Eigengewicht.",
+  "Up to 73.5 tonnes": "Bis zu 73,5 Tonnen",
+  "Maximum payload on a class D line in the corresponding configuration.":
+    "Maximale Nutzlast auf einer Strecke der Klasse D in der entsprechenden Konfiguration.",
+  "Approx. 16 t base-platform tare": "Ca. 16 t Eigengewicht der Basisplattform",
+  "Up to 4 t additional payload potential":
+    "Bis zu 4 t zusätzliche Nutzlast möglich",
+  "Up to 73.5 t payload on class D lines":
+    "Bis zu 73,5 t Nutzlast auf Streckenklasse D",
+  "24 foldable container pins": "24 klappbare Containerzapfen",
+  "Lower tare — more payload": "Weniger Eigengewicht — mehr Nutzlast",
+  "Approximately 16 tonnes of base-platform tare":
+    "Etwa 16 Tonnen Eigengewicht der Basisplattform",
+  "High-strength alform® steel and a topologically optimised structure reduce the base platform’s tare to approximately 16 tonnes. Comparable conventional platforms weigh around 20 tonnes.":
+    "Hochfester alform®-Stahl und eine topologisch optimierte Konstruktion reduzieren das Eigengewicht der Basisplattform auf etwa 16 Tonnen. Vergleichbare konventionelle Plattformen wiegen rund 20 Tonnen.",
+  "The tare difference can create capacity for up to four tonnes of additional cargo per wagon, provided that the railway line class, container or superstructure, and the other transport parameters permit it.":
+    "Der Unterschied im Eigengewicht kann Kapazität für bis zu vier Tonnen zusätzliche Ladung je Wagen schaffen, sofern Streckenklasse, Container oder Aufbau und die weiteren Transportparameter dies zulassen.",
+  "Maximum payload reaches 73.5 tonnes on a class D line in the corresponding configuration. Actual payload depends on the route class, equipment mass, container characteristics, and selected loading scheme.":
+    "Die maximale Nutzlast beträgt in der entsprechenden Konfiguration 73,5 Tonnen auf einer Strecke der Klasse D. Die tatsächliche Nutzlast hängt von Streckenklasse, Ausrüstungsmasse, Containereigenschaften und gewähltem Ladeschema ab.",
+  "High-strength lightweight structure": "Hochfeste Leichtbaukonstruktion",
+  "Material placed where the frame carries the highest loads":
+    "Material dort, wo der Rahmen die höchsten Lasten trägt",
+  "The load-bearing structure is made from high-strength alform® steel. Topological optimisation places material in the most highly loaded parts of the frame while reducing its tare.":
+    "Die Tragstruktur besteht aus hochfestem alform®-Stahl. Die topologische Optimierung ordnet Material in den am stärksten belasteten Rahmenbereichen an und reduziert zugleich das Eigengewicht.",
+  "Low tare mass": "Geringes Eigengewicht",
+  "High permissible axle load": "Hohe zulässige Achslast",
+  "Container equipment can be installed":
+    "Container-Ausrüstung kann installiert werden",
+  "Specialised equipment can be used":
+    "Spezialausrüstung kann eingesetzt werden",
+  "Suitable for regular industrial transport":
+    "Für regelmäßige Industrietransporte geeignet",
+  "Adaptable to a specific transport task":
+    "An eine konkrete Transportaufgabe anpassbar",
+  "Economic application": "Wirtschaftlicher Einsatz",
+  "When PRO creates a practical economic benefit":
+    "Wann PRO einen praktischen wirtschaftlichen Vorteil schafft",
+  "The primary economically justified use case is regular transport of heavy cargo in both directions. When the platform is loaded outbound and inbound, its lower tare can be used throughout the transport cycle.":
+    "Der wirtschaftlich begründete Haupteinsatz ist der regelmäßige Transport schwerer Ladung in beiden Richtungen. Ist die Plattform auf Hin- und Rückweg beladen, kann ihr geringeres Eigengewicht im gesamten Transportzyklus genutzt werden.",
+  "Suitable heavy cargo is available in both directions":
+    "Geeignete schwere Ladung ist in beiden Richtungen vorhanden",
+  "The route permits an axle load of up to 22.5 tonnes":
+    "Die Strecke erlaubt bis zu 22,5 Tonnen Achslast",
+  "The container or specialised superstructure is rated for the corresponding mass":
+    "Container oder Spezialaufbau sind für die entsprechende Masse ausgelegt",
+  "Transport is regular or operates as a block-train service":
+    "Die Transporte sind regelmäßig oder als Ganzzugverkehr organisiert",
+  "Additional payload can reduce the required number of wagons or journeys":
+    "Zusätzliche Nutzlast kann die benötigte Zahl von Wagen oder Fahrten reduzieren",
+  "PRO is not a universal solution for every transport operation. The economic result must be assessed for the specific cargo, route, and operating model.":
+    "PRO ist keine universelle Lösung für jeden Transport. Das wirtschaftliche Ergebnis muss für Ladung, Strecke und Betriebsmodell konkret bewertet werden.",
+  "Removable ballast": "Herausnehmbarer Ballast",
+  "Required mass for empty running": "Erforderliche Masse für Leerfahrten",
+  "The base platform has a tare of approximately 16 tonnes, while the minimum permissible operating mass of an empty wagon should be around 16.5 tonnes, allowing for wheelset wear and subsequent wheel reprofiling. Special removable ballast provides the required mass.":
+    "Die Basisplattform hat etwa 16 Tonnen Eigengewicht; die zulässige Mindestbetriebsmasse des leeren Wagens sollte unter Berücksichtigung von Radsatzverschleiß und späterer Reprofilierung etwa 16,5 Tonnen betragen. Spezieller herausnehmbarer Ballast stellt die erforderliche Masse sicher.",
+  "The ballast can be removed when carrying heavy cargo, allowing the platform’s low tare to increase useful payload.":
+    "Beim Transport schwerer Ladung kann der Ballast entfernt werden, sodass das geringe Eigengewicht der Plattform die Nutzlast erhöht.",
+  "The principal PRO benefit is achieved when the platform is loaded in both directions. Removable ballast should not be treated as a stand-alone economic benefit for services with a consistently empty return.":
+    "Der wesentliche PRO-Vorteil entsteht bei Beladung in beiden Richtungen. Herausnehmbarer Ballast ist bei ständig leerer Rückfahrt nicht als eigenständiger wirtschaftlicher Vorteil zu betrachten.",
+  "Container transport": "Containertransport",
+  "Loading schemes for 20, 30 and 40 ft ISO containers":
+    "Ladeschemata für 20-, 30- und 40-Fuß-ISO-Container",
+  "PRO INTERMODAL 60 ft has 24 foldable container pins and supports different arrangements of 20, 30 and 40 ft ISO containers.":
+    "PRO INTERMODAL 60 ft besitzt 24 klappbare Containerzapfen und unterstützt verschiedene Anordnungen von 20-, 30- und 40-Fuß-ISO-Containern.",
+  "Transport planning must consider both wagon payload and the maximum permitted gross mass of each container. A standard container does not always allow the full additional four tonnes of platform payload to be used; heavy cargo may require a container or specialised transport superstructure rated for the higher mass.":
+    "Bei der Transportplanung sind sowohl die Wagennutzlast als auch die zulässige Bruttomasse jedes Containers zu berücksichtigen. Ein Standardcontainer ermöglicht nicht immer die Nutzung der vollen vier Tonnen zusätzlicher Plattformnutzlast; schwere Ladung kann einen für die höhere Masse ausgelegten Container oder Spezialaufbau erfordern.",
+  "Container, cargo, and loading-scheme compatibility is checked for every project.":
+    "Die Kompatibilität von Container, Ladung und Ladeschema wird für jedes Projekt geprüft.",
+  "Specialised equipment": "Spezialausrüstung",
+  "A lightweight carrier for project-specific systems":
+    "Ein leichter Träger für projektspezifische Systeme",
+  "The platform can serve not only intermodal transport but also as a carrier for specialised technological equipment. The low frame mass leaves more allowance for equipment, working systems, and payload within the wagon’s permitted gross mass.":
+    "Die Plattform kann nicht nur im Intermodalverkehr, sondern auch als Träger spezieller technischer Ausrüstung dienen. Die geringe Rahmenmasse lässt innerhalb der zulässigen Gesamtmasse mehr Spielraum für Ausrüstung, Arbeitssysteme und Nutzlast.",
+  "The structure and attachment points for specialised equipment are developed to the requirements of the specific project.":
+    "Konstruktion und Befestigungspunkte für Spezialausrüstung werden nach den Anforderungen des jeweiligen Projekts entwickelt.",
+  "Confirmed operation": "Bestätigter Betrieb",
+  "Three PRO 60 ft platforms are already in service":
+    "Drei PRO-60-ft-Plattformen sind bereits im Einsatz",
+  "Three PRO 60 ft platforms have been manufactured, sold, and placed in operation, including platforms carrying specialised equipment.":
+    "Drei PRO-60-ft-Plattformen wurden gefertigt, verkauft und in Betrieb genommen, darunter Plattformen mit Spezialausrüstung.",
+  "This is a practically implemented railway platform rather than an experimental concept. It can be used for intermodal and specialised transport solutions.":
+    "Es handelt sich nicht um ein Versuchskonzept, sondern um eine praktisch realisierte Eisenbahnplattform für intermodale und spezielle Transportlösungen.",
+  "Production is organised with qualified manufacturing partners. TransAnt performs the technical development, configuration coordination, and project support.":
+    "Die Fertigung wird mit qualifizierten Produktionspartnern organisiert. TransAnt übernimmt technische Ausarbeitung, Konfigurationsabstimmung und Projektbegleitung.",
+  "Wagon designation": "Wagenbezeichnung",
+  "Number of axles": "Anzahl der Achsen",
+  "Bogie type": "Drehgestelltyp",
+  "Distance between bogie pivots": "Drehzapfenabstand",
+  "Length over buffers": "Länge über Puffer",
+  "Loading length": "Ladelänge",
+  "Loading width": "Ladebreite",
+  "Loading-surface height": "Höhe der Ladefläche",
+  "Base-platform tare": "Eigengewicht der Basisplattform",
+  "Intermodal configuration mass": "Masse der Intermodalausführung",
+  "Operating mass with removable ballast":
+    "Betriebsmasse mit herausnehmbarem Ballast",
+  "Maximum axle load": "Maximale Achslast",
+  "Maximum payload": "Maximale Nutzlast",
+  "Container equipment": "Containerausrüstung",
+  "Supported containers": "Unterstützte Container",
+  "Vehicle gauge": "Fahrzeugbegrenzungslinie",
+  "Minimum curve radius": "Mindestbogenradius",
+  "Maximum operating speed": "Maximale Betriebsgeschwindigkeit",
+  "Maximum brake-related speed": "Maximale bremsbedingte Geschwindigkeit",
+  "Y25 with compact brake system": "Y25 mit Kompaktbremse",
+  "19,740 mm with A-buffers / 19,830 mm with L-buffers":
+    "19.740 mm mit A-Puffern / 19.830 mm mit L-Puffern",
+  "approx. 16.0": "ca. 16,0",
+  "approx. 16.3": "ca. 16,3",
+  "approx. 16.5": "ca. 16,5",
+  "up to 73.5": "bis zu 73,5",
+  "20, 30 and 40 ft": "20, 30 und 40 Fuß",
+  "Permitted payload by line class": "Zulässige Nutzlast nach Streckenklasse",
+  "PRO INTERMODAL 60 ft payload by railway line class":
+    "Nutzlast von PRO INTERMODAL 60 ft nach Streckenklasse",
+  "Line class": "Streckenklasse",
+  Payload: "Nutzlast",
+  "Scroll table horizontally": "Tabelle horizontal scrollen",
+  "PRO INTERMODAL 60 ft payload table":
+    "Nutzlasttabelle für PRO INTERMODAL 60 ft",
+  "Load limit notes": "Hinweise zu den Lastgrenzen",
+  "The values apply to the stated platform configuration. Final parameters are confirmed for the installed equipment, container arrangement, and operating conditions.":
+    "Die Werte gelten für die angegebene Plattformkonfiguration. Die endgültigen Parameter werden unter Berücksichtigung von Ausrüstung, Containeranordnung und Betriebsbedingungen bestätigt.",
+  "Discuss your transport operation": "Ihren Transport besprechen",
+  "To assess the practical benefit of PRO 60 ft, TransAnt considers the cargo, loading in both directions, containers or equipment, permitted route loads, annual transport volume, and loading and unloading requirements.":
+    "Zur Bewertung des praktischen Nutzens von PRO 60 ft berücksichtigt TransAnt Ladung, Beladung in beiden Richtungen, Container oder Ausrüstung, zulässige Streckenlasten, jährliches Transportvolumen sowie Be- und Entladeanforderungen.",
 };
 
 export function translateGermanContent<T>(value: T): T {
@@ -503,9 +776,10 @@ export const germanHomepageViewModel: HomepageViewModel = {
     },
   },
   layout: createSiteLayout(
-    "Güterwagen für individuelle Transportaufgaben",
-    "Der TransANT-Produktkatalog stellt Intermodal-, Flach-, Holz-, offene Kasten- und Kesselwagen für definierte Transportaufgaben vor.",
+    "Ingenieurlösungen für den europäischen Schienengüterverkehr",
+    "Die TransAnt GmbH entwickelt, vermarktet und betreut Güterwagenlösungen für das europäische Normalspurnetz und koordiniert deren industrielle Umsetzung.",
     "/",
     "de",
+    "prominent",
   ),
 };

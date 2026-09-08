@@ -21,6 +21,9 @@ interface LoadLimitTableProps {
     payload: string;
     payloadUnit?: string;
   };
+  scrollHint?: string;
+  scrollRegionLabel?: string;
+  notesLabel?: string;
   rows: readonly LoadLimitRow[];
   notes?: readonly string[];
 }
@@ -28,7 +31,7 @@ interface LoadLimitTableProps {
 
 ## 4. Props
 
-`title`, `headingLevel`, `caption`, `source`, and `columns` are caller-owned. `rows` must contain all four `A`, `B`, `C`, and `D` route classes in F-002 source order. `payload` and the optional unit are displayed as supplied; neither is parsed, rounded, formatted, calculated, nor inferred. `notes` is optional, but when supplied contains one or more source-owned visible notes.
+`title`, `headingLevel`, `caption`, `source`, and `columns` are caller-owned. `scrollHint`, `scrollRegionLabel`, and `notesLabel` optionally localize the component-owned visible and accessible labels; existing callers retain English defaults. `rows` must contain all four `A`, `B`, `C`, and `D` route classes in F-002 source order. `payload` and the optional unit are displayed as supplied; neither is parsed, rounded, formatted, calculated, nor inferred. `notes` is optional, but when supplied contains one or more source-owned visible notes.
 
 ## 5. Slots
 

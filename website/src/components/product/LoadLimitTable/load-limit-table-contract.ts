@@ -58,6 +58,18 @@ export const validateLoadLimitTableProps = (
     );
   }
 
+  for (const label of [
+    props.scrollHint,
+    props.scrollRegionLabel,
+    props.notesLabel,
+  ]) {
+    if (label !== undefined && !isNonEmpty(label)) {
+      throw new Error(
+        "LoadLimitTable localized labels must be omitted or non-empty.",
+      );
+    }
+  }
+
   validateRows(props.rows);
 
   if (

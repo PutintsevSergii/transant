@@ -4,16 +4,148 @@ This file is the compact operational handoff. It must describe the current truth
 
 ## Control
 
-- Last updated: 2026-09-07
+- Last updated: 2026-09-08
 - Lifecycle: BLOCKED
 - Release: R1 — multilingual static corporate and wagon-catalogue website
-- Active work package: I-005
-- Active objective: implement the revised InnoTrans decision on the existing homepage: exact linked stand positions, with no dedicated page, primary-navigation item, map, or partner-logo presentation
-- Last completed work package: P-003
-- Next eligible work package: A-002 — approved homepage Variant A follow-on
-- Last change-log entry: 2026-09-07 — I-005 — InnoTrans page canceled; exact positions published on homepage
+- Active work package: NONE
+- Active objective: await explicit direction after the PRO INTERMODAL 60 ft content correction
+- Last completed work package: A-005
+- Next eligible work package: E-003 or another explicitly requested bounded correction
+- Last change-log entry: 2026-09-08 — A-005 — PRO INTERMODAL 60 ft technical content
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
+
+## Active correction — A-005 PRO INTERMODAL 60 ft data
+
+- Status: `IMPLEMENTED`.
+- Objective: replace the broad PRO-project overview on `/engineering-services/` with the supplied PRO INTERMODAL 60 ft product narrative, economics boundary, removable-ballast explanation, container and special-equipment uses, confirmed operation, exact technical characteristics, A-D load-limit table, and enquiry action; update the existing homepage PRO section with the same bounded facts.
+- Boundary: treat the user-supplied Russian brief as the sole authority for the new PRO technical and operating claims; preserve the canonical `/engineering-services/` route, localized routes, legacy `/technology/` redirects, existing local PRO media, server rendering, and all unrelated pages. Reuse verified editorial/product primitives and extend only the smallest reusable editorial copy contract required for paragraphs and lists.
+- Intended files: a persisted client source note; editorial/homepage view models and localized copy maps; MediaStory typed contract/implementation/README and focused unit coverage; editorial route assemblers for technical specifications and the load-limit table; focused content/browser contracts; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators PASS. Node 22.13 `pnpm quality` passed Prettier, ESLint, Astro diagnostics (0 errors/warnings/hints), 91 unit tests, the 125-page production build, the 62-page component-lab build, and four foundation tests; the aggregate stopped before browser execution because the user-visible preview owns `127.0.0.1:4322`, so it is not claimed green.
+- Validation: MediaStory and LoadLimitTable contracts PASS 4/4; Astro diagnostics PASS with 0 errors, warnings, or hints; the production build produces 125 pages; content/brand and route-integration audits PASS (`routes=124 products=10 internal-references=4994`). Focused English component/responsive/keyboard/axe evidence PASSes 48/48 across 320/390/768/1024/1440/844×390. Localized production-route evidence PASSes 18/18 at 320 and 1440. Refreshed and clean PRO-page/homepage visual comparisons PASS 12/12, and both pages were inspected directly at 320 and 1440.
+- Source boundary: the user-named Google Drive PDF `про 60 сгнс.pdf` was not discoverable in the connected account and is not claimed as inspected. The user-supplied Russian brief is authoritative; the attached product-sheet screenshots independently support the core Sgns values recorded in `client-remarks/pro-intermodal-60ft-2026-09-08-ru.txt`.
+- Next exact action: await explicit direction before opening E-003 or another bounded package.
+
+## Completed correction — A-002 ModularPlatformSection stage spacing
+
+- Status: `IMPLEMENTED`.
+- Objective: ensure the four wide-screen ModularPlatformSection stage title and description blocks retain clear horizontal space and never appear to touch their neighbours.
+- Boundary: adjust only the reusable wide-stage layout and its focused visual/geometry evidence. Preserve source order, four-stage rail, copy, action, compact vertical composition, theme, interaction, and all routes/locales.
+- Intended files: `ModularPlatformSection.astro`, its focused browser contract and affected homepage visual references, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators passed.
+- Validation: focused component contract tests pass 2/2 and Astro diagnostics pass with 0 errors, warnings, or hints. The production build produces 125 pages. Refreshed and clean focused ModularPlatformSection/homepage browser evidence passes 60/60 across 320/390/768/1024/1440/844×390, covering source order, no-JavaScript actions, responsive containment, stage-gap geometry, axe, and visual references. Direct 1440 review confirms the four title and description blocks are clearly separated.
+- Next exact action: await explicit direction before opening E-003 or another bounded package.
+
+## Completed correction — A-002 Homepage action destinations
+
+- Status: `IMPLEMENTED`.
+- Objective: restore the requested homepage split: the unchanged source-backed `ModularPlatformSection` leads to the all-wagons catalogue, while `PayloadValueSection` presents PRO platform projects and leads to Engineering & Services.
+- Boundary: extend existing typed optional action presentation only as needed; update caller-owned EN/DE/UK/PL/CS labels, copy, and localized paths; retain the transport-task text and rail stages, server rendering, action semantics, responsive layout, approved local visual, and every unrelated section/route. Use the existing source-backed PRO copy only; do not add technical claims.
+- Intended files: PayloadValueSection and ModularPlatformSection typed action contracts, implementations, and READMEs; homepage/localized copy adapters; focused component/homepage contracts and visual references; content audit; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators passed. Astro diagnostics passed with 0 errors, warnings, or hints.
+- Validation: focused component contracts pass 5/5; the production build produces 125 pages; content/brand audit and route integration pass (`routes=124 products=10 internal-references=4999`). Refreshed and clean focused component/homepage browser evidence passes 90/90 across 320/390/768/1024/1440/844×390, covering action destinations, no-JavaScript navigation, responsive containment, axe, and visual references. Direct 320 and 1440 review confirms the two clear, distinct primary actions and clean reflow.
+- Next exact action: await explicit direction before opening E-003 or another bounded package.
+
+## Completed correction — A-002 Homepage transport-task narrative
+
+- Status: `IMPLEMENTED`.
+- Objective: use the newly supplied client message “От транспортной задачи к готовому вагону” in the existing homepage transport-task section, making clear that work begins with understanding the real transport task, then identifies a suitable configuration or an operating-condition-specific solution.
+- Boundary: update only the caller-owned EN/DE/UK/PL/CS content for `ModularPlatformSection`, remove the now-inaccurate PRO promotional action from that section, and synchronize focused homepage contracts and state records. Preserve the shared section design and semantics, homepage order, existing Engineering & Services route, all other claims, images, and routes.
+- Files: EN/DE/UK/PL/CS homepage copy adapters; homepage and localization contract checks; content/brand audit; six refreshed homepage visual references; client implementation plan, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state and input validation pass; Astro diagnostics pass with 0 errors, warnings, or hints.
+- Validation: the 125-page production build, content/brand audit, and route integration (`routes=124 products=10 internal-references=4994`) pass. Focused homepage browser, no-JavaScript, responsive, axe, and visual evidence passes 30/30 across 320/390/768/1024/1440/844×390. Direct compact and wide review confirms the longer source text reflows cleanly with no PRO action in this section. The combined component-lab locale run is `NOT_RUN` as package evidence because its known route fallback serves localized paths as English; the production build and content audit verify all five localized outputs and their full introductory sentences.
+- Next exact action: await explicit direction before opening E-003 or another bounded package.
+
+## Completed correction — A-005 Company hero image presentation
+
+- Status: `IMPLEMENTED`.
+- Objective: preserve the full width and lettering of the supplied Company hero photograph rather than cropping it into the generic tall PageHero image frame.
+- Boundary: add only a typed caller-owned PageHero option that preserves an intentionally supplied natural media ratio; apply it only to the Company hero. Preserve the supplied image, alt text, source-owned copy, all routes, and every non-Company hero.
+- Files: Company editorial view model; the typed PageHero natural-ratio contract, implementation, and README; focused unit/editorial/localization browser evidence; affected Company visual references; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validation passes. The shared PageHero applies a 32-rem wide-screen image minimum; because the supplied Company image is 3:2, its generic `cover` presentation crops the horizontal lettering in the taller half-width frame. The existing `contain` fit alone cannot prevent the clipping because that minimum height still exceeds the ratio-reserved frame.
+- Validation: focused PageHero contract unit coverage passes 2/2 and Astro diagnostics pass with 0 errors, warnings, or hints. The 125-page production build, content/brand audit, and route integration (`routes=124 products=10 internal-references=4999`) pass. Shared PageHero regression evidence and focused editorial component/responsive/keyboard/axe evidence each pass 24/24; refreshed Company visual comparisons pass 6/6; and localized production-route evidence passes 54/54 across 320/390/768/1024/1440/844×390. The compact and wide Company output was directly inspected.
+- Next exact action: await explicit direction before opening E-003 or another bounded package.
+
+## Completed correction — A-005 MediaStory spacing
+
+- Status: `IMPLEMENTED`.
+- Objective: ensure every image-free `MediaStory` has deliberate top and bottom padding so its text does not sit against a section boundary, including immediately after a `PageHero`; at the wide two-column layout, keep an illustrated story's image flush to its section's top and bottom when it is at least as tall as the adjacent text.
+- Boundary: change only the shared `MediaStory` spacing rules, its focused contract/evidence, and required state records. Preserve media-story source order, the existing caller-selected `generous-top` option, component API, copy, and routes.
+- Intended files: `MediaStory.astro` and README; focused MediaStory/editorial browser evidence and affected visual references; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators pass. The current source already uses a shared block inset but the PageHero handoff token reduces the first image-free section's top padding to 12 px, which causes the reported crowded edge.
+- Validation: Astro diagnostics pass with 0 errors, warnings, or hints. The 125-page production build, content/brand audit, and route integration (`routes=124 products=10 internal-references=4999`) pass. Focused MediaStory/editorial browser evidence passes 72/72 across 320/390/768/1024/1440/844×390, covering source order, no-JavaScript actions, responsive containment, axe, wide image-edge geometry, and refreshed visual references. The 320 and 1440 PRO references were directly inspected, and the local production preview was refreshed.
+- Next exact action: await explicit direction before opening E-003 or another bounded package.
+
+## Completed correction — A-005 PRO-led Engineering & Services page
+
+- Status: `IMPLEMENTED`.
+- Objective: replace the canonical `/engineering-services/` content with a PRO-led page that explains the implemented lightweight 60-foot PRO-family platform projects, their special structural solutions and high-strength steel, and the transport-task engineering considerations that guide a project.
+- Boundary: preserve `/engineering-services/`, all localized equivalents, and the compatible `/technology/` legacy redirects. Use only `client-remarks/company-information-2026-09-08.txt` and supplied local imagery; write matching EN/DE/UK/PL/CS content; retain the established editorial components and server-rendered/no-JavaScript behaviour. Do not assert measured PRO outcomes, technical values, approvals, customer projects, or manufacturing capabilities not supplied by the client.
+- Intended files: editorial and shell/homepage copy adapters, route assemblers and focused editorial/localization/audit tests, the affected layout documentation and visual references, client implementation plan, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validation passed. The Node 22.13 `pnpm quality` static stages passed formatting, ESLint, Astro diagnostics, unit tests, both builds, and foundation tests; its browser stage could not bind the visible preview's port `4322`, so the aggregate is not a pass.
+- Validation: targeted formatting and ESLint pass; Astro diagnostics pass with 0 errors/warnings/hints; production build (125 pages), component-lab build (62 pages), route integration (`routes=124 products=10 internal-references=4999`), content/brand audit, and diff hygiene pass. Focused English editorial evidence passes 48/48 across 320/390/768/1024/1440/844×390, including no-JavaScript keyboard navigation, responsive containment, axe, and six visual references. Localized production-route evidence passes 54/54 for DE/UK/PL/CS. Homepage integration passes 30/30 after its promotional action-label update. The 320 and 1440 PRO references were directly inspected.
+- Next exact action: await explicit direction before opening E-003 or another bounded package.
+
+## Completed correction — A-005 Company-page source expansion
+
+- Status: `IMPLEMENTED`.
+- Objective: replace the current catalogue-only Company page with the owner-supplied company narrative: TransAnt’s role, transport-task analysis, engineering and commercial disciplines, quality controls, TAS Group coordination, PRO development, and the UNO range.
+- Boundary: use only `client-remarks/company-information-2026-09-08.txt` and the supplied local image bundle; author matching EN/DE/UK/PL/CS copy; retain the existing reusable `PageHero`, `PageMeta`, `MediaStory`, `EvidenceList`, and `ContactCTA` composition, the source-owned legal facts, local routes, no-JavaScript rendering, and Quality as the certificate destination. Do not add unsourced employee counts, future holding statements, partner capabilities, certificates, performance values, or manufacturer claims.
+- Intended files: Company editorial view model and local editorial images; German and additional-locale maps; Company-route browser/audit evidence and visual references; client implementation plan, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validation passed. Under Node 22.13, `pnpm quality` passed formatting, ESLint, Astro diagnostics (0 errors/warnings/hints), 91 unit tests, both static builds, and four foundation tests. Its browser stage could not bind `127.0.0.1:4322` because the visible preview occupied that port, so the aggregate was not a pass.
+- Validation: formatting, ESLint, Astro diagnostics (0 errors/warnings/hints), 91 unit tests, the 125-page production build, component-lab build, foundation tests, and the extended content/brand audit pass. Isolated Company component, keyboard, responsive, and axe checks pass 24/24 across 320/390/768/1024/1440/844×390; six Company visual baselines pass and the 320/1440 results were inspected directly. Localized production-route checks pass 54/54 across the same six profiles for DE/UK/PL/CS Company routes and the related locale route contracts. The final broad `pnpm quality` browser stage remains non-green only because the component-lab server falls back to English for locale production routes; the targeted production-preview check supersedes that fixture limitation for this package.
+- Next exact action: await explicit direction before opening E-003 or another bounded client-image package.
+
+## Completed correction — A-002 hero and InnoTrans first-screen composition
+
+- Status: `IMPLEMENTED`.
+- Objective: let the complete HomeHero and a recognizable beginning of the immediately following InnoTrans section share the opening desktop viewport, instead of forcing HomeHero to consume nearly all available screen height.
+- Boundary: wide HomeHero vertical sizing and its homepage integration evidence only. Preserve mobile intrinsic flow, complete contained image, copy, actions, section order, InnoTrans content/layout, and every non-homepage section.
+- Intended files: `website/src/components/home/HomeHero/{HomeHero.astro,README.md}`, focused homepage responsive tests and affected visual references, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators PASS. Node 22.13 `pnpm quality` PASSed formatting, ESLint, Astro diagnostics with 0 errors/warnings/hints, all 91 unit tests, both builds, and four foundation tests; its browser phase did not start because the user-visible preview owns port 4322, so the aggregate is not green.
+- Validation: targeted formatting and Astro diagnostics PASS with 0 errors/warnings/hints; the 125-page production build, content/brand audit, and diff hygiene PASS. Refreshed and clean focused HomeHero/homepage evidence PASSes 54/54 across 320/390/768/1024/1440/844x390. At both wide profiles, the responsive assertion requires at least five rem of InnoTrans to enter the opening viewport; direct 1440 review confirms the complete hero and a substantial, recognizable portion of the dark event section share the first screen. The initial title-visible assertion was intentionally replaced because InnoTrans internally centers unequal columns; a six-rem threshold then missed 1024 by five pixels, and the final five-rem requirement passes without changing compact flow.
+- Next exact action: await explicit direction before opening E-003, expanding the Company page, or selecting another approved client-image slice.
+
+## Completed correction — A-002 homepage hero mobile action width
+
+- Status: `IMPLEMENTED`.
+- Objective: make the primary and secondary HomeHero actions occupy the same available width on the narrowest mobile container, correcting the visibly unequal buttons reported on the production homepage.
+- Boundary: action sizing inside `HomeHero` only. Preserve labels, destinations, variants, spacing, touch height, desktop content-width behavior, copy, media, source order, and every action outside the homepage hero.
+- Intended files: `website/src/components/home/HomeHero/{HomeHero.astro,README.md}`, focused HomeHero/homepage browser tests and narrow visual references, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators PASS. Node 22.13 `pnpm quality` PASSed formatting, ESLint, Astro diagnostics with 0 errors/warnings/hints, all 91 unit tests, both builds, and four foundation tests; its browser phase did not start because the user-visible preview already owns port 4322, so the aggregate is not green.
+- Validation: targeted formatting and Astro diagnostics PASS with 0 errors/warnings/hints; the 125-page production build, content/brand audit, and diff hygiene PASS. Refreshed and clean focused HomeHero/homepage evidence PASSes 54/54 across 320/390/768/1024/1440/844x390. Direct geometry assertions on both the component fixture and production homepage prove the two actions differ by no more than one pixel below 480px, while the existing 30-rem breakpoint restores intrinsic widths on wider containers. The refreshed 390 output was inspected directly.
+- Next exact action: await explicit direction before opening E-003, expanding the Company page, or selecting another approved client-image slice.
+
+## Completed correction — A-002 homepage hero typography scale
+
+- Status: `IMPLEMENTED`.
+- Objective: reduce the HomeHero headline and supporting-copy sizes using the established regular PageHero/SectionIntro typography scale, so the copy block is visually closer to the contained image size.
+- Boundary: typography only inside `HomeHero`; preserve wording, red emphasis, actions, viewport-aware height, complete-image presentation, layout, source order, and every non-homepage hero.
+- Files: `website/src/components/home/HomeHero/{HomeHero.astro,README.md}`, `website/tests/browser/home-hero.spec.ts`, twelve focused HomeHero/homepage visual references, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators PASS. Node 22.13 `pnpm quality` PASSed formatting, ESLint, Astro diagnostics, all 91 unit tests, both builds, and four foundation tests; its browser phase did not start because the visible preview already owns port 4322, so the aggregate is not green.
+- Validation: targeted formatting and Astro diagnostics PASS with 0 errors/warnings/hints; the 125-page production build, content/brand audit, and diff hygiene PASS. Refreshed and clean focused HomeHero/homepage evidence PASSes 54/54 across 320/390/768/1024/1440/844x390. The component assertion directly compares computed HomeHero title font size, line height, letter spacing, and description size with the regular PageHero/SectionIntro values. Direct 320 and 1440 inspection confirms the quieter copy scale, unchanged red emphasis, full image visibility, and preserved layout.
+- Next exact action: await explicit direction before opening E-003, expanding the Company page, or selecting another approved client-image slice.
+
+## Completed correction — A-002 homepage hero proportion and crop
+
+- Status: `IMPLEMENTED`.
+- Objective: keep the complete TRANSANT name visible in the approved red wagon photograph, increase the hero's top and bottom breathing room, and let the wide composition respond to the available viewport height without trapping compact-screen content in a fixed-height frame.
+- Boundary: change only the homepage hero media presentation and component-owned vertical sizing. Preserve copy, actions, source order, navigation, adjacent sections, the default crop contract used by the component fixture, and every non-homepage hero.
+- Files: `website/src/adapters/content/homepage-view-model.ts`, `website/src/components/home/HomeHero/{HomeHero.astro,README.md}`, `website/tests/browser/homepage.spec.ts`, twelve focused homepage/HomeHero visual references, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators PASS. Node 22.13 `pnpm quality` PASSed formatting, ESLint, Astro diagnostics (0/0/0), all 91 unit tests, both builds, and four foundation tests; its browser stage did not start because the user-visible preview already owns `127.0.0.1:4322`, so the aggregate is not green.
+- Validation: targeted formatting and Astro diagnostics PASS with 0 errors/warnings/hints; the 125-page production build and content/brand audit PASS; diff hygiene PASS. Refreshed and clean HomeHero/homepage evidence PASSes 54/54 across 320/390/768/1024/1440/844x390, covering complete-image 3:2 geometry, viewport-aware wide height, default cover-media behavior, source order, keyboard, responsive containment, axe, and visual comparisons. Direct inspection of the 320 and 1440 homepage outputs confirms the full TRANSANT name remains visible and the wide hero fills the available first-screen height. The mistyped `pnpm check:content-brand` alias failed and was immediately replaced by the correct passing `pnpm check:content-brand-audit` command.
+- Next exact action: await explicit direction before opening E-003, expanding the Company page, or selecting another approved client-image slice.
+
+## Completed correction — A-002 client-supplied company introduction
+
+- Status: `IMPLEMENTED`.
+- Objective: replace the locomotive-led homepage hero with the supplied `client-remarks/imgs/лого вырезано на вагоне.jpg`; introduce TransAnt GmbH concisely as the Linz-founded Austrian TAS Group company that develops, markets, and supports freight-wagon solutions for the European standard-gauge network; retain the wagon-catalogue action and add a localized Company-page action.
+- Process frame: replace the catalogue-selection wording in `ModularPlatformSection` with a source-backed four-stage customer journey: transport-task analysis; concept and configuration; engineering, testing, and approval; coordinated industrial implementation, delivery, and technical support.
+- Boundary: no Company-page rewrite, PRO project claim, staff count, future holding statement, new InnoTrans content, certificate presentation, automatic form workflow, or unrelated image rollout. Preserve the current Hero → InnoTrans → WagonSwitchyard order and every existing route/interaction outside the changed copy and hero media.
+- Files: preserved the client source as `client-remarks/company-information-2026-09-08.txt`; copied the approved wagon detail byte-identically to the production image source; updated the EN/DE/UK/PL/CS homepage view-model copy; added caller-owned centered media focus to `HomeHero`; updated the ModularPlatformSection documentation; extended the content/brand audit; refreshed the six homepage visual references; and synchronized the focused tests, client plan, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: state/input validators PASS. Node 22.13 `pnpm quality` PASSed formatting, ESLint, Astro diagnostics (0/0/0), 91 unit tests, both builds, and four foundation tests; its browser server could not bind `127.0.0.1:4322` (`listen EPERM`), so the aggregate is not green.
+- Validation: targeted formatting and diff hygiene PASS; Astro diagnostics PASS with 0 errors/warnings/hints; all 91 unit tests PASS; production build PASSes with 125 canonical pages; route integration PASSes (`routes=124 products=10 internal-references=4999`); content/brand audit PASSes for 125 documents and pins the approved company introduction, localized Company actions, and local red hero media on all five homepages. Refreshed and clean homepage browser evidence PASSes 30/30 across 320/390/768/1024/1440/844×390; the combined shared-HomeHero/homepage suite PASSes 54/54, including keyboard, no-JavaScript, axe, responsive containment, unchanged default hero crop, and visual comparisons. Direct review of 320 and 1440 outputs confirms the new crop and process reflow. The broader German component-lab test remains non-green for the pre-existing fixture-server routing issue; German and the other localized production routes are built and their localized output is audited, so no broad aggregate is claimed.
+- Next exact action: await explicit direction before opening E-003, expanding the Company page from the supplied narrative, or selecting another subset of the client image bundle.
 
 ## Completed correction — I-005 InnoTrans positions on the homepage
 
@@ -30,13 +162,30 @@ This file is the compact operational handoff. It must describe the current truth
 - Remaining blocker: longer homepage, Company, Engineering and Services, PRO, InnoTrans, and ten-model narratives require client source material and factual confirmation in any usable form. The client does not need to provide English or localized copy: the implementation team prepares English and synchronizes DE, UA, PL, and CZ. The revised homepage position slice does not authorize those narratives or any other technical proposal until their source facts are supplied.
 - Next exact action: wait for the remaining client source material or explicitly open the already approved A-002 homepage Variant A follow-on as a separate bounded package.
 
-## Scheduled next — A-002 homepage restructuring, Variant A
+## Completed package — A-002 homepage restructuring, Variant A
 
-- Status: `READY_TO_OPEN_AFTER_I-005`. The owner approved Variant A on 2026-09-07 as the next separate homepage follow-on; it is not merged into the active I-005 navigation-and-route package.
+- Status: `IMPLEMENTED`. The owner-approved follow-on is complete; its focused evidence is green, while the repository-wide quality aggregate remains non-green for pre-existing unrelated failures.
 - Scope: retain the current five-family switchyard, product data/routes, existing approved EN/DE/UA/PL/CZ positioning statement, local hero media, InnoTrans/quality/contact destinations, server rendering, no-JavaScript behaviour, and vertical compact family sequence. Improve only homepage composition and the visual prominence of the existing hero/logo without new company, partner, project, or performance claims.
 - Explicit exclusions: no hero-media replacement without an approved local asset; no new process/PRO/TAS narrative before client source material and factual confirmation are supplied in any usable form; no dedicated InnoTrans page, maps, exhibits, partners, meeting workflow, comparison tool, or Timber-media work. The verified homepage stand-position list remains in place. Certificate presentation is separately scheduled as E-003; product downloads and the automatic contact workflow remain deferred for R1.
 - Plan source: `docs/specifications/client-remarks-content-implementation-plan.md`, “Homepage restructuring decision — 2026-09-07”.
-- Open condition: finish and hand off the active I-005 slice, then reopen the existing homepage assembly identity `A-002` as its user-approved follow-on with a recorded baseline, exact file set, responsive/keyboard/no-JavaScript/axe checks, and visual evidence.
+- Validation: focused homepage checks PASS 30/30 across 320/390/768/1024/1440/844×390, including composition, keyboard, no-JavaScript, responsive containment, axe, and refreshed visual references. Prettier, Astro diagnostics, 91 unit tests, production build (125 pages), route integration, content/brand audit, and deployment readiness PASS. The 1440 visual was inspected directly.
+
+## Completed package — A-002 homepage restructuring, Variant A
+
+- Status: `IMPLEMENTED`.
+- Objective: make the homepage journey clearer by giving the existing hero and catalogue entry point stronger priority, then presenting existing proof/event material before the final contact action. No new copy, claims, routes, or assets are authorized.
+- Intended files: `website/src/pages/index.astro`, `website/src/components/home/LocalizedHomepage/LocalizedHomepage.astro`, `website/src/components/home/GermanHomepage/GermanHomepage.astro`, `website/src/components/home/HomeHero/HomeHero.astro`, `website/src/components/shell/SiteHeader/SiteHeader.astro`, matching homepage browser tests/visual references, component READMEs, tracker, `STATUS.md`, and `CHANGELOG.md`; exact changes may narrow after inspection.
+- Baseline: Node 22.13 `pnpm quality` static stages PASS; broad browser phase reproduced known locale-routing/component-lab failures, stale visual references, and related existing failures, ending `1251 passed`, `129 failed`, `16 skipped` after 5.7 minutes. Aggregate is not claimed green.
+- Next exact action: open H-004 as a separate package only when ready to implement its approved desktop preview and compact scroll-snap follow-on.
+
+## Completed correction — A-002 InnoTrans placement
+
+- Status: `IMPLEMENTED`. The existing `<InnoTransEvent>` frame now directly follows `<HomeHero>` in English, German, and shared additional-locale homepage compositions, plus the homepage component-lab fixture.
+- Contract: preserve the exact InnoTrans content, official external links, server rendering, localizations, hero, five-family switchyard, and all remaining homepage section order. The only visual/content-flow change is the event frame's placement immediately after the hero.
+- Intended files: `website/src/pages/index.astro`, `website/src/components/home/{GermanHomepage,LocalizedHomepage}/*.astro`, `website/component-lab/pages/fixtures/homepage.astro`, homepage order/browser tests, tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: Node 22.13 `pnpm quality` static stages PASSed (formatting, ESLint, Astro diagnostics with 0 errors/warnings/hints, 91 unit tests, production/lab builds, and four foundation tests). Its unprivileged browser server could not bind `127.0.0.1:4322` (`listen EPERM`), so the aggregate is not green.
+- Validation: focused Astro diagnostics PASS with 0 errors/warnings/hints. Refreshed and clean homepage browser evidence PASSes 30/30 across 320/390/768/1024/1440/844×390, including composition source order, no-JavaScript navigation, responsive containment, axe, and visual comparison. Direct localhost inspection confirms Hero → InnoTrans event → wagon selector.
+- Next exact action: await explicit direction before opening E-003 or another approved package.
 
 ## Deferred future — A-002 homepage expansion, Variant B
 
@@ -44,12 +193,24 @@ This file is the compact operational handoff. It must describe the current truth
 - Unblock only with: approved local hero asset; source text and factual confirmation in any usable form; and, where relevant, approved PRO/TAS/InnoTrans facts, claims, photos/renders, logos, and captions. The implementation team prepares English and all localized versions.
 - Status transition: update the client-remarks plan to `READY_TO_OPEN` only when the complete required input bundle is received and its exact revisions are recorded. Drafts, external links, or unverified source material do not unblock it.
 
-## Scheduled following Variant A — H-004 wagon-family discovery
+## Completed correction — H-004 wagon-family discovery
 
-- Status: `READY_TO_OPEN_AFTER_A-002_VARIANT_A`. The owner approved this as the next distinct stage after Variant A; its component identity is `H-004 WagonSwitchyard`.
-- Desktop: one desktop-only, five-second-per-family guided preview starts only when the component is substantially visible, runs through the remaining four families once, and stops. It pauses for hover/focus/background-tab state; interaction or an explicit pause stops it for the page visit. A visible pause/replay control preserves visitor control. No focus, scroll, automatic navigation, live-region chatter, persistent state, or telemetry is introduced.
+- Status: `IMPLEMENTED`. The owner-directed correction retains the H-004 `WagonSwitchyard` component identity.
+- Desktop: while eligible on a desktop fine pointer, animate the selected rail state continuously through all five families at five-second intervals. All preview controls are removed. Hover, focus, and direct click/keyboard selection do not stop the sequence; a manual selection establishes the next item. No focus, scroll, automatic navigation, live-region chatter, persistent state, or telemetry is introduced.
 - Mobile: replace the verified vertical selector only when this stage opens, with a CSS scroll-snap horizontal rail that shows a partial next family card. It never auto-scrolls or auto-selects; swipe is optional and direct links/no-JavaScript/keyboard access remain available.
-- Evidence: compact touch/snap/containment, desktop autoplay lifecycle, reduced-motion/data-saving suppression, keyboard, no-JavaScript, axe, repeated-instance isolation, and visual checks at 320/390/768/1024/1440/phone-landscape.
+- Intended files: `website/src/components/home/WagonSwitchyard/{WagonSwitchyard.astro,WagonSwitchyard.types.ts,wagon-switchyard-contract.ts,wagon-switchyard-controller.ts,README.md}`, homepage locale-copy adapters, focused unit/browser tests, H-004 plan/tracker records, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: Node 22.13 `pnpm quality` static stages PASSed (formatting, ESLint, Astro diagnostics, 91 unit tests, production/lab builds, and four foundation tests). Its browser server cannot bind `127.0.0.1:4322` in the unprivileged sandbox (`listen EPERM`), so the aggregate is not green.
+- Live verification: after refresh, the user-visible localhost preview contains zero buttons. It changed `open-box` to `tank` over six seconds; after a direct Open box click, it changed to Tank again over the next six seconds while remaining active.
+- Validation: focused Astro diagnostics (0 errors/warnings/hints) and all 91 unit tests PASS. Focused `WagonSwitchyard` browser evidence PASSes 40/40 with eight expected desktop-only skips, proving uninterrupted looping through hover, focus, and manual selection; reduced-motion/data-saving suppression; no-JavaScript routes; keyboard; repeated instances; responsive containment; axe; and visual baselines. Affected homepage integration PASSes 30/30 across 320/390/768/1024/1440/844×390.
+- Next exact action: await explicit direction before opening E-003 or another approved package.
+
+## Completed package — H-004 wagon-family discovery follow-on
+
+- Status: `IMPLEMENTED`.
+- Contract: retain every server-rendered direct route, existing manual tab selection, isolated instance state, wagon data, and compact no-autoplay CSS scroll-snap rail. At 1024 px and above on a fine pointer, after substantial visibility, loop the selected rail state through all five families at five-second intervals while eligible. Remove all preview controls; direct click/keyboard selection changes the selected family but does not stop automation. Never move focus, scroll the page, navigate, add live announcements, persist state, or collect telemetry.
+- Intended files: `WagonSwitchyard` Astro/types/controller/README, component-lab fixture, focused unit/browser tests and visual references, responsive requirements and tracker records, `STATUS.md`, and `CHANGELOG.md`.
+- Baseline: Node 22.13 `pnpm quality` formatting, lint, Astro diagnostics (0/0/0), 91 unit tests, production/lab builds, and four foundation tests PASS. Its browser server cannot bind `127.0.0.1:4322` under the sandbox (`listen EPERM`), so the aggregate is not green or complete.
+- Evidence checkpoint: preview-control markup, labels, and controller paths are absent. The continuous loop and production-route integration are covered by the passing focused browser suites and direct localhost review above. The repository-wide browser aggregate remains `NOT_RUN` in the unprivileged baseline because of the recorded listener restriction.
 
 ## Scheduled after H-004 — E-003 certificate presentation
 

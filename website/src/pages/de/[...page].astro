@@ -31,10 +31,11 @@ import PageMeta from "../../components/editorial/PageMeta/PageMeta.astro";
 import ContactForm from "../../components/form/ContactForm/ContactForm.astro";
 import ContactCTA from "../../components/home/ContactCTA/ContactCTA.astro";
 import OperationalCaseStudy from "../../components/home/OperationalCaseStudy/OperationalCaseStudy.astro";
+import LoadLimitTable from "../../components/product/LoadLimitTable/LoadLimitTable.astro";
+import SpecificationGroup from "../../components/product/SpecificationGroup/SpecificationGroup.astro";
 import LegalDocument from "../../components/legal/LegalDocument/LegalDocument.astro";
 import ProductPage from "../../layouts/ProductPage.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import TechnologyPage from "../../layouts/TechnologyPage.astro";
 
 export function getStaticPaths() {
   const germanPaths = [
@@ -160,30 +161,24 @@ const product = isProduct
 {
   editorial && (
     <BaseLayout {...editorial.layout}>
-      {page === "engineering-services" ? (
-        <TechnologyPage
-          hero={editorial.hero}
-          stories={editorial.stories}
-          contactCta={editorial.contactCta}
-        />
-      ) : (
-        <>
-          {editorial.pageMeta !== undefined && (
-            <PageMeta {...editorial.pageMeta} />
-          )}
-          <PageHero {...editorial.hero} />
-          {editorial.stories.map((story) => (
-            <MediaStory {...story} />
-          ))}
-          {editorial.caseStudy !== undefined && (
-            <OperationalCaseStudy {...editorial.caseStudy} />
-          )}
-          {editorial.evidence !== undefined && (
-            <EvidenceList {...editorial.evidence} />
-          )}
-          <ContactCTA {...editorial.contactCta} />
-        </>
+      {editorial.pageMeta !== undefined && <PageMeta {...editorial.pageMeta} />}
+      <PageHero {...editorial.hero} />
+      {editorial.stories.map((story) => (
+        <MediaStory {...story} />
+      ))}
+      {editorial.caseStudy !== undefined && (
+        <OperationalCaseStudy {...editorial.caseStudy} />
       )}
+      {editorial.evidence !== undefined && (
+        <EvidenceList {...editorial.evidence} />
+      )}
+      {editorial.specifications !== undefined && (
+        <SpecificationGroup {...editorial.specifications} />
+      )}
+      {editorial.loadLimits !== undefined && (
+        <LoadLimitTable {...editorial.loadLimits} />
+      )}
+      <ContactCTA {...editorial.contactCta} />
     </BaseLayout>
   )
 }

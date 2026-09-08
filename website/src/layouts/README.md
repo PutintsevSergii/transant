@@ -21,11 +21,3 @@ The document has one main landmark. The layout does not add headings, navigation
 ## Evidence
 
 The isolated shell fixture is `/fixtures/base-layout/`. Its deferred focused tests cover metadata uniqueness, valid language, local favicon, shell landmarks/navigation, skip-link focus movement, and axe/overflow/visual evidence at all required widths. Under the authorized ten-package batch, these focused unit/browser/visual and shared-quality checks are accumulated for the A-004 checkpoint; only static safety checks run in this A-001 cycle.
-
-# `TechnologyPage`
-
-`TechnologyPage` is the internal presentation layout retained for the localized Engineering & Services narratives. It consumes the already-adapted hero, five source-bound stories, and the same unmodified `ContactCTA` used by wagon-detail pages; it does not read routes, content collections, environment values, or external research sources. Route assemblers opt into it only for the canonical `engineering-services` page, so the other editorial pages retain their shared `PageHero` and `MediaStory` composition unchanged. The historical internal name does not define a public label or route.
-
-The layout applies the supported structural ideas from the local Stitch V8 reference: a compact technical metadata rail, a focused hero, one dark platform showcase, an internal four-chapter index, and a continuous numbered engineering narrative. It deliberately excludes V8's unsupported metrics, standards, coordinates, status labels, remote assets, outbound destinations, and custom CTA treatment. All images remain optimized local project assets and all actions remain first-party routes or same-page chapter links.
-
-At compact widths the chapter index and every story retain source order in one column. From tablet widths the index becomes a four-column rail; at wide widths illustrated chapters use a bounded text/media split. The layout adds no client controller, and its anchor navigation, content, and imagery remain usable without JavaScript. Reduced-motion mode removes the only image-color transition.

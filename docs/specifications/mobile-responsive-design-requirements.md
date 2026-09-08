@@ -173,9 +173,9 @@ technical supporting labels
 - On selection, update family identity, image, summary, and link atomically. Do not auto-scroll, auto-advance, or unexpectedly move focus.
 - Mobile motion is limited to a short crossfade or small rail-axis displacement. Reduced motion changes state without choreography.
 
-#### 6.3.1 Approved queued compact-carousel follow-on — 2026-09-07
+#### 6.3.1 Implemented compact-carousel follow-on — 2026-09-08
 
-The current vertical rail remains the implemented and verified release behaviour until its separate H-004 follow-on opens. The owner has approved this future compact variation after A-002 Variant A: use a native horizontally scrollable five-family rail with CSS scroll snapping, a visible partial next item, named selectable cards, and direct server-rendered catalogue links. Swiping is optional; it must never auto-scroll, auto-select, move focus, or conceal ordinary no-JavaScript access. Preserve keyboard Arrow Left/Right/Home/End selection after progressive enhancement, 44 px targets, the adjacent active result, stable contained wagon stage, and 320/390 no-overflow evidence. This future rule supersedes the vertical-five-row presentation only for the implemented H-004 follow-on.
+H-004 now uses a native horizontally scrollable five-family rail with CSS scroll snapping, a visible partial named next item, named selectable cards, and direct server-rendered catalogue links. Swiping is optional; it never auto-scrolls, auto-selects, moves focus, or conceals ordinary no-JavaScript access. Keyboard Arrow Left/Right/Home/End selection after progressive enhancement, 44 px targets, the adjacent active result, stable contained wagon stage, and 320/390 no-overflow evidence are preserved. This supersedes the former vertical-five-row presentation for the implemented H-004 follow-on only.
 
 ### 6.4 `ModularPlatformSection` and `RailSequence`
 

@@ -41,6 +41,7 @@ const structuralStringKeys = new Set([
   "fit",
   "icon",
   "kind",
+  "mediaFocus",
   "mediaPosition",
   "measure",
   "publicationStatus",
@@ -134,6 +135,7 @@ export function localizeViewModel<T extends { layout: BaseLayoutProps }>(
       translated.layout.description,
       englishPath,
       locale,
+      "prominent",
     ),
   } as T;
 
