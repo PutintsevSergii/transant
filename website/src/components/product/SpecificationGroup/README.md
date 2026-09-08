@@ -6,6 +6,7 @@
 
 ```ts
 interface SpecificationGroupProps {
+  id?: string;
   title: string;
   headingLevel: 2 | 3;
   source: SourceAttribution;
@@ -17,7 +18,7 @@ interface SpecificationGroupProps {
 }
 ```
 
-The caller provides all title, provenance, and technical strings. `value` is never parsed, reformatted, calculated, or inferred. A source-supplied `unit` is optional; when it is absent, the component displays no empty unit placeholder.
+The caller provides all title, provenance, and technical strings. An optional `id` creates a caller-owned fragment destination, such as an in-page technical-details action. `value` is never parsed, reformatted, calculated, or inferred. A source-supplied `unit` is optional; when it is absent, the component displays no empty unit placeholder.
 
 ## Semantics and accessibility
 

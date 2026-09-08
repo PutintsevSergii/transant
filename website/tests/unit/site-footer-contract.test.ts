@@ -60,4 +60,16 @@ describe("SiteFooter contract", () => {
       }),
     ).toThrow("heading");
   });
+
+  it("accepts an approved affiliation and rejects a blank one", () => {
+    expect(
+      assertSiteFooterProps({
+        ...validProps,
+        affiliation: "Part of TAS Group",
+      }).affiliation,
+    ).toBe("Part of TAS Group");
+    expect(() =>
+      assertSiteFooterProps({ ...validProps, affiliation: " " }),
+    ).toThrow("affiliation");
+  });
 });

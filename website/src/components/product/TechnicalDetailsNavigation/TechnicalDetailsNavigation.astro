@@ -1,0 +1,40 @@
+---
+import type { TechnicalDetailsNavigationProps } from "./TechnicalDetailsNavigation.types";
+
+const {
+  label,
+  navigationLabel,
+  targetId = "technical-details",
+} = Astro.props as TechnicalDetailsNavigationProps;
+---
+
+<nav
+  class="technical-details-navigation page-frame"
+  aria-label={navigationLabel}
+  data-technical-details-navigation
+>
+  <a href={`#${targetId}`} data-technical-details-navigation-link>
+    {label}
+    <span aria-hidden="true">↓</span>
+  </a>
+</nav>
+
+<style>
+  .technical-details-navigation {
+    display: flex;
+    padding-block: 1rem;
+    border-block-end: 1px solid var(--color-divider);
+  }
+
+  .technical-details-navigation a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-block-size: 44px;
+    color: var(--color-brand-blue-dark);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-underline-offset: 0.3em;
+  }
+</style>

@@ -14,6 +14,9 @@ state, environment variables, or global application state.
   postal address lines, telephone number, and email. The component rejects
   blank or malformed values rather than emitting an empty contact destination.
 - `legalLinks` and `copyright` are required caller-owned legal data.
+- `affiliation` is optional caller-approved relationship copy appended to the
+  primary company identity; it does not alter the logo or verified contact
+  record.
 - `localeOptions` is optional and rendered only when at least two explicit
   local locale destinations are supplied. The current release keeps the
   selector in the header so the language switch remains easy to find.

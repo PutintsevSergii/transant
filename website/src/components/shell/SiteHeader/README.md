@@ -25,6 +25,8 @@ browser locations, or global application state.
   render as a native expandable menu, so another approved locale does not
   require a new header layout.
 - `contactAction` is a required native primary `Action` link.
+- `affiliation` is optional caller-approved relationship copy. It keeps the
+  text-only `companyLabel` endorsement separate from the immutable logo.
 - `logoScale` defaults to `default`; the homepage may request `prominent` to
   give the existing immutable brand mark stronger opening-page hierarchy
   without changing the asset, link, or accessible name.
@@ -44,6 +46,11 @@ within the panel, and supports Escape, the close control, navigation selection,
 and outside-pointer close. A user-initiated close returns focus to the trigger.
 Each controller initializes per header root and ignores roots already
 initialized, so independent header fixtures can coexist.
+
+When affiliation is supplied, the compact identity stacks its short
+endorsement beneath the unchanged logo so it cannot collide with the menu
+trigger. Wide layouts retain that compact stack until 1280 px, then place the
+endorsement beside the logo behind a divider.
 
 The production adapter omits Home only on the active localized homepage and
 prepends it everywhere else. Wagons is a native disclosure at every width. Its

@@ -77,10 +77,10 @@ describe("createLocaleOptions", () => {
       { code: "pl", label: "PL" },
       { code: "cs", label: "CZ" },
     ]);
-    expect(createLocaleOptions("/uk/engineering-services/", "uk")[4]).toEqual({
+    expect(createLocaleOptions("/uk/pro-platform-projects/", "uk")[4]).toEqual({
       label: "CZ",
       name: "Čeština",
-      href: "/cs/engineering-services/",
+      href: "/cs/pro-platform-projects/",
       current: false,
     });
   });
@@ -118,7 +118,7 @@ describe("createLocaleOptions", () => {
     });
     expect(navigation[2]).toEqual({
       label: "PRO-Plattformprojekte",
-      href: "/de/engineering-services/",
+      href: "/de/pro-platform-projects/",
     });
   });
 
@@ -157,6 +157,21 @@ describe("createLocaleOptions", () => {
           href: expect.stringContaining("sustainability"),
         }),
       );
+    }
+  });
+
+  it("supplies the approved text-only TAS Group relationship to every localized shell", () => {
+    for (const locale of siteLocales.map(({ code }) => code)) {
+      const layout = createSiteLayout(
+        "Title",
+        "Description",
+        "/company/",
+        locale,
+      );
+      expect(layout.header.affiliation).toEqual({
+        companyLabel: "TAS GROUP COMPANY",
+      });
+      expect(layout.footer.affiliation).toBe("Part of TAS Group");
     }
   });
 });

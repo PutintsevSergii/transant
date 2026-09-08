@@ -7,8 +7,15 @@ import {
 } from "./site-footer-contract";
 import type { SiteFooterProps } from "./SiteFooter.types";
 
-const { groups, contact, legalLinks, copyright, localeOptions, labels } =
-  assertSiteFooterProps(Astro.props as SiteFooterProps);
+const {
+  groups,
+  contact,
+  legalLinks,
+  copyright,
+  affiliation,
+  localeOptions,
+  labels,
+} = assertSiteFooterProps(Astro.props as SiteFooterProps);
 const footerLabels = {
   localeSelection: "Locale selection",
   languages: "Languages",
@@ -33,7 +40,9 @@ const footerLabels = {
         tone="dark"
       />
       <p class="site-footer__company" id="site-footer-company">
-        {contact.companyName}
+        <span>{contact.companyName}</span>
+        {affiliation && <span aria-hidden="true"> · </span>}
+        {affiliation && <span>{affiliation}</span>}
       </p>
     </section>
 

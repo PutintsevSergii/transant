@@ -11,6 +11,7 @@ const {
   localeOptions = [],
   labels = {},
   contactAction,
+  affiliation,
   logoScale = "default",
   sticky = true,
 } = Astro.props as SiteHeaderProps;
@@ -43,15 +44,22 @@ const currentLocale =
 
 <header class={headerClass} data-site-header>
   <div class="site-header__bar page-frame">
-    <BrandLogo
-      src="/brand/transant-logo.png"
-      alt="TransANT"
-      href={homeHref}
-      width={520}
-      height={114}
-      tone="light"
-      priority
-    />
+    <div class="site-header__identity">
+      <BrandLogo
+        src="/brand/transant-logo.png"
+        alt="TransANT"
+        href={homeHref}
+        width={520}
+        height={114}
+        tone="light"
+        priority
+      />
+      {
+        affiliation && (
+          <p class="site-header__company-label">{affiliation.companyLabel}</p>
+        )
+      }
+    </div>
     <button
       class="site-header__trigger"
       type="button"
@@ -233,6 +241,24 @@ const currentLocale =
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
+  }
+
+  .site-header__identity {
+    display: grid;
+    min-inline-size: 0;
+    gap: 0.125rem;
+  }
+
+  .site-header__company-label {
+    margin: 0;
+    color: var(--color-brand-red-dark);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .site-header :global(.brand-logo) {
@@ -519,12 +545,12 @@ const currentLocale =
       pointer-events: none;
     }
 
-    .site-header--logo-prominent :global(.brand-logo) {
-      inline-size: min(15rem, 22vw);
+    .site-header__identity {
+      pointer-events: auto;
     }
 
-    .site-header__bar :global(.brand-logo) {
-      pointer-events: auto;
+    .site-header--logo-prominent :global(.brand-logo) {
+      inline-size: min(15rem, 22vw);
     }
 
     .site-header__panel-content {
@@ -589,6 +615,21 @@ const currentLocale =
 
     .site-header__utilities {
       flex-wrap: nowrap;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .site-header__identity {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .site-header__company-label {
+      max-inline-size: 9rem;
+      padding-inline-start: var(--space-3);
+      border-inline-start: var(--border-thin) solid var(--color-divider);
+      white-space: normal;
     }
   }
 

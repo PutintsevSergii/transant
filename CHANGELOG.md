@@ -1527,3 +1527,119 @@ Append-only handoff log. Add new entries at the end. Never rewrite or delete pri
 - Files: PRO editorial/homepage and locale copy adapters; editorial route assemblers and lab fixture; `MediaStory` and `LoadLimitTable` types, implementations, validation, READMEs, and unit tests; focused homepage/editorial/localization browser contracts; content audit; PRO/homepage visual references; client source/implementation records; tracker; `STATUS.md`; and this log.
 - Validation: focused contracts PASS 4/4; Astro diagnostics PASS with 0 errors/warnings/hints; production build PASSes with 125 pages; content/brand audit PASSes; route integration PASSes (`routes=124 products=10 internal-references=4994`). Focused English component/responsive/keyboard/axe coverage PASSes 48/48 across 320/390/768/1024/1440/844×390. Localized production-route coverage PASSes 18/18 at 320 and 1440. Refreshed then clean PRO-page/homepage visual comparisons PASS 12/12, with direct 320 and 1440 inspection. The aggregate pre-edit `pnpm quality` browser phase was `NOT_RUN` because the visible preview owned port 4322; isolated focused evidence supplies the applicable browser coverage.
 - Continuation: await explicit direction before opening E-003 or another bounded package.
+
+## 2026-09-08 — P-003 — WagonModelList card density
+
+- Outcome: IMPLEMENTED. Reduced copy-region reserved heights and internal gaps so wagon model cards are less tall; long fixture titles remain safe through content-driven expansion.
+- Files: `website/src/components/catalogue/WagonModelList/WagonModelList.astro`, `website/src/components/catalogue/WagonModelList/README.md`, six WagonModelList visual baselines, `docs/specifications/component-implementation-status.md`, `STATUS.md`.
+- Checks: website baseline passed formatting, ESLint, Astro diagnostics, 91 unit tests, both builds, and 4 foundation tests before its known browser port conflict; focused WagonModelList browser evidence passed 30/30 with refreshed visuals; Prettier, Astro check, and `git diff --check` passed. Root `pnpm quality` was NOT_RUN because the repository root has no package manifest.
+- Continuation: await explicit direction before the next bounded package.
+
+## 2026-09-08 — H-004 — Homepage Timber representative
+
+- Outcome: `IMPLEMENTED`. Changed the homepage WagonSwitchyard Timber representative from Snps to the approved Rnoos render shown in the supplied screenshot and synchronized the visible model code to `Rnoos`. The standalone WagonSwitchyard fixture still uses Snps; both timber product pages and all other family data remain unchanged.
+- Files: `website/src/adapters/content/homepage-view-model.ts`, `website/tests/browser/homepage.spec.ts`, tracker, `STATUS.md`, and this log.
+- Validation: Prettier and Astro diagnostics PASS with 0 errors/warnings/hints; focused homepage component/keyboard/responsive/axe/visual evidence PASSes 30/30 across 320/390/768/1024/1440/844×390. Direct interactive inspection confirms the Rnoos end-frame render and `Timber · Rnoos`. Production build PASSes with 125 pages; content/brand audit and route integration PASS (`routes=124 products=10 internal-references=4994`); diff hygiene PASSes. The pre-edit aggregate reached browser setup after passing all static stages but is not claimed green because port 4322 was already occupied.
+- Continuation: await explicit direction before E-003 or another bounded correction.
+
+## 2026-09-08 — A-005 — PRO Platform Projects route correction
+
+- Outcome: `IMPLEMENTED`. Renamed the canonical PRO page from `/engineering-services/` to `/pro-platform-projects/` so the public URL matches the current navigation label. Updated homepage, header, footer, Company-page, locale-switch, and component-lab links across EN/DE/UK/PL/CS. Both `/engineering-services/` and `/technology/`, including localized equivalents, remain permanent redirects to the new route; page content and media are unchanged.
+- Files: editorial/homepage/site-shell view models; Astro and Vercel redirect configuration; release-output, content, route, and deployment contracts; component-lab fixtures; focused unit/browser/foundation tests and renamed visual references; A-005 plan/tracker; `STATUS.md`; and this log.
+- Validation: targeted formatting and ESLint PASS; Astro diagnostics PASS with 0 errors/warnings/hints; all 91 unit tests PASS; production and component-lab builds plus 4 foundation tests PASS. Content/brand, route integration (`routes=124 products=10 internal-references=5004`), and deployment-readiness audits PASS. English editorial/homepage/header browser contracts PASS 6/6 at 320/1440; localized production routes PASS 8/8 at 320/1440; unchanged PRO visual comparisons PASS 6/6 across all six profiles. Live preview checks return 200 for the canonical route and resolve both legacy route families to it in all locales.
+- Known aggregate boundary: the pre-edit `pnpm quality` browser stage was `NOT_RUN` because port 4322 was occupied. A combined component-lab/production browser attempt produced the already-recorded locale-fixture fallback failures; the same localized assertions pass 8/8 against the production preview and are the applicable route evidence.
+- Continuation: await explicit direction before E-003 or another bounded correction.
+
+## 2026-09-08 — A-005 — Company EvidenceList bottom spacing
+
+- Outcome: `IMPLEMENTED`. The compact `EvidenceList` mode used on the Company page now keeps a deliberate 48 px bottom inset beneath its evidence cards. Its compact heading-to-entry transition, evidence content, semantics, standard spacing mode, and all other editorial pages remain unchanged.
+- Files: `website/src/components/editorial/EvidenceList/{EvidenceList.astro,README.md}`, the Company geometry contract in `website/tests/browser/editorial-pages.spec.ts`, six refreshed Company visual references, tracker, `STATUS.md`, and this log.
+- Validation: focused EvidenceList contracts PASS 2/2; Astro diagnostics PASS with 0 errors/warnings/hints; production build PASSes with 125 pages. Company editorial composition and explicit lower-inset geometry PASS 6/6 across 320/390/768/1024/1440/844×390. Refreshed and clean Company visual comparisons PASS 6/6 across the same profiles; 320 and 1440 renders were inspected directly. The pre-edit aggregate reached browser setup after passing all static stages but is not claimed green because port 4322 was occupied.
+- Continuation: await explicit direction before E-003 or another bounded correction.
+## 2026-09-08 — H-004 — Homepage Tank selector asset
+
+- Outcome: `IMPLEMENTED`. The homepage WagonSwitchyard's Tank record now uses the supplied `image001.png` render; the Tank product page and all other selector families retain their prior assets.
+- Files: copied `client-remarks/imgs/image001.png` unchanged to `website/src/assets/images/products/tank/uno-tank-88m3-zacns/image001.png`; updated `website/src/adapters/content/homepage-view-model.ts`, `website/tests/browser/homepage.spec.ts`, tracker, and `STATUS.md`.
+- Asset: source and production copies are 1013 × 596 px, SHA-256 `9142f2963c965255608d6c9d4671aad50815bcdd583cf1461b0d54e143997280`; the exact `image001.png` filename is retained.
+- Validation: pre-edit Node 22.13 `pnpm quality` passed formatting, ESLint, Astro diagnostics (0 errors/warnings/hints), 91 unit tests, both static builds, and 4 foundation tests, then browser execution was `NOT_RUN` because port 4322 was occupied. Post-edit focused Prettier, Astro diagnostics, and production build pass. Focused homepage browser evidence passes 6/6 at 320/390/768/1024/1440/844×390, including Tank selection and its `image001` generated source.
+- Continuation: await explicit direction before remaining H-004 active-rail evidence or another bounded package.
+
+## 2026-09-08 — A-005 — PRO Platform Projects technical-details navigation
+
+- Outcome: `IMPLEMENTED`. Added a server-rendered “Drawings & technical data” action directly below the rich PRO hero. It follows the wagon-page interaction pattern and opens the existing source-backed `#technical-details` Technical specifications section, with the permitted-payload table immediately following; no current or future drawing claim was added.
+- Files: new `TechnicalDetailsNavigation` primitive and README; `ProductPage` refactor preserving wagon behaviour; optional `SpecificationGroup` fragment id and README contract update; PRO editorial view model; English/localized page and fixture assemblers; German translation; focused editorial browser contract; tracker; `STATUS.md`; and this log.
+- Validation: post-edit Prettier, Astro diagnostics (0 errors/warnings/hints), 91 unit tests, production build (125 pages), German generated-output label check, and diff hygiene PASS. The focused component-lab browser suite is `NOT_RUN` because its `127.0.0.1:4322` listener cannot bind. Direct review of `http://localhost:4321/pro-platform-projects/` confirms the 44 px action, unchanged rich hero/story composition, and click destination. State/input validators PASS.
+- Continuation: await explicit direction before reopening this correction; concurrent TAS Group and H-004 work remain untouched.
+
+## 2026-09-08 — H-004 — Homepage Tank selector scale
+
+- Outcome: `IMPLEMENTED`. Added the typed caller-owned `mediaScale: "reduced"` option and applied it only to the homepage Tank family, reducing its new `image001.png` render to 86% of the wagon stage width so it clears adjacent stage elements.
+- Files: `WagonSwitchyard` implementation, types, contract, and README; homepage view model; focused unit and homepage browser contracts; tracker; `STATUS.md`; and this log.
+- Validation: pre-edit Node 22.13 `pnpm quality` passed formatting, ESLint, Astro diagnostics (0 errors/warnings/hints), 91 unit tests, both static builds, and 4 foundation tests, then browser execution was `NOT_RUN` because port 4322 was occupied. Post-edit Prettier, Astro diagnostics, focused WagonSwitchyard unit coverage (2/2), and production build pass. Focused homepage browser geometry passes 6/6 at 320/390/768/1024/1440/844×390 and asserts the selected Tank media is at most 87% of its stage width.
+- Continuation: await explicit direction before remaining H-004 active-rail evidence or another bounded package.
+
+## 2026-09-08 — H-004 — Homepage Tank selector proportional scale
+
+- Outcome: `IMPLEMENTED`. Replaced the insufficient frame-width-only treatment with a Tank-only proportional `scale(0.78)` transformation. The source asset retains its aspect ratio while its visible height is reduced by 22%; the combined frame/transform leaves it at roughly 67% of the stage width.
+- Files: `website/src/components/home/WagonSwitchyard/{WagonSwitchyard.astro,README.md}`, `website/tests/browser/homepage.spec.ts`, tracker, `STATUS.md`, and this log.
+- Validation: Prettier, Astro diagnostics (0 errors/warnings/hints), and the 125-page production build PASS. Focused homepage browser evidence passes 6/6 at 320/390/768/1024/1440/844×390, asserting the transformed Tank media box is at most 68% of its stage width. State/input validators and diff hygiene PASS.
+- Continuation: await explicit direction before remaining H-004 active-rail evidence or another bounded package.
+
+## 2026-09-08 — H-004 — WagonSwitchyard active-rail endpoints
+
+- Outcome: `IMPLEMENTED`. The wide WagonSwitchyard now highlights both sides of a selected middle stop with equal red reach. The route remains bounded: there is no connector before stop 01 and none after stop 05.
+- Files: `website/src/components/home/WagonSwitchyard/{WagonSwitchyard.astro,README.md}`, focused browser geometry contract, tracker, `STATUS.md`, and this log.
+- Validation: targeted Prettier and Astro diagnostics PASS (0 errors/warnings/hints); production build PASSes with 125 pages. Focused component/no-JavaScript/interaction/responsive/axe evidence PASSes 34 checks with 8 expected desktop-preview skips, and visual comparisons PASS 6/6 across 320/390/768/1024/1440/844×390. Direct homepage captures of first, middle, and last selection confirm the requested endpoint behavior.
+- Continuation: H-004 active-rail evidence is complete; preserve the separately authorized concurrent TAS Group batch.
+
+## 2026-09-08 — C-006 / C-007 / H-001 — TAS Group affiliation
+
+- Outcome: `IMPLEMENTED`. Added a restrained, text-only affiliation system: `TAS GROUP COMPANY` beside/beneath the unchanged header logo, `PART OF TAS GROUP` as the homepage hero eyebrow, and `TransAnt GmbH · Part of TAS Group` in the footer identity. The initially considered shell-level affiliation strip was removed before handoff on explicit user feedback because it felt excessive; no strip component or reserved strip spacing remains.
+- Architecture: affiliation data is caller-owned in the shared shell adapter, optional in the typed SiteHeader/SiteFooter APIs, and server-rendered across EN/DE/UK/PL/CS. The footer contract rejects blank relationship copy. The immutable TransANT logo asset, brand line, accessible name, navigation/locale/contact behavior, hero proposition/media, and verified footer contact/legal data are unchanged.
+- Files: `website/src/components/shell/SiteHeader/{SiteHeader.astro,SiteHeader.types.ts,README.md}`; `website/src/components/shell/SiteFooter/{SiteFooter.astro,SiteFooter.types.ts,site-footer-contract.ts,README.md}`; `website/src/components/home/HomeHero/README.md`; shell/homepage/locale content adapters; SiteHeader/SiteFooter component-lab fixtures; focused unit/browser contracts; six-width SiteHeader/SiteFooter/homepage visual references; tracker; `STATUS.md`; and this log. Concurrent H-004 Tank/Timber/rail work in shared homepage files and visual evidence was preserved.
+- Validation: focused shell contracts PASS 14/14; Astro diagnostics PASS with 0 errors/warnings/hints; production build PASSes with 125 pages; content/brand audit PASSes (`logo=fc0a30fff3e99c2a7af66ca78d04af82218a035c0926b11c2d5418d14ac0c985`); route integration PASSes (`routes=124 products=10 internal-references=5009`). Isolated SiteHeader, SiteFooter, and homepage component/no-JavaScript/keyboard/responsive/axe/visual evidence PASSes 104 checks with 4 expected wide-only skips across 320/390/768/1024/1440/844×390; compact/wide renders were inspected directly.
+- Aggregate boundary: the final Node 22.13 `pnpm quality` checkpoint passes Prettier, ESLint, Astro diagnostics, 93 unit tests, both static builds, and 4 foundation tests. Its full browser matrix is not green because localized component-lab paths still fall back to English and full-page snapshots outside the focused batch still expect the former shared shell; the run was stopped after 298 passes, 73 failures, 3 skips, and 5 interrupted tests rather than overwrite unrelated baselines. This does not override the clean focused affiliation evidence.
+- Continuation: await explicit direction before E-003 or another bounded correction.
+
+## 2026-09-08 — P-002 — Wagon-family row density and actions
+
+- Outcome: `IMPLEMENTED`. The Wagons family index now reserves a compact 2:1 contained-media stage, down from 3:2, reducing the wide rows' unused lower field while keeping each render centered. Its five direct family links now use the existing `action--secondary action--regular` outline treatment.
+- Files: `website/src/adapters/content/catalogue-view-model.ts`, `website/src/components/catalogue/WagonFamilyIndex/{WagonFamilyIndex.astro,README.md}`, `website/component-lab/pages/fixtures/wagon-family-index.astro`, `website/tests/browser/wagon-family-index.spec.ts`, six WagonFamilyIndex visual references, tracker, `STATUS.md`, and this log.
+- Validation: baseline `pnpm quality` passed formatting, ESLint, Astro diagnostics, 93 unit tests, both static builds, and four foundation tests; its browser stage is `NOT_RUN` because port 4322 is occupied. Post-edit Prettier, Astro diagnostics (0 errors/warnings/hints), 125-page build, and diff hygiene pass. Isolated `WagonFamilyIndex` component/no-JavaScript/keyboard/responsive/axe/visual evidence passes 36/36 across 320/390/768/1024/1440/844×390; 1440 was visually reviewed. State/input validators pass.
+- Continuation: await explicit direction before reopening P-002; preserve concurrent C-006/C-007/H-001 work.
+
+## 2026-09-08 — P-002 — Wagon-family Tank representative
+
+- Outcome: `IMPLEMENTED`. Replaced only the `/wagons/` Tank-row representative with the approved homepage `image001.png` render. The Tank product page and all other family renders remain unchanged.
+- Files: `website/src/adapters/content/catalogue-view-model.ts`, `website/component-lab/pages/fixtures/wagon-family-index.astro`, `website/tests/browser/wagon-family-index.spec.ts`, one affected WagonFamilyIndex visual reference, tracker, `STATUS.md`, and this log.
+- Validation: baseline `pnpm quality` passes formatting, ESLint, Astro diagnostics, 93 unit tests, both static builds, and four foundation tests; its browser stage is `NOT_RUN` because the sandbox cannot bind port 4322. Post-edit Prettier, Astro diagnostics (0 errors/warnings/hints), production build (125 pages), diff hygiene, and state/input validators pass. Isolated WagonFamilyIndex component/no-JavaScript/keyboard/responsive/axe/visual checks pass 36/36 across 320/390/768/1024/1440/844×390; the 1024 render was inspected directly.
+- Continuation: await explicit direction before reopening P-002.
+
+## 2026-09-08 — P-002 — Wagon-family action treatment
+
+- Outcome: `IMPLEMENTED`. The five direct `/wagons/` family actions now wrap their own content instead of stretching across the copy column, with red text and a matching red outline.
+- Files: `website/src/components/catalogue/WagonFamilyIndex/{WagonFamilyIndex.astro,README.md}`, `website/tests/browser/wagon-family-index.spec.ts`, six WagonFamilyIndex visual references, tracker, `STATUS.md`, and this log.
+- Validation: the required `website/` baseline passes formatting, ESLint, Astro diagnostics, 93 unit tests, both static builds, and four foundation tests; its browser stage is `NOT_RUN` because port 4322 is already occupied. Post-edit Prettier, Astro diagnostics, production build (125 pages), and diff hygiene pass. Isolated WagonFamilyIndex component/no-JavaScript/keyboard/responsive/axe/visual evidence passes 36/36 across 320/390/768/1024/1440/844×390; 1024 was visually reviewed.
+- Continuation: await explicit direction before reopening P-002.
+
+## 2026-09-08 — P-003 — WagonModelList lower inset
+
+- Outcome: `IMPLEMENTED`. Added the requested 48 px lower inset to `.wagon-model-list__items`, so every wagon family page now ends with deliberate space after its final model card.
+- Files: `website/src/components/catalogue/WagonModelList/{WagonModelList.astro,README.md}`, `website/tests/browser/wagon-model-list.spec.ts`, six WagonModelList visual references, tracker, `STATUS.md`, and this log.
+- Validation: the required `website/` baseline passes formatting, ESLint, Astro diagnostics, 93 unit tests, both static builds, and four foundation tests; its browser stage is `NOT_RUN` because port 4322 is already occupied. Post-edit Prettier, Astro diagnostics, production build (125 pages), and diff hygiene pass. Isolated WagonModelList component/keyboard/responsive/axe/visual evidence passes 30/30 across 320/390/768/1024/1440/844×390; 1024 was visually reviewed.
+- Continuation: await explicit direction before reopening P-003.
+
+## 2026-09-08 — A-005 — PRO specialised-equipment media
+
+- Outcome: `IMPLEMENTED`. Added the single transparent render embedded on slide 8 of `client-remarks/Development 09_2025.pptx` to the existing “Specialised equipment” story on `/pro-platform-projects/`. The source calls it the `70ft TimberTop for RCA`, so the accessible alternative identifies the pictured wagon accurately rather than presenting it as PRO; the section copy and all PRO technical claims remain unchanged.
+- Asset and files: `website/src/assets/images/editorial/pro-platform-projects/specialised-equipment.png` is 2860 × 1215 RGBA with SHA-256 `5edba33a86b701f12b3dbd3f51ca850316681ed5adf90869cd04f5e2aed9d749`; updated the PRO editorial view model, DE/UK/PL/CS alternative-text maps, focused editorial browser contract, six PRO visual references, tracker, `STATUS.md`, and this log.
+- Validation: pre-edit state/input validators pass. The Node 22.13 quality baseline passes formatting, ESLint, Astro diagnostics, 93 unit tests, both builds, and four foundation tests; its browser stage is `NOT_RUN` because port 4322 was occupied. Post-edit Astro diagnostics pass with 0 errors/warnings/hints and the 125-page production build passes. Focused editorial component/keyboard/responsive/axe evidence passes 24/24, and refreshed then clean PRO visual comparisons pass 6/6 across 320/390/768/1024/1440/844×390; 320 and 1440 renders were inspected directly.
+- Continuation: preserve this completed correction while the separately active E-003 work continues.
+
+## 2026-09-08 — E-003 — certificate presentation cancelled
+
+- Outcome: `DEFERRED_BY_USER`. The user superseded the implementation request and chose not to change certificate presentation on either the homepage or `/quality/` because the proposed treatment looked worse.
+- Cleanup: removed all attempted E-003 implementation from `EvidenceList`, Quality caller data, localization maps, component-lab fixture, and focused tests; removed the temporary controller, three downloaded local PDFs, two generated first-page previews, and the temporary PDF working directory. Existing certificate cards and official external links are unchanged.
+- Preservation: the separately completed A-005 specialised-equipment media work and all earlier user changes remain intact. The original verified E-003 static EvidenceList contract remains authoritative; the later flip-card concept is retained only as deferred historical context.
+- Validation: targeted Prettier PASS; the unchanged EvidenceList contract PASSes 2/2; Astro diagnostics PASS with 0 errors, warnings, or hints; final state/input validators and diff hygiene PASS. The pre-edit baseline passed formatting, ESLint, Astro diagnostics, 93 unit tests, both builds, and four foundation tests, while the browser aggregate was `NOT_RUN` because port 4322 was occupied.
+- Continuation: await explicit direction; do not reopen certificate animation without a new user request.

@@ -6,6 +6,7 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Engineering solutions for European rail freight":
     "Ingenieurlösungen für den europäischen Schienengüterverkehr",
   "TransAnt GmbH // Linz, Austria": "TransAnt GmbH // Linz, Österreich",
+  "PART OF TAS GROUP": "PART OF TAS GROUP",
   "Engineering solutions for ": "Ingenieurlösungen für den ",
   "European rail freight.": "europäischen Schienengüterverkehr.",
   "TransAnt GmbH is an Austrian TAS Group company founded in Linz in 2020. We develop, market and support freight-wagon solutions for Europe’s standard-gauge network, coordinating requirements, engineering, certification and industrial delivery.":
@@ -106,6 +107,8 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Vehicle gauge, permitted speed, minimum curve radius, brake equipment, and other operating details are listed per model and must be checked for the intended use.":
     "Fahrzeugbegrenzungslinie, zulässige Geschwindigkeit, Mindestbogenradius, Bremsausrüstung und weitere Betriebsdaten sind je Modell aufgeführt und für den vorgesehenen Einsatz zu prüfen.",
   "Drawings and technical data": "Zeichnungen und technische Daten",
+  "Drawings & technical data": "Zeichnungen und technische Daten",
+  "Product sections": "Produktbereiche",
   "Read the catalogue entry as one model-specific record":
     "Den Katalogeintrag als einen modellspezifischen Datensatz lesen",
   "Use the wagon render, technical drawings, specification tables, loading limits, and catalogue notes together. Any printed ambiguity remains visible and requires confirmation with TransANT.":
@@ -676,6 +679,8 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Container, cargo, and loading-scheme compatibility is checked for every project.":
     "Die Kompatibilität von Container, Ladung und Ladeschema wird für jedes Projekt geprüft.",
   "Specialised equipment": "Spezialausrüstung",
+  "Three-quarter development rendering of the 70-foot TimberTop wagon for RCA":
+    "Dreiviertelansicht des Entwicklungsmodells des 70-Fuß-TimberTop-Wagens für RCA",
   "A lightweight carrier for project-specific systems":
     "Ein leichter Träger für projektspezifische Systeme",
   "The platform can serve not only intermodal transport but also as a carrier for specialised technological equipment. The low frame mass leaves more allowance for equipment, working systems, and payload within the wagon’s permitted gross mass.":

@@ -23,6 +23,9 @@ test("@component Homepage composes one shell and every homepage section in sourc
   await expect(page.locator("[data-site-header]")).toHaveClass(
     /site-header--logo-prominent/,
   );
+  await expect(
+    page.locator("[data-site-header] .site-header__company-label"),
+  ).toHaveText("TAS GROUP COMPANY");
   await expect(page.locator("a[href*='/sustainability/']")).toHaveCount(0);
   await expect(page.locator("main")).toHaveCount(1);
   const pageMeta = page.locator("[data-page-meta]");
@@ -35,6 +38,9 @@ test("@component Homepage composes one shell and every homepage section in sourc
   );
   await expect(pageMeta).toHaveAttribute("aria-hidden", "true");
   await expect(page.locator("[data-site-footer]")).toHaveCount(1);
+  await expect(
+    page.locator("[data-site-footer] .site-footer__company"),
+  ).toHaveText("TransAnt GmbH · Part of TAS Group");
   const locale = page.locator(
     "[data-site-header] nav[aria-label='Locale selection']",
   );
@@ -49,6 +55,9 @@ test("@component Homepage composes one shell and every homepage section in sourc
   );
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Engineering solutions for European rail freight.",
+  );
+  await expect(page.locator("[data-home-hero] .home-hero__eyebrow")).toHaveText(
+    "PART OF TAS GROUP",
   );
 
   const sectionOrder = await page
@@ -166,7 +175,7 @@ test("@component Homepage composes one shell and every homepage section in sourc
   await expect(homepageContactActions).toHaveCount(1);
   await expect(homepageContactActions).toHaveAccessibleName("Contact TransANT");
   const engineeringServicesActions = page.locator(
-    "[data-home-hero] a[href='/engineering-services/'], [data-payload-value-section] a[href='/engineering-services/']",
+    "[data-home-hero] a[href='/pro-platform-projects/'], [data-payload-value-section] a[href='/pro-platform-projects/']",
   );
   await expect(engineeringServicesActions).toHaveCount(1);
   await expect(
@@ -178,7 +187,7 @@ test("@component Homepage composes one shell and every homepage section in sourc
     page.locator("[data-payload-value-section]").getByRole("link", {
       name: "Enquire about PRO 60 ft",
     }),
-  ).toHaveAttribute("href", "/engineering-services/");
+  ).toHaveAttribute("href", "/pro-platform-projects/");
   await expect(
     page.locator("[data-payload-value-section]").getByRole("link", {
       name: "Enquire about PRO 60 ft",
@@ -187,6 +196,41 @@ test("@component Homepage composes one shell and every homepage section in sourc
   await expect(
     page.locator("[data-wagon-switchyard-rail] a[href^='/wagons/']"),
   ).toHaveCount(5);
+  const tankTab = page.locator(
+    "[data-wagon-switchyard-tab][data-wagon-family-id='tank']",
+  );
+  await tankTab.click();
+  await expect(
+    page.locator(
+      "[data-wagon-switchyard-panel][data-wagon-family-id='tank'] img",
+    ),
+  ).toHaveAttribute("src", /image001/);
+  const [tankMediaBox, tankStageBox] = await Promise.all([
+    page
+      .locator(
+        "[data-wagon-switchyard-panel][data-wagon-family-id='tank'] [data-responsive-media]",
+      )
+      .boundingBox(),
+    page
+      .locator(
+        "[data-wagon-switchyard-panel][data-wagon-family-id='tank'] [data-wagon-switchyard-stage]",
+      )
+      .boundingBox(),
+  ]);
+  expect(tankMediaBox).not.toBeNull();
+  expect(tankStageBox).not.toBeNull();
+  if (tankMediaBox && tankStageBox) {
+    expect(tankMediaBox.width).toBeLessThanOrEqual(tankStageBox.width * 0.68);
+  }
+  const timberTab = page.locator(
+    "[data-wagon-switchyard-tab][data-wagon-family-id='timber']",
+  );
+  await timberTab.click();
+  await expect(
+    page.locator(
+      "[data-wagon-switchyard-panel][data-wagon-family-id='timber'] .wagon-switchyard__route-meta",
+    ),
+  ).toContainText("Timber · Rnoos");
   expect(errors).toEqual([]);
 });
 
@@ -209,7 +253,7 @@ test("@keyboard Homepage remains directly navigable without JavaScript", async (
   ).toHaveAttribute("href", "/wagons/");
   await expect(
     page.getByRole("link", { name: "Enquire about PRO 60 ft" }),
-  ).toHaveAttribute("href", "/engineering-services/");
+  ).toHaveAttribute("href", "/pro-platform-projects/");
   await page.getByRole("link", { name: "Contact TransANT" }).first().focus();
   await expect(
     page.getByRole("link", { name: "Contact TransANT" }).first(),

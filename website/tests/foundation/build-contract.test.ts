@@ -58,27 +58,30 @@ describe("isolated Astro build contract", () => {
     expect(smoke).toContain('data-fixture="foundation-smoke"');
   });
 
-  it("builds canonical Engineering & Services pages and static legacy redirects", async () => {
+  it("builds canonical PRO Platform Projects pages and static legacy redirects", async () => {
     for (const localePrefix of ["", "de", "uk", "pl", "cs"]) {
       const routeParts = localePrefix ? [localePrefix] : [];
       const canonical = await readFile(
         join(
           productionOutput,
           ...routeParts,
-          "engineering-services",
+          "pro-platform-projects",
           "index.html",
         ),
         "utf8",
       );
-      const redirect = await readFile(
-        join(productionOutput, ...routeParts, "technology", "index.html"),
-        "utf8",
-      );
-      const destination = `${localePrefix ? `/${localePrefix}` : ""}/engineering-services`;
+      const destination = `${localePrefix ? `/${localePrefix}` : ""}/pro-platform-projects`;
 
       expect(canonical).toContain(`${destination}/`);
-      expect(redirect).toContain(destination);
-      expect(redirect).toContain('http-equiv="refresh"');
+      for (const legacySlug of ["engineering-services", "technology"]) {
+        const redirect = await readFile(
+          join(productionOutput, ...routeParts, legacySlug, "index.html"),
+          "utf8",
+        );
+
+        expect(redirect).toContain(destination);
+        expect(redirect).toContain('http-equiv="refresh"');
+      }
     }
   });
 

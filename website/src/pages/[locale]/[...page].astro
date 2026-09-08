@@ -37,6 +37,7 @@ import ContactCTA from "../../components/home/ContactCTA/ContactCTA.astro";
 import OperationalCaseStudy from "../../components/home/OperationalCaseStudy/OperationalCaseStudy.astro";
 import LoadLimitTable from "../../components/product/LoadLimitTable/LoadLimitTable.astro";
 import SpecificationGroup from "../../components/product/SpecificationGroup/SpecificationGroup.astro";
+import TechnicalDetailsNavigation from "../../components/product/TechnicalDetailsNavigation/TechnicalDetailsNavigation.astro";
 import LegalDocument from "../../components/legal/LegalDocument/LegalDocument.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProductPage from "../../layouts/ProductPage.astro";
@@ -177,6 +178,9 @@ const t = (source: string) => translateLocalizedContent(source, locale);
     <BaseLayout {...editorial.layout}>
       {editorial.pageMeta !== undefined && <PageMeta {...editorial.pageMeta} />}
       <PageHero {...editorial.hero} />
+      {editorial.technicalDetailsNavigation !== undefined && (
+        <TechnicalDetailsNavigation {...editorial.technicalDetailsNavigation} />
+      )}
       {editorial.stories.map((story) => (
         <MediaStory {...story} />
       ))}

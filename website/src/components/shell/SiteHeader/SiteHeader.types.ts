@@ -34,6 +34,11 @@ export interface SiteHeaderContactAction {
   readonly href: string;
 }
 
+export interface SiteHeaderAffiliation {
+  /** Compact endorsement displayed with the primary TransANT identity. */
+  readonly companyLabel: string;
+}
+
 export interface SiteHeaderLabels {
   readonly menu?: string;
   readonly closeMenu?: string;
@@ -58,6 +63,8 @@ export interface SiteHeaderProps {
   readonly labels?: SiteHeaderLabels;
   /** Compact inquiry action reused in the wide bar and compact panel. */
   readonly contactAction: SiteHeaderContactAction;
+  /** Optional caller-approved group relationship, separate from the immutable logo. */
+  readonly affiliation?: SiteHeaderAffiliation;
   /** Gives the existing brand mark a larger homepage-led treatment when requested. */
   readonly logoScale?: "default" | "prominent";
   /** Keeps the calm shell visible while a caller scrolls a complete page. */

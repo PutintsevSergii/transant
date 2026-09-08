@@ -36,19 +36,21 @@ describe("I-006 deployment readiness contract", () => {
     expect(routes).toEqual(["/", "/contact/", "/wagons/"]);
   });
 
-  it("excludes legacy service redirects from canonical routes and the sitemap", () => {
+  it("excludes legacy PRO route redirects from canonical routes and the sitemap", () => {
     const routes = canonicalRoutes("/release", [
       "/release/index.html",
+      "/release/pro-platform-projects/index.html",
       "/release/engineering-services/index.html",
       "/release/technology/index.html",
+      "/release/de/pro-platform-projects/index.html",
       "/release/de/engineering-services/index.html",
       "/release/de/technology/index.html",
     ]);
 
     expect(routes).toEqual([
       "/",
-      "/de/engineering-services/",
-      "/engineering-services/",
+      "/de/pro-platform-projects/",
+      "/pro-platform-projects/",
     ]);
   });
 

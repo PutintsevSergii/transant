@@ -51,7 +51,7 @@ test("@locale German homepage keeps switchyard copy in German", async ({
     page.locator("[data-payload-value-section]").getByRole("link", {
       name: "Anfrage zu PRO 60 ft senden",
     }),
-  ).toHaveAttribute("href", "/de/engineering-services/");
+  ).toHaveAttribute("href", "/de/pro-platform-projects/");
   await expect(page.locator("[data-modular-platform-section]")).toContainText(
     "Die Arbeit an einem Wagen beginnt nicht mit der Wahl eines Standardmodells, sondern mit dem Verständnis der tatsächlichen Transportaufgabe.",
   );
@@ -128,7 +128,7 @@ test("@locale German primary navigation renders the destination page", async ({
 test("@locale German PRO platform route uses translated page content", async ({
   page,
 }) => {
-  await page.goto("/de/engineering-services/");
+  await page.goto("/de/pro-platform-projects/");
 
   await expect(page.locator("html")).toHaveAttribute("lang", "de");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
@@ -146,7 +146,7 @@ test("@locale German PRO platform route uses translated page content", async ({
   ).toHaveAttribute("href", "/de/");
   await expect(
     page.locator(
-      "[data-site-header] .site-header__primary-nav a[href='/de/engineering-services/']",
+      "[data-site-header] .site-header__primary-nav a[href='/de/pro-platform-projects/']",
     ),
   ).toHaveAttribute("aria-current", "page");
 });

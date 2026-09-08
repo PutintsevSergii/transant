@@ -105,7 +105,14 @@ const familyTotal = String(families.length).padStart(2, "0");
               <p class="wagon-switchyard__cargo-fit">{family.headline}</p>
             </div>
 
-            <div class="wagon-switchyard__stage" data-wagon-switchyard-stage>
+            <div
+              class:list={{
+                "wagon-switchyard__stage": true,
+                "wagon-switchyard__stage--reduced-media":
+                  family.mediaScale === "reduced",
+              }}
+              data-wagon-switchyard-stage
+            >
               <ResponsiveMedia
                 image={family.image}
                 alt={`${family.familyName} wagon render`}
@@ -449,6 +456,12 @@ const familyTotal = String(families.length).padStart(2, "0");
     inline-size: min(100%, 64rem);
   }
 
+  .wagon-switchyard__stage--reduced-media :global(.responsive-media) {
+    inline-size: min(86%, 55rem);
+    transform: scale(0.78);
+    transform-origin: center;
+  }
+
   .wagon-switchyard__stage :global(img) {
     object-position: center;
     filter: drop-shadow(0 1.25rem 1.5rem rgb(4 19 31 / 38%));
@@ -531,6 +544,13 @@ const familyTotal = String(families.length).padStart(2, "0");
 
     .wagon-switchyard__tab {
       --rail-axis: 1.375rem;
+      --rail-stop-center-inset: calc(
+        var(--space-3) + 0.3125rem - var(--border-thin)
+      );
+      --active-connector-reach: calc(
+        var(--rail-stop-center-inset) + var(--rail-gap) + var(--border-thin) +
+          var(--border-thin)
+      );
 
       grid-template-columns: minmax(0, 1fr);
       grid-template-areas:
@@ -561,8 +581,12 @@ const familyTotal = String(families.length).padStart(2, "0");
     .wagon-switchyard__tab.is-selected::after {
       position: absolute;
       inset-block-start: calc(var(--rail-axis) - 1px);
-      inset-inline-start: 100%;
-      inline-size: var(--rail-gap);
+      inset-inline-start: calc(
+        100% - var(--rail-stop-center-inset) - var(--active-connector-reach)
+      );
+      inline-size: calc(
+        var(--active-connector-reach) + var(--active-connector-reach)
+      );
       block-size: 2px;
       background-color: var(--color-brand-red);
       content: "";
@@ -570,9 +594,19 @@ const familyTotal = String(families.length).padStart(2, "0");
     }
 
     .wagon-switchyard__rail
+      > li:first-child
+      .wagon-switchyard__tab.is-selected::after {
+      inset-inline-start: calc(100% - var(--rail-stop-center-inset));
+      inline-size: var(--active-connector-reach);
+    }
+
+    .wagon-switchyard__rail
       > li:last-child
       .wagon-switchyard__tab.is-selected::after {
-      inset-inline: auto 100%;
+      inset-inline-start: calc(
+        100% - var(--rail-stop-center-inset) - var(--active-connector-reach)
+      );
+      inline-size: var(--active-connector-reach);
     }
 
     .wagon-switchyard__rail > li:first-child .wagon-switchyard__tab::before {
@@ -673,6 +707,12 @@ const familyTotal = String(families.length).padStart(2, "0");
 
     .wagon-switchyard__stage :global(.responsive-media) {
       inline-size: min(88%, 68rem);
+    }
+
+    .wagon-switchyard__stage--reduced-media :global(.responsive-media) {
+      inline-size: min(86%, 55rem);
+      transform: scale(0.78);
+      transform-origin: center;
     }
 
     .wagon-switchyard__detail {

@@ -2,8 +2,8 @@ import transantWagonLogo from "../../assets/images/editorial/transant-wagon-logo
 import flatWagon from "../../assets/images/products/flat/uno-flat-60ft-rens/wagon-render.png";
 import intermodalWagon from "../../assets/images/products/intermodal/uno-intermodal-60ft-sgns/wagon-render.png";
 import openBoxWagon from "../../assets/images/products/open-box/uno-multi-40ft-eanos/wagon-render.png";
-import tankWagon from "../../assets/images/products/tank/uno-tank-88m3-zacns/wagon-render.png";
-import timberWagon from "../../assets/images/products/timber/uno-timber-60ft-snps/wagon-render.png";
+import tankWagon from "../../assets/images/products/tank/uno-tank-88m3-zacns/image001.png";
+import timberWagon from "../../assets/images/products/timber/uno-timber-60ft-rnoos/wagon-render.png";
 import type { ContactCTAProps } from "../../components/home/ContactCTA/ContactCTA.types";
 import type { HomeHeroProps } from "../../components/home/HomeHero/HomeHero.types";
 import type { InnoTransEventProps } from "../../components/home/InnoTransEvent/InnoTransEvent.types";
@@ -16,6 +16,7 @@ import type { BaseLayoutProps } from "../../layouts/BaseLayout.types";
 import {
   createLocaleOptions,
   createPrimaryNavigation,
+  tasGroupAffiliation,
 } from "./site-shell-view-model";
 
 /**
@@ -49,6 +50,7 @@ export const homepageViewModel = {
       navigation: createPrimaryNavigation("/"),
       currentPath: "/",
       localeOptions: createLocaleOptions("/"),
+      affiliation: tasGroupAffiliation.header,
       contactAction: { label: "Contact TransANT", href: "/contact/" },
       logoScale: "prominent",
       sticky: true,
@@ -70,7 +72,7 @@ export const homepageViewModel = {
           links: [
             {
               label: "PRO platform projects",
-              href: "/engineering-services/",
+              href: "/pro-platform-projects/",
             },
             { label: "Projects", href: "/projects/" },
             { label: "Quality and certificates", href: "/quality/" },
@@ -90,6 +92,7 @@ export const homepageViewModel = {
         { label: "Imprint", href: "/imprint/" },
       ],
       copyright: "© TransAnt GmbH",
+      affiliation: tasGroupAffiliation.footer,
     },
   },
   pageMeta: {
@@ -103,7 +106,7 @@ export const homepageViewModel = {
     ],
   },
   hero: {
-    eyebrow: "TransAnt GmbH // Linz, Austria",
+    eyebrow: "PART OF TAS GROUP",
     title: [
       { text: "Engineering solutions for " },
       { text: "European rail freight.", emphasis: true },
@@ -203,7 +206,7 @@ export const homepageViewModel = {
     },
     body: "With a base-platform tare of approximately 16 tonnes, PRO can provide capacity for up to four tonnes of additional cargo compared with a conventional platform of around 20 tonnes, when the route, container or superstructure, and loading scheme permit it.",
     sourceLink: {
-      href: "/engineering-services/",
+      href: "/pro-platform-projects/",
       label: "Enquire about PRO 60 ft",
       variant: "primary",
     },
@@ -267,7 +270,7 @@ export const homepageViewModel = {
         id: "timber",
         sequence: "03",
         familyName: "Timber",
-        modelCode: "Snps",
+        modelCode: "Rnoos",
         headline: "Roundwood & timber",
         summary:
           "High-capacity timber wagons engineered for 3, 4 and 5 m logs, with optimized stanchions that retain roundwood securely without additional tying.",
@@ -297,6 +300,7 @@ export const homepageViewModel = {
         summary:
           "High-capacity tank wagons for chemical, petrochemical and petroleum products, engineered to RID, TSI, GCU, EN and UIC requirements.",
         image: tankWagon,
+        mediaScale: "reduced",
         href: "/wagons/tank/",
         linkLabel: "Explore Tank",
         technicalLabel: "Chemical, petrochemical and petroleum products",

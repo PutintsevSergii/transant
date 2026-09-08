@@ -102,9 +102,10 @@ test("@interaction WagonSwitchyard synchronizes click and complete keyboard sele
     primary.locator("[data-wagon-family-id='flat']").last(),
   ).toContainText("Steel & long cargo");
   if ((page.viewportSize()?.width ?? 0) >= 832) {
-    const [selectedBox, nextBox] = await Promise.all([
+    const [selectedBox, nextBox, stopBox] = await Promise.all([
       primaryTabs.nth(1).boundingBox(),
       primaryTabs.nth(2).boundingBox(),
+      primaryTabs.nth(1).locator(".wagon-switchyard__stop").boundingBox(),
     ]);
     const connectorColours = await Promise.all(
       [0, 1, 2].map((index) =>
@@ -119,15 +120,24 @@ test("@interaction WagonSwitchyard synchronizes click and complete keyboard sele
     expect(connectorColours[1]).not.toBe(connectorColours[2]);
     expect(selectedBox).not.toBeNull();
     expect(nextBox).not.toBeNull();
-    if (selectedBox && nextBox) {
-      const connectorWidth = await primaryTabs
-        .nth(1)
-        .evaluate((element) =>
-          Number.parseFloat(getComputedStyle(element, "::after").width),
-        );
-      const tabGap = nextBox.x - (selectedBox.x + selectedBox.width);
-      expect(connectorWidth).toBeLessThanOrEqual(tabGap + 1);
-      expect(connectorWidth).toBeGreaterThanOrEqual(tabGap - 1);
+    expect(stopBox).not.toBeNull();
+    if (selectedBox && nextBox && stopBox) {
+      const connector = await primaryTabs.nth(1).evaluate((element) => {
+        const style = getComputedStyle(element, "::after");
+        return {
+          left: Number.parseFloat(style.left),
+          width: Number.parseFloat(style.width),
+        };
+      });
+      const connectorStart = selectedBox.x + connector.left;
+      const connectorEnd = connectorStart + connector.width;
+      const stopCenter = stopBox.x + stopBox.width / 2;
+      const leftReach = stopCenter - connectorStart;
+      const rightReach = connectorEnd - stopCenter;
+
+      expect(Math.abs(leftReach - rightReach)).toBeLessThanOrEqual(1);
+      expect(connectorEnd).toBeLessThanOrEqual(nextBox.x + 1);
+      expect(connectorEnd).toBeGreaterThanOrEqual(nextBox.x - 1);
     }
   }
   expect(
@@ -144,8 +154,41 @@ test("@interaction WagonSwitchyard synchronizes click and complete keyboard sele
   await expect(primary).toHaveAttribute("data-active-family", "tank");
   await page.keyboard.press("Home");
   await expect(primary).toHaveAttribute("data-active-family", "intermodal");
+  if ((page.viewportSize()?.width ?? 0) >= 832) {
+    const firstConnector = await primaryTabs.nth(0).evaluate((element) => {
+      const tabBox = element.getBoundingClientRect();
+      const stopBox = element
+        .querySelector(".wagon-switchyard__stop")
+        ?.getBoundingClientRect();
+      const style = getComputedStyle(element, "::after");
+      return {
+        connectorStart: tabBox.x + Number.parseFloat(style.left),
+        stopCenter: stopBox ? stopBox.x + stopBox.width / 2 : Number.NaN,
+      };
+    });
+    expect(
+      Math.abs(firstConnector.connectorStart - firstConnector.stopCenter),
+    ).toBeLessThanOrEqual(1);
+  }
   await page.keyboard.press("ArrowLeft");
   await expect(primary).toHaveAttribute("data-active-family", "tank");
+  if ((page.viewportSize()?.width ?? 0) >= 832) {
+    const lastConnector = await primaryTabs.nth(4).evaluate((element) => {
+      const tabBox = element.getBoundingClientRect();
+      const stopBox = element
+        .querySelector(".wagon-switchyard__stop")
+        ?.getBoundingClientRect();
+      const style = getComputedStyle(element, "::after");
+      const connectorStart = tabBox.x + Number.parseFloat(style.left);
+      return {
+        connectorEnd: connectorStart + Number.parseFloat(style.width),
+        stopCenter: stopBox ? stopBox.x + stopBox.width / 2 : Number.NaN,
+      };
+    });
+    expect(
+      Math.abs(lastConnector.connectorEnd - lastConnector.stopCenter),
+    ).toBeLessThanOrEqual(1);
+  }
   await expect(primary).toHaveAttribute(
     "data-event-ids",
     /flat.*timber.*tank.*intermodal.*tank/,

@@ -4,6 +4,7 @@ import type { WagonModelListProps } from "../../components/catalogue/WagonModelL
 import type { PageHeroProps } from "../../components/editorial/PageHero/PageHero.types";
 import type { PageMetaProps } from "../../components/editorial/PageMeta/PageMeta.types";
 import type { BaseLayoutProps } from "../../layouts/BaseLayout.types";
+import homepageTankWagon from "../../assets/images/products/tank/uno-tank-88m3-zacns/image001.png";
 import { catalogue, wagonMedia } from "./catalogue-data";
 import { createSiteLayout, publicBaseUrl } from "./site-shell-view-model";
 
@@ -72,13 +73,19 @@ export const catalogueIndexViewModel: CatalogueIndexViewModel = {
         throw new Error(`Catalogue family ${family.id} has no model.`);
       }
 
+      const media = wagonMedia(productsById.get(representativeProductId)!);
+
       return {
         id: family.id,
         sequence: String(index + 1).padStart(2, "0"),
         eyebrow: family.tag,
         title: family.name,
         summary: family.description,
-        media: wagonMedia(productsById.get(representativeProductId)!),
+        media: {
+          ...media,
+          ...(family.id === "tank" ? { image: homepageTankWagon } : {}),
+          aspectRatio: "2 / 1",
+        },
         href: `/wagons/${family.slug}/`,
         linkLabel: `View ${family.name} wagons`,
         source: family.source,

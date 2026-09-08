@@ -6,6 +6,11 @@ const websiteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const defaultDistDirectory = join(websiteRoot, "dist");
 
 export const legacyRedirectRoutes = [
+  "/engineering-services/",
+  "/de/engineering-services/",
+  "/uk/engineering-services/",
+  "/pl/engineering-services/",
+  "/cs/engineering-services/",
   "/technology/",
   "/de/technology/",
   "/uk/technology/",

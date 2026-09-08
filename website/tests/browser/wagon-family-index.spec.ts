@@ -39,11 +39,16 @@ test("@component WagonFamilyIndex renders all five source-owned families with di
     );
     await expect(family.getByRole("heading", { level: 3 })).toHaveText(title!);
     await expect(family.getByRole("link")).toHaveAttribute("href", href!);
+    await expect(family.getByRole("link")).toHaveClass(/action--secondary/);
+    await expect(family.getByRole("link")).toHaveClass(/action--regular/);
     await expect(family.locator("img")).toHaveAttribute("src", /_astro\//);
     await expect(family.locator("img")).not.toHaveAttribute(
       "src",
       /https?:\/\//,
     );
+    if (title === "Tank") {
+      await expect(family.locator("img")).toHaveAttribute("src", /image001/);
+    }
   }
   expect(errors).toEqual([]);
 });
@@ -97,27 +102,50 @@ test("@responsive WagonFamilyIndex keeps compact rows uniform and wide rows deli
     );
     const copyBox = await copy.boundingBox();
     const mediaBox = await media.boundingBox();
+    const reservedMediaBox = await media
+      .locator(".responsive-media")
+      .boundingBox();
     const imageBox = await media.locator("img").boundingBox();
     const footerBox = await footer.boundingBox();
     const titleBox = await title.boundingBox();
+    const action = family.getByRole("link");
+    const actionBox = await action.boundingBox();
     expect(copyBox).not.toBeNull();
     expect(mediaBox).not.toBeNull();
     expect(footerBox).not.toBeNull();
+    expect(actionBox).not.toBeNull();
+    expect(actionBox?.width).toBeLessThan((footerBox?.width ?? 0) - 1);
+    expect(
+      await action.evaluate((element) => getComputedStyle(element).justifySelf),
+    ).toBe("start");
+    const actionColors = await action.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return { border: style.borderColor, text: style.color };
+    });
+    expect(actionColors.border).toBe(actionColors.text);
+    const channels = actionColors.text.match(/\d+/g)?.map(Number);
+    expect(channels).toHaveLength(3);
+    expect(channels?.[0]).toBeGreaterThan((channels?.[1] ?? 0) * 3);
+    expect(channels?.[0]).toBeGreaterThan((channels?.[2] ?? 0) * 3);
     if (columns === 1) {
       expect(mediaBox?.y).toBeGreaterThan(copyBox?.y ?? 0);
       expect(footerBox?.y).toBeGreaterThan(mediaBox?.y ?? 0);
     } else {
       expect(columns).toBe(2);
+      expect(
+        await media
+          .locator(".responsive-media")
+          .evaluate((element) => getComputedStyle(element).aspectRatio),
+      ).toBe("2 / 1");
       wideRowHeights.push((await family.boundingBox())?.height ?? 0);
       expect(mediaBox?.y).toBeCloseTo((await root.boundingBox())?.y ?? 0, 0);
       expect(Math.abs((copyBox?.x ?? 0) - (mediaBox?.x ?? 0))).toBeGreaterThan(
         24,
       );
       expect(imageBox?.height).toBeLessThanOrEqual(240);
-      expect((imageBox?.y ?? 0) + (imageBox?.height ?? 0) / 2).toBeCloseTo(
-        (mediaBox?.y ?? 0) + (mediaBox?.height ?? 0) / 2,
-        0,
-      );
+      expect(
+        (reservedMediaBox?.y ?? 0) + (reservedMediaBox?.height ?? 0) / 2,
+      ).toBeCloseTo((mediaBox?.y ?? 0) + (mediaBox?.height ?? 0) / 2, 0);
       if (item % 2 === 0) {
         expect(copyBox?.x).toBeLessThan(mediaBox?.x ?? 0);
       } else {

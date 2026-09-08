@@ -45,11 +45,16 @@ export function requiredVercelConfiguration(config) {
     ),
   );
   for (const [source, destination] of [
-    ["/technology/", "/engineering-services/"],
-    ["/de/technology/", "/de/engineering-services/"],
-    ["/uk/technology/", "/uk/engineering-services/"],
-    ["/pl/technology/", "/pl/engineering-services/"],
-    ["/cs/technology/", "/cs/engineering-services/"],
+    ["/technology/", "/pro-platform-projects/"],
+    ["/de/technology/", "/de/pro-platform-projects/"],
+    ["/uk/technology/", "/uk/pro-platform-projects/"],
+    ["/pl/technology/", "/pl/pro-platform-projects/"],
+    ["/cs/technology/", "/cs/pro-platform-projects/"],
+    ["/engineering-services/", "/pro-platform-projects/"],
+    ["/de/engineering-services/", "/de/pro-platform-projects/"],
+    ["/uk/engineering-services/", "/uk/pro-platform-projects/"],
+    ["/pl/engineering-services/", "/pl/pro-platform-projects/"],
+    ["/cs/engineering-services/", "/cs/pro-platform-projects/"],
   ]) {
     const redirect = redirects.get(source);
     assertion(

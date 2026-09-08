@@ -112,5 +112,17 @@ describe("WagonSwitchyard contract", () => {
     expect(() =>
       validateWagonSwitchyardProps({ ...props, summary: " " }),
     ).toThrow("summary");
+    expect(() =>
+      validateWagonSwitchyardProps({
+        ...props,
+        families: [
+          { ...first, mediaScale: "full" as "reduced" },
+          second,
+          third,
+          fourth,
+          fifth,
+        ],
+      }),
+    ).toThrow("mediaScale");
   });
 });

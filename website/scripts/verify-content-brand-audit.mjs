@@ -237,16 +237,16 @@ export async function auditContentAndBrand({
   );
   assertion(
     !hrefs(allOutput).some((href) =>
-      /\/(?:[a-z]{2}\/)?technology\/?$/u.test(href),
+      /\/(?:[a-z]{2}\/)?(?:technology|engineering-services)\/?$/u.test(href),
     ),
-    "Canonical output links to the retired Technology route.",
+    "Canonical output links to a retired PRO Platform Projects route.",
   );
   for (const route of [
-    "/engineering-services/",
-    "/de/engineering-services/",
-    "/uk/engineering-services/",
-    "/pl/engineering-services/",
-    "/cs/engineering-services/",
+    "/pro-platform-projects/",
+    "/de/pro-platform-projects/",
+    "/uk/pro-platform-projects/",
+    "/pl/pro-platform-projects/",
+    "/cs/pro-platform-projects/",
   ]) {
     await access(documentPath(distDirectory, route), constants.R_OK);
   }
@@ -317,7 +317,7 @@ export async function auditContentAndBrand({
       `${homepage.route} must retain its localized all-wagons action.`,
     );
     assertion(
-      markup.includes(`href="${localePrefix}engineering-services/"`) &&
+      markup.includes(`href="${localePrefix}pro-platform-projects/"`) &&
         markup.includes(homepage.proAction),
       `${homepage.route} must retain its localized PRO-platform-projects action.`,
     );
@@ -386,31 +386,31 @@ export async function auditContentAndBrand({
   }
   for (const proPage of [
     {
-      route: "/engineering-services/",
+      route: "/pro-platform-projects/",
       title: "Lightweight platform for heavy transport tasks",
       proof:
         "High-strength alform® steel and a topologically optimised structure reduce the base platform’s tare to approximately 16 tonnes.",
     },
     {
-      route: "/de/engineering-services/",
+      route: "/de/pro-platform-projects/",
       title: "Leichte Plattform für schwere Transportaufgaben",
       proof:
         "Hochfester alform®-Stahl und eine topologisch optimierte Konstruktion reduzieren das Eigengewicht der Basisplattform auf etwa 16 Tonnen.",
     },
     {
-      route: "/uk/engineering-services/",
+      route: "/uk/pro-platform-projects/",
       title: "Полегшена платформа для важких транспортних завдань",
       proof:
         "Високоміцна сталь alform® і топологічно оптимізована конструкція зменшують власну масу базової платформи приблизно до 16 тонн.",
     },
     {
-      route: "/pl/engineering-services/",
+      route: "/pl/pro-platform-projects/",
       title: "Lekka platforma do ciężkich zadań transportowych",
       proof:
         "Stal alform® o wysokiej wytrzymałości i topologicznie zoptymalizowana konstrukcja zmniejszają masę własną platformy bazowej do około 16 ton.",
     },
     {
-      route: "/cs/engineering-services/",
+      route: "/cs/pro-platform-projects/",
       title: "Lehká plošina pro těžké přepravní úkoly",
       proof:
         "Vysokopevnostní ocel alform® a topologicky optimalizovaná konstrukce snižují vlastní hmotnost základní plošiny přibližně na 16 tun.",

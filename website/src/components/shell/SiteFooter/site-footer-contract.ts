@@ -73,6 +73,9 @@ export function assertSiteFooterProps(props: SiteFooterProps): SiteFooterProps {
   validateContact(props.contact);
   validateLinks(props.legalLinks, "legal");
   if (props.localeOptions) validateLinks(props.localeOptions, "locale");
+  if (props.affiliation !== undefined) {
+    requireText(props.affiliation, "affiliation");
+  }
   requireText(props.copyright, "copyright");
   return props;
 }

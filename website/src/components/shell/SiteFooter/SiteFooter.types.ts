@@ -34,6 +34,8 @@ export interface SiteFooterProps {
   readonly legalLinks: readonly [SiteFooterLink, ...SiteFooterLink[]];
   /** Caller-owned copyright or legal notice. */
   readonly copyright: string;
+  /** Optional caller-approved relationship appended to the company identity. */
+  readonly affiliation?: string;
   /** Optional explicit locale destinations; omitted when no approved locales exist. */
   readonly localeOptions?: readonly [SiteFooterLink, ...SiteFooterLink[]];
   /** Optional caller-owned labels for the shared footer shell. */

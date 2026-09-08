@@ -15,6 +15,9 @@ test("@component SiteFooter renders semantic groups, approved contact links, and
   const footer = page.locator("[data-site-footer]");
   await expect(footer).toHaveCount(1);
   await expect(footer.locator("[data-brand-logo='unlinked']")).toHaveCount(1);
+  await expect(footer.locator(".site-footer__company")).toHaveText(
+    "Component-lab verified contact (test data) · Part of TAS Group",
+  );
   await expect(footer.getByRole("navigation", { name: "Wagons" })).toHaveCount(
     1,
   );

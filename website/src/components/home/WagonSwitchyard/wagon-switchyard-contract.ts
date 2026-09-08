@@ -51,6 +51,11 @@ const assertFamily = (family: WagonFamilySummary): void => {
       "WagonSwitchyard families require build-owned local images.",
     );
   }
+  if (family.mediaScale !== undefined && family.mediaScale !== "reduced") {
+    throw new Error(
+      "WagonSwitchyard mediaScale must be omitted or use the reduced presentation.",
+    );
+  }
   if (
     family.technicalLabel !== undefined &&
     !isNonEmpty(family.technicalLabel)

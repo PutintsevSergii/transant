@@ -25,6 +25,12 @@ const rows: readonly TranslationRow[] = [
     "TransAnt GmbH // Linec, Rakousko",
   ],
   [
+    "PART OF TAS GROUP",
+    "PART OF TAS GROUP",
+    "PART OF TAS GROUP",
+    "PART OF TAS GROUP",
+  ],
+  [
     "Engineering solutions for ",
     "Інженерні рішення для ",
     "Rozwiązania inżynieryjne dla ",
@@ -3308,6 +3314,12 @@ const rows: readonly TranslationRow[] = [
     "Спеціалізоване обладнання",
     "Wyposażenie specjalistyczne",
     "Specializované vybavení",
+  ],
+  [
+    "Three-quarter development rendering of the 70-foot TimberTop wagon for RCA",
+    "Тривимірне зображення розробки 70-футового вагона TimberTop для RCA у ракурсі три чверті",
+    "Trójwymiarowa wizualizacja projektowa 70-stopowego wagonu TimberTop dla RCA w ujęciu trzy czwarte",
+    "Tříčtvrteční vývojová vizualizace 70stopého vozu TimberTop pro RCA",
   ],
   [
     "A lightweight carrier for project-specific systems",

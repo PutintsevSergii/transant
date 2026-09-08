@@ -11,6 +11,8 @@ export interface SpecificationRow {
 }
 
 export interface SpecificationGroupProps {
+  /** Optional fragment destination for a page-level technical-details action. */
+  readonly id?: string;
   /** Caller-owned group heading; product-page outline ownership stays with the caller. */
   readonly title: string;
   /** The caller selects the semantic document-outline rank. */

@@ -7,13 +7,13 @@ const props = {
   language: "en-GB",
   title: "Engineering & Services",
   description: "A page-specific TransANT technology summary.",
-  canonicalUrl: "https://www.transant.test/engineering-services/",
+  canonicalUrl: "https://www.transant.test/pro-platform-projects/",
   header: {
     homeHref: "/",
     navigation: [
-      { label: "Engineering & Services", href: "/engineering-services/" },
+      { label: "PRO platform projects", href: "/pro-platform-projects/" },
     ],
-    currentPath: "/engineering-services/",
+    currentPath: "/pro-platform-projects/",
     localeOptions: [{ label: "EN", href: "/", current: true }],
     contactAction: { label: "Contact", href: "/contact/" },
   },
@@ -44,7 +44,7 @@ describe("BaseLayout contract", () => {
     [{ ...props, language: "english" }],
     [{ ...props, title: " " }],
     [{ ...props, description: " " }],
-    [{ ...props, canonicalUrl: "/engineering-services/" }],
+    [{ ...props, canonicalUrl: "/pro-platform-projects/" }],
     [{ ...props, faviconHref: "https://example.test/icon.png" }],
   ])("rejects incomplete or non-local document data", (invalidProps) => {
     expect(() => assertBaseLayoutProps(invalidProps)).toThrow();

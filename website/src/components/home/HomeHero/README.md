@@ -5,6 +5,8 @@
 ## API
 
 - `eyebrow`, `title`, and `summary` provide the source-ordered proposition. `title` is an ordered set of text segments; set `emphasis: true` only for the deliberate red treatment.
+- The production homepage uses the caller-owned eyebrow `PART OF TAS GROUP` as
+  its hero-level affiliation signal; the component itself remains copy-agnostic.
 - `primaryAction` is a required `ActionLinkProps`; `secondaryLink` is an optional, separate `ActionLinkProps`.
 - `media` accepts the public `ResponsiveMedia` contract except loading/priority. The hero fixes it to eager/high priority because it is the opening local railway image.
 - `mediaFocus` defaults to the established right-biased railway crop. Callers may choose `center` when an approved cover asset has essential content around its central axis. A caller that supplies `media.fit: "contain"` opts into the complete-image presentation instead of a crop.

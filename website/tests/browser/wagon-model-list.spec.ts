@@ -128,6 +128,11 @@ test("@responsive WagonModelList keeps single-column compact models and adds a c
   const cards = list.locator("[data-wagon-model-list-item]");
   const items = list.locator("[data-wagon-model-list-items]");
   await expectNoPageOverflow(page);
+  expect(
+    await items.evaluate((element) =>
+      Number.parseFloat(getComputedStyle(element).paddingBlockEnd),
+    ),
+  ).toBe(48);
   const columns = await items.evaluate(
     (element) =>
       getComputedStyle(element).gridTemplateColumns.split(" ").filter(Boolean)

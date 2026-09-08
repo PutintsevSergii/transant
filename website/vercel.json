@@ -8,27 +8,52 @@
   "redirects": [
     {
       "source": "/technology/",
-      "destination": "/engineering-services/",
+      "destination": "/pro-platform-projects/",
       "permanent": true
     },
     {
       "source": "/de/technology/",
-      "destination": "/de/engineering-services/",
+      "destination": "/de/pro-platform-projects/",
       "permanent": true
     },
     {
       "source": "/uk/technology/",
-      "destination": "/uk/engineering-services/",
+      "destination": "/uk/pro-platform-projects/",
       "permanent": true
     },
     {
       "source": "/pl/technology/",
-      "destination": "/pl/engineering-services/",
+      "destination": "/pl/pro-platform-projects/",
       "permanent": true
     },
     {
       "source": "/cs/technology/",
-      "destination": "/cs/engineering-services/",
+      "destination": "/cs/pro-platform-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/engineering-services/",
+      "destination": "/pro-platform-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/de/engineering-services/",
+      "destination": "/de/pro-platform-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/uk/engineering-services/",
+      "destination": "/uk/pro-platform-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/pl/engineering-services/",
+      "destination": "/pl/pro-platform-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/cs/engineering-services/",
+      "destination": "/cs/pro-platform-projects/",
       "permanent": true
     }
   ],

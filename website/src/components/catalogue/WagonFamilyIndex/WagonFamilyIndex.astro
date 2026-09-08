@@ -48,7 +48,7 @@ const rootClass = `wagon-family-index${props.intro ? " wagon-family-index--with-
               <footer class="wagon-family-index__footer">
                 <Action
                   kind="link"
-                  variant="text"
+                  variant="secondary"
                   size="regular"
                   icon="arrow-right"
                   href={family.href}
@@ -192,6 +192,7 @@ const rootClass = `wagon-family-index${props.intro ? " wagon-family-index--with-
 
   .wagon-family-index__media :global(.responsive-media) {
     inline-size: 100%;
+    align-self: center;
   }
 
   .wagon-family-index__media :global(.responsive-media img) {
@@ -206,8 +207,21 @@ const rootClass = `wagon-family-index${props.intro ? " wagon-family-index--with-
   }
 
   .wagon-family-index__footer :global(.action) {
+    justify-self: start;
     justify-content: flex-start;
     text-align: start;
+  }
+
+  .wagon-family-index__footer :global(.action--secondary) {
+    --action-foreground: var(--color-brand-red-dark);
+    border-color: var(--color-brand-red-dark);
+    background: transparent;
+  }
+
+  .wagon-family-index__footer :global(.action--secondary:hover:not(:disabled)) {
+    --action-foreground: var(--color-brand-red);
+    border-color: var(--color-brand-red);
+    background: transparent;
   }
 
   @container (min-width: 56rem) {

@@ -98,7 +98,7 @@ for (const locale of locales) {
       page.locator("[data-payload-value-section]").getByRole("link", {
         name: locale.proAction,
       }),
-    ).toHaveAttribute("href", `/${locale.code}/engineering-services/`);
+    ).toHaveAttribute("href", `/${locale.code}/pro-platform-projects/`);
     const event = page.locator("[data-innotrans-event]");
     await expect(event.getByRole("heading", { level: 2 })).toHaveText(
       locale.eventHeading,
@@ -127,7 +127,7 @@ for (const locale of locales) {
       ),
     ).toHaveCount(0);
 
-    await page.goto(`/${locale.code}/engineering-services/`);
+    await page.goto(`/${locale.code}/pro-platform-projects/`);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
       locale.proTitle,
     );
@@ -136,7 +136,7 @@ for (const locale of locales) {
     ).toHaveCount(1);
     await expect(
       page.locator(
-        `[data-site-header] .site-header__primary-nav a[href='/${locale.code}/engineering-services/']`,
+        `[data-site-header] .site-header__primary-nav a[href='/${locale.code}/pro-platform-projects/']`,
       ),
     ).toHaveAttribute("aria-current", "page");
     await expect(

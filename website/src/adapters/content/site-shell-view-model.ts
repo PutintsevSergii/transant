@@ -7,6 +7,12 @@ import type { BaseLayoutProps } from "../../layouts/BaseLayout.types";
 import { catalogue } from "./catalogue-data";
 
 export const publicBaseUrl = "https://www.transant.com";
+export const tasGroupAffiliation = {
+  header: {
+    companyLabel: "TAS GROUP COMPANY",
+  },
+  footer: "Part of TAS Group",
+} as const;
 const [firstFamily, ...remainingFamilies] = catalogue.families;
 
 if (!firstFamily) {
@@ -280,7 +286,7 @@ export function createPrimaryNavigation(
     },
     {
       label: copy.engineeringServices,
-      href: route("/engineering-services/"),
+      href: route("/pro-platform-projects/"),
     },
     { label: copy.company, href: route("/company/") },
   ];
@@ -309,6 +315,7 @@ export function createSiteLayout(
       currentPath: route(canonicalPath),
       localeOptions: createLocaleOptions(canonicalPath, locale),
       labels: copy.headerLabels,
+      affiliation: tasGroupAffiliation.header,
       logoScale,
       contactAction: {
         label: copy.contactAction,
@@ -332,7 +339,7 @@ export function createSiteLayout(
           links: [
             {
               label: copy.engineeringServices,
-              href: route("/engineering-services/"),
+              href: route("/pro-platform-projects/"),
             },
             { label: copy.projects, href: route("/projects/") },
             {
@@ -355,6 +362,7 @@ export function createSiteLayout(
         { label: copy.imprint, href: route("/imprint/") },
       ],
       copyright: "© TransAnt GmbH",
+      affiliation: tasGroupAffiliation.footer,
       labels: copy.footerLabels,
     },
   };

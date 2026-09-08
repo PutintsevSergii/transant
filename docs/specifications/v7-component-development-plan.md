@@ -597,7 +597,7 @@ Generate all product routes from one template using `ProductHero`, `CargoFit`, `
 
 ### A-005 — editorial pages
 
-Assemble Engineering & Services, Projects/References, Company, and Quality pages from `PageHero`, `MediaStory`, `EvidenceList`, `OperationalCaseStudy`, and `ContactCTA`. Engineering & Services is canonical at `/engineering-services/`; `/technology/` is retained only as a permanent legacy redirect. Never force a homepage component into a page when its information model does not fit. Sustainability is not a release-one route.
+Assemble PRO Platform Projects, Projects/References, Company, and Quality pages from `PageHero`, `MediaStory`, `EvidenceList`, `OperationalCaseStudy`, and `ContactCTA`. PRO Platform Projects is canonical at `/pro-platform-projects/`; `/engineering-services/` and `/technology/` are retained only as permanent legacy redirects. Never force a homepage component into a page when its information model does not fit. Sustainability is not a release-one route.
 
 ### A-006 — contact, legal, and system pages
 

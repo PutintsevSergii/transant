@@ -8,7 +8,7 @@ validateSpecificationGroupProps(props);
 const Heading = `h${props.headingLevel}` as "h2" | "h3";
 ---
 
-<section class="specification-group" data-specification-group>
+<section class="specification-group" id={props.id} data-specification-group>
   <div class="specification-group__frame page-frame">
     <div class="specification-group__heading">
       <Heading>{props.title}</Heading>

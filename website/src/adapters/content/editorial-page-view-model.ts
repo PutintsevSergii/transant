@@ -5,6 +5,7 @@ import companyProPlatform from "../../assets/images/editorial/company-pro-platfo
 import companyUnoIntermodal from "../../assets/images/editorial/company-uno-intermodal.jpeg";
 import companyWagonCoupling from "../../assets/images/editorial/company-wagon-coupling.jpg";
 import companyWagonLogo from "../../assets/images/editorial/company-wagon-logo.jpg";
+import specialisedEquipment from "../../assets/images/editorial/pro-platform-projects/specialised-equipment.png";
 import type { EvidenceListProps } from "../../components/editorial/EvidenceList/EvidenceList.types";
 import type { MediaStoryProps } from "../../components/editorial/MediaStory/MediaStory.types";
 import type { PageHeroProps } from "../../components/editorial/PageHero/PageHero.types";
@@ -13,11 +14,12 @@ import type { ContactCTAProps } from "../../components/home/ContactCTA/ContactCT
 import type { OperationalCaseStudyProps } from "../../components/home/OperationalCaseStudy/OperationalCaseStudy.types";
 import type { LoadLimitTableProps } from "../../components/product/LoadLimitTable/LoadLimitTable.types";
 import type { SpecificationGroupProps } from "../../components/product/SpecificationGroup/SpecificationGroup.types";
+import type { TechnicalDetailsNavigationProps } from "../../components/product/TechnicalDetailsNavigation/TechnicalDetailsNavigation.types";
 import type { BaseLayoutProps } from "../../layouts/BaseLayout.types";
 import { createSiteLayout } from "./site-shell-view-model";
 
 export const editorialPageSlugs = [
-  "engineering-services",
+  "pro-platform-projects",
   "projects",
   "company",
   "quality",
@@ -32,6 +34,7 @@ export interface EditorialPageViewModel {
   readonly stories: readonly MediaStoryProps[];
   readonly evidence?: EvidenceListProps;
   readonly caseStudy?: OperationalCaseStudyProps;
+  readonly technicalDetailsNavigation?: TechnicalDetailsNavigationProps;
   readonly specifications?: SpecificationGroupProps;
   readonly loadLimits?: LoadLimitTableProps;
   readonly contactCta: ContactCTAProps;
@@ -61,11 +64,11 @@ const evidenceLabels = {
 } as const;
 
 const editorialPages = {
-  "engineering-services": {
+  "pro-platform-projects": {
     layout: createSiteLayout(
       "PRO INTERMODAL 60 ft",
       "A lightweight four-axle Sgns platform for 20, 30 and 40 ft ISO containers and specialised equipment.",
-      "/engineering-services/",
+      "/pro-platform-projects/",
     ),
     hero: {
       eyebrow: "PRO INTERMODAL 60 ft // Sgns",
@@ -91,6 +94,10 @@ const editorialPages = {
         "Up to 73.5 t payload on class D lines",
         "24 foldable container pins",
       ],
+    },
+    technicalDetailsNavigation: {
+      label: "Drawings & technical data",
+      navigationLabel: "Product sections",
     },
     stories: [
       {
@@ -189,6 +196,14 @@ const editorialPages = {
         ],
         headingLevel: 2,
         theme: "light",
+        media: {
+          image: specialisedEquipment,
+          alt: "Three-quarter development rendering of the 70-foot TimberTop wagon for RCA",
+          sizes: "(min-width: 58rem) 50vw, 100vw",
+          fit: "contain",
+          aspectRatio: "4 / 3",
+        },
+        mediaPosition: "after",
       },
       {
         eyebrow: "Confirmed operation",
@@ -204,6 +219,7 @@ const editorialPages = {
       },
     ],
     specifications: {
+      id: "technical-details",
       title: "Technical specifications",
       headingLevel: 2,
       source: proIntermodalSource,
@@ -337,7 +353,7 @@ const editorialPages = {
       action: { href: "/contact/", label: "Discuss a transport task" },
       supportingLinks: [
         {
-          href: "/engineering-services/",
+          href: "/pro-platform-projects/",
           label: "Explore PRO platform projects",
         },
       ],
@@ -457,7 +473,7 @@ const editorialPages = {
         },
         mediaPosition: "before",
         action: {
-          href: "/engineering-services/",
+          href: "/pro-platform-projects/",
           label: "Explore PRO platform projects",
         },
       },

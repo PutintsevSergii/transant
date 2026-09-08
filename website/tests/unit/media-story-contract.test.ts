@@ -25,7 +25,7 @@ const validProps = (): MediaStoryProps => ({
     aspectRatio: "16 / 10",
   },
   action: {
-    href: "/engineering-services/",
+    href: "/pro-platform-projects/",
     label: "Explore Engineering & Services",
   },
 });

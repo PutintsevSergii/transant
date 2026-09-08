@@ -9,7 +9,7 @@ import {
 
 const pages = [
   {
-    slug: "engineering-services",
+    slug: "pro-platform-projects",
     title: "Lightweight platform for heavy transport tasks",
   },
   {
@@ -54,7 +54,7 @@ test("@component Editorial pages compose only source-bound page sections", async
   await expect(page.locator("[data-operational-case-study]")).toHaveCount(1);
   await expect(page.locator("[data-evidence-list]")).toHaveCount(0);
 
-  await page.goto("/fixtures/editorial/engineering-services/");
+  await page.goto("/fixtures/editorial/pro-platform-projects/");
   const proMeta = page.locator("[data-page-meta]");
   await expect(proMeta).toHaveCount(1);
   await expect(proMeta.locator("[data-page-meta-label]")).toHaveText(
@@ -64,6 +64,18 @@ test("@component Editorial pages compose only source-bound page sections", async
     "Approx. 16 t base-platform tare / Up to 4 t additional payload potential / Up to 73.5 t payload on class D lines / 24 foldable container pins",
   );
   await expect(page.locator("[data-media-story]")).toHaveCount(7);
+  const proTechnicalNavigation = page.locator(
+    "[data-technical-details-navigation]",
+  );
+  await expect(proTechnicalNavigation).toHaveCount(1);
+  const proTechnicalAction = proTechnicalNavigation.getByRole("link", {
+    name: "Drawings & technical data",
+  });
+  await expect(proTechnicalAction).toHaveAttribute(
+    "href",
+    "#technical-details",
+  );
+  await expect(proTechnicalAction).toHaveCSS("min-height", "44px");
   await expect(
     page.getByRole("heading", {
       name: "Approximately 16 tonnes of base-platform tare",
@@ -71,6 +83,10 @@ test("@component Editorial pages compose only source-bound page sections", async
   ).toBeVisible();
   await expect(page.locator("[data-specification-group]")).toContainText(
     "19,740 mm with A-buffers / 19,830 mm with L-buffers",
+  );
+  await expect(page.locator("#technical-details")).toHaveAttribute(
+    "data-specification-group",
+    "",
   );
   await expect(page.locator("[data-load-limit-table]")).toContainText("73.5");
   await expect(
@@ -85,7 +101,24 @@ test("@component Editorial pages compose only source-bound page sections", async
   await expect(
     page.locator("[data-media-story][data-media-story-theme='light']"),
   ).toHaveCount(3);
-  await expect(page.locator("[data-media-story-media]")).toHaveCount(2);
+  await expect(page.locator("[data-media-story-media]")).toHaveCount(3);
+  const specialisedEquipmentStory = page.locator(
+    "[data-media-story]:has(img[src*='specialised-equipment'])",
+  );
+  await expect(specialisedEquipmentStory).toHaveCount(1);
+  await expect(specialisedEquipmentStory).toContainText(
+    "Specialised equipment",
+  );
+  await expect(
+    specialisedEquipmentStory.locator("img[src*='specialised-equipment']"),
+  ).toHaveCount(1);
+  await expect(specialisedEquipmentStory.locator("img")).toHaveAttribute(
+    "alt",
+    "Three-quarter development rendering of the 70-foot TimberTop wagon for RCA",
+  );
+  await expect(
+    specialisedEquipmentStory.locator("[data-responsive-media]"),
+  ).toHaveAttribute("data-responsive-media-fit", "contain");
   await expect(
     page.locator("[data-page-hero] img[src*='company-pro-platform']"),
   ).toHaveCount(1);
@@ -199,7 +232,8 @@ test("@component Editorial pages compose only source-bound page sections", async
     (companyEvidenceBox?.y ?? 0) +
     (companyEvidenceBox?.height ?? 0) -
     ((companyEvidenceEntries?.y ?? 0) + (companyEvidenceEntries?.height ?? 0));
-  expect(companyEvidenceBottomGap).toBeLessThanOrEqual(1);
+  expect(companyEvidenceBottomGap).toBeGreaterThanOrEqual(48);
+  expect(companyEvidenceBottomGap).toBeLessThanOrEqual(49);
 
   await page.goto("/fixtures/editorial/quality/");
   await expect(page.locator("[data-evidence-list-entry]")).toHaveCount(2);
@@ -215,7 +249,9 @@ test("@keyboard Editorial pages retain direct contact navigation without JavaScr
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto(`${browserBaseUrl}/fixtures/editorial/engineering-services/`);
+  await page.goto(
+    `${browserBaseUrl}/fixtures/editorial/pro-platform-projects/`,
+  );
 
   const contact = page
     .getByRole("link", { name: "Enquire about PRO 60 ft" })
@@ -225,13 +261,23 @@ test("@keyboard Editorial pages retain direct contact navigation without JavaScr
   await expect(contact).toHaveAttribute("href", "/contact/");
   expect((await contact.boundingBox())?.height).toBeGreaterThanOrEqual(44);
 
+  const technicalAction = page.getByRole("link", {
+    name: "Drawings & technical data",
+  });
+  await technicalAction.focus();
+  await expect(technicalAction).toBeFocused();
+  await expect(technicalAction).toHaveAttribute("href", "#technical-details");
+  expect((await technicalAction.boundingBox())?.height).toBeGreaterThanOrEqual(
+    44,
+  );
+
   await context.close();
 });
 
 test("@responsive Editorial pages preserve source order and page containment", async ({
   page,
 }) => {
-  await page.goto("/fixtures/editorial/engineering-services/");
+  await page.goto("/fixtures/editorial/pro-platform-projects/");
   const hero = page.locator("[data-page-hero]");
   await expect(hero.locator("[data-page-hero-frame]")).toHaveCSS(
     "padding-top",
@@ -290,7 +336,7 @@ test("@responsive Editorial pages preserve source order and page containment", a
   expect(await pageHeroTypography()).toEqual(proHeroTypography);
   expect(await pageHeroLayout()).toEqual(proHeroLayout);
 
-  await page.goto("/fixtures/editorial/engineering-services/");
+  await page.goto("/fixtures/editorial/pro-platform-projects/");
   const contact = page.locator("[data-contact-cta]");
   const [heroBox, firstStoryBox, contactBox] = await Promise.all([
     hero.boundingBox(),

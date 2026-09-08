@@ -16,6 +16,8 @@ export interface WagonFamilySummary {
   readonly summary: string;
   /** Build-owned wagon image imported from `src/assets/`. */
   readonly image: ImageMetadata;
+  /** Optional caller-owned stage scale for an unusually tall or wide render. */
+  readonly mediaScale?: "reduced";
   /** Direct family catalogue destination; it remains usable without JavaScript. */
   readonly href: string;
   /** Visible, caller-owned label for the direct family route. */

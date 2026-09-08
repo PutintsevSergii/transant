@@ -16,7 +16,7 @@ const navigation = [
       { label: "Tank", href: "#tank" },
     ],
   },
-  { label: "PRO platform projects", href: "/engineering-services/" },
+  { label: "PRO platform projects", href: "/pro-platform-projects/" },
   { label: "Company", href: "/company/" },
 ];
 
@@ -34,8 +34,11 @@ const localeOptions = [
     id="site-header-primary"
     homeHref="/"
     navigation={navigation}
-    currentPath="/engineering-services/"
+    currentPath="/pro-platform-projects/"
     localeOptions={localeOptions}
+    affiliation={{
+      companyLabel: "TAS GROUP COMPANY",
+    }}
     contactAction={{ label: "Talk to an engineer", href: "/contact/" }}
   />
   <main class="site-header-fixture page-frame" data-header-fixture-main>

@@ -7,7 +7,8 @@ import {
 } from "./support/page-contract";
 
 const browserBaseUrl =
-  process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:4322";
+  process.env.PLAYWRIGHT_BASE_URL ??
+  `http://127.0.0.1:${process.env.PLAYWRIGHT_PORT ?? "4322"}`;
 
 test("@component SiteHeader renders navigation, current routes, locales, and the immutable logo", async ({
   page,
@@ -18,7 +19,7 @@ test("@component SiteHeader renders navigation, current routes, locales, and the
   const header = page.locator("[data-site-header]");
   const logo = header.getByRole("link", { name: "TransANT" });
   const nav = header.locator("nav[aria-label='Primary navigation']");
-  const currentLink = nav.locator("a[href='/engineering-services/']");
+  const currentLink = nav.locator("a[href='/pro-platform-projects/']");
   const wagonGroup = nav.locator("[data-header-navigation-group]");
   const locale = header.locator("nav[aria-label='Locale selection']");
 
@@ -30,6 +31,9 @@ test("@component SiteHeader renders navigation, current routes, locales, and the
   await expect(logo.locator("img")).toHaveAttribute(
     "src",
     "/brand/transant-logo.png",
+  );
+  await expect(header.locator(".site-header__company-label")).toHaveText(
+    "TAS GROUP COMPANY",
   );
   await expect(nav.locator("a")).toHaveCount(9);
   await expect(nav.locator("a[href='/']", { hasText: /^Home$/u })).toHaveCount(
@@ -88,7 +92,7 @@ test("@no-js SiteHeader retains visible primary links without JavaScript", async
   await expect(
     noJavaScriptPage
       .getByRole("navigation", { name: "Primary navigation" })
-      .getByRole("link", { name: "Engineering & Services" }),
+      .getByRole("link", { name: "PRO platform projects" }),
   ).toBeVisible();
   await noJavaScriptPage
     .locator("[data-header-navigation-group] summary")
@@ -100,7 +104,7 @@ test("@no-js SiteHeader retains visible primary links without JavaScript", async
     noJavaScriptPage.locator("a[href='/sustainability/']"),
   ).toHaveCount(0);
   await expect(
-    noJavaScriptPage.getByRole("link", { name: "Talk to an engineer" }),
+    noJavaScriptPage.locator("[data-site-header] a[href='/contact/']"),
   ).toBeVisible();
   await context.close();
 });
@@ -113,12 +117,13 @@ test("@responsive SiteHeader preserves compact and wide containment", async ({
 
   const header = page.locator("[data-site-header]");
   const trigger = header.getByRole("button", { name: "Menu", exact: true });
+  await expect(header.locator(".site-header__company-label")).toBeVisible();
   if ((page.viewportSize()?.width ?? 0) < 1024) {
     await expect(trigger).toBeVisible();
   } else {
     await expect(trigger).toBeHidden();
     await expect(
-      header.getByRole("link", { name: "Engineering & Services" }),
+      header.getByRole("link", { name: "PRO platform projects" }),
     ).toBeVisible();
     await expect(header.locator("a[href='/sustainability/']")).toHaveCount(0);
   }
