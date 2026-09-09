@@ -442,6 +442,53 @@ test("@a11y WagonSwitchyard has no serious or critical axe violations", async ({
   ).toEqual([]);
 });
 
+test("@responsive WagonSwitchyard keeps every action inside the result stage in a short desktop viewport", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "chromium-1440",
+    "The client-sized desktop geometry needs one deterministic browser profile.",
+  );
+  await page.setViewportSize({ width: 1200, height: 675 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/fixtures/wagon-switchyard/");
+  const primary = page.locator(primarySelector).first();
+
+  for (const id of ["intermodal", "flat", "timber", "open-box", "tank"]) {
+    await primary
+      .locator(`[data-wagon-switchyard-tab][data-wagon-family-id='${id}']`)
+      .click();
+    const panel = primary.locator(
+      `[data-wagon-switchyard-panel][data-wagon-family-id='${id}']`,
+    );
+    const [panelBox, actionBox] = await Promise.all([
+      panel.boundingBox(),
+      panel.locator(".action").boundingBox(),
+    ]);
+    expect(panelBox).not.toBeNull();
+    expect(actionBox).not.toBeNull();
+    expect((actionBox?.y ?? 0) + (actionBox?.height ?? 0)).toBeLessThanOrEqual(
+      (panelBox?.y ?? 0) + (panelBox?.height ?? 0) + 1,
+    );
+  }
+  await primary
+    .locator("[data-wagon-switchyard-tab][data-wagon-family-id='open-box']")
+    .click();
+  await expect(
+    primary.locator(
+      "[data-wagon-switchyard-panel][data-wagon-family-id='open-box'] img",
+    ),
+  ).toBeVisible();
+  await expect(primary).toHaveScreenshot(
+    "wagon-switchyard-windows-short-open-box.png",
+    {
+      animations: "disabled",
+      maxDiffPixelRatio: 0.01,
+    },
+  );
+  await expectNoPageOverflow(page);
+});
+
 test("@visual WagonSwitchyard produces a reduced-motion focused baseline for every family", async ({
   page,
 }) => {

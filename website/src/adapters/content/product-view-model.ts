@@ -53,6 +53,40 @@ export function productPageViewModel(
   if (!intro) {
     throw new Error(`Product ${product.id} has no source introduction.`);
   }
+  const source = product.technicalSource ?? product.source;
+  const standardHeroFacts = product.specifications
+    .filter((row) =>
+      [
+        "Wagon tare (t)",
+        "Length over buffers (mm)",
+        "Loading volume (m³)",
+        "Tank capacity (m³)",
+        "Vehicle gauge",
+      ].includes(row.label),
+    )
+    .slice(0, 4)
+    .map((specification) => ({
+      ...specification,
+      source,
+    }));
+  const heroFacts =
+    product.id === "eamnos"
+      ? [
+          {
+            label: "Distributed over the loading length",
+            value: "70 t / 10 m",
+            source,
+          },
+          {
+            label: "Distributed on two points",
+            value: "70 t / 6,5 m",
+            source,
+          },
+          ...standardHeroFacts.filter(({ label }) =>
+            ["Wagon tare (t)", "Loading volume (m³)"].includes(label),
+          ),
+        ]
+      : standardHeroFacts;
 
   return {
     technicalSheet: technicalSheetFor(
@@ -79,21 +113,7 @@ export function productPageViewModel(
       title: product.name,
       benefit: product.tagline,
       media: wagonMedia(product),
-      facts: product.specifications
-        .filter((row) =>
-          [
-            "Wagon tare (t)",
-            "Length over buffers (mm)",
-            "Loading volume (m³)",
-            "Tank capacity (m³)",
-            "Vehicle gauge",
-          ].includes(row.label),
-        )
-        .slice(0, 4)
-        .map((specification) => ({
-          ...specification,
-          source: product.technicalSource ?? product.source,
-        })),
+      facts: heroFacts,
       inquiryAction: { href: "/contact/", label: "Discuss this wagon" },
       inquiryContext: `${product.name} ${product.code}`,
     },

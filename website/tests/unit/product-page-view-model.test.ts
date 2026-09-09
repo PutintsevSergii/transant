@@ -4,6 +4,7 @@ import {
   productPageViewModel,
   productRouteParams,
 } from "../../src/adapters/content/product-view-model";
+import { localizeViewModel } from "../../src/adapters/content/localized-view-model";
 
 describe("productPageViewModel", () => {
   it("maps exactly ten source-defined family/product routes without rewriting repeated product codes", () => {
@@ -86,6 +87,19 @@ describe("productPageViewModel", () => {
     const eamnos = productPageViewModel("open-box", "uno-multibox-33ft-eamnos");
     const eanos56 = productPageViewModel("open-box", "uno-multi-56ft-eanos");
 
+    expect(eamnos.hero.benefit).toBe(
+      "Up to 70 t with concentrated loads: distributed over 10 m of loading length or on two points across a 6,5 m section.",
+    );
+    expect(eamnos.hero.facts.slice(0, 2)).toEqual([
+      expect.objectContaining({
+        label: "Distributed over the loading length",
+        value: "70 t / 10 m",
+      }),
+      expect.objectContaining({
+        label: "Distributed on two points",
+        value: "70 t / 6,5 m",
+      }),
+    ]);
     expect(eamnos.technicalSheet.groups.flatMap((group) => group.rows)).toEqual(
       expect.arrayContaining([
         { label: "Distance between bogie pivots (mm)", value: "6.500" },
@@ -108,6 +122,43 @@ describe("productPageViewModel", () => {
     ]);
     expect(eanos56.technicalSheet.features).not.toContain("DAC ready");
   });
+
+  it.each([
+    [
+      "de",
+      "Bis zu 70 t bei konzentrierter Belastung: über 10 m Ladelänge verteilt oder auf zwei Punkten in einem 6,5-m-Abschnitt.",
+      "Über die Ladelänge verteilt",
+    ],
+    [
+      "uk",
+      "До 70 т зосередженого навантаження: розподіленого по 10 м довжини завантаження або на двох точках у межах ділянки 6,5 м.",
+      "Розподілене по довжині завантаження",
+    ],
+    [
+      "pl",
+      "Do 70 t przy obciążeniu skupionym: rozłożonym na 10 m długości ładunkowej lub na dwóch punktach w obrębie odcinka 6,5 m.",
+      "Rozłożone na długości ładunkowej",
+    ],
+    [
+      "cs",
+      "Až 70 t při soustředěném zatížení: rozloženém po ložné délce 10 m nebo ve dvou bodech na úseku 6,5 m.",
+      "Rozložené po ložné délce",
+    ],
+  ] as const)(
+    "localizes the Eamnos primary concentrated-load benefit for %s",
+    (locale, benefit, firstFactLabel) => {
+      const localized = localizeViewModel(
+        productPageViewModel("open-box", "uno-multibox-33ft-eamnos"),
+        locale,
+      );
+
+      expect(localized.hero.benefit).toBe(benefit);
+      expect(localized.hero.facts[0]).toMatchObject({
+        label: firstFactLabel,
+        value: "70 t / 10 m",
+      });
+    },
+  );
 
   it("keeps source values without publishing catalogue-note annotations", () => {
     for (const { family, product } of productRouteParams) {

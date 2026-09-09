@@ -1571,10 +1571,10 @@ const rows: readonly TranslationRow[] = [
     "Flexibilní intermodální přeprava s optimalizovaným užitečným zatížením.",
   ],
   [
-    "Compact design. Maximum payload. Built for demanding bulk cargo.",
-    "Компактна конструкція. Максимальне корисне навантаження. Для складних сипких вантажів.",
-    "Kompaktowa konstrukcja. Maksymalna ładowność. Do wymagających ładunków sypkich.",
-    "Kompaktní konstrukce. Maximální užitečné zatížení. Pro náročné sypké náklady.",
+    "Up to 70 t with concentrated loads: distributed over 10 m of loading length or on two points across a 6,5 m section.",
+    "До 70 т зосередженого навантаження: розподіленого по 10 м довжини завантаження або на двох точках у межах ділянки 6,5 м.",
+    "Do 70 t przy obciążeniu skupionym: rozłożonym na 10 m długości ładunkowej lub na dwóch punktach w obrębie odcinka 6,5 m.",
+    "Až 70 t při soustředěném zatížení: rozloženém po ložné délce 10 m nebo ve dvou bodech na úseku 6,5 m.",
   ],
   [
     "More volume. More cargo. More efficiency.",
@@ -2728,6 +2728,12 @@ const rows: readonly TranslationRow[] = [
     "Inženýři TransAnt pracující na vývoji vozů",
   ],
   [
+    "Underframe structure of TransAnt PRO 60-foot Sgns platform wagon",
+    "Конструкція рами 60-футового платформного вагона TransAnt PRO Sgns",
+    "Konstrukcja podwozia 60-stopowego wagonu platformowego TransAnt PRO Sgns",
+    "Konstrukce spodního rámu 60stopého plošinového vozu TransAnt PRO Sgns",
+  ],
+  [
     "Engineering approach",
     "Інженерний підхід",
     "Podejście inżynieryjne",
@@ -2985,6 +2991,12 @@ const rows: readonly TranslationRow[] = [
     "60-футовий платформний вагон TransAnt PRO на колії",
     "60-stopowy wagon platformowy TransAnt PRO na torze",
     "60stopý plošinový vůz TransAnt PRO na koleji",
+  ],
+  [
+    "Actual TransAnt PRO 60-foot Sgns platform wagon on track",
+    "Реальний 60-футовий платформний вагон TransAnt PRO Sgns на колії",
+    "Rzeczywisty 60-stopowy wagon platformowy TransAnt PRO Sgns na torze",
+    "Skutečný 60stopý plošinový vůz TransAnt PRO Sgns na koleji",
   ],
   ["UNO range", "Лінійка UNO", "Gama UNO", "Řada UNO"],
   [
@@ -3275,7 +3287,7 @@ const rows: readonly TranslationRow[] = [
   ],
   [
     "The ballast can be removed when carrying heavy cargo, allowing the platform’s low tare to increase useful payload.",
-    "Pід час перевезення важкого вантажу баласт можна зняти, використавши низьку власну масу платформи для збільшення корисного навантаження.",
+    "Під час перевезення важкого вантажу баласт можна зняти, використавши низьку власну масу платформи для збільшення корисного навантаження.",
     "Podczas przewozu ciężkiego ładunku balast można zdjąć, wykorzystując niską masę własną platformy do zwiększenia ładowności.",
     "Při přepravě těžkého nákladu lze balast odstranit a nízkou vlastní hmotnost plošiny využít ke zvýšení užitečného zatížení.",
   ],

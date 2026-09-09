@@ -1556,6 +1556,7 @@ Append-only handoff log. Add new entries at the end. Never rewrite or delete pri
 - Files: `website/src/components/editorial/EvidenceList/{EvidenceList.astro,README.md}`, the Company geometry contract in `website/tests/browser/editorial-pages.spec.ts`, six refreshed Company visual references, tracker, `STATUS.md`, and this log.
 - Validation: focused EvidenceList contracts PASS 2/2; Astro diagnostics PASS with 0 errors/warnings/hints; production build PASSes with 125 pages. Company editorial composition and explicit lower-inset geometry PASS 6/6 across 320/390/768/1024/1440/844×390. Refreshed and clean Company visual comparisons PASS 6/6 across the same profiles; 320 and 1440 renders were inspected directly. The pre-edit aggregate reached browser setup after passing all static stages but is not claimed green because port 4322 was occupied.
 - Continuation: await explicit direction before E-003 or another bounded correction.
+
 ## 2026-09-08 — H-004 — Homepage Tank selector asset
 
 - Outcome: `IMPLEMENTED`. The homepage WagonSwitchyard's Tank record now uses the supplied `image001.png` render; the Tank product page and all other selector families retain their prior assets.
@@ -1643,3 +1644,56 @@ Append-only handoff log. Add new entries at the end. Never rewrite or delete pri
 - Preservation: the separately completed A-005 specialised-equipment media work and all earlier user changes remain intact. The original verified E-003 static EvidenceList contract remains authoritative; the later flip-card concept is retained only as deferred historical context.
 - Validation: targeted Prettier PASS; the unchanged EvidenceList contract PASSes 2/2; Astro diagnostics PASS with 0 errors, warnings, or hints; final state/input validators and diff hygiene PASS. The pre-edit baseline passed formatting, ESLint, Astro diagnostics, 93 unit tests, both builds, and four foundation tests, while the browser aggregate was `NOT_RUN` because port 4322 was occupied.
 - Continuation: await explicit direction; do not reopen certificate animation without a new user request.
+
+## 2026-09-09 — A-004 — Eamnos concentrated-payload benefit
+
+- Outcome: `IMPLEMENTED`. Promoted the client-confirmed UNO MULTIBox 33ft Eamnos concentrated-load capability from the lower technical table into the product hero. The primary statement and first two decisive facts now show `70 t / 10 m` distributed over the loading length and `70 t / 6,5 m` distributed on two points.
+- Preservation: the complete accessible `a-a` through `d-d` table remains source-ordered and unchanged, including `c-c / 6,5 m / 39 / 70` and `d-d / 10 m / 70 / –`. Every other wagon, drawing, technical value, route, and shared component layout is unchanged. The separately active P-003/H-004 responsive-fit work was preserved.
+- Files: `website/src/content/{catalog.json,products/open-box/uno-multibox-33ft-eamnos/{product.json,README.md}}`; product and localization adapters; focused unit/browser contracts; six Eamnos product visual references; tracker, `STATUS.md`, and this log.
+- Validation: pre-edit state/input validators pass. The Node 22.13 baseline passes all static stages and four foundation tests before the known `listen EPERM` browser boundary on 4322. Focused source/view-model tests pass 13/13; Astro diagnostics pass with 0 errors/warnings/hints; the 125-page production build and content/brand audit pass. Clean component/no-overflow and visual evidence passes 12/12 across 320/390/768/1024/1440/844×390; focused axe evidence passes 6/6; 320/1440 fixtures and the Ukrainian route were inspected directly. A final broad quality attempt stopped on a transient type error from separately active PageHero work; a subsequent Astro check passes, so no A-004 failure is claimed.
+- Continuation: keep the A-004 correction intact while P-003/H-004 continues; no deployment or external system changed.
+
+## 2026-09-09 — P-003 / H-004 — Windows-height responsive fit
+
+- Outcome: `IMPLEMENTED`. Wagon-family routes now use PageHero's typed compact wide-screen density plus denser three-column model cards; the invalid inherited model-title line-height was replaced with the heading contract, and wide card spacing/media were reduced without changing mobile. The homepage WagonSwitchyard now gives translated copy more detail width and uses a shorter viewport-responsive panel, compact type, and a tighter five-stop rail only on wide viewports at or below 800 px high.
+- Reported-state evidence: at 1366 × 768, all three Ukrainian open-box model actions finish at 762.5 px and are visible without scrolling. At 1200 × 675, the Ukrainian open-box selector action remains 58 px inside the bordered panel; both pages have zero horizontal overflow. The supplied screenshots were treated only as evidence.
+- Preservation: source-owned copy, engineering details, product/family routes, model and selector media, five-family selection, keyboard/no-JavaScript behavior, and compact/mobile composition are unchanged. Concurrent A-004 source/product/visual changes were preserved untouched.
+- Files: PageHero typed density API, validation, implementation, README, and family caller; `WagonModelList` implementation/README; `WagonSwitchyard` implementation/README; focused unit/browser coverage; two new reviewed Windows-size visual references; tracker; `STATUS.md`; and this log.
+- Validation: focused contracts PASS 7/7; Astro diagnostics PASS with 0 errors/warnings/hints; the production build PASSes with 125 pages. Focused 1440-profile component/no-JavaScript/interaction/responsive/axe coverage PASSes 14/14; canonical 1024 coverage PASSes 12/12 with two client-size-only skips. The dedicated 1366 × 768 family-page and 1200 × 675 selector visual checks PASS 2/2 and were inspected. The final Node 22.13 `pnpm quality` checkpoint PASSes Prettier, ESLint, Astro diagnostics, 97 unit tests, both builds, and four foundation tests; its aggregate browser stage is `NOT_RUN` because `127.0.0.1:4322` is already occupied. Existing unrelated full-page snapshots were not overwritten.
+- Continuation: await explicit direction; no deployment or external system changed.
+
+## 2026-09-09 — A-005 — Ukrainian removable-ballast copy correction
+
+- Outcome: `IMPLEMENTED`. Corrected the first character of the fifth PRO INTERMODAL 60 ft story paragraph from Latin `P` to Cyrillic `П`, so the Ukrainian sentence correctly begins `Під час`.
+- Boundary: changed only `website/src/adapters/content/additional-locale-copy.ts`; the section’s wording, all other Ukrainian text, other locales, PRO content, media, technical values, routes, and concurrent A-005 work remain unchanged.
+- Validation: initial state validation exposed an invalid `IN_PROGRESS` lifecycle value; restored it to valid `RUNNING`, then both state/input validators PASS. The Node 22.13 `pnpm quality` baseline passes formatting, ESLint, Astro diagnostics, 97 unit tests, both builds, and four foundation tests; its browser stage is `NOT_RUN` because the sandbox cannot bind `127.0.0.1:4322` (`listen EPERM`). Post-edit targeted Prettier, Astro diagnostics (0 errors/warnings/hints), and production build (125 pages) PASS.
+- Continuation: A-005 remains `IN_PROGRESS` for the separately authorized PRO photography correction; no deployment or external system changed.
+
+## 2026-09-09 — A-005 — removable-ballast translation grammar audit
+
+- Outcome: `REVIEWED_NO_CHANGES`. Reviewed the English, German, Ukrainian, Polish, and Czech eyebrow, title, description, and two paragraphs for grammar while preserving the source-owned technical meaning, values, units, and qualifying language.
+- Result: no further grammar correction is warranted. The prior Ukrainian Cyrillic `Під` correction remains the only change in this translation block.
+- Validation: source mappings were inspected directly; state/input validators and diff hygiene PASS. No browser check is required for a no-change language review; the known sandbox listener boundary at `127.0.0.1:4322` remains recorded for A-005.
+- Continuation: A-005 remains `IN_PROGRESS` for the separately authorized PRO photography correction; no deployment or external system changed.
+
+## 2026-09-09 — A-005 — PRO editorial photography
+
+- Outcome: `IMPLEMENTED`. Replaced exactly two `/uk/pro-platform-projects/` images: the “PRO INTERMODAL 60 ft // Sgns” hero now shows the supplied real PRO 60 ft platform, and “Високоміцна полегшена конструкція” now shows the supplied PRO underframe/interior. Copy, technical values, section order, routes, and all other editorial imagery remain unchanged.
+- Files: copied `client-remarks/ПРО 60 футов реальная  .png` to `website/src/assets/images/editorial/pro-platform-projects/pro-intermodal-60ft-real.png` and `client-remarks/про внутри.JPG` to `website/src/assets/images/editorial/pro-platform-projects/pro-intermodal-60ft-underframe.jpg`; updated the editorial view model, German and additional-locale alternatives, focused editorial browser contract, tracker, `STATUS.md`, and this log.
+- Asset evidence: the production copies preserve the source dimensions and SHA-256 values: real platform 1672 × 941 / `6e0cb545d3cd587422effdd39681a06bed1eab0d03add7c99f2cd3f9027b2318`; underframe 4032 × 3024 / `35774856ab24e007e9cd4dabe21fd336b88263912d8f0309e511b977a54600ef`.
+- Validation: required Node 22.13 `pnpm quality` baseline passes Prettier, ESLint, Astro diagnostics, 97 unit tests, both builds, and four foundation tests; its browser stage is `NOT_RUN` because `127.0.0.1:4322` cannot bind (`listen EPERM`). Post-edit Prettier, Astro diagnostics (0 errors/warnings/hints), and the 125-page production build pass. A local production preview was reviewed at 1440 × 1100 and 390 × 844: both replacements render with the intended Ukrainian alternatives and the hero has no compact overflow. The focused component-lab browser specification is updated but `NOT_RUN`, not claimed as a pass.
+- Continuation: await explicit direction; no external deployment changed.
+
+## 2026-09-09 — A-005 — PRO hero platform focus
+
+- Outcome: `IMPLEMENTED`. Added the typed `PageHeroMedia.focus` contract and used its `lower-left` value only for the real PRO 60 ft hero. The focal point retains the platform’s buffer, frame, and bogie while cropping the less relevant upper/right image field.
+- Files: `website/src/components/editorial/PageHero/{PageHero.astro,PageHero.types.ts,page-hero-contract.ts,README.md}`; PRO editorial view model; focused PageHero unit and editorial-page browser contracts; tracker; `STATUS.md`; and this log.
+- Validation: the required Node 22.13 `pnpm quality` baseline passes all static stages and foundation tests; the browser aggregate remains `NOT_RUN` because `127.0.0.1:4322` cannot bind (`listen EPERM`). Post-edit Prettier passes; focused PageHero contracts pass 2/2; Astro diagnostics report 0 errors, warnings, or hints; the production build passes with 125 pages. A 1440 × 1100 local production-preview review confirms the updated hero crop.
+- Continuation: await explicit direction; no external deployment changed.
+
+## 2026-09-09 — A-005 — PRO hero full-platform presentation
+
+- Outcome: `IMPLEMENTED`. Superseded the rejected crop treatment: the real PRO 60 ft hero now uses the photograph's native 16:9 ratio and PageHero's existing natural-ratio support, so the full platform, both ends, and running gear stay visible.
+- Files: `website/src/adapters/content/editorial-page-view-model.ts`; removed the no-longer-needed PageHero crop-focus API from its implementation, types, validation, README, and focused contracts; tracker, `STATUS.md`, and this log.
+- Validation: required Node 22.13 `pnpm quality` baseline passes Prettier, ESLint, Astro diagnostics, 97 unit tests, both builds, and four foundation tests; aggregate browser execution is `NOT_RUN` because the sandbox cannot bind `127.0.0.1:4322` (`listen EPERM`). Post-edit Prettier, PageHero contract tests (2/2), Astro diagnostics (0 errors/warnings/hints), and 125-page production build pass. Local production preview was visually inspected at 1440 × 1100 and 390 × 844, confirming the full platform is visible.
+- Continuation: await explicit direction; no deployment or external system changed.

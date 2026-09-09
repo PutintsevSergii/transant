@@ -1,6 +1,6 @@
 # UNO MULTIBox 33ft - Eamnos
 
-Compact design. Maximum payload. Built for demanding bulk cargo.
+Up to 70 t with concentrated loads: distributed over 10 m of loading length or on two points across a 6,5 m section.
 
 The UNO MULTI 33ft Eamnos is a high-performance open-top wagon engineered for the efficient transport of scrap metal, recyclables and other high-density industrial cargo. Its compact design combines a low tare weight with exceptional payload capacity.
 
@@ -21,7 +21,7 @@ Built for intensive industrial use, the wagon has a robust body for demanding lo
 
 ## Key benefits
 
-- Exceptional payload-to-tare ratio
+- Concentrated-load capacity up to 70 t
 - Low tare weight of just 20 t
 - Payload capacity of up to 70 t
 - Robust construction for demanding loading conditions

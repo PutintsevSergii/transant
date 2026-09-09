@@ -47,6 +47,7 @@ describe("PageHero contract", () => {
         title: "Text-only introduction",
         headingLevel: 3,
         theme: "dark",
+        density: "compact",
         mediaPosition: "before",
         technicalBackground: false,
       }),
@@ -85,6 +86,12 @@ describe("PageHero contract", () => {
         technicalBackground: "yes" as unknown as boolean,
       }),
     ).toThrow("technicalBackground must be a boolean");
+    expect(() =>
+      validatePageHeroProps({
+        ...props,
+        density: "dense" as unknown as NonNullable<PageHeroProps["density"]>,
+      }),
+    ).toThrow("density must be");
     expect(() =>
       validatePageHeroProps({
         ...props,

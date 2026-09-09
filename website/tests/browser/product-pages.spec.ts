@@ -141,6 +141,15 @@ test("@component Product pages compose all ten source-defined routes from one do
       );
     }
     if (product.slug === "uno-multibox-33ft-eamnos") {
+      await expect(page.locator("[data-product-hero]")).toContainText(
+        "Up to 70 t with concentrated loads",
+      );
+      await expect(page.locator("[data-product-hero-facts]")).toContainText(
+        "70 t / 10 m",
+      );
+      await expect(page.locator("[data-product-hero-facts]")).toContainText(
+        "70 t / 6,5 m",
+      );
       const finalPayloadRow = page
         .locator('[data-technical-table="payload"] tbody tr')
         .last();
@@ -153,6 +162,7 @@ test("@component Product pages compose all ten source-defined routes from one do
       await expect(page.locator("[data-technical-sheet]")).not.toContainText(
         /10 stanchion pairs|7 deflectors|G2 profile/iu,
       );
+      await expectNoPageOverflow(page);
     }
     if (product.slug === "uno-multi-56ft-eanos") {
       const finalPayloadRow = page

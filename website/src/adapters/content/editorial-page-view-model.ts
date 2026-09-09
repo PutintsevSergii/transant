@@ -5,6 +5,8 @@ import companyProPlatform from "../../assets/images/editorial/company-pro-platfo
 import companyUnoIntermodal from "../../assets/images/editorial/company-uno-intermodal.jpeg";
 import companyWagonCoupling from "../../assets/images/editorial/company-wagon-coupling.jpg";
 import companyWagonLogo from "../../assets/images/editorial/company-wagon-logo.jpg";
+import proIntermodal60ftReal from "../../assets/images/editorial/pro-platform-projects/pro-intermodal-60ft-real.png";
+import proIntermodal60ftUnderframe from "../../assets/images/editorial/pro-platform-projects/pro-intermodal-60ft-underframe.jpg";
 import specialisedEquipment from "../../assets/images/editorial/pro-platform-projects/specialised-equipment.png";
 import type { EvidenceListProps } from "../../components/editorial/EvidenceList/EvidenceList.types";
 import type { MediaStoryProps } from "../../components/editorial/MediaStory/MediaStory.types";
@@ -78,11 +80,12 @@ const editorialPages = {
       headingLevel: 1,
       theme: "light",
       media: {
-        image: companyProPlatform,
-        alt: "TransAnt PRO 60-foot platform wagon on track",
+        image: proIntermodal60ftReal,
+        alt: "Actual TransAnt PRO 60-foot Sgns platform wagon on track",
         sizes: "(min-width: 62rem) 50vw, 100vw",
         fit: "cover",
-        aspectRatio: "3 / 2",
+        aspectRatio: "16 / 9",
+        preserveNaturalAspectRatio: true,
       },
       mediaPosition: "after",
     },
@@ -128,8 +131,8 @@ const editorialPages = {
         headingLevel: 2,
         theme: "light",
         media: {
-          image: companyEngineeringTeam,
-          alt: "TransAnt engineers working on wagon development",
+          image: proIntermodal60ftUnderframe,
+          alt: "Underframe structure of TransAnt PRO 60-foot Sgns platform wagon",
           sizes: "(min-width: 58rem) 50vw, 100vw",
           fit: "cover",
           aspectRatio: "4 / 3",

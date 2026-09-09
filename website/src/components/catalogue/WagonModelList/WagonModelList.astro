@@ -237,20 +237,53 @@ validateWagonModelListProps(props);
     }
 
     .wagon-model-list__copy {
-      grid-template-rows: auto minmax(3.5rem, auto) minmax(5rem, auto) 6.5rem;
+      grid-template-rows: auto minmax(2.5rem, auto) minmax(3.5rem, auto) minmax(
+          5rem,
+          auto
+        );
     }
 
     .wagon-model-list__model {
-      padding: var(--space-5);
+      gap: var(--space-2);
+      padding: var(--space-3);
+    }
+
+    .wagon-model-list__title {
+      font-size: clamp(1.25rem, 2cqi, 1.5rem);
+      line-height: var(--line-height-heading);
+    }
+
+    .wagon-model-list__summary {
+      font-size: var(--font-size-small);
+      line-height: 1.45;
+    }
+
+    .wagon-model-list__details {
+      gap: var(--space-1);
+      padding-block-start: var(--space-2);
+    }
+
+    .wagon-model-list__details-label {
+      font-size: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .wagon-model-list__details ul {
+      font-size: 0.8125rem;
+      line-height: 1.4;
     }
 
     .wagon-model-list__media {
-      block-size: 8rem;
-      min-block-size: 8rem;
+      block-size: 5.5rem;
+      min-block-size: 5.5rem;
     }
 
     .wagon-model-list__media :global(.responsive-media img) {
-      max-block-size: 7rem;
+      max-block-size: 5rem;
+    }
+
+    .wagon-model-list__footer {
+      padding-block-start: var(--space-3);
     }
   }
 </style>

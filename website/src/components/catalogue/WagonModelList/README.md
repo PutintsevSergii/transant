@@ -11,7 +11,7 @@
 ## Boundaries
 
 - The component reads no route, content collection, environment, browser, or global state. An adapter/page owns the family PageHero and resolving its local image imports.
-- When it immediately follows the shared PageHero, its frame receives only the global 12 px hero handoff. The model list keeps a deliberate 48 px lower inset after its final card; individual cards retain compact internal spacing so each model remains easy to scan without unnecessary height.
+- When it immediately follows the shared PageHero, its frame receives only the global 12 px hero handoff. Family routes select PageHero's caller-owned compact wide-screen density. The model list keeps a deliberate 48 px lower inset after its final card; at the three-column breakpoint, smaller type, a true heading line-height, reduced media stage, and tighter tokenized insets keep model actions visible on short desktop screens without changing compact/mobile cards.
 - It composes only C-004 `ResponsiveMedia` and C-002 `Action`; it adds no search, filtering, comparison, configurator, client controller, or product-page assembly.
 - Compact source order remains heading, then model code/title/summary/details, media-or-fallback, provenance, and direct action. A component-container query adds three equal model columns from 56rem, where full model cards fit rather than forcing a compact grid. Wagon renders use a shorter visual stage so the model context remains primary.
 - The fallback is intentionally textual rather than an invented wagon image or technical claim. It communicates only the caller-provided absence state.

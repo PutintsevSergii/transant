@@ -120,8 +120,27 @@ test("@component Editorial pages compose only source-bound page sections", async
     specialisedEquipmentStory.locator("[data-responsive-media]"),
   ).toHaveAttribute("data-responsive-media-fit", "contain");
   await expect(
-    page.locator("[data-page-hero] img[src*='company-pro-platform']"),
+    page.locator("[data-page-hero] img[src*='pro-intermodal-60ft-real']"),
   ).toHaveCount(1);
+  await expect(page.locator("[data-page-hero] img")).toHaveAttribute(
+    "alt",
+    "Actual TransAnt PRO 60-foot Sgns platform wagon on track",
+  );
+  await expect(page.locator("[data-page-hero]")).toHaveAttribute(
+    "data-page-hero-natural-media",
+    "true",
+  );
+  const structureStory = page.locator(
+    "[data-media-story]:has(img[src*='pro-intermodal-60ft-underframe'])",
+  );
+  await expect(structureStory).toHaveCount(1);
+  await expect(structureStory).toContainText(
+    "High-strength lightweight structure",
+  );
+  await expect(structureStory.locator("img")).toHaveAttribute(
+    "alt",
+    "Underframe structure of TransAnt PRO 60-foot Sgns platform wagon",
+  );
   await expect(page.locator("[data-contact-cta]")).toHaveCSS(
     "background-color",
     "rgb(234, 241, 248)",

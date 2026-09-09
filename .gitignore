@@ -31,3 +31,6 @@ prep/source-material/
 prep/design/stitch-generations/
 prep/design/stitch-inputs/
 prep/archive/
+
+# Client-provided review materials; preserve locally, do not commit
+client-remarks/

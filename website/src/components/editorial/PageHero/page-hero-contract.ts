@@ -52,6 +52,16 @@ export const validatePageHeroProps = (props: PageHeroProps): void => {
     );
   }
 
+  if (
+    props.density !== undefined &&
+    props.density !== "standard" &&
+    props.density !== "compact"
+  ) {
+    throw new Error(
+      'PageHero density must be "standard" or "compact" when supplied.',
+    );
+  }
+
   if (props.media) {
     if (
       props.media.preserveNaturalAspectRatio !== undefined &&

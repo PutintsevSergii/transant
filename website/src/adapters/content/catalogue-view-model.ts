@@ -129,6 +129,7 @@ export const catalogueFamilyViewModels: readonly CatalogueFamilyViewModel[] =
         description: family.description,
         headingLevel: 1,
         theme: "light",
+        density: "compact",
       },
       breadcrumbs: catalogueBreadcrumbs(family.name, familyHref),
       modelList: {

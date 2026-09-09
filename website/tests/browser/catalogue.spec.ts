@@ -180,6 +180,38 @@ test("@responsive Catalogue and every family route retain direct compact browsin
   }
 });
 
+test("@responsive Open-box family keeps all three model actions in a short Windows desktop viewport", async ({
+  page,
+}, testInfo) => {
+  test.skip(
+    testInfo.project.name !== "chromium-1440",
+    "The client-sized desktop geometry needs one deterministic browser profile.",
+  );
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.goto("/fixtures/catalogue/open-box/");
+
+  await expect(page.locator("[data-page-hero]")).toHaveAttribute(
+    "data-page-hero-density",
+    "compact",
+  );
+  const actions = page.locator(".wagon-model-list__footer .action");
+  await expect(actions).toHaveCount(3);
+  for (const action of await actions.all()) {
+    const actionBox = await action.boundingBox();
+    expect(actionBox).not.toBeNull();
+    expect((actionBox?.y ?? 0) + (actionBox?.height ?? 0)).toBeLessThanOrEqual(
+      768,
+    );
+  }
+  await waitForPageImages(page);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(page).toHaveScreenshot("catalogue-open-box-windows-short.png", {
+    animations: "disabled",
+    maxDiffPixelRatio: 0.01,
+  });
+  await expectNoPageOverflow(page);
+});
+
 test("@a11y Catalogue index and family routes have no serious or critical axe violations", async ({
   page,
 }) => {

@@ -133,6 +133,10 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "Robuste Konstruktion für anspruchsvolle Ladebedingungen",
   "Body for demanding bulk-cargo operation":
     "Aufbau für anspruchsvollen Schüttgutbetrieb",
+  "Up to 70 t with concentrated loads: distributed over 10 m of loading length or on two points across a 6,5 m section.":
+    "Bis zu 70 t bei konzentrierter Belastung: über 10 m Ladelänge verteilt oder auf zwei Punkten in einem 6,5-m-Abschnitt.",
+  "Distributed over the loading length": "Über die Ladelänge verteilt",
+  "Distributed on two points": "Auf zwei Punkten verteilt",
   "InnoTrans 2026 // International trade fair":
     "InnoTrans 2026 // Internationale Fachmesse",
   "Meet TransANT in Berlin": "Treffen Sie TransANT in Berlin",
@@ -514,6 +518,8 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "TransAnt verbindet Transportaufgabenanalyse, Konzepte und Konfiguration, Konstruktion und Optimierung, Tests und Zertifizierung, die Vorbereitung der industriellen Umsetzung, Vertrieb und technische Betreuung.",
   "TransAnt engineers working on wagon development":
     "TransAnt-Ingenieure bei der Entwicklung von Güterwagen",
+  "Underframe structure of TransAnt PRO 60-foot Sgns platform wagon":
+    "Untergestellstruktur des 60-Fuß-Sgns-Plattformwagens TransAnt PRO",
   "Engineering approach": "Ingenieuransatz",
   "Technical decisions with a practical purpose":
     "Technische Entscheidungen mit praktischem Ziel",
@@ -581,6 +587,8 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "Realisierte PRO-Projekte für 60-Fuß-Plattformen",
   "TransAnt PRO 60-foot platform wagon on track":
     "TransAnt PRO 60-Fuß-Plattformwagen auf dem Gleis",
+  "Actual TransAnt PRO 60-foot Sgns platform wagon on track":
+    "Tatsächlicher 60-Fuß-Sgns-Plattformwagen TransAnt PRO auf dem Gleis",
   "UNO range": "UNO-Programm",
   "Wagons for current transport tasks": "Wagen für aktuelle Transportaufgaben",
   "The UNO range covers intermodal transport, metal, timber, bulk cargo, and liquids. Visit the wagon range for model-specific data.":

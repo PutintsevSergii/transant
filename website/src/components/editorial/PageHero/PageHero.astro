@@ -10,10 +10,11 @@ validatePageHeroProps(props);
 
 const mediaPosition = props.mediaPosition ?? "after";
 const technicalBackground = props.technicalBackground ?? true;
+const density = props.density ?? "standard";
 const preservesNaturalMediaRatio =
   props.media?.preserveNaturalAspectRatio ?? false;
 const hasBreadcrumbs = Astro.slots.has("breadcrumbs");
-const rootClass = `page-hero page-hero--${props.theme} page-hero--technical-background-${technicalBackground ? "enabled" : "disabled"}${props.media ? " page-hero--with-media" : " page-hero--without-media"}${preservesNaturalMediaRatio ? " page-hero--natural-media" : ""}`;
+const rootClass = `page-hero page-hero--${props.theme} page-hero--density-${density} page-hero--technical-background-${technicalBackground ? "enabled" : "disabled"}${props.media ? " page-hero--with-media" : " page-hero--without-media"}${preservesNaturalMediaRatio ? " page-hero--natural-media" : ""}`;
 const actionVariant = props.theme === "dark" ? "inverse" : "primary";
 ---
 
@@ -21,6 +22,7 @@ const actionVariant = props.theme === "dark" ? "inverse" : "primary";
   class={rootClass}
   data-page-hero
   data-page-hero-theme={props.theme}
+  data-page-hero-density={density}
   data-page-hero-technical-background={technicalBackground ? "true" : "false"}
   data-page-hero-media-position={mediaPosition}
   data-page-hero-natural-media={String(preservesNaturalMediaRatio)}
@@ -167,6 +169,25 @@ const actionVariant = props.theme === "dark" ? "inverse" : "primary";
   @container (min-width: 30rem) {
     .page-hero__content > :global(.action) {
       inline-size: auto;
+    }
+  }
+
+  @container (min-width: 56rem) {
+    .page-hero--density-compact .page-hero__content :global(.section-intro) {
+      gap: var(--space-2);
+    }
+
+    .page-hero--density-compact
+      .page-hero__content
+      :global(.section-intro__title) {
+      font-size: clamp(1.875rem, 1.65rem + 1cqi, 2.25rem);
+    }
+
+    .page-hero--density-compact
+      .page-hero__content
+      :global(.section-intro__description) {
+      font-size: var(--font-size-small);
+      line-height: 1.45;
     }
   }
 
