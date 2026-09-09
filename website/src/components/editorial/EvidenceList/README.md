@@ -8,7 +8,7 @@ Static editorial evidence rows for caller-owned policies, certifications, docume
 
 Optional `labels` supplies caller-owned localized evidence categories, metadata terms, empty-state copy, evidence-detail labelling, and the external new-tab notice; English defaults preserve standalone fixture portability.
 
-The optional `section-label` variant retains the caller-selected heading level while displaying it as a compact brand-red mono label, matching an editorial `SectionIntro` eyebrow. It uses a short label-to-row transition and compact block padding. Separately, callers can select `spacing: "compact"` to shorten the heading-to-entry transition while retaining a deliberate three-rem lower section inset. The default `standard` variant and spacing preserve the general editorial treatment.
+The optional `section-label` variant retains the caller-selected heading level while displaying it as a compact brand-red mono label, matching an editorial `SectionIntro` eyebrow. It uses a short label-to-row transition and compact block padding. The standard frame retains a deliberate three-rem lower section inset. Separately, callers can select `spacing: "compact"` to shorten the heading-to-entry transition while retaining that lower inset.
 
 Only F-002 records marked `approved` render. Draft and unverified inputs remain valid but are omitted without mutation. If none render, the component emits its visible empty state.
 

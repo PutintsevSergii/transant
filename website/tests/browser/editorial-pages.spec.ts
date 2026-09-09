@@ -283,6 +283,17 @@ test("@component Editorial pages compose only source-bound page sections", async
 
   await page.goto("/fixtures/editorial/quality/");
   await expect(page.locator("[data-evidence-list-entry]")).toHaveCount(2);
+  const qualityEvidence = page.locator("[data-evidence-list]");
+  const [qualityEvidenceBox, qualityEvidenceEntries] = await Promise.all([
+    qualityEvidence.boundingBox(),
+    qualityEvidence.locator("[data-evidence-list-entries]").boundingBox(),
+  ]);
+  const qualityEvidenceBottomGap =
+    (qualityEvidenceBox?.y ?? 0) +
+    (qualityEvidenceBox?.height ?? 0) -
+    ((qualityEvidenceEntries?.y ?? 0) + (qualityEvidenceEntries?.height ?? 0));
+  expect(qualityEvidenceBottomGap).toBeGreaterThanOrEqual(48);
+  expect(qualityEvidenceBottomGap).toBeLessThanOrEqual(49);
   await expect(
     page.getByRole("link", { name: "Open ISO 9001 certificate" }),
   ).toHaveAttribute("href", /^https:\/\//);

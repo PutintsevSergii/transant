@@ -8,12 +8,21 @@ This file is the compact operational handoff. It must describe the current truth
 - Lifecycle: BLOCKED
 - Release: R1 — multilingual static corporate and wagon-catalogue website
 - Active work package: NONE
-- Active objective: await explicit direction after the A-005 corrected PRO technical drawings and data update
-- Last completed work package: A-005
+- Active objective: await explicit direction after the E-003 Quality EvidenceList lower-inset correction
+- Last completed work package: E-003
 - Next eligible work package: NONE
-- Last change-log entry: 2026-09-09 — A-005 — corrected PRO technical drawings and data
+- Last change-log entry: 2026-09-09 — E-003 — Quality EvidenceList lower inset
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
+
+## Completed correction — E-003 Quality EvidenceList lower inset
+
+- Status: `VERIFIED` under the explicit `/quality/` spacing request.
+- Outcome: `.evidence-list__frame.page-frame` now keeps a tokenized 48 px lower inset after the final certificate card instead of touching the following ContactCTA.
+- Cause and boundary: the standard frame's prior `padding-block` declaration referenced undefined `--space-10`, so the browser discarded it and computed zero bottom padding. Replaced only that invalid declaration with `padding-block-end: var(--space-7)`; certificate content, actions, semantics, heading/list gap, Company compact spacing, routes, and locales remain unchanged.
+- Files: EvidenceList implementation and README; focused editorial-page browser assertion; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Validation: focused Prettier and Astro diagnostics pass with 0 errors, warnings, or hints. Focused composition and the 48–49 px lower-inset assertion pass 6/6 across 320/390/768/1024/1440/844×390. Live `localhost:4321/quality/` inspection confirms a computed 48 px bottom padding, with reviewed 1440 × 1100 and 390 × 844 renderings. The final Node 22.13 `pnpm quality` checkpoint passes Prettier, ESLint, Astro diagnostics, 98 unit tests, both builds, and four foundation tests; its aggregate browser stage is `NOT_RUN` because `127.0.0.1:4322` is already occupied.
+- Next exact action: await explicit direction; no deployment or external system changed.
 
 ## Completed correction — A-005 PRO hero full-platform presentation
 
