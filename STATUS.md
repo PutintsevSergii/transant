@@ -8,10 +8,10 @@ This file is the compact operational handoff. It must describe the current truth
 - Lifecycle: BLOCKED
 - Release: R1 — multilingual static corporate and wagon-catalogue website
 - Active work package: NONE
-- Active objective: await explicit direction after the A-005 PRO hero full-platform presentation
+- Active objective: await explicit direction after the A-005 corrected PRO technical drawings and data update
 - Last completed work package: A-005
 - Next eligible work package: NONE
-- Last change-log entry: 2026-09-09 — A-005 — PRO hero full-platform presentation
+- Last change-log entry: 2026-09-09 — A-005 — corrected PRO technical drawings and data
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
 
@@ -28,6 +28,16 @@ This file is the compact operational handoff. It must describe the current truth
 - Translation audit: reviewed the English, German, Ukrainian, Polish, and Czech eyebrow, title, description, and two paragraphs for the removable-ballast story. No further grammar correction is warranted; source-owned technical values and wording remain unchanged.
 - Baseline: Node 22.13 `website/` `pnpm quality` passes formatting, ESLint, Astro diagnostics, 97 unit tests, production and component-lab builds, and four foundation tests. Its aggregate browser stage is `NOT_RUN` because `127.0.0.1:4322` cannot bind (`listen EPERM`).
 - Next verification: focused PageHero contract tests, Astro diagnostics, production build, and desktop/local preview review showing both ends of the platform.
+
+## Completed correction — A-005 corrected PRO technical drawings and data
+
+- Status: `IMPLEMENTED` under the explicit request for `/pro-platform-projects/`.
+- Outcome: the source PDF's overall-dimensions elevation/end view and complete 20/30/40 ft container loading scheme now appear in the existing “Drawings & technical data” flow, with local high-resolution source crops, responsive optimized output, descriptive alternatives, and full-size links.
+- Technical reconciliation: existing dimensions, tare/configuration masses, axle load, line-class payload limits, vehicle gauge, curve radius, speeds, pin count, and supported container sizes match the PDF and remain unchanged. Added the two absent source fields: international-use marking `TEN GE` and the additional `1,155 mm / C / K (Jurid 822)` markings.
+- Files: two drawing assets; PRO editorial view model; EN/DE/UK/PL/CS route rendering and copy maps; TechnicalSheet drawing-only composition, README, and unit contract; focused editorial browser contract; tracker; `STATUS.md`; and `CHANGELOG.md`.
+- Asset evidence: overall dimensions 3190 × 1230 / SHA-256 `6eea7a85ced27ddf83d4ca7ce3df4956d36429c137a5ab9a1cc8e239b24919f1`; loading scheme 1750 × 2140 / SHA-256 `eecaca72a1e65a48a46bf56ac4058e9e15d449fff4e848ba0d31b216102f238f`.
+- Validation: formatting, ESLint, Astro diagnostics (0 errors/warnings/hints), 98 unit tests, the 125-page production build, the 62-page component-lab build, and four foundation tests pass. Focused editorial composition passes 6/6 and responsive/axe evidence passes 12/12 across 320/390/768/1024/1440/844×390. Live `localhost:4321` review at 1440 × 1100 and 390 × 844 confirms readable, contained drawings with no horizontal overflow; German localization was inspected. The aggregate browser stage remains `NOT_RUN` because `127.0.0.1:4322` is already used.
+- Next exact action: await explicit direction; no deployment or external system changed.
 
 ## Deferred by user — E-003 certificate presentation follow-on
 

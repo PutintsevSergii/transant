@@ -81,89 +81,98 @@ const labels = props.labels ?? {
       }
     </div>
 
-    <div class="technical-sheet__data">
-      <div class="technical-sheet__specifications">
-        {
-          props.groups.map((group) => (
-            <section class="technical-sheet__group" data-specification-group>
-              <h3>{group.title}</h3>
-              <dl>
-                {group.rows.map((row) => (
-                  <div data-specification-row>
-                    <dt>{row.label}</dt>
-                    <dd data-specification-value>{row.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </section>
-          ))
-        }
-      </div>
-      <div class="technical-sheet__tables">
-        {
-          props.tables.map((table) => (
-            <div
-              class="technical-sheet__table-block"
-              data-technical-table={table.kind}
-              data-load-limit-table={table.kind === "load" ? "" : undefined}
-            >
-              <p
-                class="technical-sheet__scroll-hint"
-                data-load-limit-scroll-hint={
-                  table.kind === "load" ? "" : undefined
-                }
-              >
-                {labels.scrollHint}
-              </p>
-              <div
-                class="technical-sheet__scroll"
-                tabindex="0"
-                role="region"
-                aria-label={`${labels.scrollableTable}: ${props.productName} — ${table.title}`}
-                data-load-limit-scroll={table.kind === "load" ? "" : undefined}
-              >
-                <table>
-                  <caption>{table.title}</caption>
-                  <thead>
-                    <tr>
-                      {table.headers.map((header) => (
-                        <th scope="col">{header}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {table.rows.map((row) => (
-                      <tr>
-                        {row.map((cell, index) =>
-                          index === 0 ? (
-                            <th scope="row" colspan={cell.colSpan}>
-                              {cell.text}
-                            </th>
-                          ) : (
-                            <td colspan={cell.colSpan}>
-                              {cell.text === "" ? (
-                                <span class="visually-hidden">
-                                  {labels.notSpecified}
-                                </span>
-                              ) : (
-                                cell.text
-                              )}
-                            </td>
-                          ),
-                        )}
-                      </tr>
+    {
+      (props.groups.length > 0 || props.tables.length > 0) && (
+        <div class="technical-sheet__data">
+          {props.groups.length > 0 && (
+            <div class="technical-sheet__specifications">
+              {props.groups.map((group) => (
+                <section
+                  class="technical-sheet__group"
+                  data-specification-group
+                >
+                  <h3>{group.title}</h3>
+                  <dl>
+                    {group.rows.map((row) => (
+                      <div data-specification-row>
+                        <dt>{row.label}</dt>
+                        <dd data-specification-value>{row.value}</dd>
+                      </div>
                     ))}
-                  </tbody>
-                </table>
-              </div>
-              {table.notes.map((note) => (
-                <p class="technical-sheet__note">{note}</p>
+                  </dl>
+                </section>
               ))}
             </div>
-          ))
-        }
-      </div>
-    </div>
+          )}
+          {props.tables.length > 0 && (
+            <div class="technical-sheet__tables">
+              {props.tables.map((table) => (
+                <div
+                  class="technical-sheet__table-block"
+                  data-technical-table={table.kind}
+                  data-load-limit-table={table.kind === "load" ? "" : undefined}
+                >
+                  <p
+                    class="technical-sheet__scroll-hint"
+                    data-load-limit-scroll-hint={
+                      table.kind === "load" ? "" : undefined
+                    }
+                  >
+                    {labels.scrollHint}
+                  </p>
+                  <div
+                    class="technical-sheet__scroll"
+                    tabindex="0"
+                    role="region"
+                    aria-label={`${labels.scrollableTable}: ${props.productName} — ${table.title}`}
+                    data-load-limit-scroll={
+                      table.kind === "load" ? "" : undefined
+                    }
+                  >
+                    <table>
+                      <caption>{table.title}</caption>
+                      <thead>
+                        <tr>
+                          {table.headers.map((header) => (
+                            <th scope="col">{header}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {table.rows.map((row) => (
+                          <tr>
+                            {row.map((cell, index) =>
+                              index === 0 ? (
+                                <th scope="row" colspan={cell.colSpan}>
+                                  {cell.text}
+                                </th>
+                              ) : (
+                                <td colspan={cell.colSpan}>
+                                  {cell.text === "" ? (
+                                    <span class="visually-hidden">
+                                      {labels.notSpecified}
+                                    </span>
+                                  ) : (
+                                    cell.text
+                                  )}
+                                </td>
+                              ),
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {table.notes.map((note) => (
+                    <p class="technical-sheet__note">{note}</p>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )
+    }
 
     {
       props.features.length > 0 && (

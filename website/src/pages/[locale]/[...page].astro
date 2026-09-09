@@ -38,6 +38,7 @@ import OperationalCaseStudy from "../../components/home/OperationalCaseStudy/Ope
 import LoadLimitTable from "../../components/product/LoadLimitTable/LoadLimitTable.astro";
 import SpecificationGroup from "../../components/product/SpecificationGroup/SpecificationGroup.astro";
 import TechnicalDetailsNavigation from "../../components/product/TechnicalDetailsNavigation/TechnicalDetailsNavigation.astro";
+import TechnicalSheet from "../../components/product/TechnicalSheet/TechnicalSheet.astro";
 import LegalDocument from "../../components/legal/LegalDocument/LegalDocument.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProductPage from "../../layouts/ProductPage.astro";
@@ -189,6 +190,9 @@ const t = (source: string) => translateLocalizedContent(source, locale);
       )}
       {editorial.evidence !== undefined && (
         <EvidenceList {...editorial.evidence} />
+      )}
+      {editorial.technicalSheet !== undefined && (
+        <TechnicalSheet {...editorial.technicalSheet} />
       )}
       {editorial.specifications !== undefined && (
         <SpecificationGroup {...editorial.specifications} />

@@ -37,12 +37,9 @@ export function validateTechnicalSheet(props: TechnicalSheetProps): void {
   if (
     !props.productName.trim() ||
     !props.sourceLabel.trim() ||
-    !props.drawings.length ||
-    !props.groups.length
+    !props.drawings.length
   ) {
-    throw new Error(
-      "Technical sheets require identity, source, drawings and specifications.",
-    );
+    throw new Error("Technical sheets require identity, source and drawings.");
   }
   for (const group of props.groups) {
     if (

@@ -50,6 +50,20 @@ describe("TechnicalSheet contract", () => {
     ).not.toThrow();
   });
 
+  it("accepts a drawing-only sheet when technical data is rendered separately", () => {
+    expect(() =>
+      validateTechnicalSheet({
+        productName: "PRO INTERMODAL 60 ft",
+        sourceLabel: "PRO INTERMODAL 60 ft technical sheet · pp. 1–2",
+        drawings: [drawing],
+        groups: [],
+        tables: [],
+        features: [],
+        notes: [],
+      }),
+    ).not.toThrow();
+  });
+
   it("rejects table rows that do not cover their declared columns", () => {
     expect(() =>
       validateTechnicalTable({

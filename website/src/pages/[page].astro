@@ -12,6 +12,7 @@ import OperationalCaseStudy from "../components/home/OperationalCaseStudy/Operat
 import LoadLimitTable from "../components/product/LoadLimitTable/LoadLimitTable.astro";
 import SpecificationGroup from "../components/product/SpecificationGroup/SpecificationGroup.astro";
 import TechnicalDetailsNavigation from "../components/product/TechnicalDetailsNavigation/TechnicalDetailsNavigation.astro";
+import TechnicalSheet from "../components/product/TechnicalSheet/TechnicalSheet.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export function getStaticPaths() {
@@ -33,6 +34,7 @@ const {
   pageMeta,
   specifications,
   technicalDetailsNavigation,
+  technicalSheet,
   stories,
 } = editorialPageViewModel(page);
 ---
@@ -49,6 +51,7 @@ const {
     {stories.map((story) => <MediaStory {...story} />)}
     {caseStudy !== undefined && <OperationalCaseStudy {...caseStudy} />}
     {evidence !== undefined && <EvidenceList {...evidence} />}
+    {technicalSheet !== undefined && <TechnicalSheet {...technicalSheet} />}
     {specifications !== undefined && <SpecificationGroup {...specifications} />}
     {loadLimits !== undefined && <LoadLimitTable {...loadLimits} />}
     <ContactCTA {...contactCta} />

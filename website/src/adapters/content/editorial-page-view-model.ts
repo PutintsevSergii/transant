@@ -5,6 +5,8 @@ import companyProPlatform from "../../assets/images/editorial/company-pro-platfo
 import companyUnoIntermodal from "../../assets/images/editorial/company-uno-intermodal.jpeg";
 import companyWagonCoupling from "../../assets/images/editorial/company-wagon-coupling.jpg";
 import companyWagonLogo from "../../assets/images/editorial/company-wagon-logo.jpg";
+import proIntermodal60ftLoadingScheme from "../../assets/images/editorial/pro-platform-projects/pro-intermodal-60ft-loading-scheme.png";
+import proIntermodal60ftOverallDimensions from "../../assets/images/editorial/pro-platform-projects/pro-intermodal-60ft-overall-dimensions.png";
 import proIntermodal60ftReal from "../../assets/images/editorial/pro-platform-projects/pro-intermodal-60ft-real.png";
 import proIntermodal60ftUnderframe from "../../assets/images/editorial/pro-platform-projects/pro-intermodal-60ft-underframe.jpg";
 import specialisedEquipment from "../../assets/images/editorial/pro-platform-projects/specialised-equipment.png";
@@ -17,6 +19,7 @@ import type { OperationalCaseStudyProps } from "../../components/home/Operationa
 import type { LoadLimitTableProps } from "../../components/product/LoadLimitTable/LoadLimitTable.types";
 import type { SpecificationGroupProps } from "../../components/product/SpecificationGroup/SpecificationGroup.types";
 import type { TechnicalDetailsNavigationProps } from "../../components/product/TechnicalDetailsNavigation/TechnicalDetailsNavigation.types";
+import type { TechnicalSheetProps } from "../../components/product/TechnicalSheet/TechnicalSheet.types";
 import type { BaseLayoutProps } from "../../layouts/BaseLayout.types";
 import { createSiteLayout } from "./site-shell-view-model";
 
@@ -37,6 +40,7 @@ export interface EditorialPageViewModel {
   readonly evidence?: EvidenceListProps;
   readonly caseStudy?: OperationalCaseStudyProps;
   readonly technicalDetailsNavigation?: TechnicalDetailsNavigationProps;
+  readonly technicalSheet?: TechnicalSheetProps;
   readonly specifications?: SpecificationGroupProps;
   readonly loadLimits?: LoadLimitTableProps;
   readonly contactCta: ContactCTAProps;
@@ -49,7 +53,7 @@ const productPortfolioSource = {
   reference: "TransANT Product Portfolio",
 } as const;
 const proIntermodalSource = {
-  reference: "PRO INTERMODAL 60 ft · 2026-09-08",
+  reference: "PRO INTERMODAL 60 ft technical sheet · pp. 1–2",
 } as const;
 const evidenceLabels = {
   policy: "Policy",
@@ -221,8 +225,38 @@ const editorialPages = {
         theme: "dark",
       },
     ],
+    technicalSheet: {
+      productName: "PRO INTERMODAL 60 ft",
+      sourceLabel: "PRO INTERMODAL 60 ft technical sheet · pp. 1–2",
+      drawings: [
+        {
+          title: "Overall dimensions",
+          image: proIntermodal60ftOverallDimensions,
+        },
+        {
+          title: "Loading scheme",
+          image: proIntermodal60ftLoadingScheme,
+        },
+      ],
+      groups: [],
+      tables: [],
+      features: [],
+      notes: [],
+      labels: {
+        eyebrow: "Wagon in detail",
+        title: "Drawings & technical data",
+        viewFullSize: "View full size",
+        openDrawing: "Open drawing",
+        withCatalogueDimensions: "with source dimensions",
+        scrollHint: "Scroll the table horizontally to see all columns.",
+        scrollableTable: "Scrollable table",
+        notSpecified: "Not specified in source",
+        specialFeatures: "Special features",
+        catalogueNotes: "Source notes",
+      },
+    },
     specifications: {
-      id: "technical-details",
+      id: "technical-specifications",
       title: "Technical specifications",
       headingLevel: 2,
       source: proIntermodalSource,
@@ -254,6 +288,12 @@ const editorialPages = {
         { label: "Container equipment", value: "24 foldable container pins" },
         { label: "Supported containers", value: "20, 30 and 40 ft" },
         { label: "Vehicle gauge", value: "G1" },
+        { label: "International-use marking", value: "TEN GE" },
+        {
+          label: "Additional markings",
+          value:
+            "Container contact-plane height 1,155 mm; C in triangle; K in circle — Jurid 822",
+        },
         { label: "Minimum curve radius", value: "75", unit: "m" },
         { label: "Maximum operating speed", value: "120", unit: "km/h" },
         { label: "Maximum brake-related speed", value: "100", unit: "km/h" },

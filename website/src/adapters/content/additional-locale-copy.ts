@@ -1045,6 +1045,18 @@ const rows: readonly TranslationRow[] = [
     "Rysunki i dane techniczne",
     "Výkresy a technické údaje",
   ],
+  [
+    "PRO INTERMODAL 60 ft technical sheet · pp. 1–2",
+    "Технічний лист PRO INTERMODAL 60 ft · с. 1–2",
+    "Karta techniczna PRO INTERMODAL 60 ft · s. 1–2",
+    "Technický list PRO INTERMODAL 60 ft · s. 1–2",
+  ],
+  [
+    "Overall dimensions",
+    "Габаритні розміри",
+    "Wymiary gabarytowe",
+    "Celkové rozměry",
+  ],
   ["Wagon in detail", "Вагон докладно", "Wagon w szczegółach", "Vůz podrobně"],
   [
     "View full size",
@@ -1053,6 +1065,12 @@ const rows: readonly TranslationRow[] = [
     "Zobrazit v plné velikosti",
   ],
   ["Open drawing", "Відкрити креслення", "Otwórz rysunek", "Otevřít výkres"],
+  [
+    "with source dimensions",
+    "з розмірами з джерела",
+    "z wymiarami ze źródła",
+    "s rozměry ze zdroje",
+  ],
   [
     "with catalogue dimensions",
     "з розмірами з каталогу",
@@ -1076,6 +1094,18 @@ const rows: readonly TranslationRow[] = [
     "Не зазначено в каталозі",
     "Nie podano w katalogu",
     "V katalogu neuvedeno",
+  ],
+  [
+    "Not specified in source",
+    "Не зазначено в джерелі",
+    "Nie podano w źródle",
+    "Ve zdroji neuvedeno",
+  ],
+  [
+    "Source notes",
+    "Примітки до джерела",
+    "Uwagi źródłowe",
+    "Poznámky ke zdroji",
   ],
   ["Special features", "Особливості", "Cechy szczególne", "Zvláštní výbava"],
   [
@@ -1722,6 +1752,24 @@ const rows: readonly TranslationRow[] = [
     "Габарит рухомого складу",
     "Skrajnia pojazdu",
     "Průjezdný profil vozidla",
+  ],
+  [
+    "International-use marking",
+    "Маркування для міжнародного використання",
+    "Oznaczenie do użytku międzynarodowego",
+    "Označení pro mezinárodní provoz",
+  ],
+  [
+    "Additional markings",
+    "Додаткові маркування",
+    "Dodatkowe oznaczenia",
+    "Další označení",
+  ],
+  [
+    "Container contact-plane height 1,155 mm; C in triangle; K in circle — Jurid 822",
+    "Висота опорної площини контейнера 1 155 мм; C у трикутнику; K у колі — Jurid 822",
+    "Wysokość płaszczyzny podparcia kontenera 1 155 mm; C w trójkącie; K w okręgu — Jurid 822",
+    "Výška dosedací roviny kontejneru 1 155 mm; C v trojúhelníku; K v kruhu — Jurid 822",
   ],
   [
     "Maximum wheelset load (t)",

@@ -2,6 +2,8 @@
 
 `TechnicalSheet` presents one wagon's print-catalogue drawing set, exact technical rows, loading tables, special features and source notes inside the existing TransANT visual system.
 
+The drawing set is the required core. Callers may provide empty specification and table arrays when authoritative HTML data is already rendered by adjacent `SpecificationGroup` and `LoadLimitTable` sections; in that composition the component renders only the local, full-size-linked drawings and source label, without empty data wrappers.
+
 The caller supplies local `ImageMetadata` and already validated strings. The component does not parse dimensions, convert units, repair conflicting catalogue values, infer blank table cells or read routes/content files. It renders all engineering values as text and provides a native full-size link for each drawing.
 
 Optional `labels` supplies caller-owned localized section, drawing, table-accessibility, empty-cell, feature, and catalogue-note copy; English defaults keep isolated fixtures portable. Technical values remain literal.

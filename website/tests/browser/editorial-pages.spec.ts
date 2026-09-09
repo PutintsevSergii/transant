@@ -76,6 +76,27 @@ test("@component Editorial pages compose only source-bound page sections", async
     "#technical-details",
   );
   await expect(proTechnicalAction).toHaveCSS("min-height", "44px");
+  const proTechnicalSheet = page.locator("[data-technical-sheet]");
+  await expect(proTechnicalSheet).toHaveCount(1);
+  await expect(proTechnicalSheet).toHaveAttribute("id", "technical-details");
+  await expect(proTechnicalSheet.locator("[data-drawing-link]")).toHaveCount(2);
+  await expect(
+    proTechnicalSheet.locator(
+      "img[src*='pro-intermodal-60ft-overall-dimensions']",
+    ),
+  ).toHaveAttribute(
+    "alt",
+    "PRO INTERMODAL 60 ft: overall dimensions — with source dimensions",
+  );
+  await expect(
+    proTechnicalSheet.locator("img[src*='pro-intermodal-60ft-loading-scheme']"),
+  ).toHaveAttribute(
+    "alt",
+    "PRO INTERMODAL 60 ft: loading scheme — with source dimensions",
+  );
+  await expect(
+    proTechnicalSheet.locator("[data-specification-group]"),
+  ).toHaveCount(0);
   await expect(
     page.getByRole("heading", {
       name: "Approximately 16 tonnes of base-platform tare",
@@ -84,9 +105,15 @@ test("@component Editorial pages compose only source-bound page sections", async
   await expect(page.locator("[data-specification-group]")).toContainText(
     "19,740 mm with A-buffers / 19,830 mm with L-buffers",
   );
-  await expect(page.locator("#technical-details")).toHaveAttribute(
+  await expect(page.locator("#technical-specifications")).toHaveAttribute(
     "data-specification-group",
     "",
+  );
+  await expect(page.locator("#technical-specifications")).toContainText(
+    "International-use markingTEN GE",
+  );
+  await expect(page.locator("#technical-specifications")).toContainText(
+    "Additional markingsContainer contact-plane height 1,155 mm; C in triangle; K in circle — Jurid 822",
   );
   await expect(page.locator("[data-load-limit-table]")).toContainText("73.5");
   await expect(

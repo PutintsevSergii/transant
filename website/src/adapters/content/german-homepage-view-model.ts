@@ -108,6 +108,16 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "Fahrzeugbegrenzungslinie, zulässige Geschwindigkeit, Mindestbogenradius, Bremsausrüstung und weitere Betriebsdaten sind je Modell aufgeführt und für den vorgesehenen Einsatz zu prüfen.",
   "Drawings and technical data": "Zeichnungen und technische Daten",
   "Drawings & technical data": "Zeichnungen und technische Daten",
+  "Wagon in detail": "Wagen im Detail",
+  "View full size": "In Originalgröße ansehen",
+  "Open drawing": "Zeichnung öffnen",
+  "with source dimensions": "mit Abmessungen aus der Quelle",
+  "Not specified in source": "In der Quelle nicht angegeben",
+  "Source notes": "Quellenhinweise",
+  "Overall dimensions": "Hauptabmessungen",
+  "Loading scheme": "Beladungsschema",
+  "PRO INTERMODAL 60 ft technical sheet · pp. 1–2":
+    "Technisches Datenblatt PRO INTERMODAL 60 ft · S. 1–2",
   "Product sections": "Produktbereiche",
   "Read the catalogue entry as one model-specific record":
     "Den Katalogeintrag als einen modellspezifischen Datensatz lesen",
@@ -721,6 +731,10 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Container equipment": "Containerausrüstung",
   "Supported containers": "Unterstützte Container",
   "Vehicle gauge": "Fahrzeugbegrenzungslinie",
+  "International-use marking": "Kennzeichnung für den internationalen Einsatz",
+  "Additional markings": "Weitere Kennzeichnungen",
+  "Container contact-plane height 1,155 mm; C in triangle; K in circle — Jurid 822":
+    "Containerauflagehöhe 1.155 mm; C im Dreieck; K im Kreis — Jurid 822",
   "Minimum curve radius": "Mindestbogenradius",
   "Maximum operating speed": "Maximale Betriebsgeschwindigkeit",
   "Maximum brake-related speed": "Maximale bremsbedingte Geschwindigkeit",
