@@ -87,9 +87,6 @@ export const validateContactFormProps = (props: ContactFormProps): void => {
       "ContactForm name, email, and message remain required; only additional project fields may be optional.",
     );
   }
-  if (!isNonEmpty(props.fields.consent.label)) {
-    throw new Error("ContactForm consent requires a non-empty label.");
-  }
   validatePrivacyNotice(props.privacyNotice);
   validateContext(props.context);
   if (

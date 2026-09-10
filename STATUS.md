@@ -4,16 +4,26 @@ This file is the compact operational handoff. It must describe the current truth
 
 ## Control
 
-- Last updated: 2026-09-09
+- Last updated: 2026-09-10
 - Lifecycle: BLOCKED
 - Release: R1 — multilingual static corporate and wagon-catalogue website
 - Active work package: NONE
-- Active objective: await explicit direction after the E-003 Quality EvidenceList lower-inset correction
-- Last completed work package: E-003
+- Active objective: await explicit direction; the legal correction is implemented and its remaining release checks require deployed/provider evidence
+- Last completed work package: A-006
 - Next eligible work package: NONE
-- Last change-log entry: 2026-09-09 — E-003 — Quality EvidenceList lower inset
+- Last change-log entry: 2026-09-10 — A-006 — privacy, imprint, and contact legal correction
 - Package source: `docs/specifications/component-implementation-status.md`
 - Plan source: `docs/specifications/v7-component-development-plan.md`
+
+## Completed correction — A-006 legal and contact feedback
+
+- Status: `IMPLEMENTED` under the explicit client-feedback request. CMS was explicitly excluded and no CMS work was performed.
+- Outcome: corrected the Imprint to `Landesgericht Linz`, FN 544665 d, and registered office Linz; added Magistrat der Stadt Linz, Wirtschaftskammer Oberösterreich, a linked Gewerbeordnung 1994 reference, and the current registered trade wording; replaced provider-neutral hosting copy with the approved Hutchison Drei Austria GmbH / Article 6(1)(f) / Article 28 wording; completed the affected legal/contact copy in EN/DE/UK/PL/CS; and replaced mandatory contact consent with a linked informational Privacy notice.
+- Source boundary: current WKO Firmen A-Z evidence supports the register, authority, chamber, and registered trade wording. Official Drei material supports the provider identity and availability of Article 28 web-hosting processing terms. No deployment, provider agreement, cookie tooling, or CMS changed.
+- Files: legal/contact/site-shell view models and locale maps; `ContactForm` and `LegalDocument` public contracts, implementations, READMEs, fixtures, focused unit/browser tests, and affected visual references; tracker, `STATUS.md`, and `CHANGELOG.md`.
+- Validation: focused unit contracts pass 16/16; Astro diagnostics report 0 errors/warnings/hints; production and component-lab builds pass; focused legal/contact component, keyboard, responsive, and axe checks pass 60/60; focused content checks pass 6/6; refreshed then clean affected visual comparisons pass 24/24 across 320/390/768/1024/1440/844×390. German Privacy, Imprint, and Contact production output plus representative EN mobile/desktop references were inspected directly. The final Node 22.13 `pnpm quality` checkpoint passes Prettier, ESLint, Astro diagnostics, 99 unit tests, both builds, and four foundation tests; aggregate Playwright is `NOT_RUN` because `127.0.0.1:4322` is occupied. The standalone generated-output content/brand audit is also not green because its pre-existing PRO-page narrative expectation no longer matches current PRO output; that unrelated contract was not changed in this correction.
+- Remaining external gates: confirm/execute the hosting data-processing agreement, verify production hosting after deployment, and run the post-migration cookie/tracker audit before deciding whether a consent banner is required. A-006 remains `IMPLEMENTED`, not `VERIFIED`, until the relevant release evidence is complete.
+- Next exact action: await explicit direction; no deployment or external system changed.
 
 ## Completed correction — E-003 Quality EvidenceList lower inset
 

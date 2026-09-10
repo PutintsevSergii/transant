@@ -303,11 +303,11 @@ export const germanCopy: Readonly<Record<string, string>> = {
   "Include the cargo, route, operating constraints, and relevant wagon context.":
     "Nennen Sie Ladung, Strecke, betriebliche Rahmenbedingungen und den relevanten Wagenkontext.",
   "Tell us what you are planning.": "Beschreiben Sie Ihr Vorhaben.",
-  "I have read the privacy information.":
-    "Ich habe die Datenschutzhinweise gelesen.",
   "Privacy information": "Datenschutzhinweise",
-  "Your details are handled according to our":
-    "Ihre Angaben werden gemäß unseren",
+  Privacy: "Datenschutz",
+  "Privacy Policy": "Datenschutzerklärung",
+  "Information on how we process your personal data in connection with your enquiry can be found in our":
+    "Informationen darüber, wie wir Ihre personenbezogenen Daten im Zusammenhang mit Ihrer Anfrage verarbeiten, finden Sie in unserer",
   "Freight wagon enquiry from the TransANT website":
     "Güterwagenanfrage über die TransANT-Website",
   "Continue in email": "In E-Mail fortfahren",
@@ -317,12 +317,90 @@ export const germanCopy: Readonly<Record<string, string>> = {
     "Ihre E-Mail-Anwendung sollte sich mit der vorbereiteten Anfrage öffnen. Prüfen und senden Sie sie dort.",
   "When you contact us by email or telephone, we process the information you provide, such as your name, business contact details, company, enquiry and related project information, so that we can respond and, where applicable, take steps before entering into a contract. The website contact form only prepares this information in your chosen email application; the website does not send or store the enquiry.":
     "Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir die von Ihnen bereitgestellten Angaben, etwa Name, geschäftliche Kontaktdaten, Unternehmen, Anfrage und zugehörige Projektinformationen, damit wir antworten und gegebenenfalls vorvertragliche Maßnahmen ergreifen können. Das Kontaktformular der Website bereitet diese Angaben lediglich in Ihrer gewählten E-Mail-Anwendung vor; die Website sendet oder speichert die Anfrage nicht.",
-  "Website hosting and technical operation":
-    "Website-Hosting und technischer Betrieb",
-  "We use external hosting and technical service providers to make this website available. When you access the website, technical connection and log data, such as an IP address, time of access, requested resource and browser information, may be processed where necessary to deliver, secure and reliably operate the website.":
-    "Für die Bereitstellung dieser Website nutzen wir externe Hosting- und technische Dienstleister. Beim Aufruf der Website können technische Verbindungs- und Protokolldaten, etwa IP-Adresse, Zugriffszeit, angeforderte Ressource und Browserinformationen, verarbeitet werden, soweit dies für die Bereitstellung, Sicherheit und den zuverlässigen Betrieb der Website erforderlich ist.",
-  "Personal data connected with website operation is processed in accordance with applicable data-protection law. Service providers are engaged under appropriate data-protection arrangements. Where processing involves a transfer outside the European Economic Area, the applicable legal requirements and transfer safeguards must be observed.":
-    "Personenbezogene Daten im Zusammenhang mit dem Betrieb der Website werden nach dem anwendbaren Datenschutzrecht verarbeitet. Dienstleister werden auf Grundlage geeigneter datenschutzrechtlicher Vereinbarungen eingesetzt. Soweit die Verarbeitung eine Übermittlung außerhalb des Europäischen Wirtschaftsraums umfasst, sind die geltenden rechtlichen Anforderungen und Übermittlungsgarantien zu beachten.",
+  Hosting: "Hosting",
+  "This website is hosted using hosting services provided by Hutchison Drei Austria GmbH, Austria.":
+    "Diese Website wird unter Nutzung von Hosting-Dienstleistungen der Hutchison Drei Austria GmbH, Österreich, betrieben.",
+  "In connection with the provision and secure operation of the website, technical connection and usage data may be processed, in particular IP addresses, date and time of access, requested resources, browser information and technical server log data.":
+    "Im Rahmen der Bereitstellung und des sicheren Betriebs der Website können technische Verbindungs- und Nutzungsdaten verarbeitet werden, insbesondere IP-Adressen, Datum und Uhrzeit des Zugriffs, aufgerufene Ressourcen, Browserinformationen sowie technische Server-Protokolldaten.",
+  "The processing is carried out on the basis of Article 6(1)(f) GDPR. Our legitimate interest is the secure, stable and efficient provision and operation of our website.":
+    "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in der sicheren, stabilen und effizienten Bereitstellung und dem Betrieb unserer Website.",
+  "The hosting provider processes personal data on our behalf in accordance with Article 28 GDPR.":
+    "Der Hosting-Anbieter verarbeitet personenbezogene Daten in unserem Auftrag gemäß Art. 28 DSGVO.",
+  "Controller and contact": "Verantwortlicher und Kontakt",
+  "Personal data": "Personenbezogene Daten",
+  "Contacting us": "Kontaktaufnahme",
+  "Cookies and analytics": "Cookies und Analyse",
+  Retention: "Speicherdauer",
+  "Your rights": "Ihre Rechte",
+  "Data security": "Datensicherheit",
+  "How TransAnt GmbH handles personal data when you visit this website or contact the company.":
+    "Wie die TransAnt GmbH personenbezogene Daten verarbeitet, wenn Sie diese Website besuchen oder das Unternehmen kontaktieren.",
+  "How TransAnt GmbH processes and protects personal data connected with this website and business enquiries.":
+    "Wie die TransAnt GmbH personenbezogene Daten im Zusammenhang mit dieser Website und geschäftlichen Anfragen verarbeitet und schützt.",
+  "Protecting personal data is important to TransAnt GmbH. This information describes the data used to provide the website and respond to business enquiries.":
+    "Der Schutz personenbezogener Daten ist der TransAnt GmbH wichtig. Diese Informationen beschreiben die Daten, die für die Bereitstellung der Website und die Beantwortung geschäftlicher Anfragen verwendet werden.",
+  "TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Austria, is responsible for the processing described here.":
+    "Für die hier beschriebene Verarbeitung ist die TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Österreich, verantwortlich.",
+  "You can contact us at office@transant.com or by telephone on +43 664 88324966.":
+    "Sie erreichen uns unter office@transant.com oder telefonisch unter +43 664 88324966.",
+  "Personal data is information relating to an identified or identifiable individual, such as a name, email address, telephone number or IP address.":
+    "Personenbezogene Daten sind Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen, etwa Name, E-Mail-Adresse, Telefonnummer oder IP-Adresse.",
+  "The processing is based on Article 6(1)(b) GDPR where it is necessary for contractual or pre-contractual steps and Article 6(1)(f) GDPR where it supports our legitimate interest in answering and managing business enquiries.":
+    "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit sie für vertragliche oder vorvertragliche Maßnahmen erforderlich ist, und auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO, soweit sie unserem berechtigten Interesse an der Beantwortung und Bearbeitung geschäftlicher Anfragen dient.",
+  "This version of the website does not use Google Analytics, marketing trackers or social-media plugins and does not intentionally set non-essential cookies.":
+    "Diese Version der Website verwendet weder Google Analytics noch Marketing-Tracker oder Social-Media-Plugins und setzt nicht absichtlich technisch nicht notwendige Cookies.",
+  "If the services used by the website change, this privacy information will be updated before additional tracking or consent-dependent technology is enabled.":
+    "Wenn sich die von der Website genutzten Dienste ändern, werden diese Datenschutzhinweise aktualisiert, bevor zusätzliche Tracking- oder einwilligungsabhängige Technologien aktiviert werden.",
+  "Personal data is deleted when it is no longer needed for the purpose for which it was collected, unless statutory retention duties or the establishment, exercise or defence of legal claims require it to be kept for longer.":
+    "Personenbezogene Daten werden gelöscht, sobald sie für den Zweck ihrer Erhebung nicht mehr benötigt werden, sofern nicht gesetzliche Aufbewahrungspflichten oder die Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen eine längere Speicherung erfordern.",
+  "Subject to the conditions of the GDPR, you may request access to, correction or erasure of your personal data, restriction of processing, data portability, or object to processing. Where processing is based on consent, you may withdraw that consent at any time without affecting processing that was lawful before withdrawal.":
+    "Unter den Voraussetzungen der DSGVO können Sie Auskunft über Ihre personenbezogenen Daten sowie deren Berichtigung oder Löschung, die Einschränkung der Verarbeitung oder Datenübertragbarkeit verlangen oder der Verarbeitung widersprechen. Soweit eine Verarbeitung auf einer Einwilligung beruht, können Sie diese jederzeit widerrufen, ohne dass die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung berührt wird.",
+  "To exercise your rights, email office@transant.com. You also have the right to lodge a complaint with the competent data-protection supervisory authority.":
+    "Zur Ausübung Ihrer Rechte schreiben Sie an office@transant.com. Sie haben außerdem das Recht, Beschwerde bei der zuständigen Datenschutzaufsichtsbehörde einzulegen.",
+  "We use organisational and technical measures intended to protect personal data against loss, misuse, unauthorised access, alteration and disclosure. Access is limited to people and service providers who require it for the relevant purpose.":
+    "Wir setzen organisatorische und technische Maßnahmen ein, um personenbezogene Daten vor Verlust, Missbrauch, unbefugtem Zugriff, Veränderung und Offenlegung zu schützen. Der Zugriff ist auf Personen und Dienstleister beschränkt, die ihn für den jeweiligen Zweck benötigen.",
+  "Company and register information": "Unternehmens- und Registerangaben",
+  "Trade and professional information": "Gewerbe- und berufsrechtliche Angaben",
+  "Contact information": "Kontaktinformationen",
+  "Copyright and permitted use": "Urheberrecht und zulässige Nutzung",
+  "Liability and external links": "Haftung und externe Links",
+  Language: "Sprache",
+  Imprint: "Impressum",
+  "Legal and company information for TransAnt GmbH.":
+    "Rechtliche und unternehmensbezogene Informationen zur TransAnt GmbH.",
+  "TransAnt GmbH company information":
+    "Unternehmensinformationen der TransAnt GmbH",
+  "Official legal and contact information for TransAnt GmbH.":
+    "Offizielle rechtliche und Kontaktinformationen der TransAnt GmbH.",
+  "Legal and contact information for TransAnt GmbH, translated from the company’s official German Impressum.":
+    "Rechtliche und Kontaktinformationen der TransAnt GmbH auf Grundlage des offiziellen Impressums des Unternehmens.",
+  "TransAnt GmbH is an Austrian limited liability company (Gesellschaft mit beschränkter Haftung).":
+    "Die TransAnt GmbH ist eine österreichische Gesellschaft mit beschränkter Haftung.",
+  "Company register court: Landesgericht Linz. Company registration number: FN 544665 d. Registered office: Linz, Austria.":
+    "Firmenbuchgericht: Landesgericht Linz. Firmenbuchnummer: FN 544665 d. Sitz: Linz, Österreich.",
+  "VAT identification number: ATU76434529.":
+    "Umsatzsteuer-Identifikationsnummer: ATU76434529.",
+  "Competent authority: Magistrat der Stadt Linz.":
+    "Zuständige Behörde: Magistrat der Stadt Linz.",
+  "Chamber membership: Wirtschaftskammer Oberösterreich.":
+    "Mitgliedschaft: Wirtschaftskammer Oberösterreich.",
+  "Applicable trade regulations: Austrian Trade Regulation Act 1994 (Gewerbeordnung 1994 – GewO), available via the Austrian Legal Information System (RIS):":
+    "Anwendbare Rechtsvorschriften: Gewerbeordnung 1994 (GewO), abrufbar über das Rechtsinformationssystem des Bundes (RIS):",
+  "Business purpose: Development and production of standardised freight wagons in lightweight and standard construction, consisting of platform wagons and modular superstructures or individual wagons, as an industrial undertaking; trade in goods except regulated trades.":
+    "Unternehmensgegenstand: Entwicklung und Erzeugung von standardisierten Güterwagen in Leichtbau- und in Standardbauweise, bestehend aus Plattformwagen sowie modularen Aufbauten oder auch als Einzelwagen in Form eines Industriebetriebes; Handelsgewerbe mit Ausnahme der reglementierten Handelsgewerbe.",
+  "TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Austria.":
+    "TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Österreich.",
+  "4020 Linz, Austria": "4020 Linz, Österreich",
+  "Telephone: +43 664 88324966. Email: office@transant.com.":
+    "Telefon: +43 664 88324966. E-Mail: office@transant.com.",
+  "Content on this website may be protected by ownership and copyright rights, including logos, images, audio and video. Downloading, printing or storing website files is permitted for private use only; any other use requires the express permission of TransAnt GmbH.":
+    "Inhalte dieser Website, einschließlich Logos, Bilder, Audio- und Videomaterial, können durch Eigentums- und Urheberrechte geschützt sein. Das Herunterladen, Drucken oder Speichern von Dateien dieser Website ist nur für den privaten Gebrauch gestattet; jede andere Nutzung bedarf der ausdrücklichen Zustimmung der TransAnt GmbH.",
+  "To the extent permitted by law, TransAnt GmbH accepts no liability for direct, indirect or other loss resulting from the use or unavailability of information on this website.":
+    "Soweit gesetzlich zulässig, übernimmt die TransAnt GmbH keine Haftung für direkte, indirekte oder sonstige Schäden, die aus der Nutzung oder Nichtverfügbarkeit von Informationen auf dieser Website entstehen.",
+  "TransAnt GmbH is not responsible for the content of external websites reached through links from this site.":
+    "Die TransAnt GmbH ist nicht für Inhalte externer Websites verantwortlich, die über Links auf dieser Website erreichbar sind.",
+  "References to people are intended to include all genders, even where a particular grammatical form is used for readability.":
+    "Personenbezeichnungen gelten für alle Geschlechter, auch wenn aus Gründen der Lesbarkeit eine bestimmte grammatische Form verwendet wird.",
   "Technology platform": "Technologieplattform",
   "Freight wagon technology": "Güterwagentechnologie",
   "How TransANT combines a standardised lightweight platform, interchangeable cargo-specific superstructures, and configuration-led engineering.":

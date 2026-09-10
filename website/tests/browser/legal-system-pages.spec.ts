@@ -37,19 +37,29 @@ test("@component Contact and legal routes keep their source and delivery boundar
     page.getByText(/opens your email application with the enquiry prepared/i),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Privacy information" }),
+    page.getByRole("link", { name: "Privacy Policy" }),
   ).toHaveAttribute("href", "/privacy/");
 
   await page.goto("/fixtures/legal/imprint/");
-  await expect(page.locator("[data-legal-document-section]")).toHaveCount(5);
+  await expect(page.locator("[data-legal-document-section]")).toHaveCount(6);
   await expect(page.getByText("ATU76434529")).toBeVisible();
-  await expect(page.getByText(/Commercial Court of Linz/)).toBeVisible();
+  await expect(page.getByText(/Landesgericht Linz/)).toBeVisible();
+  await expect(page.getByText(/Magistrat der Stadt Linz/)).toBeVisible();
+  await expect(
+    page.getByText(/Wirtschaftskammer Oberösterreich/),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "ris.bka.gv.at" }),
+  ).toHaveAttribute("href", "https://www.ris.bka.gv.at/");
 
   await page.goto("/fixtures/legal/privacy/");
+  await expect(page.getByText(/Hutchison Drei Austria GmbH/)).toBeVisible();
   await expect(
-    page.getByText(/external hosting and technical service providers/),
+    page.getByText(
+      /The processing is carried out on the basis of Article 6\(1\)\(f\) GDPR/,
+    ),
   ).toBeVisible();
-  await expect(page.getByText(/applicable data-protection law/)).toBeVisible();
+  await expect(page.getByText(/Article 28 GDPR/)).toBeVisible();
   await expect(page.getByText(/Vercel/i)).toHaveCount(0);
   await expect(page.getByText(/does not use Google Analytics/)).toBeVisible();
 
@@ -70,7 +80,7 @@ test("@keyboard Contact and recovery routes work without JavaScript", async ({
 
   await page.goto(`${browserBaseUrl}/fixtures/contact/`);
   await expect(page.locator("[data-contact-form]")).toHaveCount(1);
-  const privacy = page.getByRole("link", { name: "Privacy information" });
+  const privacy = page.getByRole("link", { name: "Privacy Policy" });
   await privacy.focus();
   await expect(privacy).toBeFocused();
   await expect(privacy).toHaveAttribute("href", "/privacy/");

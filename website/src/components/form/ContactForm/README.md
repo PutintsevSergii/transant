@@ -6,10 +6,11 @@
 
 - Required props: a verified public `recipient`, caller-owned `subject`, visible `fields`, `privacyNotice`, and `submitLabel`.
 - Optional `labels` localizes the privacy sentence, pre-submit mail-client explanation, and post-handoff status. English defaults preserve fixture portability.
-- Fields are fixed to name, business email, company, message, and consent. Name, email, message, and consent remain required; company is optional unless a caller-approved requirement marks it required.
+- Fields are fixed to name, business email, company, and message. Name, email, and message remain required; company is optional unless a caller-approved requirement marks it required.
+- The privacy text is informational rather than consent-based: caller-owned prose links directly to the applicable Privacy Policy and does not block submission with a checkbox.
 - Optional `context` stays visible and is added to the prepared email body. The component never derives it from a route or global state.
 - Native browser validation runs before the controller handles a submission. The controller builds a URL-encoded body from the visible caller-owned labels and current values, updates a focusable status, clicks the component's hidden `mailto:` link, and preserves every entered value.
-- The prepared message includes name, business email, optional non-empty company, optional context, and message in source order. Consent is not copied into the email body.
+- The prepared message includes name, business email, optional non-empty company, optional context, and message in source order. The linked privacy notice is informational and is not copied into the email body.
 - Without JavaScript, the form retains a native `mailto:` action and subject field. Exact field serialization then depends on the browser and installed mail handler; the adjacent public email link remains the dependable manual fallback.
 
 ## Responsive, accessibility, and failure behaviour

@@ -1,6 +1,5 @@
 /** Fixed contact-data names keep the prepared message explicit and portable. */
-export type ContactFormFieldName =
-  "name" | "email" | "company" | "message" | "consent";
+export type ContactFormFieldName = "name" | "email" | "company" | "message";
 
 export interface ContactFormTextField {
   /** Visible field label. */
@@ -13,17 +12,11 @@ export interface ContactFormTextField {
   readonly required?: boolean;
 }
 
-export interface ContactFormConsentField {
-  /** Visible consent wording; legal text and jurisdiction stay caller-owned. */
-  readonly label: string;
-}
-
 export interface ContactFormFields {
   readonly name: ContactFormTextField;
   readonly email: ContactFormTextField;
   readonly company: ContactFormTextField;
   readonly message: ContactFormTextField;
-  readonly consent: ContactFormConsentField;
 }
 
 export interface ContactFormPrivacyNotice {

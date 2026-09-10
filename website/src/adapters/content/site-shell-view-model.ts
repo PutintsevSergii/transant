@@ -50,6 +50,7 @@ interface ShellCopy {
   readonly privacy: string;
   readonly imprint: string;
   readonly contactAction: string;
+  readonly addressCityCountry: string;
   readonly familyNames: Readonly<Record<string, string>>;
   readonly headerLabels: NonNullable<BaseLayoutProps["header"]["labels"]>;
   readonly footerLabels: NonNullable<BaseLayoutProps["footer"]["labels"]>;
@@ -69,6 +70,7 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     privacy: "Privacy",
     imprint: "Imprint",
     contactAction: "Contact TransANT",
+    addressCityCountry: "4020 Linz, Austria",
     familyNames: {},
     headerLabels: {
       menu: "Menu",
@@ -98,6 +100,7 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     privacy: "Datenschutz",
     imprint: "Impressum",
     contactAction: "TransANT kontaktieren",
+    addressCityCountry: "4020 Linz, Österreich",
     familyNames: {
       Intermodal: "Intermodal",
       Flat: "Flachwagen",
@@ -133,6 +136,7 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     privacy: "Конфіденційність",
     imprint: "Вихідні дані",
     contactAction: "Зв’язатися з TransANT",
+    addressCityCountry: "4020 Лінц, Австрія",
     familyNames: {
       Intermodal: "Інтермодальні",
       Flat: "Платформні",
@@ -168,6 +172,7 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     privacy: "Prywatność",
     imprint: "Nota prawna",
     contactAction: "Skontaktuj się z TransANT",
+    addressCityCountry: "4020 Linz, Austria",
     familyNames: {
       Intermodal: "Intermodalne",
       Flat: "Platformowe",
@@ -203,6 +208,7 @@ const shellCopy: Readonly<Record<SiteLocale, ShellCopy>> = {
     privacy: "Ochrana soukromí",
     imprint: "Tiráž",
     contactAction: "Kontaktovat TransANT",
+    addressCityCountry: "4020 Linec, Rakousko",
     familyNames: {
       Intermodal: "Intermodální",
       Flat: "Plošinové",
@@ -353,7 +359,7 @@ export function createSiteLayout(
       contact: {
         verification: "verified",
         companyName: "TransAnt GmbH",
-        addressLines: ["voestalpine-Straße 3", "4020 Linz, Austria"],
+        addressLines: ["voestalpine-Straße 3", copy.addressCityCountry],
         phone: "+43 664 88324966",
         email: "office@transant.com",
       },

@@ -99,7 +99,6 @@ test("@keyboard I-003 keeps the technical table and prepared-email status reacha
   await form
     .locator('textarea[name="message"]')
     .fill("Please send a source-bound response.");
-  await form.getByLabel(/I have read/).check();
   await form.getByRole("button", { name: "Continue in email" }).click();
 
   await expect(form.locator("[data-contact-form-status]")).toHaveAttribute(

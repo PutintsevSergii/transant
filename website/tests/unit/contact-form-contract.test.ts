@@ -12,7 +12,6 @@ const validProps = (): ContactFormProps => ({
     email: { label: "Business email" },
     company: { label: "Company" },
     message: { label: "Inquiry" },
-    consent: { label: "I agree to the privacy notice." },
   },
   privacyNotice: { label: "Privacy notice", href: "/privacy/" },
   submitLabel: "Continue in email",

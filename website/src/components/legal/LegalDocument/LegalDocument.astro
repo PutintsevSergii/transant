@@ -19,7 +19,16 @@ validateLegalDocumentProps(props);
           <section class="legal-document__section" data-legal-document-section>
             <h2>{section.title}</h2>
             {section.paragraphs.map((paragraph) => (
-              <p>{paragraph}</p>
+              <p>
+                {typeof paragraph === "string" ? paragraph : paragraph.text}
+                {typeof paragraph !== "string" &&
+                  paragraph.link !== undefined && (
+                    <>
+                      {" "}
+                      <a href={paragraph.link.href}>{paragraph.link.label}</a>
+                    </>
+                  )}
+              </p>
             ))}
           </section>
         ))
@@ -80,5 +89,24 @@ validateLegalDocumentProps(props);
     color: var(--color-brand-blue-dark);
     font-size: var(--font-size-heading-2);
     line-height: var(--line-height-heading);
+  }
+
+  .legal-document a {
+    color: var(--color-brand-blue-dark);
+    font-weight: 700;
+    text-underline-offset: 0.2em;
+  }
+
+  .legal-document a:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  @media (forced-colors: active) {
+    .legal-document a:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 3px;
+      box-shadow: none;
+    }
   }
 </style>

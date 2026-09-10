@@ -6,7 +6,8 @@ import type { ContactFormProps } from "./ContactForm.types";
 const props = Astro.props as ContactFormProps;
 validateContactFormProps(props);
 const labels = props.labels ?? {
-  privacyPrefix: "Your details are handled according to our",
+  privacyPrefix:
+    "Information on how we process your personal data in connection with your enquiry can be found in our",
   mailClientHint:
     "This opens your email application with the inquiry prepared. Review and send it from there.",
   mailClientOpened:
@@ -105,10 +106,6 @@ const labels = props.labels ?? {
       </label>
     </div>
 
-    <label class="contact-form__consent">
-      <input name="consent" type="checkbox" value="yes" required />
-      <span>{props.fields.consent.label} <em aria-hidden="true">*</em></span>
-    </label>
     <p class="contact-form__privacy">
       {labels.privacyPrefix}{" "}
       <a href={props.privacyNotice.href}>{props.privacyNotice.label}</a>.
@@ -152,7 +149,6 @@ const labels = props.labels ?? {
   .contact-form__form,
   .contact-form__fields,
   .contact-form__field,
-  .contact-form__consent,
   .contact-form__context,
   .contact-form__submit {
     display: grid;
@@ -173,7 +169,6 @@ const labels = props.labels ?? {
   }
 
   .contact-form__field > span,
-  .contact-form__consent > span,
   .contact-form__context span {
     color: var(--color-brand-blue-dark);
     font-weight: 700;
@@ -186,7 +181,7 @@ const labels = props.labels ?? {
     font-style: normal;
   }
 
-  input:not([type="checkbox"]),
+  input,
   textarea {
     box-sizing: border-box;
     inline-size: 100%;
@@ -203,13 +198,6 @@ const labels = props.labels ?? {
   textarea {
     min-block-size: 10rem;
     resize: vertical;
-  }
-
-  input[type="checkbox"] {
-    inline-size: 1.25rem;
-    block-size: 1.25rem;
-    margin: 0.15rem 0 0;
-    accent-color: var(--color-brand-red-dark);
   }
 
   input:focus-visible,
@@ -239,11 +227,6 @@ const labels = props.labels ?? {
   .contact-form__privacy,
   .contact-form__mail-client-hint {
     color: var(--color-ink-secondary);
-  }
-
-  .contact-form__consent {
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: start;
   }
 
   .contact-form__context {
@@ -276,7 +259,7 @@ const labels = props.labels ?? {
   }
 
   @media (forced-colors: active) {
-    input:not([type="checkbox"]),
+    input,
     textarea {
       border-color: ButtonText;
       color: ButtonText;

@@ -701,6 +701,18 @@ const rows: readonly TranslationRow[] = [
     "Vaše organizace",
   ],
   [
+    "4020 Linz, Austria",
+    "4020 Лінц, Австрія",
+    "4020 Linz, Austria",
+    "4020 Linec, Rakousko",
+  ],
+  [
+    "TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Austria.",
+    "TransAnt GmbH, voestalpine-Straße 3, 4020 Лінц, Австрія.",
+    "TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Austria.",
+    "TransAnt GmbH, voestalpine-Straße 3, 4020 Linec, Rakousko.",
+  ],
+  [
     "Transport requirement",
     "Транспортне завдання",
     "Wymagania transportowe",
@@ -713,10 +725,16 @@ const rows: readonly TranslationRow[] = [
     "Popište, co plánujete.",
   ],
   [
-    "I have read the privacy information.",
-    "Я ознайомився(-лася) з інформацією про конфіденційність.",
-    "Zapoznałem(-am) się z informacją o ochronie prywatności.",
-    "Seznámil(a) jsem se s informacemi o ochraně soukromí.",
+    "Privacy Policy",
+    "Політиці конфіденційності",
+    "Polityce prywatności",
+    "Zásadách ochrany osobních údajů",
+  ],
+  [
+    "Information on how we process your personal data in connection with your enquiry can be found in our",
+    "Інформацію про те, як ми обробляємо ваші персональні дані у зв’язку з вашим запитом, можна знайти в нашій",
+    "Informacje o tym, jak przetwarzamy Twoje dane osobowe w związku z zapytaniem, znajdziesz w naszej",
+    "Informace o tom, jak zpracováváme vaše osobní údaje v souvislosti s vaší poptávkou, najdete v našich",
   ],
   [
     "Privacy information",
@@ -764,12 +782,7 @@ const rows: readonly TranslationRow[] = [
     "Kontakt z nami",
     "Kontaktování společnosti",
   ],
-  [
-    "Website hosting and technical operation",
-    "Хостинг і технічна робота вебсайту",
-    "Hosting i techniczne działanie strony",
-    "Hosting a technický provoz webu",
-  ],
+  ["Hosting", "Хостинг", "Hosting", "Hosting"],
   [
     "Cookies and analytics",
     "Файли cookie та аналітика",
@@ -790,6 +803,12 @@ const rows: readonly TranslationRow[] = [
     "Відомості про компанію та реєстрацію",
     "Dane spółki i rejestrowe",
     "Údaje o společnosti a rejstříku",
+  ],
+  [
+    "Trade and professional information",
+    "Відомості про господарську діяльність і професійне регулювання",
+    "Informacje dotyczące działalności i regulacji zawodowych",
+    "Informace o podnikání a profesní regulaci",
   ],
   [
     "Contact information",
@@ -884,9 +903,9 @@ const rows: readonly TranslationRow[] = [
   ],
   [
     "TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Austria, is responsible for the processing described here.",
-    "За описану тут обробку відповідає TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Austria.",
+    "За описану тут обробку відповідає TransAnt GmbH, voestalpine-Straße 3, 4020 Лінц, Австрія.",
     "Administratorem opisanego tu przetwarzania jest TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Austria.",
-    "Za zde popsané zpracování odpovídá společnost TransAnt GmbH, voestalpine-Straße 3, 4020 Linz, Austria.",
+    "Za zde popsané zpracování odpovídá společnost TransAnt GmbH, voestalpine-Straße 3, 4020 Linec, Rakousko.",
   ],
   [
     "You can contact us at office@transant.com or by telephone on +43 664 88324966.",
@@ -913,10 +932,28 @@ const rows: readonly TranslationRow[] = [
     "Zpracování je založeno na čl. 6 odst. 1 písm. b GDPR, pokud je nezbytné pro smluvní nebo předsmluvní kroky, a na čl. 6 odst. 1 písm. f GDPR, pokud podporuje náš oprávněný zájem odpovídat na obchodní poptávky a spravovat je.",
   ],
   [
-    "We use external hosting and technical service providers to make this website available. When you access the website, technical connection and log data, such as an IP address, time of access, requested resource and browser information, may be processed where necessary to deliver, secure and reliably operate the website.",
-    "Для забезпечення доступності цього вебсайту ми користуємося послугами зовнішніх провайдерів хостингу та технічних послуг. Під час відвідування вебсайту можуть оброблятися технічні дані з’єднання й журналів, зокрема IP-адреса, час доступу, запитаний ресурс та інформація про браузер, якщо це необхідно для надання, захисту й надійної роботи вебсайту.",
-    "W celu udostępniania tej witryny korzystamy z zewnętrznych dostawców usług hostingowych i technicznych. Podczas korzystania z witryny mogą być przetwarzane techniczne dane połączenia i dzienników, takie jak adres IP, czas dostępu, żądany zasób i informacje o przeglądarce, jeżeli jest to konieczne do udostępniania, zabezpieczenia i niezawodnego działania witryny.",
-    "Pro zajištění dostupnosti tohoto webu využíváme externí poskytovatele hostingu a technických služeb. Při návštěvě webu mohou být zpracovávány technické údaje o připojení a protokolech, například IP adresa, čas přístupu, požadovaný zdroj a informace o prohlížeči, pokud je to nezbytné pro poskytování, zabezpečení a spolehlivý provoz webu.",
+    "This website is hosted using hosting services provided by Hutchison Drei Austria GmbH, Austria.",
+    "Цей вебсайт розміщено з використанням хостингових послуг Hutchison Drei Austria GmbH, Австрія.",
+    "Ta witryna jest hostowana z wykorzystaniem usług hostingowych świadczonych przez Hutchison Drei Austria GmbH w Austrii.",
+    "Tento web je provozován s využitím hostingových služeb společnosti Hutchison Drei Austria GmbH, Rakousko.",
+  ],
+  [
+    "In connection with the provision and secure operation of the website, technical connection and usage data may be processed, in particular IP addresses, date and time of access, requested resources, browser information and technical server log data.",
+    "У зв’язку із забезпеченням доступності та безпечної роботи вебсайту можуть оброблятися технічні дані про з’єднання й використання, зокрема IP-адреси, дата й час доступу, запитані ресурси, інформація про браузер і технічні дані серверних журналів.",
+    "W związku z udostępnianiem i bezpiecznym działaniem witryny mogą być przetwarzane techniczne dane dotyczące połączenia i korzystania, w szczególności adresy IP, data i godzina dostępu, żądane zasoby, informacje o przeglądarce oraz techniczne dane dzienników serwera.",
+    "V souvislosti se zpřístupněním a bezpečným provozem webu mohou být zpracovávány technické údaje o připojení a používání, zejména IP adresy, datum a čas přístupu, požadované zdroje, informace o prohlížeči a technické údaje serverových protokolů.",
+  ],
+  [
+    "The processing is carried out on the basis of Article 6(1)(f) GDPR. Our legitimate interest is the secure, stable and efficient provision and operation of our website.",
+    "Обробка здійснюється на підставі статті 6(1)(f) GDPR. Наш законний інтерес полягає в безпечному, стабільному й ефективному забезпеченні доступності та роботи нашого вебсайту.",
+    "Przetwarzanie odbywa się na podstawie art. 6 ust. 1 lit. f RODO. Naszym prawnie uzasadnionym interesem jest bezpieczne, stabilne i efektywne udostępnianie oraz działanie naszej witryny.",
+    "Zpracování probíhá na základě čl. 6 odst. 1 písm. f GDPR. Naším oprávněným zájmem je bezpečné, stabilní a efektivní poskytování a provoz našeho webu.",
+  ],
+  [
+    "The hosting provider processes personal data on our behalf in accordance with Article 28 GDPR.",
+    "Хостинг-провайдер обробляє персональні дані від нашого імені відповідно до статті 28 GDPR.",
+    "Dostawca hostingu przetwarza dane osobowe w naszym imieniu zgodnie z art. 28 RODO.",
+    "Poskytovatel hostingu zpracovává osobní údaje naším jménem v souladu s článkem 28 GDPR.",
   ],
   [
     "This version of the website does not use Google Analytics, marketing trackers or social-media plugins and does not intentionally set non-essential cookies.",
@@ -961,16 +998,40 @@ const rows: readonly TranslationRow[] = [
     "TransAnt GmbH je rakouská společnost s ručením omezeným (Gesellschaft mit beschränkter Haftung).",
   ],
   [
-    "Company register court: Commercial Court of Linz (Handelsgericht Linz). Company register number: FN 544665 d.",
-    "Суд торгового реєстру: Комерційний суд Лінца (Handelsgericht Linz). Номер у торговому реєстрі: FN 544665 d.",
-    "Sąd rejestrowy: Sąd Gospodarczy w Linzu (Handelsgericht Linz). Numer w rejestrze przedsiębiorców: FN 544665 d.",
-    "Rejstříkový soud: Obchodní soud v Linci (Handelsgericht Linz). Číslo v obchodním rejstříku: FN 544665 d.",
+    "Company register court: Landesgericht Linz. Company registration number: FN 544665 d. Registered office: Linz, Austria.",
+    "Суд торгового реєстру: Landesgericht Linz. Номер у торговому реєстрі: FN 544665 d. Місцезнаходження: Лінц, Австрія.",
+    "Sąd rejestrowy: Landesgericht Linz. Numer w rejestrze przedsiębiorców: FN 544665 d. Siedziba: Linz, Austria.",
+    "Rejstříkový soud: Landesgericht Linz. Číslo v obchodním rejstříku: FN 544665 d. Sídlo: Linec, Rakousko.",
   ],
   [
     "VAT identification number: ATU76434529.",
     "Ідентифікаційний номер ПДВ: ATU76434529.",
     "Numer identyfikacyjny VAT: ATU76434529.",
     "Identifikační číslo pro DPH: ATU76434529.",
+  ],
+  [
+    "Competent authority: Magistrat der Stadt Linz.",
+    "Компетентний орган: Magistrat der Stadt Linz.",
+    "Właściwy organ: Magistrat der Stadt Linz.",
+    "Příslušný orgán: Magistrat der Stadt Linz.",
+  ],
+  [
+    "Chamber membership: Wirtschaftskammer Oberösterreich.",
+    "Членство в палаті: Wirtschaftskammer Oberösterreich.",
+    "Członkostwo w izbie: Wirtschaftskammer Oberösterreich.",
+    "Členství v komoře: Wirtschaftskammer Oberösterreich.",
+  ],
+  [
+    "Applicable trade regulations: Austrian Trade Regulation Act 1994 (Gewerbeordnung 1994 – GewO), available via the Austrian Legal Information System (RIS):",
+    "Застосовні норми господарського законодавства: Закон Австрії про регулювання господарської діяльності 1994 року (Gewerbeordnung 1994 – GewO), доступний через Правову інформаційну систему Австрії (RIS):",
+    "Obowiązujące przepisy dotyczące działalności gospodarczej: austriacka ustawa o działalności gospodarczej z 1994 r. (Gewerbeordnung 1994 – GewO), dostępna w austriackim systemie informacji prawnej (RIS):",
+    "Použitelné živnostenské předpisy: rakouský živnostenský zákon z roku 1994 (Gewerbeordnung 1994 – GewO), dostupný prostřednictvím rakouského právního informačního systému (RIS):",
+  ],
+  [
+    "Business purpose: Development and production of standardised freight wagons in lightweight and standard construction, consisting of platform wagons and modular superstructures or individual wagons, as an industrial undertaking; trade in goods except regulated trades.",
+    "Предмет діяльності: розроблення та виробництво стандартизованих вантажних вагонів полегшеної та стандартної конструкції, що складаються з платформ і модульних надбудов або виготовляються як окремі вагони в межах промислової діяльності; торгівля товарами, крім регульованих видів торгівлі.",
+    "Przedmiot działalności: rozwój i produkcja standaryzowanych wagonów towarowych o konstrukcji lekkiej i standardowej, składających się z wagonów platformowych i modułowych nadwozi lub wykonywanych jako pojedyncze wagony w ramach działalności przemysłowej; handel towarami z wyjątkiem regulowanych rodzajów działalności handlowej.",
+    "Předmět podnikání: vývoj a výroba standardizovaných nákladních vozů lehké a standardní konstrukce, tvořených plošinovými vozy a modulárními nástavbami nebo vyráběných jako jednotlivé vozy v rámci průmyslové činnosti; obchod se zbožím s výjimkou regulovaných živností.",
   ],
   [
     "Telephone: +43 664 88324966. Email: office@transant.com.",
@@ -983,12 +1044,6 @@ const rows: readonly TranslationRow[] = [
     "Запитана сторінка TransANT недоступна. Поверніться на головну або перегляньте каталог вагонів.",
     "Żądana strona TransANT jest niedostępna. Wróć na stronę główną lub przejrzyj katalog wagonów.",
     "Požadovaná stránka TransANT není dostupná. Vraťte se na domovskou stránku nebo projděte katalog vozů.",
-  ],
-  [
-    "Personal data connected with website operation is processed in accordance with applicable data-protection law. Service providers are engaged under appropriate data-protection arrangements. Where processing involves a transfer outside the European Economic Area, the applicable legal requirements and transfer safeguards must be observed.",
-    "Персональні дані, пов’язані з роботою вебсайту, обробляються відповідно до застосовного законодавства про захист даних. Постачальники послуг залучаються на підставі належних домовленостей щодо захисту даних. Якщо обробка передбачає передачу за межі Європейської економічної зони, мають дотримуватися застосовні правові вимоги та гарантії передачі.",
-    "Dane osobowe związane z działaniem witryny są przetwarzane zgodnie z mającymi zastosowanie przepisami o ochronie danych. Dostawcy usług są angażowani na podstawie odpowiednich uzgodnień dotyczących ochrony danych. Jeżeli przetwarzanie obejmuje przekazanie danych poza Europejski Obszar Gospodarczy, muszą być przestrzegane odpowiednie wymogi prawne i zabezpieczenia transferu.",
-    "Osobní údaje související s provozem webu jsou zpracovávány v souladu s použitelnými právními předpisy o ochraně osobních údajů. Poskytovatelé služeb jsou zapojováni na základě odpovídajících ujednání o ochraně osobních údajů. Pokud zpracování zahrnuje předání mimo Evropský hospodářský prostor, musí být dodrženy použitelné právní požadavky a záruky předání.",
   ],
   [
     "If the services used by the website change, this privacy information will be updated before additional tracking or consent-dependent technology is enabled.",

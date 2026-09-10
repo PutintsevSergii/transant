@@ -61,14 +61,12 @@ export const contactPageViewModel: ContactPageViewModel = {
         help: "Include the cargo, route, operating constraints, and relevant wagon context.",
         placeholder: "Tell us what you are planning.",
       },
-      consent: {
-        label: "I have read the privacy information.",
-      },
     },
-    privacyNotice: { label: "Privacy information", href: "/privacy/" },
+    privacyNotice: { label: "Privacy Policy", href: "/privacy/" },
     submitLabel: "Continue in email",
     labels: {
-      privacyPrefix: "Your details are handled according to our",
+      privacyPrefix:
+        "Information on how we process your personal data in connection with your enquiry can be found in our",
       mailClientHint:
         "This opens your email application with the enquiry prepared. Review and send it from there.",
       mailClientOpened:
@@ -127,10 +125,12 @@ const legalPageViewModels = {
           ],
         },
         {
-          title: "Website hosting and technical operation",
+          title: "Hosting",
           paragraphs: [
-            "We use external hosting and technical service providers to make this website available. When you access the website, technical connection and log data, such as an IP address, time of access, requested resource and browser information, may be processed where necessary to deliver, secure and reliably operate the website.",
-            "Personal data connected with website operation is processed in accordance with applicable data-protection law. Service providers are engaged under appropriate data-protection arrangements. Where processing involves a transfer outside the European Economic Area, the applicable legal requirements and transfer safeguards must be observed.",
+            "This website is hosted using hosting services provided by Hutchison Drei Austria GmbH, Austria.",
+            "In connection with the provision and secure operation of the website, technical connection and usage data may be processed, in particular IP addresses, date and time of access, requested resources, browser information and technical server log data.",
+            "The processing is carried out on the basis of Article 6(1)(f) GDPR. Our legitimate interest is the secure, stable and efficient provision and operation of our website.",
+            "The hosting provider processes personal data on our behalf in accordance with Article 28 GDPR.",
           ],
         },
         {
@@ -183,8 +183,23 @@ const legalPageViewModels = {
           title: "Company and register information",
           paragraphs: [
             "TransAnt GmbH is an Austrian limited liability company (Gesellschaft mit beschränkter Haftung).",
-            "Company register court: Commercial Court of Linz (Handelsgericht Linz). Company register number: FN 544665 d.",
+            "Company register court: Landesgericht Linz. Company registration number: FN 544665 d. Registered office: Linz, Austria.",
             "VAT identification number: ATU76434529.",
+          ],
+        },
+        {
+          title: "Trade and professional information",
+          paragraphs: [
+            "Competent authority: Magistrat der Stadt Linz.",
+            "Chamber membership: Wirtschaftskammer Oberösterreich.",
+            {
+              text: "Applicable trade regulations: Austrian Trade Regulation Act 1994 (Gewerbeordnung 1994 – GewO), available via the Austrian Legal Information System (RIS):",
+              link: {
+                label: "ris.bka.gv.at",
+                href: "https://www.ris.bka.gv.at/",
+              },
+            },
+            "Business purpose: Development and production of standardised freight wagons in lightweight and standard construction, consisting of platform wagons and modular superstructures or individual wagons, as an industrial undertaking; trade in goods except regulated trades.",
           ],
         },
         {

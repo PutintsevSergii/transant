@@ -59,8 +59,9 @@ test("@component ContactForm renders a caller-owned mail-client handoff with vis
     "",
   );
   await expect(
-    contextual.getByRole("link", { name: "Privacy notice" }),
+    contextual.getByRole("link", { name: "Privacy Policy" }),
   ).toHaveAttribute("href", "/privacy/");
+  await expect(contextual.locator('input[type="checkbox"]')).toHaveCount(0);
   await expect(contextual.locator('[name="website"]')).toHaveCount(0);
   await expect(
     contextual.getByText(
@@ -89,7 +90,6 @@ test("@keyboard ContactForm preserves a native mailto fallback without JavaScrip
   await form
     .locator('textarea[name="message"]')
     .fill("Open this in the visitor's mail application.");
-  await form.getByLabel(/I agree/).check();
   await form.getByRole("button", { name: "Continue in email" }).focus();
   await expect(
     form.getByRole("button", { name: "Continue in email" }),
@@ -123,7 +123,6 @@ test("@component ContactForm prepares encoded values, preserves input, and scope
   await first
     .locator('textarea[name="message"]')
     .fill("Timber route Linz–Berlin\nPlease reply by email.");
-  await first.getByLabel(/I agree/).check();
   await first.getByRole("button", { name: "Continue in email" }).click();
 
   await expect(first).toHaveAttribute("data-contact-form-state", "prepared");
